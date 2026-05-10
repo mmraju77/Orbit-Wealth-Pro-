@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-finance-black: #0A0A0A;
+  --color-finance-white: #F5F5F5;
+  --color-finance-accent: #0055FF;
+  --color-finance-muted: #A3A3A3;
+}
+
+@layer base {
+  body {
+    @apply font-sans antialiased text-white bg-[#0A0A0A] transition-colors duration-300;
+  }
+}
+
+@layer components {
+  .editorial-label {
+    @apply text-[10px] font-bold text-[#0055FF] mb-1 tracking-[0.3em] uppercase;
+  }
+  
+  .input-label-editorial {
+    @apply text-[10px] uppercase tracking-wider text-white/40 mb-2 block font-bold;
+  }
+  
+  .editorial-input {
+    @apply w-full bg-transparent border-b border-white/20 pb-2 font-light tabular-nums text-xl outline-none focus:border-[#0055FF] transition-colors appearance-none;
+  }
+  
+  .number-display {
+    @apply font-sans tabular-nums tracking-tighter;
+  }
+  
+  .btn-accent {
+    @apply bg-[#0055FF] hover:bg-[#0044CC] text-white py-4 font-bold tracking-widest text-[11px] uppercase transition-all flex items-center justify-center;
+  }
+}
