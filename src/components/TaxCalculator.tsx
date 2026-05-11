@@ -3,345 +3,272 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { TaxInputs, TaxResult } from '@/src/types';
-import { Copy, Check, ArrowRightLeft, Download } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect, useMemo } from 'react';
-import { useLocale } from '@/src/context/LocaleContext';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Percent, Download, Share2, Globe, Shield, Wallet } from 'lucide-react';
+import { useLocale } from '../context/LocaleContext';
+import { TaxInputs } from '../types';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import Tooltip from './Tooltip';
+import SEOSection from './SEOSection';
+
+const DEFAULT_TAX_SLABS = [5, 12, 18, 28]; // Typical for GST
+const INTERNATIONAL_VAT_SLABS = [5, 7, 15, 20];
 
 export default function TaxCalculator() {
-  const { labels, formatCurrency, currencySymbol } = useLocale();
+  const { formatCurrency, labels, currency, formatValue } = useLocale();
+  const [mode, setMode] = useState<'indirect' | 'income'>('indirect');
   const [inputs, setInputs] = useState<TaxInputs>({
-    amount: 1000,
-    taxRate: 20,
+    amount: 1000000,
+    taxRate: currency === 'INR' ? 18 : 20,
     isAddingTax: true,
   });
-  const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const rate = inputs.taxRate / 100;
-    let originalAmount, taxAmount, totalAmount;
-
-    if (inputs.isAddingTax) {
-      originalAmount = inputs.amount;
-      taxAmount = originalAmount * rate;
-      totalAmount = originalAmount + taxAmount;
-    } else {
-      // Amount is already inclusive of tax
-      totalAmount = inputs.amount;
-      originalAmount = totalAmount / (1 + rate);
-      taxAmount = totalAmount - originalAmount;
-    }
-
-    return {
-      originalAmount,
-      taxAmount,
-      totalAmount,
+  // Income Tax Logic for India (Slab based)
+  const calculateIncomeTax = (income: number) => {
+    const calculateNewRegime = (i: number) => {
+      let tax = 0;
+      if (i <= 300000) tax = 0;
+      else if (i <= 600000) tax = (i - 300000) * 0.05;
+      else if (i <= 900000) tax = 300000 * 0.05 + (i - 600000) * 0.10;
+      else if (i <= 1200000) tax = 300000 * 0.05 + 300000 * 0.10 + (i - 900000) * 0.15;
+      else if (i <= 1500000) tax = 300000 * 0.05 + 300000 * 0.10 + 300000 * 0.15 + (i - 1200000) * 0.20;
+      else tax = 300000 * 0.05 + 300000 * 0.10 + 300000 * 0.15 + 300000 * 0.20 + (i - 1500000) * 0.30;
+      
+      // Rebate up to 7L
+      if (i <= 700000) tax = 0;
+      return tax + (tax * 0.04); // Cess
     };
-  }, [inputs]);
+
+    const calculateOldRegime = (i: number) => {
+      let tax = 0;
+      const taxable = i - 50000; // Std deduction
+      if (taxable <= 250000) tax = 0;
+      else if (taxable <= 500000) tax = (taxable - 250000) * 0.05;
+      else if (taxable <= 1000000) tax = 250000 * 0.05 + (taxable - 500000) * 0.20;
+      else tax = 250000 * 0.05 + 500000 * 0.20 + (taxable - 1000000) * 0.30;
+      
+      if (i <= 500000) tax = 0;
+      return tax + (tax * 0.04);
+    };
+
+    return { 
+      new: calculateNewRegime(income), 
+      old: calculateOldRegime(income) 
+    };
+  };
+
+  const results = useMemo(() => {
+    if (mode === 'indirect') {
+      const rate = inputs.taxRate / 100;
+      let originalAmount, taxAmount, totalAmount;
+      if (inputs.isAddingTax) {
+        originalAmount = inputs.amount;
+        taxAmount = originalAmount * rate;
+        totalAmount = originalAmount + taxAmount;
+      } else {
+        totalAmount = inputs.amount;
+        originalAmount = totalAmount / (1 + rate);
+        taxAmount = totalAmount - originalAmount;
+      }
+      return { originalAmount, taxAmount, totalAmount };
+    } else {
+      const incomeTax = calculateIncomeTax(inputs.amount);
+      return { 
+        taxAmount: incomeTax.new,
+        alternativeTax: incomeTax.old,
+        totalAmount: inputs.amount - incomeTax.new,
+        originalAmount: inputs.amount
+      };
+    }
+  }, [inputs, mode]);
 
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
-  const handleCopy = () => {
-    if (!results) return;
-    const mode = inputs.isAddingTax ? 'Add Tax' : 'Remove Tax';
-    const text = `Orbit Wealth Pro - ${mode}\nBase Amount: ${formatCurrency(results.originalAmount)}\n${labels.tax} Rate: ${inputs.taxRate}%\n${labels.tax} Amount: ${formatCurrency(results.taxAmount)}\nTotal: ${formatCurrency(results.totalAmount)}`;
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleInputChange = (field: keyof TaxInputs, value: number) => {
-    setInputs(prev => ({ ...prev, [field]: Math.max(0, value) }));
-  };
-
-  const generatePDF = () => {
-    if (!results) return;
+  const downloadPDF = () => {
     const doc = new jsPDF();
-    
-    doc.setFontSize(20);
-    doc.text(`ORBIT WEALTH PRO - ${labels.tax.toUpperCase()} REPORT`, 14, 22);
-    
-    doc.setFontSize(10);
-    doc.setTextColor(100);
-    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 30);
-    
-    doc.setTextColor(0);
-    doc.setFontSize(14);
-    doc.text('Calculation Detail', 14, 45);
-    
-    const inputData = [
-      ['Input Amount', formatCurrency(inputs.amount)],
-      ['Operation', inputs.isAddingTax ? 'Add Tax (Gross Result)' : 'Remove Tax (Net Result)'],
-      [`${labels.tax} Rate`, `${inputs.taxRate}%`],
-    ];
-    
-    autoTable(doc, {
-      startY: 50,
-      head: [['Parameter', 'Value']],
-      body: inputData,
-      theme: 'grid',
-      headStyles: { fillColor: [0, 85, 255] }
-    });
-    
-    doc.setFontSize(14);
-    doc.text('Economic Impact', 14, (doc as any).lastAutoTable.finalY + 15);
-    
-    const resultData = [
-      ['Base (Net) Amount', formatCurrency(results.originalAmount)],
-      [`${labels.tax} Amount`, formatCurrency(results.taxAmount)],
-      ['Total (Gross) Amount', formatCurrency(results.totalAmount)],
-    ];
-    
-    autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 20,
-      head: [['Metric', 'Value']],
-      body: resultData,
-      theme: 'grid',
-      headStyles: { fillColor: [0, 85, 255] }
-    });
-    
-    doc.save(`Orbit_Tax_Calculation.pdf`);
+    doc.setFontSize(22);
+    doc.text(`Orbit Wealth Pro: ${mode === 'income' ? 'Income Tax' : labels.tax} Analysis`, 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Base Amount: ${formatCurrency(inputs.amount)}`, 20, 40);
+    if (mode === 'indirect') {
+      doc.text(`Tax Rate: ${inputs.taxRate}%`, 20, 50);
+      doc.text(`Total Value: ${formatCurrency(results.totalAmount)}`, 20, 60);
+    } else {
+      doc.text(`New Regime Tax: ${formatCurrency(results.taxAmount)}`, 20, 50);
+      doc.text(`Old Regime Tax: ${formatCurrency(results.alternativeTax || 0)}`, 20, 60);
+    }
+    doc.save('tax-analysis.pdf');
   };
+
+  const currentSlabs = currency === 'INR' ? DEFAULT_TAX_SLABS : INTERNATIONAL_VAT_SLABS;
 
   return (
-    <div className="flex px-10 py-10 gap-12 max-w-full">
-      <section className="w-[320px] flex flex-col gap-8 shrink-0">
-        <div>
-          <div className="editorial-label mb-4">01 — {labels.tax.toUpperCase()} CONFIGURATION</div>
-          <h2 className="text-2xl font-semibold tracking-tight mb-8">Base Parameters</h2>
-          
-          <div className="space-y-8">
-            <div className="group">
-              <div className="flex justify-between items-end mb-2">
-                <Tooltip content="The base monetary value you wish to calculate tax for.">
-                  <label htmlFor="base-amount-input" className="input-label-editorial mb-0">Base Amount</label>
-                </Tooltip>
-                <div className="flex items-center gap-1">
-                  <span className="text-xs font-light text-white/30" aria-hidden="true">{currencySymbol}</span>
-                  <input 
-                    id="base-amount-input"
-                    type="number"
-                    value={inputs.amount}
-                    onChange={(e) => handleInputChange('amount', Number(e.target.value))}
-                    className="bg-transparent text-right outline-none text-white font-medium text-lg w-24 focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded"
-                    aria-label={`Base Amount in ${currencySymbol}`}
-                  />
-                </div>
-              </div>
-              <input 
-                id="base-amount-range"
-                type="range"
-                min={0}
-                max={50000}
-                step={100}
-                value={inputs.amount}
-                onChange={(e) => handleInputChange('amount', Number(e.target.value))}
-                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                aria-label="Adjust Base Amount"
-              />
-            </div>
-
-            <div className="group">
-              <div className="flex justify-between items-end mb-2">
-                <Tooltip content="The percentage rate of tax to be applied or backed out.">
-                  <label htmlFor="tax-rate-range" className="input-label-editorial mb-0">{labels.tax} Rate</label>
-                </Tooltip>
-                <span className="text-xs font-bold text-white/80 tabular-nums">{inputs.taxRate}%</span>
-              </div>
-              <input 
-                id="tax-rate-range"
-                type="range"
-                min={0}
-                max={50}
-                step={0.5}
-                value={inputs.taxRate}
-                onChange={(e) => handleInputChange('taxRate', Number(e.target.value))}
-                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                aria-label={`Adjust ${labels.tax} Rate`}
-              />
-            </div>
-
-            <div className="pt-4 space-y-4">
-              <div className="flex bg-white/5 rounded p-1 p-0.5 border border-white/10">
-                <button 
-                  onClick={() => setInputs({ ...inputs, isAddingTax: true })}
-                  className={`flex-1 py-2 text-[10px] font-bold tracking-widest transition-all rounded ${inputs.isAddingTax ? 'bg-[#0055FF] text-white shadow-lg' : 'text-white/30 hover:text-white/60'}`}
-                  aria-pressed={inputs.isAddingTax}
-                >
-                  ADD {labels.tax.toUpperCase()}
-                </button>
-                <button 
-                  onClick={() => setInputs({ ...inputs, isAddingTax: false })}
-                  className={`flex-1 py-2 text-[10px] font-bold tracking-widest transition-all rounded ${!inputs.isAddingTax ? 'bg-[#0055FF] text-white shadow-lg' : 'text-white/30 hover:text-white/60'}`}
-                  aria-pressed={!inputs.isAddingTax}
-                >
-                  REMOVE {labels.tax.toUpperCase()}
-                </button>
-              </div>
-              
-              <div className="text-[10px] text-white/30 font-medium leading-relaxed italic px-1">
-                {inputs.isAddingTax 
-                  ? `Calculating the total amount by adding ${inputs.taxRate}% tax to your base figure.` 
-                  : `Extracting ${inputs.taxRate}% tax from your total figure to find the original amount.`}
-              </div>
-            </div>
+    <div className="space-y-8 pb-20">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <header className="space-y-2">
+          <div className="flex items-center gap-2 mb-4">
+             <Percent className="text-[#0055FF] w-6 h-6" />
+             <h1 className="text-3xl font-bold tracking-tighter text-white">Tax Calculator</h1>
           </div>
-        </div>
+          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+            Switch between {currency === 'INR' ? 'Direct Income Tax (FY 2024-25)' : 'Direct Tax'} and Indirect {labels.tax} modes.
+          </p>
+        </header>
 
-        <Tooltip content={`Perform the ${labels.tax} calculation based on current parameters.`}>
-          <button 
-            className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
-            aria-label={`Calculate ${labels.tax}`}
-          >
-            Calculate {labels.tax}
+        <div className="flex items-center gap-2">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+            <Download className="w-4 h-4" /> PDF Report
           </button>
-        </Tooltip>
-
-        <Tooltip content="Generate a PDF document of this tax breakdown.">
-          <button 
-            onClick={generatePDF}
-            className="flex items-center justify-center gap-2 w-full py-4 rounded border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white/5 transition-colors mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF]"
-            aria-label="Download PDF Report"
-          >
-            <Download className="w-3 h-3 text-[#0055FF]" aria-hidden="true" />
-            Download PDF Report
+          <button className="flex items-center gap-3 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+            <Share2 className="w-4 h-4" /> Share
           </button>
-        </Tooltip>
-      </section>
-
-      <section className="flex-1 flex flex-col">
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <div className="editorial-label mb-1">02 — {labels.tax.toUpperCase()} BREAKDOWN</div>
-            <h2 className="text-2xl font-semibold tracking-tight">Financial Impact</h2>
-          </div>
-          <div className="flex flex-col items-end gap-3">
-            <div className={`px-3 py-1 rounded-full border text-[9px] font-black uppercase tracking-tighter ${inputs.isAddingTax ? 'bg-green-500/10 border-green-500/20 text-green-500' : 'bg-[#0055FF]/10 border-[#0055FF]/20 text-[#0055FF]'}`}>
-              {inputs.isAddingTax ? 'Mode: Net to Gross (Adding Tax)' : `Mode: Gross to Net (Removing ${labels.tax})`}
-            </div>
-            <Tooltip content="Copy these tax results to your clipboard.">
-            <button 
-              onClick={handleCopy}
-              className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#0055FF] hover:text-white transition-colors font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1"
-              aria-label={copied ? "Results copied to clipboard" : "Copy Results to clipboard"}
-            >
-              {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
-                {copied ? 'Copied' : 'Copy Results'}
-              </button>
-            </Tooltip>
-          </div>
         </div>
+      </div>
 
-        <AnimatePresence mode="wait">
-          {results && (
-            <motion.div
-              key="tax-results"
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -10 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="w-full h-full"
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
+          <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/5">
+            <button
+              onClick={() => setMode('indirect')}
+              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${mode === 'indirect' ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
             >
-              <div className="space-y-12 mb-12">
-                <div className="flex gap-12 overflow-hidden">
-                  <div className="flex-[2]">
-                    <motion.div 
-                      key={`total-${results.totalAmount}`}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="text-[64px] font-extrabold tracking-tighter leading-none mb-2 tabular-nums"
+              {labels.tax} (GST/VAT)
+            </button>
+            <button
+              onClick={() => setMode('income')}
+              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${mode === 'income' ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
+            >
+              Income Tax {currency === 'INR' && '(India)'}
+            </button>
+          </div>
+
+          <div className="space-y-6">
+             <div className="space-y-4">
+               <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{mode === 'income' ? 'Annual Gross Income' : 'Base Amount'}</label>
+               <div className="relative">
+                 <input 
+                   type="number"
+                   value={inputs.amount}
+                   onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
+                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#0055FF] transition-all font-bold"
+                 />
+                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 font-bold">{currency}</div>
+               </div>
+             </div>
+
+             {mode === 'indirect' ? (
+                <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                  <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/5 mb-4">
+                    <button
+                      onClick={() => setInputs({ ...inputs, isAddingTax: true })}
+                      className={`flex-1 py-2 text-[10px] font-bold rounded-lg transition-all ${inputs.isAddingTax ? 'bg-white/10 text-white' : 'text-white/20'}`}
                     >
-                      {formatCurrency(results.totalAmount).split('.')[0]}
-                      <span className="text-xl font-light text-white/30 ml-2">
-                        .{formatCurrency(results.totalAmount).split('.')[1] || '00'}
-                      </span>
-                    </motion.div>
-                    <p className="text-sm text-white/50 max-w-[240px]">
-                      {inputs.isAddingTax 
-                        ? `Gross amount calculated by adding ${labels.tax} to your base figure.` 
-                        : `Net amount remaining after extracting the ${labels.tax} component.`}
-                    </p>
+                      ADD TAX
+                    </button>
+                    <button
+                      onClick={() => setInputs({ ...inputs, isAddingTax: false })}
+                      className={`flex-1 py-2 text-[10px] font-bold rounded-lg transition-all ${!inputs.isAddingTax ? 'bg-white/10 text-white' : 'text-white/20'}`}
+                    >
+                      REMOVE TAX
+                    </button>
                   </div>
-                  <div className="w-px bg-white/10"></div>
-                  <div className="flex-1 flex items-center justify-center bg-white/[0.02] rounded-lg" style={{ width: "250px", height: "250px" }}>
-                    {isMounted && (
-                      <div className="flex items-center justify-center">
-                        <PieChart width={220} height={200}>
-                          <Pie
-                            data={results ? [
-                              { name: 'Net Amount', value: results.originalAmount },
-                              { name: labels.tax, value: results.taxAmount },
-                            ] : []}
-                            cx="50%"
-                            cy="50%"
-                            innerRadius={60}
-                            outerRadius={90}
-                            paddingAngle={5}
-                            dataKey="value"
-                            stroke="none"
-                            isAnimationActive={false}
-                          >
-                            <Cell fill="#333333" />
-                            <Cell fill="#0055FF" />
-                          </Pie>
-                          <RechartsTooltip 
-                            contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
-                            formatter={(val: number) => formatCurrency(val)}
-                          />
-                        </PieChart>
+                  <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Tax Slab (%)</label>
+                  <div className="grid grid-cols-4 gap-2 text-center">
+                    {currentSlabs.map(slab => (
+                      <button
+                        key={slab}
+                        onClick={() => setInputs({ ...inputs, taxRate: slab })}
+                        className={`py-3 rounded-xl border transition-all text-xs font-bold ${inputs.taxRate === slab ? 'bg-[#0055FF]/20 border-[#0055FF] text-white' : 'bg-white/5 border-white/5 text-white/40'}`}
+                      >
+                        {slab}%
+                      </button>
+                    ))}
+                  </div>
+                </div>
+             ) : (
+                <div className="p-4 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 flex items-center gap-4 animate-in fade-in zoom-in-95 duration-300">
+                   <Shield className="text-[#0055FF] w-6 h-6" />
+                   <p className="text-[10px] text-white/60 leading-relaxed italic">
+                      {currency === 'INR' 
+                        ? 'Includes Standard Deduction of ₹50,000 for salaried individuals and 4% Health & Education Cess.'
+                        : 'Calculates basic income tax tiers based on standard global progressive slab structures.'}
+                   </p>
+                </div>
+             )}
+          </div>
+        </section>
+
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center justify-between min-h-[400px]">
+           {isMounted && (
+             <div className="w-full flex-1 flex flex-col gap-6">
+               <div className="grid grid-cols-1 gap-4">
+                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
+                    <div>
+                      <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Effective {mode === 'income' ? 'New Tax' : 'Tax Amount'}</div>
+                      <div className="text-3xl font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
+                    </div>
+                    {mode === 'income' ? <Wallet className="text-white/5 w-10 h-10" /> : <Globe className="w-10 h-10 text-white/5" />}
+                 </div>
+
+                 {mode === 'income' && results.alternativeTax !== undefined && (
+                   <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/5 border-dashed flex items-center justify-between">
+                      <div>
+                        <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Old Regime Comparison</div>
+                        <div className="text-xl font-bold text-white/40 tracking-tighter">{formatCurrency(results.alternativeTax)}</div>
                       </div>
-                    )}
-                  </div>
-                </div>
-              </div>
-  
-              <div className="grid grid-cols-2 gap-12 border-t border-white/10 pt-12">
-                <div className="space-y-2">
-                  <div className="text-[10px] font-bold tracking-widest text-white/20 uppercase">
-                    {inputs.isAddingTax ? 'Base (Net) Valuation' : 'Resulting (Net) Valuation'}
-                  </div>
-                  <div className="text-2xl font-light tabular-nums">{formatCurrency(results.originalAmount)}</div>
-                  <p className="text-xs text-white/40 leading-relaxed font-medium">
-                    {inputs.isAddingTax 
-                      ? 'The base taxable value before government surcharges.' 
-                      : 'The underlying value after removing the tax component from your total.'}
-                  </p>
-                </div>
-                
-                <div className="space-y-4">
-                  <div className="text-[10px] font-bold tracking-widest text-white/20 uppercase">Quick Reference</div>
-                  <div className="space-y-3">
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-white/30 whitespace-nowrap">Net Amount</span>
-                      <span className="border-b border-white/5 flex-grow mx-2 h-2"></span>
-                      <span>{formatCurrency(results.originalAmount)}</span>
+                      <div className={`px-3 py-1 rounded-full text-[8px] font-bold ${results.taxAmount < results.alternativeTax ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}>
+                         {results.taxAmount < results.alternativeTax ? 'NEW REGIME BETTER' : 'OLD REGIME BETTER'}
+                      </div>
+                   </div>
+                 )}
+
+                 <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/10 flex items-center justify-between">
+                    <div>
+                      <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">{mode === 'income' ? 'Take-home / Post-Tax' : 'Total Billing Value'}</div>
+                      <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.totalAmount)}</div>
                     </div>
-                    <div className="flex justify-between text-xs font-mono">
-                      <span className="text-white/30 whitespace-nowrap">Tax Surcharge</span>
-                      <span className="border-b border-white/5 flex-grow mx-2 h-2"></span>
-                      <span>{formatCurrency(results.taxAmount)}</span>
-                    </div>
-                    <div className="flex justify-between text-sm font-bold pt-2 border-t border-white/10">
-                      <span className={inputs.isAddingTax ? "text-[#0055FF]" : "text-white/40"}>
-                        {inputs.isAddingTax ? 'RESULTING GROSS' : 'ORIGINAL GROSS'}
-                      </span>
-                      <span>{formatCurrency(results.totalAmount)}</span>
-                    </div>
+                 </div>
+               </div>
+
+               {mode === 'income' && (
+                  <div className="flex-1 h-[150px] w-full">
+                     <ResponsiveContainer width="100%" height="100%">
+                        <BarChart data={[
+                          { name: 'Income', val: inputs.amount },
+                          { name: 'Tax', val: results.taxAmount },
+                          { name: 'Net', val: results.totalAmount }
+                        ]}>
+                           <XAxis dataKey="name" axisLine={false} tickLine={false} fontSize={10} stroke="#ffffff20" />
+                           <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                           <Bar dataKey="val" fill="#0055FF" radius={[4, 4, 0, 0]} />
+                        </BarChart>
+                     </ResponsiveContainer>
                   </div>
-                </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
+               )}
+             </div>
+           )}
+        </section>
+      </div>
+
+      <SEOSection 
+        title={`${mode === 'income' ? 'Income Tax' : labels.tax} Calculator`}
+        howTo={[
+          `Choose between ${labels.tax} (VAT/GST) or Income Tax mode based on your financial tracking needs.`,
+          "Enter your gross income or base transaction amount to begin analysis.",
+          "Compare tax regimes if applicable (India specific) to optimize your tax savings and take-home pay.",
+          "Instantly export your calculation results into a professional PDF summary for tax filing."
+        ]}
+        formula={mode === 'income' ? "Tax = Progressive Slab Logic + 4% Cess" : "Total = Amount ± (Amount × Rate%)"}
+        benefits={[
+          "Global compatibility for VAT/GST across Europe, GCC, and North America.",
+          "Direct comparison between Tax Regimes to maximize post-tax income.",
+          "User-friendly slab selection grid for high-speed value extraction.",
+          "Dynamic visualization of income vs tax vs net liquidity."
+        ]}
+      />
     </div>
   );
 }

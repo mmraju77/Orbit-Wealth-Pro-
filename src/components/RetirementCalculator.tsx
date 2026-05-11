@@ -3,60 +3,63 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { RetirementInputs, RetirementResult } from '@/src/types';
-import { Copy, Check, Download } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import { useEffect, useState, useMemo } from 'react';
-import { useLocale } from '@/src/context/LocaleContext';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
+import React, { useState, useMemo, useEffect } from 'react';
+import { Coins, Download, Share2, Info } from 'lucide-react';
+import { useLocale } from '../context/LocaleContext';
+import { RetirementInputs, RetirementResult } from '../types';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
-import Tooltip from './Tooltip';
+import SEOSection from './SEOSection';
 
 const INITIAL_INPUTS: RetirementInputs = {
   currentAge: 30,
-  retirementAge: 65,
-  currentSavings: 50000,
-  monthlyContribution: 1000,
-  expectedReturn: 7,
+  retirementAge: 60,
+  currentSavings: 100000,
+  monthlyContribution: 10000,
+  expectedReturn: 12,
+  expectedInflation: 6
 };
 
 export default function RetirementCalculator() {
-  const { formatCurrency, currencySymbol } = useLocale();
+  const { formatCurrency, currencySymbol, formatValue } = useLocale();
   const [inputs, setInputs] = useState<RetirementInputs>(INITIAL_INPUTS);
-  const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
   const results = useMemo(() => {
-    const yearsToRetirement = inputs.retirementAge - inputs.currentAge;
-    if (yearsToRetirement <= 0) {
-      return null;
-    }
-
+    const yearsToRetire = inputs.retirementAge - inputs.currentAge;
+    const monthsToRetire = Math.max(0, yearsToRetire * 12);
     const monthlyRate = inputs.expectedReturn / 100 / 12;
-    const months = yearsToRetirement * 12;
-    
-    let balance = inputs.currentSavings;
-    let totalContributions = inputs.currentSavings;
-    const yearlyData = [{ year: inputs.currentAge, balance }];
+    const inflationRate = inputs.expectedInflation / 100;
 
-    for (let i = 1; i <= months; i++) {
-      balance = (balance + inputs.monthlyContribution) * (1 + monthlyRate);
-      totalContributions += inputs.monthlyContribution;
-      
-      if (i % 12 === 0) {
-        yearlyData.push({ 
-          year: inputs.currentAge + (i / 12), 
-          balance 
-        });
-      }
+    let totalSavings = inputs.currentSavings;
+    const yearlyData = [{ 
+      year: inputs.currentAge, 
+      balance: Math.round(totalSavings),
+      inflatedBalance: Math.round(totalSavings)
+    }];
+
+    for (let i = 1; i <= monthsToRetire; i++) {
+        totalSavings = (totalSavings * (1 + monthlyRate)) + inputs.monthlyContribution;
+        if (i % 12 === 0) {
+            const yearIndex = i / 12;
+            const purchasingPower = totalSavings / Math.pow(1 + inflationRate, yearIndex);
+            yearlyData.push({ 
+              year: inputs.currentAge + yearIndex, 
+              balance: Math.round(totalSavings),
+              inflatedBalance: Math.round(purchasingPower)
+            });
+        }
     }
+
+    const inflationAdjustedCorpus = totalSavings / Math.pow(1 + inflationRate, yearsToRetire);
+    const totalContributions = (inputs.monthlyContribution * monthsToRetire) + inputs.currentSavings;
 
     return {
-      totalSavings: balance,
-      totalContributions,
-      totalInterest: balance - totalContributions,
-      yearlyData,
+      totalSavings: Math.round(totalSavings),
+      totalContributions: Math.round(totalContributions),
+      totalInterest: Math.round(totalSavings - totalContributions),
+      inflationAdjustedCorpus: Math.round(inflationAdjustedCorpus),
+      yearlyData
     };
   }, [inputs]);
 
@@ -64,339 +67,177 @@ export default function RetirementCalculator() {
     setIsMounted(true);
   }, []);
 
-  const handleCopy = () => {
-    if (!results) return;
-    const text = `Orbit Wealth Pro - Retirement Projection\nTarget Age: ${inputs.retirementAge}\nTotal Savings: ${formatCurrency(results.totalSavings)}\nTotal Contributions: ${formatCurrency(results.totalContributions)}\nInterest Earned: ${formatCurrency(results.totalInterest)}`;
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleInputChange = (field: keyof RetirementInputs, value: number) => {
-    const sanitizedValue = Math.max(0, value);
-    const newInputs = { ...inputs, [field]: sanitizedValue };
-
-    if (field === 'currentAge') {
-      if (sanitizedValue >= inputs.retirementAge) {
-        newInputs.retirementAge = sanitizedValue + 1;
-      }
-    } else if (field === 'retirementAge') {
-      if (sanitizedValue <= inputs.currentAge) {
-        newInputs.currentAge = Math.max(18, sanitizedValue - 1);
-      }
-    }
-
-    setInputs(newInputs);
-  };
-
-  const generatePDF = () => {
-    if (!results) return;
+  const downloadPDF = () => {
     const doc = new jsPDF();
-    
-    doc.setFontSize(20);
-    doc.text('ORBIT WEALTH PRO - RETIREMENT PROJECTION', 14, 22);
-    
+    doc.setFontSize(22);
+    doc.text('Orbit Wealth Pro: Retirement Strategy', 20, 20);
     doc.setFontSize(10);
-    doc.setTextColor(100);
-    doc.text(`Generated on: ${new Date().toLocaleDateString()}`, 14, 30);
-    
-    doc.setTextColor(0);
+    doc.text(`Retirement Age: ${inputs.retirementAge} | Current Age: ${inputs.currentAge}`, 20, 35);
+    doc.text(`Monthly Contribution: ${formatCurrency(inputs.monthlyContribution)}`, 20, 45);
+    doc.text(`Exp. Return: ${inputs.expectedReturn}% | Inflation: ${inputs.expectedInflation}%`, 20, 55);
     doc.setFontSize(14);
-    doc.text('Profile Configuration', 14, 45);
-    
-    const inputData = [
-      ['Current Age', String(inputs.currentAge)],
-      ['Target Retirement Age', String(inputs.retirementAge)],
-      ['Initial Savings', formatCurrency(inputs.currentSavings)],
-      ['Monthly Contribution', formatCurrency(inputs.monthlyContribution)],
-      ['Expected Annual Return', `${inputs.expectedReturn}%`],
-    ];
-    
-    autoTable(doc, {
-      startY: 50,
-      head: [['Parameter', 'Value']],
-      body: inputData,
-      theme: 'grid',
-      headStyles: { fillColor: [0, 85, 255] }
-    });
-    
-    doc.setFontSize(14);
-    doc.text('Growth Summary', 14, (doc as any).lastAutoTable.finalY + 15);
-    
-    const resultData = [
-      ['Total Savings at Retirement', formatCurrency(results.totalSavings)],
-      ['Total Contributions Made', formatCurrency(results.totalContributions)],
-      ['Total Interest Accrued', formatCurrency(results.totalInterest)],
-    ];
-    
-    autoTable(doc, {
-      startY: (doc as any).lastAutoTable.finalY + 20,
-      head: [['Metric', 'Result']],
-      body: resultData,
-      theme: 'grid',
-      headStyles: { fillColor: [0, 85, 255] }
-    });
-    
-    doc.save(`Retirement_Projection_${inputs.retirementAge}.pdf`);
+    doc.text(`Projected Corpus: ${formatCurrency(results.totalSavings)}`, 20, 75);
+    doc.text(`Purchasing Power: ${formatCurrency(results.inflationAdjustedCorpus)}`, 20, 85);
+    doc.save('retirement-strategy.pdf');
   };
 
   return (
-    <div className="flex px-10 py-10 gap-12 max-w-full">
-      <section className="w-[320px] flex flex-col gap-8 shrink-0">
-        <div>
-          <div className="editorial-label mb-4">01 — GROWTH PARAMETERS</div>
-          <h2 className="text-2xl font-semibold tracking-tight mb-8">Investment Profile</h2>
-          
-          <div className="space-y-8">
-            <div className="group">
-              <div className="flex justify-between items-end mb-2">
-                <Tooltip content="Your current age and the age you wish to retire.">
-                  <label className="input-label-editorial mb-0">Age Configuration</label>
-                </Tooltip>
-                <div className="text-[10px] font-bold text-white/40 tabular-nums">
-                  {inputs.currentAge} → {inputs.retirementAge} ({inputs.retirementAge - inputs.currentAge}y)
-                </div>
+    <div className="space-y-8 pb-20 text-white">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <header className="space-y-2">
+          <div className="flex items-center gap-2 mb-4">
+             <Coins className="text-[#0055FF] w-6 h-6" />
+             <h1 className="text-3xl font-bold tracking-tighter">Retirement Planner</h1>
+          </div>
+          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+            Project your retirement corpus and verify its future purchasing power considering annual inflation rates.
+          </p>
+        </header>
+
+        <div className="flex items-center gap-2">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+            <Download className="w-4 h-4" /> PDF Strategy
+          </button>
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20 text-white">
+            <Share2 className="w-4 h-4" /> Share Corpus
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
+           <div className="space-y-6">
+              <div className="grid grid-cols-2 gap-8">
+                 <div className="space-y-4">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
+                    <input 
+                      type="number" value={inputs.currentAge}
+                      onChange={(e) => setInputs({ ...inputs, currentAge: Number(e.target.value) })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
+                    />
+                 </div>
+                 <div className="space-y-4">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Retirement Age</label>
+                    <input 
+                      type="number" value={inputs.retirementAge}
+                      onChange={(e) => setInputs({ ...inputs, retirementAge: Number(e.target.value) })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#0055FF] font-bold outline-none"
+                    />
+                 </div>
               </div>
+
               <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-bold text-white/20 w-4" aria-hidden="true">NOW</span>
-                  <input 
-                    id="current-age-range"
-                    type="range"
-                    min={18}
-                    max={80}
-                    value={inputs.currentAge}
-                    onChange={(e) => handleInputChange('currentAge', Number(e.target.value))}
-                    className="flex-1 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                    aria-label="Adjust Current Age"
-                  />
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-[9px] font-bold text-white/20 w-4" aria-hidden="true">OFF</span>
-                  <input 
-                    id="retirement-age-range"
-                    type="range"
-                    min={inputs.currentAge + 1}
-                    max={100}
-                    value={inputs.retirementAge}
-                    onChange={(e) => handleInputChange('retirementAge', Number(e.target.value))}
-                    className="flex-1 h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                    aria-label="Adjust Retirement Age"
-                  />
-                </div>
+                 <div className="flex justify-between items-center">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Initial Corpus</label>
+                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.currentSavings)}</div>
+                 </div>
+                 <input 
+                   type="range" min="0" max="10000000" step="50000"
+                   value={inputs.currentSavings}
+                   onChange={(e) => setInputs({ ...inputs, currentSavings: Number(e.target.value) })}
+                   className="w-full accent-[#0055FF]"
+                 />
               </div>
-            </div>
 
-            <div className="group">
-              <div className="flex justify-between items-end mb-2">
-                <Tooltip content="The total amount of money you have saved specifically for retirement today.">
-                  <label htmlFor="current-savings-range" className="input-label-editorial mb-0">Initial Capital</label>
-                </Tooltip>
-                <div className="text-xs font-bold text-white/80 tabular-nums">{formatCurrency(inputs.currentSavings)}</div>
+              <div className="space-y-4">
+                 <div className="flex justify-between items-center">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Contribution</label>
+                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.monthlyContribution)}</div>
+                 </div>
+                 <input 
+                   type="range" min="1000" max="250000" step="1000"
+                   value={inputs.monthlyContribution}
+                   onChange={(e) => setInputs({ ...inputs, monthlyContribution: Number(e.target.value) })}
+                   className="w-full accent-[#0055FF]"
+                 />
               </div>
-              <input 
-                id="current-savings-range"
-                type="range"
-                min={0}
-                max={1000000}
-                step={1000}
-                value={inputs.currentSavings}
-                onChange={(e) => handleInputChange('currentSavings', Number(e.target.value))}
-                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                aria-label="Adjust Initial Capital"
-              />
-            </div>
 
-            <div className="group">
-              <div className="flex justify-between items-end mb-2">
-                <Tooltip content="How much you plan to add to your savings every month until retirement.">
-                  <label htmlFor="monthly-contribution-range" className="input-label-editorial mb-0">Monthly Deposit</label>
-                </Tooltip>
-                <div className="text-xs font-bold text-white/80 tabular-nums">{formatCurrency(inputs.monthlyContribution)}</div>
+              <div className="grid grid-cols-2 gap-8">
+                 <div className="space-y-4">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
+                    <input 
+                      type="number" step="0.5" value={inputs.expectedReturn}
+                      onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
+                    />
+                 </div>
+                 <div className="space-y-4">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Inflation Rate (%)</label>
+                    <input 
+                      type="number" step="0.1" value={inputs.expectedInflation}
+                      onChange={(e) => setInputs({ ...inputs, expectedInflation: Number(e.target.value) })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
+                    />
+                 </div>
               </div>
-              <input 
-                id="monthly-contribution-range"
-                type="range"
-                min={0}
-                max={20000}
-                step={100}
-                value={inputs.monthlyContribution}
-                onChange={(e) => handleInputChange('monthlyContribution', Number(e.target.value))}
-                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                aria-label="Adjust Monthly Deposit"
-              />
-            </div>
+           </div>
+        </section>
 
-            <div className="group">
-              <div className="flex justify-between items-end mb-2">
-                <Tooltip content="Annual interest rate or growth rate you expect from your investments.">
-                  <label htmlFor="expected-yield-range" className="input-label-editorial mb-0">Expected Yield</label>
-                </Tooltip>
-                <div className="text-xs font-bold text-white/80 tabular-nums">{inputs.expectedReturn}%</div>
-              </div>
-              <input 
-                id="expected-yield-range"
-                type="range"
-                min={1}
-                max={15}
-                step={0.1}
-                value={inputs.expectedReturn}
-                onChange={(e) => handleInputChange('expectedReturn', Number(e.target.value))}
-                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
-                aria-label="Adjust Expected Yield"
-              />
-            </div>
-          </div>
-        </div>
-
-        <Tooltip content="Run the simulation based on your investment profile.">
-          <button 
-            className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
-            aria-label="Project Retirement Growth"
-          >
-            Project Growth
-          </button>
-        </Tooltip>
-
-        <Tooltip content="Download a detailed PDF report of your retirement forecast.">
-          <button 
-            onClick={generatePDF}
-            className="flex items-center justify-center gap-2 w-full py-4 rounded border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white/5 transition-colors mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF]"
-            aria-label="Download PDF Report"
-          >
-            <Download className="w-3 h-3 text-[#0055FF]" aria-hidden="true" />
-            Download PDF Report
-          </button>
-        </Tooltip>
-      </section>
-
-      <section className="flex-1 flex flex-col">
-        <div className="flex justify-between items-start mb-6">
-          <div>
-            <div className="editorial-label mb-1">02 — PROJECTED WEALTH</div>
-            <h2 className="text-2xl font-semibold tracking-tight">Retirement Summary</h2>
-          </div>
-          <Tooltip content="Copy the summary stats to your clipboard.">
-            <button 
-              onClick={handleCopy}
-              className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#0055FF] hover:text-white transition-colors font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1"
-              aria-label={copied ? "Results copied to clipboard" : "Copy Results to clipboard"}
-            >
-              {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
-              {copied ? 'Copied' : 'Copy Results'}
-            </button>
-          </Tooltip>
-        </div>
-
-        <AnimatePresence mode="wait">
-          {results ? (
-            <motion.div
-              key="retirement-results"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="flex-1 flex flex-col"
-            >
-              <div className="flex gap-12 mb-10 overflow-hidden">
-                <div className="flex-1">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="text-[64px] font-extrabold tracking-tighter leading-none mb-2 tabular-nums"
-                  >
-                    {formatCurrency(results.totalSavings).split('.')[0]}
-                    <span className="text-xl font-light text-white/30 ml-2">
-                      .{formatCurrency(results.totalSavings).split('.')[1] || '00'}
-                    </span>
-                  </motion.div>
-                  <p className="text-sm text-white/50 max-w-[200px]">Estimated total nest egg at age {inputs.retirementAge}.</p>
-                </div>
-                <div className="w-px bg-white/10"></div>
-                <div className="flex-1 space-y-4">
-                  <div>
-                    <div className="text-[24px] font-bold tracking-tighter tabular-nums text-white/80">
-                      {formatCurrency(results.totalInterest)}
-                    </div>
-                    <p className="text-[10px] uppercase tracking-wider text-white/40 font-semibold">Compound Interest Earned</p>
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between min-h-[500px]">
+           {isMounted && (
+             <div className="flex-1 flex flex-col">
+               <div className="grid grid-cols-2 gap-4 mb-8">
+                  <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+                     <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Raw Corpus</div>
+                     <div className="text-2xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
                   </div>
-                  <div>
-                    <div className="text-[24px] font-bold tracking-tighter tabular-nums text-white/80">
-                      {formatCurrency(results.totalContributions)}
-                    </div>
-                    <p className="text-[10px] uppercase tracking-wider text-white/40 font-semibold">Total Contributions</p>
+                  <div className="p-6 bg-[#0055FF]/20 rounded-2xl border border-[#0055FF]/30 text-center ring-2 ring-[#0055FF]/50 ring-offset-4 ring-offset-black">
+                     <div className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-1">Purchasing Power</div>
+                     <div className="text-2xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
                   </div>
-                </div>
-              </div>
-  
-              <div className="flex-1 border-t border-white/10 pt-8 flex flex-col min-h-0">
-                <div className="flex justify-between items-center mb-6">
-                  <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase">Growth Timeline — Projected Balance</h3>
-                </div>
-                <div className="flex-1 relative w-full overflow-x-auto bg-white/[0.02] rounded-lg" style={{ width: "100%", height: "500px", minWidth: 0 }}>
-                  {isMounted && results?.yearlyData && (
-                    <div className="flex items-center justify-center min-w-[850px] h-full py-4">
-                      <AreaChart 
-                        width={800} 
-                        height={400} 
-                        data={results.yearlyData} 
-                        margin={{ top: 20, right: 30, left: 40, bottom: 20 }}
-                      >
-                        <defs>
-                          <linearGradient id="colorBalance" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#0055FF" stopOpacity={0.3}/>
-                            <stop offset="95%" stopColor="#0055FF" stopOpacity={0}/>
-                          </linearGradient>
-                        </defs>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                        <XAxis 
-                          dataKey="year" 
-                          stroke="#ffffff30" 
-                          fontSize={10} 
-                          tickLine={false} 
-                          axisLine={false}
-                          dy={10}
-                        />
-                        <YAxis 
-                          stroke="#ffffff30" 
-                          fontSize={10} 
-                          tickLine={false} 
-                          axisLine={false}
-                          tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`}
-                        />
-                        <RechartsTooltip 
-                          contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
-                          formatter={(val: number) => [formatCurrency(val), 'Balance']}
-                        />
-                        <Area 
-                          type="monotone" 
-                          dataKey="balance" 
-                          stroke="#0055FF" 
-                          strokeWidth={3}
-                          fillOpacity={1} 
-                          fill="url(#colorBalance)" 
-                          isAnimationActive={false}
-                        />
-                      </AreaChart>
-                    </div>
-                  )}
-                </div>
-              </div>
-            </motion.div>
-          ) : (
-            <motion.div
-              key="retirement-empty"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 0.4 }}
-              exit={{ opacity: 0 }}
-              className="flex-1 flex flex-col items-center justify-center border-2 border-dashed border-white/5 rounded-lg"
-            >
-              <p className="text-xl font-bold tracking-tighter">Insufficient Parameters</p>
-              <p className="text-[11px] uppercase tracking-widest font-medium">Target age must exceed current age for growth projection.</p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </section>
+               </div>
+
+               <div className="flex-1 h-[300px]">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <AreaChart data={results.yearlyData}>
+                      <defs>
+                        <linearGradient id="colorBal" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#0055FF" stopOpacity={0.3}/>
+                          <stop offset="95%" stopColor="#0055FF" stopOpacity={0}/>
+                        </linearGradient>
+                        <linearGradient id="colorInf" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="5%" stopColor="#ffffff" stopOpacity={0.1}/>
+                          <stop offset="95%" stopColor="#ffffff" stopOpacity={0}/>
+                        </linearGradient>
+                      </defs>
+                      <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
+                      <XAxis dataKey="year" stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} dy={10} />
+                      <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${formatValue(val / 1000)}k`} />
+                      <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                      <Area type="monotone" dataKey="balance" stroke="#0055FF" strokeWidth={3} fillOpacity={1} fill="url(#colorBal)" name="Raw Corpus" isAnimationActive={false} />
+                      <Area type="monotone" dataKey="inflatedBalance" stroke="#ffffff20" strokeWidth={2} strokeDasharray="5 5" fillOpacity={1} fill="url(#colorInf)" name="Purchasing Power" isAnimationActive={false} />
+                    </AreaChart>
+                  </ResponsiveContainer>
+               </div>
+
+               <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 mt-4">
+                  <Info className="w-5 h-5 text-white/20 shrink-0" />
+                  <p className="text-[10px] text-white/40 leading-relaxed">
+                    Purchasing power represents what your future corpus would be worth in today's currency value, 
+                    accounting for a {inputs.expectedInflation}% annual cost-of-living increase.
+                  </p>
+               </div>
+             </div>
+           )}
+        </section>
+      </div>
+
+      <SEOSection 
+        title="Retirement Corpus Calculator"
+        howTo={[
+          "Enter your current age and targeted retirement age.",
+          "Input existing savings and your planned monthly contribution.",
+          "Set expected annual returns and average inflation rate.",
+          "View the purchasing power to understand if your goal stays ahead of inflation."
+        ]}
+        formula="FV = P × [((1 + r)ⁿ - 1) / r] | Real FV = FV / (1 + inf)ⁿ"
+        benefits={[
+          "Inflation-aware projections for realistic retirement planning.",
+          "High-precision compound interest and depreciation tracking.",
+          "Instant visualization of the 'purchasing power gap'.",
+          "Mobile-responsive reports for on-the-go financial checking."
+        ]}
+      />
     </div>
   );
 }

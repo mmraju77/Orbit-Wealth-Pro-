@@ -5,54 +5,75 @@
 
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-export type CurrencyCode = 'USD' | 'GBP' | 'EUR' | 'AUD' | 'CAD' | 'INR';
+export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR';
+export type NumberSystem = 'International' | 'Indian';
 
 interface LocaleContextType {
   currency: CurrencyCode;
   setCurrency: (code: CurrencyCode) => void;
+  numberSystem: NumberSystem;
+  setNumberSystem: (system: NumberSystem) => void;
   formatCurrency: (val: number) => string;
+  formatValue: (val: number) => string;
   currencySymbol: string;
   labels: {
     loan: string;
     tax: string;
+    jurisdiction: string;
   };
 }
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
-const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string }> = {
-  USD: { symbol: '$', name: 'USD' },
-  GBP: { symbol: '£', name: 'GBP' },
-  EUR: { symbol: '€', name: 'EUR' },
-  AUD: { symbol: '$', name: 'AUD' },
-  CAD: { symbol: '$', name: 'CAD' },
-  INR: { symbol: '₹', name: 'INR' },
+const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale: string }> = {
+  USD: { symbol: '$', name: 'USD', locale: 'en-US' },
+  EUR: { symbol: '€', name: 'EUR', locale: 'de-DE' },
+  GBP: { symbol: '£', name: 'GBP', locale: 'en-GB' },
+  AED: { symbol: 'د.إ', name: 'AED', locale: 'ar-AE' },
+  INR: { symbol: '₹', name: 'INR', locale: 'en-IN' },
 };
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
   const [currency, setCurrency] = useState<CurrencyCode>('USD');
+  const [numberSystem, setNumberSystem] = useState<NumberSystem>('International');
 
   const formatCurrency = (val: number) => {
-    return new Intl.NumberFormat('en-US', {
+    const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
+    return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(val);
+  };
+
+  const formatValue = (val: number) => {
+    const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
+    return new Intl.NumberFormat(locale, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,
     }).format(val);
   };
 
   const getLabels = () => {
-    if (currency === 'USD') return { loan: 'Mortgage', tax: 'Sales Tax' };
-    if (currency === 'GBP') return { loan: 'Home Loan', tax: 'VAT' };
-    if (currency === 'EUR') return { loan: 'Bank Loan', tax: 'VAT' };
-    return { loan: 'Loan', tax: 'Tax / GST' };
+    const map: Record<CurrencyCode, any> = {
+      USD: { loan: 'Mortgage', tax: 'Sales Tax', jurisdiction: 'Global' },
+      EUR: { loan: 'Home Loan', tax: 'VAT', jurisdiction: 'Europe' },
+      GBP: { loan: 'Home Loan', tax: 'VAT', jurisdiction: 'UK' },
+      AED: { loan: 'Loan', tax: 'VAT', jurisdiction: 'UAE' },
+      INR: { loan: 'Housing Loan', tax: 'GST', jurisdiction: 'India' },
+    };
+    return map[currency];
   };
 
   return (
     <LocaleContext.Provider value={{ 
       currency, 
       setCurrency, 
+      numberSystem,
+      setNumberSystem,
       formatCurrency, 
+      formatValue,
       currencySymbol: CURRENCY_MAP[currency].symbol,
       labels: getLabels() 
     }}>
