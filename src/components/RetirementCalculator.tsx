@@ -6,7 +6,7 @@
 import { RetirementInputs, RetirementResult } from '@/src/types';
 import { Copy, Check, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useLocale } from '@/src/context/LocaleContext';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer } from 'recharts';
 import jsPDF from 'jspdf';
@@ -24,15 +24,13 @@ const INITIAL_INPUTS: RetirementInputs = {
 export default function RetirementCalculator() {
   const { formatCurrency, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState<RetirementInputs>(INITIAL_INPUTS);
-  const [results, setResults] = useState<RetirementResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const calculateRetirement = () => {
+  const results = useMemo(() => {
     const yearsToRetirement = inputs.retirementAge - inputs.currentAge;
     if (yearsToRetirement <= 0) {
-      setResults(null);
-      return;
+      return null;
     }
 
     const monthlyRate = inputs.expectedReturn / 100 / 12;
@@ -54,18 +52,17 @@ export default function RetirementCalculator() {
       }
     }
 
-    setResults({
+    return {
       totalSavings: balance,
       totalContributions,
       totalInterest: balance - totalContributions,
       yearlyData,
-    });
-  };
+    };
+  }, [inputs]);
 
   useEffect(() => {
     setIsMounted(true);
-    calculateRetirement();
-  }, [inputs]);
+  }, []);
 
   const handleCopy = () => {
     if (!results) return;
@@ -254,7 +251,6 @@ export default function RetirementCalculator() {
 
         <Tooltip content="Run the simulation based on your investment profile.">
           <button 
-            onClick={calculateRetirement}
             className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
             aria-label="Project Retirement Growth"
           >

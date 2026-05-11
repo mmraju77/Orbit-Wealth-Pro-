@@ -6,7 +6,7 @@
 import { TaxInputs, TaxResult } from '@/src/types';
 import { Copy, Check, ArrowRightLeft, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useLocale } from '@/src/context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
@@ -20,11 +20,10 @@ export default function TaxCalculator() {
     taxRate: 20,
     isAddingTax: true,
   });
-  const [results, setResults] = useState<TaxResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const calculateTax = () => {
+  const results = useMemo(() => {
     const rate = inputs.taxRate / 100;
     let originalAmount, taxAmount, totalAmount;
 
@@ -39,17 +38,16 @@ export default function TaxCalculator() {
       taxAmount = totalAmount - originalAmount;
     }
 
-    setResults({
+    return {
       originalAmount,
       taxAmount,
       totalAmount,
-    });
-  };
+    };
+  }, [inputs]);
 
   useEffect(() => {
     setIsMounted(true);
-    calculateTax();
-  }, [inputs]);
+  }, []);
 
   const handleCopy = () => {
     if (!results) return;
@@ -200,7 +198,6 @@ export default function TaxCalculator() {
 
         <Tooltip content={`Perform the ${labels.tax} calculation based on current parameters.`}>
           <button 
-            onClick={calculateTax}
             className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
             aria-label={`Calculate ${labels.tax}`}
           >

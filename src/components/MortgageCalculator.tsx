@@ -6,7 +6,7 @@
 import { AmortizationPeriod, MortgageInputs, MortgageResult } from '@/src/types';
 import { Copy, Check, Download } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { useLocale } from '@/src/context/LocaleContext';
 import { PieChart, Pie, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend } from 'recharts';
 import jsPDF from 'jspdf';
@@ -25,11 +25,10 @@ const INITIAL_INPUTS: MortgageInputs = {
 export default function MortgageCalculator() {
   const { formatCurrency, labels, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
-  const [results, setResults] = useState<MortgageResult | null>(null);
   const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
-  const calculateMortgage = () => {
+  const results = useMemo(() => {
     const principal = inputs.homePrice - inputs.downPayment;
     const monthlyRate = inputs.interestRate / 100 / 12;
     const numberOfPayments = inputs.loanTerm * 12;
@@ -60,18 +59,17 @@ export default function MortgageCalculator() {
       });
     }
 
-    setResults({
+    return {
       monthlyPayment,
       totalPayment,
       totalInterest: totalInterestPaid,
       amortizationSchedule,
-    });
-  };
+    };
+  }, [inputs]);
 
   useEffect(() => {
     setIsMounted(true);
-    calculateMortgage();
-  }, [inputs]);
+  }, []);
 
   const handleCopy = () => {
     if (!results) return;
@@ -259,7 +257,6 @@ export default function MortgageCalculator() {
 
         <Tooltip content="Update the calculations based on current inputs.">
           <button 
-            onClick={calculateMortgage}
             className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
             aria-label="Recalculate Projections"
           >
