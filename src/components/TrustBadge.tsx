@@ -33,21 +33,24 @@ export default function TrustBadge({ setView, activeView }: TrustBadgeProps) {
         <div className="flex gap-8 text-[10px] font-bold tracking-widest text-white/30 uppercase">
           <button 
             onClick={() => setView('PRIVACY')}
-            className={`hover:text-white transition-colors ${activeView === 'PRIVACY' ? 'text-white' : ''}`}
+            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1 ${activeView === 'PRIVACY' ? 'text-white' : ''}`}
+            aria-current={activeView === 'PRIVACY' ? 'page' : undefined}
           >
             Privacy Policy
           </button>
           <button 
             onClick={() => setView('DISCLAIMER')}
-            className={`hover:text-white transition-colors ${activeView === 'DISCLAIMER' ? 'text-white' : ''}`}
+            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1 ${activeView === 'DISCLAIMER' ? 'text-white' : ''}`}
+            aria-current={activeView === 'DISCLAIMER' ? 'page' : undefined}
           >
             Legal Disclaimer
           </button>
           <button 
             onClick={() => setView('CONTACT')}
-            className={`hover:text-white transition-colors ${activeView === 'CONTACT' ? 'text-white' : ''}`}
+            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1 ${activeView === 'CONTACT' ? 'text-white' : ''}`}
+            aria-current={activeView === 'CONTACT' ? 'page' : undefined}
           >
-            Contact Advisor
+            Contact Us
           </button>
         </div>
         <div className="text-[10px] text-white/10 font-bold tracking-[0.2em]">

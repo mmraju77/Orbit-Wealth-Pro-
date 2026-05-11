@@ -5,10 +5,10 @@
 
 import { AmortizationPeriod, MortgageInputs, MortgageResult } from '@/src/types';
 import { Copy, Check, Download } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useEffect, useState } from 'react';
 import { useLocale } from '@/src/context/LocaleContext';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, Legend } from 'recharts';
+import { PieChart, Pie, Cell, LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, Legend } from 'recharts';
 import jsPDF from 'jspdf';
 import autoTable from 'jspdf-autotable';
 import AmortizationTable from './AmortizationTable';
@@ -27,6 +27,7 @@ export default function MortgageCalculator() {
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
   const [results, setResults] = useState<MortgageResult | null>(null);
   const [copied, setCopied] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const calculateMortgage = () => {
     const principal = inputs.homePrice - inputs.downPayment;
@@ -68,6 +69,7 @@ export default function MortgageCalculator() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
     calculateMortgage();
   }, [inputs]);
 
@@ -131,14 +133,21 @@ export default function MortgageCalculator() {
   };
 
   const handleInputChange = (field: keyof MortgageInputs, value: number) => {
-    const newInputs = { ...inputs, [field]: value };
+    const sanitizedValue = Math.max(0, value);
+    const newInputs = { ...inputs, [field]: sanitizedValue };
     
     if (field === 'downPayment') {
-      newInputs.downPaymentPercent = (value / newInputs.homePrice) * 100;
+      newInputs.downPaymentPercent = (sanitizedValue / newInputs.homePrice) * 100;
     } else if (field === 'downPaymentPercent') {
-      newInputs.downPayment = (value / 100) * newInputs.homePrice;
+      const clampedPercent = Math.min(100, sanitizedValue);
+      newInputs.downPaymentPercent = clampedPercent;
+      newInputs.downPayment = (clampedPercent / 100) * newInputs.homePrice;
+      newInputs[field] = clampedPercent;
     } else if (field === 'homePrice') {
-      newInputs.downPaymentPercent = (newInputs.downPayment / value) * 100;
+      const safePrice = Math.max(1000, sanitizedValue);
+      newInputs.homePrice = safePrice;
+      newInputs.downPayment = (newInputs.downPaymentPercent / 100) * safePrice;
+      newInputs[field] = safePrice;
     }
 
     setInputs(newInputs);
@@ -154,75 +163,89 @@ export default function MortgageCalculator() {
           
           <div className="space-y-8">
             <div className="group">
-              <Tooltip content="The total purchase price of the property you are buying.">
-                <label className="input-label-editorial">Home Price</label>
-              </Tooltip>
-              <div className="flex items-center gap-1">
-                <span className="text-xl font-light text-white/30">{currencySymbol}</span>
+              <div className="flex justify-between items-end mb-2">
+                <Tooltip content="The total purchase price of the property you are buying.">
+                  <label htmlFor="home-price-input" className="input-label-editorial mb-0">Home Price</label>
+                </Tooltip>
+                <div className="flex items-center gap-1">
+                  <span className="text-xs font-light text-white/30" aria-hidden="true">{currencySymbol}</span>
+                  <input 
+                    id="home-price-input"
+                    type="number"
+                    value={inputs.homePrice}
+                    onChange={(e) => handleInputChange('homePrice', Number(e.target.value))}
+                    className="bg-transparent text-right outline-none text-white font-medium text-lg w-24 focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded"
+                    aria-label={`Home Price in ${currencySymbol}`}
+                  />
+                </div>
+              </div>
+              <input 
+                id="home-price-range"
+                type="range"
+                min={50000}
+                max={2000000}
+                step={5000}
+                value={inputs.homePrice}
+                onChange={(e) => handleInputChange('homePrice', Number(e.target.value))}
+                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                aria-label="Adjust Home Price"
+              />
+            </div>
+            
+            <div className="space-y-6">
+              <div className="group">
+                <div className="flex justify-between items-end mb-2">
+                  <Tooltip content="Percentage of the home price paid upfront.">
+                    <label htmlFor="down-payment-range" className="input-label-editorial mb-0">Down Payment</label>
+                  </Tooltip>
+                  <div className="text-xs font-bold text-white/60 tabular-nums">
+                    {formatCurrency(inputs.downPayment)} ({inputs.downPaymentPercent.toFixed(1)}%)
+                  </div>
+                </div>
                 <input 
-                  type="number"
-                  value={inputs.homePrice}
-                  onChange={(e) => handleInputChange('homePrice', Number(e.target.value))}
-                  className="editorial-input text-3xl"
+                  id="down-payment-range"
+                  type="range"
+                  min={0}
+                  max={90}
+                  step={0.5}
+                  value={inputs.downPaymentPercent}
+                  onChange={(e) => handleInputChange('downPaymentPercent', Number(e.target.value))}
+                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                  aria-label="Adjust Down Payment Percentage"
                 />
               </div>
             </div>
-            
-            <div className="grid grid-cols-2 gap-6">
-              <div className="group">
-                <Tooltip content="Percentage of the home price paid upfront.">
-                  <label className="input-label-editorial">Down payment (%)</label>
-                </Tooltip>
-                <div className="flex items-center gap-1">
-                  <input 
-                    type="number"
-                    value={inputs.downPaymentPercent.toFixed(1)}
-                    onChange={(e) => handleInputChange('downPaymentPercent', Number(e.target.value))}
-                    className="editorial-input"
-                  />
-                  <span className="text-sm font-light text-white/30">%</span>
-                </div>
-              </div>
-              <div className="group">
-                <Tooltip content="Specific monetary amount paid towards the house at closing.">
-                  <label className="input-label-editorial">Amount ({currencySymbol})</label>
-                </Tooltip>
-                <div className="flex items-center gap-1">
-                  <span className="text-sm font-light text-white/30">{currencySymbol}</span>
-                  <input 
-                    type="number"
-                    value={Math.round(inputs.downPayment)}
-                    onChange={(e) => handleInputChange('downPayment', Number(e.target.value))}
-                    className="editorial-input text-white/60"
-                  />
-                </div>
-              </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-6">
+            <div className="grid grid-cols-2 gap-6 pt-2">
               <div className="group">
-                <Tooltip content="The annual interest rate charged by the lender.">
-                  <label className="input-label-editorial">Interest Rate</label>
-                </Tooltip>
-                <div className="flex items-center gap-1">
-                  <input 
-                    type="number"
-                    step="0.1"
-                    value={inputs.interestRate}
-                    onChange={(e) => handleInputChange('interestRate', Number(e.target.value))}
-                    className="editorial-input"
-                  />
-                  <span className="text-sm font-light text-white/30">%</span>
+                <div className="flex justify-between items-center mb-2">
+                  <Tooltip content="The annual interest rate charged by the lender.">
+                    <label htmlFor="interest-rate-range" className="input-label-editorial mb-0">Rate</label>
+                  </Tooltip>
+                  <span className="text-xs font-bold text-white/80 tabular-nums">{inputs.interestRate}%</span>
                 </div>
+                <input 
+                  id="interest-rate-range"
+                  type="range"
+                  min={0.1}
+                  max={15}
+                  step={0.1}
+                  value={inputs.interestRate}
+                  onChange={(e) => handleInputChange('interestRate', Number(e.target.value))}
+                  className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                  aria-label="Adjust Interest Rate"
+                />
               </div>
               <div className="group">
                 <Tooltip content="Total length of the mortgage in years.">
-                  <label className="input-label-editorial">{labels.loan} Term</label>
+                  <label htmlFor="loan-term-select" className="input-label-editorial">Term (Years)</label>
                 </Tooltip>
                 <select 
+                  id="loan-term-select"
                   value={inputs.loanTerm}
                   onChange={(e) => handleInputChange('loanTerm', Number(e.target.value))}
-                  className="editorial-input appearance-none bg-transparent cursor-pointer"
+                  className="editorial-input appearance-none bg-transparent cursor-pointer w-full focus-visible:ring-1 focus-visible:ring-[#0055FF]"
+                  aria-label="Select Loan Term"
                 >
                   <option value={10} className="bg-[#0A0A0A]">10 Years</option>
                   <option value={15} className="bg-[#0A0A0A]">15 Years</option>
@@ -237,7 +260,8 @@ export default function MortgageCalculator() {
         <Tooltip content="Update the calculations based on current inputs.">
           <button 
             onClick={calculateMortgage}
-            className="btn-accent mt-4 w-full"
+            className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
+            aria-label="Recalculate Projections"
           >
             Recalculate Projections
           </button>
@@ -246,9 +270,10 @@ export default function MortgageCalculator() {
         <Tooltip content="Export a comprehensive PDF summary of this calculation.">
           <button 
             onClick={generatePDF}
-            className="flex items-center justify-center gap-2 w-full py-4 rounded border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white/5 transition-colors mt-2"
+            className="flex items-center justify-center gap-2 w-full py-4 rounded border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white/5 transition-colors mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF]"
+            aria-label="Download PDF Report"
           >
-            <Download className="w-3 h-3 text-[#0055FF]" />
+            <Download className="w-3 h-3 text-[#0055FF]" aria-hidden="true" />
             Download PDF Report
           </button>
         </Tooltip>
@@ -262,98 +287,175 @@ export default function MortgageCalculator() {
             <h2 className="text-2xl font-semibold tracking-tight">Monthly Summary</h2>
           </div>
           <div className="flex flex-col items-end gap-2">
-            <span className="text-[10px] uppercase tracking-widest text-white/30">LATEST CALCULATION</span>
+            <span className="text-[10px] uppercase tracking-widest text-white/30" aria-label="Status">LATEST CALCULATION</span>
             <Tooltip content="Copy a text summary to your clipboard.">
               <button 
                 onClick={handleCopy}
-                className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#0055FF] hover:text-white transition-colors font-bold"
+                className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#0055FF] hover:text-white transition-colors font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1"
+                aria-label={copied ? "Results copied to clipboard" : "Copy Results to clipboard"}
               >
-                {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
+                {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
                 {copied ? 'Copied' : 'Copy Results'}
               </button>
             </Tooltip>
           </div>
         </div>
-
-        {results && (
-          <>
-            <div className="flex gap-12 mb-10 overflow-hidden">
-              <div className="flex-[2]">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-[64px] font-extrabold tracking-tighter leading-none mb-2 tabular-nums text-white"
-                >
-                  {formatCurrency(results.monthlyPayment).split('.')[0]}
-                  <span className="text-xl font-light text-white/30 ml-2">
-                    .{formatCurrency(results.monthlyPayment).split('.')[1] || '00'}
-                  </span>
-                </motion.div>
-                <p className="text-sm text-white/50 max-w-[200px]">Principal & Interest combined monthly payment.</p>
+        <AnimatePresence mode="wait">
+          {results && (
+            <motion.div
+              key="mortgage-results"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="flex-1 flex flex-col"
+            >
+              <div className="flex gap-12 mb-10 overflow-hidden">
+                <div className="flex-[2]">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    className="text-[64px] font-extrabold tracking-tighter leading-none mb-2 tabular-nums text-white"
+                  >
+                    {formatCurrency(results.monthlyPayment).split('.')[0]}
+                    <span className="text-xl font-light text-white/30 ml-2">
+                      .{formatCurrency(results.monthlyPayment).split('.')[1] || '00'}
+                    </span>
+                  </motion.div>
+                  <p className="text-sm text-white/50 max-w-[200px]">Principal & Interest combined monthly payment.</p>
+                  
+                  <div className="mt-8 grid grid-cols-2 gap-4">
+                     <div className="p-4 rounded bg-white/5 border border-white/5">
+                        <div className="text-sm font-bold tabular-nums text-white/80">{formatCurrency(results.totalInterest)}</div>
+                        <div className="text-[9px] uppercase tracking-wider text-white/30 font-bold">Total Interest</div>
+                     </div>
+                     <div className="p-4 rounded bg-white/5 border border-white/5">
+                        <div className="text-sm font-bold tabular-nums text-white/80">{formatCurrency(results.totalPayment)}</div>
+                        <div className="text-[9px] uppercase tracking-wider text-white/30 font-bold">Total Cost</div>
+                     </div>
+                  </div>
+                </div>
                 
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                   <div className="p-4 rounded bg-white/5 border border-white/5">
-                      <div className="text-sm font-bold tabular-nums text-white/80">{formatCurrency(results.totalInterest)}</div>
-                      <div className="text-[9px] uppercase tracking-wider text-white/30 font-bold">Total Interest</div>
-                   </div>
-                   <div className="p-4 rounded bg-white/5 border border-white/5">
-                      <div className="text-sm font-bold tabular-nums text-white/80">{formatCurrency(results.totalPayment)}</div>
-                      <div className="text-[9px] uppercase tracking-wider text-white/30 font-bold">Total Cost</div>
-                   </div>
+                <div className="w-px bg-white/10"></div>
+                <div className="flex-[1.5] flex items-center justify-center bg-white/[0.02] rounded-lg" style={{ width: "350px", height: "350px" }}>
+                  {isMounted && results && (
+                    <div className="relative">
+                      {/* Centered Stats Overlay */}
+                      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+                        <div className="text-center">
+                          <div className="text-[10px] text-white/30 font-bold uppercase tracking-widest">Ratio</div>
+                          <div className="text-lg font-bold text-white/80 tracking-tighter">
+                            {((results.totalInterest / results.totalPayment) * 100).toFixed(0)}%
+                          </div>
+                          <div className="text-[8px] text-[#0055FF] font-bold uppercase">Interest</div>
+                        </div>
+                      </div>
+  
+                      <PieChart width={350} height={350}>
+                        <Pie
+                          data={[
+                            { name: 'Interest', value: results.totalInterest },
+                            { name: 'Principal', value: inputs.homePrice - inputs.downPayment },
+                            { name: 'Equity', value: inputs.downPayment },
+                          ]}
+                          cx="50%"
+                          cy="50%"
+                          innerRadius={80}
+                          outerRadius={110}
+                          paddingAngle={5}
+                          dataKey="value"
+                          stroke="none"
+                          isAnimationActive={false}
+                        >
+                          <Cell fill="#0055FF" />
+                          <Cell fill="#FFFFFF" />
+                          <Cell fill="#333333" />
+                        </Pie>
+                        <RechartsTooltip 
+                          contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
+                          itemStyle={{ color: '#fff' }}
+                        />
+                      </PieChart>
+                    </div>
+                  )}
                 </div>
               </div>
-              
-              <div className="w-px bg-white/10"></div>
-              
-              <div className="flex-[1.5] h-[200px] relative">
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-                   <div className="text-center">
-                      <div className="text-[10px] text-white/30 font-bold uppercase tracking-widest">Ratio</div>
-                      <div className="text-lg font-bold text-white/80 tracking-tighter">{((results.totalInterest / results.totalPayment) * 100).toFixed(0)}%</div>
-                      <div className="text-[8px] text-[#0055FF] font-bold uppercase">Interest</div>
-                   </div>
+  
+              {/* AMORTIZATION TABLE */}
+              <div className="flex-1 border-t border-white/10 pt-8">
+                <div className="flex justify-between items-center mb-6">
+                  <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase">Amortization Schedule — Year 01-30</h3>
                 </div>
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={[
-                        { name: 'Interest', value: results.totalInterest },
-                        { name: 'Principal', value: inputs.homePrice - inputs.downPayment },
-                        { name: 'Equity', value: inputs.downPayment },
-                      ]}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={60}
-                      outerRadius={80}
-                      paddingAngle={5}
-                      dataKey="value"
-                      stroke="none"
-                    >
-                      <Cell fill="#666666" />
-                      <Cell fill="#333333" />
-                      <Cell fill="#0055FF" />
-                    </Pie>
-                    <RechartsTooltip 
-                      contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
-                      itemStyle={{ color: '#fff' }}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
+                
+                <div className="mb-10 relative w-full overflow-x-auto bg-white/[0.02] rounded-lg" style={{ width: "100%", height: "500px", minWidth: 0 }}>
+                  {isMounted && results?.amortizationSchedule && (
+                    <div className="flex items-center justify-center min-w-[850px] h-full py-4">
+                      <LineChart 
+                        width={800} 
+                        height={400} 
+                        data={results.amortizationSchedule.filter((_, i) => i % 12 === 0)} 
+                        margin={{ top: 20, right: 30, left: 40, bottom: 20 }}
+                      >
+                        <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
+                        <XAxis 
+                          dataKey="period" 
+                          stroke="#ffffff30" 
+                          fontSize={10} 
+                          tickLine={false} 
+                          axisLine={false}
+                          tickFormatter={(val) => `Year ${Math.floor(val / 12)}`}
+                          dy={10}
+                        />
+                        <YAxis 
+                          stroke="#ffffff30" 
+                          fontSize={10} 
+                          tickLine={false} 
+                          axisLine={false}
+                          tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`}
+                        />
+                        <RechartsTooltip 
+                          contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
+                        />
+                        <Legend verticalAlign="top" height={36}/>
+                        <Line 
+                          type="monotone" 
+                          name="Remaining Balance"
+                          dataKey="remainingBalance" 
+                          stroke="#0055FF" 
+                          strokeWidth={3}
+                          dot={false}
+                          isAnimationActive={false}
+                        />
+                        <Line 
+                          type="monotone" 
+                          name="Principal"
+                          dataKey="principal" 
+                          stroke="#FFFFFF" 
+                          strokeWidth={2}
+                          dot={false}
+                          isAnimationActive={false}
+                        />
+                        <Line 
+                          type="monotone" 
+                          name="Interest"
+                          dataKey="interest" 
+                          stroke="#666666" 
+                          strokeWidth={2}
+                          dot={false}
+                          isAnimationActive={false}
+                        />
+                      </LineChart>
+                    </div>
+                  )}
+                </div>
+  
+                <div className="overflow-hidden">
+                  <AmortizationTable schedule={results.amortizationSchedule} />
+                </div>
               </div>
-            </div>
-
-            {/* AMORTIZATION TABLE */}
-            <div className="flex-1 border-t border-white/10 pt-8">
-              <div className="flex justify-between items-center mb-6">
-                <h3 className="text-[11px] font-bold tracking-[0.2em] uppercase">Amortization Schedule — Year 01-30</h3>
-              </div>
-              
-              <div className="overflow-hidden">
-                <AmortizationTable schedule={results.amortizationSchedule} />
-              </div>
-            </div>
-          </>
-        )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
     </div>
   );

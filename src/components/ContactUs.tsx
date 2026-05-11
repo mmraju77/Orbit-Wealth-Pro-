@@ -25,7 +25,7 @@ export default function ContactUs() {
         <div className="editorial-label mb-4">COMMUNICATION HUB</div>
         <h1 className="text-4xl font-extrabold tracking-tighter mb-8 text-white">Get in Touch</h1>
         <p className="text-white/50 font-light leading-relaxed mb-12 text-lg">
-          Whether you have technical feedback, feature requests, or enterprise inquiry, our advisory desk is ready to assist.
+          Whether you have technical feedback, feature requests, or enterprise inquiry, we are ready to assist.
         </p>
 
         <div className="space-y-8">
@@ -71,28 +71,34 @@ export default function ContactUs() {
             </button>
           </motion.div>
         ) : (
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6" aria-label="Contact Us Form">
             <div className="space-y-2">
-              <label className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Full Name</label>
+              <label htmlFor="full-name" className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Full Name</label>
               <input 
+                id="full-name"
                 required
                 type="text" 
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] focus-visible:ring-1 focus-visible:ring-[#0055FF] transition-colors"
                 placeholder="John Doe"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Professional Email</label>
+              <label htmlFor="email-address" className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Professional Email</label>
               <input 
+                id="email-address"
                 required
                 type="email" 
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] transition-colors"
+                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] focus-visible:ring-1 focus-visible:ring-[#0055FF] transition-colors"
                 placeholder="john@firm.com"
               />
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Inquiry Type</label>
-              <select className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] transition-colors appearance-none">
+              <label htmlFor="inquiry-type" className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Inquiry Type</label>
+              <select 
+                id="inquiry-type" 
+                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] focus-visible:ring-1 focus-visible:ring-[#0055FF] transition-colors appearance-none"
+                aria-label="Select inquiry type"
+              >
                 <option className="bg-[#0A0A0A]">General Inquiry</option>
                 <option className="bg-[#0A0A0A]">Technical Bug</option>
                 <option className="bg-[#0A0A0A]">Feature Request</option>
@@ -100,20 +106,22 @@ export default function ContactUs() {
               </select>
             </div>
             <div className="space-y-2">
-              <label className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Message</label>
+              <label htmlFor="message-body" className="text-[10px] font-bold tracking-widest text-white/30 uppercase">Message</label>
               <textarea 
+                id="message-body"
                 required
                 rows={4}
-                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] transition-colors resize-none"
+                className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white outline-none focus:border-[#0055FF] focus-visible:ring-1 focus-visible:ring-[#0055FF] transition-colors resize-none"
                 placeholder="How can we help you?"
               />
             </div>
             <button 
               type="submit"
-              className="w-full bg-[#0055FF] hover:bg-[#0044CC] text-white font-bold py-4 rounded text-[11px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-3"
+              className="w-full bg-[#0055FF] hover:bg-[#0044CC] text-white font-bold py-4 rounded text-[11px] tracking-[0.2em] uppercase transition-all flex items-center justify-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+              aria-label="Dispatch Message"
             >
               Dispatch Message
-              <Send className="w-3 h-3" />
+              <Send className="w-3 h-3" aria-hidden="true" />
             </button>
           </form>
         )}

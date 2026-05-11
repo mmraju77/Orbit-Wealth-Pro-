@@ -5,7 +5,7 @@
 
 import { TaxInputs, TaxResult } from '@/src/types';
 import { Copy, Check, ArrowRightLeft, Download } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { useState, useEffect } from 'react';
 import { useLocale } from '@/src/context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
@@ -22,6 +22,7 @@ export default function TaxCalculator() {
   });
   const [results, setResults] = useState<TaxResult | null>(null);
   const [copied, setCopied] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   const calculateTax = () => {
     const rate = inputs.taxRate / 100;
@@ -46,6 +47,7 @@ export default function TaxCalculator() {
   };
 
   useEffect(() => {
+    setIsMounted(true);
     calculateTax();
   }, [inputs]);
 
@@ -56,6 +58,10 @@ export default function TaxCalculator() {
     navigator.clipboard.writeText(text);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleInputChange = (field: keyof TaxInputs, value: number) => {
+    setInputs(prev => ({ ...prev, [field]: Math.max(0, value) }));
   };
 
   const generatePDF = () => {
@@ -116,47 +122,78 @@ export default function TaxCalculator() {
           
           <div className="space-y-8">
             <div className="group">
-              <Tooltip content="The base monetary value you wish to calculate tax for.">
-                <label className="input-label-editorial">Amount to Calculate</label>
-              </Tooltip>
-              <div className="flex items-center gap-1">
-                <span className="text-xl font-light text-white/30">{currencySymbol}</span>
-                <input 
-                  type="number"
-                  value={inputs.amount}
-                  onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
-                  className="editorial-input text-3xl"
-                />
+              <div className="flex justify-between items-end mb-2">
+                <Tooltip content="The base monetary value you wish to calculate tax for.">
+                  <label htmlFor="base-amount-input" className="input-label-editorial mb-0">Base Amount</label>
+                </Tooltip>
+                <div className="flex items-center gap-1">
+                  <span className="text-xs font-light text-white/30" aria-hidden="true">{currencySymbol}</span>
+                  <input 
+                    id="base-amount-input"
+                    type="number"
+                    value={inputs.amount}
+                    onChange={(e) => handleInputChange('amount', Number(e.target.value))}
+                    className="bg-transparent text-right outline-none text-white font-medium text-lg w-24 focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded"
+                    aria-label={`Base Amount in ${currencySymbol}`}
+                  />
+                </div>
               </div>
+              <input 
+                id="base-amount-range"
+                type="range"
+                min={0}
+                max={50000}
+                step={100}
+                value={inputs.amount}
+                onChange={(e) => handleInputChange('amount', Number(e.target.value))}
+                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                aria-label="Adjust Base Amount"
+              />
             </div>
 
             <div className="group">
-              <Tooltip content="The percentage rate of tax to be applied or backed out.">
-                <label className="input-label-editorial">{labels.tax} Rate (%)</label>
-              </Tooltip>
-              <div className="flex items-center gap-1">
-                <input 
-                  type="number"
-                  value={inputs.taxRate}
-                  onChange={(e) => setInputs({ ...inputs, taxRate: Number(e.target.value) })}
-                  className="editorial-input text-xl"
-                />
-                <span className="text-sm font-light text-white/30">%</span>
+              <div className="flex justify-between items-end mb-2">
+                <Tooltip content="The percentage rate of tax to be applied or backed out.">
+                  <label htmlFor="tax-rate-range" className="input-label-editorial mb-0">{labels.tax} Rate</label>
+                </Tooltip>
+                <span className="text-xs font-bold text-white/80 tabular-nums">{inputs.taxRate}%</span>
               </div>
+              <input 
+                id="tax-rate-range"
+                type="range"
+                min={0}
+                max={50}
+                step={0.5}
+                value={inputs.taxRate}
+                onChange={(e) => handleInputChange('taxRate', Number(e.target.value))}
+                className="w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer accent-[#0055FF] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0055FF] focus-visible:ring-offset-2 focus-visible:ring-offset-black"
+                aria-label={`Adjust ${labels.tax} Rate`}
+              />
             </div>
 
-            <div className="pt-4">
-              <Tooltip content="Toggle between calculating tax on top of an amount, or extracting it from a total.">
+            <div className="pt-4 space-y-4">
+              <div className="flex bg-white/5 rounded p-1 p-0.5 border border-white/10">
                 <button 
-                  onClick={() => setInputs({ ...inputs, isAddingTax: !inputs.isAddingTax })}
-                  className="flex items-center gap-3 text-[10px] font-bold tracking-widest text-white/60 hover:text-white transition-colors group"
+                  onClick={() => setInputs({ ...inputs, isAddingTax: true })}
+                  className={`flex-1 py-2 text-[10px] font-bold tracking-widest transition-all rounded ${inputs.isAddingTax ? 'bg-[#0055FF] text-white shadow-lg' : 'text-white/30 hover:text-white/60'}`}
+                  aria-pressed={inputs.isAddingTax}
                 >
-                  <div className="w-8 h-8 rounded border border-white/20 flex items-center justify-center group-hover:border-[#0055FF] transition-colors">
-                    <ArrowRightLeft className="w-4 h-4" />
-                  </div>
-                  <span>SWITCH TO {inputs.isAddingTax ? `REMOVE ${labels.tax.toUpperCase()} (NET FROM GROSS)` : `ADD ${labels.tax.toUpperCase()} (GROSS FROM NET)`}</span>
+                  ADD {labels.tax.toUpperCase()}
                 </button>
-              </Tooltip>
+                <button 
+                  onClick={() => setInputs({ ...inputs, isAddingTax: false })}
+                  className={`flex-1 py-2 text-[10px] font-bold tracking-widest transition-all rounded ${!inputs.isAddingTax ? 'bg-[#0055FF] text-white shadow-lg' : 'text-white/30 hover:text-white/60'}`}
+                  aria-pressed={!inputs.isAddingTax}
+                >
+                  REMOVE {labels.tax.toUpperCase()}
+                </button>
+              </div>
+              
+              <div className="text-[10px] text-white/30 font-medium leading-relaxed italic px-1">
+                {inputs.isAddingTax 
+                  ? `Calculating the total amount by adding ${inputs.taxRate}% tax to your base figure.` 
+                  : `Extracting ${inputs.taxRate}% tax from your total figure to find the original amount.`}
+              </div>
             </div>
           </div>
         </div>
@@ -164,7 +201,8 @@ export default function TaxCalculator() {
         <Tooltip content={`Perform the ${labels.tax} calculation based on current parameters.`}>
           <button 
             onClick={calculateTax}
-            className="btn-accent mt-4 w-full"
+            className="btn-accent mt-4 w-full focus-visible:ring-offset-black"
+            aria-label={`Calculate ${labels.tax}`}
           >
             Calculate {labels.tax}
           </button>
@@ -173,9 +211,10 @@ export default function TaxCalculator() {
         <Tooltip content="Generate a PDF document of this tax breakdown.">
           <button 
             onClick={generatePDF}
-            className="flex items-center justify-center gap-2 w-full py-4 rounded border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white/5 transition-colors mt-2"
+            className="flex items-center justify-center gap-2 w-full py-4 rounded border border-white/10 text-[10px] uppercase tracking-widest font-bold hover:bg-white/5 transition-colors mt-2 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF]"
+            aria-label="Download PDF Report"
           >
-            <Download className="w-3 h-3 text-[#0055FF]" />
+            <Download className="w-3 h-3 text-[#0055FF]" aria-hidden="true" />
             Download PDF Report
           </button>
         </Tooltip>
@@ -187,92 +226,124 @@ export default function TaxCalculator() {
             <div className="editorial-label mb-1">02 — {labels.tax.toUpperCase()} BREAKDOWN</div>
             <h2 className="text-2xl font-semibold tracking-tight">Financial Impact</h2>
           </div>
-          <Tooltip content="Copy these tax results to your clipboard.">
+          <div className="flex flex-col items-end gap-3">
+            <div className={`px-3 py-1 rounded-full border text-[9px] font-black uppercase tracking-tighter ${inputs.isAddingTax ? 'bg-green-500/10 border-green-500/20 text-green-500' : 'bg-[#0055FF]/10 border-[#0055FF]/20 text-[#0055FF]'}`}>
+              {inputs.isAddingTax ? 'Mode: Net to Gross (Adding Tax)' : `Mode: Gross to Net (Removing ${labels.tax})`}
+            </div>
+            <Tooltip content="Copy these tax results to your clipboard.">
             <button 
               onClick={handleCopy}
-              className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#0055FF] hover:text-white transition-colors font-bold"
+              className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-[#0055FF] hover:text-white transition-colors font-bold focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1"
+              aria-label={copied ? "Results copied to clipboard" : "Copy Results to clipboard"}
             >
-              {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-              {copied ? 'Copied' : 'Copy Results'}
-            </button>
-          </Tooltip>
+              {copied ? <Check className="w-3 h-3" aria-hidden="true" /> : <Copy className="w-3 h-3" aria-hidden="true" />}
+                {copied ? 'Copied' : 'Copy Results'}
+              </button>
+            </Tooltip>
+          </div>
         </div>
 
-        {results && (
-          <div className="space-y-12">
-            <div className="flex gap-12 overflow-hidden">
-              <div className="flex-[2]">
-                <motion.div 
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-[64px] font-extrabold tracking-tighter leading-none mb-2 tabular-nums"
-                >
-                  {formatCurrency(results.totalAmount).split('.')[0]}
-                  <span className="text-xl font-light text-white/30 ml-2">
-                    .{formatCurrency(results.totalAmount).split('.')[1] || '00'}
-                  </span>
-                </motion.div>
-                <p className="text-sm text-white/50 max-w-[200px]">Total amount {inputs.isAddingTax ? 'after' : 'before'} taxation.</p>
-              </div>
-              <div className="w-px bg-white/10"></div>
-              <div className="flex-1 h-[140px]">
-                <ResponsiveContainer width="100%" height="100%">
-                  <PieChart>
-                    <Pie
-                      data={[
-                        { name: 'Net Amount', value: results.originalAmount },
-                        { name: labels.tax, value: results.taxAmount },
-                      ]}
-                      cx="50%"
-                      cy="50%"
-                      innerRadius={40}
-                      outerRadius={55}
-                      paddingAngle={5}
-                      dataKey="value"
-                      stroke="none"
+        <AnimatePresence mode="wait">
+          {results && (
+            <motion.div
+              key="tax-results"
+              initial={{ opacity: 0, x: 10 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -10 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="w-full h-full"
+            >
+              <div className="space-y-12 mb-12">
+                <div className="flex gap-12 overflow-hidden">
+                  <div className="flex-[2]">
+                    <motion.div 
+                      key={`total-${results.totalAmount}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="text-[64px] font-extrabold tracking-tighter leading-none mb-2 tabular-nums"
                     >
-                      <Cell fill="#333333" />
-                      <Cell fill="#0055FF" />
-                    </Pie>
-                    <RechartsTooltip 
-                      contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
-                      itemStyle={{ color: '#fff' }}
-                      formatter={(val: number) => formatCurrency(val)}
-                    />
-                  </PieChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-12 border-t border-white/10 pt-12">
-              <div className="space-y-2">
-                <div className="text-[10px] font-bold tracking-widest text-white/20 uppercase">Core Valuation</div>
-                <div className="text-2xl font-light tabular-nums">{formatCurrency(results.originalAmount)}</div>
-                <p className="text-xs text-white/40 leading-relaxed font-medium">The base economic value of the transaction before any government surcharges are applied.</p>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="text-[10px] font-bold tracking-widest text-white/20 uppercase">Quick Reference</div>
-                <div className="space-y-3">
-                  <div className="flex justify-between text-xs font-mono">
-                    <span className="text-white/30 whitespace-nowrap">Net Amount</span>
-                    <span className="border-b border-white/5 flex-grow mx-2 h-2"></span>
-                    <span>{formatCurrency(results.originalAmount)}</span>
+                      {formatCurrency(results.totalAmount).split('.')[0]}
+                      <span className="text-xl font-light text-white/30 ml-2">
+                        .{formatCurrency(results.totalAmount).split('.')[1] || '00'}
+                      </span>
+                    </motion.div>
+                    <p className="text-sm text-white/50 max-w-[240px]">
+                      {inputs.isAddingTax 
+                        ? `Gross amount calculated by adding ${labels.tax} to your base figure.` 
+                        : `Net amount remaining after extracting the ${labels.tax} component.`}
+                    </p>
                   </div>
-                  <div className="flex justify-between text-xs font-mono">
-                    <span className="text-white/30 whitespace-nowrap">Tax Surcharge</span>
-                    <span className="border-b border-white/5 flex-grow mx-2 h-2"></span>
-                    <span>{formatCurrency(results.taxAmount)}</span>
-                  </div>
-                  <div className="flex justify-between text-sm font-bold pt-2 border-t border-white/10">
-                    <span className="text-[#0055FF]">GROSS TOTAL</span>
-                    <span>{formatCurrency(results.totalAmount)}</span>
+                  <div className="w-px bg-white/10"></div>
+                  <div className="flex-1 flex items-center justify-center bg-white/[0.02] rounded-lg" style={{ width: "250px", height: "250px" }}>
+                    {isMounted && (
+                      <div className="flex items-center justify-center">
+                        <PieChart width={220} height={200}>
+                          <Pie
+                            data={results ? [
+                              { name: 'Net Amount', value: results.originalAmount },
+                              { name: labels.tax, value: results.taxAmount },
+                            ] : []}
+                            cx="50%"
+                            cy="50%"
+                            innerRadius={60}
+                            outerRadius={90}
+                            paddingAngle={5}
+                            dataKey="value"
+                            stroke="none"
+                            isAnimationActive={false}
+                          >
+                            <Cell fill="#333333" />
+                            <Cell fill="#0055FF" />
+                          </Pie>
+                          <RechartsTooltip 
+                            contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
+                            formatter={(val: number) => formatCurrency(val)}
+                          />
+                        </PieChart>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        )}
+  
+              <div className="grid grid-cols-2 gap-12 border-t border-white/10 pt-12">
+                <div className="space-y-2">
+                  <div className="text-[10px] font-bold tracking-widest text-white/20 uppercase">
+                    {inputs.isAddingTax ? 'Base (Net) Valuation' : 'Resulting (Net) Valuation'}
+                  </div>
+                  <div className="text-2xl font-light tabular-nums">{formatCurrency(results.originalAmount)}</div>
+                  <p className="text-xs text-white/40 leading-relaxed font-medium">
+                    {inputs.isAddingTax 
+                      ? 'The base taxable value before government surcharges.' 
+                      : 'The underlying value after removing the tax component from your total.'}
+                  </p>
+                </div>
+                
+                <div className="space-y-4">
+                  <div className="text-[10px] font-bold tracking-widest text-white/20 uppercase">Quick Reference</div>
+                  <div className="space-y-3">
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-white/30 whitespace-nowrap">Net Amount</span>
+                      <span className="border-b border-white/5 flex-grow mx-2 h-2"></span>
+                      <span>{formatCurrency(results.originalAmount)}</span>
+                    </div>
+                    <div className="flex justify-between text-xs font-mono">
+                      <span className="text-white/30 whitespace-nowrap">Tax Surcharge</span>
+                      <span className="border-b border-white/5 flex-grow mx-2 h-2"></span>
+                      <span>{formatCurrency(results.taxAmount)}</span>
+                    </div>
+                    <div className="flex justify-between text-sm font-bold pt-2 border-t border-white/10">
+                      <span className={inputs.isAddingTax ? "text-[#0055FF]" : "text-white/40"}>
+                        {inputs.isAddingTax ? 'RESULTING GROSS' : 'ORIGINAL GROSS'}
+                      </span>
+                      <span>{formatCurrency(results.totalAmount)}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </section>
     </div>
   );

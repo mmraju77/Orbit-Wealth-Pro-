@@ -22,11 +22,13 @@ export default function LocaleBar() {
         <div className="h-3 w-px bg-white/10"></div>
         
         <div className="flex items-center gap-4">
-          <span className="text-[10px] text-white/30 font-bold uppercase tracking-wider">Currency</span>
+          <label htmlFor="currency-select" className="text-[10px] text-white/30 font-bold uppercase tracking-wider">Currency</label>
           <select 
+            id="currency-select"
             value={currency}
             onChange={(e) => setCurrency(e.target.value as CurrencyCode)}
-            className="bg-transparent text-[10px] text-white font-bold uppercase tracking-widest outline-none cursor-pointer hover:text-[#0055FF] transition-colors"
+            className="bg-transparent text-[10px] text-white font-bold uppercase tracking-widest outline-none cursor-pointer hover:text-[#0055FF] transition-colors focus-visible:ring-1 focus-visible:ring-[#0055FF]"
+            aria-label="Select currency"
           >
             {currencies.map(c => (
               <option key={c} value={c} className="bg-[#0A0A0A]">{c}</option>
