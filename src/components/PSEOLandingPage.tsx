@@ -39,6 +39,7 @@ const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'gratuity': GratuityCalculator,
   'currency-converter': CurrencyConverter,
   'mutual-fund': MFCalculator,
+  'savings': FDRDCalculator,
   '401k-analyzer': RetirementCalculator,
   'roth-ira-limit': RetirementCalculator,
   'irs-tax-brackets': IncomeTaxCalculator,

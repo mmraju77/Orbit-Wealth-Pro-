@@ -53,6 +53,7 @@
   <url><loc>https://orbitwealthpro.com/tools/gst/australia</loc><priority>0.6</priority></url>
 
   <!-- High Intent USA -->
+  <url><loc>https://orbitwealthpro.com/tools/savings/usa</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/401k-analyzer/usa</loc><priority>0.9</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/roth-ira-limit/usa</loc><priority>0.9</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/irs-tax-brackets/usa</loc><priority>0.9</priority></url>
@@ -65,6 +66,7 @@
   <url><loc>https://orbitwealthpro.com/tools/mutual-fund/usa</loc><priority>0.6</priority></url>
   
   <!-- High Intent UAE -->
+  <url><loc>https://orbitwealthpro.com/tools/savings/uae</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/dubai-property-roi/uae</loc><priority>0.9</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/tax-free-savings/uae</loc><priority>0.9</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/abu-dhabi-investment/uae</loc><priority>0.9</priority></url>
@@ -87,4 +89,11 @@
   <url><loc>https://orbitwealthpro.com/compare/savings-account-vs-liquid-funds</loc><priority>0.7</priority></url>
   <url><loc>https://orbitwealthpro.com/compare/credit-card-vs-personal-loan</loc><priority>0.7</priority></url>
   <url><loc>https://orbitwealthpro.com/compare/crypto-vs-stocks</loc><priority>0.7</priority></url>
+  
+  <!-- Compliance Pages -->
+  <url><loc>https://orbitwealthpro.com/about</loc><priority>0.5</priority></url>
+  <url><loc>https://orbitwealthpro.com/contact</loc><priority>0.5</priority></url>
+  <url><loc>https://orbitwealthpro.com/privacy-policy</loc><priority>0.3</priority></url>
+  <url><loc>https://orbitwealthpro.com/terms-of-service</loc><priority>0.3</priority></url>
+  <url><loc>https://orbitwealthpro.com/disclaimer</loc><priority>0.3</priority></url>
 </urlset>

@@ -40,6 +40,7 @@ import PrivacyPolicy from './components/PrivacyPolicy';
 import Disclaimer from './components/Disclaimer';
 import TermsOfService from './components/TermsOfService';
 import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
 import Footer from './components/Footer';
 
 export default function App() {
@@ -79,10 +80,13 @@ export default function App() {
                   <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
                   <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
                   
-                  <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                   <Route path="/disclaimer" element={<Disclaimer />} />
-                  <Route path="/terms" element={<TermsOfService />} />
+                  <Route path="/terms-of-service" element={<TermsOfService />} />
                   <Route path="/contact" element={<ContactUs />} />
+                  <Route path="/about" element={<AboutUs />} />
+                  <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+                  <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
                 <Footer />

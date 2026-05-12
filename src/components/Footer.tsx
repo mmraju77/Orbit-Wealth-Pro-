@@ -43,7 +43,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Legal</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/privacy" className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors">
+                <Link to="/privacy-policy" className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors">
                   <Shield className="w-4 h-4" /> Privacy Policy
                 </Link>
               </li>
@@ -53,7 +53,7 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/terms" className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors">
+                <Link to="/terms-of-service" className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors">
                   <FileText className="w-4 h-4" /> Terms of Service
                 </Link>
               </li>
@@ -61,8 +61,13 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Support</h4>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Support & Info</h4>
             <ul className="space-y-4">
+              <li>
+                <Link to="/about" className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors">
+                  <Globe className="w-4 h-4" /> About Us
+                </Link>
+              </li>
               <li>
                 <Link to="/contact" className="flex items-center gap-2 text-sm text-white/40 hover:text-white transition-colors">
                   <Mail className="w-4 h-4" /> Contact Us

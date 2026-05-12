@@ -154,6 +154,11 @@ export const CALCULATORS: Record<string, CalculatorSEOData> = {
     description: 'Determine the maturity value of your mutual fund investments.',
     keywords: 'mf returns, equity investment, fund growth'
   },
+  'savings': {
+    title: 'Savings & Growth Calculator',
+    description: 'Calculate the growth of your savings account or fixed deposits over time with compound interest.',
+    keywords: 'savings growth, compound interest, deposit return'
+  },
   '401k-analyzer': {
     title: '401(k) Retirement Analyzer',
     description: 'Evaluate your 401(k) growth and employer matching benefits for retirement planning.',
