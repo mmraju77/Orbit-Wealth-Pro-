@@ -13,7 +13,8 @@ import {
   UserCheck,
   ArrowRightLeft,
   Gift,
-  RefreshCcw
+  RefreshCcw,
+  ShieldCheck
 } from 'lucide-react';
 import { motion } from 'motion/react';
 
@@ -25,6 +26,30 @@ const CALCULATOR_CARDS = [
     icon: TrendingUp,
     color: 'bg-blue-500/10 text-blue-500',
     category: 'Investments'
+  },
+  {
+    title: 'FD & RD Calculator',
+    description: 'Calculate interest and maturity for Fixed and Recurring Deposits with compounding.',
+    path: '/calculators/fd-rd',
+    icon: Landmark,
+    color: 'bg-emerald-500/10 text-emerald-500',
+    category: 'Investments'
+  },
+  {
+    title: 'Income Tax',
+    description: 'Personalized tax comparison between new and old regimes with regional logic.',
+    path: '/calculators/income-tax',
+    icon: Percent,
+    color: 'bg-orange-500/10 text-orange-500',
+    category: 'Compliance'
+  },
+  {
+    title: 'GST / VAT',
+    description: 'Calculate Goods and Services Tax or Value Added Tax for any transaction.',
+    path: '/calculators/gst',
+    icon: ShieldCheck,
+    color: 'bg-indigo-500/10 text-indigo-500',
+    category: 'Compliance'
   },
   {
     title: 'Retirement Planner',
@@ -39,16 +64,8 @@ const CALCULATOR_CARDS = [
     description: 'Determine monthly payments and view comprehensive amortization schedules.',
     path: '/calculators/mortgage',
     icon: Landmark,
-    color: 'bg-emerald-500/10 text-emerald-500',
+    color: 'bg-slate-500/10 text-slate-500',
     category: 'Lending'
-  },
-  {
-    title: 'Tax & VAT / GST',
-    description: 'Calculate income tax, VAT, or GST based on regional logic for global jurisdictions.',
-    path: '/calculators/tax',
-    icon: Percent,
-    color: 'bg-orange-500/10 text-orange-500',
-    category: 'Compliance'
   },
   {
     title: 'Lumpsum Return',
@@ -77,7 +94,7 @@ const CALCULATOR_CARDS = [
   {
     title: 'Loan Eligibility',
     description: 'Check how much loan you can get based on your income and existing debts.',
-    path: '/calculators/eligibility',
+    path: '/calculators/loan-eligibility',
     icon: UserCheck,
     color: 'bg-amber-500/10 text-amber-500',
     category: 'Lending'
@@ -85,7 +102,7 @@ const CALCULATOR_CARDS = [
   {
     title: 'Home Loan Transfer',
     description: 'Calculate savings on your home loan interest by switching to a lower rate.',
-    path: '/calculators/balance-transfer',
+    path: '/calculators/home-loan-transfer',
     icon: ArrowRightLeft,
     color: 'bg-fuchsia-500/10 text-fuchsia-500',
     category: 'Lending'
@@ -101,7 +118,7 @@ const CALCULATOR_CARDS = [
   {
     title: 'Currency Converter',
     description: 'Live forex conversion for major global currency pairs with historical charts.',
-    path: '/calculators/currency',
+    path: '/calculators/currency-converter',
     icon: RefreshCcw,
     color: 'bg-lime-500/10 text-lime-500',
     category: 'Forex'

@@ -34,9 +34,10 @@ const NAV_ITEMS = [
     label: 'Investment', 
     items: [
       { label: 'SIP Calculator', path: '/calculators/sip', icon: TrendingUp },
-      { label: 'Retirement', path: '/calculators/retirement', icon: Coins },
+      { label: 'FD & RD', path: '/calculators/fd-rd', icon: Landmark },
       { label: 'Lumpsum', path: '/calculators/lumpsum', icon: BarChart3 },
-      { label: 'Mutual Fund', path: '/calculators/mutual-fund', icon: PieChart }
+      { label: 'Mutual Fund', path: '/calculators/mutual-fund', icon: PieChart },
+      { label: 'Retirement', path: '/calculators/retirement', icon: Coins },
     ]
   },
   { 
@@ -44,16 +45,17 @@ const NAV_ITEMS = [
     items: [
       { label: 'Mortgage / Home', path: '/calculators/mortgage', icon: Landmark },
       { label: 'EMI Global', path: '/calculators/emi', icon: CreditCard },
-      { label: 'Loan Eligibility', path: '/calculators/eligibility', icon: UserCheck },
-      { label: 'Balance Transfer', path: '/calculators/balance-transfer', icon: ArrowRightLeft }
+      { label: 'Loan Eligibility', path: '/calculators/loan-eligibility', icon: UserCheck },
+      { label: 'Home Loan Transfer', path: '/calculators/home-loan-transfer', icon: ArrowRightLeft }
     ]
   },
   { 
     label: 'Compliance & More', 
     items: [
-      { label: 'Tax / VAT / GST', path: '/calculators/tax', icon: Percent },
+      { label: 'Income Tax', path: '/calculators/income-tax', icon: Percent },
+      { label: 'GST / VAT', path: '/calculators/gst', icon: ShieldCheck },
       { label: 'Gratuity', path: '/calculators/gratuity', icon: Gift },
-      { label: 'Currency', path: '/calculators/currency', icon: RefreshCcw }
+      { label: 'Currency', path: '/calculators/currency-converter', icon: RefreshCcw }
     ]
   }
 ];

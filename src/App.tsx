@@ -23,7 +23,9 @@ import Dashboard from './components/Dashboard';
 // Existing Components
 import MortgageCalculator from './components/MortgageCalculator';
 import RetirementCalculator from './components/RetirementCalculator';
-import TaxCalculator from './components/TaxCalculator';
+import IncomeTaxCalculator from './components/IncomeTaxCalculator';
+import GSTCalculator from './components/GSTCalculator';
+import FDRDCalculator from './components/FDRDCalculator';
 import SIPCalculator from './components/SIPCalculator';
 import LumpsumCalculator from './components/LumpsumCalculator';
 import EMICalculator from './components/EMICalculator';
@@ -53,15 +55,24 @@ export default function App() {
                   <Route path="/" element={<Dashboard />} />
                   <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
                   <Route path="/calculators/retirement" element={<RetirementCalculator />} />
-                  <Route path="/calculators/tax" element={<TaxCalculator />} />
+                  <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
+                  <Route path="/calculators/gst" element={<GSTCalculator />} />
+                  <Route path="/calculators/fd-rd" element={<FDRDCalculator />} />
                   <Route path="/calculators/sip" element={<SIPCalculator />} />
                   <Route path="/calculators/lumpsum" element={<LumpsumCalculator />} />
                   <Route path="/calculators/emi" element={<EMICalculator />} />
                   <Route path="/calculators/mutual-fund" element={<MFCalculator />} />
-                  <Route path="/calculators/eligibility" element={<LoanEligibility />} />
-                  <Route path="/calculators/balance-transfer" element={<BalanceTransfer />} />
+                  <Route path="/calculators/loan-eligibility" element={<LoanEligibility />} />
+                  <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
                   <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
-                  <Route path="/calculators/currency" element={<CurrencyConverter />} />
+                  <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
+                  
+                  {/* Legacy redirects/backwards compatibility if needed, but here we strictly follow sitemap */}
+                  <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
+                  <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
+                  <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
+                  <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
+                  
                   <Route path="/privacy" element={<PrivacyPolicy />} />
                   <Route path="/disclaimer" element={<Disclaimer />} />
                   <Route path="/terms" element={<TermsOfService />} />
