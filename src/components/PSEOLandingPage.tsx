@@ -3,11 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { REGIONS, CALCULATORS } from '../data/pSEOData';
 import { Shield, Globe, Info, CheckCircle2 } from 'lucide-react';
+import { useLocale, CurrencyCode } from '../context/LocaleContext';
 
 // Import all calculators to render them dynamically
 import MortgageCalculator from './MortgageCalculator';
@@ -49,10 +50,36 @@ const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
 
 export default function PSEOLandingPage() {
   const { calculator, region } = useParams<{ calculator: string; region: string }>();
+  const { setCurrency, setNumberSystem } = useLocale();
 
   const regionData = region ? REGIONS[region.toLowerCase()] : null;
   const calcData = calculator ? CALCULATORS[calculator.toLowerCase()] : null;
   const CalculatorComponent = calculator ? CALCULATOR_COMPONENTS[calculator.toLowerCase()] : null;
+
+  useEffect(() => {
+    if (region) {
+      const r = region.toLowerCase();
+      if (r === 'india') {
+        setCurrency('INR');
+        setNumberSystem('Indian');
+      } else if (r === 'usa') {
+        setCurrency('USD');
+        setNumberSystem('International');
+      } else if (r === 'uae') {
+        setCurrency('AED');
+        setNumberSystem('International');
+      } else if (r === 'uk') {
+        setCurrency('GBP');
+        setNumberSystem('International');
+      } else if (r === 'canada') {
+        setCurrency('CAD');
+        setNumberSystem('International');
+      } else if (r === 'australia') {
+        setCurrency('AUD');
+        setNumberSystem('International');
+      }
+    }
+  }, [region, setCurrency, setNumberSystem]);
 
   if (!regionData || !calcData || !CalculatorComponent) {
     return <Navigate to="/" replace />;

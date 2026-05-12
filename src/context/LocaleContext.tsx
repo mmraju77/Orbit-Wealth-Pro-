@@ -3,9 +3,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR';
+export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD';
 export type NumberSystem = 'International' | 'Indian';
 
 interface LocaleContextType {
@@ -31,11 +31,60 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   GBP: { symbol: '£', name: 'GBP', locale: 'en-GB' },
   AED: { symbol: 'د.إ', name: 'AED', locale: 'ar-AE' },
   INR: { symbol: '₹', name: 'INR', locale: 'en-IN' },
+  CAD: { symbol: '$', name: 'CAD', locale: 'en-CA' },
+  AUD: { symbol: '$', name: 'AUD', locale: 'en-AU' },
 };
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrency] = useState<CurrencyCode>('USD');
-  const [numberSystem, setNumberSystem] = useState<NumberSystem>('International');
+  const [currency, setCurrency] = useState<CurrencyCode>(() => {
+    const saved = localStorage.getItem('user-currency');
+    return (saved as CurrencyCode) || 'USD';
+  });
+  const [numberSystem, setNumberSystem] = useState<NumberSystem>(() => {
+    const saved = localStorage.getItem('user-number-system');
+    return (saved as NumberSystem) || 'International';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('user-currency', currency);
+  }, [currency]);
+
+  useEffect(() => {
+    localStorage.setItem('user-number-system', numberSystem);
+  }, [numberSystem]);
+
+  useEffect(() => {
+    // Only auto-detect if no preference is saved
+    if (!localStorage.getItem('user-currency')) {
+      const detectRegion = async () => {
+        try {
+          const res = await fetch('https://ipapi.co/json/');
+          const data = await res.json();
+          const countryCode = data.country_code;
+
+          if (countryCode === 'IN') {
+            setCurrency('INR');
+            setNumberSystem('Indian');
+          } else if (countryCode === 'AE') {
+            setCurrency('AED');
+          } else if (['GB', 'UK'].includes(countryCode)) {
+            setCurrency('GBP');
+          } else if (countryCode === 'CA') {
+            setCurrency('CAD');
+          } else if (countryCode === 'AU') {
+            setCurrency('AUD');
+          } else if (['DE', 'FR', 'ES', 'IT'].includes(countryCode)) {
+            setCurrency('EUR');
+          } else {
+            setCurrency('USD');
+          }
+        } catch (error) {
+          console.error('Failed to auto-detect region:', error);
+        }
+      };
+      detectRegion();
+    }
+  }, []);
 
   const formatCurrency = (val: number) => {
     const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
@@ -62,8 +111,10 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       GBP: { loan: 'Home Loan', tax: 'VAT', jurisdiction: 'UK' },
       AED: { loan: 'Loan', tax: 'VAT', jurisdiction: 'UAE' },
       INR: { loan: 'Housing Loan', tax: 'GST', jurisdiction: 'India' },
+      CAD: { loan: 'Mortgage', tax: 'HST/GST', jurisdiction: 'Canada' },
+      AUD: { loan: 'Home Loan', tax: 'GST', jurisdiction: 'Australia' },
     };
-    return map[currency];
+    return map[currency] || map['USD'];
   };
 
   return (
