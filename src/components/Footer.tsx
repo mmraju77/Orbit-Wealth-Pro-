@@ -74,6 +74,58 @@ export default function Footer() {
             </ul>
           </div>
 
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Popular Comparisons</h4>
+            <ul className="space-y-4">
+              <li>
+                <Link to="/compare/sip-vs-lumpsum" className="text-sm text-white/40 hover:text-white transition-colors">
+                  SIP vs Lumpsum
+                </Link>
+              </li>
+              <li>
+                <Link to="/compare/home-loan-vs-rent" className="text-sm text-white/40 hover:text-white transition-colors">
+                  Buy vs Rent
+                </Link>
+              </li>
+              <li>
+                <Link to="/compare/fd-vs-mutual-funds" className="text-sm text-white/40 hover:text-white transition-colors">
+                  FD vs Mutual Funds
+                </Link>
+              </li>
+              <li>
+                <Link to="/compare/gold-vs-real-estate" className="text-sm text-white/40 hover:text-white transition-colors">
+                  Gold vs Real Estate
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Global Coverage</h4>
+            <ul className="space-y-4">
+              <li>
+                <Link to="/tools/mortgage/usa" className="text-sm text-white/40 hover:text-white transition-colors">
+                  Mortgage USA
+                </Link>
+              </li>
+              <li>
+                <Link to="/tools/income-tax/india" className="text-sm text-white/40 hover:text-white transition-colors">
+                  Income Tax India
+                </Link>
+              </li>
+              <li>
+                <Link to="/tools/retirement/uk" className="text-sm text-white/40 hover:text-white transition-colors">
+                  Pension Planning UK
+                </Link>
+              </li>
+              <li>
+                <Link to="/tools/gst/uae" className="text-sm text-white/40 hover:text-white transition-colors">
+                  VAT UAE
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           <div className="bg-[#0055FF]/5 rounded-2xl p-6 border border-[#0055FF]/10">
             <h4 className="text-xs font-bold text-[#0055FF] uppercase tracking-widest mb-4">AdSense Compliance</h4>
             <p className="text-[10px] text-white/40 leading-relaxed italic">

@@ -34,6 +34,8 @@ import LoanEligibility from './components/LoanEligibility';
 import BalanceTransfer from './components/BalanceTransfer';
 import GratuityCalculator from './components/GratuityCalculator';
 import CurrencyConverter from './components/CurrencyConverter';
+import PSEOLandingPage from './components/PSEOLandingPage';
+import ComparePage from './components/ComparePage';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import Disclaimer from './components/Disclaimer';
 import TermsOfService from './components/TermsOfService';
@@ -66,6 +68,10 @@ export default function App() {
                   <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
                   <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
                   <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
+                  
+                  {/* Dynamic pSEO Routes */}
+                  <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
+                  <Route path="/compare/:pair" element={<ComparePage />} />
                   
                   {/* Legacy redirects/backwards compatibility if needed, but here we strictly follow sitemap */}
                   <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />

@@ -1,63 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.orbitwealthpro.com/</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://orbitwealthpro.com/</loc>
     <priority>1.0</priority>
   </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/sip</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/lumpsum</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/mutual-fund</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/fd-rd</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/emi</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/loan-eligibility</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/home-loan-transfer</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/income-tax</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/gst</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/gratuity</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.orbitwealthpro.com/calculators/currency-converter</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+  <url><loc>https://orbitwealthpro.com/calculators/mortgage</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/retirement</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/income-tax</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/gst</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/fd-rd</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/sip</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/lumpsum</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/emi</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/loan-eligibility</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/home-loan-transfer</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/gratuity</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/currency-converter</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/mutual-fund</loc><priority>0.8</priority></url>
+  
+  <!-- pSEO USA -->
+  <url><loc>https://orbitwealthpro.com/tools/mortgage/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/retirement/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/income-tax/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/gst/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/sip/usa</loc><priority>0.6</priority></url>
+  
+  <!-- pSEO India -->
+  <url><loc>https://orbitwealthpro.com/tools/mortgage/india</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/retirement/india</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/income-tax/india</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/gst/india</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/fd-rd/india</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/sip/india</loc><priority>0.6</priority></url>
+  
+  <!-- pSEO UAE -->
+  <url><loc>https://orbitwealthpro.com/tools/mortgage/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/income-tax/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/gst/uae</loc><priority>0.6</priority></url>
+  
+  <!-- pSEO UK -->
+  <url><loc>https://orbitwealthpro.com/tools/mortgage/uk</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/retirement/uk</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/income-tax/uk</loc><priority>0.6</priority></url>
+  
+  <!-- pSEO Canada -->
+  <url><loc>https://orbitwealthpro.com/tools/mortgage/canada</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/retirement/canada</loc><priority>0.6</priority></url>
+  
+  <!-- pSEO Australia -->
+  <url><loc>https://orbitwealthpro.com/tools/mortgage/australia</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/retirement/australia</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/gst/australia</loc><priority>0.6</priority></url>
+
+  <!-- Comparisons -->
+  <url><loc>https://orbitwealthpro.com/compare/sip-vs-lumpsum</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/home-loan-vs-rent</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/fd-vs-mutual-funds</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/ppf-vs-nps</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/term-insurance-vs-endowment</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/gold-vs-real-estate</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/stocks-vs-bonds</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/savings-account-vs-liquid-funds</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/credit-card-vs-personal-loan</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/compare/crypto-vs-stocks</loc><priority>0.7</priority></url>
 </urlset>
