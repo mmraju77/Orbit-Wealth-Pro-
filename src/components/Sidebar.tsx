@@ -12,6 +12,7 @@ import {
   ChevronRight,
   ShieldCheck,
   MessageSquare,
+  Mail,
   Percent,
   Coins,
   ArrowRightLeft,
@@ -56,6 +57,14 @@ const NAV_ITEMS = [
       { label: 'GST / VAT', path: '/calculators/gst', icon: ShieldCheck },
       { label: 'Gratuity', path: '/calculators/gratuity', icon: Gift },
       { label: 'Currency', path: '/calculators/currency-converter', icon: RefreshCcw }
+    ]
+  },
+  {
+    label: 'Corporate',
+    items: [
+      { label: 'About Us', path: '/about', icon: Globe },
+      { label: 'Contact Us', path: '/contact', icon: Mail },
+      { label: 'Privacy Policy', path: '/privacy-policy', icon: ShieldCheck }
     ]
   }
 ];
