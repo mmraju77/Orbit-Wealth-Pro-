@@ -7,7 +7,7 @@ import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { REGIONS, CALCULATORS } from '../data/pSEOData';
-import { Shield, Globe, Info } from 'lucide-react';
+import { Shield, Globe, Info, CheckCircle2 } from 'lucide-react';
 
 // Import all calculators to render them dynamically
 import MortgageCalculator from './MortgageCalculator';
@@ -38,6 +38,13 @@ const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'gratuity': GratuityCalculator,
   'currency-converter': CurrencyConverter,
   'mutual-fund': MFCalculator,
+  '401k-analyzer': RetirementCalculator,
+  'roth-ira-limit': RetirementCalculator,
+  'irs-tax-brackets': IncomeTaxCalculator,
+  'us-mortgage-rates': MortgageCalculator,
+  'dubai-property-roi': LumpsumCalculator,
+  'tax-free-savings': IncomeTaxCalculator,
+  'abu-dhabi-investment': RetirementCalculator,
 };
 
 export default function PSEOLandingPage() {
@@ -59,6 +66,7 @@ export default function PSEOLandingPage() {
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="description" content={pageDesc} />
+        <meta name="keywords" content={`${calcData.keywords}, ${regionData.name} finance, ${regionData.taxContext}`} />
       </Helmet>
 
       <div className="bg-[#0055FF]/10 border border-[#0055FF]/20 rounded-2xl p-6 flex flex-col md:flex-row items-center justify-between gap-4">
@@ -83,6 +91,25 @@ export default function PSEOLandingPage() {
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
         <CalculatorComponent />
       </div>
+
+      {regionData.localInsights && regionData.localInsights.length > 0 && (
+        <section className="bg-[#0055FF]/5 border border-[#0055FF]/10 rounded-2xl p-8 space-y-6">
+          <div className="flex items-center gap-2 text-[#0055FF]">
+            <CheckCircle2 className="w-5 h-5" />
+            <h3 className="text-xl font-bold text-white">Local Financial Insights: {regionData.name}</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {regionData.localInsights.map((insight, idx) => (
+              <div key={idx} className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-start gap-3 group hover:border-[#0055FF]/40 transition-colors">
+                <div className="w-1.5 h-1.5 rounded-full bg-[#0055FF] mt-1.5 shrink-0 group-hover:scale-125 transition-transform" />
+                <p className="text-sm text-white/60 leading-relaxed">
+                   {insight}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-6">
         <div className="flex items-center gap-2">

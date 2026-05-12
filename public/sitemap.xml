@@ -52,6 +52,30 @@
   <url><loc>https://orbitwealthpro.com/tools/retirement/australia</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/gst/australia</loc><priority>0.6</priority></url>
 
+  <!-- High Intent USA -->
+  <url><loc>https://orbitwealthpro.com/tools/401k-analyzer/usa</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/roth-ira-limit/usa</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/irs-tax-brackets/usa</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/us-mortgage-rates/usa</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/loan-eligibility/usa</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/fd-rd/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/lumpsum/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/emi/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/currency-converter/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/mutual-fund/usa</loc><priority>0.6</priority></url>
+  
+  <!-- High Intent UAE -->
+  <url><loc>https://orbitwealthpro.com/tools/dubai-property-roi/uae</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/tax-free-savings/uae</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/abu-dhabi-investment/uae</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/currency-converter/uae</loc><priority>0.9</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/gratuity/uae</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/retirement/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/lumpsum/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/sip/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/emi/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/loan-eligibility/uae</loc><priority>0.6</priority></url>
+
   <!-- Comparisons -->
   <url><loc>https://orbitwealthpro.com/compare/sip-vs-lumpsum</loc><priority>0.7</priority></url>
   <url><loc>https://orbitwealthpro.com/compare/home-loan-vs-rent</loc><priority>0.7</priority></url>
