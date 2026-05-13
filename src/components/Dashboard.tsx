@@ -79,66 +79,60 @@ const CATEGORIES = [
   }
 ];
 
-const TOOLS = CATEGORIES.flatMap(cat => cat.cards.map(card => ({ ...card, category: cat.name })));
+const ALL_CARDS = CATEGORIES.flatMap(cat => cat.cards);
 
 export default function Dashboard() {
   return (
-    <div className="space-y-24">
-      <header className="space-y-6">
-        <div className="flex items-center gap-3">
-          <div className="h-[1px] w-10 bg-[#0055FF]"></div>
-          <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.4em]">Global Fintech Engine</span>
+    <div className="space-y-24 py-16">
+      <header className="space-y-8">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="h-[1px] w-12 bg-[#0055FF]"></div>
+          <span className="text-[9px] font-black text-[#0055FF] uppercase tracking-[0.5em]">Orbit Wealth Pro</span>
         </div>
-        <h1 className="text-6xl font-display font-medium text-white tracking-tight leading-[0.9]">
-          Financial <br />
-          <span className="text-white/20">Dashboard.</span>
+        <h1 className="text-6xl md:text-8xl font-display font-medium text-white tracking-tighter leading-[0.85]">
+          Wealth <br />
+          <span className="text-white/10">Computation.</span>
         </h1>
-        <p className="text-white/30 max-w-xl text-lg font-light leading-relaxed">
-          Access institutional-grade wealth tools. Multi-currency support across UK, Canada, Australia, Europe, and India.
+        <p className="text-white/40 max-w-2xl text-lg font-light leading-relaxed">
+          Access Orbit Wealth Pro's suite of institutional-grade financial tools. 
+          Precision engineering for the modern global investor.
         </p>
       </header>
 
       <section className="space-y-12">
-        <div className="flex items-center justify-between border-b border-white/[0.03] pb-6">
-          <h2 className="text-xl font-display font-medium text-white/90 uppercase tracking-widest text-sm">Available Tools</h2>
-          <div className="text-[9px] font-bold text-white/10 uppercase tracking-[0.3em]">Module Count: {TOOLS.length}</div>
+        <div className="flex items-center gap-4">
+           <h2 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
+           <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TOOLS.map((card, idx) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {ALL_CARDS.map((card, idx) => (
             <motion.div
               key={card.path}
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.02, ease: [0.23, 1, 0.32, 1] }}
+              transition={{ delay: idx * 0.01, ease: [0.23, 1, 0.32, 1] }}
             >
               <Link 
                 to={card.path}
-                className="group block p-8 bg-white/[0.01] border border-white/[0.05] rounded-[2rem] hover:bg-white/[0.02] hover:border-[#0055FF]/20 transition-all duration-500 h-full relative overflow-hidden"
+                className="group block p-8 bg-white/[0.01] border border-white/[0.04] rounded-[2rem] hover:bg-white/[0.02] hover:border-[#0055FF]/30 transition-all duration-700 h-full relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-10 group-hover:scale-110 transition-all duration-700">
-                  <card.icon className="w-24 h-24" />
+                <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ArrowRight className="w-4 h-4 text-[#0055FF]" />
                 </div>
-
-                <div className="space-y-8 relative z-10">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border border-white/5 bg-white/[0.02] ${card.color}`}>
-                    <card.icon className="w-5 h-5" />
+                
+                <div className="space-y-6">
+                  <div className={`w-10 h-10 rounded-xl flex items-center justify-center border border-white/5 bg-white/[0.02] ${card.color}`}>
+                    <card.icon className="w-4 h-4" />
                   </div>
                   
-                  <div className="space-y-3">
-                    <h3 className="text-2xl font-display font-medium text-white group-hover:text-[#0055FF] transition-colors duration-300">
+                  <div className="space-y-2">
+                    <h3 className="text-xl font-display font-medium text-white group-hover:text-[#0055FF] transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="text-sm text-white/30 leading-relaxed font-light">
+                    <p className="text-xs text-white/30 leading-relaxed font-light line-clamp-2">
                       {card.description}
                     </p>
-                  </div>
-
-                  <div className="pt-6 flex items-center justify-between border-t border-white/[0.03]">
-                    <span className="text-[9px] font-bold text-white/10 uppercase tracking-[0.2em]">{card.category}</span>
-                    <div className="w-8 h-8 rounded-full bg-white/[0.03] flex items-center justify-center group-hover:bg-[#0055FF] transition-all duration-500">
-                      <ArrowRight className="w-3.5 h-3.5 text-white/20 group-hover:text-white transition-all" />
-                    </div>
                   </div>
                 </div>
               </Link>
@@ -147,7 +141,7 @@ export default function Dashboard() {
         </div>
       </section>
 
-      <section className="pt-32 border-t border-white/[0.05] grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="pt-24 border-t border-white/[0.05] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
           <h2 className="text-2xl font-display font-medium">Built for accuracy.</h2>
           <p className="text-sm text-white/30 leading-relaxed max-w-md">

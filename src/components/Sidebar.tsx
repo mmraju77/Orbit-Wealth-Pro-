@@ -123,7 +123,11 @@ export default function Sidebar() {
           <div className="w-8 h-8 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center">
             <ShieldCheck className="text-[#0055FF] w-4 h-4" />
           </div>
-          <span className="font-display font-bold text-lg tracking-tight text-white italic uppercase">ORBIT <span className="text-white/20">PRO</span></span>
+          <span className="font-display font-black text-xl tracking-tighter text-white uppercase group flex items-center gap-1">
+            <span className="text-[#0055FF]">ORBIT</span>
+            <span className="opacity-50">WEALTH</span>
+            <span className="text-[#0055FF]">PRO</span>
+          </span>
         </div>
       </div>
 
@@ -179,7 +183,7 @@ export default function Sidebar() {
             <div>
               <label className="text-[8px] font-bold text-white/20 uppercase tracking-widest block mb-2 px-1">Region</label>
               <div className="grid grid-cols-4 gap-1">
-                {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => (
+                {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED'] as CurrencyCode[]).map((c) => (
                   <button
                     key={c}
                     onClick={() => setCurrency(c)}

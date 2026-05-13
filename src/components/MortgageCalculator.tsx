@@ -21,22 +21,13 @@ const INITIAL_INPUTS: MortgageInputs = {
 };
 
 export default function MortgageCalculator() {
-  const { formatCurrency, currencySymbol, currency } = useLocale();
+  const { formatCurrency, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
   const results = useMemo(() => {
     const principal = inputs.homePrice - inputs.downPayment;
-    
-    // Regional Logic
-    let monthlyRate = 0;
-    if (currency === 'CAD') {
-      // Canada uses semi-annual compounding for fixed mortgages
-      monthlyRate = Math.pow(Math.pow(1 + inputs.interestRate / 100 / 2, 2), 1 / 12) - 1;
-    } else {
-      monthlyRate = inputs.interestRate / 100 / 12;
-    }
-
+    const monthlyRate = inputs.interestRate / 100 / 12;
     const numberOfPayments = inputs.loanTerm * 12;
 
     let monthlyPayment = 0;

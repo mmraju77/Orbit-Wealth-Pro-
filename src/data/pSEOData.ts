@@ -88,50 +88,6 @@ export const REGIONS: Record<string, RegionData> = {
       'Medicare Levy of 2.0% applies to help fund the national healthcare system.',
       'HECS-HELP loans in Australia are indexation-linked and repaid through the tax system based on your income.'
     ]
-  },
-  germany: {
-    name: 'Germany',
-    currency: 'EUR',
-    smartContent: 'Finances in Germany (Deutschland) are characterized by a strong social security system. Income tax is progressive, and Solidarity Surcharge (Soli) may apply. Mortgage rates are generally fixed for 10-20 years, and the Schufa score is the key credit metric.',
-    taxContext: 'Finanzamt & Soli Optimized',
-    localInsights: [
-      'Tax-free allowance (Grundfreibetrag) is significant for lower incomes.',
-      'Church tax (Kirchensteuer) applies to registered members and is calculated as a % of income tax.',
-      'Capital gains tax (Abgeltungsteuer) is a flat 25% plus Soli.'
-    ]
-  },
-  switzerland: {
-    name: 'Switzerland',
-    currency: 'CHF',
-    smartContent: 'The Swiss Three-Pillar system (AHV, BVG, Private) defines retirement planning. Taxation varies significantly by Canton and Municipality. Mortgages often involve a first and second mortgage split with long-term fixed rates.',
-    taxContext: 'Cantonal Tax & Pension Pillars',
-    localInsights: [
-      'Pillar 3a contributions are tax-deductible up to an annual limit.',
-      'Wealth tax applies at the cantonal level based on net assets.',
-      'The "Imputed Rental Value" (Eigenmietwert) is a unique Swiss tax on homeownership.'
-    ]
-  },
-  norway: {
-    name: 'Norway',
-    currency: 'NOK',
-    smartContent: 'Norway features a transparent tax system with a flat general tax rate plus a progressive bracket tax. The Pension Fund (Folketrygden) and individual BSU accounts for youth housing are central to Norwegian financial planning.',
-    taxContext: 'Skatteetaten & BSU Integration',
-    localInsights: [
-      'BSU provides a 10% tax credit on savings for a home down payment.',
-      'Most Norwegian mortgages have variable interest rates that follow Norges Bank.',
-      'Wealth tax applies on global assets exceeding specific thresholds.'
-    ]
-  },
-  netherlands: {
-    name: 'Netherlands',
-    currency: 'EUR',
-    smartContent: 'Financial planning in the Netherlands includes the "30% ruling" for expats and a unique Box 1-2-3 taxation system. Mortgages often feature "Hipotekrenteaftrek" (mortgage interest deduction) to lower the effective cost of borrowing.',
-    taxContext: 'Belastingdienst & Box 3 Ready',
-    localInsights: [
-      'Box 3 taxes "notional returns" on savings and investments.',
-      'The 30% ruling can significantly reduce income tax for qualifying foreign employees.',
-      'Mandatory health insurance is a key part of monthly Dutch budgeting.'
-    ]
   }
 };
 

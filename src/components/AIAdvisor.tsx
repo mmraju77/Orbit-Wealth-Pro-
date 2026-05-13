@@ -3,9 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Sparkles, Loader2, AlertCircle } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { motion, AnimatePresence } from 'motion/react';
 
 interface AIAdvisorProps {
@@ -25,13 +24,23 @@ export default function AIAdvisor({ context }: AIAdvisorProps) {
     setError(null);
     
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: `As a professional financial advisor at Orbit Wealth Pro, provide a 2-line maximum summary/insight based on this calculator state: ${context}. Keep it concise, actionable, and encouraging. Never mention you are an AI.`,
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer mock-user-token"
+        },
+        body: JSON.stringify({
+          message: `As a professional financial advisor at Orbit Wealth Pro, provide a 2-line maximum summary/insight based on this calculator state: ${context}. Keep it concise, actionable, and encouraging. Never mention you are an AI.`
+        })
       });
-      
-      setInsight(response.text || "Calculation looks solid. Keep monitoring your goals.");
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch insight");
+      }
+
+      const data = await response.json();
+      setInsight(data.text || "Calculation looks solid. Keep monitoring your goals.");
     } catch (err) {
       console.error("AI Advisor Error:", err);
       setError("Failed to generate insight.");

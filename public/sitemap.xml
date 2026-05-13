@@ -24,62 +24,6 @@
   <url><loc>https://orbitwealthpro.com/calculators/hlv</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/break-even</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/credit-card-payoff</loc><priority>0.8</priority></url>
-  
-  <!-- UK pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/uk</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/uk</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/uk</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/gst/uk</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/student-loan/uk</loc><priority>0.7</priority></url>
-  
-  <!-- Canada pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/canada</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/canada</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/canada</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/fd-rd/canada</loc><priority>0.7</priority></url>
-  
-  <!-- Australia pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/australia</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/australia</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/australia</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/personal-loan/australia</loc><priority>0.7</priority></url>
-  
-  <!-- Switzerland pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/switzerland</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/switzerland</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/switzerland</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/dividend-yield/switzerland</loc><priority>0.7</priority></url>
-  
-  <!-- Germany pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/germany</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/germany</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/germany</loc><priority>0.7</priority></url>
-  
-  <!-- Norway pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/norway</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/norway</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/norway</loc><priority>0.7</priority></url>
-  
-  <!-- Sweden pSEO (Mapped via Locale context) -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/sweden</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/sweden</loc><priority>0.7</priority></url>
-  
-  <!-- Denmark pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/denmark</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/denmark</loc><priority>0.7</priority></url>
-  
-  <!-- Netherlands pSEO -->
-  <url><loc>https://orbitwealthpro.com/tools/mortgage/netherlands</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/income-tax/netherlands</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/retirement/netherlands</loc><priority>0.7</priority></url>
-  
-  <!-- Specialized pSEO Keywords -->
-  <url><loc>https://orbitwealthpro.com/tools/irs-tax-brackets/usa</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/401k-analyzer/usa</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/roth-ira-limit/usa</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/dubai-property-roi/uae</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/tax-free-savings/uae</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/abu-dhabi-investment/uae</loc><priority>0.7</priority></url>
   <url><loc>https://orbitwealthpro.com/tax-guides</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/home-loan-transfer</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/gratuity</loc><priority>0.8</priority></url>

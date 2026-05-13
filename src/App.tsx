@@ -46,7 +46,6 @@ import HLVCalculator from './components/HLVCalculator';
 import BreakEvenCalculator from './components/BreakEvenCalculator';
 import CreditCardPayoff from './components/CreditCardPayoff';
 import TaxGuides from './components/TaxGuides';
-import MarketTicker from './components/MarketTicker';
 import PSEOLandingPage from './components/PSEOLandingPage';
 import ComparePage from './components/ComparePage';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -65,10 +64,9 @@ export default function App() {
           <div className="flex bg-[#050505] min-h-screen text-white font-sans selection:bg-[#0055FF] selection:text-white">
             <Sidebar />
             
-            <main className="flex-1 ml-64 min-h-screen">
-              <MarketTicker />
-              <div className="p-8 md:p-12 lg:p-16 h-[calc(100vh-32px)] overflow-y-auto">
-                <div className="max-w-7xl mx-auto">
+            <main className="flex-1 ml-64 min-h-screen relative overflow-hidden">
+              <div className="absolute inset-0 p-16 md:p-24 lg:p-32 overflow-y-auto overflow-x-hidden">
+                <div className="max-w-7xl mx-auto pb-32">
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/calculators/mortgage" element={<MortgageCalculator />} />

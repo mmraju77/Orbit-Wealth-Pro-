@@ -21,10 +21,9 @@ export default function IncomeTaxCalculator() {
   });
   const [isMounted, setIsMounted] = useState(false);
 
-// Income Tax Logic for various countries
+  // Income Tax Logic for India (Slab based)
   const calculateIncomeTax = (income: number) => {
-    // INDIA
-    const calculateIndia = (i: number) => {
+    const calculateNewRegime = (i: number) => {
       let tax = 0;
       if (i <= 300000) tax = 0;
       else if (i <= 600000) tax = (i - 300000) * 0.05;
@@ -33,64 +32,26 @@ export default function IncomeTaxCalculator() {
       else if (i <= 1500000) tax = 300000 * 0.05 + 300000 * 0.10 + 300000 * 0.15 + (i - 1200000) * 0.20;
       else tax = 300000 * 0.05 + 300000 * 0.10 + 300000 * 0.15 + 300000 * 0.20 + (i - 1500000) * 0.30;
       
-      if (i <= 700000) tax = 0; // Tax rebate
+      // Rebate up to 7L
+      if (i <= 700000) tax = 0;
+      return tax + (tax * 0.04); // Cess
+    };
+
+    const calculateOldRegime = (i: number) => {
+      let tax = 0;
+      const taxable = i - 50000; // Std deduction
+      if (taxable <= 250000) tax = 0;
+      else if (taxable <= 500000) tax = (taxable - 250000) * 0.05;
+      else if (taxable <= 1000000) tax = 250000 * 0.05 + (taxable - 500000) * 0.20;
+      else tax = 250000 * 0.05 + 500000 * 0.20 + (taxable - 1000000) * 0.30;
+      
+      if (i <= 500000) tax = 0;
       return tax + (tax * 0.04);
     };
 
-    // UK
-    const calculateUK = (i: number) => {
-      const personalAllowance = i > 100000 ? Math.max(0, 12570 - (i - 100000) / 2) : 12570;
-      const taxable = Math.max(0, i - personalAllowance);
-      let tax = 0;
-      if (taxable <= 37700) tax = taxable * 0.20;
-      else if (taxable <= 125140) tax = (37700 * 0.20) + (taxable - 37700) * 0.40;
-      else tax = (37700 * 0.20) + (87440 * 0.40) + (taxable - 125140) * 0.45;
-      return tax;
-    };
-
-    // CANADA
-    const calculateCanada = (i: number) => {
-      const fedBracket = i <= 55867 ? i * 0.15 :
-                        i <= 111733 ? (55867 * 0.15) + (i - 55867) * 0.205 :
-                        i <= 173205 ? (55867 * 0.15) + (55866 * 0.205) + (i - 111733) * 0.26 :
-                        i <= 246752 ? (55867 * 0.15) + (55866 * 0.205) + (61472 * 0.26) + (i - 173205) * 0.29 :
-                        (55867 * 0.15) + (55866 * 0.205) + (61472 * 0.26) + (73547 * 0.29) + (i - 246752) * 0.33;
-      return fedBracket * 1.5; // Estimated including Prov
-    };
-
-    // AUSTRALIA
-    const calculateAustralia = (i: number) => {
-      let tax = 0;
-      if (i <= 18200) tax = 0;
-      else if (i <= 45000) tax = (i - 18200) * 0.19;
-      else if (i <= 120000) tax = 5092 + (i - 45000) * 0.325;
-      else if (i <= 180000) tax = 29467 + (i - 120000) * 0.37;
-      else tax = 51667 + (i - 180000) * 0.45;
-      return tax + (i * 0.02); // Medicare levy
-    };
-
-    // GERMANY (Simplistic)
-    const calculateGermany = (i: number) => {
-      if (i <= 11604) return 0;
-      if (i <= 66760) return (i - 11604) * 0.24;
-      return (i - 66760) * 0.42 + 13237;
-    };
-
-    const map: Record<string, (i: number) => number> = {
-      INR: calculateIndia,
-      GBP: calculateUK,
-      CAD: calculateCanada,
-      AUD: calculateAustralia,
-      EUR: calculateGermany,
-      USD: (i: number) => i * 0.25, // Simplified US
-    };
-
-    const taxFunc = map[currency] || map['USD'];
-    const tax = taxFunc(income);
-    
     return { 
-      new: tax, 
-      old: currency === 'INR' ? calculateIndia(income) : tax 
+      new: calculateNewRegime(income), 
+      old: calculateOldRegime(income) 
     };
   };
 
