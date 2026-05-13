@@ -179,7 +179,7 @@ export default function Sidebar() {
             <div>
               <label className="text-[8px] font-bold text-white/20 uppercase tracking-widest block mb-2 px-1">Region</label>
               <div className="grid grid-cols-4 gap-1">
-                {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED'] as CurrencyCode[]).map((c) => (
+                {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => (
                   <button
                     key={c}
                     onClick={() => setCurrency(c)}

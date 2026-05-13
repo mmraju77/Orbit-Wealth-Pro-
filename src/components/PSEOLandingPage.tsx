@@ -84,6 +84,24 @@ export default function PSEOLandingPage() {
       } else if (r === 'australia') {
         setCurrency('AUD');
         setNumberSystem('International');
+      } else if (r === 'germany') {
+        setCurrency('EUR');
+        setNumberSystem('International');
+      } else if (r === 'switzerland') {
+        setCurrency('CHF');
+        setNumberSystem('International');
+      } else if (r === 'norway') {
+        setCurrency('NOK');
+        setNumberSystem('International');
+      } else if (r === 'sweden') {
+        setCurrency('SEK');
+        setNumberSystem('International');
+      } else if (r === 'denmark') {
+        setCurrency('DKK');
+        setNumberSystem('International');
+      } else if (r === 'netherlands') {
+        setCurrency('EUR');
+        setNumberSystem('International');
       }
     }
   }, [region, setCurrency, setNumberSystem]);
