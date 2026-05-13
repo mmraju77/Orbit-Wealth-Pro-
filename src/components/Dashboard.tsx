@@ -79,71 +79,75 @@ const CATEGORIES = [
   }
 ];
 
+const TOOLS = CATEGORIES.flatMap(cat => cat.cards.map(card => ({ ...card, category: cat.name })));
+
 export default function Dashboard() {
   return (
-    <div className="space-y-48 py-16">
+    <div className="space-y-32 py-16">
       <header className="space-y-10">
         <div className="flex items-center gap-3 mb-4">
           <div className="h-[1px] w-12 bg-[#0055FF]"></div>
-          <span className="text-[9px] font-bold text-[#0055FF] uppercase tracking-[0.5em]">Institutional Intelligence</span>
+          <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.5em]">Financial Intelligence Platform</span>
         </div>
-        <h1 className="text-7xl font-display font-medium text-white tracking-tight leading-[0.85]">
-          Wealth <br />
-          <span className="text-white/10">Computation.</span>
+        <h1 className="text-8xl font-display font-medium text-white tracking-tighter leading-[0.8]">
+          Financial <br />
+          <span className="text-white/10">Dashboard.</span>
         </h1>
-        <p className="text-white/30 max-w-xl text-xl font-light leading-relaxed">
-          Access a suite of precise financial tools designed for the modern investor. <br />
-          <span className="text-white/10">Multi-currency. Multi-jurisdiction. Real-time.</span>
+        <p className="text-white/30 max-w-2xl text-xl font-light leading-relaxed">
+          The ultimate engine for global wealth computation. High-precision tools for debt, investment, and cross-border tax logic in one integrated environment.
         </p>
       </header>
 
-      {CATEGORIES.map((category, catIdx) => (
-        <section key={category.id} className="space-y-12">
-          <div className="flex items-center gap-4">
-             <h2 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.4em]">{category.name}</h2>
-             <div className="flex-1 h-px bg-white/[0.03]"></div>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {category.cards.map((card, idx) => (
-              <motion.div
-                key={card.path}
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (catIdx * 0.1) + (idx * 0.02), ease: [0.23, 1, 0.32, 1] }}
+      <section className="space-y-16">
+        <div className="flex items-center justify-between">
+          <h2 className="text-3xl font-display font-medium text-white">Available Tools</h2>
+          <div className="text-[10px] font-bold text-white/20 uppercase tracking-[0.3em]">Total of {TOOLS.length} Modules</div>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {TOOLS.map((card, idx) => (
+            <motion.div
+              key={card.path}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: idx * 0.02, ease: [0.23, 1, 0.32, 1] }}
+            >
+              <Link 
+                to={card.path}
+                className="group block p-12 bg-white/[0.01] border border-white/[0.04] rounded-[3rem] hover:bg-white/[0.02] hover:border-[#0055FF]/30 transition-all duration-700 h-full relative overflow-hidden"
               >
-                <Link 
-                  to={card.path}
-                  className="group block p-10 bg-white/[0.01] border border-white/[0.04] rounded-[2.5rem] hover:bg-white/[0.02] hover:border-[#0055FF]/30 transition-all duration-700 h-full relative"
-                >
-                  <div className="space-y-8">
-                    <div className={`w-12 h-12 rounded-2xl flex items-center justify-center border border-white/5 bg-white/[0.02] ${card.color}`}>
-                      <card.icon className="w-5 h-5" />
-                    </div>
-                    
-                    <div className="space-y-3">
-                      <h3 className="text-2xl font-display font-medium text-white group-hover:text-[#0055FF] transition-colors duration-500">
-                        {card.title}
-                      </h3>
-                      <p className="text-sm text-white/30 leading-relaxed font-light">
-                        {card.description}
-                      </p>
-                    </div>
+                <div className="absolute top-0 right-0 p-12 opacity-[0.02] group-hover:opacity-[0.05] group-hover:scale-110 transition-all duration-1000">
+                  <card.icon className="w-32 h-32" />
+                </div>
 
-                    <div className="pt-6 flex items-center justify-end border-t border-white/[0.03]">
-                      <div className="w-8 h-8 rounded-full bg-white/[0.03] flex items-center justify-center group-hover:bg-[#0055FF] transition-all duration-500">
-                        <ArrowRight className="w-3.5 h-3.5 text-white/10 group-hover:text-white transition-all" />
-                      </div>
+                <div className="space-y-10 relative z-10">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border border-white/5 bg-white/[0.02] ${card.color}`}>
+                    <card.icon className="w-6 h-6" />
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <h3 className="text-3xl font-display font-medium text-white group-hover:text-[#0055FF] transition-colors duration-500">
+                      {card.title}
+                    </h3>
+                    <p className="text-base text-white/30 leading-relaxed font-light">
+                      {card.description}
+                    </p>
+                  </div>
+
+                  <div className="pt-8 flex items-center justify-between border-t border-white/[0.03]">
+                    <span className="text-[9px] font-bold text-white/10 uppercase tracking-[0.4em]">{card.category}</span>
+                    <div className="w-10 h-10 rounded-full bg-white/[0.03] flex items-center justify-center group-hover:bg-[#0055FF] transition-all duration-500">
+                      <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-white transition-all" />
                     </div>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-      ))}
+                </div>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
-      <section className="pt-24 border-t border-white/[0.05] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <section className="pt-32 border-t border-white/[0.05] grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div className="space-y-4">
           <h2 className="text-2xl font-display font-medium">Built for accuracy.</h2>
           <p className="text-sm text-white/30 leading-relaxed max-w-md">

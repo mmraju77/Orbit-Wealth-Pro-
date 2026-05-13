@@ -67,7 +67,7 @@ export default function App() {
             
             <main className="flex-1 ml-64 min-h-screen">
               <MarketTicker />
-              <div className="p-16 md:p-24 lg:p-32 h-[calc(100vh-32px)] overflow-y-auto">
+              <div className="p-8 md:p-16 lg:p-20 h-[calc(100vh-32px)] overflow-y-auto">
                 <div className="max-w-7xl mx-auto">
                   <Routes>
                     <Route path="/" element={<Dashboard />} />
