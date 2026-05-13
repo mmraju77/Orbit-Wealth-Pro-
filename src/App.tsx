@@ -34,6 +34,19 @@ import LoanEligibility from './components/LoanEligibility';
 import BalanceTransfer from './components/BalanceTransfer';
 import GratuityCalculator from './components/GratuityCalculator';
 import CurrencyConverter from './components/CurrencyConverter';
+import PersonalLoanCalculator from './components/PersonalLoanCalculator';
+import AutoLoanCalculator from './components/AutoLoanCalculator';
+import StudentLoanCalculator from './components/StudentLoanCalculator';
+import CAGRCalculator from './components/CAGRCalculator';
+import DividendYieldCalculator from './components/DividendYieldCalculator';
+import ChildEducationPlanner from './components/ChildEducationPlanner';
+import RentalYieldCalculator from './components/RentalYieldCalculator';
+import DebtSnowball from './components/DebtSnowball';
+import HLVCalculator from './components/HLVCalculator';
+import BreakEvenCalculator from './components/BreakEvenCalculator';
+import CreditCardPayoff from './components/CreditCardPayoff';
+import TaxGuides from './components/TaxGuides';
+import MarketTicker from './components/MarketTicker';
 import PSEOLandingPage from './components/PSEOLandingPage';
 import ComparePage from './components/ComparePage';
 import PrivacyPolicy from './components/PrivacyPolicy';
@@ -52,23 +65,40 @@ export default function App() {
           <div className="flex bg-[#050505] min-h-screen text-white font-sans selection:bg-[#0055FF] selection:text-white">
             <Sidebar />
             
-            <main className="flex-1 ml-64 p-8 md:p-12 lg:p-16 h-screen overflow-y-auto">
-              <div className="max-w-6xl mx-auto">
-                <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
-                  <Route path="/calculators/retirement" element={<RetirementCalculator />} />
-                  <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
-                  <Route path="/calculators/gst" element={<GSTCalculator />} />
-                  <Route path="/calculators/fd-rd" element={<FDRDCalculator />} />
-                  <Route path="/calculators/sip" element={<SIPCalculator />} />
-                  <Route path="/calculators/lumpsum" element={<LumpsumCalculator />} />
-                  <Route path="/calculators/emi" element={<EMICalculator />} />
-                  <Route path="/calculators/mutual-fund" element={<MFCalculator />} />
-                  <Route path="/calculators/loan-eligibility" element={<LoanEligibility />} />
-                  <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
-                  <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
-                  <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
+            <main className="flex-1 ml-64 min-h-screen">
+              <MarketTicker />
+              <div className="p-16 md:p-24 lg:p-32 h-[calc(100vh-32px)] overflow-y-auto">
+                <div className="max-w-7xl mx-auto">
+                  <Routes>
+                    <Route path="/" element={<Dashboard />} />
+                    <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
+                    <Route path="/calculators/retirement" element={<RetirementCalculator />} />
+                    <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
+                    <Route path="/calculators/gst" element={<GSTCalculator />} />
+                    <Route path="/calculators/fd-rd" element={<FDRDCalculator />} />
+                    <Route path="/calculators/sip" element={<SIPCalculator />} />
+                    <Route path="/calculators/lumpsum" element={<LumpsumCalculator />} />
+                    <Route path="/calculators/emi" element={<EMICalculator />} />
+                    <Route path="/calculators/mutual-fund" element={<MFCalculator />} />
+                    <Route path="/calculators/loan-eligibility" element={<LoanEligibility />} />
+                    <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
+                    <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
+                    <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
+                    <Route path="/calculators/personal-loan" element={<PersonalLoanCalculator />} />
+                    <Route path="/calculators/auto-loan" element={<AutoLoanCalculator />} />
+                    <Route path="/calculators/student-loan" element={<StudentLoanCalculator />} />
+                    <Route path="/calculators/cagr" element={<CAGRCalculator />} />
+                    <Route path="/calculators/dividend-yield" element={<DividendYieldCalculator />} />
+                    <Route path="/calculators/child-education" element={<ChildEducationPlanner />} />
+                    <Route path="/calculators/rental-yield" element={<RentalYieldCalculator />} />
+                    <Route path="/calculators/debt-snowball" element={<DebtSnowball />} />
+                    <Route path="/calculators/hlv" element={<HLVCalculator />} />
+                    <Route path="/calculators/break-even" element={<BreakEvenCalculator />} />
+                    <Route path="/calculators/credit-card-payoff" element={<CreditCardPayoff />} />
+                    <Route path="/tax-guides" element={<TaxGuides />} />
+                    
+                    <Route path="/calculators/term-insurance" element={<div className="p-20 text-center"><h2 className="text-3xl font-bold">Term Life Insurance</h2><p className="text-white/40 mt-4">Security calculation engine launching soon.</p></div>} />
+                    <Route path="/calculators/health-insurance" element={<div className="p-20 text-center"><h2 className="text-3xl font-bold">Health Guard Intelligence</h2><p className="text-white/40 mt-4">Premium optimization engine launching soon.</p></div>} />
                   
                   {/* Dynamic pSEO Routes */}
                   <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
@@ -91,7 +121,8 @@ export default function App() {
                 </Routes>
                 <Footer />
               </div>
-            </main>
+            </div>
+          </main>
           </div>
         </BrowserRouter>
       </LocaleProvider>

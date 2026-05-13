@@ -24,6 +24,9 @@ import BalanceTransfer from './BalanceTransfer';
 import GratuityCalculator from './GratuityCalculator';
 import CurrencyConverter from './CurrencyConverter';
 import MFCalculator from './MFCalculator';
+import PersonalLoanCalculator from './PersonalLoanCalculator';
+import AutoLoanCalculator from './AutoLoanCalculator';
+import StudentLoanCalculator from './StudentLoanCalculator';
 
 const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'mortgage': MortgageCalculator,
@@ -47,6 +50,9 @@ const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'dubai-property-roi': LumpsumCalculator,
   'tax-free-savings': IncomeTaxCalculator,
   'abu-dhabi-investment': RetirementCalculator,
+  'personal-loan': PersonalLoanCalculator,
+  'auto-loan': AutoLoanCalculator,
+  'student-loan': StudentLoanCalculator,
 };
 
 export default function PSEOLandingPage() {

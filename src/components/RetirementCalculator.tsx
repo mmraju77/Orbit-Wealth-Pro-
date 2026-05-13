@@ -82,15 +82,16 @@ export default function RetirementCalculator() {
   };
 
   return (
-    <div className="space-y-8 pb-20 text-white">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <header className="space-y-2">
-          <div className="flex items-center gap-2 mb-4">
-             <Coins className="text-[#0055FF] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter">Retirement Planner</h1>
+    <div className="space-y-12 pb-20 text-white">
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
+        <header className="space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+             <div className="h-px w-6 bg-[#0055FF]"></div>
+             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Retirement Logistics</span>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
-            Project your retirement corpus and verify its future purchasing power considering annual inflation rates.
+          <h1 className="text-5xl font-display font-medium text-white tracking-tight">Sunset Provisions.</h1>
+          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+            Architect your post-career financial state with inflation-adjusted corpus modeling.
           </p>
         </header>
 

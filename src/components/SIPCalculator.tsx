@@ -7,6 +7,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tool
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import Tooltip from './Tooltip';
+import AIAdvisor from './AIAdvisor';
 
 const INITIAL_INPUTS: InvestmentInputs = {
   investmentAmount: 0, // Not used for base SIP, usually SIP is monthly
@@ -70,14 +71,15 @@ export default function SIPCalculator() {
   };
 
   return (
-    <div className="space-y-8 pb-20">
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <header className="space-y-2">
-          <div className="flex items-center gap-2 mb-4">
-             <TrendingUp className="text-[#0055FF] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-white">SIP Calculator</h1>
+    <div className="space-y-12 pb-20">
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
+        <header className="space-y-4">
+          <div className="flex items-center gap-2 mb-2">
+             <div className="h-px w-6 bg-[#0055FF]"></div>
+             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <h1 className="text-5xl font-display font-medium text-white tracking-tight">SIP Intelligence.</h1>
+          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
             Project your wealth growth via Systematic Investment Plans using our high-precision compound return engine.
           </p>
         </header>
@@ -173,6 +175,10 @@ export default function SIPCalculator() {
               <div className="mt-8 text-center">
                 <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
                 <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
+              </div>
+              
+              <div className="px-4">
+                <AIAdvisor context={`Monthly SIP of ${inputs.monthlyInvestment} at ${inputs.expectedReturn}% for ${inputs.duration} years. Total maturity value: ${results.totalWealth}.`} />
               </div>
             </div>
           )}

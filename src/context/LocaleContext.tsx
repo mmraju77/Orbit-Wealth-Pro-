@@ -5,7 +5,7 @@
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD';
+export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD' | 'NOK' | 'SEK' | 'DKK' | 'CHF';
 export type NumberSystem = 'International' | 'Indian';
 
 interface LocaleContextType {
@@ -33,6 +33,10 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   INR: { symbol: '₹', name: 'INR', locale: 'en-IN' },
   CAD: { symbol: '$', name: 'CAD', locale: 'en-CA' },
   AUD: { symbol: '$', name: 'AUD', locale: 'en-AU' },
+  NOK: { symbol: 'kr', name: 'NOK', locale: 'nb-NO' },
+  SEK: { symbol: 'kr', name: 'SEK', locale: 'sv-SE' },
+  DKK: { symbol: 'kr', name: 'DKK', locale: 'da-DK' },
+  CHF: { symbol: 'CHF', name: 'CHF', locale: 'de-CH' },
 };
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
@@ -69,11 +73,14 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
             setCurrency('AED');
           } else if (['GB', 'UK'].includes(countryCode)) {
             setCurrency('GBP');
+          } else if (['NO', 'SE', 'DK', 'CH'].includes(countryCode)) {
+            const map: any = { NO: 'NOK', SE: 'SEK', DK: 'DKK', CH: 'CHF' };
+            setCurrency(map[countryCode]);
           } else if (countryCode === 'CA') {
             setCurrency('CAD');
           } else if (countryCode === 'AU') {
             setCurrency('AUD');
-          } else if (['DE', 'FR', 'ES', 'IT'].includes(countryCode)) {
+          } else if (['DE', 'FR', 'ES', 'IT', 'NL'].includes(countryCode)) {
             setCurrency('EUR');
           } else {
             setCurrency('USD');
@@ -113,6 +120,10 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       INR: { loan: 'Housing Loan', tax: 'GST', jurisdiction: 'India' },
       CAD: { loan: 'Mortgage', tax: 'HST/GST', jurisdiction: 'Canada' },
       AUD: { loan: 'Home Loan', tax: 'GST', jurisdiction: 'Australia' },
+      NOK: { loan: 'Lån', tax: 'MVA', jurisdiction: 'Norway' },
+      SEK: { loan: 'Lån', tax: 'Moms', jurisdiction: 'Sweden' },
+      DKK: { loan: 'Lån', tax: 'Moms', jurisdiction: 'Denmark' },
+      CHF: { loan: 'Kredit', tax: 'MwSt', jurisdiction: 'Switzerland' },
     };
     return map[currency] || map['USD'];
   };

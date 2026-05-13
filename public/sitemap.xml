@@ -13,6 +13,18 @@
   <url><loc>https://orbitwealthpro.com/calculators/lumpsum</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/emi</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/loan-eligibility</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/personal-loan</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/auto-loan</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/student-loan</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/cagr</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/dividend-yield</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/child-education</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/rental-yield</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/debt-snowball</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/hlv</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/break-even</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/calculators/credit-card-payoff</loc><priority>0.8</priority></url>
+  <url><loc>https://orbitwealthpro.com/tax-guides</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/home-loan-transfer</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/gratuity</loc><priority>0.8</priority></url>
   <url><loc>https://orbitwealthpro.com/calculators/currency-converter</loc><priority>0.8</priority></url>
@@ -42,6 +54,8 @@
   <url><loc>https://orbitwealthpro.com/tools/mortgage/uk</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/retirement/uk</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/income-tax/uk</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/student-loan/uk</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/personal-loan/uk</loc><priority>0.7</priority></url>
   
   <!-- pSEO Canada -->
   <url><loc>https://orbitwealthpro.com/tools/mortgage/canada</loc><priority>0.6</priority></url>
@@ -51,6 +65,8 @@
   <url><loc>https://orbitwealthpro.com/tools/mortgage/australia</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/retirement/australia</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/gst/australia</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/student-loan/australia</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/personal-loan/australia</loc><priority>0.7</priority></url>
 
   <!-- High Intent USA -->
   <url><loc>https://orbitwealthpro.com/tools/savings/usa</loc><priority>0.8</priority></url>
@@ -64,6 +80,9 @@
   <url><loc>https://orbitwealthpro.com/tools/emi/usa</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/currency-converter/usa</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/mutual-fund/usa</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/personal-loan/usa</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/auto-loan/usa</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/student-loan/usa</loc><priority>0.7</priority></url>
   
   <!-- High Intent UAE -->
   <url><loc>https://orbitwealthpro.com/tools/savings/uae</loc><priority>0.8</priority></url>
@@ -77,6 +96,9 @@
   <url><loc>https://orbitwealthpro.com/tools/sip/uae</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/emi/uae</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/loan-eligibility/uae</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/personal-loan/uae</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/auto-loan/uae</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/tools/student-loan/uae</loc><priority>0.7</priority></url>
 
   <!-- Comparisons -->
   <url><loc>https://orbitwealthpro.com/compare/sip-vs-lumpsum</loc><priority>0.7</priority></url>

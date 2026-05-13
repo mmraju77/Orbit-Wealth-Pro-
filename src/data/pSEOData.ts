@@ -27,7 +27,8 @@ export const REGIONS: Record<string, RegionData> = {
       'Maximize your 401(k) employer matching—it is essentially a 100% return on investment.',
       'Consider the tax-free growth benefits of a Roth IRA if you expect to be in a higher tax bracket later.',
       'Monitor your Credit Score (FICO) as it significantly impacts your mortgage APR.',
-      'Be aware of State Income Taxes which vary from 0% in Florida/Texas to over 13% in California.'
+      'Be aware of State Income Taxes which vary from 0% in Florida/Texas to over 13% in California.',
+      'Federal student loans in the US often have fixed interest rates and income-driven repayment plans.'
     ]
   },
   india: {
@@ -61,7 +62,8 @@ export const REGIONS: Record<string, RegionData> = {
     localInsights: [
       'Utilize the £20,000 annual ISA limit for tax-free savings and investments.',
       'Pension auto-enrolment ensures employer contributions to your retirement pot.',
-      'Stamp Duty Land Tax (SDLT) thresholds apply differently for first-time buyers.'
+      'Stamp Duty Land Tax (SDLT) thresholds apply differently for first-time buyers.',
+      'UK Student Loans (Plan 2, 5, etc.) are repaid via the PAYE system once your income exceeds a threshold.'
     ]
   },
   canada: {
@@ -83,7 +85,8 @@ export const REGIONS: Record<string, RegionData> = {
     localInsights: [
       'Superannuation Guarantee (SG) is currently 11% and scheduled to increase.',
       'Negative gearing allows you to offset investment losses against your taxable income.',
-      'Medicare Levy of 2.0% applies to help fund the national healthcare system.'
+      'Medicare Levy of 2.0% applies to help fund the national healthcare system.',
+      'HECS-HELP loans in Australia are indexation-linked and repaid through the tax system based on your income.'
     ]
   }
 };
@@ -193,5 +196,40 @@ export const CALCULATORS: Record<string, CalculatorSEOData> = {
     title: 'Abu Dhabi Wealth Forecaster',
     description: 'Project your long-term wealth growth in Abu Dhabi with tax-efficient strategies.',
     keywords: 'Abu Dhabi investment, wealth management UAE, expat savings'
+  },
+  'personal-loan': {
+    title: 'Personal Loan & Early Payoff Calculator',
+    description: 'Calculate monthly payments for personal loans and simulate how extra payments reduce your interest.',
+    keywords: 'unsecured loan, personal finance, early payoff simulation'
+  },
+  'auto-loan': {
+    title: 'Auto (Car) Loan Calculator',
+    description: 'Estimate monthly car payments including sales tax, trade-ins, and down payments.',
+    keywords: 'car loan, vehicle finance, auto loan estimator'
+  },
+  'student-loan': {
+    title: 'Student Loan Repayment Calculator',
+    description: 'Analyze your educational debt including grace periods and interest capitalization.',
+    keywords: 'education loan, student debt, loan deferment planner'
+  },
+  'cagr': {
+    title: 'CAGR Calculator',
+    description: 'Calculate the Compound Annual Growth Rate of your investments over any period.',
+    keywords: 'cagr, investment growth, annualized return'
+  },
+  'dividend-yield': {
+    title: 'Dividend Yield Calculator',
+    description: 'Analyze stock dividend yields and projected annual passive income.',
+    keywords: 'dividend yield, passive income, stock dividends'
+  },
+  'child-education': {
+    title: 'Child Education Planner',
+    description: 'Plan for future education costs with inflation adjustments and SIP requirements.',
+    keywords: 'education fund, child savings, college inflation'
+  },
+  'rental-yield': {
+    title: 'Rental Yield Calculator',
+    description: 'Evaluate real estate profitability with gross and net rental yield metrics.',
+    keywords: 'rental yield, real estate roi, property investment'
   }
 };
