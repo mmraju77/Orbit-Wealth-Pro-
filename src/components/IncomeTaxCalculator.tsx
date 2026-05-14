@@ -9,61 +9,71 @@ import { useLocale } from '../context/LocaleContext';
 import { TaxInputs } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
+import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
-
-const DEFAULT_TAX_SLABS = [5, 12, 18, 28]; // Typical for GST
-const INTERNATIONAL_VAT_SLABS = [5, 7, 15, 20];
+import { REGIONAL_TAX_RULES } from '../data/taxRules';
 
 export default function IncomeTaxCalculator() {
+  const { region } = useParams<{ region: string }>();
   const { formatCurrency, labels, currency, formatValue } = useLocale();
   const [inputs, setInputs] = useState({
     amount: 1000000,
   });
   const [isMounted, setIsMounted] = useState(false);
 
-  // Income Tax Logic for India (Slab based)
-  const calculateIncomeTax = (income: number) => {
-    const calculateNewRegime = (i: number) => {
-      let tax = 0;
-      if (i <= 300000) tax = 0;
-      else if (i <= 600000) tax = (i - 300000) * 0.05;
-      else if (i <= 900000) tax = 300000 * 0.05 + (i - 600000) * 0.10;
-      else if (i <= 1200000) tax = 300000 * 0.05 + 300000 * 0.10 + (i - 900000) * 0.15;
-      else if (i <= 1500000) tax = 300000 * 0.05 + 300000 * 0.10 + 300000 * 0.15 + (i - 1200000) * 0.20;
-      else tax = 300000 * 0.05 + 300000 * 0.10 + 300000 * 0.15 + 300000 * 0.20 + (i - 1500000) * 0.30;
-      
-      // Rebate up to 7L
-      if (i <= 700000) tax = 0;
-      return tax + (tax * 0.04); // Cess
+  const countryKey = useMemo(() => {
+    if (region) return region.toLowerCase();
+    // Fallback based on currency if no region in URL
+    const map: Record<string, string> = {
+      INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
+      EUR: 'germany', // Default EUR to Germany for tax logic
+      CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark'
     };
+    return map[currency] || 'usa';
+  }, [region, currency]);
 
-    const calculateOldRegime = (i: number) => {
-      let tax = 0;
-      const taxable = i - 50000; // Std deduction
-      if (taxable <= 250000) tax = 0;
-      else if (taxable <= 500000) tax = (taxable - 250000) * 0.05;
-      else if (taxable <= 1000000) tax = 250000 * 0.05 + (taxable - 500000) * 0.20;
-      else tax = 250000 * 0.05 + 500000 * 0.20 + (taxable - 1000000) * 0.30;
-      
-      if (i <= 500000) tax = 0;
-      return tax + (tax * 0.04);
-    };
+  const taxRules = REGIONAL_TAX_RULES[countryKey] || REGIONAL_TAX_RULES['usa'];
 
-    return { 
-      new: calculateNewRegime(income), 
-      old: calculateOldRegime(income) 
-    };
+  const calculateTax = (income: number) => {
+    const taxableIncome = Math.max(0, income - taxRules.standardDeduction);
+    let totalTax = 0;
+    let prevLimit = 0;
+
+    for (const bracket of taxRules.brackets) {
+      if (taxableIncome <= prevLimit) break;
+
+      const currentLimit = bracket.limit === null ? taxableIncome : bracket.limit;
+      const taxableInThisBracket = Math.min(taxableIncome, currentLimit) - prevLimit;
+
+      if (taxableInThisBracket > 0) {
+        totalTax += taxableInThisBracket * bracket.rate;
+      }
+
+      if (bracket.limit === null) break;
+      prevLimit = bracket.limit;
+    }
+
+    if (taxRules.additionalTaxes) {
+      taxRules.additionalTaxes.forEach(tax => {
+        if (tax.type === 'tax_percent') {
+          totalTax += totalTax * tax.rate;
+        } else if (tax.type === 'income_percent') {
+          totalTax += income * tax.rate;
+        }
+      });
+    }
+
+    return totalTax;
   };
 
   const results = useMemo(() => {
-    const incomeTax = calculateIncomeTax(inputs.amount);
+    const tax = calculateTax(inputs.amount);
     return { 
-      taxAmount: incomeTax.new,
-      alternativeTax: incomeTax.old,
-      totalAmount: inputs.amount - incomeTax.new,
+      taxAmount: tax,
+      totalAmount: inputs.amount - tax,
       originalAmount: inputs.amount
     };
-  }, [inputs]);
+  }, [inputs, countryKey]);
 
   useEffect(() => {
     setIsMounted(true);
@@ -72,13 +82,13 @@ export default function IncomeTaxCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text(`Orbit Wealth Pro: Income Tax Analysis`, 20, 20);
+    doc.text(`Orbit Wealth Pro: Income Tax Analysis (${taxRules.currency})`, 20, 20);
     doc.setFontSize(12);
     doc.text(`Annual Gross Income: ${formatCurrency(inputs.amount)}`, 20, 40);
-    doc.text(`New Regime Tax: ${formatCurrency(results.taxAmount)}`, 20, 50);
-    doc.text(`Old Regime Tax: ${formatCurrency(results.alternativeTax || 0)}`, 20, 60);
-    doc.text(`Take-home Pay: ${formatCurrency(results.totalAmount)}`, 20, 70);
-    doc.save('income-tax-analysis.pdf');
+    doc.text(`Effective Tax: ${formatCurrency(results.taxAmount)}`, 20, 50);
+    doc.text(`Take-home Pay: ${formatCurrency(results.totalAmount)}`, 20, 60);
+    doc.text(`Jurisdiction: ${countryKey.toUpperCase()}`, 20, 70);
+    doc.save(`income-tax-analysis-${countryKey}.pdf`);
   };
 
   return (
@@ -90,7 +100,7 @@ export default function IncomeTaxCalculator() {
              <h1 className="text-3xl font-bold tracking-tighter text-white">Income Tax Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
-            Personalized income tax analysis comparing taxation regimes for global and regional jurisdictions.
+            Personalized income tax analysis for {countryKey.toUpperCase()} using the latest progressive fiscal logic.
           </p>
         </header>
 
@@ -123,9 +133,8 @@ export default function IncomeTaxCalculator() {
              <div className="p-4 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 flex items-center gap-4 animate-in fade-in zoom-in-95 duration-300">
                 <Shield className="text-[#0055FF] w-6 h-6" />
                 <p className="text-[10px] text-white/60 leading-relaxed italic">
-                   {currency === 'INR' 
-                     ? 'Includes Standard Deduction of ₹50,000 for salaried individuals and 4% Health & Education Cess.'
-                     : 'Calculates basic income tax tiers based on standard global progressive slab structures.'}
+                   Adjusted for {countryKey.toUpperCase()} standard deductions and progressive tax slabs. 
+                   {taxRules.additionalTaxes?.map(tax => ` Includes ${tax.name} at ${(tax.rate * 100).toFixed(1)}%.`).join(' ')}
                 </p>
              </div>
           </div>
@@ -142,18 +151,6 @@ export default function IncomeTaxCalculator() {
                     </div>
                     <Wallet className="text-white/5 w-10 h-10" />
                  </div>
-
-                 {currency === 'INR' && results.alternativeTax !== undefined && (
-                   <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/5 border-dashed flex items-center justify-between">
-                      <div>
-                        <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Old Regime Comparison</div>
-                        <div className="text-xl font-bold text-white/40 tracking-tighter">{formatCurrency(results.alternativeTax)}</div>
-                      </div>
-                      <div className={`px-3 py-1 rounded-full text-[8px] font-bold ${results.taxAmount < results.alternativeTax ? 'bg-green-500/20 text-green-500' : 'bg-red-500/20 text-red-500'}`}>
-                         {results.taxAmount < results.alternativeTax ? 'NEW REGIME BETTER' : 'OLD REGIME BETTER'}
-                      </div>
-                   </div>
-                 )}
 
                  <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/10 flex items-center justify-between">
                     <div>
@@ -185,16 +182,16 @@ export default function IncomeTaxCalculator() {
         title="Income Tax Calculator"
         howTo={[
           "Enter your annual gross income before any deductions to start the calculation.",
-          "For Indian users, the tool automatically compares the New and Old Tax Regimes for FY 2024-25.",
-          "Check the effective tax liability and identify the most beneficial regime for your bracket.",
+          `Our tool automatically applies the latest ${countryKey.toUpperCase()} tax brackets and standard deductions.`,
+          "Review the effective tax liability and see the impact on your monthly take-home pay.",
           "Export your detailed tax breakdown into a professional PDF summary."
         ]}
-        formula="Tax = Progressive Slab Logic + Standard Deductions"
+        formula="Tax = Progressive Bracket Logic + Deductions"
         benefits={[
-          "Instant comparison between multiple tax regimes to maximize savings.",
-          "Includes regional specific logic like Indian standard deductions and cess.",
-          "Dynamic bar charts visualizing the split between income, tax, and net pay.",
-          "User-friendly interface optimized for fast financial decision-making."
+          "Global coverage with region-specific logic for dozens of jurisdictions.",
+          "Dynamic visualization of income vs tax using bar charts.",
+          "Instant calculation of net pay after all statutory deductions.",
+          "User-friendly interface optimized for high-speed financial computation."
         ]}
       />
     </div>

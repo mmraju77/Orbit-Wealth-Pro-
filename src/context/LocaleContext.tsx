@@ -31,8 +31,8 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   GBP: { symbol: '£', name: 'GBP', locale: 'en-GB' },
   AED: { symbol: 'د.إ', name: 'AED', locale: 'ar-AE' },
   INR: { symbol: '₹', name: 'INR', locale: 'en-IN' },
-  CAD: { symbol: '$', name: 'CAD', locale: 'en-CA' },
-  AUD: { symbol: '$', name: 'AUD', locale: 'en-AU' },
+  CAD: { symbol: 'C$', name: 'CAD', locale: 'en-CA' },
+  AUD: { symbol: 'A$', name: 'AUD', locale: 'en-AU' },
   NOK: { symbol: 'kr', name: 'NOK', locale: 'nb-NO' },
   SEK: { symbol: 'kr', name: 'SEK', locale: 'sv-SE' },
   DKK: { symbol: 'kr', name: 'DKK', locale: 'da-DK' },
@@ -80,7 +80,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
             setCurrency('CAD');
           } else if (countryCode === 'AU') {
             setCurrency('AUD');
-          } else if (['DE', 'FR', 'ES', 'IT', 'NL'].includes(countryCode)) {
+          } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT'].includes(countryCode)) {
             setCurrency('EUR');
           } else {
             setCurrency('USD');

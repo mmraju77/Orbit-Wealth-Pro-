@@ -9,20 +9,65 @@ import { useLocale } from '../context/LocaleContext';
 import { RetirementInputs, RetirementResult } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
+import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
 
-const INITIAL_INPUTS: RetirementInputs = {
-  currentAge: 30,
-  retirementAge: 60,
-  currentSavings: 100000,
-  monthlyContribution: 10000,
-  expectedReturn: 12,
-  expectedInflation: 6
+const REGIONAL_DEFAULTS: Record<string, { retirementAge: number; inflation: number }> = {
+  india: { retirementAge: 60, inflation: 6 },
+  usa: { retirementAge: 67, inflation: 3 },
+  uk: { retirementAge: 67, inflation: 2.5 },
+  canada: { retirementAge: 65, inflation: 2.5 },
+  australia: { retirementAge: 67, inflation: 3 },
+  germany: { retirementAge: 67, inflation: 2 },
+  netherlands: { retirementAge: 67, inflation: 2 },
+  switzerland: { retirementAge: 65, inflation: 1.5 },
+  norway: { retirementAge: 67, inflation: 2 },
+  sweden: { retirementAge: 67, inflation: 2 },
+  denmark: { retirementAge: 67, inflation: 2 },
 };
 
 export default function RetirementCalculator() {
-  const { formatCurrency, currencySymbol, formatValue } = useLocale();
-  const [inputs, setInputs] = useState<RetirementInputs>(INITIAL_INPUTS);
+  const { region } = useParams<{ region: string }>();
+  const { formatCurrency, currencySymbol, formatValue, currency } = useLocale();
+
+  const countryKey = useMemo(() => {
+    if (region) return region.toLowerCase();
+    const map: Record<string, string> = {
+      INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
+      EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark',
+      NL: 'netherlands'
+    };
+    return map[currency] || 'usa';
+  }, [region, currency]);
+
+  const labels = useMemo(() => {
+    switch(countryKey) {
+      case 'australia': return { contribution: 'Super Contribution', savings: 'Current Super Balance' };
+      case 'canada': return { contribution: 'RRSP/TFSA Contribution', savings: 'Current RRSP Balance' };
+      case 'uk': return { contribution: 'Pension Contribution', savings: 'Current Pension Pot' };
+      default: return { contribution: 'Monthly Contribution', savings: 'Initial Corpus' };
+    }
+  }, [countryKey]);
+
+  const defaults = REGIONAL_DEFAULTS[countryKey] || REGIONAL_DEFAULTS['usa'];
+
+  const [inputs, setInputs] = useState<RetirementInputs>({
+    currentAge: 30,
+    retirementAge: defaults.retirementAge,
+    currentSavings: 100000,
+    monthlyContribution: 10000,
+    expectedReturn: 12,
+    expectedInflation: defaults.inflation
+  });
+
+  useEffect(() => {
+    setInputs(prev => ({
+      ...prev,
+      retirementAge: defaults.retirementAge,
+      expectedInflation: defaults.inflation
+    }));
+  }, [countryKey]);
+
   const [isMounted, setIsMounted] = useState(false);
 
   const results = useMemo(() => {
@@ -129,7 +174,7 @@ export default function RetirementCalculator() {
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Initial Corpus</label>
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{labels.savings}</label>
                     <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.currentSavings)}</div>
                  </div>
                  <input 
@@ -142,7 +187,7 @@ export default function RetirementCalculator() {
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Contribution</label>
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{labels.contribution}</label>
                     <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.monthlyContribution)}</div>
                  </div>
                  <input 
@@ -213,10 +258,27 @@ export default function RetirementCalculator() {
 
                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 mt-4">
                   <Info className="w-5 h-5 text-white/20 shrink-0" />
-                  <p className="text-[10px] text-white/40 leading-relaxed">
-                    Purchasing power represents what your future corpus would be worth in today's currency value, 
-                    accounting for a {inputs.expectedInflation}% annual cost-of-living increase.
-                  </p>
+                  <div className="space-y-1">
+                    <p className="text-[10px] text-white/40 leading-relaxed">
+                      Purchasing power represents what your future corpus would be worth in today's currency value, 
+                      accounting for a {inputs.expectedInflation}% annual cost-of-living increase.
+                    </p>
+                    {countryKey === 'australia' && (
+                      <p className="text-[10px] text-[#0055FF] font-bold">
+                        Tip: Employer Super Guarantee is currently 11.5% in Australia. Ensure this is factored into contributions.
+                      </p>
+                    )}
+                    {countryKey === 'canada' && (
+                      <p className="text-[10px] text-[#0055FF] font-bold">
+                        Note: RRSP contribution limits are strictly 18% of earned income up to a maximum annual cap.
+                      </p>
+                    )}
+                    {countryKey === 'uk' && (
+                      <p className="text-[10px] text-[#0055FF] font-bold">
+                        Hint: Tax relief on pension contributions can significantly boost your effective savings rate in the UK.
+                      </p>
+                    )}
+                  </div>
                </div>
              </div>
            )}

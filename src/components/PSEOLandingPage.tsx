@@ -6,7 +6,7 @@
 import React, { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { REGIONS, CALCULATORS } from '../data/pSEOData';
+import { resolveRegion, resolveCalculatorKey, resolveCalculatorData, REGIONS, CALCULATORS } from '../data/pSEOData';
 import { Shield, Globe, Info, CheckCircle2 } from 'lucide-react';
 import { useLocale, CurrencyCode } from '../context/LocaleContext';
 
@@ -59,34 +59,21 @@ export default function PSEOLandingPage() {
   const { calculator, region } = useParams<{ calculator: string; region: string }>();
   const { setCurrency, setNumberSystem } = useLocale();
 
-  const regionData = region ? REGIONS[region.toLowerCase()] : null;
-  const calcData = calculator ? CALCULATORS[calculator.toLowerCase()] : null;
-  const CalculatorComponent = calculator ? CALCULATOR_COMPONENTS[calculator.toLowerCase()] : null;
+  const regionData = resolveRegion(region);
+  const calcKey = resolveCalculatorKey(calculator);
+  const calcData = resolveCalculatorData(calculator);
+  const CalculatorComponent = calcKey ? CALCULATOR_COMPONENTS[calcKey] : null;
 
   useEffect(() => {
-    if (region) {
-      const r = region.toLowerCase();
-      if (r === 'india') {
-        setCurrency('INR');
+    if (regionData) {
+      setCurrency(regionData.currency as CurrencyCode);
+      if (regionData.name === 'India') {
         setNumberSystem('Indian');
-      } else if (r === 'usa') {
-        setCurrency('USD');
-        setNumberSystem('International');
-      } else if (r === 'uae') {
-        setCurrency('AED');
-        setNumberSystem('International');
-      } else if (r === 'uk') {
-        setCurrency('GBP');
-        setNumberSystem('International');
-      } else if (r === 'canada') {
-        setCurrency('CAD');
-        setNumberSystem('International');
-      } else if (r === 'australia') {
-        setCurrency('AUD');
+      } else {
         setNumberSystem('International');
       }
     }
-  }, [region, setCurrency, setNumberSystem]);
+  }, [regionData, setCurrency, setNumberSystem]);
 
   if (!regionData || !calcData || !CalculatorComponent) {
     return <Navigate to="/" replace />;

@@ -8,17 +8,49 @@ import { Percent, Download, Share2, Globe, Shield, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
+import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
 
-const DEFAULT_GST_SLABS = [5, 12, 18, 28]; 
+const REGIONAL_TAX_SLABS: Record<string, number[]> = {
+  india: [5, 12, 18, 28],
+  usa: [0, 4, 6, 8], // Sales tax varies by state
+  uae: [5],
+  uk: [5, 20],
+  canada: [5, 13, 15],
+  australia: [10],
+  germany: [7, 19],
+  netherlands: [9, 21],
+  switzerland: [2.6, 8.1],
+  norway: [12, 15, 25],
+  sweden: [6, 12, 25],
+  denmark: [25],
+};
 
 export default function GSTCalculator() {
+  const { region } = useParams<{ region: string }>();
   const { formatCurrency, labels, currency } = useLocale();
+
+  const countryKey = useMemo(() => {
+    if (region) return region.toLowerCase();
+    const map: Record<string, string> = {
+      INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
+      EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark'
+    };
+    return map[currency] || 'usa';
+  }, [region, currency]);
+
+  const slabs = REGIONAL_TAX_SLABS[countryKey] || [5, 12, 18, 28];
+
   const [inputs, setInputs] = useState({
     amount: 100000,
-    taxRate: 18,
+    taxRate: slabs[0],
     isAddingTax: true,
   });
+
+  useEffect(() => {
+    setInputs(prev => ({ ...prev, taxRate: slabs[0] }));
+  }, [countryKey]);
+
   const [isMounted, setIsMounted] = useState(false);
 
   const results = useMemo(() => {
@@ -109,7 +141,7 @@ export default function GSTCalculator() {
              <div className="space-y-4">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Tax Slab (%)</label>
                 <div className="grid grid-cols-4 gap-2 text-center">
-                  {DEFAULT_GST_SLABS.map(slab => (
+                  {slabs.map(slab => (
                     <button
                       key={slab}
                       onClick={() => setInputs({ ...inputs, taxRate: slab })}

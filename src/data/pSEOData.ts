@@ -88,7 +88,108 @@ export const REGIONS: Record<string, RegionData> = {
       'Medicare Levy of 2.0% applies to help fund the national healthcare system.',
       'HECS-HELP loans in Australia are indexation-linked and repaid through the tax system based on your income.'
     ]
-  }
+  },
+  germany: {
+    name: 'Germany',
+    currency: 'EUR',
+    smartContent: 'Germany uses a progressive income tax system with a "Solidarity Surcharge" (Solidaritätszuschlag). Retirement is funded through the statutory pension insurance (Gesetzliche Rentenversicherung) and private plans like Riester-Rente.',
+    taxContext: 'ELSTER & Progressive Tax',
+    localInsights: [
+      'The "Basic Tax-Free Allowance" (Grundfreibetrag) is adjusted annually.',
+      'Church Tax (Kirchensteuer) is applicable to members of certain religious communities.',
+      'Statutory health insurance contributions are split between employer and employee.',
+      'Mortgage interests are generally not tax-deductible for primary residences in Germany.'
+    ]
+  },
+  switzerland: {
+    name: 'Switzerland',
+    currency: 'CHF',
+    smartContent: 'Switzerland features a unique three-pillar retirement system (State, Occupational, and Private). Taxation occurs at federal, cantonal, and municipal levels, leading to significant regional variations.',
+    taxContext: 'Pillar 1-2-3 & Cantonal Tax',
+    localInsights: [
+      'Pillar 3a contributions offer significant immediate tax deductions for residents.',
+      'Cantonal tax rates vary—choosing your place of residence is a major financial decision.',
+      'Health insurance (Krankenkasse) is mandatory and managed through private providers.',
+      'Wealth tax applies in most cantons, unlike in many neighboring European countries.'
+    ]
+  },
+  norway: {
+    name: 'Norway',
+    currency: 'NOK',
+    smartContent: 'Norway utilizes a base income tax plus a "step tax" system. The Government Pension Fund Global (Oil Fund) underpins long-term stability, and the welfare system is extensive.',
+    taxContext: 'Skatteetaten & Step Tax',
+    localInsights: [
+      'Mortgage interest is tax-deductible at the base tax rate (currently 22%).',
+      'Norway has a wealth tax (formuesskatt) on net assets above a certain threshold.',
+      'BSU (Boligsparing for ungdom) provides younger residents with high-yield savings and tax deductions for housing.',
+      'The pension system includes a universal basic amount (G) adjusted annually.'
+    ]
+  },
+  sweden: {
+    name: 'Sweden',
+    currency: 'SEK',
+    smartContent: 'Sweden has a municipal tax and a state tax for higher earners. Retirement is based on the "Orange Envelope" system including income pension and premium pension (PPM).',
+    taxContext: 'Skatteverket & ISK Accounts',
+    localInsights: [
+      'ISK (Investeringssparkonto) accounts offer a simplified tax structure for trading and savings.',
+      'Property tax in Sweden is capped but calculated based on the assessed value.',
+      'Tax deductions are available for "RUT" (domestic services) and "ROT" (renovation) work.',
+      'Mortgage interest deductions (ränteavdrag) allow you to reclaim 30% of interest costs.'
+    ]
+  },
+  denmark: {
+    name: 'Denmark',
+    currency: 'DKK',
+    smartContent: 'Denmark features some of the highest income tax rates globally to fund extensive public services. The system includes labor market contributions (AM-bidrag) and church taxes.',
+    taxContext: 'SKAT & Flexible Labor Market',
+    localInsights: [
+      'Interest on loans is generally tax-deductible in Denmark.',
+      'Private pension plans (Ratepension, Livrente) provide tax breaks on contributions.',
+      'The "Green Tax" (grøn ejerafgift) is a significant factor for car owners.',
+      'First-time buyers often utilize special mortgage-backed bonds unique to the Danish market.'
+    ]
+  },
+  netherlands: {
+    name: 'Netherlands',
+    currency: 'EUR',
+    smartContent: 'The Dutch tax system uses a "Box" system (Box 1, 2, and 3). Mortgage interest deduction (Hypotheekrenteaftrek) is a cornerstone of the housing market policy.',
+    taxContext: 'Belastingdienst & Box System',
+    localInsights: [
+      'The "30% Ruling" can provide significant tax relief for highly skilled migrant workers.',
+      'Box 3 tax handles savings and investments based on a fictional return rate.',
+      'Mandatory health insurance (Basisverzekering) is a fixed monthly cost for all residents.',
+      'Holiday allowance (Vakantiegeld) is usually 8% of the annual gross salary.'
+    ]
+  },
+};
+
+// Map Aliases to actual data objects for cleaner routing
+REGIONS.uk = REGIONS.uk; // Ensure defined
+REGIONS.ca = REGIONS.canada;
+REGIONS.au = REGIONS.australia;
+REGIONS.de = REGIONS.germany;
+REGIONS.ch = REGIONS.switzerland;
+REGIONS.no = REGIONS.norway;
+REGIONS.se = REGIONS.sweden;
+REGIONS.dk = REGIONS.denmark;
+REGIONS.nl = REGIONS.netherlands;
+REGIONS.in = REGIONS.india;
+REGIONS.us = REGIONS.usa;
+
+export const resolveRegion = (key?: string) => {
+  if (!key) return null;
+  return REGIONS[key.toLowerCase()];
+};
+
+export const resolveCalculatorKey = (key?: string) => {
+  if (!key) return null;
+  return key.toLowerCase().replace('-calculator', '').replace('-planner', '').replace('-estimator', '');
+};
+
+export const resolveCalculatorData = (key?: string) => {
+  const k = resolveCalculatorKey(key);
+  if (!k) return null;
+  return CALCULATORS[k];
 };
 
 export const CALCULATORS: Record<string, CalculatorSEOData> = {

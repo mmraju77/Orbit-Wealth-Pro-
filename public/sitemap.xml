@@ -66,7 +66,78 @@
   <url><loc>https://orbitwealthpro.com/tools/retirement/australia</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/gst/australia</loc><priority>0.6</priority></url>
   <url><loc>https://orbitwealthpro.com/tools/student-loan/australia</loc><priority>0.7</priority></url>
-  <url><loc>https://orbitwealthpro.com/tools/personal-loan/australia</loc><priority>0.7</priority></url>
+
+  <!-- Regional pSEO Routes Expansion -->
+  <!-- UK -->
+  <url><loc>https://orbitwealthpro.com/uk/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/gst-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/sip-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/personal-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/auto-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/student-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/cagr-calculator</loc><priority>0.5</priority></url>
+  <url><loc>https://orbitwealthpro.com/uk/dividend-yield-calculator</loc><priority>0.5</priority></url>
+
+  <!-- CANADA -->
+  <url><loc>https://orbitwealthpro.com/ca/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/gst-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/sip-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/personal-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/auto-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/ca/student-loan-calculator</loc><priority>0.6</priority></url>
+
+  <!-- AUSTRALIA -->
+  <url><loc>https://orbitwealthpro.com/au/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/gst-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/sip-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/personal-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/auto-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/au/student-loan-calculator</loc><priority>0.6</priority></url>
+
+  <!-- GERMANY -->
+  <url><loc>https://orbitwealthpro.com/de/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/de/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/de/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/de/gst-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/de/sip-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/de/personal-loan-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/de/auto-loan-calculator</loc><priority>0.6</priority></url>
+
+  <!-- SWITZERLAND -->
+  <url><loc>https://orbitwealthpro.com/ch/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/ch/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/ch/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/ch/gst-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/ch/sip-calculator</loc><priority>0.6</priority></url>
+
+  <!-- NETHERLANDS -->
+  <url><loc>https://orbitwealthpro.com/nl/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/nl/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/nl/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/nl/gst-calculator</loc><priority>0.6</priority></url>
+  <url><loc>https://orbitwealthpro.com/nl/sip-calculator</loc><priority>0.6</priority></url>
+
+  <!-- NORDICS -->
+  <url><loc>https://orbitwealthpro.com/no/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/no/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/no/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/no/gst-calculator</loc><priority>0.6</priority></url>
+
+  <url><loc>https://orbitwealthpro.com/se/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/se/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/se/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/se/gst-calculator</loc><priority>0.6</priority></url>
+
+  <url><loc>https://orbitwealthpro.com/dk/mortgage-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/dk/income-tax-calculator</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/dk/retirement-planner</loc><priority>0.7</priority></url>
+  <url><loc>https://orbitwealthpro.com/dk/gst-calculator</loc><priority>0.6</priority></url>
 
   <!-- High Intent USA -->
   <url><loc>https://orbitwealthpro.com/tools/savings/usa</loc><priority>0.8</priority></url>

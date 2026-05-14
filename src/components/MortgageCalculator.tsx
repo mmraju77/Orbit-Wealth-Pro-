@@ -8,6 +8,7 @@ import { Landmark, Download, Share2, Info } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { MortgageInputs, AmortizationPeriod } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
+import { useParams } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
@@ -21,13 +22,31 @@ const INITIAL_INPUTS: MortgageInputs = {
 };
 
 export default function MortgageCalculator() {
-  const { formatCurrency, currencySymbol } = useLocale();
+  const { region } = useParams<{ region: string }>();
+  const { formatCurrency, currencySymbol, currency } = useLocale();
+
+  const countryKey = useMemo(() => {
+    if (region) return region.toLowerCase();
+    const map: Record<string, string> = {
+      INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
+      EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark',
+    };
+    return map[currency] || 'usa';
+  }, [region, currency]);
+
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
   const results = useMemo(() => {
     const principal = inputs.homePrice - inputs.downPayment;
-    const monthlyRate = inputs.interestRate / 100 / 12;
+    let monthlyRate = inputs.interestRate / 100 / 12;
+
+    // Canada specific compounding rule
+    if (countryKey === 'canada') {
+      const annualRate = inputs.interestRate / 100;
+      monthlyRate = Math.pow(Math.pow(1 + annualRate / 2, 2), 1 / 12) - 1;
+    }
+
     const numberOfPayments = inputs.loanTerm * 12;
 
     let monthlyPayment = 0;
@@ -224,6 +243,21 @@ export default function MortgageCalculator() {
                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.totalPayment)}</div>
                 </div>
               </div>
+
+              {countryKey === 'canada' && (
+                <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-[10px] text-white/40 italic leading-relaxed">
+                    * Calculated using Canadian semi-annual compounding laws.
+                  </p>
+                </div>
+              )}
+              {countryKey === 'uk' && (
+                <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/5">
+                  <p className="text-[10px] text-white/40 italic leading-relaxed">
+                    * In the UK, rates usually fix for 2-5 years before reverting to SVR.
+                  </p>
+                </div>
+              )}
             </>
           )}
         </section>

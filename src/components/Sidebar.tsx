@@ -183,10 +183,14 @@ export default function Sidebar() {
             <div>
               <label className="text-[8px] font-bold text-white/20 uppercase tracking-widest block mb-2 px-1">Region</label>
               <div className="grid grid-cols-4 gap-1">
-                {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED'] as CurrencyCode[]).map((c) => (
+                {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => (
                   <button
                     key={c}
-                    onClick={() => setCurrency(c)}
+                    onClick={() => {
+                      setCurrency(c);
+                      if (c === 'INR') setNumberSystem('Indian');
+                      else setNumberSystem('International');
+                    }}
                     className={cn(
                       "h-5 rounded text-[8px] font-bold transition-all",
                       currency === c ? "bg-[#0055FF] text-white" : "bg-white/5 text-white/20 hover:bg-white/10"
