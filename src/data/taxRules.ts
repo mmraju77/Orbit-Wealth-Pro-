@@ -141,5 +141,10 @@ export const REGIONAL_TAX_RULES: Record<string, CountryTaxRules> = {
       { limit: null, rate: 0.115 },
     ],
     standardDeduction: 0,
+  },
+  uae: {
+    currency: 'AED',
+    brackets: [{ limit: null, rate: 0 }],
+    standardDeduction: 0,
   }
 };
