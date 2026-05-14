@@ -26,7 +26,7 @@ export default function IncomeTaxCalculator() {
     // Fallback based on currency if no region in URL
     const map: Record<string, string> = {
       INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
-      AED: 'uae', EUR: 'germany', 
+      EUR: 'germany', // Default EUR to Germany for tax logic
       CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark'
     };
     return map[currency] || 'usa';

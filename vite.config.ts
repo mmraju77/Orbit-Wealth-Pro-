@@ -10,21 +10,15 @@ export default defineConfig(({mode}) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react')) return 'vendor-react';
-              if (id.includes('lucide')) return 'vendor-icons';
-              if (id.includes('recharts')) return 'vendor-charts';
-              if (id.includes('motion')) return 'vendor-motion';
-              return 'vendor-others';
-            }
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            'vendor-recharts': ['recharts'],
+            'vendor-utils': ['lucide-react', 'jspdf', 'motion/react'],
           }
         }
       },
-      chunkSizeWarningLimit: 600,
+      chunkSizeWarningLimit: 1000,
       minify: 'esbuild',
-      cssMinify: true,
-      reportCompressedSize: false,
     },
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),

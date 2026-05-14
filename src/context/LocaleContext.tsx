@@ -60,43 +60,56 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Only auto-detect if no preference is saved
     if (!localStorage.getItem('user-currency')) {
-      const countryCode = navigator.language.split('-')[1];
-      if (countryCode === 'IN') {
-        setCurrency('INR');
-        setNumberSystem('Indian');
-      } else if (countryCode === 'AE') {
-        setCurrency('AED');
-      } else if (['GB', 'UK'].includes(countryCode)) {
-        setCurrency('GBP');
-      } else if (['CA'].includes(countryCode)) {
-        setCurrency('CAD');
-      } else if (['AU'].includes(countryCode)) {
-        setCurrency('AUD');
-      } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT'].includes(countryCode)) {
-        setCurrency('EUR');
-      }
+      const detectRegion = async () => {
+        try {
+          const res = await fetch('https://ipapi.co/json/');
+          const data = await res.json();
+          const countryCode = data.country_code;
+
+          if (countryCode === 'IN') {
+            setCurrency('INR');
+            setNumberSystem('Indian');
+          } else if (countryCode === 'AE') {
+            setCurrency('AED');
+          } else if (['GB', 'UK'].includes(countryCode)) {
+            setCurrency('GBP');
+          } else if (['NO', 'SE', 'DK', 'CH'].includes(countryCode)) {
+            const map: any = { NO: 'NOK', SE: 'SEK', DK: 'DKK', CH: 'CHF' };
+            setCurrency(map[countryCode]);
+          } else if (countryCode === 'CA') {
+            setCurrency('CAD');
+          } else if (countryCode === 'AU') {
+            setCurrency('AUD');
+          } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT'].includes(countryCode)) {
+            setCurrency('EUR');
+          } else {
+            setCurrency('USD');
+          }
+        } catch (error) {
+          console.error('Failed to auto-detect region:', error);
+        }
+      };
+      detectRegion();
     }
   }, []);
 
-  // Memoize formatters to prevent performance degradation
-  const formatters = React.useMemo(() => {
+  const formatCurrency = (val: number) => {
     const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
-    return {
-      currency: new Intl.NumberFormat(locale, {
-        style: 'currency',
-        currency: currency,
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 0,
-      }),
-      value: new Intl.NumberFormat(locale, {
-        minimumFractionDigits: 0,
-        maximumFractionDigits: 2,
-      })
-    };
-  }, [currency, numberSystem]);
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(val);
+  };
 
-  const formatCurrency = (val: number) => formatters.currency.format(val);
-  const formatValue = (val: number) => formatters.value.format(val);
+  const formatValue = (val: number) => {
+    const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
+    return new Intl.NumberFormat(locale, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    }).format(val);
+  };
 
   const getLabels = () => {
     const map: Record<CurrencyCode, any> = {

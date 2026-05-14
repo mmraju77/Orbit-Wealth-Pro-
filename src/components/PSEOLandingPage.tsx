@@ -3,40 +3,32 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, lazy, Suspense } from 'react';
+import React, { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { resolveRegion, resolveCalculatorKey, resolveCalculatorData, REGIONS, CALCULATORS } from '../data/pSEOData';
 import { Shield, Globe, Info, CheckCircle2 } from 'lucide-react';
 import { useLocale, CurrencyCode } from '../context/LocaleContext';
 
-// Dynamic components with lazy loading
-const MortgageCalculator = lazy(() => import('./MortgageCalculator'));
-const RetirementCalculator = lazy(() => import('./RetirementCalculator'));
-const IncomeTaxCalculator = lazy(() => import('./IncomeTaxCalculator'));
-const GSTCalculator = lazy(() => import('./GSTCalculator'));
-const FDRDCalculator = lazy(() => import('./FDRDCalculator'));
-const SIPCalculator = lazy(() => import('./SIPCalculator'));
-const LumpsumCalculator = lazy(() => import('./LumpsumCalculator'));
-const EMICalculator = lazy(() => import('./EMICalculator'));
-const LoanEligibility = lazy(() => import('./LoanEligibility'));
-const BalanceTransfer = lazy(() => import('./BalanceTransfer'));
-const GratuityCalculator = lazy(() => import('./GratuityCalculator'));
-const CurrencyConverter = lazy(() => import('./CurrencyConverter'));
-const MFCalculator = lazy(() => import('./MFCalculator'));
-const PersonalLoanCalculator = lazy(() => import('./PersonalLoanCalculator'));
-const AutoLoanCalculator = lazy(() => import('./AutoLoanCalculator'));
-const StudentLoanCalculator = lazy(() => import('./StudentLoanCalculator'));
-const CAGRCalculator = lazy(() => import('./CAGRCalculator'));
-const DividendYieldCalculator = lazy(() => import('./DividendYieldCalculator'));
-const ChildEducationPlanner = lazy(() => import('./ChildEducationPlanner'));
-const RentalYieldCalculator = lazy(() => import('./RentalYieldCalculator'));
-const DebtSnowball = lazy(() => import('./DebtSnowball'));
-const HLVCalculator = lazy(() => import('./HLVCalculator'));
-const BreakEvenCalculator = lazy(() => import('./BreakEvenCalculator'));
-const CreditCardPayoff = lazy(() => import('./CreditCardPayoff'));
+// Import all calculators to render them dynamically
+import MortgageCalculator from './MortgageCalculator';
+import RetirementCalculator from './RetirementCalculator';
+import IncomeTaxCalculator from './IncomeTaxCalculator';
+import GSTCalculator from './GSTCalculator';
+import FDRDCalculator from './FDRDCalculator';
+import SIPCalculator from './SIPCalculator';
+import LumpsumCalculator from './LumpsumCalculator';
+import EMICalculator from './EMICalculator';
+import LoanEligibility from './LoanEligibility';
+import BalanceTransfer from './BalanceTransfer';
+import GratuityCalculator from './GratuityCalculator';
+import CurrencyConverter from './CurrencyConverter';
+import MFCalculator from './MFCalculator';
+import PersonalLoanCalculator from './PersonalLoanCalculator';
+import AutoLoanCalculator from './AutoLoanCalculator';
+import StudentLoanCalculator from './StudentLoanCalculator';
 
-const CALCULATOR_COMPONENTS: Record<string, React.LazyExoticComponent<React.ComponentType>> = {
+const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'mortgage': MortgageCalculator,
   'retirement': RetirementCalculator,
   'income-tax': IncomeTaxCalculator,
@@ -61,39 +53,16 @@ const CALCULATOR_COMPONENTS: Record<string, React.LazyExoticComponent<React.Comp
   'personal-loan': PersonalLoanCalculator,
   'auto-loan': AutoLoanCalculator,
   'student-loan': StudentLoanCalculator,
-  'cagr': CAGRCalculator,
-  'dividend-yield': DividendYieldCalculator,
-  'child-education': ChildEducationPlanner,
-  'rental-yield': RentalYieldCalculator,
-  'debt-snowball': DebtSnowball,
-  'hlv': HLVCalculator,
-  'break-even': BreakEvenCalculator,
-  'credit-card-payoff': CreditCardPayoff,
 };
 
 export default function PSEOLandingPage() {
   const { calculator, region } = useParams<{ calculator: string; region: string }>();
   const { setCurrency, setNumberSystem } = useLocale();
 
-  // Robust resolution logic to handle parameter swapping
-  let regionData = resolveRegion(region);
-  let calcData = resolveCalculatorData(calculator);
-  let resolvedCalcKey = resolveCalculatorKey(calculator);
-
-  if (!regionData || !calcData) {
-    // Try swapping params
-    const swappedRegionData = resolveRegion(calculator);
-    const swappedCalcData = resolveCalculatorData(region);
-    const swappedCalcKey = resolveCalculatorKey(region);
-
-    if (swappedRegionData && swappedCalcData) {
-      regionData = swappedRegionData;
-      calcData = swappedCalcData;
-      resolvedCalcKey = swappedCalcKey;
-    }
-  }
-  
-  const CalculatorComponent = resolvedCalcKey ? CALCULATOR_COMPONENTS[resolvedCalcKey] : null;
+  const regionData = resolveRegion(region);
+  const calcKey = resolveCalculatorKey(calculator);
+  const calcData = resolveCalculatorData(calculator);
+  const CalculatorComponent = calcKey ? CALCULATOR_COMPONENTS[calcKey] : null;
 
   useEffect(() => {
     if (regionData) {

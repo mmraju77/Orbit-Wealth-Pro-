@@ -29,7 +29,7 @@ export default function MortgageCalculator() {
     if (region) return region.toLowerCase();
     const map: Record<string, string> = {
       INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
-      AED: 'uae', EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark',
+      EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark',
     };
     return map[currency] || 'usa';
   }, [region, currency]);
@@ -136,15 +136,7 @@ export default function MortgageCalculator() {
              <div className="space-y-4">
                 <div className="flex justify-between items-center">
                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Home Price</label>
-                   <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded-lg border border-white/5">
-                      <span className="text-white/30 text-xs">{currencySymbol}</span>
-                      <input 
-                        type="number"
-                        value={inputs.homePrice}
-                        onChange={(e) => setInputs({ ...inputs, homePrice: Number(e.target.value), downPayment: (Number(e.target.value) * inputs.downPaymentPercent) / 100 })}
-                        className="bg-transparent border-none text-white font-bold w-24 outline-none text-right"
-                      />
-                    </div>
+                   <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.homePrice)}</div>
                 </div>
                 <input 
                   type="range" min="50000" max="5000000" step="10000"

@@ -8,7 +8,6 @@ import { RefreshCcw, Download, Share2, ArrowRightLeft, TrendingUp, Globe, Clock 
 import { useLocale, CurrencyCode } from '../context/LocaleContext';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
-import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
 
 const SUPPORTED_CURRENCIES: CurrencyCode[] = ['USD', 'EUR', 'GBP', 'AED', 'INR'];
@@ -23,36 +22,13 @@ const MOCK_RATES: Record<string, number> = {
 };
 
 export default function CurrencyConverter() {
-  const { region } = useParams<{ region: string }>();
-  const { formatValue, currency } = useLocale();
+  const { formatValue } = useLocale();
   const [amount, setAmount] = useState<number>(1000);
   const [from, setFrom] = useState<CurrencyCode>('USD');
   const [to, setTo] = useState<CurrencyCode>('INR');
   const [isMounted, setIsMounted] = useState(false);
   const [isUpdating, setIsUpdating] = useState(false);
   const [lastUpdated, setLastUpdated] = useState(new Date());
-
-  useEffect(() => {
-    if (region) {
-      const r = region.toLowerCase();
-      if (r === 'uae') {
-        setFrom('AED');
-        setTo('INR');
-      } else if (r === 'usa') {
-        setFrom('USD');
-        setTo('EUR');
-      } else if (r === 'uk') {
-        setFrom('GBP');
-        setTo('USD');
-      } else if (r === 'india') {
-        setFrom('INR');
-        setTo('USD');
-      }
-    } else {
-      // Use local currency if no region in URL
-      setFrom(currency as CurrencyCode);
-    }
-  }, [region, currency]);
 
   const convertedAmount = useMemo(() => {
     const amountInUSD = amount / MOCK_RATES[from];

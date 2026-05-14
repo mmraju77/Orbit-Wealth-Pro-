@@ -101,15 +101,7 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Investment</label>
-                <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded-lg border border-white/5">
-                  <span className="text-white/30 text-xs">{currencySymbol}</span>
-                  <input 
-                    type="number"
-                    value={inputs.monthlyInvestment}
-                    onChange={(e) => setInputs({ ...inputs, monthlyInvestment: Number(e.target.value) })}
-                    className="bg-transparent border-none text-[white] font-bold w-24 outline-none text-right"
-                  />
-                </div>
+                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(inputs.monthlyInvestment || 0)}</div>
               </div>
               <input 
                 type="range" min="500" max="100000" step="500"
@@ -122,16 +114,7 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
-                <div className="flex items-center gap-2 bg-black/40 px-3 py-1 rounded-lg border border-white/5">
-                  <input 
-                    type="number"
-                    step="0.1"
-                    value={inputs.expectedReturn}
-                    onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
-                    className="bg-transparent border-none text-[white] font-bold w-16 outline-none text-right"
-                  />
-                  <span className="text-white/30 text-xs">%</span>
-                </div>
+                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.expectedReturn}%</div>
               </div>
               <input 
                 type="range" min="1" max="30" step="0.5"
