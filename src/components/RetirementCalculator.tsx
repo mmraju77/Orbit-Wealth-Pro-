@@ -128,7 +128,7 @@ export default function RetirementCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-      <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#0055FF]"></div>
@@ -153,7 +153,7 @@ export default function RetirementCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
                     <input 
@@ -198,7 +198,7 @@ export default function RetirementCalculator() {
                  />
               </div>
 
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
                     <input 
@@ -222,14 +222,14 @@ export default function RetirementCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between min-h-[500px]">
            {isMounted && (
              <div className="flex-1 flex flex-col">
-               <div className="grid grid-cols-2 gap-4 mb-8">
-                  <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                  <div className="p-4 md:p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
                      <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Raw Corpus</div>
-                     <div className="text-2xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
+                     <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
                   </div>
-                  <div className="p-6 bg-[#0055FF]/20 rounded-2xl border border-[#0055FF]/30 text-center ring-2 ring-[#0055FF]/50 ring-offset-4 ring-offset-black">
+                  <div className="p-4 md:p-6 bg-[#0055FF]/20 rounded-2xl border border-[#0055FF]/30 text-center ring-2 ring-[#0055FF]/50 ring-offset-4 ring-offset-black">
                      <div className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-1">Purchasing Power</div>
-                     <div className="text-2xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
+                     <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
                   </div>
                </div>
 

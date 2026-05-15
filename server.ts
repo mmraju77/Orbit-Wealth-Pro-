@@ -67,17 +67,31 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
+  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
+  const distPath = path.resolve(process.cwd(), "dist");
+
+  if (!isProd) {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
   } else {
-    const distPath = path.join(process.cwd(), "dist");
+    // Serve static files from the dist directory
     app.use(express.static(distPath));
+
+    // Handle all other routes by serving index.html (Catch-all for SPA deep links)
     app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
+      // Ensure we don't accidentally catch static assets that might be 404ing (avoid infinite loops of index.html)
+      if (req.path.includes('.') || req.path.startsWith('/assets/')) {
+        return res.status(404).send('Not found');
+      }
+      res.sendFile(path.join(distPath, "index.html"), (err) => {
+        if (err) {
+          console.error("Error sending index.html:", err);
+          res.status(500).send("Server Error: Unable to serve index.html");
+        }
+      });
     });
   }
 

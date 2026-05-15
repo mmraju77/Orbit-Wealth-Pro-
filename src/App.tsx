@@ -9,8 +9,8 @@ import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-route
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
-    const main = document.querySelector('main');
-    if (main) main.scrollTo(0, 0);
+    const scrollContainer = document.querySelector('.overflow-y-auto');
+    if (scrollContainer) scrollContainer.scrollTo(0, 0);
     window.scrollTo(0, 0);
   }, [pathname]);
   return null;
@@ -61,18 +61,38 @@ const LoadingFallback = () => (
 );
 import Footer from './components/Footer';
 
+import { Menu, X, ShieldCheck } from 'lucide-react';
+
 export default function App() {
+  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+
   return (
     <HelmetProvider>
       <LocaleProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/">
           <ScrollToTop />
-          <div className="flex bg-[#050505] min-h-screen text-white font-sans selection:bg-[#0055FF] selection:text-white">
-            <Sidebar />
+          <div className="flex bg-[#050505] min-h-screen text-white font-sans selection:bg-[#0055FF] selection:text-white relative">
+            <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
             
-            <main className="flex-1 ml-64 min-h-screen relative overflow-hidden">
-              <div className="absolute inset-0 p-16 md:p-24 lg:p-32 overflow-y-auto overflow-x-hidden">
-                <div className="max-w-7xl mx-auto pb-32">
+            <main className="flex-1 md:ml-64 min-h-screen flex flex-col relative overflow-hidden">
+              {/* Mobile Header */}
+              <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10 z-50 flex items-center justify-between px-6">
+                <div className="flex items-center gap-2">
+                   <div className="w-8 h-8 bg-[#0055FF] rounded-lg flex items-center justify-center">
+                     <ShieldCheck className="w-5 h-5 text-white" />
+                   </div>
+                   <span className="font-display font-black text-sm tracking-tighter uppercase">Orbit Pro</span>
+                </div>
+                <button 
+                  onClick={() => setSidebarOpen(true)}
+                  className="p-2 -mr-2 text-white/60 hover:text-white transition-colors"
+                >
+                  <Menu className="w-6 h-6" />
+                </button>
+              </div>
+
+              <div className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
+                <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
                   <Suspense fallback={<LoadingFallback />}>
                     <Routes>
                       <Route path="/" element={<Dashboard />} />

@@ -165,17 +165,17 @@ function NewsCard({ article }: { article: NewsArticle }) {
 }
 export default function Dashboard() {
   return (
-    <div className="space-y-16 pt-8 pb-16">
+    <div className="space-y-16 pb-16">
       <header className="space-y-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#0055FF]"></div>
           <span className="text-[9px] font-black text-[#0055FF] uppercase tracking-[0.5em]">Orbit Wealth Pro — Global Fintech Engine</span>
         </div>
-        <h1 className="text-5xl md:text-7xl font-display font-medium text-white tracking-tighter leading-[1.1]">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-white tracking-tighter leading-[1.1]">
           Financial <br />
           <span className="text-white/10">Dashboard.</span>
         </h1>
-        <p className="text-white/40 max-w-xl text-base font-light leading-relaxed">
+        <p className="text-white/40 max-w-xl text-sm md:text-base font-light leading-relaxed">
           Access Orbit Wealth Pro's suite of institutional-grade financial tools. 
           Precision engineering for the modern global investor.
         </p>
@@ -187,7 +187,7 @@ export default function Dashboard() {
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {ALL_CARDS.map((card, idx) => (
             <motion.div
               key={card.path}
@@ -198,7 +198,7 @@ export default function Dashboard() {
             >
               <Link 
                 to={card.path}
-                className="group block p-8 bg-white/[0.01] border border-white/[0.04] rounded-[2rem] hover:bg-white/[0.02] hover:border-[#0055FF]/30 transition-all duration-700 h-full relative overflow-hidden"
+                className="group block p-[15px] md:p-8 bg-white/[0.01] border border-white/[0.04] rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.02] hover:border-[#0055FF]/30 transition-all duration-700 h-full relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <ArrowRight className="w-4 h-4 text-[#0055FF]" />
@@ -235,11 +235,9 @@ export default function Dashboard() {
            </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {NEWS_ARTICLES.map((article, idx) => (
-            <div key={idx}>
-              <NewsCard article={article} />
-            </div>
+            <NewsCard key={idx} article={article} />
           ))}
         </div>
         

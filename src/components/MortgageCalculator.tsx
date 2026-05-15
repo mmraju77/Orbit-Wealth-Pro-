@@ -107,7 +107,7 @@ export default function MortgageCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-      <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
+      <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#0055FF]"></div>
