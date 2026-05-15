@@ -123,7 +123,7 @@ export default function PersonalLoanCalculator() {
                />
             </div>
 
-            <div className="grid grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
                   <input 
@@ -164,7 +164,7 @@ export default function PersonalLoanCalculator() {
 
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between">
           <div className="space-y-8">
-             <div className="grid grid-cols-2 gap-4">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-[#0055FF]/5 rounded-2xl border border-[#0055FF]/10 text-center">
                    <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Standard EMI</div>
                    <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
@@ -178,7 +178,7 @@ export default function PersonalLoanCalculator() {
              {extraPayment > 0 && (
                 <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 space-y-4">
                    <h3 className="text-sm font-bold text-emerald-500 uppercase tracking-widest">Early Payoff Impact</h3>
-                   <div className="grid grid-cols-2 gap-4">
+                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                          <div className="text-[10px] text-white/40 font-bold">New Duration</div>
                          <div className="text-xl font-bold text-white">{results.earlyPayoff.months} Months</div>

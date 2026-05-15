@@ -12,6 +12,7 @@ import jsPDF from 'jspdf';
 import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
 import { REGIONAL_TAX_RULES } from '../data/taxRules';
+import { normalizeRegionKey } from '../data/pSEOData';
 
 export default function IncomeTaxCalculator() {
   const { region } = useParams<{ region: string }>();
@@ -22,7 +23,7 @@ export default function IncomeTaxCalculator() {
   const [isMounted, setIsMounted] = useState(false);
 
   const countryKey = useMemo(() => {
-    if (region) return region.toLowerCase();
+    if (region) return normalizeRegionKey(region);
     // Fallback based on currency if no region in URL
     const map: Record<string, string> = {
       INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',

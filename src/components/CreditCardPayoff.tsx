@@ -78,7 +78,7 @@ export default function CreditCardPayoff() {
                  <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Card Balance</label>
                  <input type="number" value={balance} onChange={e => setBalance(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl shadow-inner" />
               </div>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-4">
                     <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
                        <span>APR (%)</span>
@@ -102,7 +102,7 @@ export default function CreditCardPayoff() {
              </div>
            ) : (
              <>
-               <div className="grid grid-cols-2 gap-6">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
                      <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.3em]">Months to Payoff</div>
                      <div className="text-5xl font-display font-medium text-white">{results.months}</div>

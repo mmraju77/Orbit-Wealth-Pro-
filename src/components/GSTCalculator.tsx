@@ -10,6 +10,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, B
 import jsPDF from 'jspdf';
 import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
+import { normalizeRegionKey } from '../data/pSEOData';
 
 const REGIONAL_TAX_SLABS: Record<string, number[]> = {
   india: [5, 12, 18, 28],
@@ -31,7 +32,7 @@ export default function GSTCalculator() {
   const { formatCurrency, labels, currency } = useLocale();
 
   const countryKey = useMemo(() => {
-    if (region) return region.toLowerCase();
+    if (region) return normalizeRegionKey(region);
     const map: Record<string, string> = {
       INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
       EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark'

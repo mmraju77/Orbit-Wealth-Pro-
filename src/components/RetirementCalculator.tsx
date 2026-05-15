@@ -11,6 +11,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tool
 import jsPDF from 'jspdf';
 import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
+import { normalizeRegionKey } from '../data/pSEOData';
 
 const REGIONAL_DEFAULTS: Record<string, { retirementAge: number; inflation: number }> = {
   india: { retirementAge: 60, inflation: 6 },
@@ -31,7 +32,7 @@ export default function RetirementCalculator() {
   const { formatCurrency, currencySymbol, formatValue, currency } = useLocale();
 
   const countryKey = useMemo(() => {
-    if (region) return region.toLowerCase();
+    if (region) return normalizeRegionKey(region);
     const map: Record<string, string> = {
       INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
       EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark',

@@ -178,7 +178,27 @@ REGIONS.us = REGIONS.usa;
 
 export const resolveRegion = (key?: string) => {
   if (!key) return null;
-  return REGIONS[key.toLowerCase()];
+  return REGIONS[normalizeRegionKey(key)];
+};
+
+export const normalizeRegionKey = (key?: string): string => {
+  if (!key) return 'usa';
+  const k = key.toLowerCase();
+  const aliasMap: Record<string, string> = {
+    'us': 'usa',
+    'uk': 'uk',
+    'ca': 'canada',
+    'au': 'australia',
+    'de': 'germany',
+    'ch': 'switzerland',
+    'no': 'norway',
+    'se': 'sweden',
+    'dk': 'denmark',
+    'nl': 'netherlands',
+    'in': 'india',
+    'uae': 'uae'
+  };
+  return aliasMap[k] || k;
 };
 
 export const resolveCalculatorKey = (key?: string) => {

@@ -12,6 +12,7 @@ import { useParams } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import { normalizeRegionKey } from '../data/pSEOData';
 
 const INITIAL_INPUTS: MortgageInputs = {
   homePrice: 500000,
@@ -26,7 +27,7 @@ export default function MortgageCalculator() {
   const { formatCurrency, currencySymbol, currency } = useLocale();
 
   const countryKey = useMemo(() => {
-    if (region) return region.toLowerCase();
+    if (region) return normalizeRegionKey(region);
     const map: Record<string, string> = {
       INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
       EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark',

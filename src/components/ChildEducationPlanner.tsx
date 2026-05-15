@@ -75,7 +75,7 @@ export default function ChildEducationPlanner() {
                    className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl"
                  />
               </div>
-              <div className="grid grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-2">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Education Inflation (%)</label>
                     <input 

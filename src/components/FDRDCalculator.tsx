@@ -133,7 +133,7 @@ export default function FDRDCalculator() {
                </div>
              </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Rate of Interest (%)</label>
                   <input 

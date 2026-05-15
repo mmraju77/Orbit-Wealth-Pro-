@@ -115,7 +115,7 @@ const NEWS_ARTICLES: NewsArticle[] = [
   }
 ];
 
-function NewsCard({ article }: { article: NewsArticle }) {
+const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}

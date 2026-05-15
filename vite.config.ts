@@ -8,6 +8,7 @@ export default defineConfig(({mode}) => {
   return {
     plugins: [react(), tailwindcss()],
     base: '/',
+    appType: 'spa',
     build: {
       rollupOptions: {
         output: {

@@ -67,33 +67,41 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod" || !process.env.NODE_ENV;
+  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
   const distPath = path.resolve(process.cwd(), "dist");
 
-  if (!isProd && process.env.NODE_ENV !== "test") {
+  if (isProd) {
+    // 1. Serve static assets with absolute paths in mind
+    app.use(express.static(distPath, {
+      index: false,
+      maxAge: '1y',
+      immutable: true,
+      fallthrough: true
+    }));
+
+    // 2. Catch-all: Send index.html for any request that didn't match a static file
+    // This allows React Router to handle the route client-side.
+    app.get("*", (req, res) => {
+      // Ignore API routes
+      if (req.path.startsWith('/api/')) {
+        return res.status(404).json({ error: "API route not found" });
+      }
+
+      // Serve index.html for everything else (SPA routes)
+      res.sendFile(path.join(distPath, "index.html"), (err) => {
+        if (err) {
+          console.error("Critical error: Missing index.html in dist folder during production request:", req.path);
+          res.status(500).send("Application initialization error. Please try again later.");
+        }
+      });
+    });
+  } else {
+    // Development mode with Vite middleware
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
     });
     app.use(vite.middlewares);
-  } else {
-    // Serve static files from the dist directory
-    app.use(express.static(distPath));
-
-    // Handle all other routes by serving index.html (Catch-all for SPA deep links)
-    app.get("*", (req, res) => {
-      // Robust SPA fallback: only 404 for files that have extensions (except .html)
-      const parsedPath = path.parse(req.path);
-      if (parsedPath.ext && parsedPath.ext !== '.html') {
-        return res.status(404).send('Not found');
-      }
-      res.sendFile(path.join(distPath, "index.html"), (err) => {
-        if (err) {
-          console.error("Error sending index.html:", err);
-          res.status(500).send("Server Error: Missing index.html in dist/");
-        }
-      });
-    });
   }
 
   app.listen(PORT, "0.0.0.0", () => {
