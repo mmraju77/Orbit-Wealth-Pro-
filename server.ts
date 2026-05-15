@@ -67,10 +67,10 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
+  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod" || !process.env.NODE_ENV;
   const distPath = path.resolve(process.cwd(), "dist");
 
-  if (!isProd) {
+  if (!isProd && process.env.NODE_ENV !== "test") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -82,14 +82,15 @@ async function startServer() {
 
     // Handle all other routes by serving index.html (Catch-all for SPA deep links)
     app.get("*", (req, res) => {
-      // Ensure we don't accidentally catch static assets that might be 404ing (avoid infinite loops of index.html)
-      if (req.path.includes('.') || req.path.startsWith('/assets/')) {
+      // Robust SPA fallback: only 404 for files that have extensions (except .html)
+      const parsedPath = path.parse(req.path);
+      if (parsedPath.ext && parsedPath.ext !== '.html') {
         return res.status(404).send('Not found');
       }
       res.sendFile(path.join(distPath, "index.html"), (err) => {
         if (err) {
           console.error("Error sending index.html:", err);
-          res.status(500).send("Server Error: Unable to serve index.html");
+          res.status(500).send("Server Error: Missing index.html in dist/");
         }
       });
     });

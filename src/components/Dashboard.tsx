@@ -187,7 +187,7 @@ export default function Dashboard() {
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {ALL_CARDS.map((card, idx) => (
             <motion.div
               key={card.path}
@@ -235,7 +235,7 @@ export default function Dashboard() {
            </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {NEWS_ARTICLES.map((article, idx) => (
             <NewsCard key={idx} article={article} />
           ))}

@@ -156,7 +156,7 @@ export default function EMICalculator() {
                   </ResponsiveContainer>
                </div>
                
-               <div className="grid grid-cols-2 gap-8 w-full border-t border-white/5 pt-8 px-4">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 w-full border-t border-white/5 pt-8 px-4">
                  <div className="text-center">
                     <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Interest</div>
                     <div className="text-xl font-bold text-[#0055FF]">{formatCurrency(results.totalInterest)}</div>

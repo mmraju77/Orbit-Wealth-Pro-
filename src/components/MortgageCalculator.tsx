@@ -162,7 +162,7 @@ export default function MortgageCalculator() {
                />
              </div>
 
-             <div className="grid grid-cols-2 gap-8">
+             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate</label>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
@@ -189,7 +189,7 @@ export default function MortgageCalculator() {
              </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-[#0055FF]/5 rounded-xl border border-[#0055FF]/10">
                 <div className="text-[8px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
                 <div className="text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
@@ -233,7 +233,7 @@ export default function MortgageCalculator() {
                   </ResponsiveContainer>
               </div>
 
-              <div className="grid grid-cols-2 gap-4 mt-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                 <div className="text-center">
                    <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest">Total Interest</div>
                    <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.totalInterest)}</div>

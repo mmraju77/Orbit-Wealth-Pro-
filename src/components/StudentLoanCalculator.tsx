@@ -155,7 +155,7 @@ export default function StudentLoanCalculator() {
         </section>
 
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-6">
-           <div className="grid grid-cols-2 gap-4">
+           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 text-center">
                  <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
                  <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>

@@ -123,7 +123,7 @@ export default function LumpsumCalculator() {
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4 pt-4 border-t border-white/5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-[8px] text-white/20 font-bold uppercase tracking-widest mb-1">Invested Principal</div>
                 <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
