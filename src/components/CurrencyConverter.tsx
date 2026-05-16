@@ -74,7 +74,7 @@ export default function CurrencyConverter() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Forex Conversion Report', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Forex Conversion Report', 20, 20);
     doc.setFontSize(12);
     doc.text(`Timestamp: ${lastUpdated.toLocaleString()}`, 20, 40);
     doc.text(`Input: ${amount} ${from}`, 20, 50);
@@ -88,7 +88,7 @@ export default function CurrencyConverter() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <RefreshCcw className={`text-[#0055FF] w-6 h-6 ${isUpdating ? 'animate-spin' : ''}`} />
+             <RefreshCcw className={`text-[#D4AF37] w-6 h-6 ${isUpdating ? 'animate-spin' : ''}`} />
              <h1 className="text-3xl font-bold tracking-tighter">Currency Converter</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -100,7 +100,7 @@ export default function CurrencyConverter() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Pair
           </button>
         </div>
@@ -125,10 +125,10 @@ export default function CurrencyConverter() {
                         setAmount(Number(e.target.value));
                         handleUpdate();
                       }}
-                      className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-3xl font-bold text-white outline-none focus:border-[#0055FF] transition-all"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-3xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"
                     />
                     <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                       <span className="text-xl font-bold text-[#0055FF]">{from}</span>
+                       <span className="text-xl font-bold text-[#D4AF37]">{from}</span>
                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                           <Globe className="w-4 h-4 text-white/40" />
                        </div>
@@ -153,9 +153,9 @@ export default function CurrencyConverter() {
 
                   <button 
                     onClick={swapCurrencies}
-                    className="mt-6 p-4 rounded-full bg-white/5 border border-white/10 hover:bg-[#0055FF]/10 hover:border-[#0055FF]/30 transition-all group"
+                    className="mt-6 p-4 rounded-full bg-white/5 border border-white/10 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all group"
                   >
-                    <ArrowRightLeft className="w-6 h-6 text-white/20 group-hover:text-[#0055FF] transition-colors" />
+                    <ArrowRightLeft className="w-6 h-6 text-white/20 group-hover:text-[#D4AF37] transition-colors" />
                   </button>
 
                   <div className="flex-1 w-full space-y-4">
@@ -176,7 +176,7 @@ export default function CurrencyConverter() {
 
             <div className="space-y-2 pt-8 border-t border-white/5">
                 <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Indicative Exchange Rate</div>
-                <div className="text-lg font-bold text-white">1 {from} = <span className="text-[#0055FF]">{exchangeRate.toFixed(4)}</span> {to}</div>
+                <div className="text-lg font-bold text-white">1 {from} = <span className="text-[#D4AF37]">{exchangeRate.toFixed(4)}</span> {to}</div>
             </div>
         </section>
 
@@ -186,14 +186,14 @@ export default function CurrencyConverter() {
                <div className="space-y-1 mb-8">
                   <div className="text-sm font-bold text-white/40">{amount} {from} equals</div>
                   <div className="text-5xl font-bold text-white tracking-widest">
-                    {formatValue(convertedAmount)} <span className="text-[#0055FF] text-2xl">{to}</span>
+                    {formatValue(convertedAmount)} <span className="text-[#D4AF37] text-2xl">{to}</span>
                   </div>
                </div>
 
                <div className="flex-1 mt-8">
                   <div className="flex items-center justify-between mb-4">
                      <div className="flex items-center gap-2">
-                        <TrendingUp className="w-4 h-4 text-[#0055FF]" />
+                        <TrendingUp className="w-4 h-4 text-[#D4AF37]" />
                         <span className="text-[10px] font-bold text-white/20 uppercase tracking-widest">30-Day Trend</span>
                      </div>
                      <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">+2.4%</span>
@@ -203,15 +203,15 @@ export default function CurrencyConverter() {
                       <AreaChart data={historicalData}>
                         <defs>
                           <linearGradient id="colorRate" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor="#0055FF" stopOpacity={0.3}/>
-                            <stop offset="95%" stopColor="#0055FF" stopOpacity={0}/>
+                            <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.3}/>
+                            <stop offset="95%" stopColor="#D4AF37" stopOpacity={0}/>
                           </linearGradient>
                         </defs>
                         <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
                         <XAxis dataKey="day" hide />
                         <YAxis domain={['auto', 'auto']} hide />
                         <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
-                        <Area type="monotone" dataKey="rate" stroke="#0055FF" strokeWidth={2} fillOpacity={1} fill="url(#colorRate)" isAnimationActive={false} />
+                        <Area type="monotone" dataKey="rate" stroke="#D4AF37" strokeWidth={2} fillOpacity={1} fill="url(#colorRate)" isAnimationActive={false} />
                       </AreaChart>
                     </ResponsiveContainer>
                   </div>

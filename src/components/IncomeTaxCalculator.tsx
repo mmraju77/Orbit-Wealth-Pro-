@@ -83,7 +83,7 @@ export default function IncomeTaxCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text(`Orbit Wealth Pro: Income Tax Analysis (${taxRules.currency})`, 20, 20);
+    doc.text(`ORBIT WEALTH PRO: Income Tax Analysis (${taxRules.currency})`, 20, 20);
     doc.setFontSize(12);
     doc.text(`Annual Gross Income: ${formatCurrency(inputs.amount)}`, 20, 40);
     doc.text(`Effective Tax: ${formatCurrency(results.taxAmount)}`, 20, 50);
@@ -97,7 +97,7 @@ export default function IncomeTaxCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <Percent className="text-[#0055FF] w-6 h-6" />
+             <Percent className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">Income Tax Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -109,7 +109,7 @@ export default function IncomeTaxCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-3 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+          <button className="flex items-center gap-3 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -125,14 +125,14 @@ export default function IncomeTaxCalculator() {
                    type="number"
                    value={inputs.amount}
                    onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
-                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#0055FF] transition-all font-bold"
+                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 font-bold">{currency}</div>
                </div>
              </div>
 
-             <div className="p-4 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 flex items-center gap-4 animate-in fade-in zoom-in-95 duration-300">
-                <Shield className="text-[#0055FF] w-6 h-6" />
+             <div className="p-4 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 flex items-center gap-4 animate-in fade-in zoom-in-95 duration-300">
+                <Shield className="text-[#D4AF37] w-6 h-6" />
                 <p className="text-[10px] text-white/60 leading-relaxed italic">
                    Adjusted for {countryKey.toUpperCase()} standard deductions and progressive tax slabs. 
                    {taxRules.additionalTaxes?.map(tax => ` Includes ${tax.name} at ${(tax.rate * 100).toFixed(1)}%.`).join(' ')}
@@ -148,7 +148,7 @@ export default function IncomeTaxCalculator() {
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
                     <div>
                       <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Effective Tax Liability</div>
-                      <div className="text-3xl font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
+                      <div className="text-3xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
                     </div>
                     <Wallet className="text-white/5 w-10 h-10" />
                  </div>
@@ -170,7 +170,7 @@ export default function IncomeTaxCalculator() {
                      ]}>
                         <XAxis dataKey="name" axisLine={false} tickLine={false} fontSize={10} stroke="#ffffff20" />
                         <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
-                        <Bar dataKey="val" fill="#0055FF" radius={[4, 4, 0, 0]} />
+                        <Bar dataKey="val" fill="#D4AF37" radius={[4, 4, 0, 0]} />
                      </BarChart>
                   </ResponsiveContainer>
                </div>

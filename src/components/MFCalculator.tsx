@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect } from 'react';
-import { PieChart as PieIcon, Download, Share2, TrendingUp, Info, Activity } from 'lucide-react';
+import { PieChart as PieIcon, Download, Share2, TrendingUp, Info, ShieldCheck } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { MutualFundInputs } from '../types';
 import { ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
@@ -75,7 +75,7 @@ export default function MFCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Mutual Fund Analysis', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Mutual Fund Analysis', 20, 20);
     doc.setFontSize(12);
     doc.text(`Mode: ${mode.toUpperCase()}`, 20, 40);
     doc.text(`Investment: ${formatCurrency(inputs.investmentAmount)} / ${mode === 'sip' ? 'Month' : 'Lumpsum'}`, 20, 50);
@@ -92,7 +92,7 @@ export default function MFCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <PieIcon className="text-[#0055FF] w-6 h-6" />
+             <PieIcon className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Mutual Fund Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -104,7 +104,7 @@ export default function MFCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Results
           </button>
         </div>
@@ -120,7 +120,7 @@ export default function MFCalculator() {
                     setMode(m);
                     setInputs({ ...inputs, investmentAmount: m === 'sip' ? 5000 : 100000 });
                   }}
-                  className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${mode === m ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
+                  className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${mode === m ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/20 hover:text-white/40'}`}
                 >
                   {m.toUpperCase()}
                 </button>
@@ -137,7 +137,7 @@ export default function MFCalculator() {
                    type="range" min={mode === 'sip' ? 500 : 1000} max={mode === 'sip' ? 100000 : 10000000} step={mode === 'sip' ? 500 : 10000}
                    value={inputs.investmentAmount}
                    onChange={(e) => setInputs({ ...inputs, investmentAmount: Number(e.target.value) })}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
 
@@ -147,7 +147,7 @@ export default function MFCalculator() {
                     <input 
                       type="number" step="0.5" value={inputs.expectedReturn}
                       onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#0055FF]"
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-4">
@@ -155,7 +155,7 @@ export default function MFCalculator() {
                     <input 
                       type="number" step="0.1" value={inputs.expenseRatio}
                       onChange={(e) => setInputs({ ...inputs, expenseRatio: Number(e.target.value) })}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#0055FF]"
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
               </div>
@@ -163,21 +163,21 @@ export default function MFCalculator() {
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
-                    <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.duration} Yrs</div>
+                    <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yrs</div>
                  </div>
                  <input 
                    type="range" min="1" max="40" step="1"
                    value={inputs.duration}
                    onChange={(e) => setInputs({ ...inputs, duration: Number(e.target.value) })}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
            </div>
 
-           <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 flex items-center gap-4">
-              <Activity className="text-[#0055FF] w-8 h-8" />
+           <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 flex items-center gap-4">
+              <ShieldCheck className="text-[#D4AF37] w-8 h-8" />
               <div>
-                 <div className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-1">Expense Ratio Impact</div>
+                 <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Expense Ratio Impact</div>
                  <div className="text-xl font-bold text-white tracking-tighter">-{formatCurrency(results.expenseRatioImpact)}</div>
                  <p className="text-[10px] text-white/40 mt-1">Wealth lost due to {inputs.expenseRatio}% TER over {inputs.duration} years.</p>
               </div>
@@ -193,8 +193,8 @@ export default function MFCalculator() {
                         <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Invested</div>
                         <div className="text-xl font-bold text-white/40">{formatCurrency(results.investedAmount)}</div>
                     </div>
-                    <div className="p-4 bg-[#0055FF]/20 rounded-xl border border-[#0055FF]/30">
-                        <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Total Wealth</div>
+                    <div className="p-4 bg-[#D4AF37]/20 rounded-xl border border-[#D4AF37]/30">
+                        <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Total Wealth</div>
                         <div className="text-xl font-bold text-white">{formatCurrency(results.totalWealth)}</div>
                     </div>
                  </div>
@@ -206,14 +206,14 @@ export default function MFCalculator() {
                         <XAxis dataKey="year" stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} />
                         <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${formatValue(val / 1000)}k`} />
                         <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
-                        <Bar dataKey="balance" fill="#0055FF" radius={[4, 4, 0, 0]} isAnimationActive={false} />
+                        <Bar dataKey="balance" fill="#D4AF37" radius={[4, 4, 0, 0]} isAnimationActive={false} />
                       </BarChart>
                     </ResponsiveContainer>
                  </div>
                </div>
                
                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 mt-auto">
-                  <Info className="w-4 h-4 text-[#0055FF]" />
+                  <Info className="w-4 h-4 text-[#D4AF37]" />
                   <p className="text-[10px] text-white/40 leading-relaxed italic">
                     The calculation considers the Total Expense Ratio (TER) deducted annually from the Net Asset Value (NAV).
                   </p>

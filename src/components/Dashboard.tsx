@@ -56,7 +56,7 @@ const CATEGORIES = [
     name: 'Insurance & Protection',
     id: 'insurance',
     cards: [
-      { title: 'HLV Calculator', description: 'Quantify your economic value and ideal coverage needs.', path: '/calculators/hlv', icon: Activity, color: 'text-rose-500' },
+      { title: 'HLV Calculator', description: 'Quantify your economic value and ideal coverage needs.', path: '/calculators/hlv', icon: ShieldCheck, color: 'text-rose-500' },
       { title: 'Term Life', description: 'Plan for long-term family security with term insurance.', path: '/calculators/term-insurance', icon: Shield, color: 'text-blue-500' },
       { title: 'Health Guard', description: 'Analyze health premium costs vs benefit coverage.', path: '/calculators/health-insurance', icon: ShieldCheck, color: 'text-emerald-500' },
     ]
@@ -121,7 +121,7 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-[#0055FF]/30 transition-all duration-500"
+      className="group relative bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-[#D4AF37]/30 transition-all duration-500"
     >
       <div className="aspect-[16/9] overflow-hidden relative">
         <img 
@@ -134,7 +134,7 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
           height="225"
         />
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black text-[#0055FF] uppercase tracking-tighter border border-white/5">
+          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black text-[#D4AF37] uppercase tracking-tighter border border-white/5">
             {article.category}
           </span>
         </div>
@@ -142,7 +142,7 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
       
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-xl font-display font-medium text-white tracking-tighter leading-tight group-hover:text-[#0055FF] transition-colors duration-500">
+          <h3 className="text-xl font-display font-medium text-white tracking-tighter leading-tight group-hover:text-[#D4AF37] transition-colors duration-500">
             {article.title}
           </h3>
           <p className="text-sm text-white/40 leading-relaxed line-clamp-2">
@@ -155,7 +155,7 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
               <Calendar className="w-3 h-3 text-white/20" />
               <span className="text-[10px] text-white/20 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
-           <button className="flex items-center gap-2 text-[10px] font-bold text-[#0055FF] uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+           <button className="flex items-center gap-2 text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest group-hover:translate-x-1 transition-transform">
              Read Full Report <ArrowUpRight className="w-3 h-3" />
            </button>
         </div>
@@ -168,15 +168,15 @@ export default function Dashboard() {
     <div className="space-y-16 pb-16">
       <header className="space-y-6">
         <div className="flex items-center gap-3 mb-2">
-          <div className="h-[1px] w-12 bg-[#0055FF]"></div>
-          <span className="text-[9px] font-black text-[#0055FF] uppercase tracking-[0.5em]">Orbit Wealth Pro — Global Fintech Engine</span>
+          <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
+          <span className="text-[9px] font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-white tracking-tighter leading-[1.1]">
           Financial <br />
           <span className="text-white/10">Dashboard.</span>
         </h1>
         <p className="text-white/40 max-w-xl text-sm md:text-base font-light leading-relaxed">
-          Access Orbit Wealth Pro's suite of institutional-grade financial tools. 
+          Access ORBIT WEALTH PRO's suite of institutional-grade financial tools. 
           Precision engineering for the modern global investor.
         </p>
       </header>
@@ -198,10 +198,10 @@ export default function Dashboard() {
             >
               <Link 
                 to={card.path}
-                className="group block p-[15px] md:p-8 bg-white/[0.01] border border-white/[0.04] rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.02] hover:border-[#0055FF]/30 transition-all duration-700 h-full relative overflow-hidden"
+                className="group block p-[15px] md:p-8 bg-white/[0.01] border border-white/[0.04] rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.02] hover:border-[#D4AF37]/30 transition-all duration-700 h-full relative overflow-hidden"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ArrowRight className="w-4 h-4 text-[#0055FF]" />
+                  <ArrowRight className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 
                 <div className="space-y-6">
@@ -210,7 +210,7 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-xl font-display font-medium text-white group-hover:text-[#0055FF] transition-colors duration-500">
+                    <h3 className="text-xl font-display font-medium text-white group-hover:text-[#D4AF37] transition-colors duration-500">
                       {card.title}
                     </h3>
                     <p className="text-xs text-white/30 leading-relaxed font-light line-clamp-2">
@@ -227,10 +227,10 @@ export default function Dashboard() {
       {/* Global Finance News Section */}
       <section className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.4em]">Global Finance News</h2>
-           <div className="flex-1 h-px bg-[#0055FF]/10"></div>
+           <h2 className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
+           <div className="flex-1 h-px bg-[#D4AF37]/10"></div>
            <div className="flex items-center gap-2 text-[8px] font-bold text-white/20 uppercase tracking-widest">
-             <div className="w-1 h-1 rounded-full bg-[#0055FF] animate-pulse"></div>
+             <div className="w-1 h-1 rounded-full bg-[#D4AF37] animate-pulse"></div>
              Live Updates
            </div>
         </div>
@@ -242,7 +242,7 @@ export default function Dashboard() {
         </div>
         
         <div className="flex justify-center pt-4">
-          <button className="px-8 py-3 bg-white/[0.02] border border-white/5 rounded-full text-[10px] font-bold text-white/40 uppercase tracking-widest hover:bg-[#0055FF]/10 hover:border-[#0055FF]/30 hover:text-white transition-all cursor-pointer">
+          <button className="px-8 py-3 bg-white/[0.02] border border-white/5 rounded-full text-[10px] font-bold text-white/40 uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-white transition-all cursor-pointer">
             Explore All Market Insights
           </button>
         </div>

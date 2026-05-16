@@ -51,8 +51,8 @@ export default function RentalYieldCalculator() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-             <div className="h-px w-6 bg-[#0055FF]"></div>
-             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Capital Yield Logistics</span>
+             <div className="h-px w-6 bg-[#D4AF37]"></div>
+             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Yield Logistics</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">Property ROI.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -111,9 +111,9 @@ export default function RentalYieldCalculator() {
                     <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Gross Yield</div>
                     <div className="text-3xl font-bold text-white/60">{results.grossYield}%</div>
                  </div>
-                 <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 text-center">
-                    <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Net Rental Yield</div>
-                    <div className="text-4xl font-bold text-[#0055FF]">{results.netYield}%</div>
+                 <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
+                    <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Net Rental Yield</div>
+                    <div className="text-4xl font-bold text-[#D4AF37]">{results.netYield}%</div>
                  </div>
               </div>
 

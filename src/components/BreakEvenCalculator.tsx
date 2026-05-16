@@ -47,8 +47,8 @@ export default function BreakEvenCalculator() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-            <div className="h-px w-6 bg-[#0055FF]"></div>
-            <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Business Intelligence</span>
+            <div className="h-px w-6 bg-[#D4AF37]"></div>
+            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Business Intelligence</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">Break-Even Analysis.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -87,9 +87,9 @@ export default function BreakEvenCalculator() {
                  <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.3em]">Units to Neutral</div>
                  <div className="text-5xl font-display font-medium text-white">{results.units}</div>
               </div>
-              <div className="p-10 bg-[#0055FF]/5 border border-[#0055FF]/10 rounded-[2.5rem] text-center space-y-2">
-                 <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-[0.3em]">Revenue to Neutral</div>
-                 <div className="text-5xl font-display font-medium text-[#0055FF] tracking-tighter">{formatCurrency(results.revenue)}</div>
+              <div className="p-10 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[2.5rem] text-center space-y-2">
+                 <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-[0.3em]">Revenue to Neutral</div>
+                 <div className="text-5xl font-display font-medium text-[#D4AF37] tracking-tighter">{formatCurrency(results.revenue)}</div>
               </div>
            </div>
 

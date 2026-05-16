@@ -51,7 +51,7 @@ export default function AutoLoanCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Auto Loan Analysis', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Auto Loan Analysis', 20, 20);
     doc.setFontSize(12);
     doc.text(`Car Price: ${formatCurrency(carPrice)}`, 20, 40);
     doc.text(`Sales Tax: ${salesTax}% (${formatCurrency(results.taxAmount)})`, 20, 50);
@@ -68,7 +68,7 @@ export default function AutoLoanCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <Car className="text-[#0055FF] w-6 h-6" />
+             <Car className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Auto Loan Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -102,7 +102,7 @@ export default function AutoLoanCalculator() {
                      onChange={(e) => setSalesTax(Number(e.target.value))}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
-                   <Percent className="w-4 h-4 text-[#0055FF]" />
+                   <Percent className="w-4 h-4 text-[#D4AF37]" />
                 </div>
              </div>
              <div className="space-y-4">
@@ -131,13 +131,13 @@ export default function AutoLoanCalculator() {
              <div className="space-y-4">
                 <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
                    <span>Interest Rate</span>
-                   <span className="text-[#0055FF]">{interestRate}%</span>
+                   <span className="text-[#D4AF37]">{interestRate}%</span>
                 </div>
                 <input 
                   type="range" min="0" max="20" step="0.1"
                   value={interestRate}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
-                  className="w-full accent-[#0055FF]"
+                  className="w-full accent-[#D4AF37]"
                 />
              </div>
              <div className="space-y-4">
@@ -149,7 +149,7 @@ export default function AutoLoanCalculator() {
                   type="range" min="12" max="84" step="12"
                   value={tenure}
                   onChange={(e) => setTenure(Number(e.target.value))}
-                  className="w-full accent-[#0055FF]"
+                  className="w-full accent-[#D4AF37]"
                 />
              </div>
           </div>
@@ -158,8 +158,8 @@ export default function AutoLoanCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between">
            <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 text-center">
-                    <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+                 <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
+                    <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
                     <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
@@ -170,7 +170,7 @@ export default function AutoLoanCalculator() {
 
               <div className="p-6 bg-white/[0.01] border border-white/5 rounded-2xl space-y-4">
                  <div className="flex items-center gap-2 mb-4">
-                    <Info className="w-4 h-4 text-[#0055FF]" />
+                    <Info className="w-4 h-4 text-[#D4AF37]" />
                     <h4 className="text-xs font-bold text-white uppercase tracking-widest">Summary Breakdown</h4>
                  </div>
                  <div className="space-y-3">
@@ -184,7 +184,7 @@ export default function AutoLoanCalculator() {
                     </div>
                     <div className="flex justify-between text-sm">
                        <span className="text-white/40">Total Interest Paid:</span>
-                       <span className="text-white text-[#0055FF] font-bold">{formatCurrency(results.totalInterest)}</span>
+                       <span className="text-white text-[#D4AF37] font-bold">{formatCurrency(results.totalInterest)}</span>
                     </div>
                     <div className="flex justify-between text-sm pt-3 border-t border-white/5">
                        <span className="text-white font-bold">Total Cost of Ownership:</span>
@@ -206,7 +206,7 @@ export default function AutoLoanCalculator() {
                         cx="50%" cy="50%" innerRadius={40} outerRadius={60} paddingAngle={5} dataKey="value" stroke="none" isAnimationActive={false}
                       >
                         <Cell fill="#FFFFFF" />
-                        <Cell fill="#0055FF" />
+                        <Cell fill="#D4AF37" />
                         <Cell fill="#FFFFFF40" />
                       </Pie>
                     </PieChart>

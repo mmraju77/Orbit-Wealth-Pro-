@@ -55,7 +55,7 @@ export default function BalanceTransfer() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Home Loan Balance Transfer', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Home Loan Balance Transfer', 20, 20);
     doc.setFontSize(12);
     doc.text(`Outstanding Principal: ${formatCurrency(inputs.outstandingPrincipal)}`, 20, 40);
     doc.text(`Existing Rate: ${inputs.existingRate}%`, 20, 50);
@@ -72,7 +72,7 @@ export default function BalanceTransfer() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <ArrowRightLeft className="text-[#0055FF] w-6 h-6" />
+             <ArrowRightLeft className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Home Loan Transfer</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -84,7 +84,7 @@ export default function BalanceTransfer() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Analysis
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Savings
           </button>
         </div>
@@ -102,7 +102,7 @@ export default function BalanceTransfer() {
                    type="range" min="100000" max="50000000" step="100000"
                    value={inputs.outstandingPrincipal}
                    onChange={(e) => setInputs({ ...inputs, outstandingPrincipal: Number(e.target.value) })}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
 
@@ -120,7 +120,7 @@ export default function BalanceTransfer() {
                     <input 
                       type="number" step="0.1" value={inputs.newRate}
                       onChange={(e) => setInputs({ ...inputs, newRate: Number(e.target.value) })}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#0055FF] font-bold outline-none"
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />
                  </div>
               </div>
@@ -150,12 +150,12 @@ export default function BalanceTransfer() {
            {isMounted && (
              <div className="space-y-8 h-full flex flex-col">
                <div className="grid grid-cols-1 gap-4">
-                 <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 flex items-center justify-between">
+                 <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-1">Total Interest Savings</div>
+                      <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Total Interest Savings</div>
                       <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalSavings)}</div>
                     </div>
-                    <TrendingDown className="w-10 h-10 text-[#0055FF]/20" />
+                    <TrendingDown className="w-10 h-10 text-[#D4AF37]/20" />
                  </div>
 
                  <div className="grid grid-cols-2 gap-4">
@@ -180,7 +180,7 @@ export default function BalanceTransfer() {
                       <XAxis type="number" hide />
                       <YAxis dataKey="name" type="category" stroke="#ffffff20" fontSize={10} axisLine={false} tickLine={false} />
                       <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
-                      <Bar dataKey="value" fill="#0055FF" radius={[0, 4, 4, 0]} barSize={20} isAnimationActive={false} />
+                      <Bar dataKey="value" fill="#D4AF37" radius={[0, 4, 4, 0]} barSize={20} isAnimationActive={false} />
                     </BarChart>
                   </ResponsiveContainer>
                </div>

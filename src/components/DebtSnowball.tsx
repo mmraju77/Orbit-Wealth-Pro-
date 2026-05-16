@@ -66,8 +66,8 @@ export default function DebtSnowball() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-            <div className="h-px w-6 bg-[#0055FF]"></div>
-            <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Debt Freedom Strategy</span>
+            <div className="h-px w-6 bg-[#D4AF37]"></div>
+            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Debt Freedom Strategy</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">Debt Snowball.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -83,7 +83,7 @@ export default function DebtSnowball() {
         <section className="space-y-8 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-display font-medium">Your Debts</h2>
-            <button onClick={addDebt} className="flex items-center gap-2 px-3 py-1.5 bg-[#0055FF]/10 text-[#0055FF] rounded-lg text-xs font-bold hover:bg-[#0055FF]/20 transition-all">
+            <button onClick={addDebt} className="flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-lg text-xs font-bold hover:bg-[#D4AF37]/20 transition-all">
               <Plus className="w-3.5 h-3.5" /> Add Debt
             </button>
           </div>
@@ -119,9 +119,9 @@ export default function DebtSnowball() {
           <div className="space-y-4 pt-8 border-t border-white/5">
              <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
                 <span>Extra Monthly Contribution</span>
-                <span className="text-[#0055FF]">{formatCurrency(extraPayment)}</span>
+                <span className="text-[#D4AF37]">{formatCurrency(extraPayment)}</span>
              </div>
-             <input type="range" min="0" max="50000" step="500" value={extraPayment} onChange={e => setExtraPayment(Number(e.target.value))} className="w-full accent-[#0055FF]" />
+             <input type="range" min="0" max="50000" step="500" value={extraPayment} onChange={e => setExtraPayment(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
           </div>
         </section>
 
@@ -131,15 +131,15 @@ export default function DebtSnowball() {
                  <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.2em]">Total Outstanding</div>
                  <div className="text-4xl font-display font-medium text-white">{formatCurrency(totalBalance)}</div>
               </div>
-              <div className="p-10 bg-[#0055FF]/5 border border-[#0055FF]/10 rounded-[2.5rem] text-center space-y-2">
-                 <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-[0.2em]">Monthly Payload</div>
-                 <div className="text-4xl font-display font-medium text-[#0055FF]">{formatCurrency(totalMinPayment + extraPayment)}</div>
+              <div className="p-10 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[2.5rem] text-center space-y-2">
+                 <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-[0.2em]">Monthly Payload</div>
+                 <div className="text-4xl font-display font-medium text-[#D4AF37]">{formatCurrency(totalMinPayment + extraPayment)}</div>
               </div>
            </div>
 
            <div className="bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem] space-y-6">
               <h3 className="text-lg font-display font-medium flex items-center gap-3">
-                 <List className="text-[#0055FF] w-5 h-5" />
+                 <List className="text-[#D4AF37] w-5 h-5" />
                  Snowball Order
               </h3>
               <div className="space-y-3">

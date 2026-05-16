@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useMemo } from 'react';
-import { Activity, Download, Heart, Shield, Info } from 'lucide-react';
+import { Download, Heart, Shield, Info, ShieldCheck } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
@@ -49,8 +49,8 @@ export default function HLVCalculator() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-            <div className="h-px w-6 bg-[#0055FF]"></div>
-            <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Protection Intelligence</span>
+            <div className="h-px w-6 bg-[#D4AF37]"></div>
+            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Protection Intelligence</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">HLV Calculator.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -70,14 +70,14 @@ export default function HLVCalculator() {
                     <span>Current Age</span>
                     <span className="text-white font-mono">{age}</span>
                  </div>
-                 <input type="range" min="18" max="75" value={age} onChange={e => setAge(Number(e.target.value))} className="w-full accent-[#0055FF]" />
+                 <input type="range" min="18" max="75" value={age} onChange={e => setAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
               </div>
               <div className="space-y-4">
                  <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
                     <span>Retirement Age</span>
                     <span className="text-white font-mono">{retirementAge}</span>
                  </div>
-                 <input type="range" min="40" max="85" value={retirementAge} onChange={e => setRetirementAge(Number(e.target.value))} className="w-full accent-[#0055FF]" />
+                 <input type="range" min="40" max="85" value={retirementAge} onChange={e => setRetirementAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
               </div>
            </div>
 
@@ -94,11 +94,11 @@ export default function HLVCalculator() {
         </section>
 
         <section className="flex flex-col gap-12">
-           <div className="p-12 bg-[#0055FF]/5 border border-[#0055FF]/10 rounded-[3rem] text-center space-y-4 relative overflow-hidden">
+           <div className="p-12 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[3rem] text-center space-y-4 relative overflow-hidden">
               <div className="absolute top-0 right-0 p-8 opacity-5">
                  <Shield className="w-32 h-32" />
               </div>
-              <div className="text-[11px] text-[#0055FF] font-bold uppercase tracking-[0.4em]">Economic Protection Value</div>
+              <div className="text-[11px] text-[#D4AF37] font-bold uppercase tracking-[0.4em]">Economic Protection Value</div>
               <div className="text-6xl font-display font-medium text-white tracking-tighter">{formatCurrency(hlv)}</div>
               <div className="pt-4 flex items-center justify-center gap-3">
                  <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />

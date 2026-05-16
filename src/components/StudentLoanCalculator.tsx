@@ -70,7 +70,7 @@ export default function StudentLoanCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Student Loan Forecast', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Student Loan Forecast', 20, 20);
     doc.setFontSize(12);
     doc.text(`Initial Loan: ${formatCurrency(loanAmount)}`, 20, 40);
     doc.text(`Interest Rate: ${interestRate}%`, 20, 50);
@@ -86,7 +86,7 @@ export default function StudentLoanCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <GraduationCap className="text-[#0055FF] w-6 h-6" />
+             <GraduationCap className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Student Loan Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -111,7 +111,7 @@ export default function StudentLoanCalculator() {
                    type="range" min="5000" max="500000" step="5000"
                    value={loanAmount}
                    onChange={(e) => setLoanAmount(Number(e.target.value))}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
 
@@ -137,7 +137,7 @@ export default function StudentLoanCalculator() {
               </div>
 
               <div className="pt-6 border-t border-white/5 space-y-4">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-[#0055FF] uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest">
                     <div className="flex items-center gap-2">
                        <Calendar className="w-3 h-3" />
                        <span>Grace Period (Months)</span>
@@ -148,7 +148,7 @@ export default function StudentLoanCalculator() {
                    type="range" min="0" max="48" step="6"
                    value={gracePeriod}
                    onChange={(e) => setGracePeriod(Number(e.target.value))}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
            </div>
@@ -156,8 +156,8 @@ export default function StudentLoanCalculator() {
 
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-6">
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 text-center">
-                 <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+              <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
+                 <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
                  <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
@@ -172,8 +172,8 @@ export default function StudentLoanCalculator() {
                    <AreaChart data={results.projection}>
                       <defs>
                         <linearGradient id="colorBal" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="5%" stopColor="#0055FF" stopOpacity={0.3}/>
-                          <stop offset="95%" stopColor="#0055FF" stopOpacity={0}/>
+                          <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.3}/>
+                          <stop offset="95%" stopColor="#D4AF37" stopOpacity={0}/>
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
@@ -184,7 +184,7 @@ export default function StudentLoanCalculator() {
                         formatter={(val: number) => [formatCurrency(val), 'Balance']}
                         labelFormatter={(label) => `Month: ${label}`}
                       />
-                      <Area type="monotone" dataKey="balance" stroke="#0055FF" fillOpacity={1} fill="url(#colorBal)" isAnimationActive={false} />
+                      <Area type="monotone" dataKey="balance" stroke="#D4AF37" fillOpacity={1} fill="url(#colorBal)" isAnimationActive={false} />
                    </AreaChart>
                 </ResponsiveContainer>
              )}
@@ -192,12 +192,12 @@ export default function StudentLoanCalculator() {
 
            <div className="flex items-center justify-between text-[10px] uppercase font-bold tracking-widest pt-4 border-t border-white/5">
               <div className="flex items-center gap-2">
-                 <div className="w-2 h-2 rounded-full bg-[#0055FF]/40"></div>
+                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]/40"></div>
                  <span className="text-white/40 line-through">{formatCurrency(loanAmount)} Borrowed</span>
               </div>
               <ArrowRight className="w-3 h-3 text-white/20" />
               <div className="flex items-center gap-2">
-                 <div className="w-2 h-2 rounded-full bg-[#0055FF]"></div>
+                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]"></div>
                  <span className="text-white">{formatCurrency(results.totalPayable)} Total Paid</span>
               </div>
            </div>

@@ -58,8 +58,8 @@ export default function CreditCardPayoff() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-            <div className="h-px w-6 bg-[#0055FF]"></div>
-            <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Debt Liquidation Engine</span>
+            <div className="h-px w-6 bg-[#D4AF37]"></div>
+            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Debt Liquidation Engine</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">CC Payoff.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -82,9 +82,9 @@ export default function CreditCardPayoff() {
                  <div className="space-y-4">
                     <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
                        <span>APR (%)</span>
-                       <span className="text-[#0055FF]">{interestRate}%</span>
+                       <span className="text-[#D4AF37]">{interestRate}%</span>
                     </div>
-                    <input type="range" min="1" max="48" step="1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full accent-[#0055FF]" />
+                    <input type="range" min="1" max="48" step="1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Monthly Payment</label>
@@ -115,8 +115,8 @@ export default function CreditCardPayoff() {
 
                <div className="p-8 bg-white/[0.01] border border-white/5 rounded-[2rem] flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                     <div className="w-10 h-10 rounded-full bg-[#0055FF]/10 flex items-center justify-center">
-                        <Zap className="w-5 h-5 text-[#0055FF]" />
+                     <div className="w-10 h-10 rounded-full bg-[#D4AF37]/10 flex items-center justify-center">
+                        <Zap className="w-5 h-5 text-[#D4AF37]" />
                      </div>
                      <div className="space-y-1">
                         <div className="text-[9px] text-white/20 font-bold uppercase">Repayment Duration</div>

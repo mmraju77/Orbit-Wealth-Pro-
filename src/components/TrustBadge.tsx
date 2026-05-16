@@ -21,7 +21,7 @@ export default function TrustBadge({ setView, activeView }: TrustBadgeProps) {
           </div>
           <div className="hidden lg:block h-6 w-px bg-white/10"></div>
           <p className="text-[9px] text-white/20 max-w-[400px] italic leading-relaxed">
-            *Calculations are estimates based on standard amortization formulas. Terms and actual APR may vary by lender and individual credit profile. Orbit Wealth Pro is an analytical platform, not a direct lending institution.
+            *Calculations are estimates based on standard amortization formulas. Terms and actual APR may vary by lender and individual credit profile. ORBIT WEALTH PRO is an analytical platform, not a direct lending institution.
           </p>
         </div>
         <div className="text-[10px] font-bold tracking-[0.3em] text-white/10 text-right shrink-0 uppercase">
@@ -33,21 +33,21 @@ export default function TrustBadge({ setView, activeView }: TrustBadgeProps) {
         <div className="flex gap-8 text-[10px] font-bold tracking-widest text-white/30 uppercase">
           <button 
             onClick={() => setView('PRIVACY')}
-            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1 ${activeView === 'PRIVACY' ? 'text-white' : ''}`}
+            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] rounded px-1 ${activeView === 'PRIVACY' ? 'text-white' : ''}`}
             aria-current={activeView === 'PRIVACY' ? 'page' : undefined}
           >
             Privacy Policy
           </button>
           <button 
             onClick={() => setView('DISCLAIMER')}
-            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1 ${activeView === 'DISCLAIMER' ? 'text-white' : ''}`}
+            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] rounded px-1 ${activeView === 'DISCLAIMER' ? 'text-white' : ''}`}
             aria-current={activeView === 'DISCLAIMER' ? 'page' : undefined}
           >
             Legal Disclaimer
           </button>
           <button 
             onClick={() => setView('CONTACT')}
-            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#0055FF] rounded px-1 ${activeView === 'CONTACT' ? 'text-white' : ''}`}
+            className={`hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-[#D4AF37] rounded px-1 ${activeView === 'CONTACT' ? 'text-white' : ''}`}
             aria-current={activeView === 'CONTACT' ? 'page' : undefined}
           >
             Contact Us

@@ -80,7 +80,7 @@ const NAV_SECTIONS: NavSection[] = [
     label: 'Insurance',
     icon: Shield,
     items: [
-      { label: 'HLV Calculator', path: '/calculators/hlv', icon: Activity },
+      { label: 'HLV Calculator', path: '/calculators/hlv', icon: ShieldCheck },
       { label: 'Term Life', path: '/calculators/term-insurance', icon: Shield },
       { label: 'Health Guard', path: '/calculators/health-insurance', icon: ShieldCheck }
     ]
@@ -132,17 +132,15 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}
 
       <aside className={cn(
-        "w-64 bg-[#0a0a0a] border-r border-white/5 h-screen flex flex-col fixed left-0 top-0 z-[70] transition-transform duration-300 md:translate-x-0",
+        "w-64 bg-[#0B1221] border-r border-white/5 h-screen flex flex-col fixed left-0 top-0 z-[70] transition-transform duration-300 md:translate-x-0",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
         <div className="p-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-white/5 border border-white/10 rounded-lg flex items-center justify-center">
-              <ShieldCheck className="text-[#0055FF] w-4 h-4" />
-            </div>
-            <span className="font-display font-black text-xl tracking-tighter text-white uppercase group flex items-center gap-1">
-              <span className="text-[#0055FF]">ORBIT</span>
-              <span className="text-[#0055FF]">PRO</span>
+            <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-10 h-10 object-contain" />
+            <span className="font-display font-black text-xl tracking-tighter text-white uppercase group flex flex-col leading-none">
+              <span className="text-[#D4AF37]">ORBIT</span>
+              <span className="text-white">WEALTH PRO</span>
             </span>
           </div>
           
@@ -162,7 +160,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             }}
             className={({ isActive }) => cn(
               "flex items-center gap-3 px-3 py-2 rounded-lg text-xs transition-all mb-4",
-              isActive ? "bg-white/5 text-[#0055FF]" : "text-white/30 hover:text-white"
+              isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/30 hover:text-white"
             )}
           >
             <Home className="w-4 h-4" />
@@ -193,7 +191,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       }}
                       className={({ isActive }) => cn(
                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs transition-all",
-                        isActive ? "text-[#0055FF] font-semibold" : "text-white/30 hover:text-white"
+                        isActive ? "text-[#D4AF37] font-semibold" : "text-white/30 hover:text-white"
                       )}
                     >
                       <item.icon className="w-3 h-3 opacity-40" />
@@ -222,7 +220,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       }}
                       className={cn(
                         "h-5 rounded text-[8px] font-bold transition-all",
-                        currency === c ? "bg-[#0055FF] text-white" : "bg-white/5 text-white/20 hover:bg-white/10"
+                        currency === c ? "bg-[#D4AF37] text-black" : "bg-white/5 text-white/20 hover:bg-white/10"
                       )}
                     >
                       {c}

@@ -76,7 +76,7 @@ export default function GSTCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text(`Orbit Wealth Pro: GST / VAT Analysis`, 20, 20);
+    doc.text(`ORBIT WEALTH PRO: GST / VAT Analysis`, 20, 20);
     doc.setFontSize(12);
     doc.text(`Base Amount: ${formatCurrency(inputs.amount)}`, 20, 40);
     doc.text(`Tax Rate: ${inputs.taxRate}%`, 20, 50);
@@ -90,7 +90,7 @@ export default function GSTCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <Percent className="text-[#0055FF] w-6 h-6" />
+             <Percent className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">GST / VAT Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -102,7 +102,7 @@ export default function GSTCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-3 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+          <button className="flex items-center gap-3 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -113,13 +113,13 @@ export default function GSTCalculator() {
           <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/5">
             <button
               onClick={() => setInputs({ ...inputs, isAddingTax: true })}
-              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${inputs.isAddingTax ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
+              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${inputs.isAddingTax ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/20 hover:text-white/40'}`}
             >
               Add GST
             </button>
             <button
               onClick={() => setInputs({ ...inputs, isAddingTax: false })}
-              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${!inputs.isAddingTax ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
+              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${!inputs.isAddingTax ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/20 hover:text-white/40'}`}
             >
               Remove GST
             </button>
@@ -133,7 +133,7 @@ export default function GSTCalculator() {
                    type="number"
                    value={inputs.amount}
                    onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
-                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#0055FF] transition-all font-bold"
+                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 font-bold">{currency}</div>
                </div>
@@ -146,7 +146,7 @@ export default function GSTCalculator() {
                     <button
                       key={slab}
                       onClick={() => setInputs({ ...inputs, taxRate: slab })}
-                      className={`py-3 rounded-xl border transition-all text-xs font-bold ${inputs.taxRate === slab ? 'bg-[#0055FF]/20 border-[#0055FF] text-white' : 'bg-white/5 border-white/5 text-white/40'}`}
+                      className={`py-3 rounded-xl border transition-all text-xs font-bold ${inputs.taxRate === slab ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/40'}`}
                     >
                       {slab}%
                     </button>
@@ -157,7 +157,7 @@ export default function GSTCalculator() {
                        placeholder="Custom Rate %"
                        value={inputs.taxRate}
                        onChange={(e) => setInputs({ ...inputs, taxRate: Number(e.target.value) })}
-                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-[#0055FF]"
+                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-[#D4AF37]"
                      />
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function GSTCalculator() {
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
                    <div>
                      <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Tax Amount</div>
-                     <div className="text-3xl font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
+                     <div className="text-3xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
                    </div>
                    <Percent className="text-white/5 w-10 h-10" />
                 </div>
@@ -183,8 +183,8 @@ export default function GSTCalculator() {
                    </div>
                 </div>
 
-                <div className="p-8 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 shadow-xl shadow-[#0055FF]/5">
-                   <div className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-1">{inputs.isAddingTax ? 'Total Billing Value' : 'Net Price'}</div>
+                <div className="p-8 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 shadow-xl shadow-[#D4AF37]/5">
+                   <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">{inputs.isAddingTax ? 'Total Billing Value' : 'Net Price'}</div>
                    <div className="text-4xl font-bold tracking-tighter text-white">{formatCurrency(results.totalAmount)}</div>
                 </div>
              </div>

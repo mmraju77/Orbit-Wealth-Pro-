@@ -11,7 +11,7 @@ export default function TermsOfService() {
     <div className="max-w-4xl mx-auto space-y-12 py-12 text-white">
       <header className="space-y-4 text-center">
         <div className="inline-flex p-3 bg-white/5 rounded-2xl border border-white/10 mb-4">
-           <FileText className="text-[#0055FF] w-8 h-8" />
+           <FileText className="text-[#D4AF37] w-8 h-8" />
         </div>
         <h1 className="text-4xl font-bold tracking-tighter">Terms of Service</h1>
         <p className="text-white/40 text-sm uppercase tracking-widest font-bold">Standard Usage Agreement</p>
@@ -21,7 +21,7 @@ export default function TermsOfService() {
         <section className="space-y-4">
           <h2 className="text-xl font-bold text-white tracking-tight">1. Acceptance of Terms</h2>
           <p>
-            By accessing and using Orbit Wealth Pro, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree, please refrain from using our tools.
+            By accessing and using ORBIT WEALTH PRO, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree, please refrain from using our tools.
           </p>
         </section>
 
@@ -38,7 +38,7 @@ export default function TermsOfService() {
                "Remove any copyright notations"
              ].map((item, i) => (
                <li key={i} className="flex items-center gap-3 p-3 bg-white/5 rounded-xl border border-white/5">
-                 <Check className="w-4 h-4 text-[#0055FF]" />
+                 <Check className="w-4 h-4 text-[#D4AF37]" />
                  <span className="text-xs font-bold">{item}</span>
                </li>
              ))}
@@ -48,17 +48,17 @@ export default function TermsOfService() {
         <section className="space-y-4">
           <h2 className="text-xl font-bold text-white tracking-tight">3. Disclaimer of Accuracy</h2>
           <p>
-            The tools on this website are provided on an 'as is' basis. Orbit Wealth Pro makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties of merchantability or fitness for a particular purpose.
+            The tools on this website are provided on an 'as is' basis. ORBIT WEALTH PRO makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties of merchantability or fitness for a particular purpose.
           </p>
         </section>
 
         <section className="space-y-4">
            <div className="flex items-center gap-2 text-white">
-              <Globe className="w-5 h-5 text-[#0055FF]" />
+              <Globe className="w-5 h-5 text-[#D4AF37]" />
               <h2 className="text-xl font-bold tracking-tight">Governing Law</h2>
            </div>
            <p>
-             Any claim relating to Orbit Wealth Pro's website shall be governed by the laws of the jurisdiction in which the user resides, without regard to its conflict of law provisions.
+             Any claim relating to ORBIT WEALTH PRO's website shall be governed by the laws of the jurisdiction in which the user resides, without regard to its conflict of law provisions.
            </p>
         </section>
       </div>

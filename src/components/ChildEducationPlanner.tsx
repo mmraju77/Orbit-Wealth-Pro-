@@ -51,8 +51,8 @@ export default function ChildEducationPlanner() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-             <div className="h-px w-6 bg-[#0055FF]"></div>
-             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Institutional Heritage</span>
+             <div className="h-px w-6 bg-[#D4AF37]"></div>
+             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Institutional Heritage</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">Academic Funding.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -96,13 +96,13 @@ export default function ChildEducationPlanner() {
               <div className="space-y-4">
                  <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
                     <span>Years until admission</span>
-                    <span className="text-[#0055FF]">{yearsUntilUni} Years</span>
+                    <span className="text-[#D4AF37]">{yearsUntilUni} Years</span>
                  </div>
                  <input 
                    type="range" min="1" max="25"
                    value={yearsUntilUni}
                    onChange={(e) => setYearsUntilUni(Number(e.target.value))}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
            </div>
@@ -115,9 +115,9 @@ export default function ChildEducationPlanner() {
                  <div className="text-5xl font-bold text-white tracking-tighter">{formatCurrency(results.futureCost)}</div>
               </div>
               
-              <div className="p-8 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 text-center">
-                 <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-2">Required Monthly Investment</div>
-                 <div className="text-5xl font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.monthlySIP)}</div>
+              <div className="p-8 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
+                 <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-2">Required Monthly Investment</div>
+                 <div className="text-5xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.monthlySIP)}</div>
                  <div className="mt-4 text-xs text-white/40">Assuming {expectedReturn}% annual compounded returns</div>
               </div>
            </div>

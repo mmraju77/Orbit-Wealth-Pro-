@@ -39,8 +39,8 @@ export default function CAGRCalculator() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-             <div className="h-px w-6 bg-[#0055FF]"></div>
-             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Annualized Performance</span>
+             <div className="h-px w-6 bg-[#D4AF37]"></div>
+             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Annualized Performance</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">Compound Annual Growth.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -74,13 +74,13 @@ export default function CAGRCalculator() {
             <div className="space-y-4">
                <div className="flex justify-between items-center">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
-                  <span className="text-[#0055FF] font-bold">{duration} Yrs</span>
+                  <span className="text-[#D4AF37] font-bold">{duration} Yrs</span>
                </div>
                <input 
                  type="range" min="1" max="50"
                  value={duration}
                  onChange={(e) => setDuration(Number(e.target.value))}
-                 className="w-full accent-[#0055FF]"
+                 className="w-full accent-[#D4AF37]"
                />
             </div>
           </div>
@@ -90,7 +90,7 @@ export default function CAGRCalculator() {
            <div className="space-y-2">
               <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Compound Annual Growth Rate</div>
               <div className="text-7xl font-bold text-white tracking-tighter">{cagr}%</div>
-              <div className="pt-4 flex items-center justify-center gap-2 text-[#0055FF]">
+              <div className="pt-4 flex items-center justify-center gap-2 text-[#D4AF37]">
                  <TrendingUp className="w-4 h-4" />
                  <span className="text-sm font-medium">Growth analysis complete</span>
               </div>

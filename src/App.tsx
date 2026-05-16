@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, lazy, Suspense } from 'react';
-import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -56,7 +56,7 @@ const AboutUs = lazy(() => import('./components/AboutUs'));
 
 const LoadingFallback = () => (
   <div className="flex items-center justify-center p-32">
-    <div className="w-8 h-8 border-2 border-[#0055FF] border-t-transparent rounded-full animate-spin"></div>
+    <div className="w-8 h-8 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
 import Footer from './components/Footer';
@@ -69,19 +69,17 @@ export default function App() {
   return (
     <HelmetProvider>
       <LocaleProvider>
-        <BrowserRouter basename="/">
+        <HashRouter>
           <ScrollToTop />
-          <div className="flex bg-[#050505] min-h-screen text-white font-sans selection:bg-[#0055FF] selection:text-white relative">
+          <div className="flex bg-[#0B1221] min-h-screen text-white font-sans selection:bg-[#D4AF37] selection:text-black relative">
             <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
             
             <main className="flex-1 md:ml-64 min-h-screen flex flex-col relative overflow-hidden">
               {/* Mobile Header */}
-              <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/10 z-50 flex items-center justify-between px-6">
+              <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0B1221]/80 backdrop-blur-md border-b border-white/10 z-50 flex items-center justify-between px-6">
                 <div className="flex items-center gap-2">
-                   <div className="w-8 h-8 bg-[#0055FF] rounded-lg flex items-center justify-center">
-                     <ShieldCheck className="w-5 h-5 text-white" />
-                   </div>
-                   <span className="font-display font-black text-sm tracking-tighter uppercase">Orbit Pro</span>
+                   <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-8 h-8 object-contain" />
+                   <span className="font-display font-black text-sm tracking-tighter uppercase">ORBIT WEALTH PRO</span>
                 </div>
                 <button 
                   onClick={() => setSidebarOpen(true)}
@@ -143,7 +141,7 @@ export default function App() {
                   <Route path="/about" element={<AboutUs />} />
                   <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
                   <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
+                  <Route path="*" element={<Dashboard />} />
                 </Routes>
                 </Suspense>
                 <Footer />
@@ -151,7 +149,7 @@ export default function App() {
             </div>
           </main>
           </div>
-        </BrowserRouter>
+        </HashRouter>
       </LocaleProvider>
     </HelmetProvider>
   );

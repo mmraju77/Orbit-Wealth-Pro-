@@ -5,21 +5,21 @@
   --font-display: "Outfit", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   
-  --color-finance-black: #0A0A0A;
+  --color-finance-black: #0B1221;
   --color-finance-white: #F5F5F5;
-  --color-finance-accent: #0055FF;
+  --color-finance-accent: #D4AF37;
   --color-finance-muted: #A3A3A3;
 }
 
 @layer base {
   body {
-    @apply font-sans antialiased text-white bg-[#0A0A0A] transition-colors duration-300;
+    @apply font-sans antialiased text-white bg-[#0B1221] transition-colors duration-300;
   }
 }
 
 @layer components {
   .editorial-label {
-    @apply text-[10px] font-bold text-[#0055FF] mb-1 tracking-[0.3em] uppercase;
+    @apply text-[10px] font-bold text-[#D4AF37] mb-1 tracking-[0.3em] uppercase;
   }
   
   .input-label-editorial {
@@ -27,7 +27,7 @@
   }
   
   .editorial-input {
-    @apply w-full bg-transparent border-b border-white/20 pb-2 font-light tabular-nums text-xl outline-none focus:border-[#0055FF] transition-colors appearance-none;
+    @apply w-full bg-transparent border-b border-white/20 pb-2 font-light tabular-nums text-xl outline-none focus:border-[#D4AF37] transition-colors appearance-none;
   }
   
   .number-display {
@@ -35,6 +35,6 @@
   }
   
   .btn-accent {
-    @apply bg-[#0055FF] hover:bg-[#0044CC] text-white py-4 font-bold tracking-widest text-[11px] uppercase transition-all flex items-center justify-center;
+    @apply bg-[#D4AF37] hover:bg-[#B8962E] text-black py-4 font-bold tracking-widest text-[11px] uppercase transition-all flex items-center justify-center;
   }
 }

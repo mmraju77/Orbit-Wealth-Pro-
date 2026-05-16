@@ -53,7 +53,7 @@ export default function EMICalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: EMI Report', 20, 20);
+    doc.text('ORBIT WEALTH PRO: EMI Report', 20, 20);
     doc.setFontSize(12);
     doc.text(`Loan Amount: ${formatCurrency(results.principal)}`, 20, 40);
     doc.text(`Interest Rate: ${inputs.interestRate}%`, 20, 50);
@@ -69,7 +69,7 @@ export default function EMICalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <CreditCard className="text-[#0055FF] w-6 h-6" />
+             <CreditCard className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">EMI Global Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -81,7 +81,7 @@ export default function EMICalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -93,39 +93,39 @@ export default function EMICalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Loan Amount</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
               </div>
               <input 
                 type="range" min="1000" max="10000000" step="1000"
                 value={inputs.homePrice - inputs.downPayment}
                 onChange={(e) => setInputs({ ...inputs, homePrice: Number(e.target.value) + inputs.downPayment })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.interestRate}%</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.interestRate}%</div>
               </div>
               <input 
                 type="range" min="1" max="25" step="0.1"
                 value={inputs.interestRate}
                 onChange={(e) => setInputs({ ...inputs, interestRate: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Loan Tenure (Years)</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.loanTerm} Yr</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.loanTerm} Yr</div>
               </div>
               <input 
                 type="range" min="1" max="30" step="1"
                 value={inputs.loanTerm}
                 onChange={(e) => setInputs({ ...inputs, loanTerm: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function EMICalculator() {
                         cx="50%" cy="50%" innerRadius={80} outerRadius={110} paddingAngle={5} dataKey="value" stroke="none" isAnimationActive={false}
                       >
                         <Cell fill="#FFFFFF" />
-                        <Cell fill="#0055FF" />
+                        <Cell fill="#D4AF37" />
                       </Pie>
                       <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
                     </PieChart>
@@ -159,7 +159,7 @@ export default function EMICalculator() {
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 w-full border-t border-white/5 pt-8 px-4">
                  <div className="text-center">
                     <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                    <div className="text-xl font-bold text-[#0055FF]">{formatCurrency(results.totalInterest)}</div>
+                    <div className="text-xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
                  </div>
                  <div className="text-center">
                     <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Payable</div>

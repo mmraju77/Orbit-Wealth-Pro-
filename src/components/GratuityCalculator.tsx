@@ -56,7 +56,7 @@ export default function GratuityCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Gratuity Projection', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Gratuity Projection', 20, 20);
     doc.setFontSize(12);
     doc.text(`Last Drawn Monthly Salary: ${formatCurrency(inputs.monthlySalary)}`, 20, 40);
     doc.text(`Years of Service: ${inputs.yearsOfService}`, 20, 50);
@@ -70,7 +70,7 @@ export default function GratuityCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <Gift className="text-[#0055FF] w-6 h-6" />
+             <Gift className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Gratuity Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -82,7 +82,7 @@ export default function GratuityCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Results
           </button>
         </div>
@@ -100,20 +100,20 @@ export default function GratuityCalculator() {
                    type="range" min="1000" max="1000000" step="1000"
                    value={inputs.monthlySalary}
                    onChange={(e) => setInputs({ ...inputs, monthlySalary: Number(e.target.value) })}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Years of Service</label>
-                    <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.yearsOfService} Yrs</div>
+                    <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.yearsOfService} Yrs</div>
                  </div>
                  <input 
                    type="range" min="1" max="50" step="1"
                    value={inputs.yearsOfService}
                    onChange={(e) => setInputs({ ...inputs, yearsOfService: Number(e.target.value) })}
-                   className="w-full accent-[#0055FF]"
+                   className="w-full accent-[#D4AF37]"
                  />
               </div>
 
@@ -123,7 +123,7 @@ export default function GratuityCalculator() {
                     type="checkbox"
                     checked={inputs.isCoveredUnderGratuityAct}
                     onChange={(e) => setInputs({ ...inputs, isCoveredUnderGratuityAct: e.target.checked })}
-                    className="w-5 h-5 accent-[#0055FF]"
+                    className="w-5 h-5 accent-[#D4AF37]"
                    />
                    <div>
                       <div className="text-xs font-bold text-white">Covered under Gratuity Act?</div>

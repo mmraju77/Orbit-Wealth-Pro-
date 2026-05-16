@@ -94,7 +94,7 @@ export default function MortgageCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Mortgage Report', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Mortgage Report', 20, 20);
     doc.setFontSize(12);
     doc.text(`Home Price: ${formatCurrency(inputs.homePrice)}`, 20, 40);
     doc.text(`Down Payment: ${formatCurrency(inputs.downPayment)} (${inputs.downPaymentPercent}%)`, 20, 50);
@@ -111,8 +111,8 @@ export default function MortgageCalculator() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-             <div className="h-px w-6 bg-[#0055FF]"></div>
-             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Mortgage Intelligence</span>
+             <div className="h-px w-6 bg-[#D4AF37]"></div>
+             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Mortgage Intelligence</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">Home Loan Suite.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -124,7 +124,7 @@ export default function MortgageCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Results
           </button>
         </div>
@@ -143,14 +143,14 @@ export default function MortgageCalculator() {
                   type="range" min="50000" max="5000000" step="10000"
                   value={inputs.homePrice}
                   onChange={(e) => setInputs({ ...inputs, homePrice: Number(e.target.value) })}
-                  className="w-full accent-[#0055FF]"
+                  className="w-full accent-[#D4AF37]"
                 />
              </div>
 
              <div className="space-y-4">
                <div className="flex justify-between items-center">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Down Payment (%)</label>
-                  <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.downPaymentPercent}%</div>
+                  <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.downPaymentPercent}%</div>
                </div>
                <input 
                   type="range" min="0" max="100" step="1"
@@ -159,7 +159,7 @@ export default function MortgageCalculator() {
                     const percent = Number(e.target.value);
                     setInputs({ ...inputs, downPaymentPercent: percent, downPayment: (inputs.homePrice * percent) / 100 });
                   }}
-                  className="w-full accent-[#0055FF]"
+                  className="w-full accent-[#D4AF37]"
                />
              </div>
 
@@ -172,7 +172,7 @@ export default function MortgageCalculator() {
                       onChange={(e) => setInputs({ ...inputs, interestRate: Number(e.target.value) })}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />
-                    <span className="text-[#0055FF] font-bold">%</span>
+                    <span className="text-[#D4AF37] font-bold">%</span>
                   </div>
                </div>
                <div className="space-y-4">
@@ -191,8 +191,8 @@ export default function MortgageCalculator() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
-            <div className="p-4 bg-[#0055FF]/5 rounded-xl border border-[#0055FF]/10">
-                <div className="text-[8px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+            <div className="p-4 bg-[#D4AF37]/5 rounded-xl border border-[#D4AF37]/10">
+                <div className="text-[8px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
                 <div className="text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
@@ -211,8 +211,8 @@ export default function MortgageCalculator() {
                    <h3 className="font-bold text-white">Payment Distribution</h3>
                    <p className="text-[10px] text-white/20 uppercase tracking-widest font-bold">Principal vs Interest Analysis</p>
                  </div>
-                 <div className="p-2 bg-[#0055FF]/10 rounded-lg">
-                   <Info className="w-4 h-4 text-[#0055FF]" />
+                 <div className="p-2 bg-[#D4AF37]/10 rounded-lg">
+                   <Info className="w-4 h-4 text-[#D4AF37]" />
                  </div>
               </div>
 
@@ -227,7 +227,7 @@ export default function MortgageCalculator() {
                         cx="50%" cy="50%" innerRadius={70} outerRadius={90} paddingAngle={5} dataKey="value" stroke="none" isAnimationActive={false}
                       >
                         <Cell fill="#FFFFFF" />
-                        <Cell fill="#0055FF" />
+                        <Cell fill="#D4AF37" />
                       </Pie>
                       <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
                     </PieChart>
@@ -237,7 +237,7 @@ export default function MortgageCalculator() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                 <div className="text-center">
                    <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest">Total Interest</div>
-                   <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.totalInterest)}</div>
+                   <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.totalInterest)}</div>
                 </div>
                 <div className="text-center">
                    <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest">Total Payable</div>
@@ -270,7 +270,7 @@ export default function MortgageCalculator() {
           <h3 className="font-bold text-white">Amortization Projection</h3>
           <div className="flex items-center gap-4">
              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-[#0055FF]"></div>
+                <div className="w-2 h-2 rounded-full bg-[#D4AF37]"></div>
                 <span className="text-[10px] font-bold text-white/40 uppercase">Balance</span>
              </div>
              <div className="flex items-center gap-2">
@@ -290,7 +290,7 @@ export default function MortgageCalculator() {
               />
               <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
               <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
-              <Line type="monotone" dataKey="remainingBalance" stroke="#0055FF" strokeWidth={3} dot={false} isAnimationActive={false} />
+              <Line type="monotone" dataKey="remainingBalance" stroke="#D4AF37" strokeWidth={3} dot={false} isAnimationActive={false} />
               <Line type="monotone" dataKey="totalInterestPaid" stroke="#FFFFFF20" strokeWidth={2} dot={false} isAnimationActive={false} />
             </LineChart>
           </ResponsiveContainer>

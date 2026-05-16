@@ -13,27 +13,25 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="w-full bg-black border-t border-white/5 pt-16 pb-8 px-6 mt-auto">
+    <footer className="w-full bg-[#0B1221] border-t border-white/5 pt-16 pb-8 px-6 mt-auto">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3 group">
-              <div className="w-10 h-10 bg-[#0055FF] rounded-xl flex items-center justify-center shadow-lg shadow-[#0055FF]/20 group-hover:scale-110 transition-transform">
-                <Globe className="text-white w-6 h-6" />
-              </div>
-              <span className="text-2xl font-bold tracking-tighter text-white">Orbit Wealth Pro</span>
+              <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-10 h-10 object-contain group-hover:scale-110 transition-transform" />
+              <span className="text-2xl font-bold tracking-tighter text-white uppercase">ORBIT WEALTH PRO</span>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed">
               Global financial tools platform providing precision calculators for the USA, UAE, and India. Empowering wealth through data.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#0055FF] hover:bg-[#0055FF]/10 transition-all">
+              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#0055FF] hover:bg-[#0055FF]/10 transition-all">
+              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#0055FF] hover:bg-[#0055FF]/10 transition-all">
+              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
                 <Github className="w-4 h-4" />
               </a>
             </div>
@@ -76,15 +74,15 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-[#0055FF] uppercase tracking-widest mb-6">Company & Info</h4>
+            <h4 className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest mb-6">Company & Info</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/about" className="flex items-center gap-2 text-sm text-white hover:text-[#0055FF] transition-colors font-bold">
-                  <Globe className="w-4 h-4" /> About Orbit Wealth
+                <Link to="/about" className="flex items-center gap-2 text-sm text-white hover:text-[#D4AF37] transition-colors font-bold">
+                  <Globe className="w-4 h-4" /> About ORBIT WEALTH PRO
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="flex items-center gap-2 text-sm text-white hover:text-[#0055FF] transition-colors font-bold">
+                <Link to="/contact" className="flex items-center gap-2 text-sm text-white hover:text-[#D4AF37] transition-colors font-bold">
                   <Mail className="w-4 h-4" /> Contact Support
                 </Link>
               </li>
@@ -103,11 +101,11 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4 py-8 border-t border-white/5 mb-8">
-           <Link to="/about" className="text-xs font-bold text-white/60 hover:text-[#0055FF] uppercase tracking-widest transition-colors">About Us</Link>
-           <Link to="/contact" className="text-xs font-bold text-white/60 hover:text-[#0055FF] uppercase tracking-widest transition-colors">Contact Us</Link>
-           <Link to="/privacy-policy" className="text-xs font-bold text-white/60 hover:text-[#0055FF] uppercase tracking-widest transition-colors">Privacy Policy</Link>
-           <Link to="/terms-of-service" className="text-xs font-bold text-white/60 hover:text-[#0055FF] uppercase tracking-widest transition-colors">Terms</Link>
-           <Link to="/disclaimer" className="text-xs font-bold text-white/60 hover:text-[#0055FF] uppercase tracking-widest transition-colors">Disclaimer</Link>
+           <Link to="/about" className="text-xs font-bold text-white/60 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">About Us</Link>
+           <Link to="/contact" className="text-xs font-bold text-white/60 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Contact Us</Link>
+           <Link to="/privacy-policy" className="text-xs font-bold text-white/60 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Privacy Policy</Link>
+           <Link to="/terms-of-service" className="text-xs font-bold text-white/60 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Terms</Link>
+           <Link to="/disclaimer" className="text-xs font-bold text-white/60 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Disclaimer</Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pt-8 border-t border-white/5">
@@ -121,17 +119,17 @@ export default function Footer() {
                  <Link to="/tools/gst/australia" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded">AUSTRALIA</Link>
               </div>
            </div>
-           <div className="bg-[#0055FF]/5 rounded-2xl p-6 border border-[#0055FF]/10">
-              <h4 className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-2">AdSense & Trust</h4>
+           <div className="bg-[#D4AF37]/5 rounded-2xl p-6 border border-[#D4AF37]/10">
+              <h4 className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-2">AdSense & Trust</h4>
               <p className="text-[10px] text-white/40 leading-relaxed italic">
-                Orbit Wealth Pro is a compliant financial platform. We use GA4 for analytics and AdSense for sustainability. Your data remains your own.
+                ORBIT WEALTH PRO is a compliant financial platform. We use GA4 for analytics and AdSense for sustainability. Your data remains your own.
               </p>
            </div>
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[10px] font-bold text-white/20 uppercase tracking-widest">
-            © {currentYear} Orbit Wealth Pro Engine. All Rights Reserved.
+            © {currentYear} ORBIT WEALTH PRO Engine. All Rights Reserved.
           </p>
           <div className="flex items-center gap-6 text-[10px] font-bold text-white/20 uppercase tracking-widest">
             <span>Precision Logic v2.4.0</span>

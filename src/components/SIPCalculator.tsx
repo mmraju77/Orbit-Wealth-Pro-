@@ -59,7 +59,7 @@ export default function SIPCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: SIP Report', 20, 20);
+    doc.text('ORBIT WEALTH PRO: SIP Report', 20, 20);
     doc.setFontSize(12);
     doc.text(`Monthly Investment: ${formatCurrency(inputs.monthlyInvestment || 0)}`, 20, 40);
     doc.text(`Expected Return: ${inputs.expectedReturn}%`, 20, 50);
@@ -75,8 +75,8 @@ export default function SIPCalculator() {
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
-             <div className="h-px w-6 bg-[#0055FF]"></div>
-             <span className="text-[10px] font-bold text-[#0055FF] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
+             <div className="h-px w-6 bg-[#D4AF37]"></div>
+             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">SIP Intelligence.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
@@ -88,7 +88,7 @@ export default function SIPCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -101,39 +101,39 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Investment</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(inputs.monthlyInvestment || 0)}</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(inputs.monthlyInvestment || 0)}</div>
               </div>
               <input 
                 type="range" min="500" max="100000" step="500"
                 value={inputs.monthlyInvestment}
                 onChange={(e) => setInputs({ ...inputs, monthlyInvestment: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.expectedReturn}%</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
               </div>
               <input 
                 type="range" min="1" max="30" step="0.5"
                 value={inputs.expectedReturn}
                 onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Investment Period (Years)</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.duration} Yr</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yr</div>
               </div>
               <input 
                 type="range" min="1" max="40" step="1"
                 value={inputs.duration}
                 onChange={(e) => setInputs({ ...inputs, duration: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function SIPCalculator() {
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-[8px] text-white/20 font-bold uppercase tracking-widest mb-1">Return Amount</div>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
         </section>
@@ -158,8 +158,8 @@ export default function SIPCalculator() {
                 <AreaChart data={results.yearlyData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorVal" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#0055FF" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#0055FF" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#D4AF37" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
@@ -169,7 +169,7 @@ export default function SIPCalculator() {
                     contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
                     labelStyle={{ color: '#white/40', marginBottom: '4px' }}
                   />
-                  <Area type="monotone" dataKey="balance" stroke="#0055FF" strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" isAnimationActive={false} />
+                  <Area type="monotone" dataKey="balance" stroke="#D4AF37" strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" isAnimationActive={false} />
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">

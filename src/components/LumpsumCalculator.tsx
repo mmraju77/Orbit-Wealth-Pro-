@@ -47,7 +47,7 @@ export default function LumpsumCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Lumpsum Report', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Lumpsum Report', 20, 20);
     doc.setFontSize(12);
     doc.text(`Total Investment: ${formatCurrency(inputs.investmentAmount)}`, 20, 40);
     doc.text(`Expected Return: ${inputs.expectedReturn}%`, 20, 50);
@@ -62,7 +62,7 @@ export default function LumpsumCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <BarChart3 className="text-[#0055FF] w-6 h-6" />
+             <BarChart3 className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">Lumpsum Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -74,7 +74,7 @@ export default function LumpsumCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -86,39 +86,39 @@ export default function LumpsumCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Total Investment</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(inputs.investmentAmount)}</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(inputs.investmentAmount)}</div>
               </div>
               <input 
                 type="range" min="10000" max="10000000" step="10000"
                 value={inputs.investmentAmount}
                 onChange={(e) => setInputs({ ...inputs, investmentAmount: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.expectedReturn}%</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
               </div>
               <input 
                 type="range" min="1" max="30" step="0.5"
                 value={inputs.expectedReturn}
                 onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{inputs.duration} Yr</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yr</div>
               </div>
               <input 
                 type="range" min="1" max="40" step="1"
                 value={inputs.duration}
                 onChange={(e) => setInputs({ ...inputs, duration: Number(e.target.value) })}
-                className="w-full accent-[#0055FF]"
+                className="w-full accent-[#D4AF37]"
               />
             </div>
           </div>
@@ -130,7 +130,7 @@ export default function LumpsumCalculator() {
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-[8px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Returns</div>
-                <div className="text-lg font-bold text-[#0055FF] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
+                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
         </section>
@@ -142,15 +142,15 @@ export default function LumpsumCalculator() {
                 <AreaChart data={results.yearlyData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                   <defs>
                     <linearGradient id="colorLum" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#0055FF" stopOpacity={0.3}/>
-                      <stop offset="95%" stopColor="#0055FF" stopOpacity={0}/>
+                      <stop offset="5%" stopColor="#D4AF37" stopOpacity={0.3}/>
+                      <stop offset="95%" stopColor="#D4AF37" stopOpacity={0}/>
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
                   <XAxis dataKey="year" stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} dy={10} />
                   <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
                   <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
-                  <Area type="monotone" dataKey="balance" stroke="#0055FF" strokeWidth={3} fillOpacity={1} fill="url(#colorLum)" isAnimationActive={false} />
+                  <Area type="monotone" dataKey="balance" stroke="#D4AF37" strokeWidth={3} fillOpacity={1} fill="url(#colorLum)" isAnimationActive={false} />
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">

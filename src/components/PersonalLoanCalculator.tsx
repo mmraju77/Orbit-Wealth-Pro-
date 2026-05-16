@@ -71,7 +71,7 @@ export default function PersonalLoanCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text('Orbit Wealth Pro: Personal Loan Report', 20, 20);
+    doc.text('ORBIT WEALTH PRO: Personal Loan Report', 20, 20);
     doc.setFontSize(12);
     doc.text(`Principal: ${formatCurrency(principal)}`, 20, 40);
     doc.text(`Interest Rate: ${interestRate}%`, 20, 50);
@@ -92,7 +92,7 @@ export default function PersonalLoanCalculator() {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <Wallet className="text-[#0055FF] w-6 h-6" />
+             <Wallet className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Personal Loan Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -119,7 +119,7 @@ export default function PersonalLoanCalculator() {
                  type="range" min="1000" max="250000" step="1000"
                  value={principal}
                  onChange={(e) => setPrincipal(Number(e.target.value))}
-                 className="w-full accent-[#0055FF]"
+                 className="w-full accent-[#D4AF37]"
                />
             </div>
 
@@ -165,8 +165,8 @@ export default function PersonalLoanCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between">
           <div className="space-y-8">
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-6 bg-[#0055FF]/5 rounded-2xl border border-[#0055FF]/10 text-center">
-                   <div className="text-[10px] text-[#0055FF] font-bold uppercase tracking-widest mb-1">Standard EMI</div>
+                <div className="p-6 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 text-center">
+                   <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Standard EMI</div>
                    <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
                 </div>
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
@@ -205,7 +205,7 @@ export default function PersonalLoanCalculator() {
                         cx="50%" cy="50%" innerRadius={60} outerRadius={80} paddingAngle={5} dataKey="value" stroke="none" isAnimationActive={false}
                       >
                         <Cell fill="#FFFFFF" />
-                        <Cell fill="#0055FF" />
+                        <Cell fill="#D4AF37" />
                       </Pie>
                       <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
                     </PieChart>

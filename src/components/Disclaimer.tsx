@@ -21,13 +21,13 @@ export default function Disclaimer() {
         <div className="p-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-start gap-4">
            <AlertTriangle className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
            <p className="text-amber-500 font-bold text-lg leading-tight tracking-tight">
-             Calculations provided by Orbit Wealth Pro are for informational purposes only and do NOT constitute financial, legal, or tax advice.
+             Calculations provided by ORBIT WEALTH PRO are for informational purposes only and do NOT constitute financial, legal, or tax advice.
            </p>
         </div>
 
         <section className="space-y-4">
           <div className="flex items-center gap-3 text-white">
-            <CheckCircle2 className="w-5 h-5 text-[#0055FF]" />
+            <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
             <h2 className="text-xl font-bold tracking-tight">Informational Purpose Only</h2>
           </div>
           <p>
@@ -37,7 +37,7 @@ export default function Disclaimer() {
 
         <section className="space-y-4">
           <div className="flex items-center gap-3 text-white">
-            <Info className="w-5 h-5 text-[#0055FF]" />
+            <Info className="w-5 h-5 text-[#D4AF37]" />
             <h2 className="text-xl font-bold tracking-tight">Seek Professional Guidance</h2>
           </div>
           <p>
@@ -48,7 +48,7 @@ export default function Disclaimer() {
         <section className="space-y-4 border-t border-white/5 pt-8">
           <h2 className="text-xl font-bold text-white tracking-tight">No Liability</h2>
           <p>
-            Orbit Wealth Pro and its developers assume no responsibility for any losses or damages resulting from the use of this website or reliance on its content. By using these tools, you acknowledge that you are doing so at your own risk.
+            ORBIT WEALTH PRO and its developers assume no responsibility for any losses or damages resulting from the use of this website or reliance on its content. By using these tools, you acknowledge that you are doing so at your own risk.
           </p>
         </section>
       </div>

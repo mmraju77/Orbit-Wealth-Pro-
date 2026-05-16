@@ -23,7 +23,7 @@ export default function AmortizationTable({ schedule }: AmortizationTableProps) 
             <th className="py-3 font-medium text-right transition-colors">Principal</th>
             <th className="py-3 font-medium text-right">Interest</th>
             <th className="py-3 font-medium text-right text-white/40">Total Interest</th>
-            <th className="py-3 font-medium text-right text-[#0055FF]">Balance</th>
+            <th className="py-3 font-medium text-right text-[#D4AF37]">Balance</th>
           </tr>
         </thead>
         <tbody className="text-[13px] font-light tabular-nums divide-y divide-white/5">
@@ -39,7 +39,7 @@ export default function AmortizationTable({ schedule }: AmortizationTableProps) 
               <td className="py-3 text-right">{formatCurrency(period.principal)}</td>
               <td className="py-3 text-right">{formatCurrency(period.interest)}</td>
               <td className="py-3 text-right text-white/30">{formatCurrency(period.totalInterestPaid)}</td>
-              <td className="py-3 text-right text-[#0055FF] font-medium">{formatCurrency(period.remainingBalance)}</td>
+              <td className="py-3 text-right text-[#D4AF37] font-medium">{formatCurrency(period.remainingBalance)}</td>
             </motion.tr>
           ))}
         </tbody>

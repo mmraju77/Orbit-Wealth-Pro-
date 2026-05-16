@@ -55,7 +55,7 @@ async function startServer() {
           }
         ],
         config: {
-          systemInstruction: "You are a secure financial advisor assistant for Orbit Wealth Pro. Provide concise, expert advice based on global financial standards.",
+          systemInstruction: "You are a secure financial advisor assistant for ORBIT WEALTH PRO. Provide concise, expert advice based on global financial standards.",
         }
       });
 

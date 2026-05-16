@@ -60,7 +60,7 @@ export default function FDRDCalculator() {
   const downloadPDF = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text(`Orbit Wealth Pro: ${type} Maturity Analysis`, 20, 20);
+    doc.text(`ORBIT WEALTH PRO: ${type} Maturity Analysis`, 20, 20);
     doc.setFontSize(12);
     doc.text(`Investment Type: ${type === 'FD' ? 'Fixed Deposit' : 'Recurring Deposit'}`, 20, 40);
     doc.text(`${type === 'FD' ? 'Principal' : 'Monthly Deposit'}: ${formatCurrency(inputs.amount)}`, 20, 50);
@@ -77,14 +77,14 @@ export default function FDRDCalculator() {
     { name: 'Interest', value: results.interest },
   ];
 
-  const COLORS = ['#1a1a1a', '#0055FF'];
+  const COLORS = ['#1a1a1a', '#D4AF37'];
 
   return (
     <div className="space-y-8 pb-20">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
-             <Landmark className="text-[#0055FF] w-6 h-6" />
+             <Landmark className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">FD & RD Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
@@ -96,7 +96,7 @@ export default function FDRDCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-3 px-4 py-2 bg-[#0055FF] hover:bg-[#0055FF]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#0055FF]/20">
+          <button className="flex items-center gap-3 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -107,13 +107,13 @@ export default function FDRDCalculator() {
           <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/5">
             <button
               onClick={() => setType('FD')}
-              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${type === 'FD' ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
+              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${type === 'FD' ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/20 hover:text-white/40'}`}
             >
               Fixed Deposit (FD)
             </button>
             <button
               onClick={() => setType('RD')}
-              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${type === 'RD' ? 'bg-[#0055FF] text-white shadow-lg shadow-[#0055FF]/20' : 'text-white/20 hover:text-white/40'}`}
+              className={`flex-1 py-3 text-xs font-bold rounded-lg transition-all ${type === 'RD' ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/20 hover:text-white/40'}`}
             >
               Recurring Deposit (RD)
             </button>
@@ -127,7 +127,7 @@ export default function FDRDCalculator() {
                    type="number"
                    value={inputs.amount}
                    onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
-                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#0055FF] transition-all font-bold"
+                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 font-bold">{currency}</div>
                </div>
@@ -141,7 +141,7 @@ export default function FDRDCalculator() {
                     step="0.1"
                     value={inputs.rate}
                     onChange={(e) => setInputs({ ...inputs, rate: Number(e.target.value) })}
-                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#0055FF] transition-all font-bold"
+                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                   />
                 </div>
                 <div className="space-y-4">
@@ -150,7 +150,7 @@ export default function FDRDCalculator() {
                     type="number"
                     value={inputs.tenure}
                     onChange={(e) => setInputs({ ...inputs, tenure: Number(e.target.value) })}
-                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#0055FF] transition-all font-bold"
+                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                   />
                 </div>
              </div>
@@ -185,7 +185,7 @@ export default function FDRDCalculator() {
                        <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Invested</span>
                     </div>
                     <div className="flex items-center gap-2">
-                       <div className="w-3 h-3 rounded-full bg-[#0055FF]"></div>
+                       <div className="w-3 h-3 rounded-full bg-[#D4AF37]"></div>
                        <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">Returns</span>
                     </div>
                  </div>
@@ -193,15 +193,15 @@ export default function FDRDCalculator() {
 
                <div className="w-full md:w-1/2 space-y-6">
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 transition-all hover:bg-white/10 group">
-                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1 group-hover:text-[#0055FF] transition-colors">Total Invested</div>
+                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1 group-hover:text-[#D4AF37] transition-colors">Total Invested</div>
                     <div className="text-3xl font-bold tracking-tighter text-white">{formatCurrency(results.totalInvestment)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 transition-all hover:bg-white/10 group">
-                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1 group-hover:text-[#0055FF] transition-colors">Wealth Gained</div>
-                    <div className="text-3xl font-bold tracking-tighter text-[#0055FF]">{formatCurrency(results.interest)}</div>
+                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1 group-hover:text-[#D4AF37] transition-colors">Wealth Gained</div>
+                    <div className="text-3xl font-bold tracking-tighter text-[#D4AF37]">{formatCurrency(results.interest)}</div>
                  </div>
-                 <div className="p-6 bg-[#0055FF]/10 rounded-2xl border border-[#0055FF]/20 shadow-xl shadow-[#0055FF]/5">
-                    <div className="text-[10px] font-bold text-[#0055FF] uppercase tracking-widest mb-1">Maturity Value</div>
+                 <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 shadow-xl shadow-[#D4AF37]/5">
+                    <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Maturity Value</div>
                     <div className="text-4xl font-bold tracking-tighter text-white">{formatCurrency(results.matValue)}</div>
                  </div>
                </div>
