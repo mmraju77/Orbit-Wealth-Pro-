@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function BreakEvenCalculator() {
   const { formatCurrency } = useLocale();
@@ -63,20 +64,32 @@ export default function BreakEvenCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <section className="space-y-10 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
            <div className="space-y-8">
-              <div className="space-y-2">
-                 <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Total Fixed Costs (Monthly/Annual)</label>
-                 <input type="number" value={fixedCosts} onChange={e => setFixedCosts(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl" />
-                 <p className="text-[10px] text-white/20 px-2 italic">Rent, Salaries, Software, Utilities...</p>
-              </div>
+              <CurrencyInput 
+                label="Total Fixed Costs (Monthly/Annual)"
+                value={fixedCosts}
+                onChange={setFixedCosts}
+                min={1000}
+                max={10000000}
+                step={1000}
+                description="Rent, Salaries, Software, Utilities..."
+              />
               <div className="grid grid-cols-2 gap-8">
-                 <div className="space-y-2">
-                    <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Variable Cost / Unit</label>
-                    <input type="number" value={variableCostPerUnit} onChange={e => setVariableCostPerUnit(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none" />
-                 </div>
-                 <div className="space-y-2">
-                    <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Selling Price / Unit</label>
-                    <input type="number" value={sellingPricePerUnit} onChange={e => setSellingPricePerUnit(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none" />
-                 </div>
+                 <CurrencyInput 
+                   label="Variable Cost / Unit"
+                   value={variableCostPerUnit}
+                   onChange={setVariableCostPerUnit}
+                   min={0}
+                   max={100000}
+                   step={1}
+                 />
+                 <CurrencyInput 
+                   label="Selling Price / Unit"
+                   value={sellingPricePerUnit}
+                   onChange={setSellingPricePerUnit}
+                   min={1}
+                   max={200000}
+                   step={1}
+                 />
               </div>
            </div>
         </section>

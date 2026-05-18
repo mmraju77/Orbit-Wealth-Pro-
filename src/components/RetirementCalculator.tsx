@@ -12,6 +12,7 @@ import jsPDF from 'jspdf';
 import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
 import { normalizeRegionKey } from '../data/pSEOData';
+import CurrencyInput from './CurrencyInput';
 
 const REGIONAL_DEFAULTS: Record<string, { retirementAge: number; inflation: number }> = {
   india: { retirementAge: 60, inflation: 6 },
@@ -173,31 +174,23 @@ export default function RetirementCalculator() {
                  </div>
               </div>
 
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{labels.savings}</label>
-                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.currentSavings)}</div>
-                 </div>
-                 <input 
-                   type="range" min="0" max="10000000" step="50000"
-                   value={inputs.currentSavings}
-                   onChange={(e) => setInputs({ ...inputs, currentSavings: Number(e.target.value) })}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label={labels.savings}
+                value={inputs.currentSavings}
+                onChange={(val) => setInputs({ ...inputs, currentSavings: val })}
+                min={0}
+                max={10000000}
+                step={50000}
+              />
 
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{labels.contribution}</label>
-                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.monthlyContribution)}</div>
-                 </div>
-                 <input 
-                   type="range" min="1000" max="250000" step="1000"
-                   value={inputs.monthlyContribution}
-                   onChange={(e) => setInputs({ ...inputs, monthlyContribution: Number(e.target.value) })}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label={labels.contribution}
+                value={inputs.monthlyContribution}
+                onChange={(val) => setInputs({ ...inputs, monthlyContribution: val })}
+                min={1000}
+                max={250000}
+                step={1000}
+              />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">

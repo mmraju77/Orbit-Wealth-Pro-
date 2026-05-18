@@ -8,6 +8,7 @@ import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import Tooltip from './Tooltip';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: InvestmentInputs = {
   investmentAmount: 0, // Not used for base SIP, usually SIP is monthly
@@ -98,18 +99,14 @@ export default function SIPCalculator() {
         {/* INPUTS */}
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Investment</label>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(inputs.monthlyInvestment || 0)}</div>
-              </div>
-              <input 
-                type="range" min="500" max="100000" step="500"
-                value={inputs.monthlyInvestment}
-                onChange={(e) => setInputs({ ...inputs, monthlyInvestment: Number(e.target.value) })}
-                className="w-full accent-[#D4AF37]"
-              />
-            </div>
+            <CurrencyInput 
+              label="Monthly Investment"
+              value={inputs.monthlyInvestment || 0}
+              onChange={(val) => setInputs({ ...inputs, monthlyInvestment: val })}
+              min={500}
+              max={100000}
+              step={500}
+            />
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">

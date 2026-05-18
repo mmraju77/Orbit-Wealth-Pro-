@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function HLVCalculator() {
   const { formatCurrency } = useLocale();
@@ -82,14 +83,22 @@ export default function HLVCalculator() {
            </div>
 
            <div className="space-y-6">
-              <div className="space-y-2">
-                 <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Annual Gross Income</label>
-                 <input type="number" value={annualIncome} onChange={e => setAnnualIncome(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl" />
-              </div>
-              <div className="space-y-2">
-                 <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Personal Annual Expenses</label>
-                 <input type="number" value={personalExpenses} onChange={e => setPersonalExpenses(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none" />
-              </div>
+              <CurrencyInput 
+                label="Annual Gross Income"
+                value={annualIncome}
+                onChange={setAnnualIncome}
+                min={100000}
+                max={50000000}
+                step={50000}
+              />
+              <CurrencyInput 
+                label="Personal Annual Expenses"
+                value={personalExpenses}
+                onChange={setPersonalExpenses}
+                min={10000}
+                max={10000000}
+                step={10000}
+              />
            </div>
         </section>
 

@@ -19,7 +19,7 @@ interface Debt {
 }
 
 export default function DebtSnowball() {
-  const { formatCurrency } = useLocale();
+  const { formatCurrency, currencySymbol } = useLocale();
   const [debts, setDebts] = useState<Debt[]>([
     { id: '1', name: 'Credit Card A', balance: 50000, rate: 24, minPayment: 1500 },
     { id: '2', name: 'Personal Loan', balance: 200000, rate: 12, minPayment: 5000 },
@@ -97,11 +97,17 @@ export default function DebtSnowball() {
                 </div>
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Balance</label>
-                  <input type="number" value={debt.balance} onChange={e => updateDebt(debt.id, 'balance', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" />
+                  <div className="flex items-center gap-1">
+                    <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
+                    <input type="number" value={debt.balance} onChange={e => updateDebt(debt.id, 'balance', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" />
+                  </div>
                 </div>
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Min PMT</label>
-                  <input type="number" value={debt.minPayment} onChange={e => updateDebt(debt.id, 'minPayment', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" />
+                  <div className="flex items-center gap-1">
+                    <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
+                    <input type="number" value={debt.minPayment} onChange={e => updateDebt(debt.id, 'minPayment', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" />
+                  </div>
                 </div>
                 <div className="flex items-end justify-between">
                   <div className="space-y-1">

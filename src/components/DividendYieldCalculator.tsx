@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function DividendYieldCalculator() {
   const { formatCurrency } = useLocale();
@@ -58,22 +59,22 @@ export default function DividendYieldCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-             <div className="space-y-2">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Share Price</label>
-                <input 
-                  type="number" value={stockPrice}
-                  onChange={(e) => setStockPrice(Number(e.target.value))}
-                  className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
-                />
-             </div>
-             <div className="space-y-2">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Annual Dividend / Share</label>
-                <input 
-                  type="number" step="0.01" value={annualDividend}
-                  onChange={(e) => setAnnualDividend(Number(e.target.value))}
-                  className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
-                />
-             </div>
+            <CurrencyInput 
+              label="Share Price"
+              value={stockPrice}
+              onChange={setStockPrice}
+              min={1}
+              max={100000}
+              step={1}
+            />
+            <CurrencyInput 
+              label="Annual Dividend / Share"
+              value={annualDividend}
+              onChange={setAnnualDividend}
+              min={0}
+              max={10000}
+              step={0.1}
+            />
           </div>
           <div className="space-y-4">
              <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">

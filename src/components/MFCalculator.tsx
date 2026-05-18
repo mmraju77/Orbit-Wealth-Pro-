@@ -5,6 +5,7 @@ import { MutualFundInputs } from '../types';
 import { ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: MutualFundInputs = {
   investmentAmount: 100000,
@@ -128,18 +129,14 @@ export default function MFCalculator() {
            </div>
 
            <div className="space-y-6">
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{mode === 'sip' ? 'Monthly SIP' : 'Initial Investment'}</label>
-                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.investmentAmount)}</div>
-                 </div>
-                 <input 
-                   type="range" min={mode === 'sip' ? 500 : 1000} max={mode === 'sip' ? 100000 : 10000000} step={mode === 'sip' ? 500 : 10000}
-                   value={inputs.investmentAmount}
-                   onChange={(e) => setInputs({ ...inputs, investmentAmount: Number(e.target.value) })}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label={mode === 'sip' ? 'Monthly SIP' : 'Initial Investment'}
+                value={inputs.investmentAmount}
+                onChange={(val) => setInputs({ ...inputs, investmentAmount: val })}
+                min={mode === 'sip' ? 500 : 1000}
+                max={mode === 'sip' ? 100000 : 10000000}
+                step={mode === 'sip' ? 500 : 10000}
+              />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-4">

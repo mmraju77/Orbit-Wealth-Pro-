@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function CreditCardPayoff() {
   const { formatCurrency } = useLocale();
@@ -74,10 +75,14 @@ export default function CreditCardPayoff() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <section className="space-y-10 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
            <div className="space-y-8">
-              <div className="space-y-2">
-                 <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Card Balance</label>
-                 <input type="number" value={balance} onChange={e => setBalance(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl shadow-inner" />
-              </div>
+              <CurrencyInput 
+                label="Card Balance"
+                value={balance}
+                onChange={setBalance}
+                min={500}
+                max={1000000}
+                step={500}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-4">
                     <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
@@ -86,10 +91,14 @@ export default function CreditCardPayoff() {
                     </div>
                     <input type="range" min="1" max="48" step="1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
                  </div>
-                 <div className="space-y-2">
-                    <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Monthly Payment</label>
-                    <input type="number" value={monthlyPayment} onChange={e => setMonthlyPayment(Number(e.target.value))} className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none" />
-                 </div>
+                 <CurrencyInput 
+                   label="Monthly Payment"
+                   value={monthlyPayment}
+                   onChange={setMonthlyPayment}
+                   min={100}
+                   max={100000}
+                   step={100}
+                 />
               </div>
            </div>
         </section>

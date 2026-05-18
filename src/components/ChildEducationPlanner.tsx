@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function ChildEducationPlanner() {
   const { formatCurrency } = useLocale();
@@ -67,14 +68,14 @@ export default function ChildEducationPlanner() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
-              <div className="space-y-2">
-                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Cost of Education</label>
-                 <input 
-                   type="number" value={currentCost}
-                   onChange={(e) => setCurrentCost(Number(e.target.value))}
-                   className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl"
-                 />
-              </div>
+              <CurrencyInput 
+                label="Current Cost of Education"
+                value={currentCost}
+                onChange={setCurrentCost}
+                min={10000}
+                max={10000000}
+                step={10000}
+              />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-2">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Education Inflation (%)</label>

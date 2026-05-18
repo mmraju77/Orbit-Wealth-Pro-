@@ -16,7 +16,7 @@ import { normalizeRegionKey } from '../data/pSEOData';
 
 export default function IncomeTaxCalculator() {
   const { region } = useParams<{ region: string }>();
-  const { formatCurrency, labels, currency, formatValue } = useLocale();
+  const { formatCurrency, labels, currency, formatValue, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState({
     amount: 1000000,
   });
@@ -121,13 +121,13 @@ export default function IncomeTaxCalculator() {
              <div className="space-y-4">
                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Annual Gross Income</label>
                <div className="relative">
+                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
                  <input 
                    type="number"
                    value={inputs.amount}
                    onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
-                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
+                   className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
-                 <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 font-bold">{currency}</div>
                </div>
              </div>
 

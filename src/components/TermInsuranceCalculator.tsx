@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 interface TermInputs {
   age: number;
@@ -90,18 +91,14 @@ export default function TermInsuranceCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-8">
-             <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Coverage Amount (Sum Assured)</label>
-                   <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.coverage)}</div>
-                </div>
-                <input 
-                  type="range" min="100000" max="10000000" step="100000"
-                  value={inputs.coverage}
-                  onChange={(e) => setInputs({ ...inputs, coverage: Number(e.target.value) })}
-                  className="w-full accent-[#D4AF37]"
-                />
-             </div>
+             <CurrencyInput 
+                label="Coverage Amount (Sum Assured)"
+                value={inputs.coverage}
+                onChange={(val) => setInputs({ ...inputs, coverage: val })}
+                min={100000}
+                max={10000000}
+                step={100000}
+             />
 
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                <div className="space-y-4">

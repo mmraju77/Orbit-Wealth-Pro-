@@ -5,7 +5,8 @@
 
 import React, { useState, useMemo, useEffect } from 'react';
 import { RefreshCcw, Download, Share2, ArrowRightLeft, TrendingUp, Globe, Clock } from 'lucide-react';
-import { useLocale, CurrencyCode } from '../context/LocaleContext';
+import { useLocale } from '../context/LocaleContext';
+import { CurrencyCode } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';

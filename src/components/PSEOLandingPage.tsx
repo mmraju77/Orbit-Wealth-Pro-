@@ -8,7 +8,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { resolveRegion, resolveCalculatorKey, resolveCalculatorData, REGIONS, CALCULATORS } from '../data/pSEOData';
 import { Shield, Globe, Info, CheckCircle2 } from 'lucide-react';
-import { useLocale, CurrencyCode } from '../context/LocaleContext';
+import { useLocale } from '../context/LocaleContext';
+import { CurrencyCode } from '../types';
 
 // Import all calculators to render them dynamically
 import MortgageCalculator from './MortgageCalculator';

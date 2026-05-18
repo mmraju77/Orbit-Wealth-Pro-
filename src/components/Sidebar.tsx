@@ -30,7 +30,8 @@ import {
   Activity,
   Calculator
 } from 'lucide-react';
-import { useLocale, CurrencyCode, NumberSystem } from '../context/LocaleContext';
+import { useLocale } from '../context/LocaleContext';
+import { CurrencyCode, NumberSystem } from '../types';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 

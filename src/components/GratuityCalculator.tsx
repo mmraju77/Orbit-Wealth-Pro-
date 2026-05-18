@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import { GratuityInputs } from '../types';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: GratuityInputs = {
   monthlySalary: 50000,
@@ -91,18 +92,14 @@ export default function GratuityCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Base Salary + DA (Monthly)</label>
-                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.monthlySalary)}</div>
-                 </div>
-                 <input 
-                   type="range" min="1000" max="1000000" step="1000"
-                   value={inputs.monthlySalary}
-                   onChange={(e) => setInputs({ ...inputs, monthlySalary: Number(e.target.value) })}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label="Base Salary + DA (Monthly)"
+                value={inputs.monthlySalary}
+                onChange={(val) => setInputs({ ...inputs, monthlySalary: val })}
+                min={1000}
+                max={1000000}
+                step={1000}
+              />
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">

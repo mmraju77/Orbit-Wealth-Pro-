@@ -4,9 +4,7 @@
  */
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
-
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD' | 'NOK' | 'SEK' | 'DKK' | 'CHF';
-export type NumberSystem = 'International' | 'Indian';
+import { CurrencyCode, NumberSystem } from '../types';
 
 interface LocaleContextType {
   currency: CurrencyCode;
@@ -29,10 +27,10 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   USD: { symbol: '$', name: 'USD', locale: 'en-US' },
   EUR: { symbol: '€', name: 'EUR', locale: 'de-DE' },
   GBP: { symbol: '£', name: 'GBP', locale: 'en-GB' },
-  AED: { symbol: 'د.إ', name: 'AED', locale: 'ar-AE' },
+  AED: { symbol: 'AED', name: 'AED', locale: 'en-AE' },
   INR: { symbol: '₹', name: 'INR', locale: 'en-IN' },
-  CAD: { symbol: 'C$', name: 'CAD', locale: 'en-CA' },
-  AUD: { symbol: 'A$', name: 'AUD', locale: 'en-AU' },
+  CAD: { symbol: '$', name: 'CAD', locale: 'en-CA' },
+  AUD: { symbol: '$', name: 'AUD', locale: 'en-AU' },
   NOK: { symbol: 'kr', name: 'NOK', locale: 'nb-NO' },
   SEK: { symbol: 'kr', name: 'SEK', locale: 'sv-SE' },
   DKK: { symbol: 'kr', name: 'DKK', locale: 'da-DK' },

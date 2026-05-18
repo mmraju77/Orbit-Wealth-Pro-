@@ -3,9 +3,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { CurrencyCode } from '../types';
+
 export interface RegionData {
   name: string;
-  currency: string;
+  currency: CurrencyCode;
   smartContent: string;
   taxContext?: string;
   localInsights: string[];
@@ -192,17 +194,30 @@ export const normalizeRegionKey = (key?: string): string => {
   const k = key.toLowerCase();
   const aliasMap: Record<string, string> = {
     'us': 'usa',
+    'usa': 'usa',
+    'united-states': 'usa',
     'uk': 'uk',
+    'united-kingdom': 'uk',
     'ca': 'canada',
+    'canada': 'canada',
     'au': 'australia',
+    'australia': 'australia',
     'de': 'germany',
+    'germany': 'germany',
     'ch': 'switzerland',
+    'switzerland': 'switzerland',
     'no': 'norway',
+    'norway': 'norway',
     'se': 'sweden',
+    'sweden': 'sweden',
     'dk': 'denmark',
+    'denmark': 'denmark',
     'nl': 'netherlands',
+    'netherlands': 'netherlands',
     'in': 'india',
-    'uae': 'uae'
+    'india': 'india',
+    'uae': 'uae',
+    'united-arab-emirates': 'uae'
   };
   return aliasMap[k] || k;
 };

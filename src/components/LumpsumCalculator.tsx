@@ -5,6 +5,7 @@ import { InvestmentInputs } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: InvestmentInputs = {
   investmentAmount: 100000,
@@ -83,18 +84,14 @@ export default function LumpsumCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Total Investment</label>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(inputs.investmentAmount)}</div>
-              </div>
-              <input 
-                type="range" min="10000" max="10000000" step="10000"
-                value={inputs.investmentAmount}
-                onChange={(e) => setInputs({ ...inputs, investmentAmount: Number(e.target.value) })}
-                className="w-full accent-[#D4AF37]"
-              />
-            </div>
+            <CurrencyInput 
+              label="Total Investment"
+              value={inputs.investmentAmount}
+              onChange={(val) => setInputs({ ...inputs, investmentAmount: val })}
+              min={10000}
+              max={10000000}
+              step={10000}
+            />
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">

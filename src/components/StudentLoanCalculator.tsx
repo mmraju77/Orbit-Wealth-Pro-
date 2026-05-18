@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import CurrencyInput from './CurrencyInput';
 
 export default function StudentLoanCalculator() {
   const { formatCurrency, currencySymbol } = useLocale();
@@ -102,18 +103,14 @@ export default function StudentLoanCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-8">
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
-                    <span>Total Borrowed</span>
-                    <span className="text-white text-lg">{formatCurrency(loanAmount)}</span>
-                 </div>
-                 <input 
-                   type="range" min="5000" max="500000" step="5000"
-                   value={loanAmount}
-                   onChange={(e) => setLoanAmount(Number(e.target.value))}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label="Total Borrowed"
+                value={loanAmount}
+                onChange={setLoanAmount}
+                min={5000}
+                max={500000}
+                step={5000}
+              />
 
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">

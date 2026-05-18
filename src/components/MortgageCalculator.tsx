@@ -13,6 +13,7 @@ import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
 import { normalizeRegionKey } from '../data/pSEOData';
+import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: MortgageInputs = {
   homePrice: 500000,
@@ -134,18 +135,14 @@ export default function MortgageCalculator() {
         {/* INPUTS PANEL */}
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-8">
-             <div className="space-y-4">
-                <div className="flex justify-between items-center">
-                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Home Price</label>
-                   <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.homePrice)}</div>
-                </div>
-                <input 
-                  type="range" min="50000" max="5000000" step="10000"
-                  value={inputs.homePrice}
-                  onChange={(e) => setInputs({ ...inputs, homePrice: Number(e.target.value) })}
-                  className="w-full accent-[#D4AF37]"
-                />
-             </div>
+             <CurrencyInput 
+                label="Home Price"
+                value={inputs.homePrice}
+                onChange={(val) => setInputs({ ...inputs, homePrice: val, downPayment: (val * inputs.downPaymentPercent) / 100 })}
+                min={50000}
+                max={5000000}
+                step={10000}
+             />
 
              <div className="space-y-4">
                <div className="flex justify-between items-center">

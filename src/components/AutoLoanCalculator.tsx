@@ -11,7 +11,7 @@ import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 
 export default function AutoLoanCalculator() {
-  const { formatCurrency } = useLocale();
+  const { formatCurrency, currencySymbol } = useLocale();
   const [carPrice, setCarPrice] = useState(35000);
   const [downPayment, setDownPayment] = useState(5000);
   const [tradeIn, setTradeIn] = useState(2000);
@@ -87,6 +87,7 @@ export default function AutoLoanCalculator() {
              <div className="space-y-4">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Car Price</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
+                   <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <input 
                      type="number" value={carPrice}
                      onChange={(e) => setCarPrice(Number(e.target.value))}
@@ -108,6 +109,7 @@ export default function AutoLoanCalculator() {
              <div className="space-y-4">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Down Payment</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
+                   <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <input 
                      type="number" value={downPayment}
                      onChange={(e) => setDownPayment(Number(e.target.value))}
@@ -118,6 +120,7 @@ export default function AutoLoanCalculator() {
              <div className="space-y-4">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Trade-in Value</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
+                   <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <input 
                      type="number" value={tradeIn}
                      onChange={(e) => setTradeIn(Number(e.target.value))}

@@ -10,6 +10,7 @@ import { LoanEligibilityInputs } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: LoanEligibilityInputs = {
   monthlyIncome: 75000,
@@ -95,31 +96,23 @@ export default function LoanEligibility() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Income</label>
-                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.monthlyIncome)}</div>
-                 </div>
-                 <input 
-                   type="range" min="10000" max="1000000" step="5000"
-                   value={inputs.monthlyIncome}
-                   onChange={(e) => setInputs({ ...inputs, monthlyIncome: Number(e.target.value) })}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label="Monthly Income"
+                value={inputs.monthlyIncome}
+                onChange={(val) => setInputs({ ...inputs, monthlyIncome: val })}
+                min={10000}
+                max={1000000}
+                step={5000}
+              />
 
-              <div className="space-y-4">
-                 <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Existing EMI Obligations</label>
-                    <div className="text-lg font-bold text-white/40 tracking-tighter">{formatCurrency(inputs.monthlyObligations)}</div>
-                 </div>
-                 <input 
-                   type="range" min="0" max="500000" step="1000"
-                   value={inputs.monthlyObligations}
-                   onChange={(e) => setInputs({ ...inputs, monthlyObligations: Number(e.target.value) })}
-                   className="w-full accent-[#D4AF37]"
-                 />
-              </div>
+              <CurrencyInput 
+                label="Existing EMI Obligations"
+                value={inputs.monthlyObligations}
+                onChange={(val) => setInputs({ ...inputs, monthlyObligations: val })}
+                min={0}
+                max={500000}
+                step={1000}
+              />
 
               <div className="grid grid-cols-3 gap-4">
                  <div className="space-y-4">

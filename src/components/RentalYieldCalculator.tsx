@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function RentalYieldCalculator() {
   const { formatCurrency } = useLocale();
@@ -67,40 +68,40 @@ export default function RentalYieldCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
-              <div className="space-y-2">
-                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Property Purchase Price</label>
-                 <input 
-                   type="number" value={propertyValue}
-                   onChange={(e) => setPropertyValue(Number(e.target.value))}
-                   className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl"
-                 />
-              </div>
+              <CurrencyInput 
+                label="Property Purchase Price"
+                value={propertyValue}
+                onChange={setPropertyValue}
+                min={100000}
+                max={50000000}
+                step={50000}
+              />
               <div className="grid grid-cols-2 gap-8">
-                 <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Monthly Rent</label>
-                    <input 
-                      type="number" value={monthlyRent}
-                      onChange={(e) => setMonthlyRent(Number(e.target.value))}
-                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
-                    />
-                 </div>
-                 <div className="space-y-2">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Monthly Maintenance</label>
-                    <input 
-                      type="number" value={maintenance}
-                      onChange={(e) => setMaintenance(Number(e.target.value))}
-                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
-                    />
-                 </div>
-              </div>
-              <div className="space-y-2">
-                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Annual Property Tax</label>
-                 <input 
-                   type="number" value={propertyTax}
-                   onChange={(e) => setPropertyTax(Number(e.target.value))}
-                   className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none"
+                 <CurrencyInput 
+                   label="Expected Monthly Rent"
+                   value={monthlyRent}
+                   onChange={setMonthlyRent}
+                   min={1000}
+                   max={1000000}
+                   step={1000}
+                 />
+                 <CurrencyInput 
+                   label="Monthly Maintenance"
+                   value={maintenance}
+                   onChange={setMaintenance}
+                   min={0}
+                   max={100000}
+                   step={500}
                  />
               </div>
+              <CurrencyInput 
+                label="Annual Property Tax"
+                value={propertyTax}
+                onChange={setPropertyTax}
+                min={0}
+                max={1000000}
+                step={1000}
+              />
            </div>
         </section>
 

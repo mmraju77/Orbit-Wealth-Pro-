@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import CurrencyInput from './CurrencyInput';
 
 export default function PersonalLoanCalculator() {
   const { formatCurrency } = useLocale();
@@ -110,18 +111,14 @@ export default function PersonalLoanCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
-            <div className="space-y-4">
-               <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Loan Amount</label>
-                  <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(principal)}</div>
-               </div>
-               <input 
-                 type="range" min="1000" max="250000" step="1000"
-                 value={principal}
-                 onChange={(e) => setPrincipal(Number(e.target.value))}
-                 className="w-full accent-[#D4AF37]"
-               />
-            </div>
+            <CurrencyInput 
+              label="Loan Amount"
+              value={principal}
+              onChange={setPrincipal}
+              min={1000}
+              max={250000}
+              step={1000}
+            />
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                <div className="space-y-4">
@@ -145,18 +142,13 @@ export default function PersonalLoanCalculator() {
             </div>
 
             <div className="pt-6 border-t border-white/5 space-y-4">
-                <div className="flex justify-between items-center">
-                   <div className="flex items-center gap-2">
-                      <TrendingDown className="text-emerald-500 w-4 h-4" />
-                      <label className="text-[10px] font-bold text-white/60 uppercase tracking-widest">Extra Monthly Payment</label>
-                   </div>
-                   <div className="text-lg font-bold text-emerald-500 tracking-tighter">{formatCurrency(extraPayment)}</div>
-                </div>
-                <input 
-                  type="range" min="0" max="5000" step="50"
+                <CurrencyInput 
+                  label="Extra Monthly Payment"
                   value={extraPayment}
-                  onChange={(e) => setExtraPayment(Number(e.target.value))}
-                  className="w-full accent-emerald-500"
+                  onChange={setExtraPayment}
+                  min={0}
+                  max={5000}
+                  step={50}
                 />
             </div>
           </div>

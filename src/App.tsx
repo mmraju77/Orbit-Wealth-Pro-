@@ -4,7 +4,7 @@
  */
 
 import React, { useEffect, lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -16,7 +16,9 @@ function ScrollToTop() {
   return null;
 }
 import { HelmetProvider, Helmet } from 'react-helmet-async';
-import { LocaleProvider } from './context/LocaleContext';
+import { LocaleProvider, useLocale } from './context/LocaleContext';
+import { CurrencyCode } from './types';
+import { resolveRegion } from './data/pSEOData';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 
@@ -65,13 +67,47 @@ import Footer from './components/Footer';
 
 import { Menu, X, ShieldCheck } from 'lucide-react';
 
+function RegionSynchronizer() {
+  const { pathname } = useLocation();
+  const { setCurrency, setNumberSystem } = useLocale();
+
+  useEffect(() => {
+    // Extract potential region from path parts
+    const parts = pathname.split('/').filter(Boolean);
+    
+    // Check possible region keys in the URL
+    // e.g., /germany/mortgage or /tools/mortgage/usa
+    let regionData = null;
+    
+    for (const part of parts) {
+      const data = resolveRegion(part);
+      if (data) {
+        regionData = data;
+        break;
+      }
+    }
+
+    if (regionData) {
+      setCurrency(regionData.currency);
+      if (regionData.name === 'India') {
+        setNumberSystem('Indian');
+      } else {
+        setNumberSystem('International');
+      }
+    }
+  }, [pathname, setCurrency, setNumberSystem]);
+
+  return null;
+}
+
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
   return (
     <HelmetProvider>
-      <LocaleProvider>
-        <HashRouter>
+      <HashRouter>
+        <LocaleProvider>
+          <RegionSynchronizer />
           <ScrollToTop />
           <div className="flex bg-[#0B1221] min-h-screen text-white font-sans selection:bg-[#D4AF37] selection:text-black relative">
             <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -150,9 +186,9 @@ export default function App() {
               </div>
             </div>
           </main>
-          </div>
-        </HashRouter>
+        </div>
       </LocaleProvider>
-    </HelmetProvider>
-  );
+    </HashRouter>
+  </HelmetProvider>
+);
 }

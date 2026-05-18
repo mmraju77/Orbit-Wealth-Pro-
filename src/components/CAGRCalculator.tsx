@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import CurrencyInput from './CurrencyInput';
 
 export default function CAGRCalculator() {
   const { formatCurrency } = useLocale();
@@ -55,22 +56,22 @@ export default function CAGRCalculator() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
-            <div className="space-y-2">
-               <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Initial Investment</label>
-               <input 
-                 type="number" value={initialValue}
-                 onChange={(e) => setInitialValue(Number(e.target.value))}
-                 className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl"
-               />
-            </div>
-            <div className="space-y-2">
-               <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Final Value</label>
-               <input 
-                 type="number" value={finalValue}
-                 onChange={(e) => setFinalValue(Number(e.target.value))}
-                 className="w-full bg-black/40 p-4 rounded-xl border border-white/5 text-white font-bold outline-none text-xl"
-               />
-            </div>
+            <CurrencyInput 
+              label="Initial Investment"
+              value={initialValue}
+              onChange={setInitialValue}
+              min={1000}
+              max={10000000}
+              step={1000}
+            />
+            <CurrencyInput 
+              label="Final Value"
+              value={finalValue}
+              onChange={setFinalValue}
+              min={1000}
+              max={25000000}
+              step={1000}
+            />
             <div className="space-y-4">
                <div className="flex justify-between items-center">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
