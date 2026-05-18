@@ -48,6 +48,8 @@ const CreditCardPayoff = lazy(() => import('./components/CreditCardPayoff'));
 const TaxGuides = lazy(() => import('./components/TaxGuides'));
 const PSEOLandingPage = lazy(() => import('./components/PSEOLandingPage'));
 const ComparePage = lazy(() => import('./components/ComparePage'));
+const TermInsuranceCalculator = lazy(() => import('./components/TermInsuranceCalculator'));
+const HealthInsuranceCalculator = lazy(() => import('./components/HealthInsuranceCalculator'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 const Disclaimer = lazy(() => import('./components/Disclaimer'));
 const TermsOfService = lazy(() => import('./components/TermsOfService'));
@@ -120,8 +122,8 @@ export default function App() {
                     <Route path="/calculators/credit-card-payoff" element={<CreditCardPayoff />} />
                     <Route path="/tax-guides" element={<TaxGuides />} />
                     
-                    <Route path="/calculators/term-insurance" element={<div className="p-20 text-center"><h2 className="text-3xl font-bold">Term Life Insurance</h2><p className="text-white/40 mt-4">Security calculation engine launching soon.</p></div>} />
-                    <Route path="/calculators/health-insurance" element={<div className="p-20 text-center"><h2 className="text-3xl font-bold">Health Guard Intelligence</h2><p className="text-white/40 mt-4">Premium optimization engine launching soon.</p></div>} />
+                    <Route path="/calculators/term-insurance" element={<TermInsuranceCalculator />} />
+                    <Route path="/calculators/health-insurance" element={<HealthInsuranceCalculator />} />
                   
                   {/* Dynamic pSEO Routes */}
                   <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />

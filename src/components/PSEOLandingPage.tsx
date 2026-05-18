@@ -27,6 +27,8 @@ import MFCalculator from './MFCalculator';
 import PersonalLoanCalculator from './PersonalLoanCalculator';
 import AutoLoanCalculator from './AutoLoanCalculator';
 import StudentLoanCalculator from './StudentLoanCalculator';
+import TermInsuranceCalculator from './TermInsuranceCalculator';
+import HealthInsuranceCalculator from './HealthInsuranceCalculator';
 
 const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'mortgage': MortgageCalculator,
@@ -53,6 +55,8 @@ const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'personal-loan': PersonalLoanCalculator,
   'auto-loan': AutoLoanCalculator,
   'student-loan': StudentLoanCalculator,
+  'term-insurance': TermInsuranceCalculator,
+  'health-insurance': HealthInsuranceCalculator,
 };
 
 export default function PSEOLandingPage() {
