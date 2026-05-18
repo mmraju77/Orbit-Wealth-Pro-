@@ -112,11 +112,17 @@ export default function Footer() {
            <div className="space-y-4">
               <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Global Jurisdictions</h4>
               <div className="flex flex-wrap gap-4">
-                 <Link to="/tools/mortgage/usa" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded">USA</Link>
-                 <Link to="/tools/gratuity/uae" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded">UAE</Link>
-                 <Link to="/tools/income-tax/india" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded">INDIA</Link>
-                 <Link to="/tools/retirement/uk" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded">UK</Link>
-                 <Link to="/tools/gst/australia" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded">AUSTRALIA</Link>
+                 <Link to="/tools/mortgage/usa" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">USA</Link>
+                 <Link to="/tools/gratuity/uae" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">UAE</Link>
+                 <Link to="/tools/income-tax/india" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">INDIA</Link>
+                 <Link to="/tools/retirement/uk" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">UK</Link>
+                 <Link to="/tools/gst/australia" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">AUSTRALIA</Link>
+                 <Link to="/tools/income-tax/germany" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">GERMANY</Link>
+                 <Link to="/tools/mortgage/switzerland" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">SWITZERLAND</Link>
+                 <Link to="/tools/loan-eligibility/norway" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">NORWAY</Link>
+                 <Link to="/tools/retirement/sweden" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">SWEDEN</Link>
+                 <Link to="/tools/gst/denmark" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">DENMARK</Link>
+                 <Link to="/tools/income-tax/netherlands" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">NETHERLANDS</Link>
               </div>
            </div>
            <div className="bg-[#D4AF37]/5 rounded-2xl p-6 border border-[#D4AF37]/10">

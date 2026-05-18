@@ -92,73 +92,79 @@ export const REGIONS: Record<string, RegionData> = {
   germany: {
     name: 'Germany',
     currency: 'EUR',
-    smartContent: 'Germany uses a progressive income tax system with a "Solidarity Surcharge" (Solidaritätszuschlag). Retirement is funded through the statutory pension insurance (Gesetzliche Rentenversicherung) and private plans like Riester-Rente.',
+    smartContent: 'Germany uses a progressive income tax system with a "Solidarity Surcharge" (Solidaritätszuschlag). Retirement is funded through the statutory pension insurance (Gesetzliche Rentenversicherung) and private plans like Riester-Rente. German financial planning emphasizes security and strictly regulated banking standards.',
     taxContext: 'ELSTER & Progressive Tax',
     localInsights: [
-      'The "Basic Tax-Free Allowance" (Grundfreibetrag) is adjusted annually.',
-      'Church Tax (Kirchensteuer) is applicable to members of certain religious communities.',
-      'Statutory health insurance contributions are split between employer and employee.',
-      'Mortgage interests are generally not tax-deductible for primary residences in Germany.'
+      'The "Basic Tax-Free Allowance" (Grundfreibetrag) is adjusted annually to account for inflation.',
+      'Church Tax (Kirchensteuer) is applicable—opting out can increase monthly net pay significantly.',
+      'Statutory health insurance contributions are shared; private options exist for high earners.',
+      'Riester-Rente and Rürup-Rente provide significant state incentives for long-term saving.',
+      'Mortgage interest is not tax-deductible for primary residences, but is for rental properties.'
     ]
   },
   switzerland: {
     name: 'Switzerland',
     currency: 'CHF',
-    smartContent: 'Switzerland features a unique three-pillar retirement system (State, Occupational, and Private). Taxation occurs at federal, cantonal, and municipal levels, leading to significant regional variations.',
+    smartContent: 'Switzerland features a unique three-pillar retirement system (State, Occupational, and Private). Taxation occurs at federal, cantonal, and municipal levels, leading to significant regional variations and strategic residency planning.',
     taxContext: 'Pillar 1-2-3 & Cantonal Tax',
     localInsights: [
-      'Pillar 3a contributions offer significant immediate tax deductions for residents.',
-      'Cantonal tax rates vary—choosing your place of residence is a major financial decision.',
-      'Health insurance (Krankenkasse) is mandatory and managed through private providers.',
-      'Wealth tax applies in most cantons, unlike in many neighboring European countries.'
+      'Pillar 3a contributions offer major tax deductions and can be used for home purchases.',
+      'Cantonal tax rates vary—residing in Zug or Schwyz can be more tax-efficient than Zurich.',
+      'Mandatory health insurance premium (Krankenkasse) is a core monthly living cost.',
+      'Wealth tax applies across most cantons based on your global net assets.',
+      'Swiss mortgage interest rates are historically some of the lowest in the world.'
     ]
   },
   norway: {
     name: 'Norway',
     currency: 'NOK',
-    smartContent: 'Norway utilizes a base income tax plus a "step tax" system. The Government Pension Fund Global (Oil Fund) underpins long-term stability, and the welfare system is extensive.',
+    smartContent: 'Norway utilizes a base income tax plus a "step tax" system. The Government Pension Fund Global underpins long-term national stability, while the Skatteetaten enforces transparent and extensive wealth reporting.',
     taxContext: 'Skatteetaten & Step Tax',
     localInsights: [
-      'Mortgage interest is tax-deductible at the base tax rate (currently 22%).',
-      'Norway has a wealth tax (formuesskatt) on net assets above a certain threshold.',
-      'BSU (Boligsparing for ungdom) provides younger residents with high-yield savings and tax deductions for housing.',
-      'The pension system includes a universal basic amount (G) adjusted annually.'
+      'Mortgage interest is tax-deductible at 22%, making home ownership very attractive.',
+      'Norway enforces a wealth tax (formuesskatt) for net assets exceeding specified limits.',
+      'BSU (Boligsparing for ungdom) is the premier tool for youth to save for their first home.',
+      'Pension G-amount is adjusted annually for inflation-linked security.',
+      'Commuting and child-care expenses provide standard deductions on annual returns.'
     ]
   },
   sweden: {
     name: 'Sweden',
     currency: 'SEK',
-    smartContent: 'Sweden has a municipal tax and a state tax for higher earners. Retirement is based on the "Orange Envelope" system including income pension and premium pension (PPM).',
+    smartContent: 'Sweden employs a municipal and state tax structure. Retirement is transparently tracked through the "Orange Envelope" system, and Skatteverket provides highly automated tax filing solutions.',
     taxContext: 'Skatteverket & ISK Accounts',
     localInsights: [
-      'ISK (Investeringssparkonto) accounts offer a simplified tax structure for trading and savings.',
-      'Property tax in Sweden is capped but calculated based on the assessed value.',
-      'Tax deductions are available for "RUT" (domestic services) and "ROT" (renovation) work.',
-      'Mortgage interest deductions (ränteavdrag) allow you to reclaim 30% of interest costs.'
+      'ISK accounts are highly recommended for simple, low-tax stock and fund management.',
+      'Mortgage interest deductions allow you to reclaim a portion of interest directly from taxes.',
+      'RUT and ROT tax deductions reduce costs for domestic help and home renovations.',
+      'The Swedish pension consists of Income, Premium, and Occupational components.',
+      'Property taxes are capped at a reasonable annual maximum for most residents.'
     ]
   },
   denmark: {
     name: 'Denmark',
     currency: 'DKK',
-    smartContent: 'Denmark features some of the highest income tax rates globally to fund extensive public services. The system includes labor market contributions (AM-bidrag) and church taxes.',
+    smartContent: 'Denmark features some of the highest income tax rates globally, funding a world-class welfare state. The "Flexicurity" model defines the labor market, supported by complex labor market contributions.',
     taxContext: 'SKAT & Flexible Labor Market',
     localInsights: [
-      'Interest on loans is generally tax-deductible in Denmark.',
-      'Private pension plans (Ratepension, Livrente) provide tax breaks on contributions.',
-      'The "Green Tax" (grøn ejerafgift) is a significant factor for car owners.',
-      'First-time buyers often utilize special mortgage-backed bonds unique to the Danish market.'
+      'Loan interest is generally tax-deductible, balancing the impact of high base rates.',
+      'Private pension plans like Ratepension provide excellent tax-efficient growth options.',
+      'Labor Market Contribution (AM-bidrag) of 8% is applied before standard income tax.',
+      'Denmark has a unique mortgage-backed bond system providing stability for buyers.',
+      'Environmental "Green Taxes" are a significant consideration for car and home energy users.'
     ]
   },
   netherlands: {
     name: 'Netherlands',
     currency: 'EUR',
-    smartContent: 'The Dutch tax system uses a "Box" system (Box 1, 2, and 3). Mortgage interest deduction (Hypotheekrenteaftrek) is a cornerstone of the housing market policy.',
+    smartContent: 'The Dutch tax system uses a three-box structure. Mortgage interest deduction (Hypotheekrenteaftrek) remains a major factor in the housing market, despite gradual phasing down of top rates.',
     taxContext: 'Belastingdienst & Box System',
     localInsights: [
-      'The "30% Ruling" can provide significant tax relief for highly skilled migrant workers.',
-      'Box 3 tax handles savings and investments based on a fictional return rate.',
-      'Mandatory health insurance (Basisverzekering) is a fixed monthly cost for all residents.',
-      'Holiday allowance (Vakantiegeld) is usually 8% of the annual gross salary.'
+      'The "30% Ruling" offers substantial tax breaks to incoming high-skilled expats.',
+      'Box 3 tax handles investment growth based on an assumed rather than actual return.',
+      'Vakantiegeld (8% holiday pay) is a mandated bonus typically paid out in May.',
+      'Mandatory health insurance requires a basic premium plus potential excess (eigen risico).',
+      'Small business owners can utilize the MKB-winstvrijstelling for tax-free profit portions.'
     ]
   },
 };

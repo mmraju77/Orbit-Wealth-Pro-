@@ -38,6 +38,36 @@ const TAX_GUIDES = [
     ]
   },
   {
+    country: 'Germany',
+    flag: '🇩🇪',
+    instruments: [
+      { name: 'Riester-Rente', desc: 'State-certified private pension with government bonuses.' },
+      { name: 'Betriebliche Altersvorsorge', desc: 'Company pension schemes with tax benefits.' },
+      { name: 'Werbungskosten', desc: 'Tax-deductible employment-related expenses.' },
+      { name: 'Grundfreibetrag', desc: 'High basic tax-free allowance adjusted annually.' }
+    ]
+  },
+  {
+    country: 'Switzerland',
+    flag: '🇨🇭',
+    instruments: [
+      { name: 'Pillar 3a', desc: 'Private pension with significant annual tax deductions.' },
+      { name: 'Pillar 2 (BVG)', desc: 'Occupational pension funds with employer contributions.' },
+      { name: 'Repayment of Debt', desc: 'Mortgage interest and debt interest are often tax-deductible.' },
+      { name: 'Cantonal Variations', desc: 'Strategize residency for lower municipal tax burdens.' }
+    ]
+  },
+  {
+    country: 'Norway',
+    flag: '🇳🇴',
+    instruments: [
+      { name: 'BSU (Savings)', desc: 'Best savings for youth with high interest and tax deductions.' },
+      { name: 'Mortgage Deduction', desc: 'Reclaim 22% of all mortgage interest paid annually.' },
+      { name: 'IPS Account', desc: 'Individual pension savings with deferred tax advantages.' },
+      { name: 'Travel Deduction', desc: 'Standard deductions for long-distance commuters.' }
+    ]
+  },
+  {
     country: 'India',
     flag: '🇮🇳',
     instruments: [
