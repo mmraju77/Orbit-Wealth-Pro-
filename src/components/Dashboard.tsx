@@ -290,6 +290,19 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
 export default function Dashboard() {
   const [selectedArticle, setSelectedArticle] = React.useState<NewsArticle | null>(null);
 
+  React.useEffect(() => {
+    const handleHash = () => {
+      if (window.location.hash === '#/news') {
+        setTimeout(() => {
+          document.getElementById('news-section')?.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+    };
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+    return () => window.removeEventListener('hashchange', handleHash);
+  }, []);
+
   return (
     <div className="space-y-16 pb-16">
       <AnimatePresence>
@@ -362,7 +375,7 @@ export default function Dashboard() {
       </section>
 
       {/* Global Finance News Section */}
-      <section className="space-y-10 pt-16">
+      <section id="news-section" className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
            <h2 className="text-xs font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
            <div className="flex-1 h-px bg-[#D4AF37]/10"></div>
@@ -379,12 +392,15 @@ export default function Dashboard() {
         </div>
         
         <div className="flex justify-center pt-4">
-          <Link 
-            to="/news" 
+          <button 
+            onClick={() => {
+              window.location.hash = "#/news";
+              document.getElementById('news-section')?.scrollIntoView({ behavior: 'smooth' });
+            }}
             className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/60 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
           >
             Explore All Market Insights
-          </Link>
+          </button>
         </div>
       </section>
 
