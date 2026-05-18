@@ -211,22 +211,29 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               <div>
                 <label className="text-[8px] font-bold text-white/20 uppercase tracking-widest block mb-2 px-1">Region Override</label>
                 <div className="grid grid-cols-4 gap-1">
-                  {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => (
-                    <button
-                      key={c}
-                      onClick={() => {
-                        setCurrency(c);
-                        if (c === 'INR') setNumberSystem('Indian');
-                        else setNumberSystem('International');
-                      }}
-                      className={cn(
-                        "h-5 rounded text-[8px] font-bold transition-all",
-                        currency === c ? "bg-[#D4AF37] text-black" : "bg-white/5 text-white/20 hover:bg-white/10"
-                      )}
-                    >
-                      {c}
-                    </button>
-                  ))}
+                  {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => {
+                    const symbols: Record<string, string> = {
+                      USD: '$', EUR: '€', GBP: '£', INR: '₹', AUD: '$', CAD: '$', 
+                      CHF: 'Fr', AED: 'د.إ', NOK: 'kr', SEK: 'kr', DKK: 'kr'
+                    };
+                    return (
+                      <button
+                        key={c}
+                        onClick={() => {
+                          setCurrency(c);
+                          if (c === 'INR') setNumberSystem('Indian');
+                          else setNumberSystem('International');
+                        }}
+                        className={cn(
+                          "h-5 rounded text-[8px] font-bold transition-all flex items-center justify-center gap-0.5",
+                          currency === c ? "bg-[#D4AF37] text-black" : "bg-white/5 text-white/20 hover:bg-white/10"
+                        )}
+                      >
+                        <span className="opacity-60">{symbols[c]}</span>
+                        {c}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             </div>

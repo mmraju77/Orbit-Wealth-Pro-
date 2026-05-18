@@ -73,13 +73,20 @@ function RegionSynchronizer() {
 
   useEffect(() => {
     // Extract potential region from path parts
+    // In HashRouter, pathname should be /germany if URL is #/germany
     const parts = pathname.split('/').filter(Boolean);
     
+    if (parts.length === 0) return;
+
     // Check possible region keys in the URL
-    // e.g., /germany/mortgage or /tools/mortgage/usa
+    // Priority: Last part usually identifies the region in /tools/mortgage/usa
+    // But in /germany/sip, it's the first part.
+    // Let's check all parts.
     let regionData = null;
     
-    for (const part of parts) {
+    // We reverse to prioritize the most specific region if multiple exist (unlikely but safer for /tools/sip/uk)
+    const reversedParts = [...parts].reverse();
+    for (const part of reversedParts) {
       const data = resolveRegion(part);
       if (data) {
         regionData = data;
