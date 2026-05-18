@@ -131,8 +131,6 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/news" element={<Dashboard />} />
-                <Route path="/insights" element={<Dashboard />} />
                 <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
               <Route path="/calculators/retirement" element={<RetirementCalculator />} />
               <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />

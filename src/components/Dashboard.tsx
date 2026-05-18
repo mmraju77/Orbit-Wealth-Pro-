@@ -289,19 +289,9 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
 
 export default function Dashboard() {
   const [selectedArticle, setSelectedArticle] = React.useState<NewsArticle | null>(null);
+  const [showAllNews, setShowAllNews] = React.useState(false);
 
-  React.useEffect(() => {
-    const handleHash = () => {
-      if (window.location.hash === '#/news' || window.location.hash === '#/insights') {
-        setTimeout(() => {
-          document.getElementById('news-section')?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-    };
-    handleHash();
-    window.addEventListener('hashchange', handleHash);
-    return () => window.removeEventListener('hashchange', handleHash);
-  }, []);
+  const visibleArticles = showAllNews ? NEWS_ARTICLES : NEWS_ARTICLES.slice(0, 3);
 
   return (
     <div className="space-y-16 pb-16">
@@ -386,7 +376,7 @@ export default function Dashboard() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          {NEWS_ARTICLES.map((article, idx) => (
+          {visibleArticles.map((article, idx) => (
             <NewsCard key={idx} article={article} onReadMore={setSelectedArticle} />
           ))}
         </div>
@@ -394,10 +384,21 @@ export default function Dashboard() {
         <div className="flex justify-center pt-4">
           <button 
             type="button"
-            onClick={() => { window.location.hash = "#/news"; window.scrollTo(0,0); }}
+            onClick={() => {
+              if (showAllNews) {
+                setShowAllNews(false);
+                const section = document.getElementById('news-section');
+                if (section) {
+                  const top = section.getBoundingClientRect().top + window.pageYOffset - 100;
+                  window.scrollTo({ top, behavior: 'smooth' });
+                }
+              } else {
+                setShowAllNews(true);
+              }
+            }}
             className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/60 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
           >
-            Explore All Market Insights
+            {showAllNews ? 'Show Less Insights' : 'Explore All Market Insights'}
           </button>
         </div>
       </section>
