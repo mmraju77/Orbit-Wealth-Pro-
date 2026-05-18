@@ -71,7 +71,7 @@ export default function EMICalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <CreditCard className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-white">EMI Global Calculator</h1>
+             <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">EMI Global Calculator</h1>
           </div>
           <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Equated Monthly Installment tool for personal, car, or home loans across multiple regions.

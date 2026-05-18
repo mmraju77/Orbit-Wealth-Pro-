@@ -17,7 +17,7 @@ export default function SEOSection({ title, howTo, formula, benefits }: SEOSecti
             <BadgeInfo className="text-[#D4AF37] w-5 h-5" />
             <span className="text-xs font-bold text-white/60 uppercase tracking-widest">How to use</span>
           </div>
-          <h3 className="text-2xl font-bold text-white tracking-tight">Using the {title}</h3>
+          <h3 className="text-2xl font-bold text-slate-100 tracking-tight">Using the {title}</h3>
           <ul className="space-y-4">
             {howTo.map((step, idx) => (
               <li key={idx} className="flex gap-4 text-base text-white/70 leading-relaxed">
@@ -33,7 +33,7 @@ export default function SEOSection({ title, howTo, formula, benefits }: SEOSecti
             <FileText className="text-[#D4AF37] w-5 h-5" />
             <span className="text-xs font-bold text-white/60 uppercase tracking-widest">The Mathematics</span>
           </div>
-          <h3 className="text-2xl font-bold text-white tracking-tight">Formula Used</h3>
+          <h3 className="text-2xl font-bold text-slate-100 tracking-tight">Formula Used</h3>
           <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl font-mono text-sm text-[#D4AF37] leading-relaxed overflow-x-auto whitespace-nowrap">
             {formula}
           </div>
@@ -46,7 +46,7 @@ export default function SEOSection({ title, howTo, formula, benefits }: SEOSecti
       <div className="bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-2xl p-8">
         <div className="flex items-center gap-2 mb-6">
           <ListChecks className="text-[#D4AF37] w-5 h-5" />
-          <h3 className="text-xl font-bold text-white tracking-tight">Key Benefits</h3>
+          <h3 className="text-xl font-bold text-slate-100 tracking-tight">Key Benefits</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {benefits.map((benefit, idx) => (

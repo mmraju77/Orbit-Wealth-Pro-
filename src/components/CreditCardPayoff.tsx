@@ -62,7 +62,7 @@ export default function CreditCardPayoff() {
             <div className="h-px w-6 bg-[#D4AF37]"></div>
             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Debt Liquidation Engine</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-white tracking-tight">CC Payoff.</h1>
+          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">CC Payoff.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
             Simulate your credit card debt repayment and visualize the true cost of interest over time.
           </p>

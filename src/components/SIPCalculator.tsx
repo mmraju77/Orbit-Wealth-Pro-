@@ -79,7 +79,7 @@ export default function SIPCalculator() {
              <div className="h-px w-6 bg-[#D4AF37]"></div>
              <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-white tracking-tight">SIP Intelligence.</h1>
+          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">SIP Intelligence.</h1>
           <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Project your wealth growth via Systematic Investment Plans using our high-precision compound return engine.
           </p>

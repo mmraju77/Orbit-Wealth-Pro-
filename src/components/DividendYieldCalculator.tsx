@@ -46,7 +46,7 @@ export default function DividendYieldCalculator() {
              <div className="h-px w-6 bg-[#D4AF37]"></div>
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Passive Income Analytics</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-white tracking-tight">Dividend Yields.</h1>
+          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Dividend Yields.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
             Project and optimize your cash flow using our institutional-grade yield computation engine.
           </p>

@@ -34,7 +34,7 @@ export default function CurrencyInput({
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <label className="text-xs font-bold text-white/40 uppercase tracking-widest">{label}</label>
+        <label className="text-xs font-bold text-slate-300 uppercase tracking-widest">{label}</label>
         <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(value)}</div>
       </div>
       

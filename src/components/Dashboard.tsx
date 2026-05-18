@@ -177,7 +177,7 @@ export default function Dashboard() {
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
           <span className="text-xs font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-white tracking-tighter leading-[1.1]">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-[#f59e0b] tracking-tighter leading-[1.1]">
           Financial <br />
           <span className="text-white/10">Dashboard.</span>
         </h1>
@@ -189,7 +189,7 @@ export default function Dashboard() {
 
       <section className="space-y-10">
         <div className="flex items-center gap-4">
-           <h2 className="text-xs font-bold text-white/50 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
+           <h2 className="text-xs font-bold text-slate-100 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
@@ -216,7 +216,7 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-xl font-display font-medium text-white group-hover:text-[#D4AF37] transition-colors duration-500">
+                    <h3 className="text-xl font-display font-medium text-slate-100 group-hover:text-[#f59e0b] transition-colors duration-500">
                       {card.title}
                     </h3>
                     <p className="text-sm text-white/60 leading-relaxed font-light line-clamp-2">

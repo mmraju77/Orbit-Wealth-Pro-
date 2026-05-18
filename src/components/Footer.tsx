@@ -22,7 +22,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20 group-hover:scale-110 transition-transform">
                 <Wallet className="w-6 h-6 text-black" />
               </div>
-              <span className="text-2xl font-bold tracking-tighter text-white uppercase">ORBIT WEALTH PRO</span>
+              <span className="text-2xl font-bold tracking-tighter text-[#f59e0b] uppercase">ORBIT WEALTH PRO</span>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed">
               Global financial tools platform providing precision calculators for 11+ jurisdictions including the USA, Canada, Europe, UAE, and India.
@@ -41,7 +41,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Tools & Resources</h4>
+            <h4 className="text-xs font-bold text-slate-100 uppercase tracking-widest mb-6">Tools & Resources</h4>
             <ul className="space-y-4">
               <li>
                 <Link to="/calculators/mortgage" className="text-sm text-white/40 hover:text-white transition-colors">Mortgage Engine</Link>
@@ -59,7 +59,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">Popular Comparisons</h4>
+            <h4 className="text-xs font-bold text-slate-100 uppercase tracking-widest mb-6">Popular Comparisons</h4>
             <ul className="space-y-4">
               <li>
                 <Link to="/compare/sip-vs-lumpsum" className="text-sm text-white/40 hover:text-white transition-colors">SIP vs Lumpsum</Link>
@@ -77,7 +77,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest mb-6">Company & Info</h4>
+            <h4 className="text-xs font-bold text-slate-100 uppercase tracking-widest mb-6">Company & Info</h4>
             <ul className="space-y-4">
               <li>
                 <Link to="/about" className="flex items-center gap-2 text-sm text-white hover:text-[#D4AF37] transition-colors font-bold">

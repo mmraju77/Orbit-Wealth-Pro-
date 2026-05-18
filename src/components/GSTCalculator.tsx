@@ -91,7 +91,7 @@ export default function GSTCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <Percent className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-white">GST / VAT Calculator</h1>
+             <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">GST / VAT Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
             Calculate Goods and Services Tax (GST) or Value Added Tax (VAT) for your business transactions.

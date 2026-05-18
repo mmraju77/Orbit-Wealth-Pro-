@@ -86,7 +86,7 @@ export default function FDRDCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <Landmark className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-white">FD & RD Calculator</h1>
+             <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">FD & RD Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
             Calculate the maturity value of your Fixed Deposits (FD) or Recurring Deposits (RD) with quarterly compounding.

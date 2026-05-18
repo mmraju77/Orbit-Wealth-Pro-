@@ -78,7 +78,7 @@ export default function HealthInsuranceCalculator() {
              <div className="h-px w-6 bg-[#D4AF37]"></div>
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Healthcare Shield</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-white tracking-tight">Health Insurance.</h1>
+          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Health Insurance.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
             Optimize your health coverage with our intelligent premium estimation engine using actuarial risk modeling.
           </p>

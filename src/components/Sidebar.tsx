@@ -141,9 +141,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20">
               <Wallet className="w-6 h-6 text-black" />
             </div>
-            <span className="font-display font-black text-xl tracking-tighter text-white uppercase group flex flex-col leading-none">
-              <span className="text-[#D4AF37]">ORBIT</span>
-              <span className="text-white">WEALTH PRO</span>
+            <span className="font-display font-black text-xl tracking-tighter text-[#f59e0b] uppercase group flex flex-col leading-none">
+              <span>ORBIT</span>
+              <span className="opacity-90">WEALTH PRO</span>
             </span>
           </div>
           
@@ -174,7 +174,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div key={section.label} className="space-y-1">
               <button 
                 onClick={() => toggleSection(section.label)}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-white/40 uppercase tracking-[0.2em] hover:text-white/60 transition-colors"
+                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <section.icon className="w-3.5 h-3.5" />

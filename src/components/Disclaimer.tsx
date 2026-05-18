@@ -13,7 +13,7 @@ export default function Disclaimer() {
         <div className="inline-flex p-3 bg-amber-500/10 rounded-2xl border border-amber-500/20 mb-4">
            <Scale className="text-amber-500 w-8 h-8" />
         </div>
-        <h1 className="text-4xl font-bold tracking-tighter text-white">Financial Disclaimer</h1>
+        <h1 className="text-4xl font-bold tracking-tighter text-[#f59e0b]">Financial Disclaimer</h1>
         <p className="text-white/40 text-sm uppercase tracking-widest font-bold">Important Notice to Our Users</p>
       </header>
 

@@ -38,7 +38,7 @@ export default function ComparePage() {
         <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 text-[#D4AF37] text-[10px] font-bold uppercase tracking-widest shadow-lg shadow-[#D4AF37]/5 mb-4">
           <ArrowRightLeft className="w-3 h-3" /> Side-by-Side Analysis
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter text-[#f59e0b]">
           {data.optionAName} <span className="text-white/20">vs</span> {data.optionBName}
         </h1>
         <p className="text-white/40 text-lg leading-relaxed">

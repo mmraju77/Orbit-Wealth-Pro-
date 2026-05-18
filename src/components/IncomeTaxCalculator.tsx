@@ -98,7 +98,7 @@ export default function IncomeTaxCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <Percent className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-white">Income Tax Calculator</h1>
+             <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">Income Tax Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
             Personalized income tax analysis for {countryKey.toUpperCase()} using the latest progressive fiscal logic.

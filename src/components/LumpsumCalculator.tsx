@@ -64,7 +64,7 @@ export default function LumpsumCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <BarChart3 className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-white">Lumpsum Calculator</h1>
+             <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">Lumpsum Calculator</h1>
           </div>
           <p className="text-white/40 max-w-xl text-sm leading-relaxed">
             Determine the future value of a one-time fixed investment based on your target return rate and timeframe.

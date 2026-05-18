@@ -115,7 +115,7 @@ export default function MortgageCalculator() {
              <div className="h-px w-6 bg-[#D4AF37]"></div>
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Mortgage Intelligence</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-white tracking-tight">Home Loan Suite.</h1>
+          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Home Loan Suite.</h1>
           <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
             Navigate your real estate financial journey with institutional-grade amortization logic.
           </p>
