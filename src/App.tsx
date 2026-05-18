@@ -100,6 +100,91 @@ function RegionSynchronizer() {
   return null;
 }
 
+function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; setSidebarOpen: (o: boolean) => void }) {
+  const { currency } = useLocale();
+  
+  return (
+    <div key={currency} className="flex bg-[#0B1221] min-h-screen text-white font-sans selection:bg-[#D4AF37] selection:text-black relative">
+      <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
+      
+      <main className="flex-1 md:ml-64 min-h-screen flex flex-col relative overflow-hidden">
+        {/* Mobile Header */}
+        <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0B1221]/80 backdrop-blur-md border-b border-white/10 z-50 flex items-center justify-between px-6">
+          <div className="flex items-center gap-2">
+             <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-8 h-8 object-contain" />
+             <span className="font-display font-black text-sm tracking-tighter uppercase">ORBIT WEALTH PRO</span>
+          </div>
+          <button 
+            onClick={() => setSidebarOpen(true)}
+            className="p-2 -mr-2 text-white/60 hover:text-white transition-colors"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        </div>
+
+        <div className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
+          <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
+            <Suspense fallback={<LoadingFallback />}>
+              <Routes>
+                <Route path="/" element={<Dashboard />} />
+              <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
+              <Route path="/calculators/retirement" element={<RetirementCalculator />} />
+              <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
+              <Route path="/calculators/gst" element={<GSTCalculator />} />
+              <Route path="/calculators/fd-rd" element={<FDRDCalculator />} />
+              <Route path="/calculators/sip" element={<SIPCalculator />} />
+              <Route path="/calculators/lumpsum" element={<LumpsumCalculator />} />
+              <Route path="/calculators/emi" element={<EMICalculator />} />
+              <Route path="/calculators/mutual-fund" element={<MFCalculator />} />
+              <Route path="/calculators/loan-eligibility" element={<LoanEligibility />} />
+              <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
+              <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
+              <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
+              <Route path="/calculators/personal-loan" element={<PersonalLoanCalculator />} />
+              <Route path="/calculators/auto-loan" element={<AutoLoanCalculator />} />
+              <Route path="/calculators/student-loan" element={<StudentLoanCalculator />} />
+              <Route path="/calculators/cagr" element={<CAGRCalculator />} />
+              <Route path="/calculators/dividend-yield" element={<DividendYieldCalculator />} />
+              <Route path="/calculators/child-education" element={<ChildEducationPlanner />} />
+              <Route path="/calculators/rental-yield" element={<RentalYieldCalculator />} />
+              <Route path="/calculators/debt-snowball" element={<DebtSnowball />} />
+              <Route path="/calculators/hlv" element={<HLVCalculator />} />
+              <Route path="/calculators/break-even" element={<BreakEvenCalculator />} />
+              <Route path="/calculators/credit-card-payoff" element={<CreditCardPayoff />} />
+              <Route path="/tax-guides" element={<TaxGuides />} />
+              
+              <Route path="/calculators/term-insurance" element={<TermInsuranceCalculator />} />
+              <Route path="/calculators/health-insurance" element={<HealthInsuranceCalculator />} />
+            
+            {/* Dynamic pSEO Routes */}
+            <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
+            <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
+            <Route path="/compare/:pair" element={<ComparePage />} />
+            
+            {/* Legacy redirects/backwards compatibility if needed, but here we strictly follow sitemap */}
+            <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
+            <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
+            <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
+            <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
+            
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+            <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
+            <Route path="*" element={<Dashboard />} />
+          </Routes>
+          </Suspense>
+          <Footer />
+        </div>
+      </div>
+    </main>
+  </div>
+  );
+}
+
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = React.useState(false);
 
@@ -109,86 +194,9 @@ export default function App() {
         <LocaleProvider>
           <RegionSynchronizer />
           <ScrollToTop />
-          <div className="flex bg-[#0B1221] min-h-screen text-white font-sans selection:bg-[#D4AF37] selection:text-black relative">
-            <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
-            
-            <main className="flex-1 md:ml-64 min-h-screen flex flex-col relative overflow-hidden">
-              {/* Mobile Header */}
-              <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0B1221]/80 backdrop-blur-md border-b border-white/10 z-50 flex items-center justify-between px-6">
-                <div className="flex items-center gap-2">
-                   <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-8 h-8 object-contain" />
-                   <span className="font-display font-black text-sm tracking-tighter uppercase">ORBIT WEALTH PRO</span>
-                </div>
-                <button 
-                  onClick={() => setSidebarOpen(true)}
-                  className="p-2 -mr-2 text-white/60 hover:text-white transition-colors"
-                >
-                  <Menu className="w-6 h-6" />
-                </button>
-              </div>
-
-              <div className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
-                <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
-                  <Suspense fallback={<LoadingFallback />}>
-                    <Routes>
-                      <Route path="/" element={<Dashboard />} />
-                    <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
-                    <Route path="/calculators/retirement" element={<RetirementCalculator />} />
-                    <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
-                    <Route path="/calculators/gst" element={<GSTCalculator />} />
-                    <Route path="/calculators/fd-rd" element={<FDRDCalculator />} />
-                    <Route path="/calculators/sip" element={<SIPCalculator />} />
-                    <Route path="/calculators/lumpsum" element={<LumpsumCalculator />} />
-                    <Route path="/calculators/emi" element={<EMICalculator />} />
-                    <Route path="/calculators/mutual-fund" element={<MFCalculator />} />
-                    <Route path="/calculators/loan-eligibility" element={<LoanEligibility />} />
-                    <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
-                    <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
-                    <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
-                    <Route path="/calculators/personal-loan" element={<PersonalLoanCalculator />} />
-                    <Route path="/calculators/auto-loan" element={<AutoLoanCalculator />} />
-                    <Route path="/calculators/student-loan" element={<StudentLoanCalculator />} />
-                    <Route path="/calculators/cagr" element={<CAGRCalculator />} />
-                    <Route path="/calculators/dividend-yield" element={<DividendYieldCalculator />} />
-                    <Route path="/calculators/child-education" element={<ChildEducationPlanner />} />
-                    <Route path="/calculators/rental-yield" element={<RentalYieldCalculator />} />
-                    <Route path="/calculators/debt-snowball" element={<DebtSnowball />} />
-                    <Route path="/calculators/hlv" element={<HLVCalculator />} />
-                    <Route path="/calculators/break-even" element={<BreakEvenCalculator />} />
-                    <Route path="/calculators/credit-card-payoff" element={<CreditCardPayoff />} />
-                    <Route path="/tax-guides" element={<TaxGuides />} />
-                    
-                    <Route path="/calculators/term-insurance" element={<TermInsuranceCalculator />} />
-                    <Route path="/calculators/health-insurance" element={<HealthInsuranceCalculator />} />
-                  
-                  {/* Dynamic pSEO Routes */}
-                  <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
-                  <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
-                  <Route path="/compare/:pair" element={<ComparePage />} />
-                  
-                  {/* Legacy redirects/backwards compatibility if needed, but here we strictly follow sitemap */}
-                  <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
-                  <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
-                  <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
-                  <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
-                  
-                  <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                  <Route path="/disclaimer" element={<Disclaimer />} />
-                  <Route path="/terms-of-service" element={<TermsOfService />} />
-                  <Route path="/contact" element={<ContactUs />} />
-                  <Route path="/about" element={<AboutUs />} />
-                  <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
-                  <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
-                  <Route path="*" element={<Dashboard />} />
-                </Routes>
-                </Suspense>
-                <Footer />
-              </div>
-            </div>
-          </main>
-        </div>
-      </LocaleProvider>
-    </HashRouter>
-  </HelmetProvider>
-);
+          <MainContent sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        </LocaleProvider>
+      </HashRouter>
+    </HelmetProvider>
+  );
 }

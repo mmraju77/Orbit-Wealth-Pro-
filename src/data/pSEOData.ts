@@ -70,13 +70,13 @@ export const REGIONS: Record<string, RegionData> = {
   },
   canada: {
     name: 'Canada',
-    currency: 'CAD',
-    smartContent: 'Canada utilizes TFSA (Tax-Free Savings Account) and RRSP (Registered Retirement Savings Plan) for long-term wealth building. Taxation is handled by the CRA at both federal and provincial levels. Housing loans are typically amortized over 25 years with varying term lengths.',
-    taxContext: 'CRA & TFSA/RRSP Standards',
+    currency: 'USD',
+    smartContent: 'In Canada, TFSA and RRSP accounts are core to financial planning. While the Canadian Dollar is standard, many cross-border professionals manage wealth in USD. This calculator helps estimate growth and tax impact for Canadian residents.',
+    taxContext: 'CRA & RRSP/TFSA Optimized',
     localInsights: [
-      'TFSA contributions are not tax-deductible, but withdrawals are completely tax-free.',
-      'RRSP contributions reduce your taxable income for the current year.',
-      'First-Time Home Buyer Incentive can help lower monthly mortgage costs.'
+      'TFSA withdrawals are tax-free, whereas RRSP withdrawals are taxed as income.',
+      'Consider the impact of the CAD/USD exchange rate if you earn in one and spend in the other.',
+      'The First Home Savings Account (FHSA) is a powerful tool for new homeowners.'
     ]
   },
   australia: {

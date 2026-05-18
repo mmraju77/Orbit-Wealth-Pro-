@@ -5,6 +5,7 @@
 
 import React, { createContext, useContext, useState, ReactNode, useEffect } from 'react';
 import { CurrencyCode, NumberSystem } from '../types';
+import { resolveRegion } from '../data/pSEOData';
 
 interface LocaleContextType {
   currency: CurrencyCode;
@@ -38,61 +39,15 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
 };
 
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  const [currency, setCurrency] = useState<CurrencyCode>(() => {
-    const saved = localStorage.getItem('user-currency');
-    return (saved as CurrencyCode) || 'USD';
-  });
-  const [numberSystem, setNumberSystem] = useState<NumberSystem>(() => {
-    const saved = localStorage.getItem('user-number-system');
-    return (saved as NumberSystem) || 'International';
-  });
+  // Use a state but sync it from the synchronizer component
+  const [currency, setCurrency] = useState<CurrencyCode>('USD');
+  const [numberSystem, setNumberSystem] = useState<NumberSystem>('International');
 
-  useEffect(() => {
-    localStorage.setItem('user-currency', currency);
-  }, [currency]);
-
-  useEffect(() => {
-    localStorage.setItem('user-number-system', numberSystem);
-  }, [numberSystem]);
-
-  useEffect(() => {
-    // Only auto-detect if no preference is saved
-    if (!localStorage.getItem('user-currency')) {
-      const detectRegion = async () => {
-        try {
-          const res = await fetch('https://ipapi.co/json/');
-          const data = await res.json();
-          const countryCode = data.country_code;
-
-          if (countryCode === 'IN') {
-            setCurrency('INR');
-            setNumberSystem('Indian');
-          } else if (countryCode === 'AE') {
-            setCurrency('AED');
-          } else if (['GB', 'UK'].includes(countryCode)) {
-            setCurrency('GBP');
-          } else if (['NO', 'SE', 'DK', 'CH'].includes(countryCode)) {
-            const map: any = { NO: 'NOK', SE: 'SEK', DK: 'DKK', CH: 'CHF' };
-            setCurrency(map[countryCode]);
-          } else if (countryCode === 'CA') {
-            setCurrency('CAD');
-          } else if (countryCode === 'AU') {
-            setCurrency('AUD');
-          } else if (['DE', 'FR', 'ES', 'IT', 'NL', 'BE', 'AT'].includes(countryCode)) {
-            setCurrency('EUR');
-          } else {
-            setCurrency('USD');
-          }
-        } catch (error) {
-          console.error('Failed to auto-detect region:', error);
-        }
-      };
-      detectRegion();
-    }
-  }, []);
-
+  // Core formatting engine
   const formatCurrency = (val: number) => {
-    const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
+    const localeConfig = CURRENCY_MAP[currency] || CURRENCY_MAP.USD;
+    const locale = numberSystem === 'Indian' ? 'en-IN' : localeConfig.locale;
+    
     return new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: currency,
@@ -102,7 +57,9 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   };
 
   const formatValue = (val: number) => {
-    const locale = numberSystem === 'Indian' ? 'en-IN' : CURRENCY_MAP[currency].locale;
+    const localeConfig = CURRENCY_MAP[currency] || CURRENCY_MAP.USD;
+    const locale = numberSystem === 'Indian' ? 'en-IN' : localeConfig.locale;
+    
     return new Intl.NumberFormat(locale, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 2,
@@ -134,7 +91,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       setNumberSystem,
       formatCurrency, 
       formatValue,
-      currencySymbol: CURRENCY_MAP[currency].symbol,
+      currencySymbol: (CURRENCY_MAP[currency] || CURRENCY_MAP.USD).symbol,
       labels: getLabels() 
     }}>
       {children}
