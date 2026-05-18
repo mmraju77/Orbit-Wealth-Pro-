@@ -41,41 +41,32 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
 const getInitialLocale = () => {
   try {
     const hash = window.location.hash || '';
-    const path = window.location.pathname || '';
-    const allParts = [...hash.split('/'), ...path.split('/')].filter(Boolean);
+    // Priority: Hash path in HashRouter
+    const hashParts = hash.split('/').filter(p => p && p !== '#');
     
-    // We need normalizeRegionKey and resolveRegion but they are in pSEOData
-    // To avoid circular dependency if we import pSEOData into Context while App imports both
-    // Let's just do a quick check here or move normalization logic
-    const aliasMap: Record<string, { currency: CurrencyCode; system: NumberSystem }> = {
-      'usa': { currency: 'USD', system: 'International' },
-      'us': { currency: 'USD', system: 'International' },
-      'india': { currency: 'INR', system: 'Indian' },
-      'in': { currency: 'INR', system: 'Indian' },
-      'uae': { currency: 'AED', system: 'International' },
-      'uk': { currency: 'GBP', system: 'International' },
-      'germany': { currency: 'EUR', system: 'International' },
-      'de': { currency: 'EUR', system: 'International' },
-      'switzerland': { currency: 'CHF', system: 'International' },
-      'ch': { currency: 'CHF', system: 'International' },
-      'norway': { currency: 'NOK', system: 'International' },
-      'no': { currency: 'NOK', system: 'International' },
-      'sweden': { currency: 'SEK', system: 'International' },
-      'se': { currency: 'SEK', system: 'International' },
-      'denmark': { currency: 'DKK', system: 'International' },
-      'dk': { currency: 'DKK', system: 'International' },
-      'netherlands': { currency: 'EUR', system: 'International' },
-      'nl': { currency: 'EUR', system: 'International' },
-      'canada': { currency: 'CAD', system: 'International' },
-      'ca': { currency: 'CAD', system: 'International' },
-      'australia': { currency: 'AUD', system: 'International' },
-      'au': { currency: 'AUD', system: 'International' },
-    };
+    // Check hash segments first as we are in a HashRouter
+    for (const part of [...hashParts].reverse()) {
+      const cleanPart = part.toLowerCase();
+      const data = resolveRegion(cleanPart);
+      if (data) {
+        return { 
+          currency: data.currency, 
+          system: data.name === 'India' ? ('Indian' as NumberSystem) : ('International' as NumberSystem)
+        };
+      }
+    }
 
-    for (const part of allParts.reverse()) {
-      const cleanPart = part.toLowerCase().replace('#', '');
-      if (aliasMap[cleanPart]) {
-        return aliasMap[cleanPart];
+    // Fallback to path (for standard routing if mixed)
+    const path = window.location.pathname || '';
+    const pathParts = path.split('/').filter(Boolean);
+    for (const part of [...pathParts].reverse()) {
+      const cleanPart = part.toLowerCase();
+      const data = resolveRegion(cleanPart);
+      if (data) {
+        return { 
+          currency: data.currency, 
+          system: data.name === 'India' ? ('Indian' as NumberSystem) : ('International' as NumberSystem)
+        };
       }
     }
   } catch (e) {

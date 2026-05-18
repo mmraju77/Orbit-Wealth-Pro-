@@ -72,14 +72,17 @@ function RegionSynchronizer() {
   const { setCurrency, setNumberSystem, currency: currentCurrency } = useLocale();
 
   useEffect(() => {
-    // Extract potential region from path parts
-    const parts = pathname.split('/').filter(Boolean);
+    // Specifically parse window.location.hash as per user request for HashRouter compliance
+    // In HashRouter, pathname matches the part after #, but we'll use hash explicitly to be sure
+    const hash = window.location.hash || '';
+    const parts = hash.split('/').filter(p => p && p !== '#');
+    
     if (parts.length === 0) return;
 
     let regionData = null;
     const reversedParts = [...parts].reverse();
     for (const part of reversedParts) {
-      const data = resolveRegion(part);
+      const data = resolveRegion(part.toLowerCase());
       if (data) {
         regionData = data;
         break;
@@ -87,7 +90,6 @@ function RegionSynchronizer() {
     }
 
     if (regionData) {
-      // Only update if it's actually different to prevent unnecessary re-renders
       if (regionData.currency !== currentCurrency) {
         setCurrency(regionData.currency);
         setNumberSystem(regionData.name === 'India' ? 'Indian' : 'International');
