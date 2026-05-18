@@ -7,6 +7,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Shield, Mail, Scale, FileText, Globe, Twitter, Instagram, Github, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
+import { REGIONS, regionKeys } from '../data/pSEOData';
 
 export default function Footer() {
   const { labels } = useLocale();
@@ -114,18 +115,15 @@ export default function Footer() {
            <div className="space-y-4">
               <h4 className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Global Jurisdictions</h4>
               <div className="flex flex-wrap gap-4">
-                 <Link to="/tools/mortgage/usa" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">USA</Link>
-                 <Link to="/tools/gratuity/uae" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">UAE</Link>
-                 <Link to="/tools/income-tax/india" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">INDIA</Link>
-                 <Link to="/tools/retirement/uk" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">UK</Link>
-                 <Link to="/tools/gst/australia" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">AUSTRALIA</Link>
-                 <Link to="/tools/income-tax/germany" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">GERMANY</Link>
-                 <Link to="/tools/mortgage/switzerland" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">SWITZERLAND</Link>
-                 <Link to="/tools/loan-eligibility/norway" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">NORWAY</Link>
-                 <Link to="/tools/retirement/sweden" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">SWEDEN</Link>
-                 <Link to="/tools/gst/denmark" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">DENMARK</Link>
-                 <Link to="/tools/income-tax/netherlands" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">NETHERLANDS</Link>
-                 <Link to="/tools/mortgage/canada" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">CANADA</Link>
+                 {regionKeys.map(key => (
+                   <Link 
+                     key={key}
+                     to={`/tools/mortgage/${key}`} 
+                     className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors uppercase font-bold"
+                   >
+                     {REGIONS[key].name}
+                   </Link>
+                 ))}
               </div>
            </div>
            <div className="bg-[#D4AF37]/5 rounded-2xl p-6 border border-[#D4AF37]/10">

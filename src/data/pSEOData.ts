@@ -189,6 +189,10 @@ export const resolveRegion = (key?: string) => {
   return REGIONS[normalizeRegionKey(key)];
 };
 
+export const regionKeys = [
+  'usa', 'uk', 'germany', 'switzerland', 'norway', 'sweden', 'denmark', 'netherlands', 'canada', 'australia', 'india', 'uae'
+];
+
 export const normalizeRegionKey = (key?: string): string => {
   if (!key) return 'usa';
   const k = key.toLowerCase();
