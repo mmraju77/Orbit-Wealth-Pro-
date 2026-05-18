@@ -379,9 +379,12 @@ export default function Dashboard() {
         </div>
         
         <div className="flex justify-center pt-4">
-          <button className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/60 uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-white transition-all cursor-pointer">
+          <Link 
+            to="/news" 
+            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/60 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
+          >
             Explore All Market Insights
-          </button>
+          </Link>
         </div>
       </section>
 
