@@ -30,8 +30,8 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   GBP: { symbol: '£', name: 'GBP', locale: 'en-GB' },
   AED: { symbol: 'AED', name: 'AED', locale: 'en-AE' },
   INR: { symbol: '₹', name: 'INR', locale: 'en-IN' },
-  CAD: { symbol: '$', name: 'CAD', locale: 'en-CA' },
-  AUD: { symbol: '$', name: 'AUD', locale: 'en-AU' },
+  CAD: { symbol: 'CA$', name: 'CAD', locale: 'en-CA' },
+  AUD: { symbol: 'AU$', name: 'AUD', locale: 'en-AU' },
   NOK: { symbol: 'kr', name: 'NOK', locale: 'nb-NO' },
   SEK: { symbol: 'kr', name: 'SEK', locale: 'sv-SE' },
   DKK: { symbol: 'kr', name: 'DKK', locale: 'da-DK' },
@@ -46,8 +46,11 @@ const getInitialLocale = () => {
     
     // Check hash segments first as we are in a HashRouter
     for (const part of [...hashParts].reverse()) {
+      const decodedPart = decodeURIComponent(part).toLowerCase().replace(/-/g, ' ');
       const cleanPart = part.toLowerCase();
-      const data = resolveRegion(cleanPart);
+      
+      // Try resolving directly or via normalized key (which we'll update in pSEOData)
+      const data = resolveRegion(cleanPart) || resolveRegion(decodedPart);
       if (data) {
         return { 
           currency: data.currency, 
@@ -60,8 +63,9 @@ const getInitialLocale = () => {
     const path = window.location.pathname || '';
     const pathParts = path.split('/').filter(Boolean);
     for (const part of [...pathParts].reverse()) {
+      const decodedPart = decodeURIComponent(part).toLowerCase().replace(/-/g, ' ');
       const cleanPart = part.toLowerCase();
-      const data = resolveRegion(cleanPart);
+      const data = resolveRegion(cleanPart) || resolveRegion(decodedPart);
       if (data) {
         return { 
           currency: data.currency, 
@@ -85,12 +89,19 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
     const localeConfig = CURRENCY_MAP[currency] || CURRENCY_MAP.USD;
     const locale = numberSystem === 'Indian' ? 'en-IN' : localeConfig.locale;
     
-    return new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: currency,
+    const formatted = new Intl.NumberFormat(locale, {
       minimumFractionDigits: 0,
       maximumFractionDigits: 0,
     }).format(val);
+
+    const symbol = localeConfig.symbol;
+    
+    // Position handling based on currency
+    if (['NOK', 'SEK', 'DKK', 'CHF'].includes(currency)) {
+      return `${formatted} ${symbol}`;
+    }
+    
+    return `${symbol}${formatted}`;
   };
 
   const formatValue = (val: number) => {

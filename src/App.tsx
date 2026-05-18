@@ -82,7 +82,9 @@ function RegionSynchronizer() {
     let regionData = null;
     const reversedParts = [...parts].reverse();
     for (const part of reversedParts) {
-      const data = resolveRegion(part.toLowerCase());
+      const decodedPart = decodeURIComponent(part).toLowerCase().replace(/-/g, ' ');
+      const cleanPart = part.toLowerCase();
+      const data = resolveRegion(cleanPart) || resolveRegion(decodedPart);
       if (data) {
         regionData = data;
         break;
