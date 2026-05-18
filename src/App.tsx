@@ -130,9 +130,10 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
           <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
             <Suspense fallback={<LoadingFallback />}>
               <Routes>
-              <Route path="/" element={<Dashboard />} />
-              <Route path="/news" element={<Dashboard />} />
-              <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
+                <Route path="/" element={<Dashboard />} />
+                <Route path="/news" element={<Dashboard />} />
+                <Route path="/insights" element={<Dashboard />} />
+                <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
               <Route path="/calculators/retirement" element={<RetirementCalculator />} />
               <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
               <Route path="/calculators/gst" element={<GSTCalculator />} />
