@@ -38,10 +38,56 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   CHF: { symbol: 'CHF', name: 'CHF', locale: 'de-CH' },
 };
 
+const getInitialLocale = () => {
+  try {
+    const hash = window.location.hash || '';
+    const path = window.location.pathname || '';
+    const allParts = [...hash.split('/'), ...path.split('/')].filter(Boolean);
+    
+    // We need normalizeRegionKey and resolveRegion but they are in pSEOData
+    // To avoid circular dependency if we import pSEOData into Context while App imports both
+    // Let's just do a quick check here or move normalization logic
+    const aliasMap: Record<string, { currency: CurrencyCode; system: NumberSystem }> = {
+      'usa': { currency: 'USD', system: 'International' },
+      'us': { currency: 'USD', system: 'International' },
+      'india': { currency: 'INR', system: 'Indian' },
+      'in': { currency: 'INR', system: 'Indian' },
+      'uae': { currency: 'AED', system: 'International' },
+      'uk': { currency: 'GBP', system: 'International' },
+      'germany': { currency: 'EUR', system: 'International' },
+      'de': { currency: 'EUR', system: 'International' },
+      'switzerland': { currency: 'CHF', system: 'International' },
+      'ch': { currency: 'CHF', system: 'International' },
+      'norway': { currency: 'NOK', system: 'International' },
+      'no': { currency: 'NOK', system: 'International' },
+      'sweden': { currency: 'SEK', system: 'International' },
+      'se': { currency: 'SEK', system: 'International' },
+      'denmark': { currency: 'DKK', system: 'International' },
+      'dk': { currency: 'DKK', system: 'International' },
+      'netherlands': { currency: 'EUR', system: 'International' },
+      'nl': { currency: 'EUR', system: 'International' },
+      'canada': { currency: 'CAD', system: 'International' },
+      'ca': { currency: 'CAD', system: 'International' },
+      'australia': { currency: 'AUD', system: 'International' },
+      'au': { currency: 'AUD', system: 'International' },
+    };
+
+    for (const part of allParts.reverse()) {
+      const cleanPart = part.toLowerCase().replace('#', '');
+      if (aliasMap[cleanPart]) {
+        return aliasMap[cleanPart];
+      }
+    }
+  } catch (e) {
+    // SSR or other issues
+  }
+  return { currency: 'USD' as CurrencyCode, system: 'International' as NumberSystem };
+};
+
 export function LocaleProvider({ children }: { children: ReactNode }) {
-  // Use a state but sync it from the synchronizer component
-  const [currency, setCurrency] = useState<CurrencyCode>('USD');
-  const [numberSystem, setNumberSystem] = useState<NumberSystem>('International');
+  const initial = getInitialLocale();
+  const [currency, setCurrency] = useState<CurrencyCode>(initial.currency);
+  const [numberSystem, setNumberSystem] = useState<NumberSystem>(initial.system);
 
   // Core formatting engine
   const formatCurrency = (val: number) => {

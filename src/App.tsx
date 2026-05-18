@@ -69,22 +69,14 @@ import { Menu, X, ShieldCheck, Wallet } from 'lucide-react';
 
 function RegionSynchronizer() {
   const { pathname } = useLocation();
-  const { setCurrency, setNumberSystem } = useLocale();
+  const { setCurrency, setNumberSystem, currency: currentCurrency } = useLocale();
 
   useEffect(() => {
     // Extract potential region from path parts
-    // In HashRouter, pathname should be /germany if URL is #/germany
     const parts = pathname.split('/').filter(Boolean);
-    
     if (parts.length === 0) return;
 
-    // Check possible region keys in the URL
-    // Priority: Last part usually identifies the region in /tools/mortgage/usa
-    // But in /germany/sip, it's the first part.
-    // Let's check all parts.
     let regionData = null;
-    
-    // We reverse to prioritize the most specific region if multiple exist (unlikely but safer for /tools/sip/uk)
     const reversedParts = [...parts].reverse();
     for (const part of reversedParts) {
       const data = resolveRegion(part);
@@ -95,14 +87,13 @@ function RegionSynchronizer() {
     }
 
     if (regionData) {
-      setCurrency(regionData.currency);
-      if (regionData.name === 'India') {
-        setNumberSystem('Indian');
-      } else {
-        setNumberSystem('International');
+      // Only update if it's actually different to prevent unnecessary re-renders
+      if (regionData.currency !== currentCurrency) {
+        setCurrency(regionData.currency);
+        setNumberSystem(regionData.name === 'India' ? 'Indian' : 'International');
       }
     }
-  }, [pathname, setCurrency, setNumberSystem]);
+  }, [pathname, setCurrency, setNumberSystem, currentCurrency]);
 
   return null;
 }
