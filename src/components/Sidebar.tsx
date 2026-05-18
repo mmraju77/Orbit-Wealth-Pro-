@@ -138,7 +138,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       )}>
         <div className="p-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-10 h-10 object-contain" />
+            <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20">
+              <Wallet className="w-6 h-6 text-black" />
+            </div>
             <span className="font-display font-black text-xl tracking-tighter text-white uppercase group flex flex-col leading-none">
               <span className="text-[#D4AF37]">ORBIT</span>
               <span className="text-white">WEALTH PRO</span>
@@ -226,7 +228,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                         }}
                         className={cn(
                           "h-5 rounded text-[8px] font-bold transition-all flex items-center justify-center gap-0.5",
-                          currency === c ? "bg-[#D4AF37] text-black" : "bg-white/5 text-white/20 hover:bg-white/10"
+                          currency === c ? "bg-[#D4AF37] text-black" : "bg-white/10 text-white/60 hover:bg-white/20"
                         )}
                       >
                         <span className="opacity-60">{symbols[c]}</span>

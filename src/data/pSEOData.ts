@@ -70,8 +70,8 @@ export const REGIONS: Record<string, RegionData> = {
   },
   canada: {
     name: 'Canada',
-    currency: 'USD',
-    smartContent: 'In Canada, TFSA and RRSP accounts are core to financial planning. While the Canadian Dollar is standard, many cross-border professionals manage wealth in USD. This calculator helps estimate growth and tax impact for Canadian residents.',
+    currency: 'CAD',
+    smartContent: 'In Canada, TFSA and RRSP accounts are core to financial planning. This calculator helps estimate growth and tax impact for Canadian residents, accounting for CRA regulations.',
     taxContext: 'CRA & RRSP/TFSA Optimized',
     localInsights: [
       'TFSA withdrawals are tax-free, whereas RRSP withdrawals are taxed as income.',

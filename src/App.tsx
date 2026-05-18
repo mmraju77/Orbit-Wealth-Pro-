@@ -65,7 +65,7 @@ const LoadingFallback = () => (
 );
 import Footer from './components/Footer';
 
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X, ShieldCheck, Wallet } from 'lucide-react';
 
 function RegionSynchronizer() {
   const { pathname } = useLocation();
@@ -118,8 +118,10 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
         {/* Mobile Header */}
         <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-[#0B1221]/80 backdrop-blur-md border-b border-white/10 z-50 flex items-center justify-between px-6">
           <div className="flex items-center gap-2">
-             <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-8 h-8 object-contain" />
-             <span className="font-display font-black text-sm tracking-tighter uppercase">ORBIT WEALTH PRO</span>
+             <div className="w-8 h-8 bg-[#D4AF37] rounded-lg flex items-center justify-center">
+               <Wallet className="w-5 h-5 text-black" />
+             </div>
+             <span className="font-display font-black text-sm tracking-tighter uppercase text-white">ORBIT WEALTH PRO</span>
           </div>
           <button 
             onClick={() => setSidebarOpen(true)}

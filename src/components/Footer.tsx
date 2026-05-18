@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Shield, Mail, Scale, FileText, Globe, Twitter, Instagram, Github } from 'lucide-react';
+import { Shield, Mail, Scale, FileText, Globe, Twitter, Instagram, Github, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 
 export default function Footer() {
@@ -18,11 +18,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-6">
             <Link to="/" className="flex items-center gap-3 group">
-              <img src="/logo.webp" alt="ORBIT WEALTH PRO" className="w-10 h-10 object-contain group-hover:scale-110 transition-transform" />
+              <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20 group-hover:scale-110 transition-transform">
+                <Wallet className="w-6 h-6 text-black" />
+              </div>
               <span className="text-2xl font-bold tracking-tighter text-white uppercase">ORBIT WEALTH PRO</span>
             </Link>
             <p className="text-white/40 text-sm leading-relaxed">
-              Global financial tools platform providing precision calculators for the USA, UAE, and India. Empowering wealth through data.
+              Global financial tools platform providing precision calculators for 11+ jurisdictions including the USA, Canada, Europe, UAE, and India.
             </p>
             <div className="flex items-center gap-4">
               <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
@@ -123,6 +125,7 @@ export default function Footer() {
                  <Link to="/tools/retirement/sweden" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">SWEDEN</Link>
                  <Link to="/tools/gst/denmark" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">DENMARK</Link>
                  <Link to="/tools/income-tax/netherlands" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">NETHERLANDS</Link>
+                 <Link to="/tools/mortgage/canada" className="text-[10px] text-white/40 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors">CANADA</Link>
               </div>
            </div>
            <div className="bg-[#D4AF37]/5 rounded-2xl p-6 border border-[#D4AF37]/10">
