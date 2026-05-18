@@ -148,15 +148,15 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
           <h3 className="text-xl font-display font-medium text-white tracking-tighter leading-tight group-hover:text-[#D4AF37] transition-colors duration-500">
             {article.title}
           </h3>
-          <p className="text-sm text-white/40 leading-relaxed line-clamp-2">
+          <p className="text-sm text-white/70 leading-relaxed line-clamp-2">
             {article.summary}
           </p>
         </div>
         
         <div className="pt-4 flex items-center justify-between border-t border-white/[0.05]">
            <div className="flex items-center gap-2">
-              <Calendar className="w-3 h-3 text-white/20" />
-              <span className="text-[10px] text-white/20 font-bold uppercase tracking-widest">{article.date}</span>
+              <Calendar className="w-3 h-3 text-white/40" />
+              <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
            <button className="flex items-center gap-2 text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest group-hover:translate-x-1 transition-transform">
              Read Full Report <ArrowUpRight className="w-3 h-3" />
@@ -181,7 +181,7 @@ export default function Dashboard() {
           Financial <br />
           <span className="text-white/10">Dashboard.</span>
         </h1>
-        <p className="text-white/40 max-w-xl text-sm md:text-base font-light leading-relaxed">
+        <p className="text-white/70 max-w-xl text-sm md:text-base font-light leading-relaxed">
           Access ORBIT WEALTH PRO's suite of institutional-grade financial tools. 
           Precision engineering for the modern global investor.
         </p>
@@ -189,7 +189,7 @@ export default function Dashboard() {
 
       <section className="space-y-10">
         <div className="flex items-center gap-4">
-           <h2 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
+           <h2 className="text-[10px] font-bold text-white/50 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
@@ -219,7 +219,7 @@ export default function Dashboard() {
                     <h3 className="text-xl font-display font-medium text-white group-hover:text-[#D4AF37] transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="text-xs text-white/30 leading-relaxed font-light line-clamp-2">
+                    <p className="text-xs text-white/60 leading-relaxed font-light line-clamp-2">
                       {card.description}
                     </p>
                   </div>
@@ -248,7 +248,7 @@ export default function Dashboard() {
         </div>
         
         <div className="flex justify-center pt-4">
-          <button className="px-8 py-3 bg-white/[0.02] border border-white/5 rounded-full text-[10px] font-bold text-white/40 uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-white transition-all cursor-pointer">
+          <button className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-[10px] font-bold text-white/60 uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-white transition-all cursor-pointer">
             Explore All Market Insights
           </button>
         </div>

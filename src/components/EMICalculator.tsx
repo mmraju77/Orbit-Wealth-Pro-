@@ -73,7 +73,7 @@ export default function EMICalculator() {
              <CreditCard className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">EMI Global Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Equated Monthly Installment tool for personal, car, or home loans across multiple regions.
           </p>
         </header>
@@ -155,11 +155,11 @@ export default function EMICalculator() {
                
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 w-full border-t border-white/5 pt-8 px-4">
                  <div className="text-center">
-                    <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Interest</div>
+                    <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Total Interest</div>
                     <div className="text-xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
                  </div>
                  <div className="text-center">
-                    <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Payable</div>
+                    <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Total Payable</div>
                     <div className="text-xl font-bold text-white">{formatCurrency(results.totalPayment)}</div>
                  </div>
                </div>

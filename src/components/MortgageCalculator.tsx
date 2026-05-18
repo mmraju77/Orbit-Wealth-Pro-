@@ -194,7 +194,7 @@ export default function MortgageCalculator() {
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-[8px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Loan Amount</div>
-                <div className="text-2xl font-bold text-white/40 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
+                <div className="text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
             </div>
           </div>
         </section>
@@ -268,11 +268,11 @@ export default function MortgageCalculator() {
           <div className="flex items-center gap-4">
              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]"></div>
-                <span className="text-[10px] font-bold text-white/40 uppercase">Balance</span>
+                <span className="text-[10px] font-bold text-white/60 uppercase">Balance</span>
              </div>
              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-white"></div>
-                <span className="text-[10px] font-bold text-white/40 uppercase">Equity</span>
+                <span className="text-[10px] font-bold text-white/60 uppercase">Equity</span>
              </div>
           </div>
         </div>
@@ -280,12 +280,12 @@ export default function MortgageCalculator() {
         {isMounted && (
           <ResponsiveContainer width="100%" height={300}>
             <LineChart data={results.amortizationSchedule} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
+              <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
               <XAxis 
-                dataKey="period" stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} dy={10} 
+                dataKey="period" stroke="#ffffff60" fontSize={10} tickLine={false} axisLine={false} dy={10} 
                 tickFormatter={(val) => `Yr ${val / 12}`}
               />
-              <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
+              <YAxis stroke="#ffffff60" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
               <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
               <Line type="monotone" dataKey="remainingBalance" stroke="#D4AF37" strokeWidth={3} dot={false} isAnimationActive={false} />
               <Line type="monotone" dataKey="totalInterestPaid" stroke="#FFFFFF20" strokeWidth={2} dot={false} isAnimationActive={false} />

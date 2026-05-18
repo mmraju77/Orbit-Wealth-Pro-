@@ -23,7 +23,7 @@
   }
   
   .input-label-editorial {
-    @apply text-[10px] uppercase tracking-wider text-white/40 mb-2 block font-bold;
+    @apply text-[10px] uppercase tracking-wider text-white/70 mb-2 block font-bold;
   }
   
   .editorial-input {
