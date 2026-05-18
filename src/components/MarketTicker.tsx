@@ -6,17 +6,20 @@
 import React from 'react';
 import { TrendingUp, TrendingDown, Coins, Bitcoin, Search } from 'lucide-react';
 import { motion } from 'motion/react';
-
-const MARKET_DATA = [
-  { label: 'USD/INR', value: '83.42', change: '+0.05', up: true },
-  { label: 'BTC/USD', value: '$64,281', change: '+2.4%', up: true },
-  { label: 'Gold (24K)', value: '₹7,245', change: '-0.15', up: false },
-  { label: 'NIFTY 50', value: '22,462', change: '+0.8%', up: true },
-  { label: 'S&P 500', value: '5,127', change: '+1.2%', up: true },
-  { label: 'Eth/USD', value: '$3,142', change: '-1.1%', up: false }
-];
+import { useLocale } from '../context/LocaleContext';
 
 export default function MarketTicker() {
+  const { currencySymbol } = useLocale();
+  
+  const MARKET_DATA = [
+    { label: 'USD/INR', value: '83.42', change: '+0.05', up: true },
+    { label: 'BTC/USD', value: `${currencySymbol}64,281`, change: '+2.4%', up: true },
+    { label: 'Gold (24K)', value: '₹7,245', change: '-0.15', up: false },
+    { label: 'NIFTY 50', value: '22,462', change: '+0.8%', up: true },
+    { label: 'S&P 500', value: '5,127', change: '+1.2%', up: true },
+    { label: 'Eth/USD', value: `${currencySymbol}3,142`, change: '-1.1%', up: false }
+  ];
+
   return (
     <div className="bg-black/40 backdrop-blur-sm border-b border-white/[0.02] py-2 overflow-hidden relative z-50">
       <div className="flex whitespace-nowrap animate-ticker group">
