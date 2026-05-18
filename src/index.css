@@ -19,11 +19,11 @@
 
 @layer components {
   .editorial-label {
-    @apply text-[10px] font-bold text-[#D4AF37] mb-1 tracking-[0.3em] uppercase;
+    @apply text-xs font-bold text-[#D4AF37] mb-1 tracking-[0.3em] uppercase;
   }
   
   .input-label-editorial {
-    @apply text-[10px] uppercase tracking-wider text-white/70 mb-2 block font-bold;
+    @apply text-xs uppercase tracking-wider text-white/70 mb-2 block font-bold;
   }
   
   .editorial-input {

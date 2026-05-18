@@ -73,7 +73,7 @@ export default function EMICalculator() {
              <CreditCard className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-white">EMI Global Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Equated Monthly Installment tool for personal, car, or home loans across multiple regions.
           </p>
         </header>
@@ -133,7 +133,7 @@ export default function EMICalculator() {
             <div className="w-full flex-col flex items-center justify-center gap-12">
                <div className="relative w-[250px] h-[250px]">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 flex-col">
-                    <div className="text-[10px] text-white/30 font-bold uppercase tracking-widest">Monthly EMI</div>
+                    <div className="text-xs text-white/30 font-bold uppercase tracking-widest">Monthly EMI</div>
                     <div className="text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
                   </div>
                   <ResponsiveContainer width="100%" height="100%">

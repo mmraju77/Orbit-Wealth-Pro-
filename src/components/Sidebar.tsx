@@ -162,7 +162,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               if (window.innerWidth < 768) onClose();
             }}
             className={({ isActive }) => cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg text-xs transition-all mb-4",
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all mb-4",
               isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/60 hover:text-white"
             )}
           >
@@ -174,7 +174,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div key={section.label} className="space-y-1">
               <button 
                 onClick={() => toggleSection(section.label)}
-                className="w-full flex items-center justify-between px-3 py-2 text-[10px] font-bold text-white/40 uppercase tracking-[0.2em] hover:text-white/60 transition-colors"
+                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-white/40 uppercase tracking-[0.2em] hover:text-white/60 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <section.icon className="w-3.5 h-3.5" />
@@ -193,7 +193,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                         if (window.innerWidth < 768) onClose();
                       }}
                       className={({ isActive }) => cn(
-                        "flex items-center gap-3 px-3 py-1.5 rounded-lg text-xs transition-all",
+                        "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all",
                         isActive ? "text-[#D4AF37] font-semibold" : "text-white/60 hover:text-white"
                       )}
                     >
@@ -211,7 +211,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div className="space-y-6">
             <div className="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl space-y-4">
               <div>
-                <label className="text-[8px] font-bold text-white/40 uppercase tracking-widest block mb-2 px-1">Region Override</label>
+                <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mb-2 px-1">Region Override</label>
                 <div className="grid grid-cols-4 gap-1">
                   {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => {
                     const symbols: Record<string, string> = {
@@ -227,7 +227,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                           else setNumberSystem('International');
                         }}
                         className={cn(
-                          "h-5 rounded text-[8px] font-bold transition-all flex items-center justify-center gap-0.5",
+                          "h-5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-0.5",
                           currency === c ? "bg-[#D4AF37] text-black" : "bg-white/10 text-white/80 hover:bg-white/20"
                         )}
                       >

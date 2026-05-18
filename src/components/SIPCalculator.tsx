@@ -77,10 +77,10 @@ export default function SIPCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
+             <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-white tracking-tight">SIP Intelligence.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Project your wealth growth via Systematic Investment Plans using our high-precision compound return engine.
           </p>
         </header>
@@ -110,7 +110,7 @@ export default function SIPCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
+                <label className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
               </div>
               <input 
@@ -123,7 +123,7 @@ export default function SIPCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/50 uppercase tracking-widest">Investment Period (Years)</label>
+                <label className="text-xs font-bold text-white/50 uppercase tracking-widest">Investment Period (Years)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yr</div>
               </div>
               <input 
@@ -137,11 +137,11 @@ export default function SIPCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[8px] text-white/50 font-bold uppercase tracking-widest mb-1">Invested Amount</div>
+                <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Invested Amount</div>
                 <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[8px] text-white/50 font-bold uppercase tracking-widest mb-1">Return Amount</div>
+                <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Return Amount</div>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
@@ -160,8 +160,8 @@ export default function SIPCalculator() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                  <XAxis dataKey="year" stroke="#ffffff60" fontSize={10} tickLine={false} axisLine={false} dy={10} />
-                  <YAxis stroke="#ffffff60" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
+                  <XAxis dataKey="year" stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} dy={10} />
+                  <YAxis stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
                   <RechartsTooltip 
                     contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
                     labelStyle={{ color: '#white/40', marginBottom: '4px' }}
@@ -170,7 +170,7 @@ export default function SIPCalculator() {
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">
-                <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
+                <div className="text-xs text-white/50 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
                 <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
               

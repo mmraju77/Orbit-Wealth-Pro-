@@ -175,13 +175,13 @@ export default function Dashboard() {
       <header className="space-y-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
-          <span className="text-[9px] font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
+          <span className="text-xs font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-white tracking-tighter leading-[1.1]">
           Financial <br />
           <span className="text-white/10">Dashboard.</span>
         </h1>
-        <p className="text-white/70 max-w-xl text-sm md:text-base font-light leading-relaxed">
+        <p className="text-white/70 max-w-xl text-base md:text-lg font-light leading-relaxed">
           Access ORBIT WEALTH PRO's suite of institutional-grade financial tools. 
           Precision engineering for the modern global investor.
         </p>
@@ -189,7 +189,7 @@ export default function Dashboard() {
 
       <section className="space-y-10">
         <div className="flex items-center gap-4">
-           <h2 className="text-[10px] font-bold text-white/50 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
+           <h2 className="text-xs font-bold text-white/50 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
@@ -219,7 +219,7 @@ export default function Dashboard() {
                     <h3 className="text-xl font-display font-medium text-white group-hover:text-[#D4AF37] transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="text-xs text-white/60 leading-relaxed font-light line-clamp-2">
+                    <p className="text-sm text-white/60 leading-relaxed font-light line-clamp-2">
                       {card.description}
                     </p>
                   </div>
@@ -233,9 +233,9 @@ export default function Dashboard() {
       {/* Global Finance News Section */}
       <section className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
+           <h2 className="text-xs font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
            <div className="flex-1 h-px bg-[#D4AF37]/10"></div>
-           <div className="flex items-center gap-2 text-[8px] font-bold text-white/20 uppercase tracking-widest">
+           <div className="flex items-center gap-2 text-xs font-bold text-white/20 uppercase tracking-widest">
              <div className="w-1 h-1 rounded-full bg-[#D4AF37] animate-pulse"></div>
              Live Updates
            </div>
@@ -248,7 +248,7 @@ export default function Dashboard() {
         </div>
         
         <div className="flex justify-center pt-4">
-          <button className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-[10px] font-bold text-white/60 uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-white transition-all cursor-pointer">
+          <button className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/60 uppercase tracking-widest hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 hover:text-white transition-all cursor-pointer">
             Explore All Market Insights
           </button>
         </div>
@@ -257,18 +257,18 @@ export default function Dashboard() {
       <section className="pt-24 border-t border-white/[0.05] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
           <h2 className="text-2xl font-display font-medium">Built for accuracy.</h2>
-          <p className="text-sm text-white/30 leading-relaxed max-w-md">
+          <p className="text-base text-white/30 leading-relaxed max-w-md">
             Our engine accounts for localized interest compounding, tax thresholds, and currency fluctuations to ensure your planning is based on high-integrity data.
           </p>
         </div>
         <div className="flex gap-12">
            <div className="space-y-1">
              <div className="text-4xl font-display text-white">100%</div>
-             <div className="text-[9px] text-white/20 uppercase font-bold tracking-[0.2em]">Computation Accuracy</div>
+             <div className="text-xs text-white/20 uppercase font-bold tracking-[0.2em]">Computation Accuracy</div>
            </div>
            <div className="space-y-1">
              <div className="text-4xl font-display text-white">Instant</div>
-             <div className="text-[9px] text-white/20 uppercase font-bold tracking-[0.2em]">Execution Latency</div>
+             <div className="text-xs text-white/20 uppercase font-bold tracking-[0.2em]">Execution Latency</div>
            </div>
         </div>
       </section>
@@ -276,7 +276,7 @@ export default function Dashboard() {
       {/* Global Presence Section - Micro-links for targeted regions */}
       <section className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-[10px] font-bold text-white/20 uppercase tracking-[0.4em]">Global Presence</h2>
+           <h2 className="text-xs font-bold text-white/20 uppercase tracking-[0.4em]">Global Presence</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
 
@@ -301,7 +301,7 @@ export default function Dashboard() {
               className="flex items-center gap-2 p-3 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#D4AF37]/40 hover:bg-white/[0.04] transition-all group"
             >
               <span className="text-lg grayscale group-hover:grayscale-0 transition-all">{country.flag}</span>
-              <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest group-hover:text-white transition-colors">{country.name}</span>
+              <span className="text-xs font-bold text-white/40 uppercase tracking-widest group-hover:text-white transition-colors">{country.name}</span>
             </Link>
           ))}
         </div>

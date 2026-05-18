@@ -282,10 +282,10 @@ export default function MortgageCalculator() {
             <LineChart data={results.amortizationSchedule} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
               <XAxis 
-                dataKey="period" stroke="#ffffff60" fontSize={10} tickLine={false} axisLine={false} dy={10} 
+                dataKey="period" stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} dy={10} 
                 tickFormatter={(val) => `Yr ${val / 12}`}
               />
-              <YAxis stroke="#ffffff60" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
+              <YAxis stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
               <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
               <Line type="monotone" dataKey="remainingBalance" stroke="#D4AF37" strokeWidth={3} dot={false} isAnimationActive={false} />
               <Line type="monotone" dataKey="totalInterestPaid" stroke="#FFFFFF20" strokeWidth={2} dot={false} isAnimationActive={false} />
