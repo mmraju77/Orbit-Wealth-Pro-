@@ -23,9 +23,10 @@ import {
   Target,
   Globe,
   Calendar,
-  ArrowUpRight
+  ArrowUpRight,
+  X
 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import MarketTicker from './MarketTicker';
 
 const CATEGORIES = [
@@ -87,8 +88,10 @@ const CATEGORIES = [
 const ALL_CARDS = CATEGORIES.flatMap(cat => cat.cards);
 
 interface NewsArticle {
+  id: string;
   title: string;
   summary: string;
+  content: string;
   date: string;
   category: string;
   image: string;
@@ -96,35 +99,149 @@ interface NewsArticle {
 
 const NEWS_ARTICLES: NewsArticle[] = [
   {
+    id: "fed-rates-2026",
     title: "Global Markets React to Shifting Interest Rate Projections",
     summary: "Central banks signal a potential pivot in monetary policy as inflation metrics stabilize across major economic zones.",
+    content: "Institutional investors are recalibrating their portfolios as the Federal Reserve and the European Central Bank signal a potential easing of monetary constraints. After a prolonged period of aggressive rate hikes, inflationary pressures have finally shown signs of durable stabilization. Market analysts suggest that while the 'higher for longer' narrative dominated early 2026, the second half of the year may witness the first set of coordinated rate cuts in nearly three years. This shift has triggered a massive rotation into growth stocks and emerging market bonds, which have been under pressure. However, some economists warn that a premature pivot could reignite price volatility, especially with energy costs remaining sensitive to geopolitical shifts in the Middle East and Eastern Europe.",
     date: "May 14, 2026",
     category: "Markets",
     image: "https://images.unsplash.com/photo-1611974717482-98ea0519302c?auto=format&fit=crop&q=80&w=800&fm=webp"
   },
   {
+    id: "ai-infra-commit",
     title: "Tech Giants Unveil New AI Infrastructure Commitments",
     summary: "Silicon Valley leaders announce multi-billion dollar investments in quantum-ready data centers to power the next generation of LLMs.",
+    content: "The race for AI supremacy has entered a new hardware-centric phase. Major technology conglomerates have announced a combined $120 billion commitment toward building 'Quantum-Ready' data centers across Northern Europe and the United States. These facilities are designed not just for current generative models, but for the anticipated integration of quantum computing processors. This infrastructure surge is expected to drive significant demand for specialized semiconductors and renewable energy solutions. Energy providers are already seeing a spike in long-term power purchase agreements as tech firms strive to keep their AI ambitions carbon-neutral. Investors are closely watching the utilities sector as it becomes a secondary play on the AI boom.",
     date: "May 13, 2026",
     category: "Technology",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800&fm=webp"
   },
   {
+    id: "sustainable-finance-rise",
     title: "The Rise of Sustainable Finance in Emerging Markets",
     summary: "New regulatory frameworks are accelerating the adoption of ESG-linked bonds in Southeast Asia and Latin America.",
+    content: "Sustainability is no longer a Western-centric theme in the financial markets. Emerging markets, particularly in Southeast Asia and Latin America, are witnessing a record surge in ESG (Environmental, Social, and Governance) bond issuances. Governments in these regions have introduced new transparency mandates and tax incentives for green infrastructure projects. This regulatory clarity has attracted institutional capital from global pension funds looking for diversified impact investments. Analysts predict that green finance will account for nearly 25% of all corporate debt issuance in these regions by the end of 2027. This transition is not without challenges, as 'greenwashing' concerns remain a primary hurdle for smaller credit issuers.",
     date: "May 12, 2026",
     category: "Economy",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800&fm=webp"
+  },
+  {
+    id: "real-estate-yields-2026",
+    title: "Real Estate Global Trends: A Shift Toward Specialized Assets",
+    summary: "Institutional property investors are pivoting away from traditional office spaces toward logistics and life sciences hubs.",
+    content: "The global real estate market is undergoing a structural transformation. With remote work remaining a persistent feature of the modern workforce, traditional office vacancies in major financial hubs like New York, London, and Tokyo continue to hover at record highs. In response, professional property managers are aggressively pivoting toward 'alternative' real estate assets. Logistics centers, cold storage facilities, and life-sciences laboratory spaces are seeing unprecedented capital inflows. These assets offer higher yields and lower vacancy risks compared to commercial office space. Additionally, the rise of purpose-built student accommodation is becoming a favored hedge against economic cycles, providing stable cash flows for long-term institutional holders.",
+    date: "May 11, 2026",
+    category: "Real Estate",
+    image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800&fm=webp"
+  },
+  {
+    id: "crypto-regulation-2026",
+    title: "Comprehensive Digital Asset Regulations Nearing Final Vote",
+    summary: "Regulatory bodies prepare to implement harmonized rules for stablecoins and institutional crypto custody solutions.",
+    content: "The long-awaited 'Global Digital Asset Framework' (GDAF) is nearing a final vote in the European Parliament and the US Congress simultaneously. These harmonized rules aim to provide a clear legal footing for stablecoin issuers and bank-grade crypto custody providers. By mandating full reserve disclosures and strict liquidity buffers, the framework seeks to prevent the systemic failures seen in previous cycles. Institutional adoption is expected to accelerate significantly once these rules are in place, as traditional hedge funds and insurance firms seek regulated avenues for crypto exposure. The focus on 'Smart Contracts' integration within traditional finance—'tokenized real-world assets'—is cited as the primary growth engine for the next decade.",
+    date: "May 10, 2026",
+    category: "Crypto",
+    image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&q=80&w=800&fm=webp"
+  },
+  {
+    id: "gold-safety-2026",
+    title: "Gold Values Surge Amid Geopolitical Portfolio Hedging",
+    summary: "Precious metals reach multi-year highs as central banks increase physical reserves amid global uncertainty.",
+    content: "Gold continues to solidify its role as the ultimate 'safe haven' in a fractured global landscape. Central banks in China, India, and Turkey have significantly increased their physical gold reserves over the first quarter of 2026, citing a desire to diversify away from traditional reserve currencies. This institutional buying spree, coupled with persistent geopolitical tensions, has pushed gold prices to record levels. Retail demand for physical bullion is also rising as individual investors look for inflation hedges that exist outside the digital and banking ecosystems. Analysts suggest that even if interest rates begin to fall, the demand for gold and other precious metals will remain robust as long as trade fragmentation and diplomatic friction persist.",
+    date: "May 09, 2026",
+    category: "Precious Metals",
+    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800&fm=webp"
   }
 ];
 
-const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
+const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ article, onClose }) => {
+  return (
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-[#0B1221]/95 backdrop-blur-2xl"
+    >
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.9, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.9, y: 20 }}
+        className="relative bg-[#111827] border border-white/10 rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-black"
+      >
+        <button 
+          onClick={onClose}
+          className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/60 hover:text-white transition-all"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        <div className="overflow-y-auto custom-scrollbar">
+          <div className="aspect-video w-full relative">
+            <img 
+              src={article.image} 
+              alt={article.title}
+              className="w-full h-full object-cover"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
+            <div className="absolute bottom-8 left-8 right-8">
+              <span className="px-3 py-1 bg-[#f59e0b] rounded-full text-[10px] font-black text-black uppercase tracking-widest mb-4 inline-block">
+                {article.category}
+              </span>
+              <h2 className="text-3xl md:text-5xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight">
+                {article.title}
+              </h2>
+            </div>
+          </div>
+
+          <div className="p-8 md:p-12 space-y-8">
+            <div className="flex items-center gap-6 border-b border-white/5 pb-8">
+              <div className="flex items-center gap-2">
+                <Calendar className="w-4 h-4 text-white/40" />
+                <span className="text-xs text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <UserCheck className="w-4 h-4 text-white/40" />
+                <span className="text-xs text-slate-200 font-bold uppercase tracking-widest">Orbit Research Team</span>
+              </div>
+            </div>
+
+            <div className="space-y-6">
+              <p className="text-xl text-slate-100 font-medium leading-relaxed italic border-l-4 border-[#f59e0b] pl-6">
+                {article.summary}
+              </p>
+              <div className="text-lg text-slate-200 leading-relaxed font-light space-y-6">
+                {article.content.split('. ').map((sentence, i) => (
+                  <p key={i}>{sentence}.</p>
+                ))}
+              </div>
+            </div>
+
+            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row gap-8 justify-between items-center">
+              <div className="text-xs text-white/20 uppercase tracking-[0.2em] font-bold">
+                © 2026 ORBIT WEALTH PRO — All Rights Reserved
+              </div>
+              <button 
+                onClick={onClose}
+                className="px-10 py-4 bg-[#f59e0b] text-black font-black text-[10px] uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform"
+              >
+                Return to Intelligence Suite
+              </button>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArticle) => void }> = ({ article, onReadMore }) => {
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-[#D4AF37]/30 transition-all duration-500"
+      className="group relative bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500"
     >
       <div className="aspect-[16/9] overflow-hidden relative">
         <img 
@@ -137,7 +254,7 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
           height="225"
         />
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black text-[#D4AF37] uppercase tracking-tighter border border-white/5">
+          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black text-[#f59e0b] uppercase tracking-tighter border border-white/5">
             {article.category}
           </span>
         </div>
@@ -145,10 +262,10 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
       
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-xl font-display font-medium text-white tracking-tighter leading-tight group-hover:text-[#D4AF37] transition-colors duration-500">
+          <h3 className="text-xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight group-hover:scale-[1.02] origin-left transition-transform duration-500">
             {article.title}
           </h3>
-          <p className="text-sm text-white/70 leading-relaxed line-clamp-2">
+          <p className="text-sm text-slate-200 leading-relaxed line-clamp-2">
             {article.summary}
           </p>
         </div>
@@ -156,9 +273,12 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
         <div className="pt-4 flex items-center justify-between border-t border-white/[0.05]">
            <div className="flex items-center gap-2">
               <Calendar className="w-3 h-3 text-white/40" />
-              <span className="text-[10px] text-white/40 font-bold uppercase tracking-widest">{article.date}</span>
+              <span className="text-[10px] text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
-           <button className="flex items-center gap-2 text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest group-hover:translate-x-1 transition-transform">
+           <button 
+             onClick={() => onReadMore(article)}
+             className="flex items-center gap-2 text-[10px] font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer"
+           >
              Read Full Report <ArrowUpRight className="w-3 h-3" />
            </button>
         </div>
@@ -166,9 +286,20 @@ const NewsCard: React.FC<{ article: NewsArticle }> = ({ article }) => {
     </motion.div>
   );
 }
+
 export default function Dashboard() {
+  const [selectedArticle, setSelectedArticle] = React.useState<NewsArticle | null>(null);
+
   return (
     <div className="space-y-16 pb-16">
+      <AnimatePresence>
+        {selectedArticle && (
+          <NewsModal 
+            article={selectedArticle} 
+            onClose={() => setSelectedArticle(null)} 
+          />
+        )}
+      </AnimatePresence>
       <div className="-mt-8 md:-mt-16 lg:-mt-24 mb-8">
          <MarketTicker />
       </div>
@@ -243,7 +374,7 @@ export default function Dashboard() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
           {NEWS_ARTICLES.map((article, idx) => (
-            <NewsCard key={idx} article={article} />
+            <NewsCard key={idx} article={article} onReadMore={setSelectedArticle} />
           ))}
         </div>
         
