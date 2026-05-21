@@ -134,6 +134,22 @@ export default function Footer() {
            </div>
         </div>
 
+        <div className="mb-12 pt-8 border-t border-white/5">
+          <div className="p-6 bg-amber-500/5 border border-amber-500/10 rounded-2xl">
+            <h4 className="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
+              <Scale className="w-3 h-3" /> Financial Disclaimer & Transparency Notice
+            </h4>
+            <div className="space-y-4 text-[10px] text-white/40 leading-relaxed">
+              <p>
+                Orbit Wealth Pro is an AI-powered personal wealth intelligence platform designed for educational, informational, and analytical purposes only. We do not provide personalized investment, legal, tax, or financial advice.
+              </p>
+              <p>
+                Financial markets carry inherent risks, and past performance is not indicative of future results. All automated tools, interactive calculators, and AI insights are simulated models. Please consult with a certified financial advisor before making any high-ticket financial decisions.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-[10px] font-bold text-white/40 tracking-tight">
             © 2026 Orbit Wealth Pro. All Rights Reserved. Built with 0-maintenance edge tech for global scale.

@@ -422,6 +422,46 @@ export default function Dashboard() {
         </div>
       </section>
 
+      {/* Meet the Founder Section */}
+      <section className="bg-slate-900/50 border border-slate-800 rounded-[2rem] p-8 md:p-12 my-12 text-white overflow-hidden relative">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#F3C64F]/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-8">
+            <h2 className="text-xl md:text-3xl font-bold text-[#F3C64F] mb-6 flex items-center gap-3">
+              <UserCheck className="w-6 h-6" /> Meet the Founder
+            </h2>
+            <h3 className="text-lg md:text-2xl font-bold text-white mb-4">Munchangi Matyaraju (mm Raju)</h3>
+            <p className="text-sm md:text-lg text-gray-400 leading-relaxed max-w-2xl">
+              Founder & Chief AI Architect of Orbit Wealth Pro. Committed to building zero-maintenance, 
+              highly accurate financial intelligence tools for global investors. Driven by a passion for 
+              decentralizing complex wealth metrics through intelligent automation.
+            </p>
+            <div className="mt-8">
+              <a 
+                href="https://www.linkedin.com/in/munchangi-matyaraju" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-white hover:bg-blue-400/10 px-4 py-2 rounded-xl transition-all font-bold text-sm"
+              >
+                🌐 Connect on LinkedIn →
+              </a>
+            </div>
+          </div>
+          <div className="md:col-span-4 flex justify-center md:justify-end">
+            <div className="w-32 h-32 md:w-48 md:h-48 rounded-2xl bg-gradient-to-tr from-[#F3C64F] to-[#3B82F6] p-1 rotate-3 shadow-2xl">
+              <div className="w-full h-full rounded-[0.9rem] bg-slate-900 flex items-center justify-center overflow-hidden">
+                <img 
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=300&h=300" 
+                  alt="Munchangi Matyaraju" 
+                  className="w-full h-full object-cover grayscale"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Global Presence Section - Micro-links for targeted regions */}
       <section className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
