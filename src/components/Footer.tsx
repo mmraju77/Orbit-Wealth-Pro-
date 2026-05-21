@@ -135,11 +135,11 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[10px] font-bold text-white/20 uppercase tracking-widest">
-            © {currentYear} ORBIT WEALTH PRO Engine. All Rights Reserved.
+          <p className="text-[10px] font-bold text-white/40 tracking-tight">
+            © 2026 Orbit Wealth Pro. All Rights Reserved. Built with 0-maintenance edge tech for global scale.
           </p>
           <div className="flex items-center gap-6 text-[10px] font-bold text-white/20 uppercase tracking-widest">
-            <span>Precision Logic v2.4.0</span>
+            <span>Precision AI v3.1.0</span>
             <span>Security Verified</span>
           </div>
         </div>
