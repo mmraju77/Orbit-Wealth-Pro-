@@ -17,7 +17,7 @@ export default function Disclaimer() {
         <p className="text-white/40 text-sm uppercase tracking-widest font-bold">Important Notice to Our Users</p>
       </header>
 
-      <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-12 space-y-8 leading-relaxed text-white/70">
+      <div className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 md:p-12 space-y-8 leading-relaxed text-white/70">
         <div className="p-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-start gap-4">
            <AlertTriangle className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
            <div className="space-y-4">

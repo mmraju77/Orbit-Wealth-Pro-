@@ -241,7 +241,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative bg-white/[0.02] border border-white/5 rounded-3xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500"
+      className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500"
     >
       <div className="aspect-[16/9] overflow-hidden relative">
         <img 

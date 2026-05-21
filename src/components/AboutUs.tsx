@@ -22,7 +22,7 @@ export default function AboutUs() {
         </div>
 
         {/* Founder Profile Card */}
-        <div className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-8 items-center">
+        <div className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-8 items-center">
           
           {/* Left Side: Avatar/Photo PlaceHolder */}
           <div className="relative w-48 h-48 rounded-full bg-gradient-to-tr from-[#D4AF37] to-blue-500 p-1 flex-shrink-0">
@@ -70,7 +70,7 @@ export default function AboutUs() {
 
         {/* Core Values / Authority Metrics */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-12">
-          <div className="bg-white/5 border border-white/5 p-6 rounded-xl">
+          <div className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-2 text-white font-bold uppercase tracking-tight text-sm">
               <Award className="text-[#D4AF37] w-5 h-5" /> Our Commitment
             </div>
@@ -78,7 +78,7 @@ export default function AboutUs() {
               We provide 100% computational accuracy across all local tax limits, inflation projections, and investment rules.
             </p>
           </div>
-          <div className="bg-white/5 border border-white/5 p-6 rounded-xl">
+          <div className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-2 text-white font-bold uppercase tracking-tight text-sm">
               <ShieldCheck className="text-blue-400 w-5 h-5" /> Privacy First
             </div>
