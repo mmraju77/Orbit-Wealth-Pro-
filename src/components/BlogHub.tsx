@@ -4,10 +4,11 @@
  */
 
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
 import { ARTICLES, Article } from '../data/blogData';
-import { Clock, User, ArrowRight, BookOpen, Filter, Search, Sparkles, TrendingUp, ShieldCheck, Wallet, Landmark } from 'lucide-react';
+import { Clock, User, ArrowRight, BookOpen, Filter, Search, Sparkles, TrendingUp, ShieldCheck, Wallet, Landmark, CheckCircle2, Mail } from 'lucide-react';
+import ArticleModal from './ArticleModal';
 
 const CATEGORIES = [
   { name: 'All', icon: <BookOpen className="w-4 h-4" /> },
@@ -20,6 +21,10 @@ const CATEGORIES = [
 export default function BlogHub() {
   const [activeCategory, setActiveCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
+  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
+  const [email, setEmail] = useState('');
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const filteredArticles = ARTICLES.filter(article => {
     const matchesCategory = activeCategory === 'All' || article.category === activeCategory;
@@ -28,8 +33,21 @@ export default function BlogHub() {
     return matchesCategory && matchesSearch;
   });
 
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+    
+    setIsSubmitting(true);
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setIsSubscribed(true);
+      setEmail('');
+    }, 1500);
+  };
+
   return (
     <div className="space-y-12 pb-20">
+      <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
       <Helmet>
         <title>Insights & Financial Intelligence - ORBIT WEALTH PRO</title>
         <meta name="description" content="Expert financial analysis, wealth strategies, and market insights by mm Raju and the Orbit AI team." />
@@ -86,14 +104,18 @@ export default function BlogHub() {
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredArticles.map((article, idx) => (
-          <motion.article
-            key={article.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: idx * 0.1 }}
-            className="group flex flex-col bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden hover:bg-white/[0.04] hover:border-[#D4AF37]/30 transition-all shadow-2xl shadow-black/40"
-          >
+        <AnimatePresence mode="popLayout">
+          {filteredArticles.map((article, idx) => (
+            <motion.article
+              key={article.id}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ delay: idx * 0.05 }}
+              onClick={() => setSelectedArticle(article)}
+              className="group flex flex-col bg-white/[0.02] border border-white/5 rounded-[2.5rem] overflow-hidden hover:bg-white/[0.04] hover:border-[#D4AF37]/30 transition-all shadow-2xl shadow-black/40 cursor-pointer"
+            >
             {/* Image Placeholder with Category Badge */}
             <div className="aspect-[16/9] w-full bg-white/5 relative overflow-hidden">
                <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 to-transparent opacity-50" />
@@ -140,30 +162,60 @@ export default function BlogHub() {
             </div>
           </motion.article>
         ))}
+        </AnimatePresence>
       </div>
 
       {/* Featured Newsletter Block */}
       <section className="bg-gradient-to-tr from-[#D4AF37]/10 via-[#0B0F19] to-emerald-500/10 border border-white/5 rounded-[3rem] p-12 md:p-20 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
         <div className="relative z-10 max-w-2xl mx-auto space-y-8">
-          <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mx-auto border border-[#D4AF37]/20">
+          <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mx-auto border border-[#D4AF37]/20 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
             <Sparkles className="w-8 h-8 text-[#D4AF37]" />
           </div>
           <h2 className="text-4xl font-display font-bold text-white tracking-tight">The Executive Insight <br /><span className="text-[#D4AF37]">Newsletter</span></h2>
           <p className="text-slate-100 leading-relaxed font-medium">
             Join 50,000+ high-net-worth individuals who receive our weekly deep-dives into interest rate cycles, tax-law changes, and emerging asset classes.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-            <input 
-              type="email" 
-              placeholder="Your professional email..."
-              className="flex-1 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
-            />
-            <button className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)]">
-              Subscribe
-            </button>
+          
+          <div className="max-w-md mx-auto">
+            <AnimatePresence mode="wait">
+              {isSubscribed ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="p-8 bg-emerald-500/10 border border-emerald-500/20 rounded-[2.5rem] flex flex-col items-center gap-4"
+                >
+                  <CheckCircle2 className="w-12 h-12 text-emerald-400" />
+                  <div>
+                    <h4 className="text-xl font-bold text-white">Welcome to the Inner Circle!</h4>
+                    <p className="text-emerald-100/60 font-medium">Your wealth blueprint is on the way.</p>
+                  </div>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
+                  <div className="relative flex-1">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                    <input 
+                      type="email" 
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Your professional email..."
+                      className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
+                    />
+                  </div>
+                  <button 
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50"
+                  >
+                    {isSubmitting ? 'Processing...' : 'Subscribe'}
+                  </button>
+                </form>
+              )}
+            </AnimatePresence>
           </div>
-          <p className="text-[10px] text-white/20 uppercase font-black tracking-widest">No Spam • High Signal • Professional Only</p>
+          <p className="text-[10px] text-white/20 uppercase font-black tracking-widest pt-4">No Spam • High Signal • Professional Only</p>
         </div>
       </section>
     </div>
