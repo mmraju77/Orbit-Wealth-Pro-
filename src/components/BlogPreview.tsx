@@ -62,7 +62,7 @@ export default function BlogPreview() {
                   {article.title}
                 </h3>
 
-                <p className="text-sm text-white/40 leading-relaxed line-clamp-2 mb-8">
+                <p className="text-sm text-slate-100 leading-relaxed line-clamp-2 mb-8">
                   {article.excerpt}
                 </p>
 

@@ -196,20 +196,23 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
               {openSections[section.label] && (
                 <div className="space-y-1 ml-4 border-l border-white/5 pl-2 mt-2">
                   {section.items.map((item) => (
-                    <NavLink
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => {
-                        if (window.innerWidth < 768) onClose();
-                      }}
-                      className={({ isActive }) => cn(
-                        "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all",
-                        isActive ? "text-[#D4AF37] font-semibold" : "text-white/60 hover:text-white"
-                      )}
-                    >
-                      <item.icon className="w-3 h-3 opacity-60" />
-                      {item.label}
-                    </NavLink>
+                      <NavLink
+                       key={item.path}
+                       to={item.path}
+                       onClick={() => {
+                         if (window.innerWidth < 768) onClose();
+                       }}
+                       className={({ isActive }) => cn(
+                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all group/item",
+                         isActive ? "text-[#f59e0b] bg-white/5 font-bold" : "text-white/90 hover:text-white hover:bg-white/5"
+                       )}
+                     >
+                       <item.icon className={cn(
+                         "w-3.5 h-3.5 transition-colors",
+                         "text-[#f59e0b]"
+                       )} />
+                       {item.label}
+                     </NavLink>
                   ))}
                 </div>
               )}

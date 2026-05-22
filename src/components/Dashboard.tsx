@@ -264,10 +264,10 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight group-hover:scale-[1.02] origin-left transition-transform duration-500">
+          <h3 className="text-xl font-display font-bold text-[#f59e0b] tracking-tighter leading-tight group-hover:scale-[1.02] origin-left transition-transform duration-500">
             {article.title}
           </h3>
-          <p className="text-sm text-slate-200 leading-relaxed line-clamp-2">
+          <p className="text-sm text-slate-100 leading-relaxed line-clamp-2 font-medium">
             {article.summary}
           </p>
         </div>
@@ -314,7 +314,7 @@ export default function Dashboard() {
           Financial <br />
           <span className="text-white/10">Dashboard.</span>
         </h1>
-        <p className="text-white/70 max-w-xl text-base md:text-lg font-light leading-relaxed">
+        <p className="text-white/90 max-w-xl text-base md:text-lg font-light leading-relaxed">
           Access ORBIT WEALTH PRO's suite of institutional-grade financial tools. 
           Precision engineering for the modern global investor.
         </p>
@@ -357,11 +357,11 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-xl font-display font-medium text-slate-100 group-hover:text-[#f59e0b] transition-colors duration-500">
+                    <h3 className="text-xl font-display font-bold text-white group-hover:text-[#f59e0b] transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="text-sm text-white/60 leading-relaxed font-light line-clamp-2">
-                      {card.description}
+                    <p className="text-sm text-slate-100 leading-relaxed font-medium line-clamp-2">
+                       {card.description}
                     </p>
                   </div>
                 </div>
@@ -413,7 +413,7 @@ export default function Dashboard() {
       <section className="pt-24 border-t border-white/[0.05] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
           <h2 className="text-2xl font-display font-medium">Built for accuracy.</h2>
-          <p className="text-base text-white/30 leading-relaxed max-w-md">
+          <p className="text-base text-slate-100 leading-relaxed max-w-md">
             Our engine accounts for localized interest compounding, tax thresholds, and currency fluctuations to ensure your planning is based on high-integrity data.
           </p>
         </div>
@@ -438,7 +438,7 @@ export default function Dashboard() {
               <UserCheck className="w-6 h-6" /> Meet the Founder
             </h2>
             <h3 className="text-lg md:text-2xl font-bold text-white mb-4">Munchangi Matyaraju (mm Raju)</h3>
-            <p className="text-sm md:text-lg text-gray-400 leading-relaxed max-w-2xl">
+            <p className="text-sm md:text-lg text-slate-100 leading-relaxed max-w-2xl font-medium">
               Founder & Chief AI Architect of Orbit Wealth Pro. Committed to building zero-maintenance, 
               highly accurate financial intelligence tools for global investors. Driven by a passion for 
               decentralizing complex wealth metrics through intelligent automation.

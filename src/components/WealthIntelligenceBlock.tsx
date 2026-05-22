@@ -83,7 +83,7 @@ export default function WealthIntelligenceBlock() {
               </div>
               <div>
                 <h3 className="text-xl font-display font-bold text-white tracking-tight">AI Smart Insights</h3>
-                <p className="text-[10px] text-white/30 uppercase tracking-widest font-black">Live Intelligence Feed</p>
+                <p className="text-[10px] text-white/60 uppercase tracking-widest font-black">Live Intelligence Feed</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
@@ -121,7 +121,7 @@ export default function WealthIntelligenceBlock() {
                   {insight.icon}
                 </div>
                 <div className="flex-1 space-y-1">
-                  <p className="text-sm text-white/80 leading-relaxed font-medium">
+                  <p className="text-sm text-slate-100 leading-relaxed font-bold">
                     {insight.text}
                   </p>
                 </div>
