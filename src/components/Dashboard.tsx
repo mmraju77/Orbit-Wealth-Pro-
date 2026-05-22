@@ -28,6 +28,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import MarketTicker from './MarketTicker';
+import WealthIntelligenceBlock from './WealthIntelligenceBlock';
 
 const CATEGORIES = [
   {
@@ -317,6 +318,8 @@ export default function Dashboard() {
           Precision engineering for the modern global investor.
         </p>
       </header>
+
+      <WealthIntelligenceBlock />
 
       <div className="py-2">
          <MarketTicker />
