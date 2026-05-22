@@ -47,7 +47,7 @@ async function startServer() {
       // 3. Secure AI Integration (Never expose API key to client)
       const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
       const response = await genAI.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-3.5-flash",
         contents: [
           {
             role: "user",
@@ -55,7 +55,7 @@ async function startServer() {
           }
         ],
         config: {
-          systemInstruction: "You are a secure financial advisor assistant for ORBIT WEALTH PRO. Provide concise, expert advice based on global financial standards.",
+          systemInstruction: "You are the 'Orbit AI Premium Wealth Intelligence Expert'. Your purpose is to provide sharp, data-driven insights on financial architecture, specifically focusing on the power of compounding, sophisticated tax strategies, and robust savings models. Your tone should be executive, professional, and precise. Use financial terminology accurately. Keep responses concise but insightful. Do not mention being an AI or a language model. Your goal is to help users optimize their financial future with premium intelligence.",
         }
       });
 

@@ -64,6 +64,7 @@ const LoadingFallback = () => (
   </div>
 );
 import Footer from './components/Footer';
+import OrbitChat from './components/OrbitChat';
 
 import { Menu, X, ShieldCheck, Wallet } from 'lucide-react';
 
@@ -184,6 +185,7 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
           <Footer />
         </div>
       </div>
+      <OrbitChat />
     </main>
   </div>
   );
