@@ -7,6 +7,7 @@ import React from 'react';
 
 export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'INR' | 'AUD' | 'CAD' | 'CHF' | 'AED' | 'NOK' | 'SEK' | 'DKK' | 'SGD';
 export type NumberSystem = 'Indian' | 'International';
+export type Region = 'India' | 'Global' | 'UK' | 'USA' | 'UAE' | 'EU';
 
 export interface Goal {
   id: string;
@@ -31,6 +32,29 @@ export interface Insight {
     actionSteps: string[];
     projection: string;
   };
+}
+
+export interface ComparisonFactor {
+  factor: string;
+  optionA: string;
+  optionB: string;
+}
+
+export interface ComparisonData {
+  title: string;
+  description: string;
+  optionAName: string;
+  optionBName: string;
+  factors: ComparisonFactor[];
+  prosA: string[];
+  consA: string[];
+  prosB: string[];
+  consB: string[];
+  verdict: string;
+  ctaText: string;
+  ctaLink: string;
+  region?: Region;
+  currency?: CurrencyCode;
 }
 
 export interface AmortizationPeriod {
