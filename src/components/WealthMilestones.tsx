@@ -14,6 +14,8 @@ interface Goal {
   icon: React.ReactNode;
   target: number;
   current: number;
+  years: number;
+  annualReturn: number;
   color: string;
   accent: string;
 }
@@ -26,6 +28,8 @@ const INITIAL_GOALS: Goal[] = [
     icon: <TrendingUp className="w-6 h-6" />,
     target: 2500000,
     current: 450000,
+    years: 15,
+    annualReturn: 0.08,
     color: 'emerald',
     accent: '#10b981'
   },
@@ -36,6 +40,8 @@ const INITIAL_GOALS: Goal[] = [
     icon: <Home className="w-6 h-6" />,
     target: 800000,
     current: 125000,
+    years: 5,
+    annualReturn: 0.04,
     color: 'amber',
     accent: '#f59e0b'
   },
@@ -46,6 +52,8 @@ const INITIAL_GOALS: Goal[] = [
     icon: <Shield className="w-6 h-6" />,
     target: 50000,
     current: 35000,
+    years: 2,
+    annualReturn: 0.02,
     color: 'sky',
     accent: '#0ea5e9'
   }
@@ -54,10 +62,27 @@ const INITIAL_GOALS: Goal[] = [
 export default function WealthMilestones() {
   const [goals, setGoals] = useState(INITIAL_GOALS);
   const [activeGoal, setActiveGoal] = useState<string | null>(null);
+  const [results, setResults] = useState<Record<string, number>>({});
 
-  const handleUpdateCurrent = (id: string, value: string) => {
+  const handleUpdate = (id: string, field: keyof Goal, value: string) => {
     const numValue = parseFloat(value.replace(/[^0-9.]/g, '')) || 0;
-    setGoals(prev => prev.map(g => g.id === id ? { ...g, current: numValue } : g));
+    setGoals(prev => prev.map(g => g.id === id ? { ...g, [field]: numValue } : g));
+  };
+
+  const calculateRoadmap = (goal: Goal) => {
+    const FV = goal.target;
+    const PV = goal.current;
+    const n = goal.years * 12;
+    const r = goal.annualReturn / 12;
+
+    // PMT = (FV - PV(1+r)^n) * r / ((1+r)^n - 1)
+    const power = Math.pow(1 + r, n);
+    const denominator = power - 1;
+    
+    if (denominator === 0) return 0;
+    
+    const pmt = (FV - PV * power) * r / denominator;
+    setResults(prev => ({ ...prev, [goal.id]: Math.max(0, pmt) }));
   };
 
   return (
@@ -144,26 +169,75 @@ export default function WealthMilestones() {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Current</span>
+                    <span className="text-[9px] text-white/30 uppercase font-bold">Current Wealth</span>
                     <div className="relative">
                       <input 
                         type="text"
                         value={goal.current.toLocaleString()}
-                        onChange={(e) => handleUpdateCurrent(goal.id, e.target.value)}
+                        onChange={(e) => handleUpdate(goal.id, 'current', e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Target</span>
-                    <div className="w-full bg-white/[0.02] border border-white/5 rounded-lg px-3 py-2 text-sm font-bold text-white/60">
-                      ${goal.target.toLocaleString()}
+                    <span className="text-[9px] text-white/30 uppercase font-bold">Target Milestone</span>
+                    <div className="relative">
+                      <input 
+                        type="text"
+                        value={goal.target.toLocaleString()}
+                        onChange={(e) => handleUpdate(goal.id, 'target', e.target.value)}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors"
+                      />
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
                     </div>
                   </div>
                 </div>
 
+                <div className="grid grid-cols-2 gap-4">
+                  <div className="space-y-1">
+                    <span className="text-[9px] text-white/30 uppercase font-bold">Time Horizon (Years)</span>
+                    <div className="relative">
+                      <input 
+                        type="number"
+                        value={goal.years}
+                        onChange={(e) => handleUpdate(goal.id, 'years', e.target.value)}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors"
+                      />
+                    </div>
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[9px] text-white/30 uppercase font-bold">Exp. Return (APR)</span>
+                    <div className="w-full bg-white/[0.02] border border-white/5 rounded-lg px-3 py-2 text-sm font-bold text-emerald-400">
+                      {(goal.annualReturn * 100).toFixed(1)}%
+                    </div>
+                  </div>
+                </div>
+
+                <AnimatePresence>
+                  {results[goal.id] && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl space-y-2 overflow-hidden"
+                    >
+                      <div className="flex justify-between items-center text-[10px] font-black uppercase text-emerald-500/60">
+                        <span>Monthly Savings Required</span>
+                        <Sparkles className="w-3 h-3" />
+                      </div>
+                      <div className="text-2xl font-display font-bold text-white">
+                        ${Math.round(results[goal.id]).toLocaleString()} <span className="text-sm font-sans font-medium text-white/40">/ mo</span>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <button 
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    calculateRoadmap(goal);
+                  }}
                   className={`w-full py-4 rounded-2xl text-xs font-black uppercase tracking-[0.2em] transition-all flex items-center justify-center gap-2 group/btn ${
                     activeGoal === goal.id 
                     ? 'bg-gradient-to-r from-emerald-500 to-amber-500 text-[#0B0F19] shadow-[0_0_30px_rgba(245,158,11,0.3)] hover:scale-[1.02]' 
