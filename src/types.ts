@@ -3,8 +3,35 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD' | 'NOK' | 'SEK' | 'DKK' | 'CHF' | 'SGD';
-export type NumberSystem = 'International' | 'Indian';
+import React from 'react';
+
+export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'INR' | 'AUD' | 'CAD' | 'CHF' | 'AED' | 'NOK' | 'SEK' | 'DKK' | 'SGD';
+export type NumberSystem = 'Indian' | 'International';
+
+export interface Goal {
+  id: string;
+  title: string;
+  subtitle: string;
+  icon: React.ReactNode;
+  target: number;
+  current: number;
+  years: number;
+  annualReturn: number;
+  color: string;
+  accent: string;
+}
+
+export interface Insight {
+  icon: React.ReactNode;
+  title: string;
+  text: string;
+  type: 'positive' | 'action' | 'warning';
+  deepDive: {
+    analysis: string;
+    actionSteps: string[];
+    projection: string;
+  };
+}
 
 export interface AmortizationPeriod {
   period: number;
@@ -13,13 +40,6 @@ export interface AmortizationPeriod {
   interest: number;
   remainingBalance: number;
   totalInterestPaid: number;
-}
-
-export interface MortgageResult {
-  monthlyPayment: number;
-  totalPayment: number;
-  totalInterest: number;
-  amortizationSchedule: AmortizationPeriod[];
 }
 
 export interface MortgageInputs {
@@ -44,63 +64,28 @@ export interface RetirementResult {
   totalContributions: number;
   totalInterest: number;
   inflationAdjustedCorpus: number;
-  yearlyData: { year: number; balance: number; inflatedBalance: number }[];
-}
-
-export interface TaxInputs {
-  amount: number;
-  taxRate: number;
-  isAddingTax: boolean;
-}
-
-export interface TaxResult {
-  originalAmount: number;
-  taxAmount: number;
-  totalAmount: number;
+  yearlyData: Array<{
+    year: number;
+    balance: number;
+    inflatedBalance: number;
+  }>;
 }
 
 export interface InvestmentInputs {
-  investmentAmount: number;
+  investmentAmount?: number;
   monthlyInvestment?: number;
   expectedReturn: number;
   duration: number;
-  compoundingFrequency?: 'Monthly' | 'Quarterly' | 'Yearly';
 }
 
 export interface InvestmentResult {
   investedAmount: number;
   estimatedReturns: number;
   totalWealth: number;
-  yearlyData: { year: number; balance: number }[];
-}
-
-export interface LoanEligibilityInputs {
-  monthlyIncome: number;
-  monthlyObligations: number;
-  interestRate: number;
-  loanTerm: number;
-  maxFOIR: number; // Fixed Obligation to Income Ratio
-}
-
-export interface LoanEligibilityResult {
-  eligibleLoanAmount: number;
-  monthlyEMI: number;
-  totalPayable: number;
-}
-
-export interface MutualFundInputs {
-  investmentAmount: number;
-  expectedReturn: number;
-  duration: number;
-  expenseRatio: number;
-}
-
-export interface MutualFundResult {
-  investedAmount: number;
-  estimatedReturns: number;
-  totalWealth: number;
-  expenseRatioImpact: number;
-  yearlyData: { year: number; balance: number }[];
+  yearlyData: Array<{
+    year: number;
+    balance: number;
+  }>;
 }
 
 export interface BalanceTransferInputs {
@@ -111,41 +96,32 @@ export interface BalanceTransferInputs {
   processingFees: number;
 }
 
-export interface BalanceTransferResult {
-  existingEMI: number;
-  newEMI: number;
-  monthlySavings: number;
-  totalSavings: number;
-  breakEvenMonths: number;
+export interface MutualFundInputs {
+  investmentAmount: number;
+  expectedReturn: number;
+  duration: number;
+  expenseRatio: number;
+  monthlyInvestment?: number;
 }
 
 export interface GratuityInputs {
-  monthlySalary: number; // Basic + DA
+  monthlySalary: number;
   yearsOfService: number;
   isCoveredUnderGratuityAct: boolean;
 }
 
-export interface GratuityResult {
-  gratuityAmount: number;
+export interface TaxInputs {
+  annualIncome: number;
+  deductions: number;
+  age: number;
 }
 
-export interface CurrencyConverterInputs {
-  amount: number;
-  from: string;
-  to: string;
-}
-
-export interface GSTInputs {
-  amount: number;
-  taxSlab: number;
-  isInclusive: boolean;
-}
-
-export interface GSTResult {
-  netAmount: number;
-  gstAmount: number;
-  cgst?: number;
-  sgst?: number;
-  igst?: number;
-  totalAmount: number;
+export interface LoanEligibilityInputs {
+  monthlyIncome: number;
+  monthlyObligations: number;
+  interestRate: number;
+  loanTerm: number;
+  maxFOIR: number;
+  currentEMI?: number;
+  tenure?: number;
 }

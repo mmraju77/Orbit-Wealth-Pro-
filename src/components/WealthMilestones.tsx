@@ -6,67 +6,21 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Target, Home, Shield, ChevronRight, TrendingUp, Sparkles } from 'lucide-react';
+import { Goal } from '../types';
 
-interface Goal {
-  id: string;
-  title: string;
-  subtitle: string;
-  icon: React.ReactNode;
-  target: number;
-  current: number;
-  years: number;
-  annualReturn: number;
-  color: string;
-  accent: string;
+interface WealthMilestonesProps {
+  goals: Goal[];
+  onUpdateGoals: (goals: Goal[]) => void;
 }
 
-const INITIAL_GOALS: Goal[] = [
-  {
-    id: 'fire',
-    title: 'Retire Early (FIRE Plan)',
-    subtitle: 'Financial Independence Architecture',
-    icon: <TrendingUp className="w-6 h-6" />,
-    target: 2500000,
-    current: 450000,
-    years: 15,
-    annualReturn: 0.08,
-    color: 'emerald',
-    accent: '#10b981'
-  },
-  {
-    id: 'real-estate',
-    title: 'Acquire Real Estate',
-    subtitle: 'Strategic Property Portfolio',
-    icon: <Home className="w-6 h-6" />,
-    target: 800000,
-    current: 125000,
-    years: 5,
-    annualReturn: 0.04,
-    color: 'amber',
-    accent: '#f59e0b'
-  },
-  {
-    id: 'emergency',
-    title: 'Emergency Fund',
-    subtitle: 'Liquidity & Risk Mitigation',
-    icon: <Shield className="w-6 h-6" />,
-    target: 50000,
-    current: 35000,
-    years: 2,
-    annualReturn: 0.02,
-    color: 'sky',
-    accent: '#0ea5e9'
-  }
-];
-
-export default function WealthMilestones() {
-  const [goals, setGoals] = useState(INITIAL_GOALS);
+export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilestonesProps) {
   const [activeGoal, setActiveGoal] = useState<string | null>(null);
   const [results, setResults] = useState<Record<string, number>>({});
 
   const handleUpdate = (id: string, field: keyof Goal, value: string) => {
     const numValue = parseFloat(value.replace(/[^0-9.]/g, '')) || 0;
-    setGoals(prev => prev.map(g => g.id === id ? { ...g, [field]: numValue } : g));
+    const updatedGoals = goals.map(g => g.id === id ? { ...g, [field]: numValue } : g);
+    onUpdateGoals(updatedGoals);
   };
 
   const calculateRoadmap = (goal: Goal) => {

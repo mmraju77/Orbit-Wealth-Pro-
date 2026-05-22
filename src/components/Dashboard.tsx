@@ -24,13 +24,54 @@ import {
   Globe,
   Calendar,
   ArrowUpRight,
-  X
+  X,
+  Home
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import MarketTicker from './MarketTicker';
 import WealthIntelligenceBlock from './WealthIntelligenceBlock';
 import BlogPreview from './BlogPreview';
 import WealthMilestones from './WealthMilestones';
+import { Goal } from '../types';
+
+const INITIAL_GOALS: Goal[] = [
+  {
+    id: 'fire',
+    title: 'Retire Early (FIRE Plan)',
+    subtitle: 'Financial Independence Architecture',
+    icon: <TrendingUp className="w-6 h-6" />,
+    target: 2500000,
+    current: 450000,
+    years: 15,
+    annualReturn: 0.08,
+    color: 'emerald',
+    accent: '#10b981'
+  },
+  {
+    id: 'real-estate',
+    title: 'Acquire Real Estate',
+    subtitle: 'Strategic Property Portfolio',
+    icon: <Home className="w-6 h-6" />,
+    target: 800000,
+    current: 125000,
+    years: 5,
+    annualReturn: 0.04,
+    color: 'amber',
+    accent: '#f59e0b'
+  },
+  {
+    id: 'emergency',
+    title: 'Emergency Fund',
+    subtitle: 'Liquidity & Risk Mitigation',
+    icon: <Shield className="w-6 h-6" />,
+    target: 50000,
+    current: 35000,
+    years: 2,
+    annualReturn: 0.02,
+    color: 'sky',
+    accent: '#0ea5e9'
+  }
+];
 
 const CATEGORIES = [
   {
@@ -293,6 +334,11 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
 export default function Dashboard() {
   const [selectedArticle, setSelectedArticle] = React.useState<NewsArticle | null>(null);
   const [showAllNews, setShowAllNews] = React.useState(false);
+  const [goals, setGoals] = React.useState<Goal[]>(INITIAL_GOALS);
+
+  const handleUpdateGoals = (updatedGoals: Goal[]) => {
+    setGoals(updatedGoals);
+  };
 
   const visibleArticles = showAllNews ? NEWS_ARTICLES : NEWS_ARTICLES.slice(0, 3);
 
@@ -321,13 +367,13 @@ export default function Dashboard() {
         </p>
       </header>
 
-      <WealthIntelligenceBlock />
+      <WealthIntelligenceBlock goals={goals} />
 
       <div className="py-2">
          <MarketTicker />
       </div>
 
-      <WealthMilestones />
+      <WealthMilestones goals={goals} onUpdateGoals={handleUpdateGoals} />
 
       <BlogPreview />
 
