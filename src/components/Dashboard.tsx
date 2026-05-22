@@ -30,6 +30,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import MarketTicker from './MarketTicker';
 import WealthIntelligenceBlock from './WealthIntelligenceBlock';
 import BlogPreview from './BlogPreview';
+import WealthMilestones from './WealthMilestones';
 
 const CATEGORIES = [
   {
@@ -325,6 +326,8 @@ export default function Dashboard() {
       <div className="py-2">
          <MarketTicker />
       </div>
+
+      <WealthMilestones />
 
       <BlogPreview />
 
