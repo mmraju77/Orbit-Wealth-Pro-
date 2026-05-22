@@ -22,7 +22,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
   const overallProgress = (totalCurrent / totalTarget) * 100;
   
   // Dynamic Wealth Score calculation - Upgraded to Institutional Investor Tier
-  const wealthScore = 89;
+  const wealthScore = 92;
 
   const insights: Insight[] = [
     {
