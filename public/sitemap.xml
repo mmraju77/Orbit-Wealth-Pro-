@@ -1,122 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Primary Application Home -->
+  <!-- Core Infrastructure Roots -->
   <url>
-    <loc>https://orbitwealthpro.com/</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/insights</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-  <!-- Global Regional Entry Points & Core Calculators -->
-  <!-- USA -->
-  <url><loc>https://orbitwealthpro.com/usa</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/sip</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/gst</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/debt-snowball</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/usa#/calculators/emi</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <!-- Programmatic Comparison Pattern Samples - Global -->
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/compare/401k-vs-index-funds</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/compare/stocks-vs-bonds</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- UK -->
-  <url><loc>https://orbitwealthpro.com/uk</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uk#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uk#/calculators/sip</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uk#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uk#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uk#/calculators/gst</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <!-- Programmatic Comparison Pattern Samples - India -->
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/compare/sip-vs-fd</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/compare/lumpsum-vs-ppf</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-  <!-- Canada -->
-  <url><loc>https://orbitwealthpro.com/canada</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/canada#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/canada#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/canada#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/canada#/calculators/sip</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <!-- Secondary High-Intent Hubs -->
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/comparisons</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/cities</loc>
+    <lastmod>2026-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
-  <!-- Australia -->
-  <url><loc>https://orbitwealthpro.com/australia</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/australia#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/australia#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/australia#/calculators/gst</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/australia#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- UAE -->
-  <url><loc>https://orbitwealthpro.com/uae</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uae#/calculators/rental-yield</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://orbitwealthpro.com/uae#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uae#/calculators/gst</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/uae#/calculators/sip</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Germany -->
-  <url><loc>https://orbitwealthpro.com/germany</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/germany#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/germany#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/germany#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/germany#/calculators/sip</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Switzerland -->
-  <url><loc>https://orbitwealthpro.com/switzerland</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/switzerland#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/switzerland#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/switzerland#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Norway -->
-  <url><loc>https://orbitwealthpro.com/norway</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/norway#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/norway#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/norway#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Sweden -->
-  <url><loc>https://orbitwealthpro.com/sweden</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/sweden#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/sweden#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/sweden#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Denmark -->
-  <url><loc>https://orbitwealthpro.com/denmark</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/denmark#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/denmark#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/denmark#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Netherlands -->
-  <url><loc>https://orbitwealthpro.com/netherlands</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/netherlands#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/netherlands#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/netherlands#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Cross-Country General Access -->
-  <url><loc>https://orbitwealthpro.com/#/calculators/sip</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/retirement</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/income-tax</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/gst</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/emi</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/fd-rd</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/lumpsum</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/loan-eligibility</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/personal-loan</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/auto-loan</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/student-loan</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/cagr</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/dividend-yield</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/child-education</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/rental-yield</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/debt-snowball</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/hlv</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/break-even</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/credit-card-payoff</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/home-loan-transfer</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/health-insurance</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://orbitwealthpro.com/#/calculators/term-insurance</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-
-  <!-- Comparisons & Secondary High Intent Routes -->
-  <url><loc>https://orbitwealthpro.com/compare/sip-vs-lumpsum</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://orbitwealthpro.com/compare/home-loan-vs-rent</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://orbitwealthpro.com/compare/fd-vs-mutual-funds</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://orbitwealthpro.com/tax-guides</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-
-  <!-- Compliance -->
-  <url><loc>https://orbitwealthpro.com/about</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://orbitwealthpro.com/contact</loc><changefreq>weekly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://orbitwealthpro.com/privacy-policy</loc><changefreq>weekly</changefreq><priority>0.3</priority></url>
+  <!-- Core Calculator Roots -->
+  <url><loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/calculators/sip</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/#/calculators/mortgage</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 </urlset>

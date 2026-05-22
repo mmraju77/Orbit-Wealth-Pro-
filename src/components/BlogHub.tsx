@@ -7,8 +7,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
 import { ARTICLES, Article } from '../data/blogData';
-import { Clock, User, ArrowRight, BookOpen, Filter, Search, Sparkles, TrendingUp, ShieldCheck, Wallet, Landmark, CheckCircle2, Mail } from 'lucide-react';
+import { Clock, User, ArrowRight, BookOpen, Filter, Search, Sparkles, TrendingUp, ShieldCheck, Wallet, Landmark, CheckCircle2, Mail, Loader2, ShieldAlert } from 'lucide-react';
 import ArticleModal from './ArticleModal';
+import { supabase } from '../lib/supabase';
 
 const CATEGORIES = [
   { name: 'All', icon: <BookOpen className="w-4 h-4" /> },
@@ -25,6 +26,7 @@ export default function BlogHub() {
   const [email, setEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const filteredArticles = ARTICLES.filter(article => {
     const matchesCategory = activeCategory === 'All' || article.category === activeCategory;
@@ -33,16 +35,28 @@ export default function BlogHub() {
     return matchesCategory && matchesSearch;
   });
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
     
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitError(null);
+
+    try {
+      const { error } = await supabase
+        .from('subscribers')
+        .insert([{ email, created_at: new Date().toISOString() }]);
+
+      if (error) throw error;
+
       setIsSubscribed(true);
       setEmail('');
-    }, 1500);
+    } catch (err: any) {
+      console.error('Subscription error:', err);
+      setSubmitError(err.message || 'Failed to subscribe. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -181,7 +195,7 @@ export default function BlogHub() {
             Join 50,000+ high-net-worth individuals who receive our weekly deep-dives into interest rate cycles, tax-law changes, and emerging asset classes.
           </p>
           
-          <div className="max-w-md mx-auto">
+          <div className="max-w-md mx-auto space-y-4">
             <AnimatePresence mode="wait">
               {isSubscribed ? (
                 <motion.div
@@ -202,26 +216,44 @@ export default function BlogHub() {
                   </div>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
-                  <div className="relative flex-1">
-                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
-                    <input 
-                      type="email" 
-                      required
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      placeholder="Your professional email..."
-                      className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
-                    />
-                  </div>
-                  <button 
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50"
-                  >
-                    {isSubmitting ? 'Processing...' : 'Subscribe'}
-                  </button>
-                </form>
+                <div className="space-y-4">
+                  <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
+                    <div className="relative flex-1">
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                      <input 
+                        type="email" 
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="Your professional email..."
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-sm text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
+                      />
+                    </div>
+                    <button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-xs uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 min-w-[140px]"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-4 h-4 animate-spin" />
+                          Processing
+                        </>
+                      ) : 'Subscribe'}
+                    </button>
+                  </form>
+                  
+                  {submitError && (
+                    <motion.div 
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="flex items-center gap-2 text-rose-400 text-xs font-bold bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl"
+                    >
+                      <ShieldAlert className="w-4 h-4" />
+                      {submitError}
+                    </motion.div>
+                  )}
+                </div>
               )}
             </AnimatePresence>
           </div>
