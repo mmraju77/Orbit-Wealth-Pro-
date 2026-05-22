@@ -18,7 +18,11 @@ export default function BlogPreview() {
 
   return (
     <section className="space-y-10 py-12">
-      <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
+      <AnimatePresence>
+        {selectedArticle && (
+          <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
+        )}
+      </AnimatePresence>
       <div className="flex items-center justify-between">
         <div className="space-y-2">
           <div className="flex items-center gap-3">

@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Sparkles, TrendingUp, ShieldAlert, ArrowUpRight, CheckCircle2, Activity, Lightbulb } from 'lucide-react';
 import { Goal, Insight } from '../types';
 import InsightModal from './InsightModal';
@@ -62,7 +62,11 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 my-8">
-      <InsightModal insight={selectedInsight} onClose={() => setSelectedInsight(null)} />
+      <AnimatePresence>
+        {selectedInsight && (
+          <InsightModal insight={selectedInsight} onClose={() => setSelectedInsight(null)} />
+        )}
+      </AnimatePresence>
       
       {/* Left Column: AI Wealth Score */}
       <motion.div 

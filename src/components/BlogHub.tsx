@@ -47,7 +47,11 @@ export default function BlogHub() {
 
   return (
     <div className="space-y-12 pb-20">
-      <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
+      <AnimatePresence>
+        {selectedArticle && (
+          <ArticleModal article={selectedArticle} onClose={() => setSelectedArticle(null)} />
+        )}
+      </AnimatePresence>
       <Helmet>
         <title>Insights & Financial Intelligence - ORBIT WEALTH PRO</title>
         <meta name="description" content="Expert financial analysis, wealth strategies, and market insights by mm Raju and the Orbit AI team." />
@@ -90,10 +94,10 @@ export default function BlogHub() {
           <button
             key={cat.name}
             onClick={() => setActiveCategory(cat.name)}
-            className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-xs font-bold transition-all whitespace-nowrap border ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all whitespace-nowrap border ${
               activeCategory === cat.name 
-                ? 'bg-[#D4AF37] text-[#0B0F19] border-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.2)]' 
-                : 'bg-white/5 !text-slate-100 !opacity-100 border-white/20 hover:bg-white/10 hover:text-white hover:border-white/40'
+                ? 'bg-[#D4AF37] text-[#0B0F19] border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.3)] scale-105' 
+                : 'bg-white/[0.03] text-white/60 border-white/5 hover:border-[#D4AF37]/30 hover:bg-white/[0.05] hover:text-[#D4AF37]'
             }`}
           >
             {cat.icon}

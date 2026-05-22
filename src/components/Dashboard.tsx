@@ -199,6 +199,8 @@ const NEWS_ARTICLES: NewsArticle[] = [
 ];
 
 const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ article, onClose }) => {
+  if (!article) return null;
+
   return (
     <motion.div 
       initial={{ opacity: 0 }}

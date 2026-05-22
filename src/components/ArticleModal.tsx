@@ -18,9 +18,8 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
   if (!article) return null;
 
   return (
-    <AnimatePresence>
-      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
-        <motion.div
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
+      <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -156,6 +155,5 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           </div>
         </motion.div>
       </div>
-    </AnimatePresence>
   );
 }

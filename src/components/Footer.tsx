@@ -135,17 +135,28 @@ export default function Footer() {
         </div>
 
         <div className="mb-12 pt-8 border-t border-white/5">
-          <div className="p-6 bg-amber-500/5 border border-amber-500/10 rounded-2xl">
-            <h4 className="text-[10px] font-bold text-amber-500 uppercase tracking-widest mb-3 flex items-center gap-2">
-              <Scale className="w-3 h-3" /> Financial Disclaimer & Transparency Notice
+          <div className="p-8 bg-[#0D121F] border border-white/10 rounded-[2.5rem] relative overflow-hidden group">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/5 rounded-full blur-3xl -mr-32 -mt-32" />
+            <h4 className="text-[11px] font-black text-amber-500 uppercase tracking-[0.4em] mb-4 flex items-center gap-2 relative z-10">
+              <Scale className="w-4 h-4" /> Global Regulatory & Financial Compliance Notice
             </h4>
-            <div className="space-y-4 text-[10px] text-white/40 leading-relaxed">
-              <p>
-                Orbit Wealth Pro is an AI-powered personal wealth intelligence platform designed for educational, informational, and analytical purposes only. We do not provide personalized investment, legal, tax, or financial advice.
-              </p>
-              <p>
-                Financial markets carry inherent risks, and past performance is not indicative of future results. All automated tools, interactive calculators, and AI insights are simulated models. Please consult with a certified financial advisor before making any high-ticket financial decisions.
-              </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] text-white/30 leading-relaxed relative z-10 font-medium">
+              <div className="space-y-4">
+                <p>
+                  <strong className="text-white/60">Institutional Disclaimer:</strong> Orbit Wealth Pro (OWP) is a global financial intelligence engine. OWP is not a registered investment advisor, broker-dealer, or financial institution in any jurisdiction including the <strong className="text-white/60">USA (SEC), UK (FCA), India (SEBI), UAE (SCA/ADGM), or the EU (ESMA)</strong>.
+                </p>
+                <p>
+                  All automated projections, compound interest models, and AI-driven insights are generated based on mathematical simulations and user-inputted data. Past market performance is never an indicator of future capital growth.
+                </p>
+              </div>
+              <div className="space-y-4">
+                <p>
+                  <strong className="text-white/60">Jurisdictional Transparency:</strong> Tax logic used in our calculators is derived from publicly available fiscal thresholds for 2026. Local laws may vary significantly. Users are strictly advised to consult with certified tax professionals or licensed financial architects before executing capital distributions or real estate acquisitions.
+                </p>
+                <p>
+                  ORBIT WEALTH PRO operates under a <strong className="text-white/60">zero-liability framework</strong> for any losses incurred through data reliance. By utilizing this suite, you acknowledge that financial planning is inherently speculative and subject to high-entropy market volatility.
+                </p>
+              </div>
             </div>
           </div>
         </div>
