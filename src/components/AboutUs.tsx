@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Linkedin, ShieldCheck, Award } from 'lucide-react';
+import { Linkedin, ShieldCheck, Award, User } from 'lucide-react';
 
 export default function AboutUs() {
   return (
@@ -24,20 +24,23 @@ export default function AboutUs() {
         {/* Founder Profile Card */}
         <div className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 md:p-12 shadow-2xl flex flex-col md:flex-row gap-8 items-center">
           
-          {/* Left Side: Avatar/Photo PlaceHolder */}
-          <div className="relative w-48 h-48 rounded-full bg-gradient-to-tr from-[#F3C64F] to-[#3B82F6] p-1 flex-shrink-0">
-            <div className="w-full h-full rounded-full bg-[#0B0F19] flex items-center justify-center overflow-hidden">
+          {/* Left Side: Avatar/Photo */}
+          <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-[#F3C64F] shadow-lg flex-shrink-0 bg-[#0B0F19]">
               <img 
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400" 
                 alt="Munchangi Matyaraju" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 onError={(e) => {
-                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.classList.add('hidden');
+                  const fallback = e.currentTarget.nextElementSibling;
+                  if (fallback) fallback.classList.remove('hidden');
                 }}
                 referrerPolicy="no-referrer"
               />
-              <span className="text-2xl font-bold text-gray-400">MM Raju</span>
-            </div>
+              <div className="hidden w-full h-full flex flex-col items-center justify-center animate-pulse">
+                <User className="w-16 h-16 text-gray-600" />
+                <span className="text-xs font-bold text-gray-500 mt-2 uppercase tracking-widest">MM Raju</span>
+              </div>
           </div>
 
           {/* Right Side: Bio Content */}
