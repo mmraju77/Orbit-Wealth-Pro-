@@ -303,9 +303,6 @@ export default function Dashboard() {
           />
         )}
       </AnimatePresence>
-      <div className="-mt-8 md:-mt-16 lg:-mt-24 mb-8">
-         <MarketTicker />
-      </div>
       <header className="space-y-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
@@ -320,6 +317,10 @@ export default function Dashboard() {
           Precision engineering for the modern global investor.
         </p>
       </header>
+
+      <div className="py-2">
+         <MarketTicker />
+      </div>
 
       <section className="space-y-10">
         <div className="flex items-center gap-4">
