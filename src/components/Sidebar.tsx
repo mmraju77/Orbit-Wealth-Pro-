@@ -28,7 +28,8 @@ import {
   Target,
   Zap,
   Activity,
-  Calculator
+  Calculator,
+  BookOpen
 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { CurrencyCode, NumberSystem } from '../types';
@@ -110,6 +111,7 @@ const NAV_SECTIONS: NavSection[] = [
     items: [
       { label: 'Asset Comparisons', path: '/comparisons', icon: ArrowRightLeft },
       { label: 'City Hubs', path: '/cities', icon: Building },
+      { label: 'Blog & Insights', path: '/insights', icon: BookOpen },
     ]
   }
 ];
