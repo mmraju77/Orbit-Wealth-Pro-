@@ -36,29 +36,33 @@ export default function MarketTicker() {
         {tickerItems.map((item, idx) => (
           <div 
             key={idx} 
-            className="inline-flex items-center gap-6 px-12 border-r border-white/5"
+            className="inline-flex items-center gap-8 px-12 border-r border-white/10"
           >
             <div className="flex flex-col">
-              <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] mb-1">
+              <span className="text-[10px] font-black text-white uppercase tracking-[0.3em] mb-1.5 opacity-100">
                 {item.label}
               </span>
               <div className="flex items-center gap-3">
-                <span className="text-sm font-display font-medium text-white/90">
+                <span className={`text-base font-display font-bold tracking-tight ${
+                  item.type === 'growth' ? 'text-emerald-400' : 
+                  item.type === 'decline' ? 'text-rose-400' :
+                  'text-amber-400'
+                }`}>
                   {item.value}
                 </span>
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                  item.type === 'growth' ? 'bg-emerald-500/10 text-emerald-400' : 
-                  item.type === 'decline' ? 'bg-rose-500/10 text-rose-400' :
-                  'bg-[#F3C64F]/10 text-[#F3C64F]'
+                <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-md border ${
+                  item.type === 'growth' ? 'bg-emerald-500/20 border-emerald-500/30 text-emerald-400' : 
+                  item.type === 'decline' ? 'bg-rose-500/20 border-rose-500/30 text-rose-400' :
+                  'bg-amber-500/20 border-amber-500/30 text-amber-400'
                 }`}>
                   {item.change}
                 </span>
               </div>
             </div>
             
-            {item.type === 'growth' && <TrendingUp className="w-4 h-4 text-emerald-500/40" />}
-            {item.type === 'rate' && <Activity className="w-4 h-4 text-[#F3C64F]/40" />}
-            {item.type === 'decline' && <Scale className="w-4 h-4 text-rose-500/40" />}
+            {item.type === 'growth' && <TrendingUp className="w-5 h-5 text-emerald-400 drop-shadow-[0_0_8px_rgba(52,211,153,0.5)]" />}
+            {item.type === 'rate' && <Activity className="w-5 h-5 text-amber-400 drop-shadow-[0_0_8px_rgba(251,191,36,0.5)]" />}
+            {item.type === 'decline' && <Scale className="w-5 h-5 text-rose-400 drop-shadow-[0_0_8px_rgba(248,113,113,0.5)]" />}
           </div>
         ))}
       </motion.div>
