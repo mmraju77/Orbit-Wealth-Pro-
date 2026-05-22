@@ -75,7 +75,7 @@ export default function BlogHub() {
             className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-xs font-bold transition-all whitespace-nowrap border ${
               activeCategory === cat.name 
                 ? 'bg-[#D4AF37] text-[#0B0F19] border-[#D4AF37] shadow-[0_0_15px_rgba(212,175,55,0.2)]' 
-                : 'bg-white/5 text-slate-200 border-white/20 hover:bg-white/10 hover:text-white'
+                : 'bg-white/5 text-slate-100 border-white/20 hover:bg-white/10 hover:text-white hover:border-white/40'
             }`}
           >
             {cat.icon}
@@ -119,7 +119,7 @@ export default function BlogHub() {
                 {article.title}
               </h3>
 
-              <p className="text-sm text-slate-100 leading-relaxed line-clamp-3 mb-8 font-medium">
+              <p className="text-sm text-white leading-relaxed line-clamp-3 mb-8 font-medium">
                 {article.excerpt}
               </p>
 
