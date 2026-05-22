@@ -17,14 +17,14 @@ export interface Article {
 
 export const ARTICLES: Article[] = [
   {
-    id: 'compounding-mastery-2024',
+    id: 'compounding-mastery-2026',
     title: 'The Geometric Growth: Mastering Compound Interest in Volatile Markets',
     excerpt: 'Deep dive into why consistency outpaces timing when navigating the current global equity landscape.',
     category: 'Investing',
     author: 'Munchangi Matyaraju (mm Raju)',
     authorTitle: 'Chief AI Architect',
     readTime: '8 min read',
-    date: 'May 15, 2024',
+    date: 'May 15, 2026',
     tags: ['Equities', 'Compounding', 'Wealth']
   },
   {
@@ -35,7 +35,7 @@ export const ARTICLES: Article[] = [
     author: 'Munchangi Matyaraju (mm Raju)',
     authorTitle: 'Chief AI Architect',
     readTime: '12 min read',
-    date: 'May 12, 2024',
+    date: 'May 12, 2026',
     tags: ['Tax', 'Strategy', 'HNWI']
   },
   {
@@ -46,7 +46,7 @@ export const ARTICLES: Article[] = [
     author: 'Munchangi Matyaraju (mm Raju)',
     authorTitle: 'Chief AI Architect',
     readTime: '10 min read',
-    date: 'May 10, 2024',
+    date: 'May 10, 2026',
     tags: ['Retirement', 'Cash Flow', 'Distribution']
   },
   {
@@ -57,7 +57,7 @@ export const ARTICLES: Article[] = [
     author: 'Munchangi Matyaraju (mm Raju)',
     authorTitle: 'Chief AI Architect',
     readTime: '6 min read',
-    date: 'May 08, 2024',
+    date: 'May 08, 2026',
     tags: ['Savings', 'Behavioral Economics', 'Psychology']
   },
   {
@@ -68,7 +68,7 @@ export const ARTICLES: Article[] = [
     author: 'Munchangi Matyaraju (mm Raju)',
     authorTitle: 'Chief AI Architect',
     readTime: '15 min read',
-    date: 'May 05, 2024',
+    date: 'May 05, 2026',
     tags: ['Bitcoin', 'Hedge', 'Digital Assets']
   }
 ];

@@ -47,7 +47,7 @@ export default function BlogHub() {
               Wealth <br />
               <span className="text-[#D4AF37]">Intelligence Feed</span>
             </h1>
-            <p className="text-white/40 text-lg leading-relaxed max-w-xl">
+            <p className="text-slate-100 text-lg leading-relaxed max-w-xl font-medium">
               Precision-engineered insights on asset allocation, fiscal strategy, and the future of global wealth architecture.
             </p>
           </div>
@@ -119,7 +119,7 @@ export default function BlogHub() {
                 {article.title}
               </h3>
 
-              <p className="text-sm text-white/40 leading-relaxed line-clamp-3 mb-8">
+              <p className="text-sm text-slate-100 leading-relaxed line-clamp-3 mb-8 font-medium">
                 {article.excerpt}
               </p>
 
@@ -150,7 +150,7 @@ export default function BlogHub() {
             <Sparkles className="w-8 h-8 text-[#D4AF37]" />
           </div>
           <h2 className="text-4xl font-display font-bold text-white tracking-tight">The Executive Insight <br /><span className="text-[#D4AF37]">Newsletter</span></h2>
-          <p className="text-white/40 leading-relaxed">
+          <p className="text-slate-100 leading-relaxed font-medium">
             Join 50,000+ high-net-worth individuals who receive our weekly deep-dives into interest rate cycles, tax-law changes, and emerging asset classes.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
