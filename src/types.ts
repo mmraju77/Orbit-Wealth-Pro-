@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD' | 'NOK' | 'SEK' | 'DKK' | 'CHF';
+export type CurrencyCode = 'USD' | 'EUR' | 'GBP' | 'AED' | 'INR' | 'CAD' | 'AUD' | 'NOK' | 'SEK' | 'DKK' | 'CHF' | 'SGD';
 export type NumberSystem = 'International' | 'Indian';
 
 export interface AmortizationPeriod {

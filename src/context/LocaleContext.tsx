@@ -36,6 +36,7 @@ const CURRENCY_MAP: Record<CurrencyCode, { symbol: string; name: string; locale:
   SEK: { symbol: 'kr', name: 'SEK', locale: 'sv-SE' },
   DKK: { symbol: 'kr', name: 'DKK', locale: 'da-DK' },
   CHF: { symbol: 'CHF', name: 'CHF', locale: 'de-CH' },
+  SGD: { symbol: 'S$', name: 'SGD', locale: 'en-SG' },
 };
 
 const getInitialLocale = () => {
@@ -127,6 +128,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
       SEK: { loan: 'Lån', tax: 'Moms', jurisdiction: 'Sweden' },
       DKK: { loan: 'Lån', tax: 'Moms', jurisdiction: 'Denmark' },
       CHF: { loan: 'Kredit', tax: 'MwSt', jurisdiction: 'Switzerland' },
+      SGD: { loan: 'Home Loan', tax: 'GST', jurisdiction: 'Singapore' },
     };
     return map[currency] || map['USD'];
   };

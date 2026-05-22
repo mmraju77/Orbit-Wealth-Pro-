@@ -214,5 +214,24 @@ export const COMPARISONS: Record<string, ComparisonData> = {
     verdict: 'Stocks for core portfolio. Crypto for high-risk speculative allocation (only small percentage).',
     ctaText: 'Lumpsum Profit Calculator',
     ctaLink: '/calculators/lumpsum'
+  },
+  'gold-vs-bitcoin': {
+    title: 'Gold vs Bitcoin (Digital Gold)',
+    description: 'The ultimate comparison between the traditional store of value and its digital successor.',
+    optionAName: 'Gold',
+    optionBName: 'Bitcoin',
+    factors: [
+      { factor: 'Scarcity', optionA: 'Limited by physical mining', optionB: 'Fixed supply (21 Million)' },
+      { factor: 'Portability', optionA: 'Heavy & physical storage needed', optionB: 'Highly portable (Digital keys)' },
+      { factor: 'Verifiability', optionA: 'Requires assaying', optionB: 'Instant via Blockchain' },
+      { factor: 'History', optionA: '5,000+ Years', optionB: '15+ Years' }
+    ],
+    prosA: ['Physical tangibility', 'Universal historical value', 'Effective in collapses'],
+    consA: ['Storage costs', 'Difficulty to transport/liquidate at scale'],
+    prosB: ['High growth potential', 'Global 24/7 liquidity', 'Programmable money'],
+    consB: ['Extreme price volatility', 'Security/Custody risks'],
+    verdict: 'Gold is for absolute wealth protection and crisis stability. Bitcoin is for aggressive growth and financial sovereign mobility.',
+    ctaText: 'Lumpsum Growth Tool',
+    ctaLink: '/calculators/lumpsum'
   }
 };

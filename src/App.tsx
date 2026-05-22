@@ -50,6 +50,8 @@ const CreditCardPayoff = lazy(() => import('./components/CreditCardPayoff'));
 const TaxGuides = lazy(() => import('./components/TaxGuides'));
 const PSEOLandingPage = lazy(() => import('./components/PSEOLandingPage'));
 const ComparePage = lazy(() => import('./components/ComparePage'));
+const ComparisonsDirectory = lazy(() => import('./components/ComparisonsDirectory'));
+const CitiesDirectory = lazy(() => import('./components/CitiesDirectory'));
 const TermInsuranceCalculator = lazy(() => import('./components/TermInsuranceCalculator'));
 const HealthInsuranceCalculator = lazy(() => import('./components/HealthInsuranceCalculator'));
 const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
@@ -165,6 +167,8 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
             <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
             <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
             <Route path="/compare/:pair" element={<ComparePage />} />
+            <Route path="/comparisons" element={<ComparisonsDirectory />} />
+            <Route path="/cities" element={<CitiesDirectory />} />
             
             {/* Legacy redirects/backwards compatibility if needed, but here we strictly follow sitemap */}
             <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />

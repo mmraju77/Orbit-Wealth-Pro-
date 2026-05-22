@@ -103,6 +103,14 @@ const NAV_SECTIONS: NavSection[] = [
       { label: 'GST / VAT', path: '/calculators/gst', icon: ShieldCheck },
       { label: 'Tax Guides', path: '/tax-guides', icon: Globe },
     ]
+  },
+  {
+    label: 'Market Intelligence',
+    icon: Zap,
+    items: [
+      { label: 'Asset Comparisons', path: '/comparisons', icon: ArrowRightLeft },
+      { label: 'City Hubs', path: '/cities', icon: Building },
+    ]
   }
 ];
 

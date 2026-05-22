@@ -169,6 +169,61 @@ export const REGIONS: Record<string, RegionData> = {
       'Small business owners can utilize the MKB-winstvrijstelling for tax-free profit portions.'
     ]
   },
+  'mumbai': {
+    name: 'Mumbai',
+    currency: 'INR',
+    smartContent: 'Financial planning in Mumbai, India\'s financial capital, involves navigating high real estate costs and local tax considerations. Investment strategies often focus on equity markets given the presence of BSE and NSE.',
+    taxContext: 'Indian Income Tax & Local Octroi',
+    localInsights: [
+      'Account for the High Stamp Duty rates in Maharashtra for property purchases.',
+      'Utilize Section 80C and other deductions under the Indian Income Tax Act.',
+      'Consider proximity to commercial hubs for better rental yield expectations.'
+    ]
+  },
+  'dubai': {
+    name: 'Dubai',
+    currency: 'AED',
+    smartContent: 'Dubai offers a unique tax-free environment for personal income. Financial tools here focus on wealth growth, real estate ROI, and maintaining a high standard of living through offshore accounts or local UAE banks.',
+    taxContext: 'DLD Registered & VAT Integrated',
+    localInsights: [
+      '0% Personal Income Tax on all salaries and rental income.',
+      'High demand for luxury real estate yields and holiday home rentals.',
+      'Dirham peg to USD provides currency stability for global investors.'
+    ]
+  },
+  'new-york': {
+    name: 'New York',
+    currency: 'USD',
+    smartContent: 'New York City necessitates accounting for Federal, State, and City taxes. This significantly impacts net salary and investment strategies compared to other US hubs.',
+    taxContext: 'NYC Local Tax + Federal + State',
+    localInsights: [
+      'New York City residents pay local income tax in addition to state tax.',
+      'High cost of living requires robust emergency fund planning.',
+      'Mortgage rates in NY are competitive but property taxes can be substantial.'
+    ]
+  },
+  'london': {
+    name: 'London',
+    currency: 'GBP',
+    smartContent: 'London residents must navigate the premium property market and high cost of services. Financial planning involves maximizing ISA limits and understanding inheritance tax thresholds for high-net-worth individuals.',
+    taxContext: 'HMRC & Stamp Duty Premium',
+    localInsights: [
+      'London property values historically offer strong capital appreciation.',
+      'High transport and energy costs should be factored into monthly budget models.',
+      'Stamp Duty surcharges apply for additional properties or non-residents.'
+    ]
+  },
+  'singapore': {
+    name: 'Singapore',
+    currency: 'SGD',
+    smartContent: 'Singapore\'s financial system is highly efficient, with tiered income tax rates and significant CPF contributions for citizens and PRs. It is a major hub for global wealth management.',
+    taxContext: 'IRAS & CPF Optimized',
+    localInsights: [
+      'Progressive tax rates are among the most competitive in developed nations.',
+      'CPF (Central Provident Fund) is critical for housing, healthcare, and retirement.',
+      'ABSD (Additional Buyer\'s Stamp Duty) applies to residential property purchases.'
+    ]
+  }
 };
 
 // Map Aliases to actual data objects for cleaner routing
