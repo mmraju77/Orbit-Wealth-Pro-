@@ -450,7 +450,7 @@ export default function Dashboard() {
           <div className="md:col-span-4 flex justify-center md:justify-end">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-[#F3C64F] shadow-lg flex-shrink-0 bg-slate-900 relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400" 
+                  src="/founder.jpg" 
                   alt="Munchangi Matyaraju" 
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   onError={(e) => {

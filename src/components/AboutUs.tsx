@@ -27,7 +27,7 @@ export default function AboutUs() {
           {/* Left Side: Avatar/Photo */}
           <div className="relative w-48 h-48 rounded-full overflow-hidden border-4 border-[#F3C64F] shadow-lg flex-shrink-0 bg-[#0B0F19]">
               <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=400&h=400" 
+                src="/founder.jpg" 
                 alt="Munchangi Matyaraju" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                 onError={(e) => {
