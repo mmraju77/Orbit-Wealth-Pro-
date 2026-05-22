@@ -83,7 +83,7 @@ export default function WealthIntelligenceBlock() {
               </div>
               <div>
                 <h3 className="text-xl font-display font-bold text-white tracking-tight">AI Smart Insights</h3>
-                <p className="text-[10px] text-white/60 uppercase tracking-widest font-black">Live Intelligence Feed</p>
+                <p className="text-[10px] text-slate-200 uppercase tracking-widest font-black">Live Intelligence Feed</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">

@@ -418,14 +418,14 @@ export default function Dashboard() {
           </p>
         </div>
         <div className="flex gap-12">
-           <div className="space-y-1">
-             <div className="text-4xl font-display text-white">100%</div>
-             <div className="text-xs text-white/20 uppercase font-bold tracking-[0.2em]">Computation Accuracy</div>
-           </div>
-           <div className="space-y-1">
-             <div className="text-4xl font-display text-white">Instant</div>
-             <div className="text-xs text-white/20 uppercase font-bold tracking-[0.2em]">Execution Latency</div>
-           </div>
+            <div className="space-y-1 text-center">
+              <div className="text-4xl font-display text-white">100%</div>
+              <div className="text-xs text-slate-300 uppercase font-black tracking-[0.2em]">Computation Accuracy</div>
+            </div>
+            <div className="space-y-1 text-center">
+              <div className="text-4xl font-display text-white">Instant</div>
+              <div className="text-xs text-slate-300 uppercase font-black tracking-[0.2em]">Execution Latency</div>
+            </div>
         </div>
       </section>
 

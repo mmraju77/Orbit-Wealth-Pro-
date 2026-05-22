@@ -204,12 +204,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                        }}
                        className={({ isActive }) => cn(
                          "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all group/item",
-                         isActive ? "text-[#f59e0b] bg-white/5 font-bold" : "text-white/90 hover:text-white hover:bg-white/5"
+                         isActive ? "text-[#f59e0b] bg-white/5 font-bold" : "text-white hover:bg-white/5"
                        )}
                      >
                        <item.icon className={cn(
                          "w-3.5 h-3.5 transition-colors",
-                         "text-[#f59e0b]"
+                         "text-amber-300"
                        )} />
                        {item.label}
                      </NavLink>

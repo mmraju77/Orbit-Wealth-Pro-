@@ -27,7 +27,7 @@ export default function BlogPreview() {
         </div>
         <Link 
           to="/insights" 
-          className="group flex items-center gap-2 text-xs font-bold text-white/40 hover:text-[#F3C64F] transition-colors"
+          className="group flex items-center gap-2 text-xs font-bold text-slate-300 hover:text-[#F3C64F] transition-colors"
         >
           View Intelligence Hub <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
