@@ -172,10 +172,10 @@ export default function WealthMilestones() {
                     <span className="text-[9px] text-white/30 uppercase font-bold">Current Wealth</span>
                     <div className="relative">
                       <input 
-                        type="text"
-                        value={goal.current.toLocaleString()}
+                        type="number"
+                        value={goal.current}
                         onChange={(e) => handleUpdate(goal.id, 'current', e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
                     </div>
@@ -184,10 +184,10 @@ export default function WealthMilestones() {
                     <span className="text-[9px] text-white/30 uppercase font-bold">Target Milestone</span>
                     <div className="relative">
                       <input 
-                        type="text"
-                        value={goal.target.toLocaleString()}
+                        type="number"
+                        value={goal.target}
                         onChange={(e) => handleUpdate(goal.id, 'target', e.target.value)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
                     </div>

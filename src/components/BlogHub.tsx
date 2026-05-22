@@ -186,9 +186,15 @@ export default function BlogHub() {
                   className="p-8 bg-emerald-500/10 border border-emerald-500/20 rounded-[2.5rem] flex flex-col items-center gap-4"
                 >
                   <CheckCircle2 className="w-12 h-12 text-emerald-400" />
-                  <div>
+                  <div className="text-center">
                     <h4 className="text-xl font-bold text-white">Welcome to the Inner Circle!</h4>
-                    <p className="text-emerald-100/60 font-medium">Your wealth blueprint is on the way.</p>
+                    <p className="text-emerald-100/60 font-medium mb-4">Your wealth blueprint is on the way.</p>
+                    <button 
+                      onClick={() => setIsSubscribed(false)}
+                      className="text-[10px] font-black text-[#D4AF37] uppercase tracking-[0.2em] hover:text-white transition-colors"
+                    >
+                      Subscribe another email
+                    </button>
                   </div>
                 </motion.div>
               ) : (
