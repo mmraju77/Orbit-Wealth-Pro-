@@ -124,7 +124,15 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
         <div className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
           <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
             <Routes>
+              {/* Core Views */}
               <Route path="/" element={<Dashboard />} />
+              <Route path="/tax-guides" element={<TaxGuides />} />
+              <Route path="/comparisons" element={<ComparisonsDirectory />} />
+              <Route path="/cities" element={<CitiesDirectory />} />
+              <Route path="/insights" element={<BlogHub />} />
+              <Route path="/compare/:pair" element={<ComparePage />} />
+              
+              {/* Dynamic Calculator Routing - Ensuring DOM efficiency by unmounting inactive views */}
               <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
               <Route path="/calculators/retirement" element={<RetirementCalculator />} />
               <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
@@ -149,35 +157,34 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
               <Route path="/calculators/hlv" element={<HLVCalculator />} />
               <Route path="/calculators/break-even" element={<BreakEvenCalculator />} />
               <Route path="/calculators/credit-card-payoff" element={<CreditCardPayoff />} />
-              <Route path="/tax-guides" element={<TaxGuides />} />
-              
               <Route path="/calculators/term-insurance" element={<TermInsuranceCalculator />} />
               <Route path="/calculators/health-insurance" element={<HealthInsuranceCalculator />} />
-            
-            <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
-            <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
-            <Route path="/compare/:pair" element={<ComparePage />} />
-            <Route path="/comparisons" element={<ComparisonsDirectory />} />
-            <Route path="/cities" element={<CitiesDirectory />} />
-            <Route path="/insights" element={<BlogHub />} />
-            
-            <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
-            <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
-            <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
-            <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
-            
-            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/terms-of-service" element={<TermsOfService />} />
-            <Route path="/contact" element={<ContactUs />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
-            <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
-            <Route path="*" element={<Dashboard />} />
-          </Routes>
-          <Footer />
+
+              {/* pSEO & Tools */}
+              <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
+              <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
+              
+              {/* Legacy Redirects */}
+              <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
+              <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
+              <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
+              <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
+              
+              {/* Legal & Static */}
+              <Route path="/about" element={<AboutUs />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              <Route path="/terms-of-service" element={<TermsOfService />} />
+              <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+              <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
+              
+              {/* Fallback */}
+              <Route path="*" element={<Dashboard />} />
+            </Routes>
+            <Footer />
+          </div>
         </div>
-      </div>
       <OrbitChat />
       </main>
     </div>

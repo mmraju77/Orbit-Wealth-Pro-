@@ -39,6 +39,7 @@ export default function AboutUs() {
                 src="https://i.ibb.co/B5m9W7Dt/founder-jpg.jpg" 
                 alt="Munchangi Matyaraju" 
                 className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                loading="lazy"
                 onError={(e) => {
                   e.currentTarget.classList.add('hidden');
                   const fallback = e.currentTarget.nextElementSibling;

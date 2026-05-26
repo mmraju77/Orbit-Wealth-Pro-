@@ -228,6 +228,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
               alt={article.title}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
+              loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
             <div className="absolute bottom-8 left-8 right-8">
@@ -511,6 +512,7 @@ export default function Dashboard() {
                   src="https://i.ibb.co/B5m9W7Dt/founder-jpg.jpg" 
                   alt="Munchangi Matyaraju" 
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                  loading="lazy"
                   onError={(e) => {
                     e.currentTarget.classList.add('hidden');
                     const fallback = e.currentTarget.nextElementSibling;
