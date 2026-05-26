@@ -5,6 +5,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import { Menu, Wallet } from 'lucide-react';
 
 // Context
@@ -192,12 +193,14 @@ export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <HashRouter>
-      <LocaleProvider>
-        <RegionSynchronizer />
-        <ScrollToTop />
-        <MainContent sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      </LocaleProvider>
-    </HashRouter>
+    <HelmetProvider>
+      <HashRouter>
+        <LocaleProvider>
+          <RegionSynchronizer />
+          <ScrollToTop />
+          <MainContent sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        </LocaleProvider>
+      </HashRouter>
+    </HelmetProvider>
   );
 }
