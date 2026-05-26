@@ -235,9 +235,9 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
               <span className="px-3 py-1 bg-[#f59e0b] rounded-full text-[10px] font-black text-black uppercase tracking-widest mb-4 inline-block">
                 {article.category}
               </span>
-              <h2 className="text-3xl md:text-5xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight">
-                {article.title}
-              </h2>
+                  <h2 className="text-3xl md:text-5xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight">
+                    {article.title}
+                  </h2>
             </div>
           </div>
 
@@ -324,7 +324,8 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
            </div>
            <button 
              onClick={() => onReadMore(article)}
-             className="flex items-center gap-2 text-[10px] font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer"
+             aria-label={`Read full report: ${article.title}`}
+             className="flex items-center gap-2 text-[10px] font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
            >
              Read Full Report <ArrowUpRight className="w-3 h-3" />
            </button>
@@ -397,7 +398,8 @@ export default function Dashboard() {
             >
               <Link 
                 to={card.path}
-                className="group block p-[15px] md:p-8 bg-white/[0.01] border border-white/[0.04] rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.02] hover:border-[#D4AF37]/30 transition-all duration-700 h-full relative overflow-hidden"
+                aria-label={`Open ${card.title}`}
+                className="group block p-[15px] md:p-8 bg-white/[0.01] border border-white/[0.04] rounded-[1.5rem] md:rounded-[2rem] hover:bg-white/[0.02] hover:border-[#D4AF37]/30 transition-all duration-700 h-full relative overflow-hidden outline-none focus:bg-white/[0.05]"
               >
                 <div className="absolute top-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
                   <ArrowRight className="w-4 h-4 text-[#D4AF37]" />

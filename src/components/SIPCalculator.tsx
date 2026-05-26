@@ -107,10 +107,17 @@ export default function SIPCalculator() {
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+          <button 
+            onClick={downloadPDF} 
+            aria-label="Download Calculation PDF"
+            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all focus:ring-1 focus:ring-[#D4AF37] outline-none"
+          >
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <button 
+            aria-label="Share Calculation"
+            className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 focus:ring-2 focus:ring-white outline-none"
+          >
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -132,29 +139,33 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <label className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
+                  <label htmlFor="return-rate" className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
                   {liveSync && <span className="text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
                 </div>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
               </div>
               <input 
+                id="return-rate"
                 type="range" min="1" max="30" step="0.5"
                 value={inputs.expectedReturn}
                 onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
                 className="w-full accent-[#D4AF37]"
+                aria-label="Expected Return Percentage"
               />
             </div>
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-white/50 uppercase tracking-widest">Investment Period (Years)</label>
+                <label htmlFor="investment-period" className="text-xs font-bold text-white/50 uppercase tracking-widest">Investment Period (Years)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yr</div>
               </div>
               <input 
+                id="investment-period"
                 type="range" min="1" max="40" step="1"
                 value={inputs.duration}
                 onChange={(e) => setInputs({ ...inputs, duration: Number(e.target.value) })}
                 className="w-full accent-[#D4AF37]"
+                aria-label="Investment duration in years"
               />
             </div>
           </div>

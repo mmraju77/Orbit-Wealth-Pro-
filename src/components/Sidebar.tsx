@@ -159,7 +159,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           
           <button 
             onClick={onClose}
-            className="md:hidden p-2 text-white/40 hover:text-white"
+            className="md:hidden p-2 text-white/40 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded"
+            aria-label="Close Sidebar"
           >
             <ChevronRight className="w-5 h-5 rotate-180" />
           </button>
@@ -171,8 +172,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             onClick={() => {
               if (window.innerWidth < 768) onClose();
             }}
+            aria-label="Go to Dashboard"
             className={({ isActive }) => cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all mb-4",
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all mb-4 outline-none focus:bg-white/5",
               isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/60 hover:text-white"
             )}
           >
@@ -184,7 +186,9 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div key={section.label} className="space-y-1">
               <button 
                 onClick={() => toggleSection(section.label)}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors"
+                aria-expanded={openSections[section.label]}
+                aria-label={`Toggle ${section.label} section`}
+                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors outline-none focus:text-white"
               >
                 <div className="flex items-center gap-3">
                   <section.icon className="w-3.5 h-3.5" />
@@ -199,11 +203,12 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                       <NavLink
                        key={item.path}
                        to={item.path}
+                       aria-label={`Navigate to ${item.label}`}
                        onClick={() => {
                          if (window.innerWidth < 768) onClose();
                        }}
                        className={({ isActive }) => cn(
-                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all group/item",
+                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all group/item outline-none focus:bg-white/10",
                          isActive ? "text-[#f59e0b] bg-white/5 font-bold" : "text-white hover:bg-white/5"
                        )}
                      >
@@ -234,13 +239,14 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                     return (
                       <button
                         key={c}
+                        aria-label={`Switch currency to ${c}`}
                         onClick={() => {
                           setCurrency(c);
                           if (c === 'INR') setNumberSystem('Indian');
                           else setNumberSystem('International');
                         }}
                         className={cn(
-                          "h-5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-0.5",
+                          "h-5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-0.5 outline-none",
                           currency === c ? "bg-[#D4AF37] text-black" : "bg-white/10 text-white/80 hover:bg-white/20"
                         )}
                       >
