@@ -9,7 +9,7 @@ import { Helmet } from 'react-helmet-async';
 import { ARTICLES, Article } from '../data/blogData';
 import { Clock, User, ArrowRight, BookOpen, Filter, Search, Sparkles, TrendingUp, ShieldCheck, Wallet, Landmark, CheckCircle2, Mail, Loader2, ShieldAlert } from 'lucide-react';
 import ArticleModal from './ArticleModal';
-import { supabase } from '../lib/supabase';
+import { supabase, isSupabaseConfigured } from '../lib/supabase';
 
 const CATEGORIES = [
   { name: 'All', icon: <BookOpen className="w-4 h-4" /> },
@@ -43,6 +43,10 @@ export default function BlogHub() {
     setSubmitError(null);
 
     try {
+      if (!isSupabaseConfigured) {
+        throw new Error('Database service is currently offline. Please try again later.');
+      }
+
       const { error } = await supabase
         .from('subscribers')
         .insert([{ email, created_at: new Date().toISOString() }]);
