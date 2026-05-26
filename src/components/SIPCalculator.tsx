@@ -10,8 +10,11 @@ import Tooltip from './Tooltip';
 import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
+import StructuredData from './StructuredData';
+import { fetchLiveBenchmarks } from '../lib/liveFinance';
+
 const INITIAL_INPUTS: InvestmentInputs = {
-  investmentAmount: 0, // Not used for base SIP, usually SIP is monthly
+  investmentAmount: 0,
   monthlyInvestment: 5000,
   expectedReturn: 12,
   duration: 10
@@ -22,6 +25,7 @@ export default function SIPCalculator() {
   const [inputs, setInputs] = useState<InvestmentInputs>(INITIAL_INPUTS);
   const [copied, setCopied] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+  const [liveSync, setLiveSync] = useState(false);
 
   const results = useMemo(() => {
     const monthlyRate = inputs.expectedReturn / 100 / 12;
@@ -55,6 +59,15 @@ export default function SIPCalculator() {
 
   useEffect(() => {
     setIsMounted(true);
+    // Live Data Hydration
+    const hydrate = async () => {
+      const live = await fetchLiveBenchmarks();
+      if (live) {
+        setInputs(prev => ({ ...prev, expectedReturn: live.sipReturn }));
+        setLiveSync(true);
+      }
+    };
+    hydrate();
   }, []);
 
   const downloadPDF = () => {
@@ -74,6 +87,14 @@ export default function SIPCalculator() {
   return (
     <div className="space-y-12 pb-20">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
+        <StructuredData 
+          type="SoftwareApplication"
+          data={{
+            name: "SIP Intelligence Calculator",
+            description: "High-precision SIP calculator with live benchmark return synchronization for optimal wealth projection.",
+            url: "/#/calculators/sip"
+          }}
+        />
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
@@ -110,7 +131,10 @@ export default function SIPCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
+                <div className="flex items-center gap-2">
+                  <label className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
+                  {liveSync && <span className="text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
+                </div>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
               </div>
               <input 

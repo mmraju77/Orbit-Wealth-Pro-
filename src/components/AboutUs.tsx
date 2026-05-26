@@ -5,10 +5,19 @@
 
 import React from 'react';
 import { Linkedin, ShieldCheck, Award, User } from 'lucide-react';
+import StructuredData from './StructuredData';
 
 export default function AboutUs() {
   return (
     <div className="min-h-screen bg-transparent text-gray-100 py-16 px-4 sm:px-6 lg:px-8">
+      <StructuredData 
+        type="FinancialProduct"
+        data={{
+          name: "ORBIT WEALTH PRO",
+          description: "Elite AI-driven wealth intelligence platform for institutional-grade financial analytics and cross-regional investment tools.",
+          url: "/about"
+        }}
+      />
       <div className="max-w-4xl mx-auto">
         
         {/* Header */}

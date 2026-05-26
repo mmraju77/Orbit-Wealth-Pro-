@@ -14,6 +14,8 @@ import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
 import { normalizeRegionKey } from '../data/pSEOData';
 import CurrencyInput from './CurrencyInput';
+import StructuredData from './StructuredData';
+import { fetchLiveBenchmarks } from '../lib/liveFinance';
 
 const INITIAL_INPUTS: MortgageInputs = {
   homePrice: 500000,
@@ -38,6 +40,7 @@ export default function MortgageCalculator() {
 
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
+  const [liveSync, setLiveSync] = useState(false);
 
   const results = useMemo(() => {
     const principal = inputs.homePrice - inputs.downPayment;
@@ -90,6 +93,15 @@ export default function MortgageCalculator() {
 
   useEffect(() => {
     setIsMounted(true);
+    // Live Data Hydration
+    const hydrate = async () => {
+      const live = await fetchLiveBenchmarks();
+      if (live) {
+        setInputs(prev => ({ ...prev, interestRate: live.mortgageRate }));
+        setLiveSync(true);
+      }
+    };
+    hydrate();
   }, []);
 
   const downloadPDF = () => {
@@ -109,6 +121,14 @@ export default function MortgageCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <StructuredData 
+        type="SoftwareApplication"
+        data={{
+          name: "Institutional Mortgage Intelligence Suite",
+          description: "Bank-grade mortgage calculator with live benchmark interest rate synchronization and cross-regional compliance logic.",
+          url: "/#/calculators/mortgage"
+        }}
+      />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -162,7 +182,10 @@ export default function MortgageCalculator() {
 
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                <div className="space-y-4">
-                  <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate</label>
+                  <div className="flex items-center gap-2">
+                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate</label>
+                    {liveSync && <span className="text-[7px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Rate Active</span>}
+                  </div>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <input 
                       type="number" step="0.1" value={inputs.interestRate}
