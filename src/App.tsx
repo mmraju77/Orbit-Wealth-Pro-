@@ -18,11 +18,11 @@ function ScrollToTop() {
 import { HelmetProvider, Helmet } from 'react-helmet-async';
 import { LocaleProvider, useLocale } from './context/LocaleContext';
 import { CurrencyCode } from './types';
+import Sidebar from './components/Sidebar';
+import Dashboard from './components/Dashboard';
+import Footer from './components/Footer';
+import OrbitChat from './components/OrbitChat';
 import { resolveRegion } from './data/pSEOData';
-const Dashboard = lazy(() => import('./components/Dashboard'));
-const Sidebar = lazy(() => import('./components/Sidebar'));
-const Footer = lazy(() => import('./components/Footer'));
-const OrbitChat = lazy(() => import('./components/OrbitChat'));
 
 // Optimized Components (Lazy Loaded)
 const MortgageCalculator = lazy(() => import('./components/MortgageCalculator'));
@@ -68,7 +68,6 @@ const LoadingFallback = () => (
     <div className="w-8 h-8 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
   </div>
 );
-// Footer and OrbitChat are now lazy loaded above
 import { Menu, X, ShieldCheck, Wallet } from 'lucide-react';
 
 function RegionSynchronizer() {
@@ -188,14 +187,10 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
             <Route path="*" element={<Dashboard />} />
           </Routes>
           </Suspense>
-          <Suspense fallback={null}>
-            <Footer />
-          </Suspense>
+          <Footer />
         </div>
       </div>
-      <Suspense fallback={null}>
-        <OrbitChat />
-      </Suspense>
+      <OrbitChat />
     </main>
   </div>
   );

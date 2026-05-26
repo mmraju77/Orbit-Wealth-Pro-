@@ -12,22 +12,10 @@ export default defineConfig(({mode}) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks(id) {
-            if (id.includes('node_modules')) {
-              if (id.includes('react') || id.includes('react-router') || id.includes('react-dom')) {
-                return 'vendor-core';
-              }
-              if (id.includes('recharts') || id.includes('d3')) {
-                return 'vendor-viz';
-              }
-              if (id.includes('lucide-react')) {
-                return 'vendor-icons';
-              }
-              if (id.includes('motion')) {
-                return 'vendor-animation';
-              }
-              return 'vendor-others';
-            }
+          manualChunks: {
+            'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+            'vendor-recharts': ['recharts'],
+            'vendor-utils': ['lucide-react', 'jspdf', 'motion'],
           }
         }
       },
