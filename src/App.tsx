@@ -71,33 +71,28 @@ function ScrollToTop() {
 
 function RegionSynchronizer() {
   const { pathname } = useLocation();
-  const { setCurrency, setNumberSystem, currency: currentCurrency } = useLocale();
+  const { setCurrency, setNumberSystem } = useLocale();
 
   useEffect(() => {
-    const hash = window.location.hash || '';
-    const parts = hash.split('/').filter(p => p && p !== '#');
-    
-    if (parts.length === 0) return;
+    try {
+      const hash = window.location.hash || '';
+      const parts = hash.split('/').filter(p => p && p !== '#');
+      if (parts.length === 0) return;
 
-    let regionData = null;
-    const reversedParts = [...parts].reverse();
-    for (const part of reversedParts) {
-      const decodedPart = decodeURIComponent(part).toLowerCase().replace(/-/g, ' ');
-      const cleanPart = part.toLowerCase();
-      const data = resolveRegion(cleanPart) || resolveRegion(decodedPart);
-      if (data) {
-        regionData = data;
-        break;
+      const reversedParts = [...parts].reverse();
+      for (const part of reversedParts) {
+        const cleanPart = part.toLowerCase();
+        const data = resolveRegion(cleanPart);
+        if (data) {
+          setCurrency(data.currency);
+          setNumberSystem(data.name === 'India' ? 'Indian' : 'International');
+          break;
+        }
       }
+    } catch (e) {
+      console.error('Region Sync Error:', e);
     }
-
-    if (regionData) {
-      if (regionData.currency !== currentCurrency) {
-        setCurrency(regionData.currency);
-        setNumberSystem(regionData.name === 'India' ? 'Indian' : 'International');
-      }
-    }
-  }, [pathname, setCurrency, setNumberSystem, currentCurrency]);
+  }, [pathname, setCurrency, setNumberSystem]);
 
   return null;
 }

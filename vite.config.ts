@@ -10,12 +10,16 @@ export default defineConfig(({mode}) => {
     base: '/',
     appType: 'spa',
     build: {
+      target: 'esnext',
+      outDir: 'dist',
+      emptyOutDir: true,
       rollupOptions: {
         output: {
+          // Flattening all scripts into few chunks to avoid load failures
+          manualChunks: undefined
         }
       },
-      chunkSizeWarningLimit: 1000,
-      minify: 'esbuild',
+      chunkSizeWarningLimit: 2000,
     },
     define: {
       'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),

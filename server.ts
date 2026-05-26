@@ -67,36 +67,35 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod";
+  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod" || !process.env.NODE_ENV;
   const distPath = path.resolve(process.cwd(), "dist");
 
   if (isProd) {
-    // 1. Serve static assets with absolute paths in mind
+    console.log("Running in PRODUCTION mode - serving from:", distPath);
+    // 1. Serve static assets
     app.use(express.static(distPath, {
       index: false,
       maxAge: '1y',
-      immutable: true,
-      fallthrough: true
+      immutable: true
     }));
 
     // 2. Catch-all: Send index.html for any request that didn't match a static file
-    // This allows React Router to handle the route client-side.
     app.get("*", (req, res) => {
       // Ignore API routes
       if (req.path.startsWith('/api/')) {
         return res.status(404).json({ error: "API route not found" });
       }
 
-      // Serve index.html for everything else (SPA routes)
-      res.sendFile(path.join(distPath, "index.html"), (err) => {
+      const indexPath = path.join(distPath, "index.html");
+      res.sendFile(indexPath, (err) => {
         if (err) {
-          console.error("Critical error: Missing index.html in dist folder during production request:", req.path);
+          console.error("Critical error: Missing index.html in dist folder during production request:", req.path, indexPath);
           res.status(500).send("Application initialization error. Please try again later.");
         }
       });
     });
   } else {
-    // Development mode with Vite middleware
+    console.log("Running in DEVELOPMENT mode - using Vite middleware");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
