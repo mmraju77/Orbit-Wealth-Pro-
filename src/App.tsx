@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect, lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, Navigate, useLocation, useParams } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -15,60 +15,53 @@ function ScrollToTop() {
   }, [pathname]);
   return null;
 }
-import { HelmetProvider, Helmet } from 'react-helmet-async';
+import { HelmetProvider } from 'react-helmet-async';
 import { LocaleProvider, useLocale } from './context/LocaleContext';
-import { CurrencyCode } from './types';
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import OrbitChat from './components/OrbitChat';
 import { resolveRegion } from './data/pSEOData';
 
-// Optimized Components (Lazy Loaded)
-const MortgageCalculator = lazy(() => import('./components/MortgageCalculator'));
-const RetirementCalculator = lazy(() => import('./components/RetirementCalculator'));
-const IncomeTaxCalculator = lazy(() => import('./components/IncomeTaxCalculator'));
-const GSTCalculator = lazy(() => import('./components/GSTCalculator'));
-const FDRDCalculator = lazy(() => import('./components/FDRDCalculator'));
-const SIPCalculator = lazy(() => import('./components/SIPCalculator'));
-const LumpsumCalculator = lazy(() => import('./components/LumpsumCalculator'));
-const EMICalculator = lazy(() => import('./components/EMICalculator'));
-const MFCalculator = lazy(() => import('./components/MFCalculator'));
-const LoanEligibility = lazy(() => import('./components/LoanEligibility'));
-const BalanceTransfer = lazy(() => import('./components/BalanceTransfer'));
-const GratuityCalculator = lazy(() => import('./components/GratuityCalculator'));
-const CurrencyConverter = lazy(() => import('./components/CurrencyConverter'));
-const PersonalLoanCalculator = lazy(() => import('./components/PersonalLoanCalculator'));
-const AutoLoanCalculator = lazy(() => import('./components/AutoLoanCalculator'));
-const StudentLoanCalculator = lazy(() => import('./components/StudentLoanCalculator'));
-const CAGRCalculator = lazy(() => import('./components/CAGRCalculator'));
-const DividendYieldCalculator = lazy(() => import('./components/DividendYieldCalculator'));
-const ChildEducationPlanner = lazy(() => import('./components/ChildEducationPlanner'));
-const RentalYieldCalculator = lazy(() => import('./components/RentalYieldCalculator'));
-const DebtSnowball = lazy(() => import('./components/DebtSnowball'));
-const HLVCalculator = lazy(() => import('./components/HLVCalculator'));
-const BreakEvenCalculator = lazy(() => import('./components/BreakEvenCalculator'));
-const CreditCardPayoff = lazy(() => import('./components/CreditCardPayoff'));
-const TaxGuides = lazy(() => import('./components/TaxGuides'));
-const PSEOLandingPage = lazy(() => import('./components/PSEOLandingPage'));
-const ComparePage = lazy(() => import('./components/ComparePage'));
-const ComparisonsDirectory = lazy(() => import('./components/ComparisonsDirectory'));
-const CitiesDirectory = lazy(() => import('./components/CitiesDirectory'));
-const BlogHub = lazy(() => import('./components/BlogHub'));
-const TermInsuranceCalculator = lazy(() => import('./components/TermInsuranceCalculator'));
-const HealthInsuranceCalculator = lazy(() => import('./components/HealthInsuranceCalculator'));
-const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
-const Disclaimer = lazy(() => import('./components/Disclaimer'));
-const TermsOfService = lazy(() => import('./components/TermsOfService'));
-const ContactUs = lazy(() => import('./components/ContactUs'));
-const AboutUs = lazy(() => import('./components/AboutUs'));
+import MortgageCalculator from './components/MortgageCalculator';
+import RetirementCalculator from './components/RetirementCalculator';
+import IncomeTaxCalculator from './components/IncomeTaxCalculator';
+import GSTCalculator from './components/GSTCalculator';
+import FDRDCalculator from './components/FDRDCalculator';
+import SIPCalculator from './components/SIPCalculator';
+import LumpsumCalculator from './components/LumpsumCalculator';
+import EMICalculator from './components/EMICalculator';
+import MFCalculator from './components/MFCalculator';
+import LoanEligibility from './components/LoanEligibility';
+import BalanceTransfer from './components/BalanceTransfer';
+import GratuityCalculator from './components/GratuityCalculator';
+import CurrencyConverter from './components/CurrencyConverter';
+import PersonalLoanCalculator from './components/PersonalLoanCalculator';
+import AutoLoanCalculator from './components/AutoLoanCalculator';
+import StudentLoanCalculator from './components/StudentLoanCalculator';
+import CAGRCalculator from './components/CAGRCalculator';
+import DividendYieldCalculator from './components/DividendYieldCalculator';
+import ChildEducationPlanner from './components/ChildEducationPlanner';
+import RentalYieldCalculator from './components/RentalYieldCalculator';
+import DebtSnowball from './components/DebtSnowball';
+import HLVCalculator from './components/HLVCalculator';
+import BreakEvenCalculator from './components/BreakEvenCalculator';
+import CreditCardPayoff from './components/CreditCardPayoff';
+import TaxGuides from './components/TaxGuides';
+import PSEOLandingPage from './components/PSEOLandingPage';
+import ComparePage from './components/ComparePage';
+import ComparisonsDirectory from './components/ComparisonsDirectory';
+import CitiesDirectory from './components/CitiesDirectory';
+import BlogHub from './components/BlogHub';
+import TermInsuranceCalculator from './components/TermInsuranceCalculator';
+import HealthInsuranceCalculator from './components/HealthInsuranceCalculator';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import Disclaimer from './components/Disclaimer';
+import TermsOfService from './components/TermsOfService';
+import ContactUs from './components/ContactUs';
+import AboutUs from './components/AboutUs';
 
-const LoadingFallback = () => (
-  <div className="flex items-center justify-center p-32">
-    <div className="w-8 h-8 border-2 border-[#D4AF37] border-t-transparent rounded-full animate-spin"></div>
-  </div>
-);
-import { Menu, X, ShieldCheck, Wallet } from 'lucide-react';
+import { Menu, Wallet } from 'lucide-react';
 
 function RegionSynchronizer() {
   const { pathname } = useLocation();
@@ -131,10 +124,9 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
 
         <div className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
           <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
-            <Suspense fallback={<LoadingFallback />}>
-              <Routes>
-                <Route path="/" element={<Dashboard />} />
-                <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
+            <Routes>
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
               <Route path="/calculators/retirement" element={<RetirementCalculator />} />
               <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
               <Route path="/calculators/gst" element={<GSTCalculator />} />
@@ -186,7 +178,6 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
             <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
             <Route path="*" element={<Dashboard />} />
           </Routes>
-          </Suspense>
           <Footer />
         </div>
       </div>
