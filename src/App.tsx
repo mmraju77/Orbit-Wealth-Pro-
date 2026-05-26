@@ -3,26 +3,21 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    const scrollContainer = document.querySelector('.overflow-y-auto');
-    if (scrollContainer) scrollContainer.scrollTo(0, 0);
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
 import { HelmetProvider } from 'react-helmet-async';
+import { Menu, Wallet } from 'lucide-react';
+
+// Context
 import { LocaleProvider, useLocale } from './context/LocaleContext';
+
+// Components
 import Sidebar from './components/Sidebar';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import OrbitChat from './components/OrbitChat';
-import { resolveRegion } from './data/pSEOData';
 
+// Calculators & Pages
 import MortgageCalculator from './components/MortgageCalculator';
 import RetirementCalculator from './components/RetirementCalculator';
 import IncomeTaxCalculator from './components/IncomeTaxCalculator';
@@ -61,15 +56,24 @@ import TermsOfService from './components/TermsOfService';
 import ContactUs from './components/ContactUs';
 import AboutUs from './components/AboutUs';
 
-import { Menu, Wallet } from 'lucide-react';
+// Utils
+import { resolveRegion } from './data/pSEOData';
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    const scrollContainer = document.querySelector('.overflow-y-auto');
+    if (scrollContainer) scrollContainer.scrollTo(0, 0);
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function RegionSynchronizer() {
   const { pathname } = useLocation();
   const { setCurrency, setNumberSystem, currency: currentCurrency } = useLocale();
 
   useEffect(() => {
-    // Specifically parse window.location.hash as per user request for HashRouter compliance
-    // In HashRouter, pathname matches the part after #, but we'll use hash explicitly to be sure
     const hash = window.location.hash || '';
     const parts = hash.split('/').filter(p => p && p !== '#');
     
@@ -155,7 +159,6 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
               <Route path="/calculators/term-insurance" element={<TermInsuranceCalculator />} />
               <Route path="/calculators/health-insurance" element={<HealthInsuranceCalculator />} />
             
-            {/* Dynamic pSEO Routes */}
             <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
             <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
             <Route path="/compare/:pair" element={<ComparePage />} />
@@ -163,7 +166,6 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
             <Route path="/cities" element={<CitiesDirectory />} />
             <Route path="/insights" element={<BlogHub />} />
             
-            {/* Legacy redirects/backwards compatibility if needed, but here we strictly follow sitemap */}
             <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
             <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
             <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
@@ -182,13 +184,13 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
         </div>
       </div>
       <OrbitChat />
-    </main>
-  </div>
+      </main>
+    </div>
   );
 }
 
 export default function App() {
-  const [sidebarOpen, setSidebarOpen] = React.useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <HelmetProvider>
