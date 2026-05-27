@@ -15,15 +15,6 @@ export default defineConfig(({mode}) => {
       emptyOutDir: true,
       rollupOptions: {
         output: {
-          manualChunks: (id) => {
-            if (id.includes('node_modules')) {
-              if (id.includes('react')) return 'vendor-react';
-              if (id.includes('lucide-react')) return 'vendor-icons';
-              if (id.includes('motion')) return 'vendor-motion';
-              if (id.includes('recharts') || id.includes('d3')) return 'vendor-charts';
-              return 'vendor';
-            }
-          }
         }
       },
       chunkSizeWarningLimit: 2000,

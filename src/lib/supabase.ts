@@ -11,16 +11,25 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
 export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey && supabaseUrl.startsWith('https://'));
 
 if (!isSupabaseConfigured) {
-  console.warn('Supabase credentials missing or invalid. Database features will be disabled.');
+  console.warn('Supabase credentials missing or invalid. Database features and analytics tracking will be disabled.');
 }
+
+// Create a safe, non-crashing mock client if not configured
+const mockSupabase = {
+  from: () => ({
+    insert: () => Promise.resolve({ data: null, error: null }),
+    select: () => ({
+      eq: () => ({
+        maybeSingle: () => Promise.resolve({ data: null, error: null }),
+      }),
+    }),
+  }),
+  auth: {
+    getSession: () => Promise.resolve({ data: { session: null }, error: null }),
+    onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } } }),
+  }
+} as any;
 
 export const supabase = isSupabaseConfigured 
   ? createClient(supabaseUrl, supabaseAnonKey)
-  : new Proxy({} as any, {
-      get: (target, prop) => {
-        // Return a function that throws for any property access (like .from(), .auth, etc.)
-        return () => {
-          throw new Error('Supabase is not configured. Please provide VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY env variables.');
-        };
-      }
-    });
+  : mockSupabase;
