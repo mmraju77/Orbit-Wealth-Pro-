@@ -45,9 +45,9 @@ async function startServer() {
       }
 
       // 3. Secure AI Integration (Never expose API key to client)
-      const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
       const response = await genAI.models.generateContent({
-        model: "gemini-3.5-flash",
+        model: "gemini-1.5-flash",
         contents: [
           {
             role: "user",
@@ -67,7 +67,7 @@ async function startServer() {
   });
 
   // Vite middleware for development
-  const isProd = process.env.NODE_ENV === "production" || process.env.NODE_ENV === "prod" || !process.env.NODE_ENV;
+  const isProd = process.env.NODE_ENV === "production";
   const distPath = path.resolve(process.cwd(), "dist");
 
   if (isProd) {
@@ -108,4 +108,8 @@ async function startServer() {
   });
 }
 
-startServer();
+console.log("Starting server process...");
+startServer().catch(err => {
+  console.error("FATAL: Failed to start server:", err);
+  process.exit(1);
+});

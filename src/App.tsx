@@ -104,6 +104,17 @@ function RegionSynchronizer() {
 function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; setSidebarOpen: (o: boolean) => void }) {
   const { currency } = useLocale();
   
+  useEffect(() => {
+    const handleFocus = (e: FocusEvent) => {
+      if (e.target instanceof HTMLInputElement && e.target.type === 'number') {
+        const input = e.target;
+        setTimeout(() => input.select(), 0);
+      }
+    };
+    document.addEventListener('focus', handleFocus, true);
+    return () => document.removeEventListener('focus', handleFocus, true);
+  }, []);
+
   return (
     <div key={currency} className="flex bg-[#0B1221] min-h-screen text-white font-sans selection:bg-[#D4AF37] selection:text-black relative">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />

@@ -10,6 +10,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, B
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 export default function FDRDCalculator() {
   const { formatCurrency, currencySymbol, labels, currency } = useLocale();

@@ -13,6 +13,7 @@ import { useParams } from 'react-router-dom';
 import SEOSection from './SEOSection';
 import { normalizeRegionKey } from '../data/pSEOData';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 const REGIONAL_DEFAULTS: Record<string, { retirementAge: number; inflation: number }> = {
   india: { retirementAge: 60, inflation: 6 },
@@ -158,27 +159,17 @@ export default function RetirementCalculator() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
-                    <input 
-                      type="number" 
-                      value={inputs.currentAge === 0 ? '0' : inputs.currentAge}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, currentAge: val });
-                      }}
+                    <NumericInput 
+                      value={inputs.currentAge}
+                      onChange={(val) => setInputs({ ...inputs, currentAge: val })}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Retirement Age</label>
-                    <input 
-                      type="number" 
-                      value={inputs.retirementAge === 0 ? '0' : inputs.retirementAge}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, retirementAge: val });
-                      }}
+                    <NumericInput 
+                      value={inputs.retirementAge}
+                      onChange={(val) => setInputs({ ...inputs, retirementAge: val })}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />
                  </div>
@@ -205,27 +196,19 @@ export default function RetirementCalculator() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
-                    <input 
-                      type="number" step="0.5" 
-                      value={inputs.expectedReturn === 0 ? '0' : inputs.expectedReturn}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, expectedReturn: val });
-                      }}
+                    <NumericInput 
+                      step="0.5" 
+                      value={inputs.expectedReturn}
+                      onChange={(val) => setInputs({ ...inputs, expectedReturn: val })}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Inflation Rate (%)</label>
-                    <input 
-                      type="number" step="0.1" 
-                      value={inputs.expectedInflation === 0 ? '0' : inputs.expectedInflation}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, expectedInflation: val });
-                      }}
+                    <NumericInput 
+                      step="0.1" 
+                      value={inputs.expectedInflation}
+                      onChange={(val) => setInputs({ ...inputs, expectedInflation: val })}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>

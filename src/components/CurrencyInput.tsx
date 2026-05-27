@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import NumericInput from './NumericInput';
 import { useLocale } from '../context/LocaleContext';
 
 interface CurrencyInputProps {
@@ -40,16 +40,9 @@ export default function CurrencyInput({
       
       <div className="relative">
         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold z-10 pointer-events-none">{currencySymbol}</div>
-        <input 
-          type="number"
-          value={value === 0 ? '0' : value}
-          onFocus={(e) => e.target.select()}
-          onChange={(e) => {
-            const val = e.target.value;
-            // Strip leading zeros cleanly while allowing single '0'
-            const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-            onChange(Number(cleanVal));
-          }}
+        <NumericInput 
+          value={value}
+          onChange={onChange}
           placeholder={placeholder}
           className="w-full bg-black/40 border border-white/5 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
         />
