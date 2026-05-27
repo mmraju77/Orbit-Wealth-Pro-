@@ -24,7 +24,7 @@ const NumericInput: React.FC<NumericInputProps> = ({
   ...props 
 }) => {
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    // Zero-delay timeout bypasses browser race conditions for selection
+    // Zero-delay timeout ensures the focus event is fully processed before selection
     const target = e.target;
     setTimeout(() => target.select(), 0);
     if (props.onFocus) props.onFocus(e);
@@ -32,24 +32,26 @@ const NumericInput: React.FC<NumericInputProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-    // Strict string sanitization: convert to Number then back to String to strip leading zeros
-    const cleanVal = rawValue === '' ? '' : String(Number(rawValue));
+    // Strip leading zeros while allowing for '0' as a single digit
+    const cleanVal = rawValue === '' ? '' : rawValue.replace(/^0+(?!$)/, '');
     
-    // Pass number to parent state if valid
     const numValue = cleanVal === '' ? 0 : Number(cleanVal);
     if (!isNaN(numValue)) {
       onChange(numValue);
     }
   };
 
+  const displayValue = String(value);
+  const formattedValue = displayValue.startsWith('0') && displayValue.length > 1 
+    ? displayValue.replace(/^0+/, '') 
+    : displayValue;
+
   return (
     <div className={wrapperClassName}>
       <input
         {...props}
         type="number"
-        // Force the rendered value to strip leading zeros via String(Number())
-        // If it's 0, it will show as "0". 
-        value={value === 0 && props.placeholder ? '' : String(Number(value || 0))}
+        value={value === 0 && props.placeholder ? '' : formattedValue}
         onFocus={handleFocus}
         onChange={handleChange}
         className={className}
