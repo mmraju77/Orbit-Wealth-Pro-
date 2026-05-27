@@ -122,9 +122,8 @@ export default function LoanEligibility() {
                       value={inputs.interestRate === 0 ? '0' : inputs.interestRate}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, interestRate: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, interestRate: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
@@ -136,9 +135,8 @@ export default function LoanEligibility() {
                       value={inputs.loanTerm === 0 ? '0' : inputs.loanTerm}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, loanTerm: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, loanTerm: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
@@ -150,9 +148,8 @@ export default function LoanEligibility() {
                       value={inputs.maxFOIR === 0 ? '0' : inputs.maxFOIR}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, maxFOIR: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, maxFOIR: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />

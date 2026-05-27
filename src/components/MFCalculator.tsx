@@ -146,9 +146,8 @@ export default function MFCalculator() {
                       value={inputs.expectedReturn === 0 ? '0' : inputs.expectedReturn}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, expectedReturn: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, expectedReturn: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
@@ -160,9 +159,8 @@ export default function MFCalculator() {
                       value={inputs.expenseRatio === 0 ? '0' : inputs.expenseRatio}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, expenseRatio: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, expenseRatio: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />

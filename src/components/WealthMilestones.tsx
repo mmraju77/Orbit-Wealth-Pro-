@@ -18,7 +18,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
   const [results, setResults] = useState<Record<string, number>>({});
 
   const handleUpdate = (id: string, field: keyof Goal, value: string) => {
-    const numValue = parseFloat(value.replace(/[^0-9.]/g, '')) || 0;
+    const numValue = value === '' ? 0 : Number(value);
     const updatedGoals = goals.map(g => g.id === id ? { ...g, [field]: numValue } : g);
     onUpdateGoals(updatedGoals);
   };

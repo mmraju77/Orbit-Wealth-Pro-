@@ -93,9 +93,8 @@ export default function AutoLoanCalculator() {
                      value={carPrice === 0 ? '0' : carPrice}
                      onFocus={(e) => e.target.select()}
                      onChange={(e) => {
-                       const val = e.target.value;
-                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                       setCarPrice(Number(cleanVal));
+                       const val = e.target.value === '' ? 0 : Number(e.target.value);
+                       setCarPrice(val);
                      }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
@@ -109,9 +108,8 @@ export default function AutoLoanCalculator() {
                      value={salesTax === 0 ? '0' : salesTax}
                      onFocus={(e) => e.target.select()}
                      onChange={(e) => {
-                       const val = e.target.value;
-                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                       setSalesTax(Number(cleanVal));
+                       const val = e.target.value === '' ? 0 : Number(e.target.value);
+                       setSalesTax(val);
                      }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
@@ -127,9 +125,8 @@ export default function AutoLoanCalculator() {
                      value={downPayment === 0 ? '0' : downPayment}
                      onFocus={(e) => e.target.select()}
                      onChange={(e) => {
-                       const val = e.target.value;
-                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                       setDownPayment(Number(cleanVal));
+                       const val = e.target.value === '' ? 0 : Number(e.target.value);
+                       setDownPayment(val);
                      }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
@@ -144,9 +141,8 @@ export default function AutoLoanCalculator() {
                      value={tradeIn === 0 ? '0' : tradeIn}
                      onFocus={(e) => e.target.select()}
                      onChange={(e) => {
-                       const val = e.target.value;
-                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                       setTradeIn(Number(cleanVal));
+                       const val = e.target.value === '' ? 0 : Number(e.target.value);
+                       setTradeIn(val);
                      }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />

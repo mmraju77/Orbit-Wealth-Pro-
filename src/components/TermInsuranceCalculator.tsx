@@ -110,9 +110,8 @@ export default function TermInsuranceCalculator() {
                       value={inputs.age === 0 ? '0' : inputs.age}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, age: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, age: val });
                       }}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />

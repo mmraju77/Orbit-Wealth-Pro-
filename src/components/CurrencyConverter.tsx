@@ -124,9 +124,8 @@ export default function CurrencyConverter() {
                       value={amount === 0 ? '0' : amount}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setAmount(Number(cleanVal));
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setAmount(val);
                         handleUpdate();
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-3xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"

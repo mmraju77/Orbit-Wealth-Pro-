@@ -104,9 +104,8 @@ export default function DebtSnowball() {
                       value={debt.balance === 0 ? '0' : debt.balance} 
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        updateDebt(debt.id, 'balance', Number(cleanVal));
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        updateDebt(debt.id, 'balance', val);
                       }} 
                       className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
                     />
@@ -121,9 +120,8 @@ export default function DebtSnowball() {
                       value={debt.minPayment === 0 ? '0' : debt.minPayment} 
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        updateDebt(debt.id, 'minPayment', Number(cleanVal));
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        updateDebt(debt.id, 'minPayment', val);
                       }} 
                       className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
                     />
@@ -137,9 +135,8 @@ export default function DebtSnowball() {
                       value={debt.rate === 0 ? '0' : debt.rate} 
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        updateDebt(debt.id, 'rate', Number(cleanVal));
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        updateDebt(debt.id, 'rate', val);
                       }} 
                       className="w-full bg-transparent border-none outline-none text-xs text-white" 
                     />

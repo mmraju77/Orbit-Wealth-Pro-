@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { Linkedin, ShieldCheck, Award, User } from 'lucide-react';
+import { Linkedin, ShieldCheck, Award, User, TrendingUp } from 'lucide-react';
 import StructuredData from './StructuredData';
 
 export default function AboutUs() {

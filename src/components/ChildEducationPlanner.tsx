@@ -84,9 +84,8 @@ export default function ChildEducationPlanner() {
                       value={inflation === 0 ? '0' : inflation}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInflation(Number(cleanVal));
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInflation(val);
                       }}
                       className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
                     />
@@ -98,9 +97,8 @@ export default function ChildEducationPlanner() {
                       value={expectedReturn === 0 ? '0' : expectedReturn}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setExpectedReturn(Number(cleanVal));
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setExpectedReturn(val);
                       }}
                       className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
                     />

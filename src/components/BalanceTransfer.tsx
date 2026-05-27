@@ -114,9 +114,8 @@ export default function BalanceTransfer() {
                       value={inputs.existingRate === 0 ? '0' : inputs.existingRate}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, existingRate: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, existingRate: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
@@ -128,9 +127,8 @@ export default function BalanceTransfer() {
                       value={inputs.newRate === 0 ? '0' : inputs.newRate}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, newRate: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, newRate: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />
@@ -145,9 +143,8 @@ export default function BalanceTransfer() {
                       value={inputs.remainingTerm === 0 ? '0' : inputs.remainingTerm}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, remainingTerm: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, remainingTerm: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
@@ -159,9 +156,8 @@ export default function BalanceTransfer() {
                       value={inputs.processingFees === 0 ? '0' : inputs.processingFees}
                       onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        const val = e.target.value;
-                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
-                        setInputs({ ...inputs, processingFees: Number(cleanVal) });
+                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                        setInputs({ ...inputs, processingFees: val });
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
