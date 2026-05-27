@@ -10,6 +10,7 @@ import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 export default function CreditCardPayoff() {
   const { formatCurrency } = useLocale();
@@ -89,6 +90,12 @@ export default function CreditCardPayoff() {
                        <span>APR (%)</span>
                        <span className="text-[#D4AF37]">{interestRate}%</span>
                     </div>
+                    <NumericInput 
+                      min={1} max={48} step="1" 
+                      value={interestRate} 
+                      onChange={setInterestRate} 
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
+                    />
                     <input type="range" min="1" max="48" step="1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
                  </div>
                  <CurrencyInput 

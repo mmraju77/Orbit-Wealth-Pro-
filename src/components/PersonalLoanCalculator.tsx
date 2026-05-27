@@ -133,13 +133,21 @@ export default function PersonalLoanCalculator() {
                </div>
                <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Tenure (Years)</label>
-                  <select 
-                    value={tenure}
-                    onChange={(e) => setTenure(Number(e.target.value))}
-                    className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none appearance-none cursor-pointer"
-                  >
-                    {[1, 2, 3, 4, 5, 7, 10].map(yr => <option key={yr} value={yr} className="bg-black">{yr} Years</option>)}
-                  </select>
+                  <div className="space-y-4">
+                    <NumericInput 
+                      min={1} max={30} 
+                      value={tenure}
+                      onChange={setTenure}
+                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37]"
+                    />
+                    <select 
+                      value={tenure}
+                      onChange={(e) => setTenure(Number(e.target.value))}
+                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none appearance-none cursor-pointer"
+                    >
+                      {[1, 2, 3, 4, 5, 7, 10].map(yr => <option key={yr} value={yr} className="bg-black">{yr} Years</option>)}
+                    </select>
+                  </div>
                </div>
             </div>
 

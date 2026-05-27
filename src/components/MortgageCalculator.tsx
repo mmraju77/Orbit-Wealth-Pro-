@@ -199,14 +199,22 @@ export default function MortgageCalculator() {
                </div>
                <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Loan Term</label>
-                  <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
-                    <select 
+                  <div className="space-y-4">
+                    <NumericInput 
+                      min={1} max={50} 
                       value={inputs.loanTerm}
-                      onChange={(e) => setInputs({ ...inputs, loanTerm: Number(e.target.value) })}
-                      className="bg-transparent border-none text-white font-bold w-full outline-none appearance-none cursor-pointer"
-                    >
-                      {[10, 15, 20, 25, 30].map(yr => <option key={yr} value={yr} className="bg-black">{yr} Years</option>)}
-                    </select>
+                      onChange={(val) => setInputs({ ...inputs, loanTerm: val })}
+                      className="bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold w-full outline-none"
+                    />
+                    <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
+                      <select 
+                        value={inputs.loanTerm}
+                        onChange={(e) => setInputs({ ...inputs, loanTerm: Number(e.target.value) })}
+                        className="bg-transparent border-none text-white font-bold w-full outline-none appearance-none cursor-pointer"
+                      >
+                        {[10, 15, 20, 25, 30].map(yr => <option key={yr} value={yr} className="bg-black">{yr} Years</option>)}
+                      </select>
+                    </div>
                   </div>
                </div>
              </div>

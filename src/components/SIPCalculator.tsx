@@ -13,6 +13,8 @@ import CurrencyInput from './CurrencyInput';
 import StructuredData from './StructuredData';
 import { fetchLiveBenchmarks } from '../lib/liveFinance';
 
+import NumericInput from './NumericInput';
+
 const INITIAL_INPUTS: InvestmentInputs = {
   investmentAmount: 0,
   monthlyInvestment: 5000,
@@ -142,7 +144,11 @@ export default function SIPCalculator() {
                   <label htmlFor="return-rate" className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
                   {liveSync && <span className="text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
                 </div>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
+                <NumericInput 
+                  value={inputs.expectedReturn}
+                  onChange={(val) => setInputs({ ...inputs, expectedReturn: val })}
+                  className="w-20 bg-white/5 border border-white/5 rounded-lg px-2 py-1 text-right text-[#D4AF37] font-bold outline-none focus:border-[#D4AF37]"
+                />
               </div>
               <input 
                 id="return-rate"
@@ -157,7 +163,11 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label htmlFor="investment-period" className="text-xs font-bold text-white/50 uppercase tracking-widest">Investment Period (Years)</label>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yr</div>
+                <NumericInput 
+                  value={inputs.duration}
+                  onChange={(val) => setInputs({ ...inputs, duration: val })}
+                  className="w-20 bg-white/5 border border-white/5 rounded-lg px-2 py-1 text-right text-[#D4AF37] font-bold outline-none focus:border-[#D4AF37]"
+                />
               </div>
               <input 
                 id="investment-period"

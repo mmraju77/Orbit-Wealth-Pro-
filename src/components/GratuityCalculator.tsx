@@ -10,6 +10,7 @@ import { GratuityInputs } from '../types';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 const INITIAL_INPUTS: GratuityInputs = {
   monthlySalary: 50000,
@@ -106,6 +107,12 @@ export default function GratuityCalculator() {
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Years of Service</label>
                     <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.yearsOfService} Yrs</div>
                  </div>
+                 <NumericInput 
+                   min={0} max={50} step="1"
+                   value={inputs.yearsOfService}
+                   onChange={(val) => setInputs({ ...inputs, yearsOfService: val })}
+                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
+                 />
                  <input 
                    type="range" min="1" max="50" step="1"
                    value={inputs.yearsOfService}

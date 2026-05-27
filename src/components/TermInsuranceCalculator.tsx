@@ -116,14 +116,22 @@ export default function TermInsuranceCalculator() {
                </div>
                <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Policy Term (Years)</label>
-                  <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
-                    <select 
+                  <div className="space-y-4">
+                    <NumericInput 
+                      min={5} max={50} 
                       value={inputs.term}
-                      onChange={(e) => setInputs({ ...inputs, term: Number(e.target.value) })}
-                      className="bg-transparent border-none text-white font-bold w-full outline-none appearance-none"
-                    >
-                      {[10, 15, 20, 25, 30, 35, 40].map(yr => <option key={yr} value={yr} className="bg-black">{yr} Years</option>)}
-                    </select>
+                      onChange={(val) => setInputs({ ...inputs, term: val })}
+                      className="bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold w-full outline-none"
+                    />
+                    <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
+                      <select 
+                        value={inputs.term}
+                        onChange={(e) => setInputs({ ...inputs, term: Number(e.target.value) })}
+                        className="bg-transparent border-none text-white font-bold w-full outline-none appearance-none"
+                      >
+                        {[10, 15, 20, 25, 30, 35, 40].map(yr => <option key={yr} value={yr} className="bg-black">{yr} Years</option>)}
+                      </select>
+                    </div>
                   </div>
                </div>
              </div>

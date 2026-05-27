@@ -6,6 +6,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tool
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 const INITIAL_INPUTS: InvestmentInputs = {
   investmentAmount: 100000,
@@ -96,7 +97,11 @@ export default function LumpsumCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.expectedReturn}%</div>
+                <NumericInput 
+                  value={inputs.expectedReturn}
+                  onChange={(val) => setInputs({ ...inputs, expectedReturn: val })}
+                  className="w-20 bg-white/5 border border-white/5 rounded-lg px-2 py-1 text-right text-[#D4AF37] font-bold outline-none focus:border-[#D4AF37]"
+                />
               </div>
               <input 
                 type="range" min="1" max="30" step="0.5"
@@ -109,7 +114,11 @@ export default function LumpsumCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yr</div>
+                <NumericInput 
+                  value={inputs.duration}
+                  onChange={(val) => setInputs({ ...inputs, duration: val })}
+                  className="w-20 bg-white/5 border border-white/5 rounded-lg px-2 py-1 text-right text-[#D4AF37] font-bold outline-none focus:border-[#D4AF37]"
+                />
               </div>
               <input 
                 type="range" min="1" max="40" step="1"

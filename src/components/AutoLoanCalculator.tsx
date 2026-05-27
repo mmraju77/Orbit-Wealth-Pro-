@@ -137,6 +137,12 @@ export default function AutoLoanCalculator() {
                    <span>Interest Rate</span>
                    <span className="text-[#D4AF37]">{interestRate}%</span>
                 </div>
+                <NumericInput 
+                  min={0} max={20} step="0.1"
+                  value={interestRate}
+                  onChange={setInterestRate}
+                  className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
+                />
                 <input 
                   type="range" min="0" max="20" step="0.1"
                   value={interestRate}
@@ -149,6 +155,12 @@ export default function AutoLoanCalculator() {
                    <span>Loan Term ({tenure} months)</span>
                    <span className="text-white">{tenure / 12} Years</span>
                 </div>
+                <NumericInput 
+                  min={12} max={84} step="12"
+                  value={tenure}
+                  onChange={setTenure}
+                  className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
+                />
                 <input 
                   type="range" min="12" max="84" step="12"
                   value={tenure}

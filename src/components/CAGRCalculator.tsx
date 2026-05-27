@@ -10,6 +10,7 @@ import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 export default function CAGRCalculator() {
   const { formatCurrency } = useLocale();
@@ -77,6 +78,12 @@ export default function CAGRCalculator() {
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
                   <span className="text-[#D4AF37] font-bold">{duration} Yrs</span>
                </div>
+               <NumericInput 
+                 min={1} max={50} 
+                 value={duration} 
+                 onChange={setDuration} 
+                 className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
+               />
                <input 
                  type="range" min="1" max="50"
                  value={duration}

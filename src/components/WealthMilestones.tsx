@@ -158,9 +158,13 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Exp. Return (APR)</span>
-                    <div className="w-full bg-white/[0.02] border border-white/5 rounded-lg px-3 py-2 text-sm font-bold text-emerald-400">
-                      {(goal.annualReturn * 100).toFixed(1)}%
+                    <span className="text-[9px] text-white/30 uppercase font-bold">Exp. Return (APR %)</span>
+                    <div className="relative">
+                      <NumericInput 
+                        value={goal.annualReturn * 100}
+                        onChange={(val) => handleUpdate(goal.id, 'annualReturn', val / 100)}
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-emerald-400 focus:outline-none focus:border-[#f59e0b] transition-colors"
+                      />
                     </div>
                   </div>
                 </div>

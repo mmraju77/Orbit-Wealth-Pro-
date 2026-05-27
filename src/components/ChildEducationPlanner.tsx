@@ -100,6 +100,12 @@ export default function ChildEducationPlanner() {
                     <span>Years until admission</span>
                     <span className="text-[#D4AF37]">{yearsUntilUni} Years</span>
                  </div>
+                 <NumericInput 
+                   min={1} max={30} 
+                   value={yearsUntilUni}
+                   onChange={setYearsUntilUni}
+                   className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37] mb-4"
+                 />
                  <input 
                    type="range" min="1" max="25"
                    value={yearsUntilUni}

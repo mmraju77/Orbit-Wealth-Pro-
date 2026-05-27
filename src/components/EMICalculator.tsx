@@ -6,6 +6,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } 
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 const INITIAL_INPUTS: MortgageInputs = {
   homePrice: 500000,
@@ -105,6 +106,12 @@ export default function EMICalculator() {
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.interestRate}%</div>
               </div>
+              <NumericInput 
+                min={1} max={25} step="0.1"
+                value={inputs.interestRate}
+                onChange={(val) => setInputs({ ...inputs, interestRate: val })}
+                className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
+              />
               <input 
                 type="range" min="1" max="25" step="0.1"
                 value={inputs.interestRate}
@@ -118,6 +125,12 @@ export default function EMICalculator() {
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Loan Tenure (Years)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.loanTerm} Yr</div>
               </div>
+              <NumericInput 
+                min={1} max={30} step="1"
+                value={inputs.loanTerm}
+                onChange={(val) => setInputs({ ...inputs, loanTerm: val })}
+                className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
+              />
               <input 
                 type="range" min="1" max="30" step="1"
                 value={inputs.loanTerm}
