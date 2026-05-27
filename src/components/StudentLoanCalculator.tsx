@@ -116,8 +116,14 @@ export default function StudentLoanCalculator() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
                     <input 
-                      type="number" step="0.1" value={interestRate}
-                      onChange={(e) => setInterestRate(Number(e.target.value))}
+                      type="number" step="0.1" 
+                      value={interestRate === 0 ? '0' : interestRate}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInterestRate(Number(cleanVal));
+                      }}
                       className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
                     />
                  </div>

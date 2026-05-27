@@ -121,9 +121,12 @@ export default function CurrencyConverter() {
                   <div className="relative">
                     <input 
                       type="number"
-                      value={amount}
+                      value={amount === 0 ? '0' : amount}
+                      onFocus={(e) => e.target.select()}
                       onChange={(e) => {
-                        setAmount(Number(e.target.value));
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setAmount(Number(cleanVal));
                         handleUpdate();
                       }}
                       className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-3xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"

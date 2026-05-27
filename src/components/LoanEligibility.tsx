@@ -118,24 +118,42 @@ export default function LoanEligibility() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Rate (%)</label>
                     <input 
-                      type="number" step="0.1" value={inputs.interestRate}
-                      onChange={(e) => setInputs({ ...inputs, interestRate: Number(e.target.value) })}
+                      type="number" step="0.1" 
+                      value={inputs.interestRate === 0 ? '0' : inputs.interestRate}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, interestRate: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Term (Yrs)</label>
                     <input 
-                      type="number" value={inputs.loanTerm}
-                      onChange={(e) => setInputs({ ...inputs, loanTerm: Number(e.target.value) })}
+                      type="number" 
+                      value={inputs.loanTerm === 0 ? '0' : inputs.loanTerm}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, loanTerm: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">FOIR (%)</label>
                     <input 
-                      type="number" value={inputs.maxFOIR}
-                      onChange={(e) => setInputs({ ...inputs, maxFOIR: Number(e.target.value) })}
+                      type="number" 
+                      value={inputs.maxFOIR === 0 ? '0' : inputs.maxFOIR}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, maxFOIR: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />
                  </div>

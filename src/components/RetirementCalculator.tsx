@@ -159,16 +159,28 @@ export default function RetirementCalculator() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
                     <input 
-                      type="number" value={inputs.currentAge}
-                      onChange={(e) => setInputs({ ...inputs, currentAge: Number(e.target.value) })}
+                      type="number" 
+                      value={inputs.currentAge === 0 ? '0' : inputs.currentAge}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, currentAge: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Retirement Age</label>
                     <input 
-                      type="number" value={inputs.retirementAge}
-                      onChange={(e) => setInputs({ ...inputs, retirementAge: Number(e.target.value) })}
+                      type="number" 
+                      value={inputs.retirementAge === 0 ? '0' : inputs.retirementAge}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, retirementAge: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />
                  </div>
@@ -196,16 +208,28 @@ export default function RetirementCalculator() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
                     <input 
-                      type="number" step="0.5" value={inputs.expectedReturn}
-                      onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
+                      type="number" step="0.5" 
+                      value={inputs.expectedReturn === 0 ? '0' : inputs.expectedReturn}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, expectedReturn: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Inflation Rate (%)</label>
                     <input 
-                      type="number" step="0.1" value={inputs.expectedInflation}
-                      onChange={(e) => setInputs({ ...inputs, expectedInflation: Number(e.target.value) })}
+                      type="number" step="0.1" 
+                      value={inputs.expectedInflation === 0 ? '0' : inputs.expectedInflation}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, expectedInflation: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>

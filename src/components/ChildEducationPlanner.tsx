@@ -80,16 +80,28 @@ export default function ChildEducationPlanner() {
                  <div className="space-y-2">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Education Inflation (%)</label>
                     <input 
-                      type="number" value={inflation}
-                      onChange={(e) => setInflation(Number(e.target.value))}
+                      type="number" 
+                      value={inflation === 0 ? '0' : inflation}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInflation(Number(cleanVal));
+                      }}
                       className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Returns (%)</label>
                     <input 
-                      type="number" value={expectedReturn}
-                      onChange={(e) => setExpectedReturn(Number(e.target.value))}
+                      type="number" 
+                      value={expectedReturn === 0 ? '0' : expectedReturn}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setExpectedReturn(Number(cleanVal));
+                      }}
                       className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
                     />
                  </div>

@@ -125,11 +125,11 @@ export default function IncomeTaxCalculator() {
                  <input 
                    type="number"
                    value={inputs.amount === 0 ? '0' : inputs.amount}
-                   onFocus={(e) => e.target.value === '0' && e.target.select()}
+                   onFocus={(e) => e.target.select()}
                    onChange={(e) => {
                      const val = e.target.value;
-                     const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
-                     setInputs({ ...inputs, amount: parsed });
+                     const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                     setInputs({ ...inputs, amount: Number(cleanVal) });
                    }}
                    className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />

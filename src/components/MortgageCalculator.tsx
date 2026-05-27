@@ -190,11 +190,11 @@ export default function MortgageCalculator() {
                     <input 
                       type="number" step="0.1" 
                       value={inputs.interestRate === 0 ? '0' : inputs.interestRate}
-                      onFocus={(e) => e.target.value === '0' && e.target.select()}
+                      onFocus={(e) => e.target.select()}
                       onChange={(e) => {
                         const val = e.target.value;
-                        const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
-                        setInputs({ ...inputs, interestRate: parsed });
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, interestRate: Number(cleanVal) });
                       }}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />

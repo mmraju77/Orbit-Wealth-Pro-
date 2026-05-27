@@ -89,8 +89,14 @@ export default function AutoLoanCalculator() {
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <input 
-                     type="number" value={carPrice}
-                     onChange={(e) => setCarPrice(Number(e.target.value))}
+                     type="number" 
+                     value={carPrice === 0 ? '0' : carPrice}
+                     onFocus={(e) => e.target.select()}
+                     onChange={(e) => {
+                       const val = e.target.value;
+                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                       setCarPrice(Number(cleanVal));
+                     }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                 </div>
@@ -99,8 +105,14 @@ export default function AutoLoanCalculator() {
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Sales Tax (%)</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <input 
-                     type="number" value={salesTax}
-                     onChange={(e) => setSalesTax(Number(e.target.value))}
+                     type="number" 
+                     value={salesTax === 0 ? '0' : salesTax}
+                     onFocus={(e) => e.target.select()}
+                     onChange={(e) => {
+                       const val = e.target.value;
+                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                       setSalesTax(Number(cleanVal));
+                     }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                    <Percent className="w-4 h-4 text-[#D4AF37]" />
@@ -111,8 +123,14 @@ export default function AutoLoanCalculator() {
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <input 
-                     type="number" value={downPayment}
-                     onChange={(e) => setDownPayment(Number(e.target.value))}
+                     type="number" 
+                     value={downPayment === 0 ? '0' : downPayment}
+                     onFocus={(e) => e.target.select()}
+                     onChange={(e) => {
+                       const val = e.target.value;
+                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                       setDownPayment(Number(cleanVal));
+                     }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                 </div>
@@ -122,8 +140,14 @@ export default function AutoLoanCalculator() {
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <input 
-                     type="number" value={tradeIn}
-                     onChange={(e) => setTradeIn(Number(e.target.value))}
+                     type="number" 
+                     value={tradeIn === 0 ? '0' : tradeIn}
+                     onFocus={(e) => e.target.select()}
+                     onChange={(e) => {
+                       const val = e.target.value;
+                       const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                       setTradeIn(Number(cleanVal));
+                     }}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                 </div>

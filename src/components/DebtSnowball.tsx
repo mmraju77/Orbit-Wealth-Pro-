@@ -99,20 +99,50 @@ export default function DebtSnowball() {
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Balance</label>
                   <div className="flex items-center gap-1">
                     <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
-                    <input type="number" value={debt.balance} onChange={e => updateDebt(debt.id, 'balance', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" />
+                    <input 
+                      type="number" 
+                      value={debt.balance === 0 ? '0' : debt.balance} 
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        updateDebt(debt.id, 'balance', Number(cleanVal));
+                      }} 
+                      className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
+                    />
                   </div>
                 </div>
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Min PMT</label>
                   <div className="flex items-center gap-1">
                     <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
-                    <input type="number" value={debt.minPayment} onChange={e => updateDebt(debt.id, 'minPayment', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" />
+                    <input 
+                      type="number" 
+                      value={debt.minPayment === 0 ? '0' : debt.minPayment} 
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        updateDebt(debt.id, 'minPayment', Number(cleanVal));
+                      }} 
+                      className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
+                    />
                   </div>
                 </div>
                 <div className="flex items-end justify-between">
                   <div className="space-y-1">
                     <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Rate %</label>
-                    <input type="number" value={debt.rate} onChange={e => updateDebt(debt.id, 'rate', Number(e.target.value))} className="w-full bg-transparent border-none outline-none text-xs text-white" />
+                    <input 
+                      type="number" 
+                      value={debt.rate === 0 ? '0' : debt.rate} 
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        updateDebt(debt.id, 'rate', Number(cleanVal));
+                      }} 
+                      className="w-full bg-transparent border-none outline-none text-xs text-white" 
+                    />
                   </div>
                   <button onClick={() => removeDebt(debt.id)} className="p-1 text-white/10 hover:text-rose-500 transition-colors">
                     <Trash2 className="w-4 h-4" />

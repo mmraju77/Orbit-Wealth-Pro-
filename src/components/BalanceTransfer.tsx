@@ -110,16 +110,28 @@ export default function BalanceTransfer() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Existing Rate (%)</label>
                     <input 
-                      type="number" step="0.1" value={inputs.existingRate}
-                      onChange={(e) => setInputs({ ...inputs, existingRate: Number(e.target.value) })}
+                      type="number" step="0.1" 
+                      value={inputs.existingRate === 0 ? '0' : inputs.existingRate}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, existingRate: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">New Rate (%)</label>
                     <input 
-                      type="number" step="0.1" value={inputs.newRate}
-                      onChange={(e) => setInputs({ ...inputs, newRate: Number(e.target.value) })}
+                      type="number" step="0.1" 
+                      value={inputs.newRate === 0 ? '0' : inputs.newRate}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, newRate: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
                     />
                  </div>
@@ -129,16 +141,28 @@ export default function BalanceTransfer() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Remaining Tenure (Yrs)</label>
                     <input 
-                      type="number" value={inputs.remainingTerm}
-                      onChange={(e) => setInputs({ ...inputs, remainingTerm: Number(e.target.value) })}
+                      type="number" 
+                      value={inputs.remainingTerm === 0 ? '0' : inputs.remainingTerm}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, remainingTerm: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Processing Fees</label>
                     <input 
-                      type="number" value={inputs.processingFees}
-                      onChange={(e) => setInputs({ ...inputs, processingFees: Number(e.target.value) })}
+                      type="number" 
+                      value={inputs.processingFees === 0 ? '0' : inputs.processingFees}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, processingFees: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
                     />
                  </div>

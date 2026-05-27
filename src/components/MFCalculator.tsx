@@ -142,16 +142,28 @@ export default function MFCalculator() {
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
                     <input 
-                      type="number" step="0.5" value={inputs.expectedReturn}
-                      onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
+                      type="number" step="0.5" 
+                      value={inputs.expectedReturn === 0 ? '0' : inputs.expectedReturn}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, expectedReturn: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expense Ratio (%)</label>
                     <input 
-                      type="number" step="0.1" value={inputs.expenseRatio}
-                      onChange={(e) => setInputs({ ...inputs, expenseRatio: Number(e.target.value) })}
+                      type="number" step="0.1" 
+                      value={inputs.expenseRatio === 0 ? '0' : inputs.expenseRatio}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, expenseRatio: Number(cleanVal) });
+                      }}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>

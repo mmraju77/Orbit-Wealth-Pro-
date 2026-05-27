@@ -128,6 +128,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <input 
                         type="number"
                         value={goal.current}
+                        onFocus={(e) => e.target.select()}
                         onChange={(e) => handleUpdate(goal.id, 'current', e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
@@ -140,6 +141,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <input 
                         type="number"
                         value={goal.target}
+                        onFocus={(e) => e.target.select()}
                         onChange={(e) => handleUpdate(goal.id, 'target', e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
@@ -155,6 +157,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <input 
                         type="number"
                         value={goal.years}
+                        onFocus={(e) => e.target.select()}
                         onChange={(e) => handleUpdate(goal.id, 'years', e.target.value)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors"
                       />

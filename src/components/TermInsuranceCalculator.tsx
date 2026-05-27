@@ -106,8 +106,14 @@ export default function TermInsuranceCalculator() {
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <User className="w-4 h-4 text-[#D4AF37]" />
                     <input 
-                      type="number" min="18" max="65" value={inputs.age}
-                      onChange={(e) => setInputs({ ...inputs, age: Number(e.target.value) })}
+                      type="number" min="18" max="65" 
+                      value={inputs.age === 0 ? '0' : inputs.age}
+                      onFocus={(e) => e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const cleanVal = val === '' ? '0' : val.replace(/^0+(?=\d)/, '');
+                        setInputs({ ...inputs, age: Number(cleanVal) });
+                      }}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />
                   </div>
