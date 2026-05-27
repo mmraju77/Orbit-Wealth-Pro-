@@ -106,13 +106,12 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
   
   useEffect(() => {
     const handleFocus = (e: FocusEvent) => {
-      if (e.target instanceof HTMLInputElement && e.target.type === 'number') {
-        const input = e.target;
-        setTimeout(() => input.select(), 0);
+      if (e.target instanceof HTMLInputElement) {
+        setTimeout(() => (e.target as HTMLInputElement).select(), 0);
       }
     };
-    document.addEventListener('focus', handleFocus, true);
-    return () => document.removeEventListener('focus', handleFocus, true);
+    window.addEventListener('focusin', handleFocus);
+    return () => window.removeEventListener('focusin', handleFocus);
   }, []);
 
   return (

@@ -29,7 +29,8 @@ import {
   Zap,
   Activity,
   Calculator,
-  BookOpen
+  BookOpen,
+  BrainCircuit
 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { CurrencyCode, NumberSystem } from '../types';
@@ -112,6 +113,14 @@ const NAV_SECTIONS: NavSection[] = [
       { label: 'Asset Comparisons', path: '/comparisons', icon: ArrowRightLeft },
       { label: 'City Hubs', path: '/cities', icon: Building },
       { label: 'Blog & Insights', path: '/insights', icon: BookOpen },
+    ]
+  },
+  {
+    label: 'Orbit Intelligence',
+    icon: BrainCircuit,
+    items: [
+      { label: 'The Founder Profile', path: '/about', icon: UserCheck },
+      { label: 'Client Support', path: '/contact', icon: Mail },
     ]
   }
 ];
