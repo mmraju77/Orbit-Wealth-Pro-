@@ -110,8 +110,23 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
         setTimeout(() => (e.target as HTMLInputElement).select(), 0);
       }
     };
+
+    const handleInput = (e: Event) => {
+      const target = e.target;
+      if (target instanceof HTMLInputElement && (target.type === 'number' || target.type === 'text')) {
+        const val = target.value;
+        if (val.startsWith('0') && val.length > 1) {
+          target.value = val.replace(/^0+/, '');
+        }
+      }
+    };
+
     window.addEventListener('focusin', handleFocus);
-    return () => window.removeEventListener('focusin', handleFocus);
+    window.addEventListener('input', handleInput);
+    return () => {
+      window.removeEventListener('focusin', handleFocus);
+      window.removeEventListener('input', handleInput);
+    };
   }, []);
 
   return (

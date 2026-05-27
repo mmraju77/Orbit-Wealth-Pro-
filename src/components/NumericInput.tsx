@@ -23,13 +23,6 @@ const NumericInput: React.FC<NumericInputProps> = ({
   wrapperClassName = "",
   ...props 
 }) => {
-  const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    // Zero-delay timeout ensures the focus event is fully processed before selection
-    const target = e.target;
-    setTimeout(() => target.select(), 0);
-    if (props.onFocus) props.onFocus(e);
-  };
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
     // User logic: clean conversion to number, treating empty as 0
@@ -44,10 +37,7 @@ const NumericInput: React.FC<NumericInputProps> = ({
       <input
         {...props}
         type="number"
-        // Placeholder Trick: if 0, show empty string to let placeholder "0" appear
-        value={value === 0 ? '' : value}
-        placeholder={props.placeholder || "0"}
-        onFocus={handleFocus}
+        value={value}
         onChange={handleChange}
         className={className}
       />
