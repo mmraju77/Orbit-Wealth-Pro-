@@ -195,11 +195,12 @@ export default function SIPCalculator() {
                     </linearGradient>
                   </defs>
                   <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
-                  <XAxis dataKey="year" stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} dy={10} />
-                  <YAxis stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
+                  <XAxis dataKey="year" stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} dy={10} fontWeight="500" />
+                  <YAxis stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} fontWeight="500" />
                   <RechartsTooltip 
-                    contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }}
-                    labelStyle={{ color: '#white/40', marginBottom: '4px' }}
+                    contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }}
+                    itemStyle={{ color: '#D4AF37' }}
+                    labelStyle={{ color: '#94A3B8', marginBottom: '4px' }}
                   />
                   <Area type="monotone" dataKey="balance" stroke="#D4AF37" strokeWidth={3} fillOpacity={1} fill="url(#colorVal)" isAnimationActive={false} />
                 </AreaChart>

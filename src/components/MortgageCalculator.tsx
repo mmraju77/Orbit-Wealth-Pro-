@@ -188,8 +188,14 @@ export default function MortgageCalculator() {
                   </div>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <input 
-                      type="number" step="0.1" value={inputs.interestRate}
-                      onChange={(e) => setInputs({ ...inputs, interestRate: Number(e.target.value) })}
+                      type="number" step="0.1" 
+                      value={inputs.interestRate === 0 ? '0' : inputs.interestRate}
+                      onFocus={(e) => e.target.value === '0' && e.target.select()}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                        setInputs({ ...inputs, interestRate: parsed });
+                      }}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />
                     <span className="text-[#D4AF37] font-bold">%</span>
@@ -249,7 +255,11 @@ export default function MortgageCalculator() {
                         <Cell fill="#FFFFFF" />
                         <Cell fill="#D4AF37" />
                       </Pie>
-                      <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                      <RechartsTooltip 
+                        contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }} 
+                        itemStyle={{ color: '#D4AF37' }}
+                        labelStyle={{ color: '#94A3B8' }}
+                      />
                     </PieChart>
                   </ResponsiveContainer>
               </div>
@@ -305,11 +315,16 @@ export default function MortgageCalculator() {
             <LineChart data={results.amortizationSchedule} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
               <XAxis 
-                dataKey="period" stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} dy={10} 
+                dataKey="period" stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} dy={10} 
                 tickFormatter={(val) => `Yr ${val / 12}`}
+                fontWeight="500"
               />
-              <YAxis stroke="#ffffff60" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} />
-              <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+              <YAxis stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${(val / 1000).toFixed(0)}k`} fontWeight="500" />
+              <RechartsTooltip 
+                contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }} 
+                itemStyle={{ color: '#D4AF37' }}
+                labelStyle={{ color: '#94A3B8' }}
+              />
               <Line type="monotone" dataKey="remainingBalance" stroke="#D4AF37" strokeWidth={3} dot={false} isAnimationActive={false} />
               <Line type="monotone" dataKey="totalInterestPaid" stroke="#FFFFFF20" strokeWidth={2} dot={false} isAnimationActive={false} />
             </LineChart>

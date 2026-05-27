@@ -200,9 +200,13 @@ export default function MFCalculator() {
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={results.yearlyData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
-                        <XAxis dataKey="year" stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} />
-                        <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${formatValue(val / 1000)}k`} />
-                        <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                        <XAxis dataKey="year" stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} fontWeight="500" />
+                        <YAxis stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${formatValue(val / 1000)}k`} fontWeight="500" />
+                        <RechartsTooltip 
+                          contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }} 
+                          itemStyle={{ color: '#D4AF37' }}
+                          labelStyle={{ color: '#94A3B8' }}
+                        />
                         <Bar dataKey="balance" fill="#D4AF37" radius={[4, 4, 0, 0]} isAnimationActive={false} />
                       </BarChart>
                     </ResponsiveContainer>

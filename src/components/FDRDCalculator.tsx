@@ -127,8 +127,13 @@ export default function FDRDCalculator() {
                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
                  <input 
                    type="number"
-                   value={inputs.amount}
-                   onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
+                   value={inputs.amount === 0 ? '0' : inputs.amount}
+                   onFocus={(e) => e.target.value === '0' && e.target.select()}
+                   onChange={(e) => {
+                     const val = e.target.value;
+                     const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                     setInputs({ ...inputs, amount: parsed });
+                   }}
                    className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                </div>
@@ -140,8 +145,13 @@ export default function FDRDCalculator() {
                   <input 
                     type="number"
                     step="0.1"
-                    value={inputs.rate}
-                    onChange={(e) => setInputs({ ...inputs, rate: Number(e.target.value) })}
+                    value={inputs.rate === 0 ? '0' : inputs.rate}
+                    onFocus={(e) => e.target.value === '0' && e.target.select()}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                      setInputs({ ...inputs, rate: parsed });
+                    }}
                     className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                   />
                 </div>
@@ -149,8 +159,13 @@ export default function FDRDCalculator() {
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Tenure (Years)</label>
                   <input 
                     type="number"
-                    value={inputs.tenure}
-                    onChange={(e) => setInputs({ ...inputs, tenure: Number(e.target.value) })}
+                    value={inputs.tenure === 0 ? '0' : inputs.tenure}
+                    onFocus={(e) => e.target.value === '0' && e.target.select()}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                      setInputs({ ...inputs, tenure: parsed });
+                    }}
                     className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                   />
                 </div>
@@ -177,7 +192,11 @@ export default function FDRDCalculator() {
                          <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                        ))}
                      </Pie>
-                     <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                     <RechartsTooltip 
+                       contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }}
+                       itemStyle={{ color: '#D4AF37' }}
+                       labelStyle={{ color: '#94A3B8' }}
+                     />
                    </PieChart>
                  </ResponsiveContainer>
                  <div className="flex justify-center gap-6 mt-4">

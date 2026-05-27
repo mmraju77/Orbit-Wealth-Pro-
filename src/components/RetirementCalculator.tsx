@@ -241,9 +241,13 @@ export default function RetirementCalculator() {
                         </linearGradient>
                       </defs>
                       <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />
-                      <XAxis dataKey="year" stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} dy={10} />
-                      <YAxis stroke="#ffffff10" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${formatValue(val / 1000)}k`} />
-                      <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                      <XAxis dataKey="year" stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} dy={10} fontWeight="500" />
+                      <YAxis stroke="#94A3B8" fontSize={10} tickLine={false} axisLine={false} tickFormatter={(val) => `${currencySymbol}${formatValue(val / 1000)}k`} fontWeight="500" />
+                      <RechartsTooltip 
+                        contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }} 
+                        itemStyle={{ color: '#D4AF37' }}
+                        labelStyle={{ color: '#94A3B8' }}
+                      />
                       <Area type="monotone" dataKey="balance" stroke="#D4AF37" strokeWidth={3} fillOpacity={1} fill="url(#colorBal)" name="Raw Corpus" isAnimationActive={false} />
                       <Area type="monotone" dataKey="inflatedBalance" stroke="#ffffff20" strokeWidth={2} strokeDasharray="5 5" fillOpacity={1} fill="url(#colorInf)" name="Purchasing Power" isAnimationActive={false} />
                     </AreaChart>

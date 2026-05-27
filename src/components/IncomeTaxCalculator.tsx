@@ -124,8 +124,13 @@ export default function IncomeTaxCalculator() {
                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
                  <input 
                    type="number"
-                   value={inputs.amount}
-                   onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
+                   value={inputs.amount === 0 ? '0' : inputs.amount}
+                   onFocus={(e) => e.target.value === '0' && e.target.select()}
+                   onChange={(e) => {
+                     const val = e.target.value;
+                     const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                     setInputs({ ...inputs, amount: parsed });
+                   }}
                    className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                </div>
@@ -168,8 +173,12 @@ export default function IncomeTaxCalculator() {
                        { name: 'Tax', val: results.taxAmount },
                        { name: 'Net', val: results.totalAmount }
                      ]}>
-                        <XAxis dataKey="name" axisLine={false} tickLine={false} fontSize={10} stroke="#ffffff20" />
-                        <RechartsTooltip contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px' }} />
+                        <XAxis dataKey="name" axisLine={false} tickLine={false} fontSize={10} stroke="#94A3B8" fontWeight="500" />
+                        <RechartsTooltip 
+                          contentStyle={{ backgroundColor: '#111', border: '1px solid #333', fontSize: '10px', borderRadius: '8px' }} 
+                          itemStyle={{ color: '#D4AF37' }}
+                          labelStyle={{ color: '#94A3B8' }}
+                        />
                         <Bar dataKey="val" fill="#D4AF37" radius={[4, 4, 0, 0]} />
                      </BarChart>
                   </ResponsiveContainer>

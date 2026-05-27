@@ -143,18 +143,18 @@ export default function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] text-white/30 leading-relaxed relative z-10 font-medium">
               <div className="space-y-4">
                 <p>
-                  <strong className="text-white/60">Institutional Disclaimer:</strong> Orbit Wealth Pro (OWP) is a global financial intelligence engine. OWP is not a registered investment advisor, broker-dealer, or financial institution in any jurisdiction including the <strong className="text-white/60">USA (SEC), UK (FCA), India (SEBI), UAE (SCA/ADGM), or the EU (ESMA)</strong>.
+                  <strong className="text-white/60 uppercase tracking-tighter">Institutional Disclaimer:</strong> Orbit Wealth Pro (OWP) is a proprietary global financial intelligence engine. OWP is not a registered investment advisor (RIA), broker-dealer, or fiduciary institution in any jurisdiction. We do not provide personalized investment advice or act as custodians of user capital.
                 </p>
                 <p>
-                  All automated projections, compound interest models, and AI-driven insights are generated based on mathematical simulations and user-inputted data. Past market performance is never an indicator of future capital growth.
+                  All automated projections, compound interest models, and AI-driven insights are generated based on mathematical simulations and deterministic data frameworks. This software does not account for individual risk tolerance, credit history, or unique liquidity requirements. Past market performance is strictly not an indicator of future capital growth or asset appreciation.
                 </p>
               </div>
               <div className="space-y-4">
                 <p>
-                  <strong className="text-white/60">Jurisdictional Transparency:</strong> Tax logic used in our calculators is derived from publicly available fiscal thresholds for 2026. Local laws may vary significantly. Users are strictly advised to consult with certified tax professionals or licensed financial architects before executing capital distributions or real estate acquisitions.
+                  <strong className="text-white/60 uppercase tracking-tighter">Jurisdictional Transparency:</strong> Financial logic used in our suite is derived from publicly available fiscal thresholds for the 2026-27 cycle. External factors such as geopolitical shifts, legislative amendments in the <strong className="text-white/60">USA (SEC), UK (FCA), India (SEBI/Income Tax Act), or EU (MiFID II)</strong>, and hyper-inflationary events can render calculations obsolete.
                 </p>
                 <p>
-                  ORBIT WEALTH PRO operates under a <strong className="text-white/60">zero-liability framework</strong> for any losses incurred through data reliance. By utilizing this suite, you acknowledge that financial planning is inherently speculative and subject to high-entropy market volatility.
+                  ORBIT WEALTH PRO operates under a <strong className="text-white/60">Strict Zero-Liability Framework</strong>. By utilizing this platform, you irrevocably acknowledge that financial planning is inherently speculative. All decisions executed based on OWP data are at the sole risk of the user. Consult a licensed financial architect for definitive advisory.
                 </p>
               </div>
             </div>

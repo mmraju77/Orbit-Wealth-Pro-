@@ -42,8 +42,14 @@ export default function CurrencyInput({
         <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold z-10 pointer-events-none">{currencySymbol}</div>
         <input 
           type="number"
-          value={value}
-          onChange={(e) => onChange(Number(e.target.value))}
+          value={value === 0 ? '0' : value}
+          onFocus={(e) => e.target.value === '0' && e.target.select()}
+          onChange={(e) => {
+            const val = e.target.value;
+            // Strip leading zeros unless the value is just '0'
+            const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+            onChange(parsed);
+          }}
           placeholder={placeholder}
           className="w-full bg-black/40 border border-white/5 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
         />

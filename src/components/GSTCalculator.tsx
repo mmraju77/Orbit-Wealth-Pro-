@@ -132,8 +132,13 @@ export default function GSTCalculator() {
                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
                  <input 
                    type="number"
-                   value={inputs.amount}
-                   onChange={(e) => setInputs({ ...inputs, amount: Number(e.target.value) })}
+                   value={inputs.amount === 0 ? '0' : inputs.amount}
+                   onFocus={(e) => e.target.value === '0' && e.target.select()}
+                   onChange={(e) => {
+                     const val = e.target.value;
+                     const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                     setInputs({ ...inputs, amount: parsed });
+                   }}
                    className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                </div>
@@ -155,8 +160,13 @@ export default function GSTCalculator() {
                      <input 
                        type="number"
                        placeholder="Custom Rate %"
-                       value={inputs.taxRate}
-                       onChange={(e) => setInputs({ ...inputs, taxRate: Number(e.target.value) })}
+                       value={inputs.taxRate === 0 ? '0' : inputs.taxRate}
+                       onFocus={(e) => e.target.value === '0' && e.target.select()}
+                       onChange={(e) => {
+                         const val = e.target.value;
+                         const parsed = val === '' ? 0 : Number(val.replace(/^0+/, '') || '0');
+                         setInputs({ ...inputs, taxRate: parsed });
+                       }}
                        className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-[#D4AF37]"
                      />
                   </div>
