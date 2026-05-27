@@ -10,6 +10,7 @@ import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tool
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 export default function StudentLoanCalculator() {
   const { formatCurrency, currencySymbol } = useLocale();
@@ -115,15 +116,11 @@ export default function StudentLoanCalculator() {
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
-                    <input 
-                      type="number" step="0.1" 
-                      value={interestRate === 0 ? '0' : interestRate}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInterestRate(val);
-                      }}
-                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
+                    <NumericInput 
+                      step="0.1" 
+                      value={interestRate}
+                      onChange={setInterestRate}
+                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-4">

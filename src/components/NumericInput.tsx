@@ -32,10 +32,11 @@ const NumericInput: React.FC<NumericInputProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-    // Strict number parsing: empty string defaults to 0, otherwise native Number()
-    const numValue = rawValue === '' ? 0 : Number(rawValue);
+    // Strict string sanitization: convert to Number then back to String to strip leading zeros
+    const cleanVal = rawValue === '' ? '' : String(Number(rawValue));
     
-    // Prevent NaN if somehow a non-number slips through
+    // Pass number to parent state if valid
+    const numValue = cleanVal === '' ? 0 : Number(cleanVal);
     if (!isNaN(numValue)) {
       onChange(numValue);
     }
@@ -47,7 +48,8 @@ const NumericInput: React.FC<NumericInputProps> = ({
         {...props}
         type="number"
         // Force the rendered value to strip leading zeros via String(Number())
-        value={String(Number(value || 0))}
+        // If it's 0, it will show as "0". 
+        value={value === 0 && props.placeholder ? '' : String(Number(value || 0))}
         onFocus={handleFocus}
         onChange={handleChange}
         className={className}

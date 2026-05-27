@@ -10,6 +10,7 @@ import { CurrencyCode } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 
 const SUPPORTED_CURRENCIES: CurrencyCode[] = ['USD', 'EUR', 'GBP', 'AED', 'INR'];
 
@@ -119,12 +120,9 @@ export default function CurrencyConverter() {
                     </div>
                   </div>
                   <div className="relative">
-                    <input 
-                      type="number"
-                      value={amount === 0 ? '0' : amount}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
+                    <NumericInput 
+                      value={amount}
+                      onChange={(val) => {
                         setAmount(val);
                         handleUpdate();
                       }}

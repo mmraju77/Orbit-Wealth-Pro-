@@ -7,6 +7,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Target, Home, Shield, ChevronRight, TrendingUp, Sparkles } from 'lucide-react';
 import { Goal } from '../types';
+import NumericInput from './NumericInput';
 
 interface WealthMilestonesProps {
   goals: Goal[];
@@ -17,8 +18,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
   const [activeGoal, setActiveGoal] = useState<string | null>(null);
   const [results, setResults] = useState<Record<string, number>>({});
 
-  const handleUpdate = (id: string, field: keyof Goal, value: string) => {
-    const numValue = value === '' ? 0 : Number(value);
+  const handleUpdate = (id: string, field: keyof Goal, numValue: number) => {
     const updatedGoals = goals.map(g => g.id === id ? { ...g, [field]: numValue } : g);
     onUpdateGoals(updatedGoals);
   };
@@ -125,11 +125,9 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                   <div className="space-y-1">
                     <span className="text-[9px] text-white/30 uppercase font-bold">Current Wealth</span>
                     <div className="relative">
-                      <input 
-                        type="number"
+                      <NumericInput 
                         value={goal.current}
-                        onFocus={(e) => e.target.select()}
-                        onChange={(e) => handleUpdate(goal.id, 'current', e.target.value)}
+                        onChange={(val) => handleUpdate(goal.id, 'current', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
@@ -138,11 +136,9 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                   <div className="space-y-1">
                     <span className="text-[9px] text-white/30 uppercase font-bold">Target Milestone</span>
                     <div className="relative">
-                      <input 
-                        type="number"
+                      <NumericInput 
                         value={goal.target}
-                        onFocus={(e) => e.target.select()}
-                        onChange={(e) => handleUpdate(goal.id, 'target', e.target.value)}
+                        onChange={(val) => handleUpdate(goal.id, 'target', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
@@ -154,11 +150,9 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                   <div className="space-y-1">
                     <span className="text-[9px] text-white/30 uppercase font-bold">Time Horizon (Years)</span>
                     <div className="relative">
-                      <input 
-                        type="number"
+                      <NumericInput 
                         value={goal.years}
-                        onFocus={(e) => e.target.select()}
-                        onChange={(e) => handleUpdate(goal.id, 'years', e.target.value)}
+                        onChange={(val) => handleUpdate(goal.id, 'years', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors"
                       />
                     </div>

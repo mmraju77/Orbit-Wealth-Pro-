@@ -8,6 +8,7 @@ import { Shield, Download, Share2, Info, User, Activity } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
@@ -105,14 +106,10 @@ export default function TermInsuranceCalculator() {
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <User className="w-4 h-4 text-[#D4AF37]" />
-                    <input 
-                      type="number" min="18" max="65" 
-                      value={inputs.age === 0 ? '0' : inputs.age}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, age: val });
-                      }}
+                    <NumericInput 
+                      min={18} max={65} 
+                      value={inputs.age}
+                      onChange={(val) => setInputs({ ...inputs, age: val })}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />
                   </div>

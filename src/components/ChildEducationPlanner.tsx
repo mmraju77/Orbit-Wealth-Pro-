@@ -8,6 +8,7 @@ import { GraduationCap, Download, Calculator, TrendingUp } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
@@ -79,28 +80,18 @@ export default function ChildEducationPlanner() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-2">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Education Inflation (%)</label>
-                    <input 
-                      type="number" 
-                      value={inflation === 0 ? '0' : inflation}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInflation(val);
-                      }}
-                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
+                    <NumericInput 
+                      value={inflation}
+                      onChange={setInflation}
+                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-2">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Returns (%)</label>
-                    <input 
-                      type="number" 
-                      value={expectedReturn === 0 ? '0' : expectedReturn}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setExpectedReturn(val);
-                      }}
-                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
+                    <NumericInput 
+                      value={expectedReturn}
+                      onChange={setExpectedReturn}
+                      className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
               </div>

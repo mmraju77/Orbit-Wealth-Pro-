@@ -10,6 +10,7 @@ import { LoanEligibilityInputs } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 import CurrencyInput from './CurrencyInput';
 
 const INITIAL_INPUTS: LoanEligibilityInputs = {
@@ -114,47 +115,33 @@ export default function LoanEligibility() {
                 step={1000}
               />
 
-              <div className="grid grid-cols-3 gap-4">
-                 <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Rate (%)</label>
-                    <input 
-                      type="number" step="0.1" 
-                      value={inputs.interestRate === 0 ? '0' : inputs.interestRate}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, interestRate: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
-                    />
-                 </div>
-                 <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Term (Yrs)</label>
-                    <input 
-                      type="number" 
-                      value={inputs.loanTerm === 0 ? '0' : inputs.loanTerm}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, loanTerm: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
-                    />
-                 </div>
-                 <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">FOIR (%)</label>
-                    <input 
-                      type="number" 
-                      value={inputs.maxFOIR === 0 ? '0' : inputs.maxFOIR}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, maxFOIR: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
-                    />
-                 </div>
-              </div>
+                  <div className="grid grid-cols-3 gap-4">
+                     <div className="space-y-4">
+                        <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Rate (%)</label>
+                        <NumericInput 
+                          step="0.1" 
+                          value={inputs.interestRate}
+                          onChange={(val) => setInputs({ ...inputs, interestRate: val })}
+                          className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
+                        />
+                     </div>
+                     <div className="space-y-4">
+                        <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Term (Yrs)</label>
+                        <NumericInput 
+                          value={inputs.loanTerm}
+                          onChange={(val) => setInputs({ ...inputs, loanTerm: val })}
+                          className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
+                        />
+                     </div>
+                     <div className="space-y-4">
+                        <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">FOIR (%)</label>
+                        <NumericInput 
+                          value={inputs.maxFOIR}
+                          onChange={(val) => setInputs({ ...inputs, maxFOIR: val })}
+                          className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none focus:border-[#D4AF37]"
+                        />
+                     </div>
+                  </div>
            </div>
         </section>
 

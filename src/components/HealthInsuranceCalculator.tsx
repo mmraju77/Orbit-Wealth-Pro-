@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 interface HealthInputs {
   sumInsured: number;
@@ -111,14 +112,10 @@ export default function HealthInsuranceCalculator() {
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Age of Oldest Member</label>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <HeartPulse className="w-4 h-4 text-[#D4AF37]" />
-                    <input 
-                      type="number" min="18" max="100" 
-                      value={inputs.oldestAge === 0 ? '0' : inputs.oldestAge}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, oldestAge: val });
-                      }}
+                    <NumericInput 
+                      min={18} max={100} 
+                      value={inputs.oldestAge}
+                      onChange={(val) => setInputs({ ...inputs, oldestAge: val })}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />
                   </div>

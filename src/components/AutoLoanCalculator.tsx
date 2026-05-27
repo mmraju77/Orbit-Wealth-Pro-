@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 
 export default function AutoLoanCalculator() {
   const { formatCurrency, currencySymbol } = useLocale();
@@ -88,14 +89,9 @@ export default function AutoLoanCalculator() {
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Car Price</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
-                   <input 
-                     type="number" 
-                     value={carPrice === 0 ? '0' : carPrice}
-                     onFocus={(e) => e.target.select()}
-                     onChange={(e) => {
-                       const val = e.target.value === '' ? 0 : Number(e.target.value);
-                       setCarPrice(val);
-                     }}
+                   <NumericInput 
+                     value={carPrice}
+                     onChange={setCarPrice}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                 </div>
@@ -103,14 +99,9 @@ export default function AutoLoanCalculator() {
              <div className="space-y-4">
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Sales Tax (%)</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
-                   <input 
-                     type="number" 
-                     value={salesTax === 0 ? '0' : salesTax}
-                     onFocus={(e) => e.target.select()}
-                     onChange={(e) => {
-                       const val = e.target.value === '' ? 0 : Number(e.target.value);
-                       setSalesTax(val);
-                     }}
+                   <NumericInput 
+                     value={salesTax}
+                     onChange={setSalesTax}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                    <Percent className="w-4 h-4 text-[#D4AF37]" />
@@ -120,14 +111,9 @@ export default function AutoLoanCalculator() {
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Down Payment</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
-                   <input 
-                     type="number" 
-                     value={downPayment === 0 ? '0' : downPayment}
-                     onFocus={(e) => e.target.select()}
-                     onChange={(e) => {
-                       const val = e.target.value === '' ? 0 : Number(e.target.value);
-                       setDownPayment(val);
-                     }}
+                   <NumericInput 
+                     value={downPayment}
+                     onChange={setDownPayment}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                 </div>
@@ -136,14 +122,9 @@ export default function AutoLoanCalculator() {
                 <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Trade-in Value</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
-                   <input 
-                     type="number" 
-                     value={tradeIn === 0 ? '0' : tradeIn}
-                     onFocus={(e) => e.target.select()}
-                     onChange={(e) => {
-                       const val = e.target.value === '' ? 0 : Number(e.target.value);
-                       setTradeIn(val);
-                     }}
+                   <NumericInput 
+                     value={tradeIn}
+                     onChange={setTradeIn}
                      className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
                    />
                 </div>

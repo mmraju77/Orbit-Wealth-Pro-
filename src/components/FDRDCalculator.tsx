@@ -126,14 +126,9 @@ export default function FDRDCalculator() {
                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">{type === 'FD' ? 'Total Investment' : 'Monthly Deposit'}</label>
                <div className="relative">
                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
-                 <input 
-                   type="number"
-                   value={inputs.amount === 0 ? '0' : inputs.amount}
-                   onFocus={(e) => e.target.select()}
-                   onChange={(e) => {
-                     const val = e.target.value === '' ? 0 : Number(e.target.value);
-                     setInputs({ ...inputs, amount: val });
-                   }}
+                 <NumericInput 
+                   value={inputs.amount}
+                   onChange={(val) => setInputs({ ...inputs, amount: val })}
                    className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                  />
                </div>
@@ -142,28 +137,18 @@ export default function FDRDCalculator() {
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Rate of Interest (%)</label>
-                  <input 
-                    type="number"
+                  <NumericInput 
                     step="0.1"
-                    value={inputs.rate === 0 ? '0' : inputs.rate}
-                    onFocus={(e) => e.target.select()}
-                    onChange={(e) => {
-                      const val = e.target.value === '' ? 0 : Number(e.target.value);
-                      setInputs({ ...inputs, rate: val });
-                    }}
+                    value={inputs.rate}
+                    onChange={(val) => setInputs({ ...inputs, rate: val })}
                     className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                   />
                 </div>
                 <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Tenure (Years)</label>
-                  <input 
-                    type="number"
-                    value={inputs.tenure === 0 ? '0' : inputs.tenure}
-                    onFocus={(e) => e.target.select()}
-                    onChange={(e) => {
-                      const val = e.target.value === '' ? 0 : Number(e.target.value);
-                      setInputs({ ...inputs, tenure: val });
-                    }}
+                  <NumericInput 
+                    value={inputs.tenure}
+                    onChange={(val) => setInputs({ ...inputs, tenure: val })}
                     className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
                   />
                 </div>

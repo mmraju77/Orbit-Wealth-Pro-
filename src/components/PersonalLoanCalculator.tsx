@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 import CurrencyInput from './CurrencyInput';
 
 export default function PersonalLoanCalculator() {
@@ -123,15 +124,11 @@ export default function PersonalLoanCalculator() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                <div className="space-y-4">
                   <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
-                  <input 
-                    type="number" step="0.1" 
-                    value={interestRate === 0 ? '0' : interestRate}
-                    onFocus={(e) => e.target.select()}
-                    onChange={(e) => {
-                      const val = e.target.value === '' ? 0 : Number(e.target.value);
-                      setInterestRate(val);
-                    }}
-                    className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none"
+                  <NumericInput 
+                    step="0.1" 
+                    value={interestRate}
+                    onChange={setInterestRate}
+                    className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37]"
                   />
                </div>
                <div className="space-y-4">

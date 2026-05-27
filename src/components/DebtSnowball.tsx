@@ -9,6 +9,7 @@ import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
+import NumericInput from './NumericInput';
 
 interface Debt {
   id: string;
@@ -99,14 +100,9 @@ export default function DebtSnowball() {
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Balance</label>
                   <div className="flex items-center gap-1">
                     <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
-                    <input 
-                      type="number" 
-                      value={debt.balance === 0 ? '0' : debt.balance} 
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        updateDebt(debt.id, 'balance', val);
-                      }} 
+                    <NumericInput 
+                      value={debt.balance} 
+                      onChange={(val) => updateDebt(debt.id, 'balance', val)} 
                       className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
                     />
                   </div>
@@ -115,14 +111,9 @@ export default function DebtSnowball() {
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Min PMT</label>
                   <div className="flex items-center gap-1">
                     <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
-                    <input 
-                      type="number" 
-                      value={debt.minPayment === 0 ? '0' : debt.minPayment} 
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        updateDebt(debt.id, 'minPayment', val);
-                      }} 
+                    <NumericInput 
+                      value={debt.minPayment} 
+                      onChange={(val) => updateDebt(debt.id, 'minPayment', val)} 
                       className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
                     />
                   </div>
@@ -130,14 +121,9 @@ export default function DebtSnowball() {
                 <div className="flex items-end justify-between">
                   <div className="space-y-1">
                     <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Rate %</label>
-                    <input 
-                      type="number" 
-                      value={debt.rate === 0 ? '0' : debt.rate} 
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        updateDebt(debt.id, 'rate', val);
-                      }} 
+                    <NumericInput 
+                      value={debt.rate} 
+                      onChange={(val) => updateDebt(debt.id, 'rate', val)} 
                       className="w-full bg-transparent border-none outline-none text-xs text-white" 
                     />
                   </div>

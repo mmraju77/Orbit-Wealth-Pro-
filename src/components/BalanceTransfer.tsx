@@ -10,6 +10,7 @@ import { BalanceTransferInputs } from '../types';
 import { BarChart, Bar, ResponsiveContainer, XAxis, YAxis, Tooltip as RechartsTooltip, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
+import NumericInput from './NumericInput';
 
 const INITIAL_INPUTS: BalanceTransferInputs = {
   outstandingPrincipal: 2500000,
@@ -109,28 +110,20 @@ export default function BalanceTransfer() {
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Existing Rate (%)</label>
-                    <input 
-                      type="number" step="0.1" 
-                      value={inputs.existingRate === 0 ? '0' : inputs.existingRate}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, existingRate: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
+                    <NumericInput 
+                      step="0.1" 
+                      value={inputs.existingRate}
+                      onChange={(val) => setInputs({ ...inputs, existingRate: val })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">New Rate (%)</label>
-                    <input 
-                      type="number" step="0.1" 
-                      value={inputs.newRate === 0 ? '0' : inputs.newRate}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, newRate: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none"
+                    <NumericInput 
+                      step="0.1" 
+                      value={inputs.newRate}
+                      onChange={(val) => setInputs({ ...inputs, newRate: val })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-[#D4AF37] font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
               </div>
@@ -138,28 +131,18 @@ export default function BalanceTransfer() {
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Remaining Tenure (Yrs)</label>
-                    <input 
-                      type="number" 
-                      value={inputs.remainingTerm === 0 ? '0' : inputs.remainingTerm}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, remainingTerm: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
+                    <NumericInput 
+                      value={inputs.remainingTerm}
+                      onChange={(val) => setInputs({ ...inputs, remainingTerm: val })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Processing Fees</label>
-                    <input 
-                      type="number" 
-                      value={inputs.processingFees === 0 ? '0' : inputs.processingFees}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, processingFees: val });
-                      }}
-                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none"
+                    <NumericInput 
+                      value={inputs.processingFees}
+                      onChange={(val) => setInputs({ ...inputs, processingFees: val })}
+                      className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
               </div>

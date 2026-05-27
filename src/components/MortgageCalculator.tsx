@@ -14,6 +14,7 @@ import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';
 import { normalizeRegionKey } from '../data/pSEOData';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 import StructuredData from './StructuredData';
 import { fetchLiveBenchmarks } from '../lib/liveFinance';
 
@@ -187,14 +188,10 @@ export default function MortgageCalculator() {
                     {liveSync && <span className="text-[7px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Rate Active</span>}
                   </div>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
-                    <input 
-                      type="number" step="0.1" 
-                      value={inputs.interestRate === 0 ? '0' : inputs.interestRate}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, interestRate: val });
-                      }}
+                    <NumericInput 
+                      step="0.1" 
+                      value={inputs.interestRate}
+                      onChange={(val) => setInputs({ ...inputs, interestRate: val })}
                       className="bg-transparent border-none text-white font-bold w-full outline-none"
                     />
                     <span className="text-[#D4AF37] font-bold">%</span>

@@ -6,6 +6,7 @@ import { ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, 
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import CurrencyInput from './CurrencyInput';
+import NumericInput from './NumericInput';
 
 const INITIAL_INPUTS: MutualFundInputs = {
   investmentAmount: 100000,
@@ -141,27 +142,19 @@ export default function MFCalculator() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
-                    <input 
-                      type="number" step="0.5" 
-                      value={inputs.expectedReturn === 0 ? '0' : inputs.expectedReturn}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, expectedReturn: val });
-                      }}
+                    <NumericInput 
+                      step="0.5" 
+                      value={inputs.expectedReturn}
+                      onChange={(val) => setInputs({ ...inputs, expectedReturn: val })}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
                  <div className="space-y-4">
                     <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expense Ratio (%)</label>
-                    <input 
-                      type="number" step="0.1" 
-                      value={inputs.expenseRatio === 0 ? '0' : inputs.expenseRatio}
-                      onFocus={(e) => e.target.select()}
-                      onChange={(e) => {
-                        const val = e.target.value === '' ? 0 : Number(e.target.value);
-                        setInputs({ ...inputs, expenseRatio: val });
-                      }}
+                    <NumericInput 
+                      step="0.1" 
+                      value={inputs.expenseRatio}
+                      onChange={(val) => setInputs({ ...inputs, expenseRatio: val })}
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none focus:border-[#D4AF37]"
                     />
                  </div>
