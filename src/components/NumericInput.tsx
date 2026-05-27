@@ -32,26 +32,21 @@ const NumericInput: React.FC<NumericInputProps> = ({
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const rawValue = e.target.value;
-    // Strip leading zeros while allowing for '0' as a single digit
-    const cleanVal = rawValue === '' ? '' : rawValue.replace(/^0+(?!$)/, '');
-    
-    const numValue = cleanVal === '' ? 0 : Number(cleanVal);
+    // User logic: clean conversion to number, treating empty as 0
+    const numValue = rawValue === '' ? 0 : Number(rawValue);
     if (!isNaN(numValue)) {
       onChange(numValue);
     }
   };
-
-  const displayValue = String(value);
-  const formattedValue = displayValue.startsWith('0') && displayValue.length > 1 
-    ? displayValue.replace(/^0+/, '') 
-    : displayValue;
 
   return (
     <div className={wrapperClassName}>
       <input
         {...props}
         type="number"
-        value={value === 0 && props.placeholder ? '' : formattedValue}
+        // Placeholder Trick: if 0, show empty string to let placeholder "0" appear
+        value={value === 0 ? '' : value}
+        placeholder={props.placeholder || "0"}
         onFocus={handleFocus}
         onChange={handleChange}
         className={className}
