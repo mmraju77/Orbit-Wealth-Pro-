@@ -237,11 +237,54 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
   );
 }
 
+function GoogleAnalytics() {
+  useEffect(() => {
+    let scriptInjected = false;
+    
+    const injectAnalytics = () => {
+      if (scriptInjected) return;
+      scriptInjected = true;
+      
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = 'https://www.googletagmanager.com/gtag/js?id=G-2ZNMTS0H05';
+      document.head.appendChild(script);
+
+      const inlineScript = document.createElement('script');
+      inlineScript.innerHTML = `
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-2ZNMTS0H05');
+      `;
+      document.head.appendChild(inlineScript);
+    };
+
+    const timer = setTimeout(injectAnalytics, 3000);
+    
+    const events = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
+    const handleInteraction = () => {
+      injectAnalytics();
+      events.forEach(e => window.removeEventListener(e, handleInteraction));
+    };
+    
+    events.forEach(e => window.addEventListener(e, handleInteraction, { once: true }));
+    
+    return () => {
+      clearTimeout(timer);
+      events.forEach(e => window.removeEventListener(e, handleInteraction));
+    };
+  }, []);
+  
+  return null;
+}
+
 export default function App() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
     <HelmetProvider>
+      <GoogleAnalytics />
       <HashRouter>
         <LocaleProvider>
           <RegionSynchronizer />
