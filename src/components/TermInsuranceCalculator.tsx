@@ -80,10 +80,10 @@ export default function TermInsuranceCalculator() {
         </header>
 
         <div className="flex items-center gap-2">
-          <button role="switch" aria-checked={inputs.isSmoker} aria-label="Toggle tobacco consumer" className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
+          <button className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> Download Quote
           </button>
-          <button role="switch" aria-checked={inputs.isSmoker} aria-label="Toggle tobacco consumer" className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Estimate
           </button>
         </div>
@@ -137,13 +137,13 @@ export default function TermInsuranceCalculator() {
              </div>
 
              <div className="grid grid-cols-2 gap-4">
-                <button role="switch" aria-checked={inputs.isSmoker} aria-label="Toggle tobacco consumer" 
+                <button 
                   onClick={() => setInputs({...inputs, gender: 'male'})}
                   className={`py-3 rounded-xl border text-base font-bold uppercase tracking-widest transition-all ${inputs.gender === 'male' ? 'bg-[#D4AF37] border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
                 >
                   Male
                 </button>
-                <button role="switch" aria-checked={inputs.isSmoker} aria-label="Toggle tobacco consumer" 
+                <button 
                   onClick={() => setInputs({...inputs, gender: 'female'})}
                   className={`py-3 rounded-xl border text-base font-bold uppercase tracking-widest transition-all ${inputs.gender === 'female' ? 'bg-[#D4AF37] border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
                 >
@@ -159,8 +159,8 @@ export default function TermInsuranceCalculator() {
                       <div className="text-sm text-white/70 uppercase">Do you consume tobacco?</div>
                    </div>
                 </div>
-                <button role="switch" aria-checked={inputs.isSmoker} aria-label="Toggle tobacco consumer" 
-                  onClick={() => setInputs({ ...inputs, isSmoker: !inputs.isSmoker })}
+                <button 
+                  aria-label="Toggle tobacco consumer" onClick={() => setInputs({ ...inputs, isSmoker: !inputs.isSmoker })}
                   className={`w-12 h-6 rounded-full transition-all relative ${inputs.isSmoker ? 'bg-orange-500' : 'bg-white/10'}`}
                 >
                   <div className={`absolute top-1 w-4 h-4 rounded-full bg-white transition-all ${inputs.isSmoker ? 'left-7' : 'left-1'}`}></div>

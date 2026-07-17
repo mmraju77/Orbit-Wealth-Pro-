@@ -246,7 +246,7 @@ export default function MortgageCalculator() {
                  </div>
               </div>
 
-              <div className="flex-1 flex items-center justify-center">
+              <div className="flex-1 flex items-center justify-center min-h-[240px]">
                   <ResponsiveContainer width={240} height={240}>
                     <PieChart>
                       <Pie

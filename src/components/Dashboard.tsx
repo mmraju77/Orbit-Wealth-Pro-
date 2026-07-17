@@ -214,7 +214,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         className="relative bg-[#111827] border border-white/10 rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-black"
       >
-        <button aria-label="Close modal" 
+        <button aria-label="Toggle all news articles" aria-label="Close modal" 
           onClick={onClose}
           className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/70 hover:text-white transition-all"
         >
@@ -268,7 +268,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
               <div className="text-base text-white/70 uppercase tracking-[0.2em] font-bold">
                 © 2026 ORBIT WEALTH PRO — All Rights Reserved
               </div>
-              <button 
+              <button aria-label="Toggle all news articles" 
                 onClick={onClose}
                 className="px-10 py-4 bg-[#f59e0b] text-black font-black text-base uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform"
               >
@@ -322,7 +322,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
               <Calendar className="w-3 h-3 text-white/70" />
               <span className="text-base text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
-           <button 
+           <button aria-label="Toggle all news articles" 
              onClick={() => onReadMore(article)}
              aria-label={`Read full report: ${article.title}`}
              className="flex items-center gap-2 text-base font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
@@ -356,7 +356,7 @@ export default function Dashboard() {
           />
         )}
       </AnimatePresence>
-      <header className="space-y-6">
+      <header className="space-y-6 min-h-[280px]">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
           <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
@@ -373,7 +373,7 @@ export default function Dashboard() {
 
       <WealthIntelligenceBlock goals={goals} />
 
-      <div className="py-2">
+      <div className="py-2 min-h-[90px]">
          <MarketTicker />
       </div>
 
@@ -443,7 +443,7 @@ export default function Dashboard() {
         </div>
         
         <div className="flex justify-center pt-4">
-          <button 
+          <button aria-label="Toggle all news articles" 
             type="button"
             onClick={() => {
               if (showAllNews) {

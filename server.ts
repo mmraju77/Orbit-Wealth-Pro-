@@ -47,7 +47,7 @@ async function startServer() {
       // 3. Secure AI Integration (Never expose API key to client)
       const genAI = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || "" });
       const response = await genAI.models.generateContent({
-        model: "gemini-1.5-flash",
+        model: "gemini-2.5-flash",
         contents: [
           {
             role: "user",
