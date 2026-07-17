@@ -214,7 +214,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         className="relative bg-[#111827] border border-white/10 rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-black"
       >
-        <button 
+        <button aria-label="Close modal" 
           onClick={onClose}
           className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/70 hover:text-white transition-all"
         >
@@ -387,7 +387,7 @@ export default function Dashboard() {
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 min-h-[1400px]">
           {ALL_CARDS.map((card, idx) => (
             <motion.div
               key={card.path}
@@ -436,7 +436,7 @@ export default function Dashboard() {
            </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 min-h-[1400px]">
           {visibleArticles.map((article, idx) => (
             <NewsCard key={idx} article={article} onReadMore={setSelectedArticle} />
           ))}

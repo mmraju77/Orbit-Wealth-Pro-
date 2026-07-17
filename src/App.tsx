@@ -17,7 +17,7 @@ import Footer from './components/Footer';
 import OrbitChat from './components/OrbitChat';
 
 // Core Views (Dashboard remains static for fast LCP)
-const Dashboard = lazy(() => import('./components/Dashboard'));
+import Dashboard from './components/Dashboard';
 
 // Lazy-loaded routes
 const TaxGuides = lazy(() => import('./components/TaxGuides'));

@@ -126,17 +126,17 @@ export default function HealthInsuranceCalculator() {
                      <div className="flex-1 flex items-center justify-between bg-black/40 p-3 rounded-xl border border-white/5">
                         <span className="text-base font-bold text-white/70 uppercase">Adults</span>
                         <div className="flex items-center gap-3">
-                           <button onClick={() => setInputs({...inputs, adults: Math.max(1, inputs.adults - 1)})}><Minus className="w-3 h-3 text-[#D4AF37]" /></button>
+                           <button aria-label="Decrease adults" onClick={() => setInputs({...inputs, adults: Math.max(1, inputs.adults - 1)})}><Minus className="w-3 h-3 text-[#D4AF37]" /></button>
                            <span className="text-lg font-bold text-white w-4 text-center">{inputs.adults}</span>
-                           <button onClick={() => setInputs({...inputs, adults: Math.min(4, inputs.adults + 1)})}><Plus className="w-3 h-3 text-[#D4AF37]" /></button>
+                           <button aria-label="Increase adults" onClick={() => setInputs({...inputs, adults: Math.min(4, inputs.adults + 1)})}><Plus className="w-3 h-3 text-[#D4AF37]" /></button>
                         </div>
                      </div>
                      <div className="flex-1 flex items-center justify-between bg-black/40 p-3 rounded-xl border border-white/5">
                         <span className="text-base font-bold text-white/70 uppercase">Kids</span>
                         <div className="flex items-center gap-3">
-                           <button onClick={() => setInputs({...inputs, children: Math.max(0, inputs.children - 1)})}><Minus className="w-3 h-3 text-[#D4AF37]" /></button>
+                           <button aria-label="Decrease children" onClick={() => setInputs({...inputs, children: Math.max(0, inputs.children - 1)})}><Minus className="w-3 h-3 text-[#D4AF37]" /></button>
                            <span className="text-lg font-bold text-white w-4 text-center">{inputs.children}</span>
-                           <button onClick={() => setInputs({...inputs, children: Math.min(4, inputs.children + 1)})}><Plus className="w-3 h-3 text-[#D4AF37]" /></button>
+                           <button aria-label="Increase children" onClick={() => setInputs({...inputs, children: Math.min(4, inputs.children + 1)})}><Plus className="w-3 h-3 text-[#D4AF37]" /></button>
                         </div>
                      </div>
                   </div>
