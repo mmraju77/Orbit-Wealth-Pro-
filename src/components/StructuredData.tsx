@@ -28,7 +28,7 @@ interface StructuredDataProps {
  * Supports FinancialProduct and SoftwareApplication (Calculators) for Google Rich Snippets.
  */
 export default function StructuredData({ type, data }: StructuredDataProps) {
-  const baseUrl = 'https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app';
+  const baseUrl = 'https://orbitwealthpro.com';
   const url = data.url ? `${baseUrl}${data.url}` : baseUrl;
 
   let schema: any = {

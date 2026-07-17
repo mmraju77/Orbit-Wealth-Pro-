@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 
-Sitemap: https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/sitemap.xml
+Sitemap: https://orbitwealthpro.com/sitemap.xml
