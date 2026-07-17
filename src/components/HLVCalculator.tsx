@@ -1,3 +1,4 @@
+import CurrencyInput from "./CurrencyInput";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0

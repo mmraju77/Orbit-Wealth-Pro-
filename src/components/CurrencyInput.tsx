@@ -53,7 +53,7 @@ export default function CurrencyInput({
 
       {showSlider && (
         <input 
-          aria-label="Adjust value" type="range" min={min} max={max} step={step}
+          type="range" min={min} max={max} step={step}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
           className="w-full accent-[#D4AF37]"

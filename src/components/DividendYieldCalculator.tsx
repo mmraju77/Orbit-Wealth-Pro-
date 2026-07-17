@@ -1,3 +1,4 @@
+import NumericInput from "./NumericInput";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
