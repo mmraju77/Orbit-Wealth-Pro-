@@ -113,7 +113,7 @@ export default function EMICalculator() {
                 className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
               />
               <input 
-                type="range" min="1" max="25" step="0.1"
+                aria-label="Adjust value" type="range" min="1" max="25" step="0.1"
                 value={inputs.interestRate}
                 onChange={(e) => setInputs({ ...inputs, interestRate: Number(e.target.value) })}
                 className="w-full accent-[#D4AF37]"
@@ -132,7 +132,7 @@ export default function EMICalculator() {
                 className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
               />
               <input 
-                type="range" min="1" max="30" step="1"
+                aria-label="Adjust value" type="range" min="1" max="30" step="1"
                 value={inputs.loanTerm}
                 onChange={(e) => setInputs({ ...inputs, loanTerm: Number(e.target.value) })}
                 className="w-full accent-[#D4AF37]"

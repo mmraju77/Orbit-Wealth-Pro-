@@ -74,6 +74,7 @@ export default function OrbitChat() {
     <>
       {/* Floating Toggle Button */}
       <motion.button
+        aria-label="Open chat assistant"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         onClick={() => setIsOpen(true)}
@@ -107,6 +108,7 @@ export default function OrbitChat() {
                 </div>
               </div>
               <button 
+                aria-label="Close chat window"
                 onClick={() => setIsOpen(false)}
                 className="p-2 hover:bg-white/5 rounded-full transition-colors text-white/40 hover:text-white"
               >
@@ -176,6 +178,7 @@ export default function OrbitChat() {
             <div className="p-4 border-t border-white/5 bg-white/[0.02]">
               <div className="relative">
                 <input
+                  aria-label="Chat input"
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
@@ -184,6 +187,7 @@ export default function OrbitChat() {
                   className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#F3C64F]/50 focus:border-[#F3C64F]/50 transition-all"
                 />
                 <button 
+                  aria-label="Send message"
                   onClick={() => handleSend(input)}
                   disabled={!input.trim() || isLoading}
                   className="absolute right-2 top-1.5 p-1.5 bg-[#F3C64F] rounded-lg hover:bg-[#D4AF37] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"

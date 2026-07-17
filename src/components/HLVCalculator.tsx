@@ -76,7 +76,7 @@ export default function HLVCalculator() {
                    onChange={setAge} 
                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
                  />
-                 <input type="range" min="18" max="75" value={age} onChange={e => setAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
+                 <input aria-label="Adjust value" type="range" min="18" max="75" value={age} onChange={e => setAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
               </div>
               <div className="space-y-4">
                  <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
@@ -88,7 +88,7 @@ export default function HLVCalculator() {
                    onChange={setRetirementAge} 
                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none" 
                  />
-                 <input type="range" min="40" max="85" value={retirementAge} onChange={e => setRetirementAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
+                 <input aria-label="Adjust value" type="range" min="40" max="85" value={retirementAge} onChange={e => setRetirementAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
               </div>
            </div>
 

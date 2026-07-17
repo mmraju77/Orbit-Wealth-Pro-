@@ -40,6 +40,7 @@ const NumericInput: React.FC<NumericInputProps> = ({
         value={value}
         onChange={handleChange}
         className={className}
+        aria-label={props['aria-label'] || "Numeric input"}
       />
     </div>
   );

@@ -104,7 +104,7 @@ export default function LumpsumCalculator() {
                 />
               </div>
               <input 
-                type="range" min="1" max="30" step="0.5"
+                aria-label="Adjust value" type="range" min="1" max="30" step="0.5"
                 value={inputs.expectedReturn}
                 onChange={(e) => setInputs({ ...inputs, expectedReturn: Number(e.target.value) })}
                 className="w-full accent-[#D4AF37]"
@@ -121,7 +121,7 @@ export default function LumpsumCalculator() {
                 />
               </div>
               <input 
-                type="range" min="1" max="40" step="1"
+                aria-label="Adjust value" type="range" min="1" max="40" step="1"
                 value={inputs.duration}
                 onChange={(e) => setInputs({ ...inputs, duration: Number(e.target.value) })}
                 className="w-full accent-[#D4AF37]"

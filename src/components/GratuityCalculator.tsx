@@ -114,7 +114,7 @@ export default function GratuityCalculator() {
                    className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
                  />
                  <input 
-                   type="range" min="1" max="50" step="1"
+                   aria-label="Adjust value" type="range" min="1" max="50" step="1"
                    value={inputs.yearsOfService}
                    onChange={(e) => setInputs({ ...inputs, yearsOfService: Number(e.target.value) })}
                    className="w-full accent-[#D4AF37]"

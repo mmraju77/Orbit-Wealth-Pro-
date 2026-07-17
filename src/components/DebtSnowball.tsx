@@ -94,7 +94,7 @@ export default function DebtSnowball() {
               <div key={debt.id} className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl relative group">
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Name</label>
-                  <input value={debt.name} onChange={e => updateDebt(debt.id, 'name', e.target.value)} className="w-full bg-transparent border-none outline-none text-xs text-white" />
+                  <input aria-label="Debt Name" value={debt.name} onChange={e => updateDebt(debt.id, 'name', e.target.value)} className="w-full bg-transparent border-none outline-none text-xs text-white" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/20 uppercase tracking-widest">Balance</label>
@@ -140,7 +140,7 @@ export default function DebtSnowball() {
                 <span>Extra Monthly Contribution</span>
                 <span className="text-[#D4AF37]">{formatCurrency(extraPayment)}</span>
              </div>
-             <input type="range" min="0" max="50000" step="500" value={extraPayment} onChange={e => setExtraPayment(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
+             <input aria-label="Adjust value" type="range" min="0" max="50000" step="500" value={extraPayment} onChange={e => setExtraPayment(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
           </div>
         </section>
 

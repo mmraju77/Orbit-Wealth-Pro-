@@ -100,7 +100,7 @@ export default function BalanceTransfer() {
                     <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.outstandingPrincipal)}</div>
                  </div>
                  <input 
-                   type="range" min="100000" max="50000000" step="100000"
+                   aria-label="Adjust value" type="range" min="100000" max="50000000" step="100000"
                    value={inputs.outstandingPrincipal}
                    onChange={(e) => setInputs({ ...inputs, outstandingPrincipal: Number(e.target.value) })}
                    className="w-full accent-[#D4AF37]"

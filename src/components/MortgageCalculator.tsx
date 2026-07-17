@@ -171,7 +171,7 @@ export default function MortgageCalculator() {
                   <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.downPaymentPercent}%</div>
                </div>
                <input 
-                  type="range" min="0" max="100" step="1"
+                  aria-label="Adjust value" type="range" min="0" max="100" step="1"
                   value={inputs.downPaymentPercent}
                   onChange={(e) => {
                     const percent = Number(e.target.value);

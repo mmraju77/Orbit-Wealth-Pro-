@@ -28,13 +28,13 @@ export default function Footer() {
               Global financial tools platform providing precision calculators for 11+ jurisdictions including the USA, Canada, Europe, UAE, and India.
             </p>
             <div className="flex items-center gap-4">
-              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
+              <a href="#" aria-label="Follow us on Twitter" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
                 <Twitter className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
+              <a href="#" aria-label="Follow us on Instagram" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
                 <Instagram className="w-4 h-4" />
               </a>
-              <a href="#" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
+              <a href="#" aria-label="View our GitHub" className="p-2 bg-white/5 rounded-lg text-white/20 hover:text-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all">
                 <Github className="w-4 h-4" />
               </a>
             </div>

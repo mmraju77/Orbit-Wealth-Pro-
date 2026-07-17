@@ -88,7 +88,7 @@ export default function DividendYieldCalculator() {
                className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
              />
              <input 
-               type="range" min="1" max="10000" step="10"
+               aria-label="Adjust value" type="range" min="1" max="10000" step="10"
                value={sharesOwned}
                onChange={(e) => setSharesOwned(Number(e.target.value))}
                className="w-full accent-[#D4AF37]"

@@ -144,7 +144,7 @@ export default function StudentLoanCalculator() {
                     <span>{gracePeriod} Months</span>
                  </div>
                  <input 
-                   type="range" min="0" max="48" step="6"
+                   aria-label="Adjust value" type="range" min="0" max="48" step="6"
                    value={gracePeriod}
                    onChange={(e) => setGracePeriod(Number(e.target.value))}
                    className="w-full accent-[#D4AF37]"

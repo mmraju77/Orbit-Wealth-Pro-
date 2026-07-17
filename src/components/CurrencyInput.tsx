@@ -44,6 +44,7 @@ export default function CurrencyInput({
           value={value}
           onChange={onChange}
           placeholder={placeholder}
+          aria-label={label}
           className="w-full bg-black/40 border border-white/5 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
         />
       </div>
@@ -52,10 +53,11 @@ export default function CurrencyInput({
 
       {showSlider && (
         <input 
-          type="range" min={min} max={max} step={step}
+          aria-label="Adjust value" type="range" min={min} max={max} step={step}
           value={value}
           onChange={(e) => onChange(Number(e.target.value))}
           className="w-full accent-[#D4AF37]"
+          aria-label={`Adjust ${label}`}
         />
       )}
     </div>

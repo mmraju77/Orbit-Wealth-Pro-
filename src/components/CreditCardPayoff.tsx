@@ -96,7 +96,7 @@ export default function CreditCardPayoff() {
                       onChange={setInterestRate} 
                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
                     />
-                    <input type="range" min="1" max="48" step="1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
+                    <input aria-label="Adjust value" type="range" min="1" max="48" step="1" value={interestRate} onChange={e => setInterestRate(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
                  </div>
                  <CurrencyInput 
                    label="Monthly Payment"

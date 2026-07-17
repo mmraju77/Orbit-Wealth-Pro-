@@ -166,7 +166,7 @@ export default function MFCalculator() {
                     <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yrs</div>
                  </div>
                  <input 
-                   type="range" min="1" max="40" step="1"
+                   aria-label="Adjust value" type="range" min="1" max="40" step="1"
                    value={inputs.duration}
                    onChange={(e) => setInputs({ ...inputs, duration: Number(e.target.value) })}
                    className="w-full accent-[#D4AF37]"

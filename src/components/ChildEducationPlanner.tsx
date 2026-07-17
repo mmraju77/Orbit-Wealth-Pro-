@@ -107,7 +107,7 @@ export default function ChildEducationPlanner() {
                    className="w-full bg-black/40 p-3 rounded-xl border border-white/5 text-white font-bold outline-none focus:border-[#D4AF37] mb-4"
                  />
                  <input 
-                   type="range" min="1" max="25"
+                   aria-label="Adjust value" type="range" min="1" max="25"
                    value={yearsUntilUni}
                    onChange={(e) => setYearsUntilUni(Number(e.target.value))}
                    className="w-full accent-[#D4AF37]"

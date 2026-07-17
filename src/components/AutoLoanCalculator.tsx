@@ -144,7 +144,7 @@ export default function AutoLoanCalculator() {
                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
                 />
                 <input 
-                  type="range" min="0" max="20" step="0.1"
+                  aria-label="Adjust value" type="range" min="0" max="20" step="0.1"
                   value={interestRate}
                   onChange={(e) => setInterestRate(Number(e.target.value))}
                   className="w-full accent-[#D4AF37]"
@@ -162,7 +162,7 @@ export default function AutoLoanCalculator() {
                   className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-3 text-white font-bold outline-none mb-4" 
                 />
                 <input 
-                  type="range" min="12" max="84" step="12"
+                  aria-label="Adjust value" type="range" min="12" max="84" step="12"
                   value={tenure}
                   onChange={(e) => setTenure(Number(e.target.value))}
                   className="w-full accent-[#D4AF37]"

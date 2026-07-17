@@ -96,6 +96,7 @@ export default function BlogHub() {
           <div className="relative w-full md:w-80">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
             <input 
+              aria-label="Search insights"
               type="text"
               placeholder="Search insights..."
               value={searchQuery}
@@ -225,6 +226,7 @@ export default function BlogHub() {
                     <div className="relative flex-1">
                       <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
                       <input 
+                        aria-label="Email address"
                         type="email" 
                         required
                         value={email}
