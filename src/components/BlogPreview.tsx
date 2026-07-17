@@ -88,7 +88,7 @@ export default function BlogPreview() {
                       </div>
                       <div>
                         <h4 className="text-base font-bold text-white">{article.author}</h4>
-                        <p className="text-sm text-[#F3C64F] font-black uppercase tracking-widest">{article.authorTitle}</p>
+                        <p className="text-base text-[#F3C64F] font-black uppercase tracking-widest">{article.authorTitle}</p>
                       </div>
                     </div>
                     <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#F3C64F] group-hover:text-[#0B0F19] group-hover:border-[#F3C64F] transition-all">

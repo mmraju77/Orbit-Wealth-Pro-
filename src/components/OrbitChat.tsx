@@ -195,7 +195,7 @@ export default function OrbitChat() {
                   <Send className="w-4 h-4 text-[#0B0F19]" />
                 </button>
               </div>
-              <p className="mt-2 text-sm text-center text-white/70 uppercase tracking-[0.2em] font-bold">
+              <p className="mt-2 text-base text-center text-white/70 uppercase tracking-[0.2em] font-bold">
                 Orbital Intelligence Hub • Driven by Gemini
               </p>
             </div>

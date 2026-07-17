@@ -131,11 +131,11 @@ export default function LumpsumCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Invested Principal</div>
+                <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Invested Principal</div>
                 <div className="text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Returns</div>
+                <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Returns</div>
                 <div className="text-2xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>

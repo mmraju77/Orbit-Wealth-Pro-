@@ -260,7 +260,7 @@ function GoogleAnalytics() {
       document.head.appendChild(inlineScript);
     };
 
-    const timer = setTimeout(injectAnalytics, 3000);
+    const timer = setTimeout(injectAnalytics, 4000);
     
     const events = ['scroll', 'mousemove', 'touchstart', 'click', 'keydown'];
     const handleInteraction = () => {

@@ -43,7 +43,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
               {insight.icon}
             </div>
             <div>
-              <h2 className="text-5xl font-display font-bold text-white tracking-tight leading-none mb-2">
+              <h2 className="text-5xl font-display font-bold text-white tracking-tight leading-snug mb-8">
                 {insight.title}
               </h2>
               <div className="flex items-center gap-2">
@@ -96,7 +96,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
                     <div className="w-6 h-6 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ArrowRight className="w-3 h-3 text-emerald-600" />
                     </div>
-                    <span className="text-base text-slate-800 font-bold leading-tight">{step}</span>
+                    <span className="text-base text-slate-800 font-bold leading-snug">{step}</span>
                   </div>
                 ))}
               </div>
@@ -107,7 +107,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
             <div className="absolute inset-0 bg-gradient-to-r from-emerald-500/10 to-transparent opacity-50" />
             <div className="relative z-10 flex items-center justify-between">
               <div className="space-y-2">
-                <div className="flex items-center gap-2 text-sm font-black text-emerald-400 uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-2 text-base font-black text-emerald-400 uppercase tracking-[0.2em]">
                   <TrendingUp className="w-4 h-4" />
                   Projected Capital Delta
                 </div>
@@ -127,7 +127,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
         {/* Footer */}
         <div className="p-8 bg-white border-t border-slate-100 flex items-center justify-between">
           <div className="hidden md:block">
-            <p className="text-sm font-black text-slate-300 uppercase tracking-widest">
+            <p className="text-base font-black text-slate-300 uppercase tracking-widest">
               Data strictly Confidential • Internal Orbit Use Only
             </p>
           </div>

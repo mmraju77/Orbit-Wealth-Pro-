@@ -93,11 +93,11 @@ export default function DebtSnowball() {
             {debts.map((debt) => (
               <div key={debt.id} className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl relative group">
                 <div className="space-y-1">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Name</label>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Name</label>
                   <input aria-label="Debt Name" value={debt.name} onChange={e => updateDebt(debt.id, 'name', e.target.value)} className="w-full bg-transparent border-none outline-none text-base text-white" />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Balance</label>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Balance</label>
                   <div className="flex items-center gap-1">
                     <span className="text-base font-bold text-[#D4AF37]">{currencySymbol}</span>
                     <NumericInput 
@@ -108,7 +108,7 @@ export default function DebtSnowball() {
                   </div>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Min PMT</label>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Min PMT</label>
                   <div className="flex items-center gap-1">
                     <span className="text-base font-bold text-[#D4AF37]">{currencySymbol}</span>
                     <NumericInput 
@@ -120,14 +120,14 @@ export default function DebtSnowball() {
                 </div>
                 <div className="flex items-end justify-between">
                   <div className="space-y-1">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Rate %</label>
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Rate %</label>
                     <NumericInput 
                       value={debt.rate} 
                       onChange={(val) => updateDebt(debt.id, 'rate', val)} 
                       className="w-full bg-transparent border-none outline-none text-base text-white" 
                     />
                   </div>
-                  <button onClick={() => removeDebt(debt.id)} className="p-1 text-white/70 hover:text-rose-500 transition-colors">
+                  <button aria-label="Remove debt" onClick={() => removeDebt(debt.id)} className="p-1 text-white/70 hover:text-rose-500 transition-colors">
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
@@ -170,7 +170,7 @@ export default function DebtSnowball() {
                       </div>
                       <div className="flex items-center gap-6">
                          <span className="text-base text-white/70">{formatCurrency(debt.balance)}</span>
-                         {idx === 0 && <span className="text-sm font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">PRIORITY</span>}
+                         {idx === 0 && <span className="text-base font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">PRIORITY</span>}
                       </div>
                    </div>
                  ))}

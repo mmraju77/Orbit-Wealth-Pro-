@@ -57,7 +57,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                   <Sparkles className="w-4 h-4 text-[#D4AF37]" />
                   <span className="text-base font-black text-[#D4AF37] uppercase tracking-widest">{article.category}</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight max-w-3xl leading-[1.1] pb-4">
+                <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight max-w-3xl leading-snug mb-8 pb-4">
                   {article.title}
                 </h2>
               </div>
@@ -102,7 +102,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                     <p className="text-base text-white/70 uppercase font-bold tracking-widest mb-4">Core Themes</p>
                     <div className="flex flex-wrap gap-2">
                       {article.tags.map(tag => (
-                        <span key={tag} className="px-2 py-1 bg-white/5 border border-white/5 rounded text-sm text-white/70 font-bold uppercase">
+                        <span key={tag} className="px-2 py-1 bg-white/5 border border-white/5 rounded text-base text-white/70 font-bold uppercase">
                           {tag}
                         </span>
                       ))}

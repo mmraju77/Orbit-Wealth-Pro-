@@ -83,7 +83,7 @@ export default function BlogHub() {
         </div>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-4">
-            <h1 className="text-7xl md:text-8xl font-display font-bold tracking-tight text-white leading-[1.1]">
+            <h1 className="text-7xl md:text-8xl font-display font-bold tracking-tight text-white leading-snug mb-8">
               Wealth <br />
               <span className="text-[#D4AF37]">Intelligence Feed</span>
             </h1>
@@ -175,7 +175,7 @@ export default function BlogHub() {
                   </div>
                   <div>
                     <h4 className="text-base font-bold text-white">{article.author}</h4>
-                    <p className="text-sm text-[#D4AF37] font-black uppercase tracking-widest">{article.authorTitle}</p>
+                    <p className="text-base text-[#D4AF37] font-black uppercase tracking-widest">{article.authorTitle}</p>
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#D4AF37] group-hover:text-[#0B0F19] group-hover:border-[#D4AF37] transition-all">

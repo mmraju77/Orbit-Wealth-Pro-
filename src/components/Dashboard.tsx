@@ -215,7 +215,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
         exit={{ opacity: 0, scale: 0.9, y: 20 }}
         className="relative bg-[#111827] border border-white/10 rounded-[2rem] max-w-4xl w-full max-h-[90vh] overflow-hidden flex flex-col shadow-2xl shadow-black"
       >
-        <button aria-label="Toggle all news articles" aria-label="Close modal" 
+        <button aria-label="Close modal" 
           onClick={onClose}
           className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/70 hover:text-white transition-all"
         >
@@ -236,7 +236,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
               <span className="px-3 py-1 bg-[#f59e0b] rounded-full text-base font-black text-black uppercase tracking-widest mb-4 inline-block">
                 {article.category}
               </span>
-                  <h2 className="text-5xl md:text-7xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight">
+                  <h2 className="text-5xl md:text-7xl font-display font-medium text-[#f59e0b] tracking-tighter leading-snug">
                     {article.title}
                   </h2>
             </div>
@@ -302,7 +302,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
           height="225"
         />
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-sm font-black text-[#f59e0b] uppercase tracking-tighter border border-white/5">
+          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-base font-black text-[#f59e0b] uppercase tracking-tighter border border-white/5">
             {article.category}
           </span>
         </div>
@@ -310,7 +310,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-3xl font-display font-bold text-[#f59e0b] tracking-tighter leading-tight group-hover:scale-[1.02] origin-left transition-transform duration-500">
+          <h3 className="text-3xl font-display font-bold text-[#f59e0b] tracking-tighter leading-snug group-hover:scale-[1.02] origin-left transition-transform duration-500">
             {article.title}
           </h3>
           <p className="text-lg text-slate-100 leading-relaxed line-clamp-2 font-medium">
@@ -323,7 +323,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
               <Calendar className="w-3 h-3 text-white/70" />
               <span className="text-base text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
-           <button aria-label="Toggle all news articles" 
+           <button 
              onClick={() => onReadMore(article)}
              aria-label={`Read full report: ${article.title}`}
              className="flex items-center gap-2 text-base font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
@@ -362,7 +362,7 @@ export default function Dashboard() {
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
           <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
         </div>
-        <h1 className="text-6xl sm:text-7xl md:text-9xl font-display font-medium text-[#f59e0b] tracking-tighter leading-[1.1]">
+        <h1 className="text-6xl sm:text-7xl md:text-9xl font-display font-medium text-[#f59e0b] tracking-tighter leading-snug mb-8">
           Financial <br />
           <span className="text-white/70">Dashboard.</span>
         </h1>

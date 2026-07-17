@@ -345,7 +345,7 @@ export default function ComparePage() {
               <Sparkles className="text-[#D4AF37] w-8 h-8" />
              </div>
              <div>
-              <h3 className="text-6xl font-display font-bold text-white tracking-tight leading-none mb-2">The Orbit Intelligence Verdict</h3>
+              <h3 className="text-6xl font-display font-bold text-white tracking-tight leading-snug mb-8">The Orbit Intelligence Verdict</h3>
               <div className="flex items-center gap-2">
                 <Activity className="w-3 h-3 text-[#D4AF37]" />
                 <p className="text-base text-white/70 font-black uppercase tracking-[0.4em]">Synthetic Logic Protocol • {activeRegion} Context</p>
@@ -401,7 +401,7 @@ export default function ComparePage() {
                   <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#D4AF37]/20 transition-colors">
                     <ArrowRightLeft className="w-3 h-3 text-white/70 group-hover:text-[#D4AF37]" />
                   </div>
-                  <span className="text-sm font-black text-white/70 uppercase tracking-widest">{val.region}</span>
+                  <span className="text-base font-black text-white/70 uppercase tracking-widest">{val.region}</span>
                 </div>
                 <div>
                   <p className="text-lg font-bold text-white group-hover:text-[#D4AF37] transition-colors line-clamp-1">{val.title}</p>

@@ -51,13 +51,13 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
                 </div>
                 <div>
                   <h2 className="text-base font-bold tracking-[0.2em] text-white uppercase">Debug Subsystem</h2>
-                  <p className="text-sm text-white/70 uppercase tracking-widest mt-0.5">Kernel v2.4 Active</p>
+                  <p className="text-base text-white/70 uppercase tracking-widest mt-0.5">Kernel v2.4 Active</p>
                 </div>
               </div>
               <button 
                 onClick={onClose}
                 className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center hover:bg-white/5 transition-colors"
-                id="close-debug-panel"
+                id="close-debug-panel" aria-label="Close debug panel"
               >
                 <X className="w-4 h-4 text-white/70" />
               </button>
@@ -113,8 +113,8 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
 
             <div className="p-6 border-t border-white/10 bg-white/[0.02]">
               <div className="flex justify-between items-center mb-4">
-                <span className="text-sm text-white/70 font-bold tracking-widest uppercase">Encryption Status</span>
-                <span className="text-sm text-green-500 font-bold tracking-widest uppercase">AES-256 ACTIVE</span>
+                <span className="text-base text-white/70 font-bold tracking-widest uppercase">Encryption Status</span>
+                <span className="text-base text-green-500 font-bold tracking-widest uppercase">AES-256 ACTIVE</span>
               </div>
               <button 
                 onClick={() => {

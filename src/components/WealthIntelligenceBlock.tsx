@@ -166,7 +166,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             </div>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-sm font-black text-emerald-500 uppercase tracking-widest">Optimized Target</span>
+              <span className="text-base font-black text-emerald-500 uppercase tracking-widest">Optimized Target</span>
             </div>
           </div>
 

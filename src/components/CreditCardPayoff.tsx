@@ -135,11 +135,11 @@ export default function CreditCardPayoff() {
                         <Zap className="w-5 h-5 text-[#D4AF37]" />
                      </div>
                      <div className="space-y-1">
-                        <div className="text-sm text-white/70 font-bold uppercase">Repayment Duration</div>
+                        <div className="text-base text-white/70 font-bold uppercase">Repayment Duration</div>
                         <div className="text-2xl font-bold">{results.years} Years</div>
                      </div>
                   </div>
-                  <ArrowRight className="text-white/20 w-8 h-8" />
+                  <ArrowRight className="text-white/70 w-8 h-8" />
                </div>
              </>
            )}

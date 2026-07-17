@@ -142,7 +142,7 @@ export default function SIPCalculator() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <label htmlFor="return-rate" className="text-base font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
-                  {liveSync && <span className="text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
+                  {liveSync && <span className="text-base bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
                 </div>
                 <NumericInput 
                   value={inputs.expectedReturn}

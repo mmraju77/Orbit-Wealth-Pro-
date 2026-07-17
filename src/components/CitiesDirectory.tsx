@@ -38,7 +38,7 @@ export default function CitiesDirectory() {
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
           <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Global Coverage</span>
         </div>
-        <h1 className="text-7xl md:text-8xl font-display font-bold tracking-tight text-white max-w-4xl leading-[1.1]">
+        <h1 className="text-7xl md:text-8xl font-display font-bold tracking-tight text-white max-w-4xl leading-snug mb-8">
           Economic <br />
           <span className="text-[#D4AF37]">Intelligence Hubs</span>
         </h1>

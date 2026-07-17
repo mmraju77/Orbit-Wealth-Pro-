@@ -15,12 +15,12 @@ export default function TrustBadge({ setView, activeView }: TrustBadgeProps) {
         <div className="flex items-center gap-12 flex-wrap">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded border border-white/20 flex items-center justify-center font-bold text-base text-white/70 italic">FDIC</div>
-            <p className="text-sm uppercase tracking-[0.2em] text-white/70 leading-tight max-w-[150px] font-bold">
+            <p className="text-base uppercase tracking-[0.2em] text-white/70 leading-snug max-w-[150px] font-bold">
               Insured Institutional Assets Under Management
             </p>
           </div>
           <div className="hidden lg:block h-6 w-px bg-white/10"></div>
-          <p className="text-sm text-white/70 max-w-[400px] italic leading-relaxed">
+          <p className="text-base text-white/70 max-w-[400px] italic leading-relaxed">
             *Calculations are estimates based on standard amortization formulas. Terms and actual APR may vary by lender and individual credit profile. ORBIT WEALTH PRO is an analytical platform, not a direct lending institution.
           </p>
         </div>

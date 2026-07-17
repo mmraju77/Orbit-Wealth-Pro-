@@ -111,7 +111,7 @@ export default function BreakEvenCalculator() {
                  <DollarSign className="w-6 h-6 text-emerald-500" />
               </div>
               <div className="space-y-1">
-                 <div className="text-sm text-white/70 font-bold uppercase tracking-widest">Contribution Margin</div>
+                 <div className="text-base text-white/70 font-bold uppercase tracking-widest">Contribution Margin</div>
                  <div className="text-3xl font-bold uppercase font-display">{formatCurrency(sellingPricePerUnit - variableCostPerUnit)} <span className="text-white/70 text-base text-normal">/ unit</span></div>
               </div>
            </div>

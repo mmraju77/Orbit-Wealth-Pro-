@@ -21,7 +21,7 @@ export default function Disclaimer() {
         <div className="p-6 bg-amber-500/10 border border-amber-500/20 rounded-2xl flex items-start gap-4">
            <AlertTriangle className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
            <div className="space-y-4">
-             <p className="text-amber-500 font-bold text-2xl leading-tight tracking-tight">
+             <p className="text-amber-500 font-bold text-2xl leading-snug tracking-tight">
                Orbit Wealth Pro is an AI-powered personal wealth intelligence platform designed for educational, informational, and analytical purposes only. We do not provide personalized investment, legal, tax, or financial advice.
              </p>
            </div>

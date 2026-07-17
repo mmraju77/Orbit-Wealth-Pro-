@@ -185,7 +185,7 @@ export default function MortgageCalculator() {
                <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <label className="text-base font-bold text-white/70 uppercase tracking-widest">Interest Rate</label>
-                    {liveSync && <span className="text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Rate Active</span>}
+                    {liveSync && <span className="text-base bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Rate Active</span>}
                   </div>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <NumericInput 
@@ -222,11 +222,11 @@ export default function MortgageCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-[#D4AF37]/5 rounded-xl border border-[#D4AF37]/10">
-                <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+                <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
                 <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan Amount</div>
+                <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan Amount</div>
                 <div className="text-4xl font-bold text-white/70 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
             </div>
           </div>

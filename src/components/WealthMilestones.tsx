@@ -123,32 +123,32 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <span className="text-sm text-white/70 uppercase font-bold">Current Wealth</span>
+                    <span className="text-base text-white/70 uppercase font-bold">Current Wealth</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.current}
                         onChange={(val) => handleUpdate(goal.id, 'current', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-white/70">$</span>
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-base text-white/70">$</span>
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-sm text-white/70 uppercase font-bold">Target Milestone</span>
+                    <span className="text-base text-white/70 uppercase font-bold">Target Milestone</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.target}
                         onChange={(val) => handleUpdate(goal.id, 'target', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-sm text-white/70">$</span>
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-base text-white/70">$</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <span className="text-sm text-white/70 uppercase font-bold">Time Horizon (Years)</span>
+                    <span className="text-base text-white/70 uppercase font-bold">Time Horizon (Years)</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.years}
@@ -158,7 +158,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-sm text-white/70 uppercase font-bold">Exp. Return (APR %)</span>
+                    <span className="text-base text-white/70 uppercase font-bold">Exp. Return (APR %)</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.annualReturn * 100}

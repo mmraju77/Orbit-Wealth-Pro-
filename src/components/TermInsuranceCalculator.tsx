@@ -156,7 +156,7 @@ export default function TermInsuranceCalculator() {
                    <Activity className="w-4 h-4 text-orange-500" />
                    <div>
                       <div className="text-base font-bold text-white uppercase tracking-widest">Tobacco/Smoking</div>
-                      <div className="text-sm text-white/70 uppercase">Do you consume tobacco?</div>
+                      <div className="text-base text-white/70 uppercase">Do you consume tobacco?</div>
                    </div>
                 </div>
                 <button 
