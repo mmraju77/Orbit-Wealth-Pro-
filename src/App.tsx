@@ -13,8 +13,8 @@ import { LocaleProvider, useLocale } from './context/LocaleContext';
 
 // Components
 import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
-import OrbitChat from './components/OrbitChat';
+
+const Footer = lazy(() => import('./components/Footer'));
 
 // Core Views (Dashboard remains static for fast LCP)
 import Dashboard from './components/Dashboard';
@@ -52,6 +52,7 @@ const BreakEvenCalculator = lazy(() => import('./components/BreakEvenCalculator'
 const CreditCardPayoff = lazy(() => import('./components/CreditCardPayoff'));
 const TermInsuranceCalculator = lazy(() => import('./components/TermInsuranceCalculator'));
 const HealthInsuranceCalculator = lazy(() => import('./components/HealthInsuranceCalculator'));
+const OrbitChat = lazy(() => import('./components/OrbitChat'));
 
 // Pages
 const PSEOLandingPage = lazy(() => import('./components/PSEOLandingPage'));
@@ -228,7 +229,9 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
             <Footer />
           </div>
         </div>
-      <OrbitChat />
+      <Suspense fallback={null}>
+        <OrbitChat />
+      </Suspense>
       </main>
     </div>
   );
