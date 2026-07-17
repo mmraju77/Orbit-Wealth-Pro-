@@ -89,14 +89,14 @@ export default function StudentLoanCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <GraduationCap className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-4xl font-bold tracking-tighter">Student Loan Calculator</h1>
+             <h1 className="text-5xl font-bold tracking-tighter">Student Loan Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-base leading-relaxed">
+          <p className="text-white/70 max-w-xl text-lg leading-relaxed">
             Estimate your future educational debt repayments including interest capitalization during grace periods or deferment.
           </p>
         </header>
 
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
           <Download className="w-4 h-4" /> Export Forecast
         </button>
       </div>
@@ -115,7 +115,7 @@ export default function StudentLoanCalculator() {
 
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={interestRate}
@@ -124,7 +124,7 @@ export default function StudentLoanCalculator() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Repayment Term</label>
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Repayment Term</label>
                     <select 
                       value={tenure}
                       onChange={(e) => setTenure(Number(e.target.value))}
@@ -136,7 +136,7 @@ export default function StudentLoanCalculator() {
               </div>
 
               <div className="pt-6 border-t border-white/5 space-y-4">
-                 <div className="flex justify-between items-center text-sm font-bold text-[#D4AF37] uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-base font-bold text-[#D4AF37] uppercase tracking-widest">
                     <div className="flex items-center gap-2">
                        <Calendar className="w-3 h-3" />
                        <span>Grace Period (Months)</span>
@@ -156,12 +156,12 @@ export default function StudentLoanCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-6">
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
-                 <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
-                 <div className="text-4xl font-bold text-white">{formatCurrency(results.emi)}</div>
+                 <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+                 <div className="text-5xl font-bold text-white">{formatCurrency(results.emi)}</div>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
-                 <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                 <div className="text-4xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
+                 <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
+                 <div className="text-5xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
               </div>
            </div>
 
@@ -189,7 +189,7 @@ export default function StudentLoanCalculator() {
              )}
            </div>
 
-           <div className="flex items-center justify-between text-sm uppercase font-bold tracking-widest pt-4 border-t border-white/5">
+           <div className="flex items-center justify-between text-base uppercase font-bold tracking-widest pt-4 border-t border-white/5">
               <div className="flex items-center gap-2">
                  <div className="w-2 h-2 rounded-full bg-[#D4AF37]/40"></div>
                  <span className="text-white/70 line-through">{formatCurrency(loanAmount)} Borrowed</span>

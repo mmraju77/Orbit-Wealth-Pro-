@@ -18,7 +18,7 @@ export default function AmortizationTable({ schedule }: AmortizationTableProps) 
     <div className="w-full">
       <table className="w-full text-left">
         <thead>
-          <tr className="text-sm uppercase tracking-widest text-white/70 border-b border-white/5">
+          <tr className="text-base uppercase tracking-widest text-white/70 border-b border-white/5">
             <th className="py-3 font-medium">Period</th>
             <th className="py-3 font-medium text-right transition-colors">Principal</th>
             <th className="py-3 font-medium text-right">Interest</th>
@@ -26,7 +26,7 @@ export default function AmortizationTable({ schedule }: AmortizationTableProps) 
             <th className="py-3 font-medium text-right text-[#D4AF37]">Balance</th>
           </tr>
         </thead>
-        <tbody className="text-[13px] font-light tabular-nums divide-y divide-white/5">
+        <tbody className="text-base font-light tabular-nums divide-y divide-white/5">
           {schedule.filter((_, i) => i % 12 === 0 || i === schedule.length - 1).map((period, i) => (
             <motion.tr 
               initial={{ opacity: 0 }}

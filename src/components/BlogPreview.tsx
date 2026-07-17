@@ -27,15 +27,15 @@ export default function BlogPreview() {
         <div className="space-y-2">
           <div className="flex items-center gap-3">
              <div className="h-[1px] w-8 bg-[#F3C64F]"></div>
-             <span className="text-sm font-black text-[#F3C64F] uppercase tracking-[0.4em]">Resource Center</span>
+             <span className="text-base font-black text-[#F3C64F] uppercase tracking-[0.4em]">Resource Center</span>
           </div>
-          <h2 className="text-4xl font-display font-bold text-[#F3C64F] tracking-tight">
+          <h2 className="text-5xl font-display font-bold text-[#F3C64F] tracking-tight">
             Expert Financial Insights
           </h2>
         </div>
         <Link 
           to="/insights" 
-          className="group flex items-center gap-2 text-sm font-bold text-slate-300 hover:text-[#F3C64F] transition-colors"
+          className="group flex items-center gap-2 text-base font-bold text-slate-300 hover:text-[#F3C64F] transition-colors"
         >
           View Intelligence Hub <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
@@ -56,7 +56,7 @@ export default function BlogPreview() {
                 <div className="aspect-[16/9] w-full bg-white/5 relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#F3C64F]/10 to-transparent opacity-50" />
                   <div className="absolute top-6 left-6 px-3 py-1 bg-[#0B0F19]/80 backdrop-blur-md rounded-full border border-white/10">
-                    <span className="text-sm font-black text-[#F3C64F] uppercase tracking-widest leading-none">
+                    <span className="text-base font-black text-[#F3C64F] uppercase tracking-widest leading-none">
                       {article.category}
                     </span>
                   </div>
@@ -68,16 +68,16 @@ export default function BlogPreview() {
                 </div>
 
                 <div className="p-8 flex-1 flex flex-col">
-                  <div className="flex items-center gap-4 mb-4 text-sm font-bold text-white/70 uppercase tracking-widest">
+                  <div className="flex items-center gap-4 mb-4 text-base font-bold text-white/70 uppercase tracking-widest">
                     <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {article.readTime}</span>
                     <span>{article.date}</span>
                   </div>
 
-                  <h3 className="text-2xl font-bold text-white mb-4 line-clamp-2 leading-snug group-hover:text-[#F3C64F] transition-colors">
+                  <h3 className="text-3xl font-bold text-white mb-4 line-clamp-2 leading-snug group-hover:text-[#F3C64F] transition-colors">
                     {article.title}
                   </h3>
 
-                  <p className="text-base !text-white !opacity-100 leading-relaxed line-clamp-2 mb-8 font-medium">
+                  <p className="text-lg !text-white !opacity-100 leading-relaxed line-clamp-2 mb-8 font-medium">
                     {article.excerpt}
                   </p>
 
@@ -87,8 +87,8 @@ export default function BlogPreview() {
                         <User className="w-4 h-4 text-[#F3C64F]" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-bold text-white">{article.author}</h4>
-                        <p className="text-[8px] text-[#F3C64F] font-black uppercase tracking-widest">{article.authorTitle}</p>
+                        <h4 className="text-base font-bold text-white">{article.author}</h4>
+                        <p className="text-sm text-[#F3C64F] font-black uppercase tracking-widest">{article.authorTitle}</p>
                       </div>
                     </div>
                     <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#F3C64F] group-hover:text-[#0B0F19] group-hover:border-[#F3C64F] transition-all">

@@ -56,9 +56,9 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
               <div className="absolute top-12 left-12 space-y-4">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-full">
                   <Sparkles className="w-3 h-3 text-[#D4AF37]" />
-                  <span className="text-sm font-black text-[#D4AF37] uppercase tracking-widest">{article.category}</span>
+                  <span className="text-base font-black text-[#D4AF37] uppercase tracking-widest">{article.category}</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-display font-bold text-white tracking-tight max-w-2xl leading-tight">
+                <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight max-w-2xl leading-tight">
                   {article.title}
                 </h2>
               </div>
@@ -75,8 +75,8 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                         <User className="w-4 h-4 text-[#D4AF37]" />
                       </div>
                       <div>
-                        <p className="text-sm text-white/70 uppercase font-bold tracking-widest">Author</p>
-                        <p className="text-base font-bold text-white">{article.author}</p>
+                        <p className="text-base text-white/70 uppercase font-bold tracking-widest">Author</p>
+                        <p className="text-lg font-bold text-white">{article.author}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -84,8 +84,8 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                         <Calendar className="w-4 h-4 text-[#D4AF37]" />
                       </div>
                       <div>
-                        <p className="text-sm text-white/70 uppercase font-bold tracking-widest">Published</p>
-                        <p className="text-base font-bold text-white">{article.date}</p>
+                        <p className="text-base text-white/70 uppercase font-bold tracking-widest">Published</p>
+                        <p className="text-lg font-bold text-white">{article.date}</p>
                       </div>
                     </div>
                     <div className="flex items-center gap-3">
@@ -93,17 +93,17 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                         <Clock className="w-4 h-4 text-[#D4AF37]" />
                       </div>
                       <div>
-                        <p className="text-sm text-white/70 uppercase font-bold tracking-widest">Est. Reading</p>
-                        <p className="text-base font-bold text-white">{article.readTime}</p>
+                        <p className="text-base text-white/70 uppercase font-bold tracking-widest">Est. Reading</p>
+                        <p className="text-lg font-bold text-white">{article.readTime}</p>
                       </div>
                     </div>
                   </div>
 
                   <div className="pt-8 border-t border-white/5">
-                    <p className="text-sm text-white/70 uppercase font-bold tracking-widest mb-4">Core Themes</p>
+                    <p className="text-base text-white/70 uppercase font-bold tracking-widest mb-4">Core Themes</p>
                     <div className="flex flex-wrap gap-2">
                       {article.tags.map(tag => (
-                        <span key={tag} className="px-2 py-1 bg-white/5 border border-white/5 rounded text-[9px] text-white/70 font-bold uppercase">
+                        <span key={tag} className="px-2 py-1 bg-white/5 border border-white/5 rounded text-sm text-white/70 font-bold uppercase">
                           {tag}
                         </span>
                       ))}
@@ -114,11 +114,11 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                 {/* Article Body */}
                 <div className="lg:col-span-3 space-y-8">
                   <div className="markdown-body prose prose-invert prose-emerald max-w-none">
-                    <p className="text-2xl text-slate-100 leading-relaxed font-medium">
+                    <p className="text-3xl text-slate-100 leading-relaxed font-medium">
                       {article.excerpt}
                     </p>
                     <div className="h-px w-24 bg-[#D4AF37]/30 my-8" />
-                    <div className="text-slate-300 leading-huge text-xl space-y-6">
+                    <div className="text-slate-300 leading-huge text-2xl space-y-6">
                       <p>
                         In the current global fiscal landscape, precision-driven strategies are no longer optional—they are foundational. 
                         As we navigate the complexities of 2026, the architecture of wealth distribution is shifting towards 
@@ -129,7 +129,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                         This deep dive explores the psychological and mathematical frameworks required to maintain high-authority 
                         portfolios amidst shifting interest rate trajectories and evolving digital asset classes.
                       </p>
-                      <h3 className="text-3xl font-bold text-white mt-12 mb-6">The New Standard of Intelligence</h3>
+                      <h3 className="text-4xl font-bold text-white mt-12 mb-6">The New Standard of Intelligence</h3>
                       <p>
                         Automation in wealth management isn't just about efficiency; it's about eliminating the high-entropy friction 
                         of human bias. By implementing zero-maintenance intelligence loops, investors can ensure that their 
@@ -141,9 +141,9 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                   <div className="mt-12 p-8 bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/20 rounded-[2rem]">
                     <div className="flex items-center gap-4 mb-4">
                       <Sparkles className="w-6 h-6 text-emerald-400" />
-                      <h4 className="text-xl font-bold text-white">Chief AI Architect Insight</h4>
+                      <h4 className="text-2xl font-bold text-white">Chief AI Architect Insight</h4>
                     </div>
-                    <p className="text-emerald-300 text-base leading-relaxed italic">
+                    <p className="text-emerald-300 text-lg leading-relaxed italic">
                       "The future of wealth belongs to those who view their portfolios as living codebases—dynamic systems that 
                       self-correct against market volatility. Our mission at Orbit Wealth Pro is to provide the operational 
                       syntax for that future."

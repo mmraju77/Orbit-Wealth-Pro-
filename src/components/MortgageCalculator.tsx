@@ -134,19 +134,19 @@ export default function MortgageCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Mortgage Intelligence</span>
+             <span className="text-base font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Mortgage Intelligence</span>
           </div>
-          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Home Loan Suite.</h1>
-          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
+          <h1 className="text-7xl font-display font-medium text-[#f59e0b] tracking-tight">Home Loan Suite.</h1>
+          <p className="text-white/70 max-w-xl text-lg font-light leading-relaxed">
             Navigate your real estate financial journey with institutional-grade amortization logic.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Results
           </button>
         </div>
@@ -167,8 +167,8 @@ export default function MortgageCalculator() {
 
              <div className="space-y-4">
                <div className="flex justify-between items-center">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Down Payment (%)</label>
-                  <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{inputs.downPaymentPercent}%</div>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Down Payment (%)</label>
+                  <div className="text-2xl font-bold text-[#D4AF37] tracking-tighter">{inputs.downPaymentPercent}%</div>
                </div>
                <input 
                   aria-label="Adjust value" type="range" min="0" max="100" step="1"
@@ -184,8 +184,8 @@ export default function MortgageCalculator() {
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                <div className="space-y-4">
                   <div className="flex items-center gap-2">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Interest Rate</label>
-                    {liveSync && <span className="text-[7px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Rate Active</span>}
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Interest Rate</label>
+                    {liveSync && <span className="text-sm bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Rate Active</span>}
                   </div>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <NumericInput 
@@ -198,7 +198,7 @@ export default function MortgageCalculator() {
                   </div>
                </div>
                <div className="space-y-4">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Loan Term</label>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Loan Term</label>
                   <div className="space-y-4">
                     <NumericInput 
                       min={1} max={50} 
@@ -222,12 +222,12 @@ export default function MortgageCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-[#D4AF37]/5 rounded-xl border border-[#D4AF37]/10">
-                <div className="text-[8px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
-                <div className="text-3xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
+                <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+                <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[8px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan Amount</div>
-                <div className="text-3xl font-bold text-white/70 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
+                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan Amount</div>
+                <div className="text-4xl font-bold text-white/70 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
             </div>
           </div>
         </section>
@@ -239,7 +239,7 @@ export default function MortgageCalculator() {
               <div className="flex items-start justify-between mb-8">
                  <div>
                    <h3 className="font-bold text-white">Payment Distribution</h3>
-                   <p className="text-sm text-white/70 uppercase tracking-widest font-bold">Principal vs Interest Analysis</p>
+                   <p className="text-base text-white/70 uppercase tracking-widest font-bold">Principal vs Interest Analysis</p>
                  </div>
                  <div className="p-2 bg-[#D4AF37]/10 rounded-lg">
                    <Info className="w-4 h-4 text-[#D4AF37]" />
@@ -270,25 +270,25 @@ export default function MortgageCalculator() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
                 <div className="text-center">
-                   <div className="text-sm text-white/70 font-bold uppercase tracking-widest">Total Interest</div>
-                   <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.totalInterest)}</div>
+                   <div className="text-base text-white/70 font-bold uppercase tracking-widest">Total Interest</div>
+                   <div className="text-2xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.totalInterest)}</div>
                 </div>
                 <div className="text-center">
-                   <div className="text-sm text-white/70 font-bold uppercase tracking-widest">Total Payable</div>
-                   <div className="text-xl font-bold text-white tracking-tighter">{formatCurrency(results.totalPayment)}</div>
+                   <div className="text-base text-white/70 font-bold uppercase tracking-widest">Total Payable</div>
+                   <div className="text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.totalPayment)}</div>
                 </div>
               </div>
 
               {countryKey === 'canada' && (
                 <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/5">
-                  <p className="text-sm text-white/70 italic leading-relaxed">
+                  <p className="text-base text-white/70 italic leading-relaxed">
                     * Calculated using Canadian semi-annual compounding laws.
                   </p>
                 </div>
               )}
               {countryKey === 'uk' && (
                 <div className="mt-6 p-4 bg-white/5 rounded-xl border border-white/5">
-                  <p className="text-sm text-white/70 italic leading-relaxed">
+                  <p className="text-base text-white/70 italic leading-relaxed">
                     * In the UK, rates usually fix for 2-5 years before reverting to SVR.
                   </p>
                 </div>
@@ -305,11 +305,11 @@ export default function MortgageCalculator() {
           <div className="flex items-center gap-4">
              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-[#D4AF37]"></div>
-                <span className="text-sm font-bold text-white/70 uppercase">Balance</span>
+                <span className="text-base font-bold text-white/70 uppercase">Balance</span>
              </div>
              <div className="flex items-center gap-2">
                 <div className="w-2 h-2 rounded-full bg-white"></div>
-                <span className="text-sm font-bold text-white/70 uppercase">Equity</span>
+                <span className="text-base font-bold text-white/70 uppercase">Equity</span>
              </div>
           </div>
         </div>

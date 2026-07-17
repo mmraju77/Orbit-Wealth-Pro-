@@ -77,19 +77,19 @@ export default function HealthInsuranceCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Healthcare Shield</span>
+             <span className="text-base font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Healthcare Shield</span>
           </div>
-          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Health Insurance.</h1>
-          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
+          <h1 className="text-7xl font-display font-medium text-[#f59e0b] tracking-tight">Health Insurance.</h1>
+          <p className="text-white/70 max-w-xl text-lg font-light leading-relaxed">
             Optimize your health coverage with our intelligent premium estimation engine using actuarial risk modeling.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
+          <button className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> Export Quote
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Plan
           </button>
         </div>
@@ -109,7 +109,7 @@ export default function HealthInsuranceCalculator() {
 
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                <div className="space-y-4">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Age of Oldest Member</label>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Age of Oldest Member</label>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <HeartPulse className="w-4 h-4 text-[#D4AF37]" />
                     <NumericInput 
@@ -121,21 +121,21 @@ export default function HealthInsuranceCalculator() {
                   </div>
                </div>
                <div className="space-y-4">
-                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Family Composition</label>
+                  <label className="text-base font-bold text-white/70 uppercase tracking-widest">Family Composition</label>
                   <div className="flex items-center gap-4">
                      <div className="flex-1 flex items-center justify-between bg-black/40 p-3 rounded-xl border border-white/5">
-                        <span className="text-sm font-bold text-white/70 uppercase">Adults</span>
+                        <span className="text-base font-bold text-white/70 uppercase">Adults</span>
                         <div className="flex items-center gap-3">
                            <button onClick={() => setInputs({...inputs, adults: Math.max(1, inputs.adults - 1)})}><Minus className="w-3 h-3 text-[#D4AF37]" /></button>
-                           <span className="text-base font-bold text-white w-4 text-center">{inputs.adults}</span>
+                           <span className="text-lg font-bold text-white w-4 text-center">{inputs.adults}</span>
                            <button onClick={() => setInputs({...inputs, adults: Math.min(4, inputs.adults + 1)})}><Plus className="w-3 h-3 text-[#D4AF37]" /></button>
                         </div>
                      </div>
                      <div className="flex-1 flex items-center justify-between bg-black/40 p-3 rounded-xl border border-white/5">
-                        <span className="text-sm font-bold text-white/70 uppercase">Kids</span>
+                        <span className="text-base font-bold text-white/70 uppercase">Kids</span>
                         <div className="flex items-center gap-3">
                            <button onClick={() => setInputs({...inputs, children: Math.max(0, inputs.children - 1)})}><Minus className="w-3 h-3 text-[#D4AF37]" /></button>
-                           <span className="text-base font-bold text-white w-4 text-center">{inputs.children}</span>
+                           <span className="text-lg font-bold text-white w-4 text-center">{inputs.children}</span>
                            <button onClick={() => setInputs({...inputs, children: Math.min(4, inputs.children + 1)})}><Plus className="w-3 h-3 text-[#D4AF37]" /></button>
                         </div>
                      </div>
@@ -144,20 +144,20 @@ export default function HealthInsuranceCalculator() {
              </div>
 
              <div className="space-y-4">
-                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Premium Riders & Add-ons</label>
+                <label className="text-base font-bold text-white/70 uppercase tracking-widest">Premium Riders & Add-ons</label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                    <button 
                      onClick={() => setInputs({...inputs, includesOPD: !inputs.includesOPD})}
                      className={`p-4 rounded-xl border flex items-center justify-between transition-all ${inputs.includesOPD ? 'bg-[#D4AF37]/10 border-[#D4AF37]/30 text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
                    >
-                     <span className="text-sm font-bold uppercase tracking-widest">OPD Cover</span>
+                     <span className="text-base font-bold uppercase tracking-widest">OPD Cover</span>
                      <div className={`w-3 h-3 rounded-full ${inputs.includesOPD ? 'bg-[#D4AF37]' : 'bg-white/10'}`}></div>
                    </button>
                    <button 
                      onClick={() => setInputs({...inputs, includesCriticalIllness: !inputs.includesCriticalIllness})}
                      className={`p-4 rounded-xl border flex items-center justify-between transition-all ${inputs.includesCriticalIllness ? 'bg-[#D4AF37]/10 border-[#D4AF37]/30 text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
                    >
-                     <span className="text-sm font-bold uppercase tracking-widest">Critical Illness</span>
+                     <span className="text-base font-bold uppercase tracking-widest">Critical Illness</span>
                      <div className={`w-3 h-3 rounded-full ${inputs.includesCriticalIllness ? 'bg-[#D4AF37]' : 'bg-white/10'}`}></div>
                    </button>
                 </div>
@@ -166,12 +166,12 @@ export default function HealthInsuranceCalculator() {
 
           <div className="p-6 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 flex items-center justify-between">
              <div className="space-y-1">
-                <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest">Estimated Annual Premium</div>
-                <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.annualPremium)}</div>
+                <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest">Estimated Annual Premium</div>
+                <div className="text-5xl font-bold text-white tracking-tighter">{formatCurrency(results.annualPremium)}</div>
              </div>
              <div className="text-right">
-                <div className="text-sm text-white/70 font-bold uppercase tracking-widest">Monthly Split</div>
-                <div className="text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
+                <div className="text-base text-white/70 font-bold uppercase tracking-widest">Monthly Split</div>
+                <div className="text-3xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
              </div>
           </div>
         </section>
@@ -187,20 +187,20 @@ export default function HealthInsuranceCalculator() {
                   <div className="w-20 h-20 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#D4AF37]/20">
                      <ShieldCheck className="w-10 h-10 text-[#D4AF37]" />
                   </div>
-                  <h3 className="text-3xl font-display font-medium">Coverage Score.</h3>
-                  <p className="text-white/70 text-sm italic max-w-xs mx-auto">
+                  <h3 className="text-4xl font-display font-medium">Coverage Score.</h3>
+                  <p className="text-white/70 text-base italic max-w-xs mx-auto">
                     "Your family of {inputs.adults + inputs.children} is being modeled for comprehensive medical risk coverage."
                   </p>
                </div>
 
                <div className="w-full grid grid-cols-2 gap-8 pt-8 border-t border-white/5">
                   <div className="space-y-2">
-                     <div className="text-sm font-bold text-white/70 uppercase tracking-widest">Oldest Member</div>
-                     <div className="text-xl font-bold">{inputs.oldestAge} Years</div>
+                     <div className="text-base font-bold text-white/70 uppercase tracking-widest">Oldest Member</div>
+                     <div className="text-2xl font-bold">{inputs.oldestAge} Years</div>
                   </div>
                   <div className="space-y-2">
-                     <div className="text-sm font-bold text-white/70 uppercase tracking-widest">Policy Type</div>
-                     <div className="text-xl font-bold">{inputs.adults > 1 ? 'Family Floater' : 'Individual'}</div>
+                     <div className="text-base font-bold text-white/70 uppercase tracking-widest">Policy Type</div>
+                     <div className="text-2xl font-bold">{inputs.adults > 1 ? 'Family Floater' : 'Individual'}</div>
                   </div>
                </div>
 

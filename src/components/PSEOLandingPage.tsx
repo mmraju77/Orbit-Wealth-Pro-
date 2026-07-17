@@ -101,15 +101,15 @@ export default function PSEOLandingPage() {
             <Globe className="text-white w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white tracking-tight">
+            <h2 className="text-3xl font-bold text-white tracking-tight">
               {calcData.title} for {regionData.name}
             </h2>
-            <p className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mt-1">
+            <p className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mt-1">
               {regionData.taxContext || 'Regional FinTech Adaptation'}
             </p>
           </div>
         </div>
-        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-sm font-bold text-white/70 uppercase tracking-widest">
+        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-base font-bold text-white/70 uppercase tracking-widest">
             Edition: {regionData.name} v2.4
         </div>
       </div>
@@ -122,13 +122,13 @@ export default function PSEOLandingPage() {
         <section className="bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-2xl p-8 space-y-6">
           <div className="flex items-center gap-2 text-[#D4AF37]">
             <CheckCircle2 className="w-5 h-5" />
-            <h3 className="text-2xl font-bold text-white">Local Financial Insights: {regionData.name}</h3>
+            <h3 className="text-3xl font-bold text-white">Local Financial Insights: {regionData.name}</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {regionData.localInsights.map((insight, idx) => (
               <div key={idx} className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-start gap-3 group hover:border-[#D4AF37]/40 transition-colors">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1.5 shrink-0 group-hover:scale-125 transition-transform" />
-                <p className="text-base text-white/70 leading-relaxed">
+                <p className="text-lg text-white/70 leading-relaxed">
                    {insight}
                 </p>
               </div>
@@ -140,17 +140,17 @@ export default function PSEOLandingPage() {
       <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-6">
         <div className="flex items-center gap-2">
             <Shield className="text-[#D4AF37] w-5 h-5" />
-            <h3 className="text-2xl font-bold text-white">Smart Content: {regionData.name} Financial Norms</h3>
+            <h3 className="text-3xl font-bold text-white">Smart Content: {regionData.name} Financial Norms</h3>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-4">
-                <p className="text-base text-white/70 leading-relaxed">
+                <p className="text-lg text-white/70 leading-relaxed">
                     {regionData.smartContent}
                 </p>
                 <div className="flex items-start gap-3 p-4 bg-white/5 rounded-xl border border-white/5">
                     <Info className="text-[#D4AF37] w-4 h-4 shrink-0 mt-0.5" />
-                    <p className="text-sm text-white/70 italic">
+                    <p className="text-base text-white/70 italic">
                         Calculations are adjusted for {regionData.name} standard compounding frequencies and common tax slabs where applicable. Always consult with a local financial advisor for personalized tax planning.
                     </p>
                 </div>
@@ -158,12 +158,12 @@ export default function PSEOLandingPage() {
             
             <div className="space-y-4">
                 <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <div className="text-sm font-bold text-white/70 uppercase tracking-widest mb-1">Local Currency</div>
-                    <div className="text-2xl font-bold text-white">{regionData.currency}</div>
+                    <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Local Currency</div>
+                    <div className="text-3xl font-bold text-white">{regionData.currency}</div>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <div className="text-sm font-bold text-white/70 uppercase tracking-widest mb-1">Tax Engine</div>
-                    <div className="text-2xl font-bold text-white">Orbit v4.0</div>
+                    <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Tax Engine</div>
+                    <div className="text-3xl font-bold text-white">Orbit v4.0</div>
                 </div>
             </div>
         </div>

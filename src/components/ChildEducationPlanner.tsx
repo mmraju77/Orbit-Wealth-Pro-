@@ -54,14 +54,14 @@ export default function ChildEducationPlanner() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Institutional Heritage</span>
+             <span className="text-base font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Institutional Heritage</span>
           </div>
-          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Academic Funding.</h1>
-          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
+          <h1 className="text-7xl font-display font-medium text-[#f59e0b] tracking-tight">Academic Funding.</h1>
+          <p className="text-white/70 max-w-xl text-lg font-light leading-relaxed">
             Provision for future educational excellence with high-fidelity inflation modeling.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
           <Download className="w-4 h-4" /> Export Plan
         </button>
       </div>
@@ -79,7 +79,7 @@ export default function ChildEducationPlanner() {
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Education Inflation (%)</label>
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Education Inflation (%)</label>
                     <NumericInput 
                       value={inflation}
                       onChange={setInflation}
@@ -87,7 +87,7 @@ export default function ChildEducationPlanner() {
                     />
                  </div>
                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Expected Returns (%)</label>
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Expected Returns (%)</label>
                     <NumericInput 
                       value={expectedReturn}
                       onChange={setExpectedReturn}
@@ -96,7 +96,7 @@ export default function ChildEducationPlanner() {
                  </div>
               </div>
               <div className="space-y-4">
-                 <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-base font-bold text-white/70 uppercase tracking-widest">
                     <span>Years until admission</span>
                     <span className="text-[#D4AF37]">{yearsUntilUni} Years</span>
                  </div>
@@ -119,14 +119,14 @@ export default function ChildEducationPlanner() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between">
            <div className="space-y-8">
               <div className="p-8 bg-white/5 rounded-2xl border border-white/5 text-center">
-                 <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-2">Estimated Future Cost</div>
-                 <div className="text-6xl font-bold text-white tracking-tighter">{formatCurrency(results.futureCost)}</div>
+                 <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-2">Estimated Future Cost</div>
+                 <div className="text-7xl font-bold text-white tracking-tighter">{formatCurrency(results.futureCost)}</div>
               </div>
               
               <div className="p-8 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
-                 <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-2">Required Monthly Investment</div>
-                 <div className="text-6xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.monthlySIP)}</div>
-                 <div className="mt-4 text-sm text-white/70">Assuming {expectedReturn}% annual compounded returns</div>
+                 <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-2">Required Monthly Investment</div>
+                 <div className="text-7xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.monthlySIP)}</div>
+                 <div className="mt-4 text-base text-white/70">Assuming {expectedReturn}% annual compounded returns</div>
               </div>
            </div>
 

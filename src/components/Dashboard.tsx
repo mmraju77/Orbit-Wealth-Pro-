@@ -232,10 +232,10 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
             <div className="absolute bottom-8 left-8 right-8">
-              <span className="px-3 py-1 bg-[#f59e0b] rounded-full text-sm font-black text-black uppercase tracking-widest mb-4 inline-block">
+              <span className="px-3 py-1 bg-[#f59e0b] rounded-full text-base font-black text-black uppercase tracking-widest mb-4 inline-block">
                 {article.category}
               </span>
-                  <h2 className="text-4xl md:text-6xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight">
+                  <h2 className="text-5xl md:text-7xl font-display font-medium text-[#f59e0b] tracking-tighter leading-tight">
                     {article.title}
                   </h2>
             </div>
@@ -245,19 +245,19 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
             <div className="flex items-center gap-6 border-b border-white/5 pb-8">
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-white/70" />
-                <span className="text-sm text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
+                <span className="text-base text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
               </div>
               <div className="flex items-center gap-2">
                 <UserCheck className="w-4 h-4 text-white/70" />
-                <span className="text-sm text-slate-200 font-bold uppercase tracking-widest">Orbit Research Team</span>
+                <span className="text-base text-slate-200 font-bold uppercase tracking-widest">Orbit Research Team</span>
               </div>
             </div>
 
             <div className="space-y-6">
-              <p className="text-2xl text-slate-100 font-medium leading-relaxed italic border-l-4 border-[#f59e0b] pl-6">
+              <p className="text-3xl text-slate-100 font-medium leading-relaxed italic border-l-4 border-[#f59e0b] pl-6">
                 {article.summary}
               </p>
-              <div className="text-xl text-slate-200 leading-relaxed font-light space-y-6">
+              <div className="text-2xl text-slate-200 leading-relaxed font-light space-y-6">
                 {article.content.split('. ').map((sentence, i) => (
                   <p key={i}>{sentence}.</p>
                 ))}
@@ -265,12 +265,12 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
             </div>
 
             <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row gap-8 justify-between items-center">
-              <div className="text-sm text-white/70 uppercase tracking-[0.2em] font-bold">
+              <div className="text-base text-white/70 uppercase tracking-[0.2em] font-bold">
                 © 2026 ORBIT WEALTH PRO — All Rights Reserved
               </div>
               <button 
                 onClick={onClose}
-                className="px-10 py-4 bg-[#f59e0b] text-black font-black text-sm uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform"
+                className="px-10 py-4 bg-[#f59e0b] text-black font-black text-base uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform"
               >
                 Return to Intelligence Suite
               </button>
@@ -301,7 +301,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
           height="225"
         />
         <div className="absolute top-4 left-4">
-          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-[8px] font-black text-[#f59e0b] uppercase tracking-tighter border border-white/5">
+          <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-sm font-black text-[#f59e0b] uppercase tracking-tighter border border-white/5">
             {article.category}
           </span>
         </div>
@@ -309,10 +309,10 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-2xl font-display font-bold text-[#f59e0b] tracking-tighter leading-tight group-hover:scale-[1.02] origin-left transition-transform duration-500">
+          <h3 className="text-3xl font-display font-bold text-[#f59e0b] tracking-tighter leading-tight group-hover:scale-[1.02] origin-left transition-transform duration-500">
             {article.title}
           </h3>
-          <p className="text-base text-slate-100 leading-relaxed line-clamp-2 font-medium">
+          <p className="text-lg text-slate-100 leading-relaxed line-clamp-2 font-medium">
             {article.summary}
           </p>
         </div>
@@ -320,12 +320,12 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
         <div className="pt-4 flex items-center justify-between border-t border-white/[0.05]">
            <div className="flex items-center gap-2">
               <Calendar className="w-3 h-3 text-white/70" />
-              <span className="text-sm text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
+              <span className="text-base text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
            <button 
              onClick={() => onReadMore(article)}
              aria-label={`Read full report: ${article.title}`}
-             className="flex items-center gap-2 text-sm font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
+             className="flex items-center gap-2 text-base font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
            >
              Read Full Report <ArrowUpRight className="w-3 h-3" />
            </button>
@@ -359,13 +359,13 @@ export default function Dashboard() {
       <header className="space-y-6">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
-          <span className="text-sm font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
+          <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
         </div>
-        <h1 className="text-5xl sm:text-6xl md:text-8xl font-display font-medium text-[#f59e0b] tracking-tighter leading-[1.1]">
+        <h1 className="text-6xl sm:text-7xl md:text-9xl font-display font-medium text-[#f59e0b] tracking-tighter leading-[1.1]">
           Financial <br />
           <span className="text-white/70">Dashboard.</span>
         </h1>
-        <p className="text-white/90 max-w-xl text-lg md:text-xl font-light leading-relaxed">
+        <p className="text-white/90 max-w-xl text-xl md:text-2xl font-light leading-relaxed">
           Access ORBIT WEALTH PRO's suite of institutional-grade financial tools. 
           Precision engineering for the modern global investor.
         </p>
@@ -383,7 +383,7 @@ export default function Dashboard() {
 
       <section className="space-y-10">
         <div className="flex items-center gap-4">
-           <h2 className="text-sm font-bold text-slate-100 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
+           <h2 className="text-base font-bold text-slate-100 uppercase tracking-[0.4em]">Integrated Computation Suite</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
         
@@ -411,10 +411,10 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-display font-bold text-white group-hover:text-[#f59e0b] transition-colors duration-500">
+                    <h3 className="text-3xl font-display font-bold text-white group-hover:text-[#f59e0b] transition-colors duration-500">
                       {card.title}
                     </h3>
-                    <p className="text-base text-slate-100 leading-relaxed font-medium line-clamp-2">
+                    <p className="text-lg text-slate-100 leading-relaxed font-medium line-clamp-2">
                        {card.description}
                     </p>
                   </div>
@@ -428,9 +428,9 @@ export default function Dashboard() {
       {/* Global Finance News Section */}
       <section id="news-section" className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
+           <h2 className="text-base font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
            <div className="flex-1 h-px bg-[#D4AF37]/10"></div>
-           <div className="flex items-center gap-2 text-sm font-bold text-white/70 uppercase tracking-widest">
+           <div className="flex items-center gap-2 text-base font-bold text-white/70 uppercase tracking-widest">
              <div className="w-1 h-1 rounded-full bg-[#D4AF37] animate-pulse"></div>
              Live Updates
            </div>
@@ -457,7 +457,7 @@ export default function Dashboard() {
                 setShowAllNews(true);
               }
             }}
-            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-sm font-bold text-white/70 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
+            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-base font-bold text-white/70 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
           >
             {showAllNews ? 'Show Less Insights' : 'Explore All Market Insights'}
           </button>
@@ -466,19 +466,19 @@ export default function Dashboard() {
 
       <section className="pt-24 border-t border-white/[0.05] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
-          <h2 className="text-3xl font-display font-medium">Built for accuracy.</h2>
-          <p className="text-lg text-slate-100 leading-relaxed max-w-md">
+          <h2 className="text-4xl font-display font-medium">Built for accuracy.</h2>
+          <p className="text-xl text-slate-100 leading-relaxed max-w-md">
             Our engine accounts for localized interest compounding, tax thresholds, and currency fluctuations to ensure your planning is based on high-integrity data.
           </p>
         </div>
         <div className="flex gap-12">
             <div className="space-y-1 text-center">
-              <div className="text-5xl font-display text-white">100%</div>
-              <div className="text-sm text-slate-300 uppercase font-black tracking-[0.2em]">Computation Accuracy</div>
+              <div className="text-6xl font-display text-white">100%</div>
+              <div className="text-base text-slate-300 uppercase font-black tracking-[0.2em]">Computation Accuracy</div>
             </div>
             <div className="space-y-1 text-center">
-              <div className="text-5xl font-display text-white">Instant</div>
-              <div className="text-sm text-slate-300 uppercase font-black tracking-[0.2em]">Execution Latency</div>
+              <div className="text-6xl font-display text-white">Instant</div>
+              <div className="text-base text-slate-300 uppercase font-black tracking-[0.2em]">Execution Latency</div>
             </div>
         </div>
       </section>
@@ -488,11 +488,11 @@ export default function Dashboard() {
         <div className="absolute top-0 right-0 w-64 h-64 bg-[#F3C64F]/5 rounded-full blur-3xl -mr-32 -mt-32"></div>
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8">
-            <h2 className="text-2xl md:text-4xl font-bold text-[#F3C64F] mb-6 flex items-center gap-3">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#F3C64F] mb-6 flex items-center gap-3">
               <UserCheck className="w-6 h-6" /> Meet the Founder
             </h2>
-            <h3 className="text-xl md:text-3xl font-bold text-white mb-4">Munchangi Matyaraju (mm Raju)</h3>
-            <p className="text-base md:text-xl text-slate-100 leading-relaxed max-w-2xl font-medium">
+            <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">Munchangi Matyaraju (mm Raju)</h3>
+            <p className="text-lg md:text-2xl text-slate-100 leading-relaxed max-w-2xl font-medium">
               Founder & Chief AI Architect of Orbit Wealth Pro. Committed to building zero-maintenance, 
               highly accurate financial intelligence tools for global investors. Driven by a passion for 
               decentralizing complex wealth metrics through intelligent automation.
@@ -502,7 +502,7 @@ export default function Dashboard() {
                 href="https://www.linkedin.com/in/munchangi-matyaraju" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-blue-400 hover:text-white hover:bg-blue-400/10 px-4 py-2 rounded-xl transition-all font-bold text-base"
+                className="inline-flex items-center gap-2 text-blue-400 hover:text-white hover:bg-blue-400/10 px-4 py-2 rounded-xl transition-all font-bold text-lg"
               >
                 🌐 Connect on LinkedIn →
               </a>
@@ -524,7 +524,7 @@ export default function Dashboard() {
                 />
                 <div className="hidden w-full h-full flex flex-col items-center justify-center animate-pulse">
                   <UserCheck className="w-12 h-12 text-gray-600" />
-                  <span className="text-sm font-bold text-gray-500 mt-2 uppercase tracking-widest">MM Raju</span>
+                  <span className="text-base font-bold text-gray-500 mt-2 uppercase tracking-widest">MM Raju</span>
                 </div>
             </div>
           </div>
@@ -534,7 +534,7 @@ export default function Dashboard() {
       {/* Global Presence Section - Micro-links for targeted regions */}
       <section className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-sm font-bold text-white/70 uppercase tracking-[0.4em]">Global Presence</h2>
+           <h2 className="text-base font-bold text-white/70 uppercase tracking-[0.4em]">Global Presence</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
 
@@ -558,8 +558,8 @@ export default function Dashboard() {
               to={`/tools/mortgage/${country.id}`}
               className="flex items-center gap-2 p-3 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#D4AF37]/40 hover:bg-white/[0.04] transition-all group"
             >
-              <span className="text-xl grayscale group-hover:grayscale-0 transition-all">{country.flag}</span>
-              <span className="text-sm font-bold text-white/70 uppercase tracking-widest group-hover:text-white transition-colors">{country.name}</span>
+              <span className="text-2xl grayscale group-hover:grayscale-0 transition-all">{country.flag}</span>
+              <span className="text-base font-bold text-white/70 uppercase tracking-widest group-hover:text-white transition-colors">{country.name}</span>
             </Link>
           ))}
         </div>

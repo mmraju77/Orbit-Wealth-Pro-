@@ -72,18 +72,18 @@ export default function EMICalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <CreditCard className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-4xl font-bold tracking-tighter text-[#f59e0b]">EMI Global Calculator</h1>
+             <h1 className="text-5xl font-bold tracking-tighter text-[#f59e0b]">EMI Global Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-lg leading-relaxed">
+          <p className="text-white/70 max-w-xl text-xl leading-relaxed">
             Equated Monthly Installment tool for personal, car, or home loans across multiple regions.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -103,8 +103,8 @@ export default function EMICalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
-                <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{inputs.interestRate}%</div>
+                <label className="text-base font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
+                <div className="text-2xl font-bold text-[#D4AF37] tracking-tighter">{inputs.interestRate}%</div>
               </div>
               <NumericInput 
                 min={1} max={25} step="0.1"
@@ -122,8 +122,8 @@ export default function EMICalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Loan Tenure (Years)</label>
-                <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{inputs.loanTerm} Yr</div>
+                <label className="text-base font-bold text-white/70 uppercase tracking-widest">Loan Tenure (Years)</label>
+                <div className="text-2xl font-bold text-[#D4AF37] tracking-tighter">{inputs.loanTerm} Yr</div>
               </div>
               <NumericInput 
                 min={1} max={30} step="1"
@@ -146,8 +146,8 @@ export default function EMICalculator() {
             <div className="w-full flex-col flex items-center justify-center gap-12">
                <div className="relative w-[250px] h-[250px]">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 flex-col">
-                    <div className="text-sm text-white/70 font-bold uppercase tracking-widest">Monthly EMI</div>
-                    <div className="text-3xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
+                    <div className="text-base text-white/70 font-bold uppercase tracking-widest">Monthly EMI</div>
+                    <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
                   </div>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
@@ -168,12 +168,12 @@ export default function EMICalculator() {
                
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 w-full border-t border-white/5 pt-8 px-4">
                  <div className="text-center">
-                    <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                    <div className="text-2xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
+                    <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
+                    <div className="text-3xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
                  </div>
                  <div className="text-center">
-                    <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Payable</div>
-                    <div className="text-2xl font-bold text-white">{formatCurrency(results.totalPayment)}</div>
+                    <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Payable</div>
+                    <div className="text-3xl font-bold text-white">{formatCurrency(results.totalPayment)}</div>
                  </div>
                </div>
             </div>

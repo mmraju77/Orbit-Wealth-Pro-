@@ -147,7 +147,7 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
              <div className="w-8 h-8 bg-[#D4AF37] rounded-lg flex items-center justify-center">
                <Wallet className="w-5 h-5 text-black" />
              </div>
-             <span className="font-display font-black text-base tracking-tighter uppercase text-white">ORBIT WEALTH PRO</span>
+             <span className="font-display font-black text-lg tracking-tighter uppercase text-white">ORBIT WEALTH PRO</span>
           </div>
           <button 
             onClick={() => setSidebarOpen(true)}

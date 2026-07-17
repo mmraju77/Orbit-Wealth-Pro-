@@ -79,15 +79,15 @@ export default function BlogHub() {
       <header className="space-y-8">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
-          <span className="text-sm font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Knowledge Base</span>
+          <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Knowledge Base</span>
         </div>
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-4">
-            <h1 className="text-6xl md:text-7xl font-display font-bold tracking-tight text-white leading-[1.1]">
+            <h1 className="text-7xl md:text-8xl font-display font-bold tracking-tight text-white leading-[1.1]">
               Wealth <br />
               <span className="text-[#D4AF37]">Intelligence Feed</span>
             </h1>
-            <p className="text-slate-100 text-xl leading-relaxed max-w-xl font-medium">
+            <p className="text-slate-100 text-2xl leading-relaxed max-w-xl font-medium">
               Precision-engineered insights on asset allocation, fiscal strategy, and the future of global wealth architecture.
             </p>
           </div>
@@ -101,7 +101,7 @@ export default function BlogHub() {
               placeholder="Search insights..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-base text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all"
+              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-lg text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all"
             />
           </div>
         </div>
@@ -113,7 +113,7 @@ export default function BlogHub() {
           <button
             key={cat.name}
             onClick={() => setActiveCategory(cat.name)}
-            className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-sm font-black uppercase tracking-widest transition-all whitespace-nowrap border ${
+            className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-base font-black uppercase tracking-widest transition-all whitespace-nowrap border ${
               activeCategory === cat.name 
                 ? 'bg-[#D4AF37] text-[#0B0F19] border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.3)] scale-105' 
                 : 'bg-white/[0.03] text-white/70 border-white/5 hover:border-[#D4AF37]/30 hover:bg-white/[0.05] hover:text-[#D4AF37]'
@@ -143,7 +143,7 @@ export default function BlogHub() {
             <div className="aspect-[16/9] w-full bg-white/5 relative overflow-hidden">
                <div className="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/10 to-transparent opacity-50" />
                <div className="absolute top-6 left-6 px-3 py-1 bg-[#0B0F19]/80 backdrop-blur-md rounded-full border border-white/10">
-                  <span className="text-sm font-black text-[#D4AF37] uppercase tracking-widest leading-none">
+                  <span className="text-base font-black text-[#D4AF37] uppercase tracking-widest leading-none">
                     {article.category}
                   </span>
                </div>
@@ -155,16 +155,16 @@ export default function BlogHub() {
             </div>
 
             <div className="p-8 flex-1 flex flex-col">
-              <div className="flex items-center gap-4 mb-4 text-sm font-bold text-white/70 uppercase tracking-widest">
+              <div className="flex items-center gap-4 mb-4 text-base font-bold text-white/70 uppercase tracking-widest">
                 <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {article.readTime}</span>
                 <span>{article.date}</span>
               </div>
 
-              <h3 className="text-2xl font-bold text-white mb-4 line-clamp-2 leading-snug group-hover:text-[#D4AF37] transition-colors">
+              <h3 className="text-3xl font-bold text-white mb-4 line-clamp-2 leading-snug group-hover:text-[#D4AF37] transition-colors">
                 {article.title}
               </h3>
 
-              <p className="text-base !text-white !opacity-100 leading-relaxed line-clamp-3 mb-8 font-medium">
+              <p className="text-lg !text-white !opacity-100 leading-relaxed line-clamp-3 mb-8 font-medium">
                 {article.excerpt}
               </p>
 
@@ -174,8 +174,8 @@ export default function BlogHub() {
                     <User className="w-5 h-5 text-[#D4AF37]" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-white">{article.author}</h4>
-                    <p className="text-[9px] text-[#D4AF37] font-black uppercase tracking-widest">{article.authorTitle}</p>
+                    <h4 className="text-base font-bold text-white">{article.author}</h4>
+                    <p className="text-sm text-[#D4AF37] font-black uppercase tracking-widest">{article.authorTitle}</p>
                   </div>
                 </div>
                 <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#D4AF37] group-hover:text-[#0B0F19] group-hover:border-[#D4AF37] transition-all">
@@ -195,7 +195,7 @@ export default function BlogHub() {
           <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mx-auto border border-[#D4AF37]/20 shadow-[0_0_20px_rgba(212,175,55,0.1)]">
             <Sparkles className="w-8 h-8 text-[#D4AF37]" />
           </div>
-          <h2 className="text-5xl font-display font-bold text-white tracking-tight">The Executive Insight <br /><span className="text-[#D4AF37]">Newsletter</span></h2>
+          <h2 className="text-6xl font-display font-bold text-white tracking-tight">The Executive Insight <br /><span className="text-[#D4AF37]">Newsletter</span></h2>
           <p className="text-slate-100 leading-relaxed font-medium">
             Join 50,000+ high-net-worth individuals who receive our weekly deep-dives into interest rate cycles, tax-law changes, and emerging asset classes.
           </p>
@@ -210,11 +210,11 @@ export default function BlogHub() {
                 >
                   <CheckCircle2 className="w-12 h-12 text-emerald-400" />
                   <div className="text-center">
-                    <h4 className="text-2xl font-bold text-white">Welcome to the Inner Circle!</h4>
+                    <h4 className="text-3xl font-bold text-white">Welcome to the Inner Circle!</h4>
                     <p className="text-emerald-300 font-medium mb-4">Your wealth blueprint is on the way.</p>
                     <button 
                       onClick={() => setIsSubscribed(false)}
-                      className="text-sm font-black text-[#D4AF37] uppercase tracking-[0.2em] hover:text-white transition-colors"
+                      className="text-base font-black text-[#D4AF37] uppercase tracking-[0.2em] hover:text-white transition-colors"
                     >
                       Subscribe another email
                     </button>
@@ -232,13 +232,13 @@ export default function BlogHub() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Your professional email..."
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-base text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-lg text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
                       />
                     </div>
                     <button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-sm uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 min-w-[140px]"
+                      className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-base uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 min-w-[140px]"
                     >
                       {isSubmitting ? (
                         <>
@@ -253,7 +253,7 @@ export default function BlogHub() {
                     <motion.div 
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-2 text-rose-400 text-sm font-bold bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl"
+                      className="flex items-center gap-2 text-rose-400 text-base font-bold bg-rose-500/10 border border-rose-500/20 p-3 rounded-xl"
                     >
                       <ShieldAlert className="w-4 h-4" />
                       {submitError}
@@ -263,7 +263,7 @@ export default function BlogHub() {
               )}
             </AnimatePresence>
           </div>
-          <p className="text-sm text-white/70 uppercase font-black tracking-widest pt-4">No Spam • High Signal • Professional Only</p>
+          <p className="text-base text-white/70 uppercase font-black tracking-widest pt-4">No Spam • High Signal • Professional Only</p>
         </div>
       </section>
     </div>

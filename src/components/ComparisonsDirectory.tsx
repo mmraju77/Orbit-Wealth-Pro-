@@ -24,13 +24,13 @@ export default function ComparisonsDirectory() {
       <header className="space-y-8">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
-          <span className="text-sm font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Intelligence Directory</span>
+          <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Intelligence Directory</span>
         </div>
-        <h1 className="text-6xl md:text-7xl font-display font-bold tracking-tight text-white max-w-4xl leading-[1.1]">
+        <h1 className="text-7xl md:text-8xl font-display font-bold tracking-tight text-white max-w-4xl leading-[1.1]">
           Side-by-Side <br />
           <span className="text-[#D4AF37]">Wealth Comparisons</span>
         </h1>
-        <p className="text-white/70 text-xl leading-relaxed max-w-2xl">
+        <p className="text-white/70 text-2xl leading-relaxed max-w-2xl">
           Data-driven breakdowns to help you navigate the complex landscape of global finance, asset allocation, and strategic wealth preservation.
         </p>
       </header>
@@ -62,15 +62,15 @@ export default function ComparisonsDirectory() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-2xl font-bold text-white group-hover:text-[#D4AF37] transition-colors">
+                    <h3 className="text-3xl font-bold text-white group-hover:text-[#D4AF37] transition-colors">
                       {data.optionAName} <span className="text-white/70 px-1">Vs</span> {data.optionBName}
                     </h3>
-                    <p className="text-base text-white/70 line-clamp-2 leading-relaxed">
+                    <p className="text-lg text-white/70 line-clamp-2 leading-relaxed">
                       {data.description}
                     </p>
                   </div>
 
-                  <div className="pt-4 flex items-center gap-2 text-sm font-black text-[#D4AF37] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
+                  <div className="pt-4 flex items-center gap-2 text-base font-black text-[#D4AF37] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
                     Detailed Core Analysis <Zap className="w-3 h-3" />
                   </div>
                 </div>
@@ -84,14 +84,14 @@ export default function ComparisonsDirectory() {
       <section className="bg-gradient-to-tr from-[#D4AF37]/10 to-emerald-500/10 border border-white/5 rounded-[40px] p-10 md:p-16 relative overflow-hidden">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h2 className="text-4xl font-bold text-white tracking-tight">The Asset Intelligence Engine</h2>
+            <h2 className="text-5xl font-bold text-white tracking-tight">The Asset Intelligence Engine</h2>
             <p className="text-white/70 leading-relaxed">
               Our programmatic comparison engine analyzes thousands of data points across global markets to provide clear, actionable intelligence. We factor in risk profiles, historical yields, and tax implications specific to your jurisdiction.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold text-white/70">Real-time Yields</div>
-              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold text-white/70">Risk Volatility Maps</div>
-              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-sm font-bold text-white/70">Tax Optimization</div>
+              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-base font-bold text-white/70">Real-time Yields</div>
+              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-base font-bold text-white/70">Risk Volatility Maps</div>
+              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-base font-bold text-white/70">Tax Optimization</div>
             </div>
           </div>
           <div className="flex justify-center">

@@ -73,18 +73,18 @@ export default function GratuityCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <Gift className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-4xl font-bold tracking-tighter">Gratuity Calculator</h1>
+             <h1 className="text-5xl font-bold tracking-tighter">Gratuity Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-base leading-relaxed">
+          <p className="text-white/70 max-w-xl text-lg leading-relaxed">
             Calculate your end-of-service benefits based on {currency === 'INR' ? 'Indian Payment of Gratuity Act' : 'International work standards'}.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Results
           </button>
         </div>
@@ -104,8 +104,8 @@ export default function GratuityCalculator() {
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Years of Service</label>
-                    <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{inputs.yearsOfService} Yrs</div>
+                    <label className="text-base font-bold text-white/70 uppercase tracking-widest">Years of Service</label>
+                    <div className="text-2xl font-bold text-[#D4AF37] tracking-tighter">{inputs.yearsOfService} Yrs</div>
                  </div>
                  <NumericInput 
                    min={0} max={50} step="1"
@@ -130,8 +130,8 @@ export default function GratuityCalculator() {
                     className="w-5 h-5 accent-[#D4AF37]"
                    />
                    <div>
-                      <div className="text-sm font-bold text-white">Covered under Gratuity Act?</div>
-                      <p className="text-sm text-white/70 uppercase tracking-widest font-bold">Enables 15/26 working days ratio</p>
+                      <div className="text-base font-bold text-white">Covered under Gratuity Act?</div>
+                      <p className="text-base text-white/70 uppercase tracking-widest font-bold">Enables 15/26 working days ratio</p>
                    </div>
                 </div>
               )}
@@ -141,13 +141,13 @@ export default function GratuityCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[350px]">
            {isMounted && (
                <div className="text-center space-y-6">
-                  <div className="text-sm font-bold text-white/70 uppercase tracking-widest mb-1">Estimated Gratuity Amount</div>
-                  <div className="text-7xl font-bold text-white tracking-widest">{formatCurrency(results.gratuityAmount)}</div>
+                  <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Estimated Gratuity Amount</div>
+                  <div className="text-8xl font-bold text-white tracking-widest">{formatCurrency(results.gratuityAmount)}</div>
                   
                   <div className="flex justify-center flex-wrap gap-4 pt-8">
                      <div className="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center gap-2">
                         <ShieldCheck className="w-4 h-4 text-emerald-500" />
-                        <span className="text-sm font-bold text-emerald-500 uppercase">Tax Free (Upto Limit)</span>
+                        <span className="text-base font-bold text-emerald-500 uppercase">Tax Free (Upto Limit)</span>
                      </div>
                   </div>
                </div>
