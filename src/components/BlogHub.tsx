@@ -154,17 +154,17 @@ export default function BlogHub() {
                </div>
             </div>
 
-            <div className="p-8 flex-1 flex flex-col">
-              <div className="flex items-center gap-4 mb-4 text-base font-bold text-white/70 uppercase tracking-widest">
+            <div className="p-8 flex-1 flex flex-col gap-6">
+              <div className="flex items-center gap-4 text-base font-bold text-white/70 uppercase tracking-widest">
                 <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {article.readTime}</span>
                 <span>{article.date}</span>
               </div>
 
-              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-8 line-clamp-3 leading-relaxed group-hover:text-[#D4AF37] transition-colors">
+              <h3 className="text-3xl lg:text-4xl font-bold text-white line-clamp-3 leading-[1.6] group-hover:text-[#D4AF37] transition-colors pb-4">
                 {article.title}
               </h3>
 
-              <p className="text-lg !text-white !opacity-100 leading-relaxed line-clamp-3 mb-10 font-medium">
+              <p className="text-lg !text-white !opacity-100 leading-[1.7] line-clamp-3 font-medium pb-8">
                 {article.excerpt}
               </p>
 
