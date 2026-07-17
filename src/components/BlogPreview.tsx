@@ -68,7 +68,7 @@ export default function BlogPreview() {
                 </div>
 
                 <div className="p-8 flex-1 flex flex-col">
-                  <div className="flex items-center gap-4 mb-4 text-[10px] font-bold text-white/30 uppercase tracking-widest">
+                  <div className="flex items-center gap-4 mb-4 text-[10px] font-bold text-white/70 uppercase tracking-widest">
                     <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {article.readTime}</span>
                     <span>{article.date}</span>
                   </div>
@@ -91,7 +91,7 @@ export default function BlogPreview() {
                         <p className="text-[8px] text-[#F3C64F] font-black uppercase tracking-widest">{article.authorTitle}</p>
                       </div>
                     </div>
-                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:bg-[#F3C64F] group-hover:text-[#0B0F19] group-hover:border-[#F3C64F] transition-all">
+                    <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#F3C64F] group-hover:text-[#0B0F19] group-hover:border-[#F3C64F] transition-all">
                       <ArrowRight className="w-4 h-4" />
                     </div>
                   </div>

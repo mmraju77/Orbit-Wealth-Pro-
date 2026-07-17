@@ -109,7 +109,7 @@ export default function PSEOLandingPage() {
             </p>
           </div>
         </div>
-        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-[10px] font-bold text-white/40 uppercase tracking-widest">
+        <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-lg text-[10px] font-bold text-white/70 uppercase tracking-widest">
             Edition: {regionData.name} v2.4
         </div>
       </div>
@@ -128,7 +128,7 @@ export default function PSEOLandingPage() {
             {regionData.localInsights.map((insight, idx) => (
               <div key={idx} className="p-4 bg-white/5 border border-white/5 rounded-xl flex items-start gap-3 group hover:border-[#D4AF37]/40 transition-colors">
                 <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] mt-1.5 shrink-0 group-hover:scale-125 transition-transform" />
-                <p className="text-sm text-white/60 leading-relaxed">
+                <p className="text-sm text-white/70 leading-relaxed">
                    {insight}
                 </p>
               </div>
@@ -145,12 +145,12 @@ export default function PSEOLandingPage() {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-4">
-                <p className="text-sm text-white/40 leading-relaxed">
+                <p className="text-sm text-white/70 leading-relaxed">
                     {regionData.smartContent}
                 </p>
                 <div className="flex items-start gap-3 p-4 bg-white/5 rounded-xl border border-white/5">
                     <Info className="text-[#D4AF37] w-4 h-4 shrink-0 mt-0.5" />
-                    <p className="text-xs text-white/40 italic">
+                    <p className="text-xs text-white/70 italic">
                         Calculations are adjusted for {regionData.name} standard compounding frequencies and common tax slabs where applicable. Always consult with a local financial advisor for personalized tax planning.
                     </p>
                 </div>
@@ -158,11 +158,11 @@ export default function PSEOLandingPage() {
             
             <div className="space-y-4">
                 <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Local Currency</div>
+                    <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Local Currency</div>
                     <div className="text-xl font-bold text-white">{regionData.currency}</div>
                 </div>
                 <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Tax Engine</div>
+                    <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Tax Engine</div>
                     <div className="text-xl font-bold text-white">Orbit v4.0</div>
                 </div>
             </div>

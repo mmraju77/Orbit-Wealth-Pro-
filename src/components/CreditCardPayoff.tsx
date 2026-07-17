@@ -64,7 +64,7 @@ export default function CreditCardPayoff() {
             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Debt Liquidation Engine</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">CC Payoff.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Simulate your credit card debt repayment and visualize the true cost of interest over time.
           </p>
         </header>
@@ -86,7 +86,7 @@ export default function CreditCardPayoff() {
               />
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                    <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                        <span>APR (%)</span>
                        <span className="text-[#D4AF37]">{interestRate}%</span>
                     </div>
@@ -120,11 +120,11 @@ export default function CreditCardPayoff() {
              <>
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
-                     <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.3em]">Months to Payoff</div>
+                     <div className="text-[10px] text-white/70 font-bold uppercase tracking-[0.3em]">Months to Payoff</div>
                      <div className="text-5xl font-display font-medium text-white">{results.months}</div>
                   </div>
                   <div className="p-10 bg-rose-500/5 border border-rose-500/10 rounded-[2.5rem] text-center space-y-2">
-                     <div className="text-[10px] text-rose-500/40 font-bold uppercase tracking-[0.3em]">Interest Drain</div>
+                     <div className="text-[10px] text-rose-500 font-bold uppercase tracking-[0.3em]">Interest Drain</div>
                      <div className="text-5xl font-display font-medium text-rose-500 tracking-tighter">{formatCurrency(results.totalInterest)}</div>
                   </div>
                </div>
@@ -135,7 +135,7 @@ export default function CreditCardPayoff() {
                         <Zap className="w-5 h-5 text-[#D4AF37]" />
                      </div>
                      <div className="space-y-1">
-                        <div className="text-[9px] text-white/20 font-bold uppercase">Repayment Duration</div>
+                        <div className="text-[9px] text-white/70 font-bold uppercase">Repayment Duration</div>
                         <div className="text-lg font-bold">{results.years} Years</div>
                      </div>
                   </div>

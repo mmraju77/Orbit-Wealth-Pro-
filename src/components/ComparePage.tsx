@@ -69,7 +69,7 @@ export default function ComparePage() {
             <MapPin className="w-4 h-4 text-emerald-400" />
           </div>
           <div>
-            <p className="text-[10px] text-white/30 font-black uppercase tracking-widest leading-none mb-1">Market Jurisdiction</p>
+            <p className="text-[10px] text-white/70 font-black uppercase tracking-widest leading-none mb-1">Market Jurisdiction</p>
             <p className="text-sm text-white font-bold">{activeRegion} Market Context</p>
           </div>
         </div>
@@ -82,7 +82,7 @@ export default function ComparePage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[10px] font-bold transition-all ${
                 activeRegion === reg.id 
                   ? 'bg-[#D4AF37] text-[#0B0F19] shadow-lg' 
-                  : 'text-white/40 hover:text-white hover:bg-white/5'
+                  : 'text-white/70 hover:text-white hover:bg-white/5'
               }`}
             >
               {reg.icon}
@@ -117,7 +117,7 @@ export default function ComparePage() {
                <div className="w-8 h-8 rounded-lg bg-[#D4AF37]/10 flex items-center justify-center border border-[#D4AF37]/20">
                   <TrendingUp className="w-4 h-4 text-[#D4AF37]" />
                </div>
-               <span className="text-xs font-bold text-white/60">Asset Efficiency (A)</span>
+               <span className="text-xs font-bold text-white/70">Asset Efficiency (A)</span>
             </div>
             <span className="text-xs font-black text-[#D4AF37] font-mono tracking-tighter">SCORE: 8.4/10</span>
           </div>
@@ -135,7 +135,7 @@ export default function ComparePage() {
                <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                </div>
-               <span className="text-xs font-bold text-white/60">Stability Index (B)</span>
+               <span className="text-xs font-bold text-white/70">Stability Index (B)</span>
             </div>
             <span className="text-xs font-black text-emerald-400 font-mono tracking-tighter">SCORE: 9.1/10</span>
           </div>
@@ -155,7 +155,7 @@ export default function ComparePage() {
         <div className="absolute top-0 left-2/3 bottom-0 w-px bg-white/5 hidden md:block" />
         
         <div className="grid grid-cols-1 md:grid-cols-3 bg-white/[0.03] border-b border-white/5">
-          <div className="p-8 text-[11px] font-black text-white/20 uppercase tracking-[0.3em] flex items-center">
+          <div className="p-8 text-[11px] font-black text-white/70 uppercase tracking-[0.3em] flex items-center">
             <Info className="w-4 h-4 mr-2" /> Comparative Dimension
           </div>
           <div className="p-8 text-2xl font-display font-bold text-[#D4AF37] flex items-center border-t md:border-t-0 border-white/5">
@@ -177,7 +177,7 @@ export default function ComparePage() {
             viewport={{ once: true }}
             className="grid grid-cols-1 md:grid-cols-3 border-b border-white/5 last:border-0 hover:bg-white/[0.01] transition-all group"
           >
-            <div className="p-8 text-xs font-black text-white/40 flex items-center bg-white/[0.01] uppercase tracking-widest">
+            <div className="p-8 text-xs font-black text-white/70 flex items-center bg-white/[0.01] uppercase tracking-widest">
                 <div className="w-1 h-1 rounded-full bg-[#f59e0b] mr-4 shadow-[0_0_8px_rgba(245,158,11,0.4)] opacity-50 group-hover:opacity-100 transition-opacity" />
                 {f.factor}
             </div>
@@ -195,7 +195,7 @@ export default function ComparePage() {
       <section className="space-y-6">
         <div className="flex items-center gap-3">
           <Activity className="w-4 h-4 text-[#D4AF37]" />
-          <h3 className="text-[10px] font-black text-white/30 uppercase tracking-[0.4em]">Asset Efficiency Mapping</h3>
+          <h3 className="text-[10px] font-black text-white/70 uppercase tracking-[0.4em]">Asset Efficiency Mapping</h3>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 bg-white/[0.01] border border-white/5 rounded-3xl space-y-4">
@@ -241,7 +241,7 @@ export default function ComparePage() {
              <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] font-black text-xl border border-[#D4AF37]/10 shadow-[0_0_20px_rgba(212,175,55,0.1)]">A</div>
              <div>
                <h3 className="text-2xl font-display font-bold text-white tracking-tight">{data.optionAName}</h3>
-               <p className="text-[10px] text-white/30 uppercase font-black tracking-widest mt-1 italic">Structural Analysis</p>
+               <p className="text-[10px] text-white/70 uppercase font-black tracking-widest mt-1 italic">Structural Analysis</p>
              </div>
           </div>
 
@@ -292,7 +292,7 @@ export default function ComparePage() {
              <div className="w-14 h-14 rounded-2xl bg-emerald-500/5 flex items-center justify-center text-emerald-500 font-black text-xl border border-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.1)]">B</div>
              <div>
                <h3 className="text-2xl font-display font-bold text-white tracking-tight">{data.optionBName}</h3>
-               <p className="text-[10px] text-white/30 uppercase font-black tracking-widest mt-1 italic">Stability Profile</p>
+               <p className="text-[10px] text-white/70 uppercase font-black tracking-widest mt-1 italic">Stability Profile</p>
              </div>
           </div>
 
@@ -348,7 +348,7 @@ export default function ComparePage() {
               <h3 className="text-4xl font-display font-bold text-white tracking-tight leading-none mb-2">The Orbit Intelligence Verdict</h3>
               <div className="flex items-center gap-2">
                 <Activity className="w-3 h-3 text-[#D4AF37]" />
-                <p className="text-[10px] text-white/30 font-black uppercase tracking-[0.4em]">Synthetic Logic Protocol • {activeRegion} Context</p>
+                <p className="text-[10px] text-white/70 font-black uppercase tracking-[0.4em]">Synthetic Logic Protocol • {activeRegion} Context</p>
               </div>
              </div>
           </div>
@@ -383,9 +383,9 @@ export default function ComparePage() {
         <div className="flex items-center justify-between">
            <div className="space-y-1">
              <h4 className="text-xl font-display font-bold text-white">Explore {activeRegion} Comparisons</h4>
-             <p className="text-xs text-white/30 font-medium tracking-wide">AI-Generated intelligence for local market dynamics.</p>
+             <p className="text-xs text-white/70 font-medium tracking-wide">AI-Generated intelligence for local market dynamics.</p>
            </div>
-           <div className="hidden sm:block text-[10px] font-black text-white/20 uppercase tracking-[0.3em]">
+           <div className="hidden sm:block text-[10px] font-black text-white/70 uppercase tracking-[0.3em]">
              Section AI Context: Competitive Alpha
            </div>
         </div>
@@ -399,13 +399,13 @@ export default function ComparePage() {
              >
                 <div className="flex items-center justify-between">
                   <div className="p-2 bg-white/5 rounded-lg group-hover:bg-[#D4AF37]/20 transition-colors">
-                    <ArrowRightLeft className="w-3 h-3 text-white/40 group-hover:text-[#D4AF37]" />
+                    <ArrowRightLeft className="w-3 h-3 text-white/70 group-hover:text-[#D4AF37]" />
                   </div>
-                  <span className="text-[9px] font-black text-white/20 uppercase tracking-widest">{val.region}</span>
+                  <span className="text-[9px] font-black text-white/70 uppercase tracking-widest">{val.region}</span>
                 </div>
                 <div>
                   <p className="text-sm font-bold text-white group-hover:text-[#D4AF37] transition-colors line-clamp-1">{val.title}</p>
-                  <p className="text-[10px] text-white/30 font-medium mt-1 line-clamp-2 leading-relaxed">{val.description}</p>
+                  <p className="text-[10px] text-white/70 font-medium mt-1 line-clamp-2 leading-relaxed">{val.description}</p>
                 </div>
                 <div className="flex items-center gap-2 text-[10px] font-black text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-all translate-x-[-10px] group-hover:translate-x-0">
                   ANALYZE NOW <ArrowRight className="w-3 h-3" />

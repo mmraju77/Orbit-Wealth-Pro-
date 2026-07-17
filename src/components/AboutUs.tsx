@@ -55,7 +55,7 @@ export default function AboutUs() {
           <h1 className="text-5xl md:text-7xl font-black text-white tracking-tighter leading-[0.9] max-w-3xl">
             Architecting the future of <span className="text-amber-500">Wealth Intelligence.</span>
           </h1>
-          <p className="text-white/40 text-lg max-w-2xl leading-relaxed font-light">
+          <p className="text-white/70 text-lg max-w-2xl leading-relaxed font-light">
             Orbit Wealth Pro was engineered to bridge the gap between complex quantitative finance and personal wealth management through high-performance AI automation.
           </p>
         </motion.div>
@@ -91,8 +91,8 @@ export default function AboutUs() {
                 <div className="space-y-4">
                   <div className="flex flex-col lg:flex-row items-center lg:items-end gap-3 lg:gap-4">
                     <h2 className="text-4xl md:text-5xl font-black text-white tracking-tight">Munchangi Matyaraju</h2>
-                    <span className="text-white/20 font-black text-2xl tracking-tighter hidden lg:block">/</span>
-                    <span className="text-white/40 font-display text-xl tracking-tight">(mm Raju)</span>
+                    <span className="text-white/70 font-black text-2xl tracking-tighter hidden lg:block">/</span>
+                    <span className="text-white/70 font-display text-xl tracking-tight">(mm Raju)</span>
                   </div>
                   <div className="flex items-center justify-center lg:justify-start gap-3">
                     <div className="p-2 bg-amber-500/10 rounded-lg">
@@ -102,7 +102,7 @@ export default function AboutUs() {
                   </div>
                 </div>
                 
-                <div className="space-y-8 text-white/50 text-base leading-relaxed font-medium">
+                <div className="space-y-8 text-white/70 text-base leading-relaxed font-medium">
                   <p>
                     A quantitative systems visionary and financial technologist, <span className="text-white font-bold">Munchangi Matyaraju (mm Raju)</span> founded Orbit Wealth Pro to dismantle the barriers of traditional retail finance. His philosophy centers on <span className="text-amber-500 font-bold decoration-amber-500/30 underline decoration-2 underline-offset-4">Mathematical Sovereignty</span>—providing individuals with the same rigorous computational accuracy utilized by elite hedge funds and institutional private banks.
                   </p>
@@ -122,8 +122,8 @@ export default function AboutUs() {
                     Connect via LinkedIn
                   </a>
                   <div className="flex flex-col items-start gap-1">
-                     <span className="text-[10px] uppercase tracking-widest font-black text-white/20">Security Clearance</span>
-                     <span className="text-[10px] font-mono text-amber-500/40">ID: OWP-SYS-GEN-2026-MMR</span>
+                     <span className="text-[10px] uppercase tracking-widest font-black text-white/70">Security Clearance</span>
+                     <span className="text-[10px] font-mono text-amber-500">ID: OWP-SYS-GEN-2026-MMR</span>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ export default function AboutUs() {
            <div className="relative z-10">
               <Sparkles className="w-8 h-8 text-amber-500 mx-auto mb-6 opacity-50" />
               <h3 className="text-2xl font-bold text-white tracking-tight">Our Mission</h3>
-              <p className="text-white/40 max-w-2xl mx-auto leading-relaxed text-sm">
+              <p className="text-white/70 max-w-2xl mx-auto leading-relaxed text-sm">
                 To democratize global financial intelligence by providing autonomous, multi-currency, and tax-aware simulation engines that empower the modern investor.
               </p>
            </div>
@@ -147,21 +147,21 @@ export default function AboutUs() {
           <motion.div variants={itemVariants} className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] space-y-4 hover:border-amber-500/30 transition-colors">
             <TrendingUp className="text-amber-500 w-8 h-8 mb-2" />
             <h4 className="text-sm font-black text-white uppercase tracking-widest">Quant Accuracy</h4>
-            <p className="text-xs text-white/40 leading-relaxed font-medium">
+            <p className="text-xs text-white/70 leading-relaxed font-medium">
               Every engine is tested against rigorous financial benchmark models to ensure 100% calculation integrity for global tax and debt regimes.
             </p>
           </motion.div>
           <motion.div variants={itemVariants} className="p-10 bg-[#0D121F] border border-white/10 rounded-[2.5rem] space-y-4 hover:border-amber-500/30 transition-colors">
             <Globe className="text-amber-500 w-8 h-8 mb-2" />
             <h4 className="text-sm font-black text-white uppercase tracking-widest">Global Reach</h4>
-            <p className="text-xs text-white/40 leading-relaxed font-medium">
+            <p className="text-xs text-white/70 leading-relaxed font-medium">
               Supporting cross-regional financial intelligence for 11+ major economies, adjusting dynamically for local currency and fiscal policy.
             </p>
           </motion.div>
           <motion.div variants={itemVariants} className="p-10 bg-white/5 border border-white/10 rounded-[2.5rem] space-y-4 hover:border-amber-500/30 transition-colors">
             <ShieldCheck className="text-amber-500 w-8 h-8 mb-2" />
             <h4 className="text-sm font-black text-white uppercase tracking-widest">Zero Tracking</h4>
-            <p className="text-xs text-white/40 leading-relaxed font-medium">
+            <p className="text-xs text-white/70 leading-relaxed font-medium">
               We operate on an edge-compute principle. Your capital data is processed in real-time without persistent server-side logging.
             </p>
           </motion.div>

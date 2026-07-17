@@ -55,7 +55,7 @@ export default function HLVCalculator() {
             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Protection Intelligence</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">HLV Calculator.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Quantify your economic value to your family and determine the optimal life insurance coverage.
           </p>
         </header>
@@ -68,7 +68,7 @@ export default function HLVCalculator() {
         <section className="space-y-10 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
            <div className="grid grid-cols-2 gap-8">
               <div className="space-y-4">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                     <span>Current Age</span>
                  </div>
                  <NumericInput 
@@ -80,7 +80,7 @@ export default function HLVCalculator() {
                  <input aria-label="Adjust value" type="range" min="18" max="75" value={age} onChange={e => setAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
               </div>
               <div className="space-y-4">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                     <span>Retirement Age</span>
                  </div>
                  <NumericInput 
@@ -122,7 +122,7 @@ export default function HLVCalculator() {
               <div className="text-6xl font-display font-medium text-white tracking-tighter">{formatCurrency(hlv)}</div>
               <div className="pt-4 flex items-center justify-center gap-3">
                  <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
-                 <span className="text-xs text-white/40 italic">Necessary coverage for your dependents</span>
+                 <span className="text-xs text-white/70 italic">Necessary coverage for your dependents</span>
               </div>
            </div>
 

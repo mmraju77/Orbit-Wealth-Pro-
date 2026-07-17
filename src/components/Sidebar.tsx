@@ -168,7 +168,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           
           <button 
             onClick={onClose}
-            className="md:hidden p-2 text-white/40 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded"
+            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded"
             aria-label="Close Sidebar"
           >
             <ChevronRight className="w-5 h-5 rotate-180" />
@@ -184,7 +184,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             aria-label="Go to Dashboard"
             className={({ isActive }) => cn(
               "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all mb-4 outline-none focus:bg-white/5",
-              isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/60 hover:text-white"
+              isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/70 hover:text-white"
             )}
           >
             <Home className="w-4 h-4" />
@@ -238,7 +238,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div className="space-y-6">
             <div className="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl space-y-4">
               <div>
-                <label className="text-[10px] font-bold text-white/40 uppercase tracking-widest block mb-2 px-1">Region Override</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest block mb-2 px-1">Region Override</label>
                 <div className="grid grid-cols-4 gap-1">
                   {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => {
                     const symbols: Record<string, string> = {

@@ -141,7 +141,7 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <label htmlFor="return-rate" className="text-xs font-bold text-white/50 uppercase tracking-widest">Expected Return (%)</label>
+                  <label htmlFor="return-rate" className="text-xs font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                   {liveSync && <span className="text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
                 </div>
                 <NumericInput 
@@ -162,7 +162,7 @@ export default function SIPCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label htmlFor="investment-period" className="text-xs font-bold text-white/50 uppercase tracking-widest">Investment Period (Years)</label>
+                <label htmlFor="investment-period" className="text-xs font-bold text-white/70 uppercase tracking-widest">Investment Period (Years)</label>
                 <NumericInput 
                   value={inputs.duration}
                   onChange={(val) => setInputs({ ...inputs, duration: val })}
@@ -182,11 +182,11 @@ export default function SIPCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Invested Amount</div>
+                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Invested Amount</div>
                 <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Return Amount</div>
+                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Return Amount</div>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
@@ -216,7 +216,7 @@ export default function SIPCalculator() {
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">
-                <div className="text-xs text-white/50 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
+                <div className="text-xs text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
                 <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
               

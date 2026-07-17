@@ -63,8 +63,8 @@ export default function AIAdvisor({ context }: AIAdvisorProps) {
         onClick={toggleInsight}
         className="group flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all"
       >
-        <Sparkles className={`w-3.5 h-3.5 ${isOpen ? 'text-[#D4AF37]' : 'text-white/20 group-hover:text-[#D4AF37]'}`} />
-        <span className="text-[10px] font-bold text-white/40 uppercase tracking-widest group-hover:text-white">
+        <Sparkles className={`w-3.5 h-3.5 ${isOpen ? 'text-[#D4AF37]' : 'text-white/70 group-hover:text-[#D4AF37]'}`} />
+        <span className="text-[10px] font-bold text-white/70 uppercase tracking-widest group-hover:text-white">
           {isOpen ? 'Close Insight' : 'Get AI Insight'}
         </span>
       </button>
@@ -82,14 +82,14 @@ export default function AIAdvisor({ context }: AIAdvisorProps) {
               
               {loading ? (
                 <div className="flex items-center gap-3 py-2">
-                  <Loader2 className="w-5 h-5 text-white/20 animate-spin" />
+                  <Loader2 className="w-5 h-5 text-white/70 animate-spin" />
                   <div className="space-y-1 w-full">
                     <div className="h-2 bg-white/5 rounded-full w-3/4 animate-pulse"></div>
                     <div className="h-2 bg-white/5 rounded-full w-1/2 animate-pulse"></div>
                   </div>
                 </div>
               ) : error ? (
-                <div className="flex items-center gap-3 text-white/40 text-sm">
+                <div className="flex items-center gap-3 text-white/70 text-sm">
                   <AlertCircle className="w-4 h-4 text-orange-500" />
                   <span>{error}</span>
                 </div>

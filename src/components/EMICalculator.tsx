@@ -103,7 +103,7 @@ export default function EMICalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Interest Rate (%)</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.interestRate}%</div>
               </div>
               <NumericInput 
@@ -122,7 +122,7 @@ export default function EMICalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Loan Tenure (Years)</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Loan Tenure (Years)</label>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.loanTerm} Yr</div>
               </div>
               <NumericInput 
@@ -146,7 +146,7 @@ export default function EMICalculator() {
             <div className="w-full flex-col flex items-center justify-center gap-12">
                <div className="relative w-[250px] h-[250px]">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 flex-col">
-                    <div className="text-xs text-white/30 font-bold uppercase tracking-widest">Monthly EMI</div>
+                    <div className="text-xs text-white/70 font-bold uppercase tracking-widest">Monthly EMI</div>
                     <div className="text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
                   </div>
                   <ResponsiveContainer width="100%" height="100%">
@@ -168,11 +168,11 @@ export default function EMICalculator() {
                
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 w-full border-t border-white/5 pt-8 px-4">
                  <div className="text-center">
-                    <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Total Interest</div>
+                    <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
                     <div className="text-xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
                  </div>
                  <div className="text-center">
-                    <div className="text-[10px] text-white/50 font-bold uppercase tracking-widest mb-1">Total Payable</div>
+                    <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Payable</div>
                     <div className="text-xl font-bold text-white">{formatCurrency(results.totalPayment)}</div>
                  </div>
                </div>

@@ -97,7 +97,7 @@ export default function MFCalculator() {
              <PieIcon className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Mutual Fund Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Analyze mutual fund performance with detailed expense ratio impact and {mode.toUpperCase()} growth projections.
           </p>
         </header>
@@ -122,7 +122,7 @@ export default function MFCalculator() {
                     setMode(m);
                     setInputs({ ...inputs, investmentAmount: m === 'sip' ? 5000 : 100000 });
                   }}
-                  className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${mode === m ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/20 hover:text-white/40'}`}
+                  className={`px-6 py-2 rounded-lg text-xs font-bold transition-all ${mode === m ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/70 hover:text-white/70'}`}
                 >
                   {m.toUpperCase()}
                 </button>
@@ -141,7 +141,7 @@ export default function MFCalculator() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                     <NumericInput 
                       step="0.5" 
                       value={inputs.expectedReturn}
@@ -150,7 +150,7 @@ export default function MFCalculator() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expense Ratio (%)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Expense Ratio (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.expenseRatio}
@@ -162,7 +162,7 @@ export default function MFCalculator() {
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Duration (Years)</label>
                     <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.duration} Yrs</div>
                  </div>
                  <input 
@@ -179,7 +179,7 @@ export default function MFCalculator() {
               <div>
                  <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Expense Ratio Impact</div>
                  <div className="text-xl font-bold text-white tracking-tighter">-{formatCurrency(results.expenseRatioImpact)}</div>
-                 <p className="text-[10px] text-white/40 mt-1">Wealth lost due to {inputs.expenseRatio}% TER over {inputs.duration} years.</p>
+                 <p className="text-[10px] text-white/70 mt-1">Wealth lost due to {inputs.expenseRatio}% TER over {inputs.duration} years.</p>
               </div>
            </div>
         </section>
@@ -190,8 +190,8 @@ export default function MFCalculator() {
                <div className="space-y-8 mb-8">
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Invested</div>
-                        <div className="text-xl font-bold text-white/40">{formatCurrency(results.investedAmount)}</div>
+                        <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Invested</div>
+                        <div className="text-xl font-bold text-white/70">{formatCurrency(results.investedAmount)}</div>
                     </div>
                     <div className="p-4 bg-[#D4AF37]/20 rounded-xl border border-[#D4AF37]/30">
                         <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Total Wealth</div>
@@ -218,7 +218,7 @@ export default function MFCalculator() {
                
                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 mt-auto">
                   <Info className="w-4 h-4 text-[#D4AF37]" />
-                  <p className="text-[10px] text-white/40 leading-relaxed italic">
+                  <p className="text-[10px] text-white/70 leading-relaxed italic">
                     The calculation considers the Total Expense Ratio (TER) deducted annually from the Net Asset Value (NAV).
                   </p>
                </div>

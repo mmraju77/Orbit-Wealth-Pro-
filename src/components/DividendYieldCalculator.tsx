@@ -48,7 +48,7 @@ export default function DividendYieldCalculator() {
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Passive Income Analytics</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Dividend Yields.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Project and optimize your cash flow using our institutional-grade yield computation engine.
           </p>
         </header>
@@ -78,7 +78,7 @@ export default function DividendYieldCalculator() {
             />
           </div>
           <div className="space-y-4">
-             <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
+             <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                 <span>Shares Owned</span>
                 <span className="text-white">{sharesOwned} Shares</span>
              </div>

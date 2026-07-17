@@ -30,7 +30,7 @@ export default function ComparisonsDirectory() {
           Side-by-Side <br />
           <span className="text-[#D4AF37]">Wealth Comparisons</span>
         </h1>
-        <p className="text-white/40 text-lg leading-relaxed max-w-2xl">
+        <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
           Data-driven breakdowns to help you navigate the complex landscape of global finance, asset allocation, and strategic wealth preservation.
         </p>
       </header>
@@ -63,9 +63,9 @@ export default function ComparisonsDirectory() {
                   
                   <div className="space-y-2">
                     <h3 className="text-xl font-bold text-white group-hover:text-[#D4AF37] transition-colors">
-                      {data.optionAName} <span className="text-white/20 px-1">Vs</span> {data.optionBName}
+                      {data.optionAName} <span className="text-white/70 px-1">Vs</span> {data.optionBName}
                     </h3>
-                    <p className="text-sm text-white/30 line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-white/70 line-clamp-2 leading-relaxed">
                       {data.description}
                     </p>
                   </div>
@@ -85,13 +85,13 @@ export default function ComparisonsDirectory() {
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold text-white tracking-tight">The Asset Intelligence Engine</h2>
-            <p className="text-white/40 leading-relaxed">
+            <p className="text-white/70 leading-relaxed">
               Our programmatic comparison engine analyzes thousands of data points across global markets to provide clear, actionable intelligence. We factor in risk profiles, historical yields, and tax implications specific to your jurisdiction.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
-              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white/60">Real-time Yields</div>
-              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white/60">Risk Volatility Maps</div>
-              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white/60">Tax Optimization</div>
+              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white/70">Real-time Yields</div>
+              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white/70">Risk Volatility Maps</div>
+              <div className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-xs font-bold text-white/70">Tax Optimization</div>
             </div>
           </div>
           <div className="flex justify-center">

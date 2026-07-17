@@ -151,7 +151,7 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
           </div>
           <button 
             onClick={() => setSidebarOpen(true)}
-            className="p-2 -mr-2 text-white/60 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-lg"
+            className="p-2 -mr-2 text-white/70 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-[#D4AF37] rounded-lg"
             aria-label="Open Navigation Menu"
           >
             <Menu className="w-6 h-6" />

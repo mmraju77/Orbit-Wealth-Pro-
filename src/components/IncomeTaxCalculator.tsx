@@ -101,7 +101,7 @@ export default function IncomeTaxCalculator() {
              <Percent className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">Income Tax Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Personalized income tax analysis for {countryKey.toUpperCase()} using the latest progressive fiscal logic.
           </p>
         </header>
@@ -120,7 +120,7 @@ export default function IncomeTaxCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
              <div className="space-y-4">
-               <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Annual Gross Income</label>
+               <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Annual Gross Income</label>
                <div className="relative">
                  <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
                  <NumericInput 
@@ -133,7 +133,7 @@ export default function IncomeTaxCalculator() {
 
              <div className="p-4 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 flex items-center gap-4 animate-in fade-in zoom-in-95 duration-300">
                 <Shield className="text-[#D4AF37] w-6 h-6" />
-                <p className="text-[10px] text-white/60 leading-relaxed italic">
+                <p className="text-[10px] text-white/70 leading-relaxed italic">
                    Adjusted for {countryKey.toUpperCase()} standard deductions and progressive tax slabs. 
                    {taxRules.additionalTaxes?.map(tax => ` Includes ${tax.name} at ${(tax.rate * 100).toFixed(1)}%.`).join(' ')}
                 </p>
@@ -147,7 +147,7 @@ export default function IncomeTaxCalculator() {
                <div className="grid grid-cols-1 gap-4">
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Effective Tax Liability</div>
+                      <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Effective Tax Liability</div>
                       <div className="text-3xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
                     </div>
                     <Wallet className="text-white/5 w-10 h-10" />
@@ -155,7 +155,7 @@ export default function IncomeTaxCalculator() {
 
                  <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/10 flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] font-bold text-white/40 uppercase tracking-widest mb-1">Take-home / Post-Tax</div>
+                      <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Take-home / Post-Tax</div>
                       <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.totalAmount)}</div>
                     </div>
                  </div>

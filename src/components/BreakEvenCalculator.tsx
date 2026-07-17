@@ -52,7 +52,7 @@ export default function BreakEvenCalculator() {
             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Business Intelligence</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Break-Even Analysis.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Determine the point at which your total revenue equals total costs for a new product or service.
           </p>
         </header>
@@ -97,7 +97,7 @@ export default function BreakEvenCalculator() {
         <section className="flex flex-col gap-8">
            <div className="grid grid-cols-2 gap-6">
               <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
-                 <div className="text-[10px] text-white/20 font-bold uppercase tracking-[0.3em]">Units to Neutral</div>
+                 <div className="text-[10px] text-white/70 font-bold uppercase tracking-[0.3em]">Units to Neutral</div>
                  <div className="text-5xl font-display font-medium text-white">{results.units}</div>
               </div>
               <div className="p-10 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[2.5rem] text-center space-y-2">
@@ -111,8 +111,8 @@ export default function BreakEvenCalculator() {
                  <DollarSign className="w-6 h-6 text-emerald-500" />
               </div>
               <div className="space-y-1">
-                 <div className="text-[9px] text-white/20 font-bold uppercase tracking-widest">Contribution Margin</div>
-                 <div className="text-xl font-bold uppercase font-display">{formatCurrency(sellingPricePerUnit - variableCostPerUnit)} <span className="text-white/20 text-xs text-normal">/ unit</span></div>
+                 <div className="text-[9px] text-white/70 font-bold uppercase tracking-widest">Contribution Margin</div>
+                 <div className="text-xl font-bold uppercase font-display">{formatCurrency(sellingPricePerUnit - variableCostPerUnit)} <span className="text-white/70 text-xs text-normal">/ unit</span></div>
               </div>
            </div>
 

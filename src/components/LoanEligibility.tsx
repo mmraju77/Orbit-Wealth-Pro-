@@ -79,7 +79,7 @@ export default function LoanEligibility() {
              <UserCheck className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Loan Eligibility Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Check your maximum borrowing capacity based on income, current debt obligations, and bank FOIR standards.
           </p>
         </header>
@@ -117,7 +117,7 @@ export default function LoanEligibility() {
 
                   <div className="grid grid-cols-3 gap-4">
                      <div className="space-y-4">
-                        <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Rate (%)</label>
+                        <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Rate (%)</label>
                         <NumericInput 
                           step="0.1" 
                           value={inputs.interestRate}
@@ -126,7 +126,7 @@ export default function LoanEligibility() {
                         />
                      </div>
                      <div className="space-y-4">
-                        <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Term (Yrs)</label>
+                        <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Term (Yrs)</label>
                         <NumericInput 
                           value={inputs.loanTerm}
                           onChange={(val) => setInputs({ ...inputs, loanTerm: val })}
@@ -134,7 +134,7 @@ export default function LoanEligibility() {
                         />
                      </div>
                      <div className="space-y-4">
-                        <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">FOIR (%)</label>
+                        <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">FOIR (%)</label>
                         <NumericInput 
                           value={inputs.maxFOIR}
                           onChange={(val) => setInputs({ ...inputs, maxFOIR: val })}
@@ -149,7 +149,7 @@ export default function LoanEligibility() {
            {isMounted && (
              <div className="w-full space-y-8">
                <div className="text-center space-y-2">
-                  <h3 className="text-white/20 font-bold uppercase tracking-widest text-[10px]">Maximum Eligible {labels.loan} Amount</h3>
+                  <h3 className="text-white/70 font-bold uppercase tracking-widest text-[10px]">Maximum Eligible {labels.loan} Amount</h3>
                   <div className="text-6xl font-bold text-white tracking-widest">{formatCurrency(results.eligibleLoanAmount)}</div>
                </div>
 
@@ -159,14 +159,14 @@ export default function LoanEligibility() {
                     <div className="text-2xl font-bold text-white">{formatCurrency(results.monthlyEMI)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
-                    <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">FOIR Limit</div>
+                    <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">FOIR Limit</div>
                     <div className="text-2xl font-bold text-white">{inputs.maxFOIR}%</div>
                  </div>
                </div>
 
                <div className="flex items-center gap-4 p-4 bg-white/[0.02] rounded-xl border border-white/5">
-                  <Info className="w-5 h-5 text-white/20 shrink-0" />
-                  <p className="text-[10px] text-white/40 leading-relaxed">
+                  <Info className="w-5 h-5 text-white/70 shrink-0" />
+                  <p className="text-[10px] text-white/70 leading-relaxed">
                     Financial institutions typically set FOIR (Fixed Obligation to Income Ratio) between 40% to 60%. 
                     This calculation assumes standard bank policies for {labels.jurisdiction}.
                   </p>

@@ -76,7 +76,7 @@ export default function BalanceTransfer() {
              <ArrowRightLeft className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Home Loan Transfer</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Switch your existing high-interest home loan to a lower rate and calculate your total interest savings and break-even point.
           </p>
         </header>
@@ -96,7 +96,7 @@ export default function BalanceTransfer() {
            <div className="space-y-6">
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Outstanding Principal</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Outstanding Principal</label>
                     <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.outstandingPrincipal)}</div>
                  </div>
                  <input 
@@ -109,7 +109,7 @@ export default function BalanceTransfer() {
 
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Existing Rate (%)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Existing Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.existingRate}
@@ -118,7 +118,7 @@ export default function BalanceTransfer() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">New Rate (%)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">New Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.newRate}
@@ -130,7 +130,7 @@ export default function BalanceTransfer() {
 
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Remaining Tenure (Yrs)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Remaining Tenure (Yrs)</label>
                     <NumericInput 
                       value={inputs.remainingTerm}
                       onChange={(val) => setInputs({ ...inputs, remainingTerm: val })}
@@ -138,7 +138,7 @@ export default function BalanceTransfer() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Processing Fees</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Processing Fees</label>
                     <NumericInput 
                       value={inputs.processingFees}
                       onChange={(val) => setInputs({ ...inputs, processingFees: val })}
@@ -163,12 +163,12 @@ export default function BalanceTransfer() {
 
                  <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Monthly Savings</div>
-                        <div className="text-xl font-bold text-white/60">{formatCurrency(results.monthlySavings)}</div>
+                        <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Monthly Savings</div>
+                        <div className="text-xl font-bold text-white/70">{formatCurrency(results.monthlySavings)}</div>
                     </div>
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Break-even Point</div>
-                        <div className="text-xl font-bold text-white/60">{results.breakEvenMonths} Months</div>
+                        <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Break-even Point</div>
+                        <div className="text-xl font-bold text-white/70">{results.breakEvenMonths} Months</div>
                     </div>
                  </div>
                </div>

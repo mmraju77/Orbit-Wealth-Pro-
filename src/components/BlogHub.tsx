@@ -94,14 +94,14 @@ export default function BlogHub() {
           
           {/* Search Bar */}
           <div className="relative w-full md:w-80">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+            <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
             <input 
               aria-label="Search insights"
               type="text"
               placeholder="Search insights..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/20 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all"
+              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-sm text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all"
             />
           </div>
         </div>
@@ -116,7 +116,7 @@ export default function BlogHub() {
             className={`flex items-center gap-2 px-6 py-3 rounded-2xl text-[11px] font-black uppercase tracking-widest transition-all whitespace-nowrap border ${
               activeCategory === cat.name 
                 ? 'bg-[#D4AF37] text-[#0B0F19] border-[#D4AF37] shadow-[0_0_20px_rgba(212,175,55,0.3)] scale-105' 
-                : 'bg-white/[0.03] text-white/60 border-white/5 hover:border-[#D4AF37]/30 hover:bg-white/[0.05] hover:text-[#D4AF37]'
+                : 'bg-white/[0.03] text-white/70 border-white/5 hover:border-[#D4AF37]/30 hover:bg-white/[0.05] hover:text-[#D4AF37]'
             }`}
           >
             {cat.icon}
@@ -155,7 +155,7 @@ export default function BlogHub() {
             </div>
 
             <div className="p-8 flex-1 flex flex-col">
-              <div className="flex items-center gap-4 mb-4 text-[10px] font-bold text-white/30 uppercase tracking-widest">
+              <div className="flex items-center gap-4 mb-4 text-[10px] font-bold text-white/70 uppercase tracking-widest">
                 <span className="flex items-center gap-1.5"><Clock className="w-3 h-3" /> {article.readTime}</span>
                 <span>{article.date}</span>
               </div>
@@ -178,7 +178,7 @@ export default function BlogHub() {
                     <p className="text-[9px] text-[#D4AF37] font-black uppercase tracking-widest">{article.authorTitle}</p>
                   </div>
                 </div>
-                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/20 group-hover:bg-[#D4AF37] group-hover:text-[#0B0F19] group-hover:border-[#D4AF37] transition-all">
+                <div className="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center text-white/70 group-hover:bg-[#D4AF37] group-hover:text-[#0B0F19] group-hover:border-[#D4AF37] transition-all">
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -211,7 +211,7 @@ export default function BlogHub() {
                   <CheckCircle2 className="w-12 h-12 text-emerald-400" />
                   <div className="text-center">
                     <h4 className="text-xl font-bold text-white">Welcome to the Inner Circle!</h4>
-                    <p className="text-emerald-100/60 font-medium mb-4">Your wealth blueprint is on the way.</p>
+                    <p className="text-emerald-300 font-medium mb-4">Your wealth blueprint is on the way.</p>
                     <button 
                       onClick={() => setIsSubscribed(false)}
                       className="text-[10px] font-black text-[#D4AF37] uppercase tracking-[0.2em] hover:text-white transition-colors"
@@ -224,7 +224,7 @@ export default function BlogHub() {
                 <div className="space-y-4">
                   <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-4">
                     <div className="relative flex-1">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20" />
+                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/70" />
                       <input 
                         aria-label="Email address"
                         type="email" 
@@ -263,7 +263,7 @@ export default function BlogHub() {
               )}
             </AnimatePresence>
           </div>
-          <p className="text-[10px] text-white/20 uppercase font-black tracking-widest pt-4">No Spam • High Signal • Professional Only</p>
+          <p className="text-[10px] text-white/70 uppercase font-black tracking-widest pt-4">No Spam • High Signal • Professional Only</p>
         </div>
       </section>
     </div>

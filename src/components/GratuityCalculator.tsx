@@ -75,7 +75,7 @@ export default function GratuityCalculator() {
              <Gift className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Gratuity Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Calculate your end-of-service benefits based on {currency === 'INR' ? 'Indian Payment of Gratuity Act' : 'International work standards'}.
           </p>
         </header>
@@ -104,7 +104,7 @@ export default function GratuityCalculator() {
 
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Years of Service</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Years of Service</label>
                     <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{inputs.yearsOfService} Yrs</div>
                  </div>
                  <NumericInput 
@@ -131,7 +131,7 @@ export default function GratuityCalculator() {
                    />
                    <div>
                       <div className="text-xs font-bold text-white">Covered under Gratuity Act?</div>
-                      <p className="text-[10px] text-white/20 uppercase tracking-widest font-bold">Enables 15/26 working days ratio</p>
+                      <p className="text-[10px] text-white/70 uppercase tracking-widest font-bold">Enables 15/26 working days ratio</p>
                    </div>
                 </div>
               )}
@@ -141,7 +141,7 @@ export default function GratuityCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[350px]">
            {isMounted && (
                <div className="text-center space-y-6">
-                  <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Estimated Gratuity Amount</div>
+                  <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Estimated Gratuity Amount</div>
                   <div className="text-6xl font-bold text-white tracking-widest">{formatCurrency(results.gratuityAmount)}</div>
                   
                   <div className="flex justify-center flex-wrap gap-4 pt-8">

@@ -42,7 +42,7 @@ export default function CitiesDirectory() {
           Economic <br />
           <span className="text-[#D4AF37]">Intelligence Hubs</span>
         </h1>
-        <p className="text-white/40 text-lg leading-relaxed max-w-2xl">
+        <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
           Localized financial computation suites for major global economic centers. Tailored for expats, investors, and residents in high-traffic administrative hubs.
         </p>
       </header>
@@ -64,11 +64,11 @@ export default function CitiesDirectory() {
                 <MapPin className="w-6 h-6 text-[#D4AF37]" />
               </div>
               <h3 className="text-xl font-bold text-white mb-2">{hub.city}</h3>
-              <p className="text-[10px] font-bold text-white/30 uppercase tracking-widest mb-6">Financial Analytics</p>
+              <p className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-6">Financial Analytics</p>
               
               <div className="space-y-2">
                 {['Income Tax', 'Mortgage', 'SIP'].map(calc => (
-                   <div key={calc} className="text-xs text-white/40 hover:text-[#D4AF37] transition-colors">{calc} Tool</div>
+                   <div key={calc} className="text-xs text-white/70 hover:text-[#D4AF37] transition-colors">{calc} Tool</div>
                 ))}
               </div>
             </Link>
@@ -102,7 +102,7 @@ export default function CitiesDirectory() {
                 <h3 className="text-xl font-bold text-white mb-6">Global pSEO Architecture</h3>
                 <div className="flex flex-wrap gap-3">
                    {Object.keys(REGIONS).slice(0, 12).map(r => (
-                      <span key={r} className="px-4 py-2 bg-white/5 rounded-full text-xs text-white/40 border border-white/5">
+                      <span key={r} className="px-4 py-2 bg-white/5 rounded-full text-xs text-white/70 border border-white/5">
                         {REGIONS[r].name}
                       </span>
                    ))}
@@ -122,7 +122,7 @@ export default function CitiesDirectory() {
               </div>
               <div>
                   <h4 className="text-xl font-bold text-white">Universal Calculator Protocol</h4>
-                  <p className="text-white/40 text-sm">Every tool in our suite is automatically region-aware and city-optimized.</p>
+                  <p className="text-white/70 text-sm">Every tool in our suite is automatically region-aware and city-optimized.</p>
               </div>
           </div>
           <Link to="/" className="w-full md:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold text-center border border-white/10 transition-all flex items-center justify-center gap-3">

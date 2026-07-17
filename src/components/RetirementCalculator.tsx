@@ -138,7 +138,7 @@ export default function RetirementCalculator() {
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Retirement Logistics</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Sunset Provisions.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Architect your post-career financial state with inflation-adjusted corpus modeling.
           </p>
         </header>
@@ -158,7 +158,7 @@ export default function RetirementCalculator() {
            <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Current Age</label>
                     <NumericInput 
                       value={inputs.currentAge}
                       onChange={(val) => setInputs({ ...inputs, currentAge: val })}
@@ -166,7 +166,7 @@ export default function RetirementCalculator() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Retirement Age</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Retirement Age</label>
                     <NumericInput 
                       value={inputs.retirementAge}
                       onChange={(val) => setInputs({ ...inputs, retirementAge: val })}
@@ -195,7 +195,7 @@ export default function RetirementCalculator() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                     <NumericInput 
                       step="0.5" 
                       value={inputs.expectedReturn}
@@ -204,7 +204,7 @@ export default function RetirementCalculator() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Inflation Rate (%)</label>
+                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Inflation Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.expectedInflation}
@@ -221,7 +221,7 @@ export default function RetirementCalculator() {
              <div className="flex-1 flex flex-col">
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   <div className="p-4 md:p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
-                     <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest mb-1">Raw Corpus</div>
+                     <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Raw Corpus</div>
                      <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
                   </div>
                   <div className="p-4 md:p-6 bg-[#D4AF37]/20 rounded-2xl border border-[#D4AF37]/30 text-center ring-2 ring-[#D4AF37]/50 ring-offset-4 ring-offset-black">
@@ -258,9 +258,9 @@ export default function RetirementCalculator() {
                </div>
 
                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 mt-4">
-                  <Info className="w-5 h-5 text-white/20 shrink-0" />
+                  <Info className="w-5 h-5 text-white/70 shrink-0" />
                   <div className="space-y-1">
-                    <p className="text-[10px] text-white/40 leading-relaxed">
+                    <p className="text-[10px] text-white/70 leading-relaxed">
                       Purchasing power represents what your future corpus would be worth in today's currency value, 
                       accounting for a {inputs.expectedInflation}% annual cost-of-living increase.
                     </p>

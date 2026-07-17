@@ -81,7 +81,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             <div className="p-1.5 bg-[#D4AF37]/10 rounded-lg border border-[#D4AF37]/20">
               <Sparkles className="w-4 h-4 text-[#D4AF37] animate-pulse" />
             </div>
-            <span className="text-[10px] font-black text-white/40 uppercase tracking-[0.5em]">AI Wealth Authority</span>
+            <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.5em]">AI Wealth Authority</span>
           </div>
 
           <div className="relative w-48 h-48 mx-auto">
@@ -129,7 +129,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 <span className="text-6xl font-display font-black text-white tracking-tighter">{wealthScore}</span>
                 <div className="absolute -top-1 -right-4 w-4 h-4 bg-emerald-500 rounded-full border-4 border-[#0B1221]" />
               </div>
-              <span className="text-[10px] font-black text-white/20 uppercase tracking-[0.3em] mt-2">Institutional Tier</span>
+              <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mt-2">Institutional Tier</span>
             </div>
           </div>
 
@@ -138,7 +138,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
               <Activity className="w-4 h-4 text-emerald-400" /> 
               <span className="text-xs font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
             </div>
-            <p className="text-[11px] text-white/60 font-black uppercase tracking-[0.2em]">
+            <p className="text-[11px] text-white/70 font-black uppercase tracking-[0.2em]">
               STRATEGIC TIER ALPHA
             </p>
           </div>
@@ -188,7 +188,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                     {insight.text}
                   </p>
                 </div>
-                <ArrowUpRight className="w-4 h-4 text-white/10 group-hover:text-[#D4AF37] transition-colors" />
+                <ArrowUpRight className="w-4 h-4 text-white/70 group-hover:text-[#D4AF37] transition-colors" />
               </motion.div>
             ))}
           </div>

@@ -49,7 +49,7 @@ export default function CurrencyInput({
         />
       </div>
 
-      {description && <p className="text-sm text-white/50 px-2 italic">{description}</p>}
+      {description && <p className="text-sm text-white/70 px-2 italic">{description}</p>}
 
       {showSlider && (
         <input 

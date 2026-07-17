@@ -48,7 +48,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
               </h2>
               <div className="flex items-center gap-2">
                 <Activity className="w-3 h-3 text-[#D4AF37]" />
-                <p className="text-[10px] text-white/40 uppercase font-black tracking-widest">
+                <p className="text-[10px] text-white/70 uppercase font-black tracking-widest">
                   Orbit Intelligence Protocol • Active Sync
                 </p>
               </div>
@@ -56,7 +56,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
           </div>
           <button 
             onClick={onClose}
-            className="p-2.5 bg-white/5 border border-white/10 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-all relative z-10"
+            className="p-2.5 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all relative z-10"
           >
             <X className="w-5 h-5" />
           </button>

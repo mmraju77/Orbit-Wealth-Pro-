@@ -216,7 +216,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
       >
         <button 
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/60 hover:text-white transition-all"
+          className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/70 hover:text-white transition-all"
         >
           <X className="w-5 h-5" />
         </button>
@@ -244,11 +244,11 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
           <div className="p-8 md:p-12 space-y-8">
             <div className="flex items-center gap-6 border-b border-white/5 pb-8">
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-white/40" />
+                <Calendar className="w-4 h-4 text-white/70" />
                 <span className="text-xs text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
               </div>
               <div className="flex items-center gap-2">
-                <UserCheck className="w-4 h-4 text-white/40" />
+                <UserCheck className="w-4 h-4 text-white/70" />
                 <span className="text-xs text-slate-200 font-bold uppercase tracking-widest">Orbit Research Team</span>
               </div>
             </div>
@@ -265,7 +265,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
             </div>
 
             <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row gap-8 justify-between items-center">
-              <div className="text-xs text-white/20 uppercase tracking-[0.2em] font-bold">
+              <div className="text-xs text-white/70 uppercase tracking-[0.2em] font-bold">
                 © 2026 ORBIT WEALTH PRO — All Rights Reserved
               </div>
               <button 
@@ -319,7 +319,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
         
         <div className="pt-4 flex items-center justify-between border-t border-white/[0.05]">
            <div className="flex items-center gap-2">
-              <Calendar className="w-3 h-3 text-white/40" />
+              <Calendar className="w-3 h-3 text-white/70" />
               <span className="text-[10px] text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
            <button 
@@ -363,7 +363,7 @@ export default function Dashboard() {
         </div>
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-display font-medium text-[#f59e0b] tracking-tighter leading-[1.1]">
           Financial <br />
-          <span className="text-white/10">Dashboard.</span>
+          <span className="text-white/70">Dashboard.</span>
         </h1>
         <p className="text-white/90 max-w-xl text-base md:text-lg font-light leading-relaxed">
           Access ORBIT WEALTH PRO's suite of institutional-grade financial tools. 
@@ -430,7 +430,7 @@ export default function Dashboard() {
         <div className="flex items-center gap-4">
            <h2 className="text-xs font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
            <div className="flex-1 h-px bg-[#D4AF37]/10"></div>
-           <div className="flex items-center gap-2 text-xs font-bold text-white/20 uppercase tracking-widest">
+           <div className="flex items-center gap-2 text-xs font-bold text-white/70 uppercase tracking-widest">
              <div className="w-1 h-1 rounded-full bg-[#D4AF37] animate-pulse"></div>
              Live Updates
            </div>
@@ -457,7 +457,7 @@ export default function Dashboard() {
                 setShowAllNews(true);
               }
             }}
-            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/60 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
+            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs font-bold text-white/70 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
           >
             {showAllNews ? 'Show Less Insights' : 'Explore All Market Insights'}
           </button>
@@ -534,7 +534,7 @@ export default function Dashboard() {
       {/* Global Presence Section - Micro-links for targeted regions */}
       <section className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-xs font-bold text-white/20 uppercase tracking-[0.4em]">Global Presence</h2>
+           <h2 className="text-xs font-bold text-white/70 uppercase tracking-[0.4em]">Global Presence</h2>
            <div className="flex-1 h-px bg-white/[0.03]"></div>
         </div>
 
@@ -559,7 +559,7 @@ export default function Dashboard() {
               className="flex items-center gap-2 p-3 bg-white/[0.02] border border-white/5 rounded-xl hover:border-[#D4AF37]/40 hover:bg-white/[0.04] transition-all group"
             >
               <span className="text-lg grayscale group-hover:grayscale-0 transition-all">{country.flag}</span>
-              <span className="text-xs font-bold text-white/40 uppercase tracking-widest group-hover:text-white transition-colors">{country.name}</span>
+              <span className="text-xs font-bold text-white/70 uppercase tracking-widest group-hover:text-white transition-colors">{country.name}</span>
             </Link>
           ))}
         </div>

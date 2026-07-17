@@ -14,7 +14,7 @@ export default function ContactUs() {
            <Mail className="text-[#D4AF37] w-8 h-8" />
         </div>
         <h1 className="text-4xl font-bold tracking-tighter">Contact Us</h1>
-        <p className="text-white/40 text-sm uppercase tracking-widest font-bold">Get in touch with our financial experts</p>
+        <p className="text-white/70 text-sm uppercase tracking-widest font-bold">Get in touch with our financial experts</p>
       </header>
 
       <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-12 space-y-8 leading-relaxed text-white/70">
@@ -27,7 +27,7 @@ export default function ContactUs() {
             <div className="inline-flex items-center gap-4 p-6 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-2xl">
               <Mail className="text-[#D4AF37] w-6 h-6" />
               <div>
-                <div className="text-[10px] font-bold text-white/20 uppercase tracking-widest text-left">Official Support Email</div>
+                <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest text-left">Official Support Email</div>
                 <div className="text-xl font-bold text-white tracking-tight">info@orbitwealthpro.com</div>
               </div>
             </div>
@@ -39,7 +39,7 @@ export default function ContactUs() {
       </div>
 
       <div className="p-8 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 text-center">
-        <p className="text-xs italic text-white/40">
+        <p className="text-xs italic text-white/70">
           "Connecting users with financial precision, one email at a time."
         </p>
       </div>

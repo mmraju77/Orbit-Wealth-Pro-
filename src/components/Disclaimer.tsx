@@ -14,7 +14,7 @@ export default function Disclaimer() {
            <Scale className="text-amber-500 w-8 h-8" />
         </div>
         <h1 className="text-4xl font-bold tracking-tighter text-[#f59e0b]">Financial Disclaimer</h1>
-        <p className="text-white/40 text-sm uppercase tracking-widest font-bold">Important Notice to Our Users</p>
+        <p className="text-white/70 text-sm uppercase tracking-widest font-bold">Important Notice to Our Users</p>
       </header>
 
       <div className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl p-8 md:p-12 space-y-8 leading-relaxed text-white/70">
@@ -47,7 +47,7 @@ export default function Disclaimer() {
           </p>
         </section>
 
-        <section className="space-y-4 border-t border-white/5 pt-8 text-center text-white/30 text-sm italic">
+        <section className="space-y-4 border-t border-white/5 pt-8 text-center text-white/70 text-sm italic">
           <p>
             © 2026 Orbit Wealth Pro. All Rights Reserved. Built with 0-maintenance edge tech for global scale.
           </p>

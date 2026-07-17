@@ -72,7 +72,7 @@ export default function AutoLoanCalculator() {
              <Car className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter">Auto Loan Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Calculate your monthly car payments while accounting for sales tax, trade-ins, and down payments.
           </p>
         </header>
@@ -86,7 +86,7 @@ export default function AutoLoanCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Car Price</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Car Price</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <NumericInput 
@@ -97,7 +97,7 @@ export default function AutoLoanCalculator() {
                 </div>
              </div>
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Sales Tax (%)</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Sales Tax (%)</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <NumericInput 
                      value={salesTax}
@@ -108,7 +108,7 @@ export default function AutoLoanCalculator() {
                 </div>
              </div>
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Down Payment</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Down Payment</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <NumericInput 
@@ -119,7 +119,7 @@ export default function AutoLoanCalculator() {
                 </div>
              </div>
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Trade-in Value</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Trade-in Value</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <NumericInput 
@@ -133,7 +133,7 @@ export default function AutoLoanCalculator() {
 
           <div className="space-y-6 pt-6 border-t border-white/5">
              <div className="space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                    <span>Interest Rate</span>
                    <span className="text-[#D4AF37]">{interestRate}%</span>
                 </div>
@@ -151,7 +151,7 @@ export default function AutoLoanCalculator() {
                 />
              </div>
              <div className="space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-bold text-white/20 uppercase tracking-widest">
+                <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
                    <span>Loan Term ({tenure} months)</span>
                    <span className="text-white">{tenure / 12} Years</span>
                 </div>
@@ -179,8 +179,8 @@ export default function AutoLoanCalculator() {
                     <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
-                    <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Loan</div>
-                    <div className="text-3xl font-bold text-white/60">{formatCurrency(results.loanAmount)}</div>
+                    <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan</div>
+                    <div className="text-3xl font-bold text-white/70">{formatCurrency(results.loanAmount)}</div>
                  </div>
               </div>
 
@@ -191,15 +191,15 @@ export default function AutoLoanCalculator() {
                  </div>
                  <div className="space-y-3">
                     <div className="flex justify-between text-sm">
-                       <span className="text-white/40">Vehicle Sales Tax:</span>
+                       <span className="text-white/70">Vehicle Sales Tax:</span>
                        <span className="text-white font-bold">{formatCurrency(results.taxAmount)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                       <span className="text-white/40">Total Acquisition Cost:</span>
+                       <span className="text-white/70">Total Acquisition Cost:</span>
                        <span className="text-white font-bold">{formatCurrency(carPrice + results.taxAmount)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
-                       <span className="text-white/40">Total Interest Paid:</span>
+                       <span className="text-white/70">Total Interest Paid:</span>
                        <span className="text-white text-[#D4AF37] font-bold">{formatCurrency(results.totalInterest)}</span>
                     </div>
                     <div className="flex justify-between text-sm pt-3 border-t border-white/5">

@@ -67,7 +67,7 @@ export default function LumpsumCalculator() {
              <BarChart3 className="text-[#D4AF37] w-6 h-6" />
              <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">Lumpsum Calculator</h1>
           </div>
-          <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
             Determine the future value of a one-time fixed investment based on your target return rate and timeframe.
           </p>
         </header>
@@ -96,7 +96,7 @@ export default function LumpsumCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Expected Return (%)</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                 <NumericInput 
                   value={inputs.expectedReturn}
                   onChange={(val) => setInputs({ ...inputs, expectedReturn: val })}
@@ -113,7 +113,7 @@ export default function LumpsumCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
+                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Duration (Years)</label>
                 <NumericInput 
                   value={inputs.duration}
                   onChange={(val) => setInputs({ ...inputs, duration: val })}
@@ -131,11 +131,11 @@ export default function LumpsumCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[8px] text-white/20 font-bold uppercase tracking-widest mb-1">Invested Principal</div>
+                <div className="text-[8px] text-white/70 font-bold uppercase tracking-widest mb-1">Invested Principal</div>
                 <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[8px] text-white/20 font-bold uppercase tracking-widest mb-1">Total Returns</div>
+                <div className="text-[8px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Returns</div>
                 <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
@@ -164,7 +164,7 @@ export default function LumpsumCalculator() {
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">
-                <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
+                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
                 <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
             </div>

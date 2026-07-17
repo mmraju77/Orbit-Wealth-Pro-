@@ -14,7 +14,7 @@ export default function PrivacyPolicy() {
            <Shield className="text-[#D4AF37] w-8 h-8" />
         </div>
         <h1 className="text-4xl font-bold tracking-tighter">Privacy Policy</h1>
-        <p className="text-white/40 text-sm uppercase tracking-widest font-bold">Last Updated: May 2026</p>
+        <p className="text-white/70 text-sm uppercase tracking-widest font-bold">Last Updated: May 2026</p>
       </header>
 
       <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-12 space-y-8 leading-relaxed text-white/70">
@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
       </div>
 
       <div className="p-8 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 text-center">
-        <p className="text-xs italic text-white/40">
+        <p className="text-xs italic text-white/70">
           "Your financial privacy is our engineering priority. We build tools, not databases."
         </p>
       </div>

@@ -45,7 +45,7 @@ export default function CAGRCalculator() {
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Annualized Performance</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Compound Annual Growth.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Determine the geomtric progression of your assets using institutional growth modeling.
           </p>
         </header>
@@ -75,7 +75,7 @@ export default function CAGRCalculator() {
             />
             <div className="space-y-4">
                <div className="flex justify-between items-center">
-                  <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Duration (Years)</label>
+                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Duration (Years)</label>
                   <span className="text-[#D4AF37] font-bold">{duration} Yrs</span>
                </div>
                <NumericInput 
@@ -96,7 +96,7 @@ export default function CAGRCalculator() {
 
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-center items-center text-center">
            <div className="space-y-2">
-              <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest mb-1">Compound Annual Growth Rate</div>
+              <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Compound Annual Growth Rate</div>
               <div className="text-7xl font-bold text-white tracking-tighter">{cagr}%</div>
               <div className="pt-4 flex items-center justify-center gap-2 text-[#D4AF37]">
                  <TrendingUp className="w-4 h-4" />

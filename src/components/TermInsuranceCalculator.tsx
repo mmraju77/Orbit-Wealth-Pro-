@@ -74,7 +74,7 @@ export default function TermInsuranceCalculator() {
              <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Life Protection</span>
           </div>
           <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Term Insurance.</h1>
-          <p className="text-white/40 max-w-xl text-sm font-light leading-relaxed">
+          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
             Secure your family's future with precision-calculated life coverage estimates based on global mortality trends.
           </p>
         </header>
@@ -103,7 +103,7 @@ export default function TermInsuranceCalculator() {
 
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                <div className="space-y-4">
-                  <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Current Age</label>
+                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Current Age</label>
                   <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                     <User className="w-4 h-4 text-[#D4AF37]" />
                     <NumericInput 
@@ -115,7 +115,7 @@ export default function TermInsuranceCalculator() {
                   </div>
                </div>
                <div className="space-y-4">
-                  <label className="text-[10px] font-bold text-white/20 uppercase tracking-widest">Policy Term (Years)</label>
+                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Policy Term (Years)</label>
                   <div className="space-y-4">
                     <NumericInput 
                       min={5} max={50} 
@@ -139,13 +139,13 @@ export default function TermInsuranceCalculator() {
              <div className="grid grid-cols-2 gap-4">
                 <button 
                   onClick={() => setInputs({...inputs, gender: 'male'})}
-                  className={`py-3 rounded-xl border text-[10px] font-bold uppercase tracking-widest transition-all ${inputs.gender === 'male' ? 'bg-[#D4AF37] border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/40'}`}
+                  className={`py-3 rounded-xl border text-[10px] font-bold uppercase tracking-widest transition-all ${inputs.gender === 'male' ? 'bg-[#D4AF37] border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
                 >
                   Male
                 </button>
                 <button 
                   onClick={() => setInputs({...inputs, gender: 'female'})}
-                  className={`py-3 rounded-xl border text-[10px] font-bold uppercase tracking-widest transition-all ${inputs.gender === 'female' ? 'bg-[#D4AF37] border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/40'}`}
+                  className={`py-3 rounded-xl border text-[10px] font-bold uppercase tracking-widest transition-all ${inputs.gender === 'female' ? 'bg-[#D4AF37] border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
                 >
                   Female
                 </button>
@@ -156,7 +156,7 @@ export default function TermInsuranceCalculator() {
                    <Activity className="w-4 h-4 text-orange-500" />
                    <div>
                       <div className="text-[10px] font-bold text-white uppercase tracking-widest">Tobacco/Smoking</div>
-                      <div className="text-[9px] text-white/20 uppercase">Do you consume tobacco?</div>
+                      <div className="text-[9px] text-white/70 uppercase">Do you consume tobacco?</div>
                    </div>
                 </div>
                 <button 
@@ -174,8 +174,8 @@ export default function TermInsuranceCalculator() {
                 <div className="text-3xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
              </div>
              <div className="text-right">
-                <div className="text-[10px] text-white/20 font-bold uppercase tracking-widest">Annual Total</div>
-                <div className="text-xl font-bold text-white/60 tracking-tighter">{formatCurrency(results.annualPremium)}</div>
+                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest">Annual Total</div>
+                <div className="text-xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.annualPremium)}</div>
              </div>
           </div>
         </section>
@@ -192,14 +192,14 @@ export default function TermInsuranceCalculator() {
                      <Shield className="w-10 h-10 text-[#D4AF37]" />
                   </div>
                   <h3 className="text-2xl font-display font-medium">Protection Analysis.</h3>
-                  <p className="text-white/30 text-xs italic max-w-xs mx-auto">
+                  <p className="text-white/70 text-xs italic max-w-xs mx-auto">
                     "Based on your profile, we recommend a minimum death benefit of 10-15x your annual income."
                   </p>
                </div>
 
                <div className="w-full space-y-4 pt-8 border-t border-white/5">
                   <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest">
-                     <span className="text-white/20">Total Benefit</span>
+                     <span className="text-white/70">Total Benefit</span>
                      <span className="text-white">{formatCurrency(inputs.coverage)}</span>
                   </div>
                   <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">
@@ -207,7 +207,7 @@ export default function TermInsuranceCalculator() {
                   </div>
 
                   <div className="flex justify-between items-center text-[10px] uppercase font-bold tracking-widest pt-4">
-                     <span className="text-white/20">Value of Security</span>
+                     <span className="text-white/70">Value of Security</span>
                      <span className="text-emerald-500">Priceless</span>
                   </div>
                   <div className="w-full h-1 bg-white/5 rounded-full overflow-hidden">

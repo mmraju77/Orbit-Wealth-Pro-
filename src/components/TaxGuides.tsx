@@ -87,7 +87,7 @@ export default function TaxGuides() {
            <Globe className="text-[#D4AF37] w-6 h-6" />
            <h1 className="text-3xl font-bold tracking-tighter">Global Tax Cheat Sheets</h1>
         </div>
-        <p className="text-white/40 max-w-xl text-sm leading-relaxed">
+        <p className="text-white/70 max-w-xl text-sm leading-relaxed">
           Quick reference guides for tax-saving instruments across major global regions. Maximize your take-home pay.
         </p>
       </header>
@@ -109,12 +109,12 @@ export default function TaxGuides() {
                        <div className="w-1 h-1 rounded-full bg-[#D4AF37]"></div>
                        {ins.name}
                     </div>
-                    <p className="text-xs text-white/40 leading-relaxed ml-3">{ins.desc}</p>
+                    <p className="text-xs text-white/70 leading-relaxed ml-3">{ins.desc}</p>
                  </div>
                ))}
             </div>
             <div className="p-4 bg-white/[0.01] flex justify-center border-t border-white/5">
-                <button className="text-[10px] font-bold text-white/20 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2">
+                <button className="text-[10px] font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                    <ExternalLink className="w-3 h-3" /> Detailed Guide
                 </button>
             </div>
@@ -128,7 +128,7 @@ export default function TaxGuides() {
          </div>
          <div className="space-y-1 text-center md:text-left">
             <h3 className="font-bold text-lg">Need a custom tax plan?</h3>
-            <p className="text-sm text-white/40">Our professional advisors can help you optimize your global tax liabilities across residency shifts.</p>
+            <p className="text-sm text-white/70">Our professional advisors can help you optimize your global tax liabilities across residency shifts.</p>
          </div>
          <button className="ml-auto px-6 py-3 bg-[#D4AF37] rounded-xl text-xs font-bold hover:bg-[#0044DD] transition-all">
             Consult Advisor

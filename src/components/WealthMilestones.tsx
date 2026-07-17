@@ -57,7 +57,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
         
         <div className="flex items-center gap-4">
           <div className="px-4 py-2 bg-white/5 border border-white/10 rounded-xl backdrop-blur-sm">
-            <span className="text-[10px] font-black text-white/40 uppercase tracking-widest block mb-1">Total Goal Progress</span>
+            <span className="text-[10px] font-black text-white/70 uppercase tracking-widest block mb-1">Total Goal Progress</span>
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#f59e0b]" />
               <span className="text-xl font-display font-bold text-white">
@@ -94,21 +94,21 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                   >
                     {goal.icon}
                   </div>
-                  <Target className="w-5 h-5 text-white/10 group-hover:text-white/40 transition-colors" />
+                  <Target className="w-5 h-5 text-white/70 group-hover:text-white/70 transition-colors" />
                 </div>
 
                 <div className="space-y-1">
                   <h3 className="text-xl font-bold text-white group-hover:text-[#f59e0b] transition-colors">
                     {goal.title}
                   </h3>
-                  <p className="text-[10px] uppercase tracking-widest font-black text-white/40">
+                  <p className="text-[10px] uppercase tracking-widest font-black text-white/70">
                     {goal.subtitle}
                   </p>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-end text-[10px] font-black uppercase tracking-tighter">
-                    <span className="text-white/60">Milestone Progress</span>
+                    <span className="text-white/70">Milestone Progress</span>
                     <span className="text-white">{Math.min(100, Math.round(progress))}%</span>
                   </div>
                   <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
@@ -123,32 +123,32 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Current Wealth</span>
+                    <span className="text-[9px] text-white/70 uppercase font-bold">Current Wealth</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.current}
                         onChange={(val) => handleUpdate(goal.id, 'current', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/70">$</span>
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Target Milestone</span>
+                    <span className="text-[9px] text-white/70 uppercase font-bold">Target Milestone</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.target}
                         onChange={(val) => handleUpdate(goal.id, 'target', val)}
                         className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
-                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/20">$</span>
+                      <span className="absolute right-3 top-1/2 -translate-y-1/2 text-[9px] text-white/70">$</span>
                     </div>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Time Horizon (Years)</span>
+                    <span className="text-[9px] text-white/70 uppercase font-bold">Time Horizon (Years)</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.years}
@@ -158,7 +158,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                     </div>
                   </div>
                   <div className="space-y-1">
-                    <span className="text-[9px] text-white/30 uppercase font-bold">Exp. Return (APR %)</span>
+                    <span className="text-[9px] text-white/70 uppercase font-bold">Exp. Return (APR %)</span>
                     <div className="relative">
                       <NumericInput 
                         value={goal.annualReturn * 100}
@@ -177,12 +177,12 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       exit={{ opacity: 0, height: 0 }}
                       className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl space-y-2 overflow-hidden"
                     >
-                      <div className="flex justify-between items-center text-[10px] font-black uppercase text-emerald-500/60">
+                      <div className="flex justify-between items-center text-[10px] font-black uppercase text-emerald-500">
                         <span>Monthly Savings Required</span>
                         <Sparkles className="w-3 h-3" />
                       </div>
                       <div className="text-2xl font-display font-bold text-white">
-                        ${Math.round(results[goal.id]).toLocaleString()} <span className="text-sm font-sans font-medium text-white/40">/ mo</span>
+                        ${Math.round(results[goal.id]).toLocaleString()} <span className="text-sm font-sans font-medium text-white/70">/ mo</span>
                       </div>
                     </motion.div>
                   )}
