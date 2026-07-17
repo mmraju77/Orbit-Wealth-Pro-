@@ -160,15 +160,15 @@ export default function BlogHub() {
                 <span>{article.date}</span>
               </div>
 
-              <h3 className="text-3xl font-bold text-white mb-4 line-clamp-2 leading-snug group-hover:text-[#D4AF37] transition-colors">
+              <h3 className="text-3xl lg:text-4xl font-bold text-white mb-8 line-clamp-3 leading-relaxed group-hover:text-[#D4AF37] transition-colors">
                 {article.title}
               </h3>
 
-              <p className="text-lg !text-white !opacity-100 leading-relaxed line-clamp-3 mb-8 font-medium">
+              <p className="text-lg !text-white !opacity-100 leading-relaxed line-clamp-3 mb-10 font-medium">
                 {article.excerpt}
               </p>
 
-              <div className="mt-auto pt-6 border-t border-white/5 flex items-center justify-between">
+              <div className="mt-auto pt-8 border-t border-white/5 flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-[#D4AF37]/10 border border-[#D4AF37]/20 flex items-center justify-center">
                     <User className="w-5 h-5 text-[#D4AF37]" />

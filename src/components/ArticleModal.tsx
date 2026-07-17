@@ -51,21 +51,20 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
 
           <div className="flex-1 overflow-y-auto custom-scrollbar">
             {/* Hero Section */}
-            <div className="relative h-64 md:h-80 w-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0D121F]" />
-              <div className="absolute top-12 left-12 space-y-4">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-full">
-                  <Sparkles className="w-3 h-3 text-[#D4AF37]" />
+            <div className="w-full relative px-12 pt-24 pb-16 border-b border-white/10">
+              <div className="space-y-8">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#D4AF37]/10 border border-[#D4AF37]/20 rounded-full">
+                  <Sparkles className="w-4 h-4 text-[#D4AF37]" />
                   <span className="text-base font-black text-[#D4AF37] uppercase tracking-widest">{article.category}</span>
                 </div>
-                <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight max-w-2xl leading-tight">
+                <h2 className="text-5xl md:text-7xl font-display font-bold text-white tracking-tight max-w-3xl leading-[1.1] pb-4">
                   {article.title}
                 </h2>
               </div>
             </div>
 
             {/* Content Container */}
-            <div className="px-12 pb-12 -mt-12 relative z-10">
+            <div className="px-12 py-16 relative z-10">
               <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
                 {/* Meta Sidebar */}
                 <div className="lg:col-span-1 space-y-8">
