@@ -22,9 +22,9 @@ export default function Footer() {
               <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20 group-hover:scale-110 transition-transform">
                 <Wallet className="w-6 h-6 text-black" />
               </div>
-              <span className="text-2xl font-bold tracking-tighter text-[#f59e0b] uppercase">ORBIT WEALTH PRO</span>
+              <span className="text-3xl font-bold tracking-tighter text-[#f59e0b] uppercase">ORBIT WEALTH PRO</span>
             </Link>
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-base leading-relaxed">
               Global financial tools platform providing precision calculators for 11+ jurisdictions including the USA, Canada, Europe, UAE, and India.
             </p>
             <div className="flex items-center gap-4">
@@ -41,61 +41,61 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-slate-100 uppercase tracking-widest mb-6">Tools & Resources</h4>
+            <h4 className="text-sm font-bold text-slate-100 uppercase tracking-widest mb-6">Tools & Resources</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/calculators/mortgage" className="text-sm text-white/70 hover:text-white transition-colors">Mortgage Engine</Link>
+                <Link to="/calculators/mortgage" className="text-base text-white/70 hover:text-white transition-colors">Mortgage Engine</Link>
               </li>
               <li>
-                <Link to="/calculators/income-tax" className="text-sm text-white/70 hover:text-white transition-colors">Tax Calculator</Link>
+                <Link to="/calculators/income-tax" className="text-base text-white/70 hover:text-white transition-colors">Tax Calculator</Link>
               </li>
               <li>
-                <Link to="/calculators/retirement" className="text-sm text-white/70 hover:text-white transition-colors">Retirement Planner</Link>
+                <Link to="/calculators/retirement" className="text-base text-white/70 hover:text-white transition-colors">Retirement Planner</Link>
               </li>
               <li>
-                <Link to="/calculators/sip" className="text-sm text-white/70 hover:text-white transition-colors">SIP Estimator</Link>
+                <Link to="/calculators/sip" className="text-base text-white/70 hover:text-white transition-colors">SIP Estimator</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-slate-100 uppercase tracking-widest mb-6">Popular Comparisons</h4>
+            <h4 className="text-sm font-bold text-slate-100 uppercase tracking-widest mb-6">Popular Comparisons</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/compare/sip-vs-lumpsum" className="text-sm text-white/70 hover:text-white transition-colors">SIP vs Lumpsum</Link>
+                <Link to="/compare/sip-vs-lumpsum" className="text-base text-white/70 hover:text-white transition-colors">SIP vs Lumpsum</Link>
               </li>
               <li>
-                <Link to="/compare/home-loan-vs-rent" className="text-sm text-white/70 hover:text-white transition-colors">Buy vs Rent</Link>
+                <Link to="/compare/home-loan-vs-rent" className="text-base text-white/70 hover:text-white transition-colors">Buy vs Rent</Link>
               </li>
               <li>
-                <Link to="/compare/gold-vs-real-estate" className="text-sm text-white/70 hover:text-white transition-colors">Gold vs Real Estate</Link>
+                <Link to="/compare/gold-vs-real-estate" className="text-base text-white/70 hover:text-white transition-colors">Gold vs Real Estate</Link>
               </li>
               <li>
-                <Link to="/compare/fd-vs-mutual-funds" className="text-sm text-white/70 hover:text-white transition-colors">FD vs MF</Link>
+                <Link to="/compare/fd-vs-mutual-funds" className="text-base text-white/70 hover:text-white transition-colors">FD vs MF</Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="text-xs font-bold text-slate-100 uppercase tracking-widest mb-6">Company & Info</h4>
+            <h4 className="text-sm font-bold text-slate-100 uppercase tracking-widest mb-6">Company & Info</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/about" className="flex items-center gap-2 text-sm text-white hover:text-[#D4AF37] transition-colors font-bold">
+                <Link to="/about" className="flex items-center gap-2 text-base text-white hover:text-[#D4AF37] transition-colors font-bold">
                   <Globe className="w-4 h-4" /> About ORBIT WEALTH PRO
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="flex items-center gap-2 text-sm text-white hover:text-[#D4AF37] transition-colors font-bold">
+                <Link to="/contact" className="flex items-center gap-2 text-base text-white hover:text-[#D4AF37] transition-colors font-bold">
                   <Mail className="w-4 h-4" /> Contact Support
                 </Link>
               </li>
               <li className="pt-2 border-t border-white/5">
-                <Link to="/privacy-policy" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+                <Link to="/privacy-policy" className="flex items-center gap-2 text-base text-white/70 hover:text-white transition-colors">
                   <Shield className="w-4 h-4" /> Privacy Policy
                 </Link>
               </li>
               <li>
-                <Link to="/terms-of-service" className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors">
+                <Link to="/terms-of-service" className="flex items-center gap-2 text-base text-white/70 hover:text-white transition-colors">
                   <FileText className="w-4 h-4" /> Terms of Service
                 </Link>
               </li>
@@ -104,22 +104,22 @@ export default function Footer() {
         </div>
 
         <div className="flex flex-wrap items-center gap-x-8 gap-y-4 py-8 border-t border-white/5 mb-8">
-           <Link to="/about" className="text-xs font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">About Us</Link>
-           <Link to="/contact" className="text-xs font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Contact Us</Link>
-           <Link to="/privacy-policy" className="text-xs font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Privacy Policy</Link>
-           <Link to="/terms-of-service" className="text-xs font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Terms</Link>
-           <Link to="/disclaimer" className="text-xs font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Disclaimer</Link>
+           <Link to="/about" className="text-sm font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">About Us</Link>
+           <Link to="/contact" className="text-sm font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Contact Us</Link>
+           <Link to="/privacy-policy" className="text-sm font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Privacy Policy</Link>
+           <Link to="/terms-of-service" className="text-sm font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Terms</Link>
+           <Link to="/disclaimer" className="text-sm font-bold text-white/70 hover:text-[#D4AF37] uppercase tracking-widest transition-colors">Disclaimer</Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 pt-8 border-t border-white/5">
            <div className="space-y-4">
-              <h4 className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Global Jurisdictions</h4>
+              <h4 className="text-sm font-bold text-white/70 uppercase tracking-widest">Global Jurisdictions</h4>
               <div className="flex flex-wrap gap-4">
                  {regionKeys.map(key => (
                    <Link 
                      key={key}
                      to={`/tools/mortgage/${key}`} 
-                     className="text-[10px] text-white/70 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors uppercase font-bold"
+                     className="text-sm text-white/70 hover:text-white px-2 py-1 bg-white/5 rounded transition-colors uppercase font-bold"
                    >
                      {REGIONS[key].name}
                    </Link>
@@ -127,8 +127,8 @@ export default function Footer() {
               </div>
            </div>
            <div className="bg-[#D4AF37]/5 rounded-2xl p-6 border border-[#D4AF37]/10">
-              <h4 className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-2">AdSense & Trust</h4>
-              <p className="text-[10px] text-white/70 leading-relaxed italic">
+              <h4 className="text-sm font-bold text-[#D4AF37] uppercase tracking-widest mb-2">AdSense & Trust</h4>
+              <p className="text-sm text-white/70 leading-relaxed italic">
                 ORBIT WEALTH PRO is a compliant financial platform. We use GA4 for analytics and AdSense for sustainability. Your data remains your own.
               </p>
            </div>
@@ -137,10 +137,10 @@ export default function Footer() {
         <div className="mb-12 pt-8 border-t border-white/5">
           <div className="p-10 bg-[#0D121F] border border-white/10 rounded-[2.5rem] relative overflow-hidden group shadow-2xl">
             <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/[0.02] rounded-full blur-[120px] -mr-40 -mt-40" />
-            <h4 className="text-[11px] font-black text-amber-500 uppercase tracking-[0.4em] mb-6 flex items-center gap-2 relative z-10">
+            <h4 className="text-sm font-black text-amber-500 uppercase tracking-[0.4em] mb-6 flex items-center gap-2 relative z-10">
               <Scale className="w-4 h-4" /> Global Regulatory & Financial Compliance Protocol
             </h4>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-[11px] text-white/70 leading-relaxed relative z-10 font-medium">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-sm text-white/70 leading-relaxed relative z-10 font-medium">
               <div className="space-y-6">
                 <p>
                   <strong className="text-white/70 uppercase tracking-tighter">I. Institutional Standing:</strong> Orbit Wealth Pro (OWP) is a high-performance quantitative simulation interface. OWP does not hold banking licenses, is not a registered investment advisor (RIA), and does not participate in fiduciary management of client funds. All tools provided are for <span className="text-white/70 font-bold italic underline decoration-white/20 underline-offset-2">informational and educational simulation purposes only</span>.
@@ -162,10 +162,10 @@ export default function Footer() {
         </div>
 
         <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-[10px] font-bold text-white/70 tracking-tight">
+          <p className="text-sm font-bold text-white/70 tracking-tight">
             © 2026 Orbit Wealth Pro. All Rights Reserved. Built with 0-maintenance edge tech for global scale.
           </p>
-          <div className="flex items-center gap-6 text-[10px] font-bold text-white/70 uppercase tracking-widest">
+          <div className="flex items-center gap-6 text-sm font-bold text-white/70 uppercase tracking-widest">
             <span>Precision AI v3.1.0</span>
             <span>Security Verified</span>
           </div>

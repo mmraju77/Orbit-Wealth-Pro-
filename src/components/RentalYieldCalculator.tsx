@@ -53,14 +53,14 @@ export default function RentalYieldCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Yield Logistics</span>
+             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Yield Logistics</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Property ROI.</h1>
-          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
+          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Property ROI.</h1>
+          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Evaluate the profitability of your real estate portfolio with precise operating income analysis.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
           <Download className="w-4 h-4" /> Download Report
         </button>
       </div>
@@ -109,19 +109,19 @@ export default function RentalYieldCalculator() {
            <div className="space-y-8">
               <div className="grid grid-cols-2 gap-4">
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
-                    <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Gross Yield</div>
-                    <div className="text-3xl font-bold text-white/70">{results.grossYield}%</div>
+                    <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Gross Yield</div>
+                    <div className="text-4xl font-bold text-white/70">{results.grossYield}%</div>
                  </div>
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
-                    <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Net Rental Yield</div>
-                    <div className="text-4xl font-bold text-[#D4AF37]">{results.netYield}%</div>
+                    <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Net Rental Yield</div>
+                    <div className="text-5xl font-bold text-[#D4AF37]">{results.netYield}%</div>
                  </div>
               </div>
 
               <div className="p-6 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-center">
-                 <div className="text-[10px] text-emerald-500 font-bold uppercase tracking-widest mb-2">Net Annual Operating Income</div>
-                 <div className="text-4xl font-bold text-white">{formatCurrency(results.netIncome)}</div>
-                 <div className="mt-2 text-xs text-white/70">Income after taxes and maintenance</div>
+                 <div className="text-sm text-emerald-500 font-bold uppercase tracking-widest mb-2">Net Annual Operating Income</div>
+                 <div className="text-5xl font-bold text-white">{formatCurrency(results.netIncome)}</div>
+                 <div className="mt-2 text-sm text-white/70">Income after taxes and maintenance</div>
               </div>
            </div>
 

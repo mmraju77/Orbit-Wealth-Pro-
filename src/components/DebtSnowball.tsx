@@ -68,14 +68,14 @@ export default function DebtSnowball() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
             <div className="h-px w-6 bg-[#D4AF37]"></div>
-            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Debt Freedom Strategy</span>
+            <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Debt Freedom Strategy</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Debt Snowball.</h1>
-          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
+          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Debt Snowball.</h1>
+          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Eliminate debt systematically by targeting the smallest balances first to build momentum.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-xs font-bold transition-all hover:bg-white/10 shrink-0">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-sm font-bold transition-all hover:bg-white/10 shrink-0">
           <Download className="w-4 h-4" /> Export Strategy
         </button>
       </div>
@@ -83,8 +83,8 @@ export default function DebtSnowball() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <section className="space-y-8 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
           <div className="flex justify-between items-center mb-6">
-            <h2 className="text-xl font-display font-medium">Your Debts</h2>
-            <button onClick={addDebt} className="flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-lg text-xs font-bold hover:bg-[#D4AF37]/20 transition-all">
+            <h2 className="text-2xl font-display font-medium">Your Debts</h2>
+            <button onClick={addDebt} className="flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-lg text-sm font-bold hover:bg-[#D4AF37]/20 transition-all">
               <Plus className="w-3.5 h-3.5" /> Add Debt
             </button>
           </div>
@@ -94,27 +94,27 @@ export default function DebtSnowball() {
               <div key={debt.id} className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-white/[0.02] border border-white/5 rounded-xl relative group">
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/70 uppercase tracking-widest">Name</label>
-                  <input aria-label="Debt Name" value={debt.name} onChange={e => updateDebt(debt.id, 'name', e.target.value)} className="w-full bg-transparent border-none outline-none text-xs text-white" />
+                  <input aria-label="Debt Name" value={debt.name} onChange={e => updateDebt(debt.id, 'name', e.target.value)} className="w-full bg-transparent border-none outline-none text-sm text-white" />
                 </div>
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/70 uppercase tracking-widest">Balance</label>
                   <div className="flex items-center gap-1">
-                    <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
+                    <span className="text-sm font-bold text-[#D4AF37]">{currencySymbol}</span>
                     <NumericInput 
                       value={debt.balance} 
                       onChange={(val) => updateDebt(debt.id, 'balance', val)} 
-                      className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
+                      className="w-full bg-transparent border-none outline-none text-sm text-white font-mono" 
                     />
                   </div>
                 </div>
                 <div className="space-y-1">
                   <label className="text-[9px] font-bold text-white/70 uppercase tracking-widest">Min PMT</label>
                   <div className="flex items-center gap-1">
-                    <span className="text-[10px] font-bold text-[#D4AF37]">{currencySymbol}</span>
+                    <span className="text-sm font-bold text-[#D4AF37]">{currencySymbol}</span>
                     <NumericInput 
                       value={debt.minPayment} 
                       onChange={(val) => updateDebt(debt.id, 'minPayment', val)} 
-                      className="w-full bg-transparent border-none outline-none text-xs text-white font-mono" 
+                      className="w-full bg-transparent border-none outline-none text-sm text-white font-mono" 
                     />
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export default function DebtSnowball() {
                     <NumericInput 
                       value={debt.rate} 
                       onChange={(val) => updateDebt(debt.id, 'rate', val)} 
-                      className="w-full bg-transparent border-none outline-none text-xs text-white" 
+                      className="w-full bg-transparent border-none outline-none text-sm text-white" 
                     />
                   </div>
                   <button onClick={() => removeDebt(debt.id)} className="p-1 text-white/70 hover:text-rose-500 transition-colors">
@@ -136,7 +136,7 @@ export default function DebtSnowball() {
           </div>
 
           <div className="space-y-4 pt-8 border-t border-white/5">
-             <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
+             <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
                 <span>Extra Monthly Contribution</span>
                 <span className="text-[#D4AF37]">{formatCurrency(extraPayment)}</span>
              </div>
@@ -147,17 +147,17 @@ export default function DebtSnowball() {
         <section className="space-y-8 flex flex-col">
            <div className="grid grid-cols-2 gap-6 mb-auto">
               <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
-                 <div className="text-[10px] text-white/70 font-bold uppercase tracking-[0.2em]">Total Outstanding</div>
-                 <div className="text-4xl font-display font-medium text-white">{formatCurrency(totalBalance)}</div>
+                 <div className="text-sm text-white/70 font-bold uppercase tracking-[0.2em]">Total Outstanding</div>
+                 <div className="text-5xl font-display font-medium text-white">{formatCurrency(totalBalance)}</div>
               </div>
               <div className="p-10 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[2.5rem] text-center space-y-2">
-                 <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-[0.2em]">Monthly Payload</div>
-                 <div className="text-4xl font-display font-medium text-[#D4AF37]">{formatCurrency(totalMinPayment + extraPayment)}</div>
+                 <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-[0.2em]">Monthly Payload</div>
+                 <div className="text-5xl font-display font-medium text-[#D4AF37]">{formatCurrency(totalMinPayment + extraPayment)}</div>
               </div>
            </div>
 
            <div className="bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem] space-y-6">
-              <h3 className="text-lg font-display font-medium flex items-center gap-3">
+              <h3 className="text-xl font-display font-medium flex items-center gap-3">
                  <List className="text-[#D4AF37] w-5 h-5" />
                  Snowball Order
               </h3>
@@ -165,11 +165,11 @@ export default function DebtSnowball() {
                  {sortedDebts.map((debt, idx) => (
                    <div key={debt.id} className={`flex items-center justify-between p-4 rounded-xl border ${idx === 0 ? 'bg-emerald-500/10 border-emerald-500/20' : 'bg-white/[0.01] border-white/5'}`}>
                       <div className="flex items-center gap-4">
-                         <span className="text-[10px] font-bold text-white/70">#{idx + 1}</span>
-                         <span className="font-medium text-sm">{debt.name}</span>
+                         <span className="text-sm font-bold text-white/70">#{idx + 1}</span>
+                         <span className="font-medium text-base">{debt.name}</span>
                       </div>
                       <div className="flex items-center gap-6">
-                         <span className="text-xs text-white/70">{formatCurrency(debt.balance)}</span>
+                         <span className="text-sm text-white/70">{formatCurrency(debt.balance)}</span>
                          {idx === 0 && <span className="text-[9px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-1 rounded">PRIORITY</span>}
                       </div>
                    </div>

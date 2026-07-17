@@ -91,18 +91,18 @@ export default function CurrencyConverter() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <RefreshCcw className={`text-[#D4AF37] w-6 h-6 ${isUpdating ? 'animate-spin' : ''}`} />
-             <h1 className="text-3xl font-bold tracking-tighter">Currency Converter</h1>
+             <h1 className="text-4xl font-bold tracking-tighter">Currency Converter</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Real-time forex exchange engine with multi-pair support and 30-day historical trend analysis.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Pair
           </button>
         </div>
@@ -113,8 +113,8 @@ export default function CurrencyConverter() {
             <div className="space-y-8">
                <div className="space-y-4">
                   <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Amount to Convert</label>
-                    <div className="flex items-center gap-2 text-[10px] text-white/70">
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Amount to Convert</label>
+                    <div className="flex items-center gap-2 text-sm text-white/70">
                        <Clock className="w-3 h-3" />
                        Last updated: {lastUpdated.toLocaleTimeString()}
                     </div>
@@ -126,10 +126,10 @@ export default function CurrencyConverter() {
                         setAmount(val);
                         handleUpdate();
                       }}
-                      className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-3xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-4xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"
                     />
                     <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                       <span className="text-xl font-bold text-[#D4AF37]">{from}</span>
+                       <span className="text-2xl font-bold text-[#D4AF37]">{from}</span>
                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                           <Globe className="w-4 h-4 text-white/70" />
                        </div>
@@ -139,7 +139,7 @@ export default function CurrencyConverter() {
 
                <div className="flex flex-col md:flex-row items-center gap-4">
                   <div className="flex-1 w-full space-y-4">
-                     <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest px-2">From</label>
+                     <label className="text-sm font-bold text-white/70 uppercase tracking-widest px-2">From</label>
                      <select 
                        value={from}
                        onChange={(e) => {
@@ -160,7 +160,7 @@ export default function CurrencyConverter() {
                   </button>
 
                   <div className="flex-1 w-full space-y-4">
-                     <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest px-2">To</label>
+                     <label className="text-sm font-bold text-white/70 uppercase tracking-widest px-2">To</label>
                      <select 
                        value={to}
                        onChange={(e) => {
@@ -176,8 +176,8 @@ export default function CurrencyConverter() {
             </div>
 
             <div className="space-y-2 pt-8 border-t border-white/5">
-                <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Indicative Exchange Rate</div>
-                <div className="text-lg font-bold text-white">1 {from} = <span className="text-[#D4AF37]">{exchangeRate.toFixed(4)}</span> {to}</div>
+                <div className="text-sm font-bold text-white/70 uppercase tracking-widest">Indicative Exchange Rate</div>
+                <div className="text-xl font-bold text-white">1 {from} = <span className="text-[#D4AF37]">{exchangeRate.toFixed(4)}</span> {to}</div>
             </div>
         </section>
 
@@ -185,9 +185,9 @@ export default function CurrencyConverter() {
            {isMounted && (
              <div className="h-full flex flex-col">
                <div className="space-y-1 mb-8">
-                  <div className="text-sm font-bold text-white/70">{amount} {from} equals</div>
-                  <div className="text-5xl font-bold text-white tracking-widest">
-                    {formatValue(convertedAmount)} <span className="text-[#D4AF37] text-2xl">{to}</span>
+                  <div className="text-base font-bold text-white/70">{amount} {from} equals</div>
+                  <div className="text-6xl font-bold text-white tracking-widest">
+                    {formatValue(convertedAmount)} <span className="text-[#D4AF37] text-3xl">{to}</span>
                   </div>
                </div>
 
@@ -195,9 +195,9 @@ export default function CurrencyConverter() {
                   <div className="flex items-center justify-between mb-4">
                      <div className="flex items-center gap-2">
                         <TrendingUp className="w-4 h-4 text-[#D4AF37]" />
-                        <span className="text-[10px] font-bold text-white/70 uppercase tracking-widest">30-Day Trend</span>
+                        <span className="text-sm font-bold text-white/70 uppercase tracking-widest">30-Day Trend</span>
                      </div>
-                     <span className="text-[10px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">+2.4%</span>
+                     <span className="text-sm font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">+2.4%</span>
                   </div>
                   <div className="h-[200px] w-full">
                     <ResponsiveContainer width="100%" height="100%">

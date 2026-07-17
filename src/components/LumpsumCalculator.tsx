@@ -65,18 +65,18 @@ export default function LumpsumCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <BarChart3 className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter text-[#f59e0b]">Lumpsum Calculator</h1>
+             <h1 className="text-4xl font-bold tracking-tighter text-[#f59e0b]">Lumpsum Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Determine the future value of a one-time fixed investment based on your target return rate and timeframe.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>
@@ -96,7 +96,7 @@ export default function LumpsumCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                 <NumericInput 
                   value={inputs.expectedReturn}
                   onChange={(val) => setInputs({ ...inputs, expectedReturn: val })}
@@ -113,7 +113,7 @@ export default function LumpsumCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Duration (Years)</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Duration (Years)</label>
                 <NumericInput 
                   value={inputs.duration}
                   onChange={(val) => setInputs({ ...inputs, duration: val })}
@@ -132,11 +132,11 @@ export default function LumpsumCalculator() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-[8px] text-white/70 font-bold uppercase tracking-widest mb-1">Invested Principal</div>
-                <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
+                <div className="text-xl font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-[8px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Returns</div>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
+                <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
         </section>
@@ -164,8 +164,8 @@ export default function LumpsumCalculator() {
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">
-                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
-                <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
+                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
+                <div className="text-5xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
             </div>
           )}

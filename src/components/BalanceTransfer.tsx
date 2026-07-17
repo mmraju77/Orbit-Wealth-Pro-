@@ -74,18 +74,18 @@ export default function BalanceTransfer() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <ArrowRightLeft className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter">Home Loan Transfer</h1>
+             <h1 className="text-4xl font-bold tracking-tighter">Home Loan Transfer</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Switch your existing high-interest home loan to a lower rate and calculate your total interest savings and break-even point.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Analysis
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Savings
           </button>
         </div>
@@ -96,8 +96,8 @@ export default function BalanceTransfer() {
            <div className="space-y-6">
               <div className="space-y-4">
                  <div className="flex justify-between items-center">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Outstanding Principal</label>
-                    <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(inputs.outstandingPrincipal)}</div>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Outstanding Principal</label>
+                    <div className="text-xl font-bold text-white tracking-tighter">{formatCurrency(inputs.outstandingPrincipal)}</div>
                  </div>
                  <input 
                    aria-label="Adjust value" type="range" min="100000" max="50000000" step="100000"
@@ -109,7 +109,7 @@ export default function BalanceTransfer() {
 
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Existing Rate (%)</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Existing Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.existingRate}
@@ -118,7 +118,7 @@ export default function BalanceTransfer() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">New Rate (%)</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">New Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.newRate}
@@ -130,7 +130,7 @@ export default function BalanceTransfer() {
 
               <div className="grid grid-cols-2 gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Remaining Tenure (Yrs)</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Remaining Tenure (Yrs)</label>
                     <NumericInput 
                       value={inputs.remainingTerm}
                       onChange={(val) => setInputs({ ...inputs, remainingTerm: val })}
@@ -138,7 +138,7 @@ export default function BalanceTransfer() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Processing Fees</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Processing Fees</label>
                     <NumericInput 
                       value={inputs.processingFees}
                       onChange={(val) => setInputs({ ...inputs, processingFees: val })}
@@ -155,20 +155,20 @@ export default function BalanceTransfer() {
                <div className="grid grid-cols-1 gap-4">
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 flex items-center justify-between">
                     <div>
-                      <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Total Interest Savings</div>
-                      <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalSavings)}</div>
+                      <div className="text-sm font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Total Interest Savings</div>
+                      <div className="text-5xl font-bold text-white tracking-widest">{formatCurrency(results.totalSavings)}</div>
                     </div>
                     <TrendingDown className="w-10 h-10 text-[#D4AF37]/20" />
                  </div>
 
                  <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Monthly Savings</div>
-                        <div className="text-xl font-bold text-white/70">{formatCurrency(results.monthlySavings)}</div>
+                        <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Monthly Savings</div>
+                        <div className="text-2xl font-bold text-white/70">{formatCurrency(results.monthlySavings)}</div>
                     </div>
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                        <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Break-even Point</div>
-                        <div className="text-xl font-bold text-white/70">{results.breakEvenMonths} Months</div>
+                        <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Break-even Point</div>
+                        <div className="text-2xl font-bold text-white/70">{results.breakEvenMonths} Months</div>
                     </div>
                  </div>
                </div>

@@ -160,7 +160,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20">
               <Wallet className="w-6 h-6 text-black" />
             </div>
-            <span className="font-display font-black text-xl tracking-tighter text-[#f59e0b] uppercase group flex flex-col leading-none">
+            <span className="font-display font-black text-2xl tracking-tighter text-[#f59e0b] uppercase group flex flex-col leading-none">
               <span>ORBIT</span>
               <span className="opacity-90">WEALTH PRO</span>
             </span>
@@ -183,7 +183,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             }}
             aria-label="Go to Dashboard"
             className={({ isActive }) => cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-all mb-4 outline-none focus:bg-white/5",
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-base transition-all mb-4 outline-none focus:bg-white/5",
               isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/70 hover:text-white"
             )}
           >
@@ -197,7 +197,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                 onClick={() => toggleSection(section.label)}
                 aria-expanded={openSections[section.label]}
                 aria-label={`Toggle ${section.label} section`}
-                className="w-full flex items-center justify-between px-3 py-2 text-xs font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors outline-none focus:text-white"
+                className="w-full flex items-center justify-between px-3 py-2 text-sm font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors outline-none focus:text-white"
               >
                 <div className="flex items-center gap-3">
                   <section.icon className="w-3.5 h-3.5" />
@@ -217,7 +217,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                          if (window.innerWidth < 768) onClose();
                        }}
                        className={({ isActive }) => cn(
-                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-sm transition-all group/item outline-none focus:bg-white/10",
+                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-base transition-all group/item outline-none focus:bg-white/10",
                          isActive ? "text-[#f59e0b] bg-white/5 font-bold" : "text-white hover:bg-white/5"
                        )}
                      >
@@ -238,7 +238,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div className="space-y-6">
             <div className="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl space-y-4">
               <div>
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest block mb-2 px-1">Region Override</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest block mb-2 px-1">Region Override</label>
                 <div className="grid grid-cols-4 gap-1">
                   {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => {
                     const symbols: Record<string, string> = {
@@ -255,7 +255,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                           else setNumberSystem('International');
                         }}
                         className={cn(
-                          "h-5 rounded text-[10px] font-bold transition-all flex items-center justify-center gap-0.5 outline-none",
+                          "h-5 rounded text-sm font-bold transition-all flex items-center justify-center gap-0.5 outline-none",
                           currency === c ? "bg-[#D4AF37] text-black" : "bg-white/10 text-white/80 hover:bg-white/20"
                         )}
                       >

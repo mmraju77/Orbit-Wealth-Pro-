@@ -135,19 +135,19 @@ export default function RetirementCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Retirement Logistics</span>
+             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Retirement Logistics</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Sunset Provisions.</h1>
-          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
+          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Sunset Provisions.</h1>
+          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Architect your post-career financial state with inflation-adjusted corpus modeling.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Strategy
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Corpus
           </button>
         </div>
@@ -158,7 +158,7 @@ export default function RetirementCalculator() {
            <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Current Age</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Current Age</label>
                     <NumericInput 
                       value={inputs.currentAge}
                       onChange={(val) => setInputs({ ...inputs, currentAge: val })}
@@ -166,7 +166,7 @@ export default function RetirementCalculator() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Retirement Age</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Retirement Age</label>
                     <NumericInput 
                       value={inputs.retirementAge}
                       onChange={(val) => setInputs({ ...inputs, retirementAge: val })}
@@ -195,7 +195,7 @@ export default function RetirementCalculator() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8">
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                     <NumericInput 
                       step="0.5" 
                       value={inputs.expectedReturn}
@@ -204,7 +204,7 @@ export default function RetirementCalculator() {
                     />
                  </div>
                  <div className="space-y-4">
-                    <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Inflation Rate (%)</label>
+                    <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Inflation Rate (%)</label>
                     <NumericInput 
                       step="0.1" 
                       value={inputs.expectedInflation}
@@ -221,12 +221,12 @@ export default function RetirementCalculator() {
              <div className="flex-1 flex flex-col">
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   <div className="p-4 md:p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
-                     <div className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-1">Raw Corpus</div>
-                     <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
+                     <div className="text-sm font-bold text-white/70 uppercase tracking-widest mb-1">Raw Corpus</div>
+                     <div className="text-2xl md:text-3xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
                   </div>
                   <div className="p-4 md:p-6 bg-[#D4AF37]/20 rounded-2xl border border-[#D4AF37]/30 text-center ring-2 ring-[#D4AF37]/50 ring-offset-4 ring-offset-black">
-                     <div className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Purchasing Power</div>
-                     <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
+                     <div className="text-sm font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Purchasing Power</div>
+                     <div className="text-2xl md:text-3xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
                   </div>
                </div>
 
@@ -260,22 +260,22 @@ export default function RetirementCalculator() {
                <div className="flex items-center gap-4 p-4 bg-white/5 rounded-xl border border-white/5 mt-4">
                   <Info className="w-5 h-5 text-white/70 shrink-0" />
                   <div className="space-y-1">
-                    <p className="text-[10px] text-white/70 leading-relaxed">
+                    <p className="text-sm text-white/70 leading-relaxed">
                       Purchasing power represents what your future corpus would be worth in today's currency value, 
                       accounting for a {inputs.expectedInflation}% annual cost-of-living increase.
                     </p>
                     {countryKey === 'australia' && (
-                      <p className="text-[10px] text-[#D4AF37] font-bold">
+                      <p className="text-sm text-[#D4AF37] font-bold">
                         Tip: Employer Super Guarantee is currently 11.5% in Australia. Ensure this is factored into contributions.
                       </p>
                     )}
                     {countryKey === 'canada' && (
-                      <p className="text-[10px] text-[#D4AF37] font-bold">
+                      <p className="text-sm text-[#D4AF37] font-bold">
                         Note: RRSP contribution limits are strictly 18% of earned income up to a maximum annual cap.
                       </p>
                     )}
                     {countryKey === 'uk' && (
-                      <p className="text-[10px] text-[#D4AF37] font-bold">
+                      <p className="text-sm text-[#D4AF37] font-bold">
                         Hint: Tax relief on pension contributions can significantly boost your effective savings rate in the UK.
                       </p>
                     )}

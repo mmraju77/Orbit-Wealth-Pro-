@@ -50,7 +50,7 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
                   <Bug className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 <div>
-                  <h2 className="text-[11px] font-bold tracking-[0.2em] text-white uppercase">Debug Subsystem</h2>
+                  <h2 className="text-sm font-bold tracking-[0.2em] text-white uppercase">Debug Subsystem</h2>
                   <p className="text-[9px] text-white/70 uppercase tracking-widest mt-0.5">Kernel v2.4 Active</p>
                 </div>
               </div>
@@ -68,11 +68,11 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
               <section>
                 <div className="flex items-center gap-2 mb-4 text-[#D4AF37]">
                   <ShieldCheck className="w-3 h-3" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Environment Variables</span>
+                  <span className="text-sm font-bold uppercase tracking-widest">Environment Variables</span>
                 </div>
                 <div className="grid grid-cols-1 gap-2">
                   {systemStats.map((stat, i) => (
-                    <div key={i} className="flex justify-between items-center text-[11px] bg-white/[0.02] p-3 border border-white/5 rounded">
+                    <div key={i} className="flex justify-between items-center text-sm bg-white/[0.02] p-3 border border-white/5 rounded">
                       <span className="text-white/70">{stat.label}</span>
                       <span className="text-white/80 font-medium">{stat.value}</span>
                     </div>
@@ -84,9 +84,9 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
               <section>
                 <div className="flex items-center gap-2 mb-4 text-[#D4AF37]">
                   <Database className="w-3 h-3" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">State Store: Locale</span>
+                  <span className="text-sm font-bold uppercase tracking-widest">State Store: Locale</span>
                 </div>
-                <pre className="text-[10px] leading-relaxed text-white/70 bg-black/40 p-4 border border-white/5 rounded overflow-x-auto">
+                <pre className="text-sm leading-relaxed text-white/70 bg-black/40 p-4 border border-white/5 rounded overflow-x-auto">
                   {JSON.stringify({ 
                     currency,
                     labels,
@@ -100,9 +100,9 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
               <section>
                 <div className="flex items-center gap-2 mb-4 text-[#D4AF37]">
                   <Terminal className="w-3 h-3" />
-                  <span className="text-[10px] font-bold uppercase tracking-widest">Terminal Output</span>
+                  <span className="text-sm font-bold uppercase tracking-widest">Terminal Output</span>
                 </div>
-                <div className="bg-[#050505] p-4 rounded border border-white/10 min-h-[150px] text-[10px] text-green-500/80 space-y-1">
+                <div className="bg-[#050505] p-4 rounded border border-white/10 min-h-[150px] text-sm text-green-500/80 space-y-1">
                   <p className="flex gap-2"><span className="text-white/70">[{new Date().toLocaleTimeString()}]</span> SYSTEM: CALCULATOR_ENGINE_INITIALIZED</p>
                   <p className="flex gap-2"><span className="text-white/70">[{new Date().toLocaleTimeString()}]</span> LOCALE: {currency}_SUBSYSTEM_ACTIVE</p>
                   <p className="flex gap-2"><span className="text-white/70">[{new Date().toLocaleTimeString()}]</span> VIEW: {activeView}_MOUNTED</p>
@@ -121,7 +121,7 @@ export default function DebugPanel({ isOpen, onClose, activeView }: DebugPanelPr
                   localStorage.clear();
                   window.location.reload();
                 }}
-                className="w-full py-3 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20 text-[10px] font-bold tracking-[0.2em] uppercase transition-colors"
+                className="w-full py-3 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20 text-sm font-bold tracking-[0.2em] uppercase transition-colors"
               >
                 Clear Local Data Store
               </button>

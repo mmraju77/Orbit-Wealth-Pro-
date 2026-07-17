@@ -39,18 +39,18 @@ export default function MarketTicker() {
             className="inline-flex items-center gap-8 px-12 border-r border-white/10"
           >
             <div className="flex flex-col">
-              <span className="text-[10px] font-black text-white uppercase tracking-[0.3em] mb-1.5 opacity-100">
+              <span className="text-sm font-black text-white uppercase tracking-[0.3em] mb-1.5 opacity-100">
                 {item.label}
               </span>
               <div className="flex items-center gap-3">
-                <span className={`text-base font-display font-bold tracking-tight ${
+                <span className={`text-lg font-display font-bold tracking-tight ${
                   item.type === 'growth' ? 'text-emerald-400' : 
                   item.type === 'decline' ? 'text-rose-400' :
                   'text-amber-400'
                 }`}>
                   {item.value}
                 </span>
-                <span className={`text-[10px] font-black px-2.5 py-0.5 rounded-md border ${
+                <span className={`text-sm font-black px-2.5 py-0.5 rounded-md border ${
                   item.type === 'growth' ? 'bg-emerald-500/20 border-emerald-500/30 text-emerald-400' : 
                   item.type === 'decline' ? 'bg-rose-500/20 border-rose-500/30 text-rose-400' :
                   'bg-amber-500/20 border-amber-500/30 text-amber-400'

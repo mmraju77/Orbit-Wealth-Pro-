@@ -45,14 +45,14 @@ export default function DividendYieldCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Passive Income Analytics</span>
+             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Passive Income Analytics</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">Dividend Yields.</h1>
-          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
+          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">Dividend Yields.</h1>
+          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Project and optimize your cash flow using our institutional-grade yield computation engine.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
           <Download className="w-4 h-4" /> Export Data
         </button>
       </div>
@@ -78,7 +78,7 @@ export default function DividendYieldCalculator() {
             />
           </div>
           <div className="space-y-4">
-             <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
+             <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
                 <span>Shares Owned</span>
                 <span className="text-white">{sharesOwned} Shares</span>
              </div>
@@ -100,12 +100,12 @@ export default function DividendYieldCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col justify-between">
            <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
-                 <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Dividend Yield</div>
-                 <div className="text-4xl font-bold text-white">{results.yield}%</div>
+                 <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Dividend Yield</div>
+                 <div className="text-5xl font-bold text-white">{results.yield}%</div>
               </div>
               <div className="p-6 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-center">
-                 <div className="text-[10px] text-emerald-500 font-bold uppercase tracking-widest mb-1">Annual Passive Income</div>
-                 <div className="text-3xl font-bold text-white">{formatCurrency(results.totalIncome)}</div>
+                 <div className="text-sm text-emerald-500 font-bold uppercase tracking-widest mb-1">Annual Passive Income</div>
+                 <div className="text-4xl font-bold text-white">{formatCurrency(results.totalIncome)}</div>
               </div>
            </div>
 

@@ -95,15 +95,15 @@ export default function PersonalLoanCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <Wallet className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter">Personal Loan Calculator</h1>
+             <h1 className="text-4xl font-bold tracking-tighter">Personal Loan Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Plan your personal finances with our smart calculator. Simulate early payoffs to see how much interest you can save.
           </p>
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
         </div>
@@ -123,7 +123,7 @@ export default function PersonalLoanCalculator() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
                <div className="space-y-4">
-                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
+                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Interest Rate (%)</label>
                   <NumericInput 
                     step="0.1" 
                     value={interestRate}
@@ -132,7 +132,7 @@ export default function PersonalLoanCalculator() {
                   />
                </div>
                <div className="space-y-4">
-                  <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Tenure (Years)</label>
+                  <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Tenure (Years)</label>
                   <div className="space-y-4">
                     <NumericInput 
                       min={1} max={30} 
@@ -168,28 +168,28 @@ export default function PersonalLoanCalculator() {
           <div className="space-y-8">
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 text-center">
-                   <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Standard EMI</div>
-                   <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
+                   <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Standard EMI</div>
+                   <div className="text-4xl font-bold text-white">{formatCurrency(results.emi)}</div>
                 </div>
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
-                   <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                   <div className="text-3xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
+                   <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
+                   <div className="text-4xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
                 </div>
              </div>
 
              {extraPayment > 0 && (
                 <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-6 space-y-4">
-                   <h3 className="text-sm font-bold text-emerald-500 uppercase tracking-widest">Early Payoff Impact</h3>
+                   <h3 className="text-base font-bold text-emerald-500 uppercase tracking-widest">Early Payoff Impact</h3>
                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
-                         <div className="text-[10px] text-white/70 font-bold">New Duration</div>
-                         <div className="text-xl font-bold text-white">{results.earlyPayoff.months} Months</div>
-                         <div className="text-[10px] text-emerald-500">Save {results.earlyPayoff.timeSaved} months</div>
+                         <div className="text-sm text-white/70 font-bold">New Duration</div>
+                         <div className="text-2xl font-bold text-white">{results.earlyPayoff.months} Months</div>
+                         <div className="text-sm text-emerald-500">Save {results.earlyPayoff.timeSaved} months</div>
                       </div>
                       <div>
-                         <div className="text-[10px] text-white/70 font-bold">Interest Savings</div>
-                         <div className="text-xl font-bold text-white">{formatCurrency(results.earlyPayoff.interestSaved)}</div>
-                         <div className="text-[10px] text-emerald-500">Money kept in your pocket</div>
+                         <div className="text-sm text-white/70 font-bold">Interest Savings</div>
+                         <div className="text-2xl font-bold text-white">{formatCurrency(results.earlyPayoff.interestSaved)}</div>
+                         <div className="text-sm text-emerald-500">Money kept in your pocket</div>
                       </div>
                    </div>
                 </div>

@@ -85,9 +85,9 @@ export default function TaxGuides() {
       <header className="space-y-2">
         <div className="flex items-center gap-2 mb-4">
            <Globe className="text-[#D4AF37] w-6 h-6" />
-           <h1 className="text-3xl font-bold tracking-tighter">Global Tax Cheat Sheets</h1>
+           <h1 className="text-4xl font-bold tracking-tighter">Global Tax Cheat Sheets</h1>
         </div>
-        <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+        <p className="text-white/70 max-w-xl text-base leading-relaxed">
           Quick reference guides for tax-saving instruments across major global regions. Maximize your take-home pay.
         </p>
       </header>
@@ -97,24 +97,24 @@ export default function TaxGuides() {
           <div key={idx} className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-[#D4AF37]/30 transition-all group">
             <div className="p-6 border-b border-white/5 bg-white/[0.01] flex justify-between items-center">
                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{guide.flag}</span>
-                  <h2 className="text-xl font-bold tracking-tight">{guide.country} Tax Strategies</h2>
+                  <span className="text-3xl">{guide.flag}</span>
+                  <h2 className="text-2xl font-bold tracking-tight">{guide.country} Tax Strategies</h2>
                </div>
                <ShieldCheck className="w-5 h-5 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity" />
             </div>
             <div className="p-6 space-y-4">
                {guide.instruments.map((ins, i) => (
                  <div key={i} className="space-y-1">
-                    <div className="flex items-center gap-2 font-bold text-sm">
+                    <div className="flex items-center gap-2 font-bold text-base">
                        <div className="w-1 h-1 rounded-full bg-[#D4AF37]"></div>
                        {ins.name}
                     </div>
-                    <p className="text-xs text-white/70 leading-relaxed ml-3">{ins.desc}</p>
+                    <p className="text-sm text-white/70 leading-relaxed ml-3">{ins.desc}</p>
                  </div>
                ))}
             </div>
             <div className="p-4 bg-white/[0.01] flex justify-center border-t border-white/5">
-                <button className="text-[10px] font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2">
+                <button className="text-sm font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2">
                    <ExternalLink className="w-3 h-3" /> Detailed Guide
                 </button>
             </div>
@@ -127,10 +127,10 @@ export default function TaxGuides() {
             <Percent className="text-white w-6 h-6" />
          </div>
          <div className="space-y-1 text-center md:text-left">
-            <h3 className="font-bold text-lg">Need a custom tax plan?</h3>
-            <p className="text-sm text-white/70">Our professional advisors can help you optimize your global tax liabilities across residency shifts.</p>
+            <h3 className="font-bold text-xl">Need a custom tax plan?</h3>
+            <p className="text-base text-white/70">Our professional advisors can help you optimize your global tax liabilities across residency shifts.</p>
          </div>
-         <button className="ml-auto px-6 py-3 bg-[#D4AF37] rounded-xl text-xs font-bold hover:bg-[#0044DD] transition-all">
+         <button className="ml-auto px-6 py-3 bg-[#D4AF37] rounded-xl text-sm font-bold hover:bg-[#0044DD] transition-all">
             Consult Advisor
          </button>
       </div>

@@ -52,14 +52,14 @@ export default function HLVCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
             <div className="h-px w-6 bg-[#D4AF37]"></div>
-            <span className="text-[10px] font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Protection Intelligence</span>
+            <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Protection Intelligence</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">HLV Calculator.</h1>
-          <p className="text-white/70 max-w-xl text-sm font-light leading-relaxed">
+          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">HLV Calculator.</h1>
+          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
             Quantify your economic value to your family and determine the optimal life insurance coverage.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-xs font-bold transition-all hover:bg-white/10 shrink-0">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-sm font-bold transition-all hover:bg-white/10 shrink-0">
           <Download className="w-4 h-4" /> Export HLV Audit
         </button>
       </div>
@@ -68,7 +68,7 @@ export default function HLVCalculator() {
         <section className="space-y-10 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
            <div className="grid grid-cols-2 gap-8">
               <div className="space-y-4">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
                     <span>Current Age</span>
                  </div>
                  <NumericInput 
@@ -80,7 +80,7 @@ export default function HLVCalculator() {
                  <input aria-label="Adjust value" type="range" min="18" max="75" value={age} onChange={e => setAge(Number(e.target.value))} className="w-full accent-[#D4AF37]" />
               </div>
               <div className="space-y-4">
-                 <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                 <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
                     <span>Retirement Age</span>
                  </div>
                  <NumericInput 
@@ -118,11 +118,11 @@ export default function HLVCalculator() {
               <div className="absolute top-0 right-0 p-8 opacity-5">
                  <Shield className="w-32 h-32" />
               </div>
-              <div className="text-[11px] text-[#D4AF37] font-bold uppercase tracking-[0.4em]">Economic Protection Value</div>
-              <div className="text-6xl font-display font-medium text-white tracking-tighter">{formatCurrency(hlv)}</div>
+              <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-[0.4em]">Economic Protection Value</div>
+              <div className="text-7xl font-display font-medium text-white tracking-tighter">{formatCurrency(hlv)}</div>
               <div className="pt-4 flex items-center justify-center gap-3">
                  <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
-                 <span className="text-xs text-white/70 italic">Necessary coverage for your dependents</span>
+                 <span className="text-sm text-white/70 italic">Necessary coverage for your dependents</span>
               </div>
            </div>
 

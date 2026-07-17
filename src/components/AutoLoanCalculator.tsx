@@ -70,14 +70,14 @@ export default function AutoLoanCalculator() {
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
              <Car className="text-[#D4AF37] w-6 h-6" />
-             <h1 className="text-3xl font-bold tracking-tighter">Auto Loan Calculator</h1>
+             <h1 className="text-4xl font-bold tracking-tighter">Auto Loan Calculator</h1>
           </div>
-          <p className="text-white/70 max-w-xl text-sm leading-relaxed">
+          <p className="text-white/70 max-w-xl text-base leading-relaxed">
             Calculate your monthly car payments while accounting for sales tax, trade-ins, and down payments.
           </p>
         </header>
 
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all">
           <Download className="w-4 h-4" /> Download Report
         </button>
       </div>
@@ -86,46 +86,46 @@ export default function AutoLoanCalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Car Price</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Car Price</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <NumericInput 
                      value={carPrice}
                      onChange={setCarPrice}
-                     className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
+                     className="bg-transparent border-none text-white font-bold w-full outline-none text-xl"
                    />
                 </div>
              </div>
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Sales Tax (%)</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Sales Tax (%)</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <NumericInput 
                      value={salesTax}
                      onChange={setSalesTax}
-                     className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
+                     className="bg-transparent border-none text-white font-bold w-full outline-none text-xl"
                    />
                    <Percent className="w-4 h-4 text-[#D4AF37]" />
                 </div>
              </div>
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Down Payment</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Down Payment</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <NumericInput 
                      value={downPayment}
                      onChange={setDownPayment}
-                     className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
+                     className="bg-transparent border-none text-white font-bold w-full outline-none text-xl"
                    />
                 </div>
              </div>
              <div className="space-y-4">
-                <label className="text-[10px] font-bold text-white/70 uppercase tracking-widest">Trade-in Value</label>
+                <label className="text-sm font-bold text-white/70 uppercase tracking-widest">Trade-in Value</label>
                 <div className="flex items-center gap-2 bg-black/40 p-3 rounded-xl border border-white/5">
                    <span className="text-[#D4AF37] font-bold">{currencySymbol}</span>
                    <NumericInput 
                      value={tradeIn}
                      onChange={setTradeIn}
-                     className="bg-transparent border-none text-white font-bold w-full outline-none text-lg"
+                     className="bg-transparent border-none text-white font-bold w-full outline-none text-xl"
                    />
                 </div>
              </div>
@@ -133,7 +133,7 @@ export default function AutoLoanCalculator() {
 
           <div className="space-y-6 pt-6 border-t border-white/5">
              <div className="space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
                    <span>Interest Rate</span>
                    <span className="text-[#D4AF37]">{interestRate}%</span>
                 </div>
@@ -151,7 +151,7 @@ export default function AutoLoanCalculator() {
                 />
              </div>
              <div className="space-y-4">
-                <div className="flex justify-between items-center text-[10px] font-bold text-white/70 uppercase tracking-widest">
+                <div className="flex justify-between items-center text-sm font-bold text-white/70 uppercase tracking-widest">
                    <span>Loan Term ({tenure} months)</span>
                    <span className="text-white">{tenure / 12} Years</span>
                 </div>
@@ -175,34 +175,34 @@ export default function AutoLoanCalculator() {
            <div className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
-                    <div className="text-[10px] text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
-                    <div className="text-3xl font-bold text-white">{formatCurrency(results.emi)}</div>
+                    <div className="text-sm text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
+                    <div className="text-4xl font-bold text-white">{formatCurrency(results.emi)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
-                    <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan</div>
-                    <div className="text-3xl font-bold text-white/70">{formatCurrency(results.loanAmount)}</div>
+                    <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan</div>
+                    <div className="text-4xl font-bold text-white/70">{formatCurrency(results.loanAmount)}</div>
                  </div>
               </div>
 
               <div className="p-6 bg-white/[0.01] border border-white/5 rounded-2xl space-y-4">
                  <div className="flex items-center gap-2 mb-4">
                     <Info className="w-4 h-4 text-[#D4AF37]" />
-                    <h4 className="text-xs font-bold text-white uppercase tracking-widest">Summary Breakdown</h4>
+                    <h4 className="text-sm font-bold text-white uppercase tracking-widest">Summary Breakdown</h4>
                  </div>
                  <div className="space-y-3">
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-base">
                        <span className="text-white/70">Vehicle Sales Tax:</span>
                        <span className="text-white font-bold">{formatCurrency(results.taxAmount)}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-base">
                        <span className="text-white/70">Total Acquisition Cost:</span>
                        <span className="text-white font-bold">{formatCurrency(carPrice + results.taxAmount)}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
+                    <div className="flex justify-between text-base">
                        <span className="text-white/70">Total Interest Paid:</span>
                        <span className="text-white text-[#D4AF37] font-bold">{formatCurrency(results.totalInterest)}</span>
                     </div>
-                    <div className="flex justify-between text-sm pt-3 border-t border-white/5">
+                    <div className="flex justify-between text-base pt-3 border-t border-white/5">
                        <span className="text-white font-bold">Total Cost of Ownership:</span>
                        <span className="text-white font-bold">{formatCurrency(results.totalPayment + downPayment + tradeIn)}</span>
                     </div>

@@ -18,7 +18,7 @@ export default function AmortizationTable({ schedule }: AmortizationTableProps) 
     <div className="w-full">
       <table className="w-full text-left">
         <thead>
-          <tr className="text-[10px] uppercase tracking-widest text-white/70 border-b border-white/5">
+          <tr className="text-sm uppercase tracking-widest text-white/70 border-b border-white/5">
             <th className="py-3 font-medium">Period</th>
             <th className="py-3 font-medium text-right transition-colors">Principal</th>
             <th className="py-3 font-medium text-right">Interest</th>

@@ -100,10 +100,10 @@ export default function OrbitChat() {
                   <Bot className="w-4 h-4 text-[#F3C64F]" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-display font-bold text-white tracking-tight">Ask Orbit AI</h3>
+                  <h3 className="text-base font-display font-bold text-white tracking-tight">Ask Orbit AI</h3>
                   <div className="flex items-center gap-1.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-[10px] text-emerald-500/70 font-bold uppercase tracking-widest">Intelligence Active</span>
+                    <span className="text-sm text-emerald-500/70 font-bold uppercase tracking-widest">Intelligence Active</span>
                   </div>
                 </div>
               </div>
@@ -134,7 +134,7 @@ export default function OrbitChat() {
                     }`}>
                       {msg.role === 'user' ? <User className="w-4 h-4 text-white/70" /> : <Sparkles className="w-4 h-4 text-[#F3C64F]" />}
                     </div>
-                    <div className={`p-3 rounded-2xl text-sm leading-relaxed ${
+                    <div className={`p-3 rounded-2xl text-base leading-relaxed ${
                       msg.role === 'user'
                         ? 'bg-white/5 text-white/90 rounded-tr-none'
                         : 'bg-white/[0.02] border border-white/5 text-white/80 rounded-tl-none font-medium'
@@ -166,7 +166,7 @@ export default function OrbitChat() {
                 <button
                   key={prompt.label}
                   onClick={() => handleSend(prompt.label)}
-                  className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-[10px] font-bold text-white/70 hover:text-[#F3C64F] hover:border-[#F3C64F]/30 hover:bg-[#F3C64F]/5 transition-all"
+                  className="flex items-center gap-2 px-3 py-1.5 bg-white/5 border border-white/10 rounded-full text-sm font-bold text-white/70 hover:text-[#F3C64F] hover:border-[#F3C64F]/30 hover:bg-[#F3C64F]/5 transition-all"
                 >
                   {prompt.icon}
                   {prompt.label}
@@ -184,7 +184,7 @@ export default function OrbitChat() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend(input)}
                   placeholder="Inquire about wealth strategies..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-sm text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#F3C64F]/50 focus:border-[#F3C64F]/50 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-base text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#F3C64F]/50 focus:border-[#F3C64F]/50 transition-all"
                 />
                 <button 
                   aria-label="Send message"

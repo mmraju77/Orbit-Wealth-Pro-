@@ -36,13 +36,13 @@ export default function CitiesDirectory() {
       <header className="space-y-8">
         <div className="flex items-center gap-3 mb-2">
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
-          <span className="text-[10px] font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Global Coverage</span>
+          <span className="text-sm font-black text-[#D4AF37] uppercase tracking-[0.4em] drop-shadow-[0_0_8px_rgba(212,175,55,0.3)]">Global Coverage</span>
         </div>
-        <h1 className="text-5xl md:text-6xl font-display font-bold tracking-tight text-white max-w-4xl leading-[1.1]">
+        <h1 className="text-6xl md:text-7xl font-display font-bold tracking-tight text-white max-w-4xl leading-[1.1]">
           Economic <br />
           <span className="text-[#D4AF37]">Intelligence Hubs</span>
         </h1>
-        <p className="text-white/70 text-lg leading-relaxed max-w-2xl">
+        <p className="text-white/70 text-xl leading-relaxed max-w-2xl">
           Localized financial computation suites for major global economic centers. Tailored for expats, investors, and residents in high-traffic administrative hubs.
         </p>
       </header>
@@ -63,12 +63,12 @@ export default function CitiesDirectory() {
               <div className="w-16 h-16 mx-auto rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <MapPin className="w-6 h-6 text-[#D4AF37]" />
               </div>
-              <h3 className="text-xl font-bold text-white mb-2">{hub.city}</h3>
-              <p className="text-[10px] font-bold text-white/70 uppercase tracking-widest mb-6">Financial Analytics</p>
+              <h3 className="text-2xl font-bold text-white mb-2">{hub.city}</h3>
+              <p className="text-sm font-bold text-white/70 uppercase tracking-widest mb-6">Financial Analytics</p>
               
               <div className="space-y-2">
                 {['Income Tax', 'Mortgage', 'SIP'].map(calc => (
-                   <div key={calc} className="text-xs text-white/70 hover:text-[#D4AF37] transition-colors">{calc} Tool</div>
+                   <div key={calc} className="text-sm text-white/70 hover:text-[#D4AF37] transition-colors">{calc} Tool</div>
                 ))}
               </div>
             </Link>
@@ -85,28 +85,28 @@ export default function CitiesDirectory() {
         <div className="relative z-10 space-y-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div className="space-y-4">
-                    <div className="text-4xl font-bold text-white">500+</div>
-                    <div className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest">Cities Indexed</div>
+                    <div className="text-5xl font-bold text-white">500+</div>
+                    <div className="text-sm font-bold text-[#D4AF37] uppercase tracking-widest">Cities Indexed</div>
                 </div>
                 <div className="space-y-4">
-                    <div className="text-4xl font-bold text-white">24+</div>
-                    <div className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest">Financial Jurisdictions</div>
+                    <div className="text-5xl font-bold text-white">24+</div>
+                    <div className="text-sm font-bold text-[#D4AF37] uppercase tracking-widest">Financial Jurisdictions</div>
                 </div>
                 <div className="space-y-4">
-                    <div className="text-4xl font-bold text-white">100k+</div>
-                    <div className="text-xs font-bold text-[#D4AF37] uppercase tracking-widest">Static SEO Routes</div>
+                    <div className="text-5xl font-bold text-white">100k+</div>
+                    <div className="text-sm font-bold text-[#D4AF37] uppercase tracking-widest">Static SEO Routes</div>
                 </div>
             </div>
             
             <div className="pt-8 border-t border-white/5">
-                <h3 className="text-xl font-bold text-white mb-6">Global pSEO Architecture</h3>
+                <h3 className="text-2xl font-bold text-white mb-6">Global pSEO Architecture</h3>
                 <div className="flex flex-wrap gap-3">
                    {Object.keys(REGIONS).slice(0, 12).map(r => (
-                      <span key={r} className="px-4 py-2 bg-white/5 rounded-full text-xs text-white/70 border border-white/5">
+                      <span key={r} className="px-4 py-2 bg-white/5 rounded-full text-sm text-white/70 border border-white/5">
                         {REGIONS[r].name}
                       </span>
                    ))}
-                   <span className="px-4 py-2 bg-[#D4AF37]/10 rounded-full text-xs text-[#D4AF37] border border-[#D4AF37]/20 uppercase font-black">
+                   <span className="px-4 py-2 bg-[#D4AF37]/10 rounded-full text-sm text-[#D4AF37] border border-[#D4AF37]/20 uppercase font-black">
                      + Many More
                    </span>
                 </div>
@@ -121,8 +121,8 @@ export default function CitiesDirectory() {
                   <Globe2 className="w-8 h-8 text-emerald-400" />
               </div>
               <div>
-                  <h4 className="text-xl font-bold text-white">Universal Calculator Protocol</h4>
-                  <p className="text-white/70 text-sm">Every tool in our suite is automatically region-aware and city-optimized.</p>
+                  <h4 className="text-2xl font-bold text-white">Universal Calculator Protocol</h4>
+                  <p className="text-white/70 text-base">Every tool in our suite is automatically region-aware and city-optimized.</p>
               </div>
           </div>
           <Link to="/" className="w-full md:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-white rounded-2xl font-bold text-center border border-white/10 transition-all flex items-center justify-center gap-3">

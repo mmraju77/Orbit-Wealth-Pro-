@@ -43,12 +43,12 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
               {insight.icon}
             </div>
             <div>
-              <h2 className="text-3xl font-display font-bold text-white tracking-tight leading-none mb-2">
+              <h2 className="text-4xl font-display font-bold text-white tracking-tight leading-none mb-2">
                 {insight.title}
               </h2>
               <div className="flex items-center gap-2">
                 <Activity className="w-3 h-3 text-[#D4AF37]" />
-                <p className="text-[10px] text-white/70 uppercase font-black tracking-widest">
+                <p className="text-sm text-white/70 uppercase font-black tracking-widest">
                   Orbit Intelligence Protocol • Active Sync
                 </p>
               </div>
@@ -65,28 +65,28 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
         {/* Content - Bright White Premium Breakdown */}
         <div className="flex-1 p-8 md:p-10 space-y-10 max-h-[60vh] overflow-y-auto custom-scrollbar bg-slate-50">
           <div className="space-y-4">
-            <div className="flex items-center gap-2 text-[10px] font-black text-[#D4AF37] uppercase tracking-[0.3em]">
+            <div className="flex items-center gap-2 text-sm font-black text-[#D4AF37] uppercase tracking-[0.3em]">
               <Sparkles className="w-4 h-4" />
               Strategic Overview
             </div>
-            <p className="text-2xl text-slate-900 leading-snug font-bold tracking-tight">
+            <p className="text-3xl text-slate-900 leading-snug font-bold tracking-tight">
               {insight.text}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <div className="flex items-center gap-2 text-sm font-black text-slate-400 uppercase tracking-widest">
                 <ShieldCheck className="w-4 h-4" />
                 Quant Analytics
               </div>
-              <p className="text-sm text-slate-600 leading-relaxed font-medium">
+              <p className="text-base text-slate-600 leading-relaxed font-medium">
                 {insight.deepDive.analysis}
               </p>
             </div>
 
             <div className="space-y-4">
-              <div className="flex items-center gap-2 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <div className="flex items-center gap-2 text-sm font-black text-slate-400 uppercase tracking-widest">
                 <Lightbulb className="w-4 h-4" />
                 Execution Steps
               </div>
@@ -96,7 +96,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
                     <div className="w-6 h-6 rounded-lg bg-emerald-500/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                       <ArrowRight className="w-3 h-3 text-emerald-600" />
                     </div>
-                    <span className="text-xs text-slate-800 font-bold leading-tight">{step}</span>
+                    <span className="text-sm text-slate-800 font-bold leading-tight">{step}</span>
                   </div>
                 ))}
               </div>
@@ -111,7 +111,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
                   <TrendingUp className="w-4 h-4" />
                   Projected Capital Delta
                 </div>
-                <p className="text-sm text-white leading-relaxed italic font-medium">
+                <p className="text-base text-white leading-relaxed italic font-medium">
                   {insight.deepDive.projection}
                 </p>
               </div>
@@ -133,7 +133,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
           </div>
           <button 
             onClick={onClose}
-            className="w-full md:w-auto px-10 py-4 bg-[#0D121F] text-white rounded-2xl font-black text-[11px] uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-[#0B0F19] transition-all shadow-xl"
+            className="w-full md:w-auto px-10 py-4 bg-[#0D121F] text-white rounded-2xl font-black text-sm uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-[#0B0F19] transition-all shadow-xl"
           >
             Acknowledge Intelligence
           </button>

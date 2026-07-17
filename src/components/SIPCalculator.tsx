@@ -100,10 +100,10 @@ export default function SIPCalculator() {
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
              <div className="h-px w-6 bg-[#D4AF37]"></div>
-             <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
+             <span className="text-sm font-bold text-[#D4AF37] uppercase tracking-[0.3em]">Capital Growth Analysis</span>
           </div>
-          <h1 className="text-5xl font-display font-medium text-[#f59e0b] tracking-tight">SIP Intelligence.</h1>
-          <p className="text-white/70 max-w-xl text-base font-light leading-relaxed">
+          <h1 className="text-6xl font-display font-medium text-[#f59e0b] tracking-tight">SIP Intelligence.</h1>
+          <p className="text-white/70 max-w-xl text-lg font-light leading-relaxed">
             Project your wealth growth via Systematic Investment Plans using our high-precision compound return engine.
           </p>
         </header>
@@ -112,13 +112,13 @@ export default function SIPCalculator() {
           <button 
             onClick={downloadPDF} 
             aria-label="Download Calculation PDF"
-            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-xs font-bold transition-all focus:ring-1 focus:ring-[#D4AF37] outline-none"
+            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-sm font-bold transition-all focus:ring-1 focus:ring-[#D4AF37] outline-none"
           >
             <Download className="w-4 h-4" /> PDF
           </button>
           <button 
             aria-label="Share Calculation"
-            className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-xs font-bold transition-all shadow-lg shadow-[#D4AF37]/20 focus:ring-2 focus:ring-white outline-none"
+            className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-sm font-bold transition-all shadow-lg shadow-[#D4AF37]/20 focus:ring-2 focus:ring-white outline-none"
           >
             <Share2 className="w-4 h-4" /> Share
           </button>
@@ -141,7 +141,7 @@ export default function SIPCalculator() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
-                  <label htmlFor="return-rate" className="text-xs font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
+                  <label htmlFor="return-rate" className="text-sm font-bold text-white/70 uppercase tracking-widest">Expected Return (%)</label>
                   {liveSync && <span className="text-[8px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-1.5 py-0.5 rounded uppercase font-black tracking-tighter">Live Sync Active</span>}
                 </div>
                 <NumericInput 
@@ -162,7 +162,7 @@ export default function SIPCalculator() {
 
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <label htmlFor="investment-period" className="text-xs font-bold text-white/70 uppercase tracking-widest">Investment Period (Years)</label>
+                <label htmlFor="investment-period" className="text-sm font-bold text-white/70 uppercase tracking-widest">Investment Period (Years)</label>
                 <NumericInput 
                   value={inputs.duration}
                   onChange={(val) => setInputs({ ...inputs, duration: val })}
@@ -182,12 +182,12 @@ export default function SIPCalculator() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Invested Amount</div>
-                <div className="text-lg font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
+                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Invested Amount</div>
+                <div className="text-xl font-bold text-white tracking-tighter">{formatCurrency(results.investedAmount)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
-                <div className="text-[10px] text-white/70 font-bold uppercase tracking-widest mb-1">Return Amount</div>
-                <div className="text-lg font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
+                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Return Amount</div>
+                <div className="text-xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.estimatedReturns)}</div>
             </div>
           </div>
         </section>
@@ -216,8 +216,8 @@ export default function SIPCalculator() {
                 </AreaChart>
               </ResponsiveContainer>
               <div className="mt-8 text-center">
-                <div className="text-xs text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
-                <div className="text-4xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
+                <div className="text-sm text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
+                <div className="text-5xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
               
               <div className="px-4">

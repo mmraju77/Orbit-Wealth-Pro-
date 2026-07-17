@@ -81,7 +81,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             <div className="p-1.5 bg-[#D4AF37]/10 rounded-lg border border-[#D4AF37]/20">
               <Sparkles className="w-4 h-4 text-[#D4AF37] animate-pulse" />
             </div>
-            <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.5em]">AI Wealth Authority</span>
+            <span className="text-sm font-black text-white/70 uppercase tracking-[0.5em]">AI Wealth Authority</span>
           </div>
 
           <div className="relative w-48 h-48 mx-auto">
@@ -126,19 +126,19 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div className="relative">
-                <span className="text-6xl font-display font-black text-white tracking-tighter">{wealthScore}</span>
+                <span className="text-7xl font-display font-black text-white tracking-tighter">{wealthScore}</span>
                 <div className="absolute -top-1 -right-4 w-4 h-4 bg-emerald-500 rounded-full border-4 border-[#0B1221]" />
               </div>
-              <span className="text-[10px] font-black text-white/70 uppercase tracking-[0.3em] mt-2">Institutional Tier</span>
+              <span className="text-sm font-black text-white/70 uppercase tracking-[0.3em] mt-2">Institutional Tier</span>
             </div>
           </div>
 
           <div className="space-y-3">
             <div className="inline-flex items-center gap-3 px-6 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
               <Activity className="w-4 h-4 text-emerald-400" /> 
-              <span className="text-xs font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
+              <span className="text-sm font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
             </div>
-            <p className="text-[11px] text-white/70 font-black uppercase tracking-[0.2em]">
+            <p className="text-sm text-white/70 font-black uppercase tracking-[0.2em]">
               STRATEGIC TIER ALPHA
             </p>
           </div>
@@ -160,8 +160,8 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 <Activity className="w-5 h-5 text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-xl font-display font-bold text-white tracking-tight">AI Smart Insights</h3>
-                <p className="text-[10px] text-slate-200 uppercase tracking-widest font-black">Live Intelligence Feed</p>
+                <h3 className="text-2xl font-display font-bold text-white tracking-tight">AI Smart Insights</h3>
+                <p className="text-sm text-slate-200 uppercase tracking-widest font-black">Live Intelligence Feed</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
@@ -184,7 +184,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                   {insight.icon}
                 </div>
                 <div className="flex-1 space-y-1">
-                  <p className="text-sm text-slate-100 leading-relaxed font-bold">
+                  <p className="text-base text-slate-100 leading-relaxed font-bold">
                     {insight.text}
                   </p>
                 </div>

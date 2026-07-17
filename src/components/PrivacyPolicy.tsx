@@ -13,15 +13,15 @@ export default function PrivacyPolicy() {
         <div className="inline-flex p-3 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 mb-4">
            <Shield className="text-[#D4AF37] w-8 h-8" />
         </div>
-        <h1 className="text-4xl font-bold tracking-tighter">Privacy Policy</h1>
-        <p className="text-white/70 text-sm uppercase tracking-widest font-bold">Last Updated: May 2026</p>
+        <h1 className="text-5xl font-bold tracking-tighter">Privacy Policy</h1>
+        <p className="text-white/70 text-base uppercase tracking-widest font-bold">Last Updated: May 2026</p>
       </header>
 
       <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 md:p-12 space-y-8 leading-relaxed text-white/70">
         <section className="space-y-4">
           <div className="flex items-center gap-3 text-white">
             <Lock className="w-5 h-5 text-[#D4AF37]" />
-            <h2 className="text-xl font-bold tracking-tight">Information Collection</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Information Collection</h2>
           </div>
           <p>
             Like many other websites, ORBIT WEALTH PRO makes use of log files. These files merely log visitors to the site – usually a standard procedure for hosting companies and a part of hosting services' analytics. The information inside the log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date/time stamp, referring/exit pages, and possibly the number of clicks.
@@ -31,7 +31,7 @@ export default function PrivacyPolicy() {
         <section className="space-y-4">
           <div className="flex items-center gap-3 text-white">
             <Eye className="w-5 h-5 text-[#D4AF37]" />
-            <h2 className="text-xl font-bold tracking-tight">Google Analytics (GA4)</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Google Analytics (GA4)</h2>
           </div>
           <p>
             We use Google Analytics (GA4) to monitor and analyze the use of our website. Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services.
@@ -41,7 +41,7 @@ export default function PrivacyPolicy() {
         <section className="space-y-4">
           <div className="flex items-center gap-3 text-white">
             <Cookie className="w-5 h-5 text-[#D4AF37]" />
-            <h2 className="text-xl font-bold tracking-tight">Google AdSense & DoubleClick</h2>
+            <h2 className="text-2xl font-bold tracking-tight">Google AdSense & DoubleClick</h2>
           </div>
           <p>
             Google, as a third-party vendor, uses cookies to serve ads on ORBIT WEALTH PRO. Google's use of the DoubleClick DART cookie enables it to serve ads to our users based on their visit to our site and other sites on the Internet.
@@ -52,7 +52,7 @@ export default function PrivacyPolicy() {
         </section>
 
         <section className="space-y-4">
-          <h2 className="text-xl font-bold text-white tracking-tight">Data Protection</h2>
+          <h2 className="text-2xl font-bold text-white tracking-tight">Data Protection</h2>
           <p>
             Your financial data entered into our calculators is processed client-side and is not stored on our databases. We prioritize your privacy and do not sell or trade your personal information to outside parties.
           </p>
@@ -60,7 +60,7 @@ export default function PrivacyPolicy() {
       </div>
 
       <div className="p-8 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 text-center">
-        <p className="text-xs italic text-white/70">
+        <p className="text-sm italic text-white/70">
           "Your financial privacy is our engineering priority. We build tools, not databases."
         </p>
       </div>
