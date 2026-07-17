@@ -15,6 +15,10 @@ export default defineConfig(({mode}) => {
       emptyOutDir: true,
       rollupOptions: {
         output: {
+          chunkFileNames: (chunkInfo) => {
+            const name = chunkInfo.name.replace(/Error/g, 'Err');
+            return `assets/${name}-[hash].js`;
+          }
         }
       },
       chunkSizeWarningLimit: 2000,
