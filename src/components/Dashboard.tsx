@@ -93,7 +93,7 @@ const CATEGORIES = [
     cards: [
       { title: 'Debt Snowball', description: 'Eliminate debt systematically targeting small balances first.', path: '/calculators/debt-snowball', icon: Zap, color: 'text-orange-500' },
       { title: 'CC Payoff', description: 'Simulate credit card liquidation and interest drain analysis.', path: '/calculators/credit-card-payoff', icon: CreditCard, color: 'text-rose-500' },
-      { title: 'Mortgage / Home', description: 'Professional-grade home loan amortization scheduling.', path: '/calculators/mortgage', icon: Landmark, color: 'text-slate-500' },
+      { title: 'Mortgage / Home', description: 'Professional-grade home loan amortization scheduling.', path: '/calculators/mortgage', icon: Landmark, color: 'text-slate-400' },
       { title: 'EMI Engine', description: 'Universal Equated Monthly Installment tool for all loans.', path: '/calculators/emi', icon: CreditCard, color: 'text-indigo-500' },
       { title: 'Auto Loan', description: 'Finance modeling for vehicle acquisitions with tax logic.', path: '/calculators/auto-loan', icon: CreditCard, color: 'text-blue-500' },
       { title: 'Student Debt', description: 'Plan for education costs with grace period adjustments.', path: '/calculators/student-loan', icon: Landmark, color: 'text-emerald-500' },
@@ -524,7 +524,7 @@ export default function Dashboard() {
                 />
                 <div className="hidden w-full h-full flex flex-col items-center justify-center animate-pulse">
                   <UserCheck className="w-12 h-12 text-gray-600" />
-                  <span className="text-base font-bold text-gray-500 mt-2 uppercase tracking-widest">MM Raju</span>
+                  <span className="text-base font-bold text-gray-400 mt-2 uppercase tracking-widest">MM Raju</span>
                 </div>
             </div>
           </div>

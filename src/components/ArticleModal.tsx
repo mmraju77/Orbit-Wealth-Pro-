@@ -23,7 +23,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          onClick={onClose}
+          aria-label="Close Article" onClick={onClose}
           className="absolute inset-0 bg-[#0B0F19]/90 backdrop-blur-xl"
         />
         
@@ -37,12 +37,12 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           <div className="absolute top-6 right-6 z-20 flex gap-2">
             <button 
               className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors"
-              title="Share Article"
+              aria-label="Share Article" title="Share Article"
             >
               <Share2 className="w-4 h-4" />
             </button>
             <button 
-              onClick={onClose}
+              aria-label="Close Article" onClick={onClose}
               className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors"
             >
               <X className="w-4 h-4" />

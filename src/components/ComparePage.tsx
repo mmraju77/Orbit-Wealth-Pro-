@@ -272,7 +272,7 @@ export default function ComparePage() {
               </div>
               <ul className="grid grid-cols-1 gap-4">
                 {data.consA.map((c, i) => (
-                  <li key={i} className="flex items-start gap-4 p-4 bg-white/[0.01] border border-white/5 rounded-2xl opacity-60 group/item hover:opacity-100 transition-opacity">
+                  <li key={i} className="flex items-start gap-4 p-4 bg-white/[0.01] border border-white/5 rounded-2xl opacity-80 group/item hover:opacity-100 transition-opacity">
                     <div className="w-1.5 h-1.5 rounded-full bg-rose-500/40 mt-2 shrink-0" />
                     <span className="text-lg text-slate-400 leading-snug font-medium italic">{c}</span>
                   </li>
@@ -323,7 +323,7 @@ export default function ComparePage() {
               </div>
               <ul className="grid grid-cols-1 gap-4">
                 {data.consB.map((c, i) => (
-                  <li key={i} className="flex items-start gap-4 p-4 bg-white/[0.01] border border-white/5 rounded-2xl opacity-60 group/item hover:opacity-100 transition-opacity">
+                  <li key={i} className="flex items-start gap-4 p-4 bg-white/[0.01] border border-white/5 rounded-2xl opacity-80 group/item hover:opacity-100 transition-opacity">
                     <div className="w-1.5 h-1.5 rounded-full bg-rose-500/40 mt-2 shrink-0" />
                     <span className="text-lg text-slate-400 leading-snug font-medium italic">{c}</span>
                   </li>

@@ -139,7 +139,7 @@ export default function CreditCardPayoff() {
                         <div className="text-2xl font-bold">{results.years} Years</div>
                      </div>
                   </div>
-                  <ArrowRight className="text-white/5 w-8 h-8" />
+                  <ArrowRight className="text-white/20 w-8 h-8" />
                </div>
              </>
            )}

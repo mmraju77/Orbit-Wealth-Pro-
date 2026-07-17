@@ -28,11 +28,11 @@ export default function OrbitChat() {
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+    if (messagesEndRef.current) {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
     }
   }, [messages, isLoading]);
 
@@ -118,7 +118,6 @@ export default function OrbitChat() {
 
             {/* Messages Area */}
             <div 
-              ref={scrollRef}
               className="flex-1 overflow-y-auto p-4 space-y-4 custom-scrollbar"
             >
               {messages.map((msg, idx) => (
@@ -158,6 +157,7 @@ export default function OrbitChat() {
                   </div>
                 </div>
               )}
+              <div ref={messagesEndRef} />
             </div>
 
             {/* Quick Prompts */}

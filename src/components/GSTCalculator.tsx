@@ -172,7 +172,7 @@ export default function GSTCalculator() {
                      <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Tax Amount</div>
                      <div className="text-5xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
                    </div>
-                   <Percent className="text-white/5 w-10 h-10" />
+                   <Percent className="text-white/20 w-10 h-10" />
                 </div>
 
                 <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/5 flex items-center justify-between">

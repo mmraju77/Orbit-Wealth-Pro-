@@ -22,7 +22,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        onClick={onClose}
+        aria-label="Close insight" onClick={onClose}
         className="absolute inset-0 bg-[#0B0F19]/95 backdrop-blur-2xl"
       />
       
@@ -55,7 +55,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
             </div>
           </div>
           <button 
-            onClick={onClose}
+            aria-label="Close insight" onClick={onClose}
             className="p-2.5 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white hover:bg-white/10 transition-all relative z-10"
           >
             <X className="w-5 h-5" />
@@ -132,7 +132,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
             </p>
           </div>
           <button 
-            onClick={onClose}
+            aria-label="Close insight" onClick={onClose}
             className="w-full md:w-auto px-10 py-4 bg-[#0D121F] text-white rounded-2xl font-black text-base uppercase tracking-[0.2em] hover:bg-[#D4AF37] hover:text-[#0B0F19] transition-all shadow-xl"
           >
             Acknowledge Intelligence

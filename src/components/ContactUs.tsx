@@ -32,7 +32,7 @@ export default function ContactUs() {
               </div>
             </div>
           </div>
-          <p className="text-lg opacity-40 pt-4">
+          <p className="text-lg opacity-70 pt-4">
             We typically respond to all inquiries within 24-48 business hours.
           </p>
         </section>
