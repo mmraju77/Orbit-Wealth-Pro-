@@ -226,7 +226,7 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
                 <Route path="*" element={<Dashboard />} />
               </Routes>
             </Suspense>
-            <Footer />
+            <Suspense fallback={null}><Footer /></Suspense>
           </div>
         </div>
       <Suspense fallback={null}>
