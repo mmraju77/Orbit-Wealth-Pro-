@@ -289,9 +289,9 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500"
+      className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500 h-fit"
     >
-      <div className="aspect-[16/9] overflow-hidden relative">
+      <div className="h-40 overflow-hidden relative">
         <img 
           src={article.image} 
           alt={article.title}
@@ -310,10 +310,10 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       
       <div className="p-6 space-y-4">
         <div className="space-y-2">
-          <h3 className="text-3xl font-display font-bold text-[#f59e0b] tracking-tighter leading-snug group-hover:scale-[1.02] origin-left transition-transform duration-500">
+          <h3 className="text-xl md:text-2xl font-display font-bold text-[#f59e0b] tracking-tighter leading-snug group-hover:scale-[1.02] origin-left transition-transform duration-500">
             {article.title}
           </h3>
-          <p className="text-lg text-slate-100 leading-relaxed line-clamp-2 font-medium">
+          <p className="text-sm text-slate-100 leading-relaxed line-clamp-2 font-medium">
             {article.summary}
           </p>
         </div>
@@ -321,12 +321,12 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
         <div className="pt-4 flex items-center justify-between border-t border-white/[0.05]">
            <div className="flex items-center gap-2">
               <Calendar className="w-3 h-3 text-white/70" />
-              <span className="text-base text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
+              <span className="text-xs md:text-sm text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
            <button 
              onClick={() => onReadMore(article)}
              aria-label={`Read full report: ${article.title}`}
-             className="flex items-center gap-2 text-base font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
+             className="flex items-center gap-2 text-xs md:text-sm font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
            >
              Read Full Report <ArrowUpRight className="w-3 h-3" />
            </button>
@@ -431,15 +431,15 @@ export default function Dashboard() {
       {/* Global Finance News Section */}
       <section id="news-section" className="space-y-10 pt-16">
         <div className="flex items-center gap-4">
-           <h2 className="text-base font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
+           <h2 className="text-sm md:text-base font-bold text-[#D4AF37] uppercase tracking-[0.4em]">Global Finance News</h2>
            <div className="flex-1 h-px bg-[#D4AF37]/10"></div>
-           <div className="flex items-center gap-2 text-base font-bold text-white/70 uppercase tracking-widest">
+           <div className="flex items-center gap-2 text-xs md:text-sm font-bold text-white/70 uppercase tracking-widest">
              <div className="w-1 h-1 rounded-full bg-[#D4AF37] animate-pulse"></div>
              Live Updates
            </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 min-h-[1400px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
           {visibleArticles.map((article, idx) => (
             <NewsCard key={idx} article={article} onReadMore={setSelectedArticle} />
           ))}
@@ -460,7 +460,7 @@ export default function Dashboard() {
                 setShowAllNews(true);
               }
             }}
-            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-base font-bold text-white/70 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
+            className="px-8 py-3 bg-white/[0.02] border border-white/10 rounded-full text-xs md:text-sm font-bold text-white/70 uppercase tracking-widest hover:bg-[#f59e0b]/10 hover:border-[#f59e0b]/30 hover:text-white transition-all cursor-pointer inline-flex items-center justify-center"
           >
             {showAllNews ? 'Show Less Insights' : 'Explore All Market Insights'}
           </button>
@@ -469,15 +469,15 @@ export default function Dashboard() {
 
       <section className="pt-24 border-t border-white/[0.05] grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-4">
-          <h2 className="text-4xl font-display font-medium">Built for accuracy.</h2>
-          <p className="text-xl text-slate-100 leading-relaxed max-w-md">
+          <h2 className="text-3xl md:text-4xl font-display font-medium">Built for accuracy.</h2>
+          <p className="text-sm md:text-base text-slate-100 leading-relaxed max-w-md">
             Our engine accounts for localized interest compounding, tax thresholds, and currency fluctuations to ensure your planning is based on high-integrity data.
           </p>
         </div>
         <div className="flex gap-12">
             <div className="space-y-1 text-center">
-              <div className="text-6xl font-display text-white">100%</div>
-              <div className="text-base text-slate-300 uppercase font-black tracking-[0.2em]">Computation Accuracy</div>
+              <div className="text-5xl md:text-6xl font-display text-white">100%</div>
+              <div className="text-xs md:text-sm text-slate-300 uppercase font-black tracking-[0.2em]">Computation Accuracy</div>
             </div>
             <div className="space-y-1 text-center">
               <div className="text-6xl font-display text-white">Instant</div>

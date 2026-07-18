@@ -84,9 +84,9 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             <span className="text-base font-black text-white/70 uppercase tracking-[0.5em]">AI Wealth Authority</span>
           </div>
 
-          <div className="relative w-64 h-64 mx-auto">
+          <div className="relative w-28 h-28 mx-auto mt-4">
             {/* Background Glow */}
-            <div className="absolute inset-4 bg-emerald-500/10 rounded-full blur-3xl" />
+            <div className="absolute inset-2 bg-emerald-500/10 rounded-full blur-xl" />
             
             <svg className="w-full h-full transform -rotate-90">
               <defs>
@@ -100,46 +100,46 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 </linearGradient>
               </defs>
               <circle
-                cx="128"
-                cy="128"
-                r="112"
+                cx="56"
+                cy="56"
+                r="48"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="12"
+                strokeWidth="6"
                 className="text-white/[0.03]"
               />
               {/* Progress Circle */}
               <motion.circle
-                cx="128"
-                cy="128"
-                r="112"
+                cx="56"
+                cy="56"
+                r="48"
                 fill="none"
                 stroke="url(#scoreGradient)"
-                strokeWidth="12"
-                strokeDasharray="703.72"
-                initial={{ strokeDashoffset: 703.72 }}
-                animate={{ strokeDashoffset: 703.72 - (703.72 * wealthScore) / 100 }}
+                strokeWidth="6"
+                strokeDasharray="301.59"
+                initial={{ strokeDashoffset: 301.59 }}
+                animate={{ strokeDashoffset: 301.59 - (301.59 * wealthScore) / 100 }}
                 transition={{ duration: 2, ease: "easeOut" }}
-                className="drop-shadow-[0_0_15px_rgba(16,185,129,0.5)]"
+                className="drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
                 strokeLinecap="round"
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div className="relative mt-2">
-                <span className="text-7xl md:text-8xl font-display font-black text-white tracking-tighter leading-none">{wealthScore}</span>
-                <div className="absolute -top-1 -right-4 w-4 h-4 bg-emerald-500 rounded-full border-4 border-[#0B1221]" />
+                <span className="text-4xl md:text-5xl font-display font-black text-white tracking-tighter leading-none">{wealthScore}</span>
+                <div className="absolute top-0 -right-2 w-2 h-2 bg-emerald-500 rounded-full border border-[#0B1221]" />
               </div>
-              <span className="text-[10px] font-black text-white/70 uppercase tracking-tight mt-3 leading-none">Institutional Tier</span>
+              <span className="text-[8px] font-black text-white/70 uppercase tracking-tight mt-1 leading-none text-center px-1">Institutional Tier</span>
             </div>
           </div>
 
-          <div className="flex flex-col items-center gap-6 mt-8">
-            <p className="text-sm md:text-base text-white/70 font-black uppercase tracking-[0.2em] mt-4">
+          <div className="flex flex-col items-center gap-4 mt-6">
+            <p className="text-xs md:text-sm text-white/70 font-black uppercase tracking-[0.2em]">
               STRATEGIC TIER ALPHA
             </p>
-            <div className="inline-flex items-center gap-3 px-6 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-              <Activity className="w-4 h-4 text-emerald-400" /> 
-              <span className="text-sm md:text-base font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+              <Activity className="w-3.5 h-3.5 text-emerald-400" /> 
+              <span className="text-xs md:text-sm font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
             </div>
           </div>
         </div>

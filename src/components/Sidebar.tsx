@@ -238,8 +238,8 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           <div className="space-y-6">
             <div className="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl space-y-4">
               <div>
-                <label className="text-base font-bold text-white/70 uppercase tracking-widest block mb-2 px-1">Region Override</label>
-                <div className="grid grid-cols-4 gap-1">
+                <label className="text-xs font-bold text-white/70 uppercase tracking-widest block mb-2 px-1">Region Override</label>
+                <div className="flex flex-wrap gap-2">
                   {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => {
                     const symbols: Record<string, string> = {
                       USD: '$', EUR: '€', GBP: '£', INR: '₹', AUD: 'AU$', CAD: 'CA$', 
@@ -255,7 +255,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                           else setNumberSystem('International');
                         }}
                         className={cn(
-                          "h-5 rounded text-base font-bold transition-all flex items-center justify-center gap-0.5 outline-none",
+                          "px-2 py-1 h-auto rounded text-[10px] md:text-xs font-bold transition-all flex items-center justify-center gap-1 outline-none",
                           currency === c ? "bg-[#D4AF37] text-black" : "bg-white/10 text-white/80 hover:bg-white/20"
                         )}
                       >
