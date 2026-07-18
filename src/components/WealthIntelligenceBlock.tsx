@@ -125,22 +125,22 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
               />
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <div className="relative">
+              <div className="relative mt-2">
                 <span className="text-7xl md:text-8xl font-display font-black text-white tracking-tighter leading-none">{wealthScore}</span>
                 <div className="absolute -top-1 -right-4 w-4 h-4 bg-emerald-500 rounded-full border-4 border-[#0B1221]" />
               </div>
-              <span className="text-[10px] md:text-xs font-black text-white/70 uppercase tracking-[0.3em] mt-1 leading-none">Institutional Tier</span>
+              <span className="text-[10px] md:text-xs font-black text-white/70 uppercase tracking-[0.3em] mt-3 leading-none">Institutional Tier</span>
             </div>
           </div>
 
-          <div className="space-y-3">
-            <div className="inline-flex items-center gap-3 px-6 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
-              <Activity className="w-4 h-4 text-emerald-400" /> 
-              <span className="text-base font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
-            </div>
-            <p className="text-base text-white/70 font-black uppercase tracking-[0.2em]">
+          <div className="flex flex-col items-center gap-6 mt-4">
+            <p className="text-sm md:text-base text-white/70 font-black uppercase tracking-[0.2em]">
               STRATEGIC TIER ALPHA
             </p>
+            <div className="inline-flex items-center gap-3 px-6 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full">
+              <Activity className="w-4 h-4 text-emerald-400" /> 
+              <span className="text-sm md:text-base font-black text-emerald-400 uppercase tracking-widest">Optimal Growth</span>
+            </div>
           </div>
         </div>
       </motion.div>
