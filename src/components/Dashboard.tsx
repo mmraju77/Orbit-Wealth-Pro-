@@ -30,10 +30,10 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import { Goal } from '../types';
 
-const MarketTicker = React.lazy(() => import('./MarketTicker'));
-const WealthIntelligenceBlock = React.lazy(() => import('./WealthIntelligenceBlock'));
-const BlogPreview = React.lazy(() => import('./BlogPreview'));
-const WealthMilestones = React.lazy(() => import('./WealthMilestones'));
+import MarketTicker from './MarketTicker';
+import WealthIntelligenceBlock from './WealthIntelligenceBlock';
+import BlogPreview from './BlogPreview';
+import WealthMilestones from './WealthMilestones';
 
 const INITIAL_GOALS: Goal[] = [
   {
@@ -372,7 +372,6 @@ export default function Dashboard() {
         </p>
       </header>
 
-      <React.Suspense fallback={<div className="min-h-[800px] flex items-center justify-center"><div className="animate-spin w-8 h-8 border-4 border-[#D4AF37] border-t-transparent rounded-full"></div></div>}>
         <WealthIntelligenceBlock goals={goals} />
 
         <div className="py-2 min-h-[90px]">
@@ -382,7 +381,6 @@ export default function Dashboard() {
         <WealthMilestones goals={goals} onUpdateGoals={handleUpdateGoals} />
 
         <BlogPreview />
-      </React.Suspense>
 
       <section className="space-y-10">
         <div className="flex items-center gap-4">
