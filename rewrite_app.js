@@ -1,112 +1,9 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
+import fs from 'fs/promises';
 
-import React, { useEffect, useState } from 'react';
-import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
-import { Menu, Wallet } from 'lucide-react';
+async function main() {
+  let content = await fs.readFile('src/App.tsx', 'utf8');
 
-// Context
-import { LocaleProvider, useLocale } from './context/LocaleContext';
-
-// Components
-import Sidebar from './components/Sidebar';
-
-import Footer from './components/Footer';
-
-// Core Views (Dashboard remains static for fast LCP)
-import Dashboard from './components/Dashboard';
-
-// Lazy-loaded routes
-import TaxGuides from './components/TaxGuides';
-import BlogHub from './components/BlogHub';
-import AboutUs from './components/AboutUs';
-import ContactUs from './components/ContactUs';
-
-// Calculators & Tools
-import MortgageCalculator from './components/MortgageCalculator';
-import RetirementCalculator from './components/RetirementCalculator';
-import IncomeTaxCalculator from './components/IncomeTaxCalculator';
-import GSTCalculator from './components/GSTCalculator';
-import FDRDCalculator from './components/FDRDCalculator';
-import SIPCalculator from './components/SIPCalculator';
-import LumpsumCalculator from './components/LumpsumCalculator';
-import EMICalculator from './components/EMICalculator';
-import MFCalculator from './components/MFCalculator';
-import LoanEligibility from './components/LoanEligibility';
-import BalanceTransfer from './components/BalanceTransfer';
-import GratuityCalculator from './components/GratuityCalculator';
-import CurrencyConverter from './components/CurrencyConverter';
-import PersonalLoanCalculator from './components/PersonalLoanCalculator';
-import AutoLoanCalculator from './components/AutoLoanCalculator';
-import StudentLoanCalculator from './components/StudentLoanCalculator';
-import CAGRCalculator from './components/CAGRCalculator';
-import DividendYieldCalculator from './components/DividendYieldCalculator';
-import ChildEducationPlanner from './components/ChildEducationPlanner';
-import RentalYieldCalculator from './components/RentalYieldCalculator';
-import DebtSnowball from './components/DebtSnowball';
-import HLVCalculator from './components/HLVCalculator';
-import BreakEvenCalculator from './components/BreakEvenCalculator';
-import CreditCardPayoff from './components/CreditCardPayoff';
-import TermInsuranceCalculator from './components/TermInsuranceCalculator';
-import HealthInsuranceCalculator from './components/HealthInsuranceCalculator';
-import OrbitChat from './components/OrbitChat';
-
-// Pages
-import PSEOLandingPage from './components/PSEOLandingPage';
-import ComparePage from './components/ComparePage';
-import ComparisonsDirectory from './components/ComparisonsDirectory';
-import CitiesDirectory from './components/CitiesDirectory';
-import PrivacyPolicy from './components/PrivacyPolicy';
-import Disclaimer from './components/Disclaimer';
-import TermsOfService from './components/TermsOfService';
-
-// Utils
-import { resolveRegion } from './data/pSEOData';
-
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    requestAnimationFrame(() => {
-      const scrollContainer = document.querySelector('.overflow-y-auto');
-      if (scrollContainer) scrollContainer.scrollTo(0, 0);
-      window.scrollTo(0, 0);
-    });
-  }, [pathname]);
-  return null;
-}
-
-function RegionSynchronizer() {
-  const { pathname } = useLocation();
-  const { setCurrency, setNumberSystem } = useLocale();
-
-  useEffect(() => {
-    try {
-      const hash = window.location.hash || '';
-      const parts = hash.split('/').filter(p => p && p !== '#');
-      if (parts.length === 0) return;
-
-      const reversedParts = [...parts].reverse();
-      for (const part of reversedParts) {
-        const cleanPart = part.toLowerCase();
-        const data = resolveRegion(cleanPart);
-        if (data) {
-          setCurrency(data.currency);
-          setNumberSystem(data.name === 'India' ? 'Indian' : 'International');
-          break;
-        }
-      }
-    } catch (e) {
-      console.error('Region Sync Error:', e);
-    }
-  }, [pathname, setCurrency, setNumberSystem]);
-
-  return null;
-}
-
-
+  const newMainContent = `
 function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; setSidebarOpen: (o: boolean) => void }) {
   const { currency } = useLocale();
   
@@ -205,20 +102,9 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
     </div>
   );
 }
+`;
 
-
-export default function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  return (
-    <HelmetProvider>
-      <HashRouter>
-        <LocaleProvider>
-          <RegionSynchronizer />
-          <ScrollToTop />
-          <MainContent sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-        </LocaleProvider>
-      </HashRouter>
-    </HelmetProvider>
-  );
+  content = content.replace(/function MainContent[\s\S]*?export default function App/m, newMainContent + '\n\nexport default function App');
+  await fs.writeFile('src/App.tsx', content);
 }
+main();
