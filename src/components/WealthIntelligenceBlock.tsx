@@ -84,7 +84,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             <span className="text-base font-black text-white/70 uppercase tracking-[0.5em]">AI Wealth Authority</span>
           </div>
 
-          <div className="relative w-28 h-28 mx-auto mt-4">
+          <div className="relative w-32 h-32 mx-auto mt-4">
             {/* Background Glow */}
             <div className="absolute inset-2 bg-emerald-500/10 rounded-full blur-xl" />
             
@@ -100,9 +100,9 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 </linearGradient>
               </defs>
               <circle
-                cx="56"
-                cy="56"
-                r="48"
+                cx="64"
+                cy="64"
+                r="56"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="6"
@@ -110,15 +110,15 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
               />
               {/* Progress Circle */}
               <motion.circle
-                cx="56"
-                cy="56"
-                r="48"
+                cx="64"
+                cy="64"
+                r="56"
                 fill="none"
                 stroke="url(#scoreGradient)"
                 strokeWidth="6"
-                strokeDasharray="301.59"
-                initial={{ strokeDashoffset: 301.59 }}
-                animate={{ strokeDashoffset: 301.59 - (301.59 * wealthScore) / 100 }}
+                strokeDasharray="351.86"
+                initial={{ strokeDashoffset: 351.86 }}
+                animate={{ strokeDashoffset: 351.86 - (351.86 * wealthScore) / 100 }}
                 transition={{ duration: 2, ease: "easeOut" }}
                 className="drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
                 strokeLinecap="round"
@@ -129,7 +129,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 <span className="text-4xl md:text-5xl font-display font-black text-white tracking-tighter leading-none">{wealthScore}</span>
                 <div className="absolute top-0 -right-2 w-2 h-2 bg-emerald-500 rounded-full border border-[#0B1221]" />
               </div>
-              <span className="text-[8px] font-black text-white/70 uppercase tracking-tight mt-1 leading-none text-center px-1">Institutional Tier</span>
+              <span className="text-[10px] md:text-xs font-medium text-gray-300 uppercase tracking-tight mt-1.5 leading-none text-center px-1">Institutional Tier</span>
             </div>
           </div>
 

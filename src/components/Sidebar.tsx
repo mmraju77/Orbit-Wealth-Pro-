@@ -256,7 +256,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
                         }}
                         className={cn(
                           "px-2 py-1 h-auto rounded text-[10px] md:text-xs font-bold transition-all flex items-center justify-center gap-1 outline-none",
-                          currency === c ? "bg-[#D4AF37] text-black" : "bg-white/10 text-white/80 hover:bg-white/20"
+                          currency === c ? "text-[#f59e0b] bg-black/20 border border-[#f59e0b]/50" : "bg-white/10 text-white/80 hover:bg-white/20 border border-transparent"
                         )}
                       >
                         <span className="opacity-80">{symbols[c]}</span>
