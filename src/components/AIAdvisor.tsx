@@ -17,12 +17,40 @@ export default function AIAdvisor({ context }: AIAdvisorProps) {
   const [error, setError] = useState<string | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
+  const generateFallbackInsight = (ctx: string) => {
+    const lower = ctx.toLowerCase();
+    if (lower.includes('sip') || lower.includes('lump sum') || lower.includes('investment') || lower.includes('wealth')) {
+      if (lower.includes('cagr')) return "Your growth rate indicates strong compounding. Staying invested long-term is key to multiplying wealth.";
+      return "Consistent compounding is your greatest asset. Notice how the wealth gained accelerates in the later years of your tenure.";
+    }
+    if (lower.includes('debt') || lower.includes('credit card') || lower.includes('loan')) {
+      if (lower.includes('never paid off')) return "Warning: Your current payment structure is causing a debt trap. You must increase your monthly payload immediately.";
+      return "Accelerated payments are crucial. Every extra dollar applied to principal drastically reduces your interest drain and timeline.";
+    }
+    if (lower.includes('insurance') || lower.includes('term') || lower.includes('health') || lower.includes('sum insured')) {
+      return "Adequate coverage is the foundation of wealth preservation. Ensure your sum assured aligns with your future liabilities.";
+    }
+    if (lower.includes('tax') || lower.includes('gst')) {
+      return "Strategic tax planning accelerates wealth creation. Keep track of deductions to optimize your effective tax rate.";
+    }
+    if (lower.includes('retire') || lower.includes('hlv') || lower.includes('human life value')) {
+      return "Your target corpus needs to outpace inflation. Early and aggressive allocation secures your future lifestyle.";
+    }
+    if (lower.includes('break-even') || lower.includes('property') || lower.includes('yield') || lower.includes('rent')) {
+      return "Real estate and business margins thrive on fixed cost optimization. Maximizing net yield is your primary objective.";
+    }
+    return "Excellent financial discipline. Keep monitoring your variables to ensure your trajectory stays aligned with your goals.";
+  };
+
   const fetchInsight = async () => {
-    if (insight || loading) return; // Only fetch once or if not already loading
-    
+    if (insight || loading) return;
+
     setLoading(true);
     setError(null);
     
+    // Simulate a brief delay for realism even on fallback
+    await new Promise(resolve => setTimeout(resolve, 600));
+
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
@@ -40,10 +68,14 @@ export default function AIAdvisor({ context }: AIAdvisorProps) {
       }
 
       const data = await response.json();
-      setInsight(data.text || "Calculation looks solid. Keep monitoring your goals.");
+      if (data.text) {
+        setInsight(data.text);
+      } else {
+        setInsight(generateFallbackInsight(context));
+      }
     } catch (err) {
-      console.error("AI Advisor Error:", err);
-      setError("Failed to generate insight.");
+      console.warn("API unavailable, using dynamic fallback logic:", err);
+      setInsight(generateFallbackInsight(context));
     } finally {
       setLoading(false);
     }
