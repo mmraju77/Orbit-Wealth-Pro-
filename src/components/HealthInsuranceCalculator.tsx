@@ -45,17 +45,12 @@ export default function HealthInsuranceCalculator() {
     const timer = setTimeout(() => {
       // Base premium logic per member based on age groups
       const getBaseMemberPremium = (age: number) => {
-        if (age < 25)
-          setResults(3000);
-        if (age < 35)
-          setResults(5000);
-        if (age < 45)
-          setResults(8000);
-        if (age < 55)
-          setResults(14000);
-        if (age < 65)
-          setResults(22000);
-        setResults(35000);
+        if (age < 25) return 3000;
+        if (age < 35) return 5000;
+        if (age < 45) return 8000;
+        if (age < 55) return 14000;
+        if (age < 65) return 22000;
+        return 35000;
       };
 
       const oldestPremium = getBaseMemberPremium(inputs.oldestAge);

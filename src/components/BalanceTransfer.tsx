@@ -34,7 +34,7 @@ export default function BalanceTransfer() {
         const monthlyRate = r / 12 / 100;
         const numPayments = n * 12;
 
-        setResults(
+        return (
           (p * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1)
         );
       };

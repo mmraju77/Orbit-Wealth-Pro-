@@ -14,8 +14,7 @@ import { LocaleProvider, useLocale } from './context/LocaleContext';
 
 // Components
 import Sidebar from './components/Sidebar';
-
-const Footer = lazy(() => import('./components/Footer'));
+import Footer from './components/Footer';
 
 // Core Views (Dashboard remains static for fast LCP)
 import Dashboard from './components/Dashboard';

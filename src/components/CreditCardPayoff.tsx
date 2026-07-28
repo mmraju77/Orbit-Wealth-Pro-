@@ -4,7 +4,7 @@ import { CalculatorSEO } from "./CalculatorSEO";
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {  CreditCard, Download, AlertTriangle, ArrowRight, Zap , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
