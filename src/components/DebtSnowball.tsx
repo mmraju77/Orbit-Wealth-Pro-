@@ -172,11 +172,11 @@ export default function DebtSnowball() {
            <div className="grid grid-cols-2 gap-6 mb-auto">
               <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
                  <div className="text-base text-white/70 font-bold uppercase tracking-[0.2em]">Total Outstanding</div>
-                 <div className="text-6xl font-display font-medium text-white">{formatCurrency(totalBalance)}</div>
+                 <div className="text-xl md:text-2xl font-display font-bold text-white">{formatCurrency(totalBalance)}</div>
               </div>
               <div className="p-10 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[2.5rem] text-center space-y-2">
                  <div className="text-base text-[#D4AF37] font-bold uppercase tracking-[0.2em]">Monthly Payload</div>
-                 <div className="text-6xl font-display font-medium text-[#D4AF37]">{formatCurrency(totalMinPayment + extraPayment)}</div>
+                 <div className="text-xl md:text-2xl font-display font-bold text-[#D4AF37]">{formatCurrency(totalMinPayment + extraPayment)}</div>
               </div>
            </div>
 

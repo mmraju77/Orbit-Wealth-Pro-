@@ -89,6 +89,27 @@ export default function PersonalLoanCalculator() {
     doc.save('personal-loan-calc.pdf');
   };
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-8 pb-20 text-white">
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
@@ -106,6 +127,9 @@ export default function PersonalLoanCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
+        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <Share2 className="w-4 h-4" /> Share
+        </button>
         </div>
       </div>
 
@@ -169,11 +193,11 @@ export default function PersonalLoanCalculator() {
              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="p-6 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 text-center">
                    <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Standard EMI</div>
-                   <div className="text-5xl font-bold text-white">{formatCurrency(results.emi)}</div>
+                   <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.emi)}</div>
                 </div>
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
                    <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                   <div className="text-5xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
+                   <div className="text-xl md:text-2xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
                 </div>
              </div>
 
@@ -183,12 +207,12 @@ export default function PersonalLoanCalculator() {
                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                       <div>
                          <div className="text-base text-white/70 font-bold">New Duration</div>
-                         <div className="text-3xl font-bold text-white">{results.earlyPayoff.months} Months</div>
+                         <div className="text-xl md:text-2xl font-bold text-white">{results.earlyPayoff.months} Months</div>
                          <div className="text-base text-emerald-500">Save {results.earlyPayoff.timeSaved} months</div>
                       </div>
                       <div>
                          <div className="text-base text-white/70 font-bold">Interest Savings</div>
-                         <div className="text-3xl font-bold text-white">{formatCurrency(results.earlyPayoff.interestSaved)}</div>
+                         <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.earlyPayoff.interestSaved)}</div>
                          <div className="text-base text-emerald-500">Money kept in your pocket</div>
                       </div>
                    </div>

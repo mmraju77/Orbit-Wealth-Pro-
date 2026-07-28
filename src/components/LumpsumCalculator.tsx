@@ -186,7 +186,7 @@ export default function LumpsumCalculator() {
               </ResponsiveContainer>
               <div className="mt-8 text-center">
                 <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
-                <div className="text-6xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
             </div>
           )}

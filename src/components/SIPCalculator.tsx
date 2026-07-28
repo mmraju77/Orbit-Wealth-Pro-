@@ -86,6 +86,27 @@ export default function SIPCalculator() {
     doc.save('sip-calculation.pdf');
   };
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-20">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
@@ -116,7 +137,7 @@ export default function SIPCalculator() {
           >
             <Download className="w-4 h-4" /> PDF
           </button>
-          <button 
+          <button onClick={handleShare} 
             aria-label="Share Calculation"
             className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 focus:ring-2 focus:ring-white outline-none"
           >
@@ -217,7 +238,7 @@ export default function SIPCalculator() {
               </ResponsiveContainer>
               <div className="mt-8 text-center">
                 <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Maturity Value</div>
-                <div className="text-6xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white tracking-widest">{formatCurrency(results.totalWealth)}</div>
               </div>
               
               <div className="px-4">

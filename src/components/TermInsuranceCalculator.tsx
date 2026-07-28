@@ -65,6 +65,27 @@ export default function TermInsuranceCalculator() {
     };
   }, [inputs]);
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-20 text-white">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
@@ -83,7 +104,7 @@ export default function TermInsuranceCalculator() {
           <button className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> Download Quote
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Estimate
           </button>
         </div>
@@ -171,11 +192,11 @@ export default function TermInsuranceCalculator() {
           <div className="p-6 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 flex items-center justify-between">
              <div className="space-y-1">
                 <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest">Estimated Monthly Premium</div>
-                <div className="text-5xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
              </div>
              <div className="text-right">
                 <div className="text-base text-white/70 font-bold uppercase tracking-widest">Annual Total</div>
-                <div className="text-3xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.annualPremium)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.annualPremium)}</div>
              </div>
           </div>
         </section>
@@ -191,7 +212,7 @@ export default function TermInsuranceCalculator() {
                   <div className="w-20 h-20 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#D4AF37]/20">
                      <Shield className="w-10 h-10 text-[#D4AF37]" />
                   </div>
-                  <h3 className="text-4xl font-display font-medium">Protection Analysis.</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold">Protection Analysis.</h3>
                   <p className="text-white/70 text-base italic max-w-xs mx-auto">
                     "Based on your profile, we recommend a minimum death benefit of 10-15x your annual income."
                   </p>

@@ -22,7 +22,7 @@ export default function Footer() {
               <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20 group-hover:scale-110 transition-transform">
                 <Wallet className="w-6 h-6 text-black" />
               </div>
-              <span className="text-4xl font-bold tracking-tighter text-[#f59e0b] uppercase">ORBIT WEALTH PRO</span>
+              <span className="text-xl md:text-2xl font-bold tracking-tighter text-[#f59e0b] uppercase">ORBIT WEALTH PRO</span>
             </Link>
             <p className="text-white/70 text-lg leading-relaxed">
               Global financial tools platform providing precision calculators for 11+ jurisdictions including the USA, Canada, Europe, UAE, and India.

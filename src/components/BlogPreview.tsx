@@ -73,7 +73,7 @@ export default function BlogPreview() {
                     <span>{article.date}</span>
                   </div>
 
-                  <h3 className="text-3xl lg:text-4xl font-bold text-white line-clamp-3 leading-[1.6] group-hover:text-[#F3C64F] transition-colors pb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-white line-clamp-3 leading-[1.6] group-hover:text-[#F3C64F] transition-colors pb-4">
                     {article.title}
                   </h3>
 

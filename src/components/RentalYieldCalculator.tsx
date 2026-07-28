@@ -134,17 +134,17 @@ export default function RentalYieldCalculator() {
               <div className="grid grid-cols-2 gap-4">
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
                     <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Gross Yield</div>
-                    <div className="text-5xl font-bold text-white/70">{results.grossYield}%</div>
+                    <div className="text-xl md:text-2xl font-bold text-white/70">{results.grossYield}%</div>
                  </div>
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
                     <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Net Rental Yield</div>
-                    <div className="text-6xl font-bold text-[#D4AF37]">{results.netYield}%</div>
+                    <div className="text-xl md:text-2xl font-bold text-[#D4AF37]">{results.netYield}%</div>
                  </div>
               </div>
 
               <div className="p-6 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-center">
                  <div className="text-base text-emerald-500 font-bold uppercase tracking-widest mb-2">Net Annual Operating Income</div>
-                 <div className="text-6xl font-bold text-white">{formatCurrency(results.netIncome)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.netIncome)}</div>
                  <div className="mt-2 text-base text-white/70">Income after taxes and maintenance</div>
               </div>
            </div>

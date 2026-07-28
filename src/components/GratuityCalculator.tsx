@@ -163,7 +163,7 @@ export default function GratuityCalculator() {
            {isMounted && (
                <div className="text-center space-y-6">
                   <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Estimated Gratuity Amount</div>
-                  <div className="text-8xl font-bold text-white tracking-widest">{formatCurrency(results.gratuityAmount)}</div>
+                  <div className="text-xl md:text-2xl font-bold text-white tracking-widest">{formatCurrency(results.gratuityAmount)}</div>
                   
                   <div className="flex justify-center flex-wrap gap-4 pt-8">
                      <div className="px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full flex items-center gap-2">

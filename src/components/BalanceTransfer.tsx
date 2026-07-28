@@ -177,7 +177,7 @@ export default function BalanceTransfer() {
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 flex items-center justify-between">
                     <div>
                       <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Total Interest Savings</div>
-                      <div className="text-6xl font-bold text-white tracking-widest">{formatCurrency(results.totalSavings)}</div>
+                      <div className="text-xl md:text-2xl font-bold text-white tracking-widest">{formatCurrency(results.totalSavings)}</div>
                     </div>
                     <TrendingDown className="w-10 h-10 text-[#D4AF37]/20" />
                  </div>
@@ -185,11 +185,11 @@ export default function BalanceTransfer() {
                  <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                         <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Monthly Savings</div>
-                        <div className="text-3xl font-bold text-white/70">{formatCurrency(results.monthlySavings)}</div>
+                        <div className="text-xl md:text-2xl font-bold text-white/70">{formatCurrency(results.monthlySavings)}</div>
                     </div>
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                         <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Break-even Point</div>
-                        <div className="text-3xl font-bold text-white/70">{results.breakEvenMonths} Months</div>
+                        <div className="text-xl md:text-2xl font-bold text-white/70">{results.breakEvenMonths} Months</div>
                     </div>
                  </div>
                </div>

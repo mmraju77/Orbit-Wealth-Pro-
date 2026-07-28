@@ -63,7 +63,7 @@ export default function CitiesDirectory() {
               <div className="w-16 h-16 mx-auto rounded-full bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <MapPin className="w-6 h-6 text-[#D4AF37]" />
               </div>
-              <h3 className="text-3xl font-bold text-white mb-2">{hub.city}</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-2">{hub.city}</h3>
               <p className="text-base font-bold text-white/70 uppercase tracking-widest mb-6">Financial Analytics</p>
               
               <div className="space-y-2">
@@ -85,21 +85,21 @@ export default function CitiesDirectory() {
         <div className="relative z-10 space-y-12">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                 <div className="space-y-4">
-                    <div className="text-6xl font-bold text-white">500+</div>
+                    <div className="text-xl md:text-2xl font-bold text-white">500+</div>
                     <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest">Cities Indexed</div>
                 </div>
                 <div className="space-y-4">
-                    <div className="text-6xl font-bold text-white">24+</div>
+                    <div className="text-xl md:text-2xl font-bold text-white">24+</div>
                     <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest">Financial Jurisdictions</div>
                 </div>
                 <div className="space-y-4">
-                    <div className="text-6xl font-bold text-white">100k+</div>
+                    <div className="text-xl md:text-2xl font-bold text-white">100k+</div>
                     <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest">Static SEO Routes</div>
                 </div>
             </div>
             
             <div className="pt-8 border-t border-white/5">
-                <h3 className="text-3xl font-bold text-white mb-6">Global pSEO Architecture</h3>
+                <h3 className="text-xl md:text-2xl font-bold text-white mb-6">Global pSEO Architecture</h3>
                 <div className="flex flex-wrap gap-3">
                    {Object.keys(REGIONS).slice(0, 12).map(r => (
                       <span key={r} className="px-4 py-2 bg-white/5 rounded-full text-base text-white/70 border border-white/5">
@@ -121,7 +121,7 @@ export default function CitiesDirectory() {
                   <Globe2 className="w-8 h-8 text-emerald-400" />
               </div>
               <div>
-                  <h4 className="text-3xl font-bold text-white">Universal Calculator Protocol</h4>
+                  <h4 className="text-xl md:text-2xl font-bold text-white">Universal Calculator Protocol</h4>
                   <p className="text-white/70 text-lg">Every tool in our suite is automatically region-aware and city-optimized.</p>
               </div>
           </div>

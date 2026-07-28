@@ -145,11 +145,11 @@ export default function CreditCardPayoff() {
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
                      <div className="text-base text-white/70 font-bold uppercase tracking-[0.3em]">Months to Payoff</div>
-                     <div className="text-7xl font-display font-medium text-white">{results.months}</div>
+                     <div className="text-xl md:text-2xl font-display font-bold text-white">{results.months}</div>
                   </div>
                   <div className="p-10 bg-rose-500/5 border border-rose-500/10 rounded-[2.5rem] text-center space-y-2">
                      <div className="text-base text-rose-500 font-bold uppercase tracking-[0.3em]">Interest Drain</div>
-                     <div className="text-7xl font-display font-medium text-rose-500 tracking-tighter">{formatCurrency(results.totalInterest)}</div>
+                     <div className="text-xl md:text-2xl font-display font-bold text-rose-500 tracking-tighter">{formatCurrency(results.totalInterest)}</div>
                   </div>
                </div>
 

@@ -160,7 +160,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
             <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20">
               <Wallet className="w-6 h-6 text-black" />
             </div>
-            <span className="font-display font-black text-3xl tracking-tighter text-[#f59e0b] uppercase group flex flex-col leading-none">
+            <span className="font-display font-black text-xl md:text-2xl font-bold tracking-tighter text-[#f59e0b] uppercase group flex flex-col leading-none">
               <span>ORBIT</span>
               <span className="opacity-90">WEALTH PRO</span>
             </span>

@@ -60,7 +60,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
             <span className="text-base font-black text-white/70 uppercase tracking-widest block mb-1">Total Goal Progress</span>
             <div className="flex items-center gap-2">
               <Sparkles className="w-4 h-4 text-[#f59e0b]" />
-              <span className="text-3xl font-display font-bold text-white">
+              <span className="text-xl md:text-2xl font-display font-bold text-white">
                 {Math.round((goals.reduce((acc, g) => acc + g.current, 0) / goals.reduce((acc, g) => acc + g.target, 0)) * 100)}%
               </span>
             </div>
@@ -98,7 +98,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                 </div>
 
                 <div className="space-y-1">
-                  <h3 className="text-3xl font-bold text-white group-hover:text-[#f59e0b] transition-colors">
+                  <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#f59e0b] transition-colors">
                     {goal.title}
                   </h3>
                   <p className="text-base uppercase tracking-widest font-black text-white/70">
@@ -181,7 +181,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                         <span>Monthly Savings Required</span>
                         <Sparkles className="w-3 h-3" />
                       </div>
-                      <div className="text-4xl font-display font-bold text-white">
+                      <div className="text-xl md:text-2xl font-display font-bold text-white">
                         ${Math.round(results[goal.id]).toLocaleString()} <span className="text-lg font-sans font-medium text-white/70">/ mo</span>
                       </div>
                     </motion.div>

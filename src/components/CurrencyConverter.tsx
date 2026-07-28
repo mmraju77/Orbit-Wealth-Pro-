@@ -147,10 +147,10 @@ export default function CurrencyConverter() {
                         setAmount(val);
                         handleUpdate();
                       }}
-                      className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-5xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"
+                      className="w-full bg-white/5 border border-white/5 rounded-2xl px-6 py-6 text-xl md:text-2xl font-bold text-white outline-none focus:border-[#D4AF37] transition-all"
                     />
                     <div className="absolute right-6 top-1/2 -translate-y-1/2 flex items-center gap-2">
-                       <span className="text-3xl font-bold text-[#D4AF37]">{from}</span>
+                       <span className="text-xl md:text-2xl font-bold text-[#D4AF37]">{from}</span>
                        <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                           <Globe className="w-4 h-4 text-white/70" />
                        </div>
@@ -207,8 +207,8 @@ export default function CurrencyConverter() {
              <div className="h-full flex flex-col">
                <div className="space-y-1 mb-8">
                   <div className="text-lg font-bold text-white/70">{amount} {from} equals</div>
-                  <div className="text-7xl font-bold text-white tracking-widest">
-                    {formatValue(convertedAmount)} <span className="text-[#D4AF37] text-4xl">{to}</span>
+                  <div className="text-xl md:text-2xl font-bold text-white tracking-widest">
+                    {formatValue(convertedAmount)} <span className="text-[#D4AF37] text-xl md:text-2xl font-bold">{to}</span>
                   </div>
                </div>
 

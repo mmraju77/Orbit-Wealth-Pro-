@@ -144,12 +144,12 @@ export default function ChildEducationPlanner() {
            <div className="space-y-8">
               <div className="p-8 bg-white/5 rounded-2xl border border-white/5 text-center">
                  <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-2">Estimated Future Cost</div>
-                 <div className="text-7xl font-bold text-white tracking-tighter">{formatCurrency(results.futureCost)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.futureCost)}</div>
               </div>
               
               <div className="p-8 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
                  <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-2">Required Monthly Investment</div>
-                 <div className="text-7xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.monthlySIP)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.monthlySIP)}</div>
                  <div className="mt-4 text-base text-white/70">Assuming {expectedReturn}% annual compounded returns</div>
               </div>
            </div>

@@ -91,8 +91,8 @@ export default function AboutUs() {
                 <div className="space-y-4">
                   <div className="flex flex-col lg:flex-row items-center lg:items-end gap-3 lg:gap-4">
                     <h2 className="text-6xl md:text-7xl font-black text-white tracking-tight">Munchangi Matyaraju</h2>
-                    <span className="text-white/70 font-black text-4xl tracking-tighter hidden lg:block">/</span>
-                    <span className="text-white/70 font-display text-3xl tracking-tight">(mm Raju)</span>
+                    <span className="text-white/70 font-black text-xl md:text-2xl font-bold tracking-tighter hidden lg:block">/</span>
+                    <span className="text-white/70 font-display text-xl md:text-2xl font-bold tracking-tight">(mm Raju)</span>
                   </div>
                   <div className="flex items-center justify-center lg:justify-start gap-3">
                     <div className="p-2 bg-amber-500/10 rounded-lg">
@@ -135,7 +135,7 @@ export default function AboutUs() {
         <motion.div variants={itemVariants} className="mt-32 p-12 bg-white/[0.02] border border-white/5 rounded-[3rem] text-center space-y-6 relative overflow-hidden">
            <div className="relative z-10">
               <Sparkles className="w-8 h-8 text-amber-500 mx-auto mb-6 opacity-50" />
-              <h3 className="text-4xl font-bold text-white tracking-tight">Our Mission</h3>
+              <h3 className="text-xl md:text-2xl font-bold text-white tracking-tight">Our Mission</h3>
               <p className="text-white/70 max-w-2xl mx-auto leading-relaxed text-lg">
                 To democratize global financial intelligence by providing autonomous, multi-currency, and tax-aware simulation engines that empower the modern investor.
               </p>

@@ -255,7 +255,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
             </div>
 
             <div className="space-y-6">
-              <p className="text-3xl text-slate-100 font-medium leading-relaxed italic border-l-4 border-[#f59e0b] pl-6">
+              <p className="text-xl md:text-2xl font-bold text-slate-100 font-medium leading-relaxed italic border-l-4 border-[#f59e0b] pl-6">
                 {article.summary}
               </p>
               <div className="text-2xl text-slate-200 leading-relaxed font-light space-y-6">
@@ -414,7 +414,7 @@ export default function Dashboard() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-3xl font-display font-bold text-white group-hover:text-[#f59e0b] transition-colors duration-500">
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-white group-hover:text-[#f59e0b] transition-colors duration-500">
                       {card.title}
                     </h3>
                     <p className="text-lg text-slate-100 leading-relaxed font-medium line-clamp-2">
@@ -476,11 +476,11 @@ export default function Dashboard() {
         </div>
         <div className="flex gap-12">
             <div className="space-y-1 text-center">
-              <div className="text-5xl md:text-6xl font-display text-white">100%</div>
+              <div className="text-xl md:text-2xl font-bold md:text-xl md:text-2xl font-display font-bold text-white">100%</div>
               <div className="text-xs md:text-sm text-slate-300 uppercase font-black tracking-[0.2em]">Computation Accuracy</div>
             </div>
             <div className="space-y-1 text-center">
-              <div className="text-6xl font-display text-white">Instant</div>
+              <div className="text-xl md:text-2xl font-display font-bold text-white">Instant</div>
               <div className="text-base text-slate-300 uppercase font-black tracking-[0.2em]">Execution Latency</div>
             </div>
         </div>
@@ -494,7 +494,7 @@ export default function Dashboard() {
             <h2 className="text-3xl md:text-5xl font-bold text-[#F3C64F] mb-6 flex items-center gap-3">
               <UserCheck className="w-6 h-6" /> Meet the Founder
             </h2>
-            <h3 className="text-2xl md:text-4xl font-bold text-white mb-4">Munchangi Matyaraju (mm Raju)</h3>
+            <h3 className="text-xl md:text-2xl font-bold text-white mb-4">Munchangi Matyaraju (mm Raju)</h3>
             <p className="text-lg md:text-2xl text-slate-100 leading-relaxed max-w-2xl font-medium">
               Founder & Chief AI Architect of Orbit Wealth Pro. Committed to building zero-maintenance, 
               highly accurate financial intelligence tools for global investors. Driven by a passion for 

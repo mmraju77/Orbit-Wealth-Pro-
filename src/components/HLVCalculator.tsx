@@ -143,7 +143,7 @@ export default function HLVCalculator() {
                  <Shield className="w-32 h-32" />
               </div>
               <div className="text-base text-[#D4AF37] font-bold uppercase tracking-[0.4em]">Economic Protection Value</div>
-              <div className="text-8xl font-display font-medium text-white tracking-tighter">{formatCurrency(hlv)}</div>
+              <div className="text-xl md:text-2xl font-display font-bold text-white tracking-tighter">{formatCurrency(hlv)}</div>
               <div className="pt-4 flex items-center justify-center gap-3">
                  <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
                  <span className="text-base text-white/70 italic">Necessary coverage for your dependents</span>

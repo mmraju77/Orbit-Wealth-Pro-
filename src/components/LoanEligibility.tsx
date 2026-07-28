@@ -171,17 +171,17 @@ export default function LoanEligibility() {
              <div className="w-full space-y-8">
                <div className="text-center space-y-2">
                   <h3 className="text-white/70 font-bold uppercase tracking-widest text-base">Maximum Eligible {labels.loan} Amount</h3>
-                  <div className="text-8xl font-bold text-white tracking-widest">{formatCurrency(results.eligibleLoanAmount)}</div>
+                  <div className="text-xl md:text-2xl font-bold text-white tracking-widest">{formatCurrency(results.eligibleLoanAmount)}</div>
                </div>
 
                <div className="grid grid-cols-2 gap-4">
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
                     <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Max EMI Possible</div>
-                    <div className="text-4xl font-bold text-white">{formatCurrency(results.monthlyEMI)}</div>
+                    <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.monthlyEMI)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
                     <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">FOIR Limit</div>
-                    <div className="text-4xl font-bold text-white">{inputs.maxFOIR}%</div>
+                    <div className="text-xl md:text-2xl font-bold text-white">{inputs.maxFOIR}%</div>
                  </div>
                </div>
 

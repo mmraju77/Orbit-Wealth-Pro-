@@ -169,7 +169,7 @@ export default function IncomeTaxCalculator() {
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
                     <div>
                       <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Effective Tax Liability</div>
-                      <div className="text-5xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
+                      <div className="text-xl md:text-2xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
                     </div>
                     <Wallet className="text-white/70 w-10 h-10" />
                  </div>
@@ -177,7 +177,7 @@ export default function IncomeTaxCalculator() {
                  <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/10 flex items-center justify-between">
                     <div>
                       <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Take-home / Post-Tax</div>
-                      <div className="text-6xl font-bold text-white tracking-tighter">{formatCurrency(results.totalAmount)}</div>
+                      <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.totalAmount)}</div>
                     </div>
                  </div>
                </div>

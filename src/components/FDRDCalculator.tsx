@@ -218,15 +218,15 @@ export default function FDRDCalculator() {
                <div className="w-full md:w-1/2 space-y-6">
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 transition-all hover:bg-white/10 group">
                     <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1 group-hover:text-[#D4AF37] transition-colors">Total Invested</div>
-                    <div className="text-5xl font-bold tracking-tighter text-white">{formatCurrency(results.totalInvestment)}</div>
+                    <div className="text-xl md:text-2xl font-bold tracking-tighter text-white">{formatCurrency(results.totalInvestment)}</div>
                  </div>
                  <div className="p-6 bg-white/5 rounded-2xl border border-white/5 transition-all hover:bg-white/10 group">
                     <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1 group-hover:text-[#D4AF37] transition-colors">Wealth Gained</div>
-                    <div className="text-5xl font-bold tracking-tighter text-[#D4AF37]">{formatCurrency(results.interest)}</div>
+                    <div className="text-xl md:text-2xl font-bold tracking-tighter text-[#D4AF37]">{formatCurrency(results.interest)}</div>
                  </div>
                  <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 shadow-xl shadow-[#D4AF37]/5">
                     <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Maturity Value</div>
-                    <div className="text-6xl font-bold tracking-tighter text-white">{formatCurrency(results.matValue)}</div>
+                    <div className="text-xl md:text-2xl font-bold tracking-tighter text-white">{formatCurrency(results.matValue)}</div>
                  </div>
                </div>
              </>

@@ -126,7 +126,7 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
             </svg>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <div className="relative mt-2">
-                <span className="text-4xl md:text-5xl font-display font-black text-white tracking-tighter leading-none">{wealthScore}</span>
+                <span className="text-5xl font-display font-bold text-white tracking-tighter leading-none">{wealthScore}</span>
                 <div className="absolute top-0 -right-2 w-2 h-2 bg-emerald-500 rounded-full border border-[#0B1221]" />
               </div>
               <span className="text-[9px] max-w-[65%] text-center mx-auto leading-tight whitespace-normal font-medium text-gray-300 uppercase tracking-tight mt-1.5">Institutional Tier</span>

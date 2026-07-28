@@ -120,6 +120,27 @@ export default function MortgageCalculator() {
     doc.save('mortgage-calculation.pdf');
   };
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-20 text-white">
       <StructuredData 
@@ -146,7 +167,7 @@ export default function MortgageCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Results
           </button>
         </div>
@@ -223,11 +244,11 @@ export default function MortgageCalculator() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-white/5">
             <div className="p-4 bg-[#D4AF37]/5 rounded-xl border border-[#D4AF37]/10">
                 <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
-                <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
             </div>
             <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                 <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Loan Amount</div>
-                <div className="text-4xl font-bold text-white/70 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(inputs.homePrice - inputs.downPayment)}</div>
             </div>
           </div>
         </section>

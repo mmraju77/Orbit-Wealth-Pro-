@@ -28,7 +28,7 @@ export default function ContactUs() {
               <Mail className="text-[#D4AF37] w-6 h-6" />
               <div>
                 <div className="text-base font-bold text-white/70 uppercase tracking-widest text-left">Official Support Email</div>
-                <div className="text-3xl font-bold text-white tracking-tight">info@orbitwealthpro.com</div>
+                <div className="text-xl md:text-2xl font-bold text-white tracking-tight">info@orbitwealthpro.com</div>
               </div>
             </div>
           </div>

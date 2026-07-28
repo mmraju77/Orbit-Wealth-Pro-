@@ -160,7 +160,7 @@ export default function BlogHub() {
                 <span>{article.date}</span>
               </div>
 
-              <h3 className="text-3xl lg:text-4xl font-bold text-white line-clamp-3 leading-[1.6] group-hover:text-[#D4AF37] transition-colors pb-4">
+              <h3 className="text-xl md:text-2xl font-bold text-white line-clamp-3 leading-[1.6] group-hover:text-[#D4AF37] transition-colors pb-4">
                 {article.title}
               </h3>
 
@@ -210,7 +210,7 @@ export default function BlogHub() {
                 >
                   <CheckCircle2 className="w-12 h-12 text-emerald-400" />
                   <div className="text-center">
-                    <h4 className="text-3xl font-bold text-white">Welcome to the Inner Circle!</h4>
+                    <h4 className="text-xl md:text-2xl font-bold text-white">Welcome to the Inner Circle!</h4>
                     <p className="text-emerald-300 font-medium mb-4">Your wealth blueprint is on the way.</p>
                     <button 
                       onClick={() => setIsSubscribed(false)}

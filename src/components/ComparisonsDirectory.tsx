@@ -62,7 +62,7 @@ export default function ComparisonsDirectory() {
                   </div>
                   
                   <div className="space-y-2">
-                    <h3 className="text-3xl font-bold text-white group-hover:text-[#D4AF37] transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-white group-hover:text-[#D4AF37] transition-colors">
                       {data.optionAName} <span className="text-white/70 px-1">Vs</span> {data.optionBName}
                     </h3>
                     <p className="text-lg text-white/70 line-clamp-2 leading-relaxed">

@@ -69,7 +69,7 @@ export default function InsightModal({ insight, onClose }: InsightModalProps) {
               <Sparkles className="w-4 h-4" />
               Strategic Overview
             </div>
-            <p className="text-4xl text-slate-900 leading-snug font-bold tracking-tight">
+            <p className="text-xl md:text-2xl font-bold text-slate-900 leading-snug font-bold tracking-tight">
               {insight.text}
             </p>
           </div>

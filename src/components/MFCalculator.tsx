@@ -199,7 +199,7 @@ export default function MFCalculator() {
               <ShieldCheck className="text-[#D4AF37] w-8 h-8" />
               <div>
                  <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Expense Ratio Impact</div>
-                 <div className="text-3xl font-bold text-white tracking-tighter">-{formatCurrency(results.expenseRatioImpact)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">-{formatCurrency(results.expenseRatioImpact)}</div>
                  <p className="text-base text-white/70 mt-1">Wealth lost due to {inputs.expenseRatio}% TER over {inputs.duration} years.</p>
               </div>
            </div>
@@ -212,11 +212,11 @@ export default function MFCalculator() {
                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="p-4 bg-white/5 rounded-xl border border-white/5">
                         <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Invested</div>
-                        <div className="text-3xl font-bold text-white/70">{formatCurrency(results.investedAmount)}</div>
+                        <div className="text-xl md:text-2xl font-bold text-white/70">{formatCurrency(results.investedAmount)}</div>
                     </div>
                     <div className="p-4 bg-[#D4AF37]/20 rounded-xl border border-[#D4AF37]/30">
                         <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Total Wealth</div>
-                        <div className="text-3xl font-bold text-white">{formatCurrency(results.totalWealth)}</div>
+                        <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalWealth)}</div>
                     </div>
                  </div>
 

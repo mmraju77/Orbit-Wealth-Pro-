@@ -97,7 +97,7 @@ export default function TaxGuides() {
           <div key={idx} className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-[#D4AF37]/30 transition-all group">
             <div className="p-6 border-b border-white/5 bg-white/[0.01] flex justify-between items-center">
                <div className="flex items-center gap-3">
-                  <span className="text-4xl">{guide.flag}</span>
+                  <span className="text-xl md:text-2xl font-bold">{guide.flag}</span>
                   <h2 className="text-3xl font-bold tracking-tight">{guide.country} Tax Strategies</h2>
                </div>
                <ShieldCheck className="w-5 h-5 text-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -191,7 +191,7 @@ export default function GSTCalculator() {
                 <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
                    <div>
                      <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Tax Amount</div>
-                     <div className="text-5xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
+                     <div className="text-xl md:text-2xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
                    </div>
                    <Percent className="text-white/70 w-10 h-10" />
                 </div>
@@ -199,13 +199,13 @@ export default function GSTCalculator() {
                 <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/5 flex items-center justify-between">
                    <div>
                      <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">{inputs.isAddingTax ? 'Net Price (Before Tax)' : 'Base Price'}</div>
-                     <div className="text-3xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.originalAmount)}</div>
+                     <div className="text-xl md:text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.originalAmount)}</div>
                    </div>
                 </div>
 
                 <div className="p-8 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 shadow-xl shadow-[#D4AF37]/5">
                    <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">{inputs.isAddingTax ? 'Total Billing Value' : 'Net Price'}</div>
-                   <div className="text-6xl font-bold tracking-tighter text-white">{formatCurrency(results.totalAmount)}</div>
+                   <div className="text-xl md:text-2xl font-bold tracking-tighter text-white">{formatCurrency(results.totalAmount)}</div>
                 </div>
              </div>
            )}

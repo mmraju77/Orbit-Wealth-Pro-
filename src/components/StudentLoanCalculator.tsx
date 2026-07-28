@@ -181,11 +181,11 @@ export default function StudentLoanCalculator() {
            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
                  <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Monthly Payment</div>
-                 <div className="text-5xl font-bold text-white">{formatCurrency(results.emi)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.emi)}</div>
               </div>
               <div className="p-6 bg-white/5 rounded-2xl border border-white/5 text-center">
                  <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                 <div className="text-5xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-white/70">{formatCurrency(results.totalInterest)}</div>
               </div>
            </div>
 

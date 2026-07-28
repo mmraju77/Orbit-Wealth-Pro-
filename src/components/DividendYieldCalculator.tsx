@@ -125,11 +125,11 @@ export default function DividendYieldCalculator() {
            <div className="grid grid-cols-2 gap-4">
               <div className="p-6 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 text-center">
                  <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest mb-1">Dividend Yield</div>
-                 <div className="text-6xl font-bold text-white">{results.yield}%</div>
+                 <div className="text-xl md:text-2xl font-bold text-white">{results.yield}%</div>
               </div>
               <div className="p-6 bg-emerald-500/10 rounded-2xl border border-emerald-500/20 text-center">
                  <div className="text-base text-emerald-500 font-bold uppercase tracking-widest mb-1">Annual Passive Income</div>
-                 <div className="text-5xl font-bold text-white">{formatCurrency(results.totalIncome)}</div>
+                 <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalIncome)}</div>
               </div>
            </div>
 

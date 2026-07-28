@@ -134,7 +134,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                 {/* Article Body */}
                 <div className="lg:col-span-3 space-y-8">
                   <div className="markdown-body prose prose-invert prose-emerald max-w-none">
-                    <p className="text-3xl text-slate-100 leading-relaxed font-medium">
+                    <p className="text-xl md:text-2xl font-bold text-slate-100 leading-relaxed font-medium">
                       {article.excerpt}
                     </p>
                     <div className="h-px w-24 bg-[#D4AF37]/30 my-8" />
@@ -149,7 +149,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
                         This deep dive explores the psychological and mathematical frameworks required to maintain high-authority 
                         portfolios amidst shifting interest rate trajectories and evolving digital asset classes.
                       </p>
-                      <h3 className="text-4xl font-bold text-white mt-12 mb-6">The New Standard of Intelligence</h3>
+                      <h3 className="text-xl md:text-2xl font-bold text-white mt-12 mb-6">The New Standard of Intelligence</h3>
                       <p>
                         Automation in wealth management isn't just about efficiency; it's about eliminating the high-entropy friction 
                         of human bias. By implementing zero-maintenance intelligence loops, investors can ensure that their 

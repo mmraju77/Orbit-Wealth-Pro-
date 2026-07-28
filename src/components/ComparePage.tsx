@@ -158,11 +158,11 @@ export default function ComparePage() {
           <div className="p-8 text-base font-black text-white/70 uppercase tracking-[0.3em] flex items-center">
             <Info className="w-4 h-4 mr-2" /> Comparative Dimension
           </div>
-          <div className="p-8 text-4xl font-display font-bold text-[#D4AF37] flex items-center border-t md:border-t-0 border-white/5">
+          <div className="p-8 text-xl md:text-2xl font-display font-bold text-[#D4AF37] flex items-center border-t md:border-t-0 border-white/5">
              <div className="w-8 h-8 rounded-full bg-[#D4AF37]/10 flex items-center justify-center text-base mr-3 border border-[#D4AF37]/20">01</div>
              {data.optionAName}
           </div>
-          <div className="p-8 text-4xl font-display font-bold text-emerald-400 flex items-center border-t md:border-t-0 border-white/5">
+          <div className="p-8 text-xl md:text-2xl font-display font-bold text-emerald-400 flex items-center border-t md:border-t-0 border-white/5">
              <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-base mr-3 border border-emerald-500/20">02</div>
              {data.optionBName}
           </div>
@@ -238,9 +238,9 @@ export default function ComparePage() {
           </div>
           
           <div className="flex items-center gap-5">
-             <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] font-black text-3xl border border-[#D4AF37]/10 shadow-[0_0_20px_rgba(212,175,55,0.1)]">A</div>
+             <div className="w-14 h-14 rounded-2xl bg-[#D4AF37]/5 flex items-center justify-center text-[#D4AF37] font-black text-xl md:text-2xl font-bold border border-[#D4AF37]/10 shadow-[0_0_20px_rgba(212,175,55,0.1)]">A</div>
              <div>
-               <h3 className="text-4xl font-display font-bold text-white tracking-tight">{data.optionAName}</h3>
+               <h3 className="text-xl md:text-2xl font-display font-bold text-white tracking-tight">{data.optionAName}</h3>
                <p className="text-base text-white/70 uppercase font-black tracking-widest mt-1 italic">Structural Analysis</p>
              </div>
           </div>
@@ -289,9 +289,9 @@ export default function ComparePage() {
           </div>
 
           <div className="flex items-center gap-5">
-             <div className="w-14 h-14 rounded-2xl bg-emerald-500/5 flex items-center justify-center text-emerald-500 font-black text-3xl border border-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.1)]">B</div>
+             <div className="w-14 h-14 rounded-2xl bg-emerald-500/5 flex items-center justify-center text-emerald-500 font-black text-xl md:text-2xl font-bold border border-emerald-500/10 shadow-[0_0_20px_rgba(16,185,129,0.1)]">B</div>
              <div>
-               <h3 className="text-4xl font-display font-bold text-white tracking-tight">{data.optionBName}</h3>
+               <h3 className="text-xl md:text-2xl font-display font-bold text-white tracking-tight">{data.optionBName}</h3>
                <p className="text-base text-white/70 uppercase font-black tracking-widest mt-1 italic">Stability Profile</p>
              </div>
           </div>
@@ -345,7 +345,7 @@ export default function ComparePage() {
               <Sparkles className="text-[#D4AF37] w-8 h-8" />
              </div>
              <div>
-              <h3 className="text-6xl font-display font-bold text-white tracking-tight leading-snug mb-8">The Orbit Intelligence Verdict</h3>
+              <h3 className="text-xl md:text-2xl font-display font-bold text-white tracking-tight leading-snug mb-8">The Orbit Intelligence Verdict</h3>
               <div className="flex items-center gap-2">
                 <Activity className="w-3 h-3 text-[#D4AF37]" />
                 <p className="text-base text-white/70 font-black uppercase tracking-[0.4em]">Synthetic Logic Protocol • {activeRegion} Context</p>
@@ -354,7 +354,7 @@ export default function ComparePage() {
           </div>
 
           <div className="p-10 bg-white/[0.03] border-l-4 border-[#D4AF37] rounded-3xl relative backdrop-blur-sm">
-            <p className="text-5xl text-slate-100 leading-snug font-bold tracking-tight italic">
+            <p className="text-xl md:text-2xl font-bold text-slate-100 leading-snug font-bold tracking-tight italic">
                 "{data.verdict}"
             </p>
           </div>
@@ -382,7 +382,7 @@ export default function ComparePage() {
       <section className="space-y-8">
         <div className="flex items-center justify-between">
            <div className="space-y-1">
-             <h4 className="text-3xl font-display font-bold text-white">Explore {activeRegion} Comparisons</h4>
+             <h4 className="text-xl md:text-2xl font-display font-bold text-white">Explore {activeRegion} Comparisons</h4>
              <p className="text-base text-white/70 font-medium tracking-wide">AI-Generated intelligence for local market dynamics.</p>
            </div>
            <div className="hidden sm:block text-base font-black text-white/70 uppercase tracking-[0.3em]">

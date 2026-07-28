@@ -129,6 +129,27 @@ export default function RetirementCalculator() {
     doc.save('retirement-strategy.pdf');
   };
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-20 text-white">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
@@ -147,7 +168,7 @@ export default function RetirementCalculator() {
           <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
             <Download className="w-4 h-4" /> PDF Strategy
           </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
             <Share2 className="w-4 h-4" /> Share Corpus
           </button>
         </div>
@@ -222,11 +243,11 @@ export default function RetirementCalculator() {
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
                   <div className="p-4 md:p-6 bg-white/5 rounded-2xl border border-white/10 text-center">
                      <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Raw Corpus</div>
-                     <div className="text-3xl md:text-4xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
+                     <div className="text-xl md:text-2xl font-bold md:text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalSavings)}</div>
                   </div>
                   <div className="p-4 md:p-6 bg-[#D4AF37]/20 rounded-2xl border border-[#D4AF37]/30 text-center ring-2 ring-[#D4AF37]/50 ring-offset-4 ring-offset-black">
                      <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">Purchasing Power</div>
-                     <div className="text-3xl md:text-4xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
+                     <div className="text-xl md:text-2xl font-bold md:text-xl md:text-2xl font-bold text-white">{formatCurrency(results.inflationAdjustedCorpus)}</div>
                   </div>
                </div>
 

@@ -122,11 +122,11 @@ export default function BreakEvenCalculator() {
            <div className="grid grid-cols-2 gap-6">
               <div className="p-10 bg-white/[0.01] border border-white/[0.03] rounded-[2.5rem] text-center space-y-2">
                  <div className="text-base text-white/70 font-bold uppercase tracking-[0.3em]">Units to Neutral</div>
-                 <div className="text-7xl font-display font-medium text-white">{results.units}</div>
+                 <div className="text-xl md:text-2xl font-display font-bold text-white">{results.units}</div>
               </div>
               <div className="p-10 bg-[#D4AF37]/5 border border-[#D4AF37]/10 rounded-[2.5rem] text-center space-y-2">
                  <div className="text-base text-[#D4AF37] font-bold uppercase tracking-[0.3em]">Revenue to Neutral</div>
-                 <div className="text-7xl font-display font-medium text-[#D4AF37] tracking-tighter">{formatCurrency(results.revenue)}</div>
+                 <div className="text-xl md:text-2xl font-display font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.revenue)}</div>
               </div>
            </div>
 
@@ -136,7 +136,7 @@ export default function BreakEvenCalculator() {
               </div>
               <div className="space-y-1">
                  <div className="text-base text-white/70 font-bold uppercase tracking-widest">Contribution Margin</div>
-                 <div className="text-3xl font-bold uppercase font-display">{formatCurrency(sellingPricePerUnit - variableCostPerUnit)} <span className="text-white/70 text-base text-normal">/ unit</span></div>
+                 <div className="text-xl md:text-2xl font-bold uppercase font-display">{formatCurrency(sellingPricePerUnit - variableCostPerUnit)} <span className="text-white/70 text-base text-normal">/ unit</span></div>
               </div>
            </div>
 

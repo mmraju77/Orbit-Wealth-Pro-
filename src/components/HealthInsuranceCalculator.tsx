@@ -188,11 +188,11 @@ export default function HealthInsuranceCalculator() {
           <div className="p-6 bg-[#D4AF37]/5 rounded-2xl border border-[#D4AF37]/10 flex items-center justify-between">
              <div className="space-y-1">
                 <div className="text-base text-[#D4AF37] font-bold uppercase tracking-widest">Estimated Annual Premium</div>
-                <div className="text-5xl font-bold text-white tracking-tighter">{formatCurrency(results.annualPremium)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.annualPremium)}</div>
              </div>
              <div className="text-right">
                 <div className="text-base text-white/70 font-bold uppercase tracking-widest">Monthly Split</div>
-                <div className="text-3xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
+                <div className="text-xl md:text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.monthlyPremium)}</div>
              </div>
           </div>
         </section>
@@ -208,7 +208,7 @@ export default function HealthInsuranceCalculator() {
                   <div className="w-20 h-20 bg-[#D4AF37]/10 rounded-full flex items-center justify-center mx-auto mb-6 border border-[#D4AF37]/20">
                      <ShieldCheck className="w-10 h-10 text-[#D4AF37]" />
                   </div>
-                  <h3 className="text-4xl font-display font-medium">Coverage Score.</h3>
+                  <h3 className="text-xl md:text-2xl font-display font-bold">Coverage Score.</h3>
                   <p className="text-white/70 text-base italic max-w-xs mx-auto">
                     "Your family of {inputs.adults + inputs.children} is being modeled for comprehensive medical risk coverage."
                   </p>

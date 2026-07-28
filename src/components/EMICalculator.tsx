@@ -168,7 +168,7 @@ export default function EMICalculator() {
                <div className="relative w-[250px] h-[250px]">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 flex-col">
                     <div className="text-base text-white/70 font-bold uppercase tracking-widest">Monthly EMI</div>
-                    <div className="text-4xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
+                    <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>
                   </div>
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>
@@ -190,11 +190,11 @@ export default function EMICalculator() {
                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 w-full border-t border-white/5 pt-8 px-4">
                  <div className="text-center">
                     <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Interest</div>
-                    <div className="text-3xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
+                    <div className="text-xl md:text-2xl font-bold text-[#D4AF37]">{formatCurrency(results.totalInterest)}</div>
                  </div>
                  <div className="text-center">
                     <div className="text-base text-white/70 font-bold uppercase tracking-widest mb-1">Total Payable</div>
-                    <div className="text-3xl font-bold text-white">{formatCurrency(results.totalPayment)}</div>
+                    <div className="text-xl md:text-2xl font-bold text-white">{formatCurrency(results.totalPayment)}</div>
                  </div>
                </div>
             </div>
