@@ -11,7 +11,7 @@ export default defineConfig(({mode}) => {
     appType: 'spa',
     build: {
       target: 'esnext',
-      outDir: 'dist',
+      
       emptyOutDir: true,
       cssCodeSplit: true,
       chunkSizeWarningLimit: 2000,

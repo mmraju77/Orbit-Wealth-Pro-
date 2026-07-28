@@ -140,6 +140,7 @@ interface NewsArticle {
   date: string;
   category: string;
   image: string;
+  link?: string;
 }
 
 const NEWS_ARTICLES: NewsArticle[] = [
@@ -284,6 +285,9 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
 };
 
 const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArticle) => void }> = ({ article, onReadMore }) => {
+  const CardWrapper = (article.link ? 'a' : 'div') as any;
+  const wrapperProps = article.link ? { href: article.link, target: '_blank', rel: 'noopener noreferrer' } : { onClick: () => onReadMore(article) };
+  
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -291,6 +295,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       viewport={{ once: true }}
       className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500 h-fit"
     >
+      <CardWrapper {...wrapperProps} className="block cursor-pointer outline-none">
       <div className="h-40 overflow-hidden relative">
         <img 
           src={article.image} 
@@ -323,15 +328,32 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
               <Calendar className="w-3 h-3 text-white/70" />
               <span className="text-xs md:text-sm text-slate-200 font-bold uppercase tracking-widest">{article.date}</span>
            </div>
-           <button 
-             onClick={() => onReadMore(article)}
+           <div 
+             onClick={(e) => {
+               e.stopPropagation();
+               if (article.link) {
+                 window.open(article.link, '_blank', 'noopener,noreferrer');
+               } else {
+                 onReadMore(article);
+               }
+             }}
              aria-label={`Read full report: ${article.title}`}
              className="flex items-center gap-2 text-xs md:text-sm font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
+             role="button"
+             tabIndex={0}
+             onKeyDown={(e) => {
+               e.stopPropagation();
+               if (e.key === 'Enter' || e.key === ' ') {
+                 if (article.link) window.open(article.link, '_blank', 'noopener,noreferrer');
+                 else onReadMore(article);
+               }
+             }}
            >
              Read Full Report <ArrowUpRight className="w-3 h-3" />
-           </button>
+           </div>
         </div>
       </div>
+      </CardWrapper>
     </motion.div>
   );
 }
@@ -340,12 +362,61 @@ export default function Dashboard() {
   const [selectedArticle, setSelectedArticle] = React.useState<NewsArticle | null>(null);
   const [showAllNews, setShowAllNews] = React.useState(false);
   const [goals, setGoals] = React.useState<Goal[]>(INITIAL_GOALS);
+  const [liveNews, setLiveNews] = React.useState<NewsArticle[]>([]);
+  const [isFetchingNews, setIsFetchingNews] = React.useState(true);
+
+  React.useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://finance.yahoo.com/news/rss");
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data = await response.json();
+        
+        if (data && data.items && data.items.length > 0) {
+          const mappedArticles = data.items.map((item: any, idx: number) => {
+            // Try to extract an image from enclosure, thumbnail, or content
+            let image = item.enclosure?.link || item.thumbnail || 'https://images.unsplash.com/photo-1611974717482-98ea0519302c?auto=format&fit=crop&q=80&w=800&fm=webp';
+            
+            // Format date to Match "May 14, 2026"
+            const dateObj = new Date(item.pubDate);
+            const dateStr = dateObj.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+            
+            // Clean HTML tags from description if any
+            const doc = new DOMParser().parseFromString(item.description || item.title, 'text/html');
+            let textDesc = doc.body.textContent || "";
+            if (textDesc.length > 150) textDesc = textDesc.substring(0, 147) + '...';
+
+            return {
+              id: `live-news-${idx}`,
+              title: item.title,
+              summary: textDesc || item.title,
+              content: textDesc,
+              date: dateStr,
+              category: "Market News",
+              image: image,
+              link: item.link
+            };
+          });
+          setLiveNews(mappedArticles);
+        } else {
+          setLiveNews(NEWS_ARTICLES);
+        }
+      } catch (error) {
+        console.error("Failed to fetch live news, using fallback", error);
+        setLiveNews(NEWS_ARTICLES);
+      } finally {
+        setIsFetchingNews(false);
+      }
+    };
+    fetchNews();
+  }, []);
 
   const handleUpdateGoals = (updatedGoals: Goal[]) => {
     setGoals(updatedGoals);
   };
 
-  const visibleArticles = showAllNews ? NEWS_ARTICLES : NEWS_ARTICLES.slice(0, 3);
+  const sourceNews = liveNews.length > 0 ? liveNews : NEWS_ARTICLES;
+  const visibleArticles = showAllNews ? sourceNews : sourceNews.slice(0, 3);
 
   return (
     <div className="space-y-16 pb-16">
@@ -449,11 +520,30 @@ export default function Dashboard() {
            </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
-          {visibleArticles.map((article, idx) => (
-            <NewsCard key={idx} article={article} onReadMore={setSelectedArticle} />
-          ))}
-        </div>
+        {isFetchingNews ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden h-[380px] animate-pulse">
+                <div className="h-40 bg-white/[0.05] w-full"></div>
+                <div className="p-6 space-y-4">
+                  <div className="h-6 bg-white/[0.05] rounded w-3/4"></div>
+                  <div className="h-4 bg-white/[0.05] rounded w-full"></div>
+                  <div className="h-4 bg-white/[0.05] rounded w-5/6"></div>
+                  <div className="pt-4 flex justify-between">
+                    <div className="h-4 bg-white/[0.05] rounded w-1/4"></div>
+                    <div className="h-4 bg-white/[0.05] rounded w-1/3"></div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 items-start">
+            {visibleArticles.map((article, idx) => (
+              <NewsCard key={idx} article={article} onReadMore={setSelectedArticle} />
+            ))}
+          </div>
+        )}
         
         <div className="flex justify-center pt-4">
           <button aria-label="Toggle all news articles" 
