@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  CreditCard, Download, AlertTriangle, ArrowRight, Zap , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -14,6 +16,12 @@ import CurrencyInput from './CurrencyInput';
 import NumericInput from './NumericInput';
 
 export default function CreditCardPayoff() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'Credit Card Payoff' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [balance, setBalance] = useState(50000);
   const [interestRate, setInterestRate] = useState(24);
@@ -86,6 +94,7 @@ export default function CreditCardPayoff() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -178,7 +187,10 @@ export default function CreditCardPayoff() {
            <AIAdvisor context={`Credit card balance of ${balance} at ${interestRate}% APR. User is paying ${monthlyPayment} monthly. Results: ${results ? results.months + ' months' : 'Never paid off'}.`} />
         </section>
       </div>
-      <SEOSection 
+      
+        <RelatedTools tools={[{"title":"Debt Snowball","path":"/calculators/loans/debt-snowball","description":"Pay off multiple debts efficiently"},{"title":"Personal Loan","path":"/calculators/loans/personal-loan","description":"Consolidate debt with a personal loan"},{"title":"Balance Transfer","path":"/calculators/loans/home-loan-transfer","description":"Transfer balances to lower rates"}]} />
+
+        <SEOSection 
         title="Credit Card Payoff Calculator - Save on Interest"
         howTo={[
           "Enter your current credit card balance from your statement.",

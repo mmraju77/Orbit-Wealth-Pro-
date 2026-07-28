@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  GraduationCap, Download, Calculator, TrendingUp , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -14,6 +16,12 @@ import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
 export default function ChildEducationPlanner() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'Child Education Planner' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [currentCost, setCurrentCost] = useState(500000);
   const [inflation, setInflation] = useState(8);
@@ -78,6 +86,7 @@ export default function ChildEducationPlanner() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">

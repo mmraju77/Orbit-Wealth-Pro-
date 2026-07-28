@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  TrendingUp, Download, Info , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -14,6 +16,12 @@ import CurrencyInput from './CurrencyInput';
 import NumericInput from './NumericInput';
 
 export default function CAGRCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'CAGR Calculator' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [initialValue, setInitialValue] = useState(100000);
   const [finalValue, setFinalValue] = useState(250000);
@@ -60,6 +68,7 @@ export default function CAGRCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">

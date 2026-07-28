@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  Target, Download, TrendingUp, DollarSign, PieChart , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -13,6 +15,12 @@ import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
 export default function BreakEvenCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Business' },
+    { label: 'Break Even' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [fixedCosts, setFixedCosts] = useState(100000);
   const [variableCostPerUnit, setVariableCostPerUnit] = useState(50);

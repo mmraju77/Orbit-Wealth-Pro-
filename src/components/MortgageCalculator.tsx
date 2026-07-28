@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Landmark, Download, Share2, Info } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { MortgageInputs, AmortizationPeriod } from '../types';
@@ -28,6 +30,12 @@ const INITIAL_INPUTS: MortgageInputs = {
 };
 
 export default function MortgageCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'Home Loan EMI' }
+  ];
+
   const { region } = useParams<{ region: string }>();
   const { formatCurrency, currencySymbol, currency } = useLocale();
 

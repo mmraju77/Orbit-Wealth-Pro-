@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  Zap, Download, Plus, Trash2, List , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -21,6 +23,12 @@ interface Debt {
 }
 
 export default function DebtSnowball() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'Debt Snowball' }
+  ];
+
   const { formatCurrency, currencySymbol } = useLocale();
   const [debts, setDebts] = useState<Debt[]>([
     { id: '1', name: 'Credit Card A', balance: 50000, rate: 24, minPayment: 1500 },
@@ -86,6 +94,7 @@ export default function DebtSnowball() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -204,7 +213,10 @@ export default function DebtSnowball() {
            <AIAdvisor context={`User has ${debts.length} debts totaling ${totalBalance}. Smallest debt is ${sortedDebts[0]?.name} at ${sortedDebts[0]?.balance}. User is paying an extra ${extraPayment} monthly.`} />
         </section>
       </div>
-      <SEOSection 
+      
+        <RelatedTools tools={[{"title":"Credit Card Payoff","path":"/calculators/loans/credit-card-payoff","description":"Focus on paying off credit cards"},{"title":"Personal Loan EMI","path":"/calculators/loans/personal-loan","description":"Consolidate debt"},{"title":"Home Loan Transfer","path":"/calculators/loans/home-loan-transfer","description":"Reduce your mortgage rate"}]} />
+
+        <SEOSection 
         title="Debt Snowball Calculator - Financial Freedom Engine"
         howTo={[
           "List all your debts from smallest balance to largest balance.",

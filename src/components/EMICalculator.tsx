@@ -1,5 +1,7 @@
 import { CalculatorSEO } from "./CalculatorSEO";
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { CreditCard, Download, Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { MortgageInputs } from '../types';
@@ -18,6 +20,12 @@ const INITIAL_INPUTS: MortgageInputs = {
 };
 
 export default function EMICalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'EMI Calculator' }
+  ];
+
   const { formatCurrency, labels } = useLocale();
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
@@ -102,6 +110,7 @@ export default function EMICalculator() {
 
   return (
     <div className="space-y-8 pb-20">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">

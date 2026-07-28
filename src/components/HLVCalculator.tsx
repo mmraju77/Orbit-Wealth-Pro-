@@ -6,6 +6,8 @@ import CurrencyInput from "./CurrencyInput";
  */
 
 import React, { useState, useMemo } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  Download, Heart, Shield, Info, ShieldCheck , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -14,6 +16,12 @@ import AIAdvisor from './AIAdvisor';
 import NumericInput from './NumericInput';
 
 export default function HLVCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Insurance' },
+    { label: 'Human Life Value' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [age, setAge] = useState(30);
   const [retirementAge, setRetirementAge] = useState(60);
@@ -70,6 +78,7 @@ export default function HLVCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">

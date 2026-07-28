@@ -1,5 +1,7 @@
 import { CalculatorSEO } from "./CalculatorSEO";
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { PieChart as PieIcon, Download, Share2, TrendingUp, Info, ShieldCheck } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { MutualFundInputs } from '../types';
@@ -17,6 +19,12 @@ const INITIAL_INPUTS: MutualFundInputs = {
 };
 
 export default function MFCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'Mutual Fund Returns' }
+  ];
+
   const { formatCurrency, currencySymbol, formatValue } = useLocale();
   const [inputs, setInputs] = useState<MutualFundInputs>(INITIAL_INPUTS);
   const [mode, setMode] = useState<'lumpsum' | 'sip'>('sip');
@@ -124,6 +132,7 @@ export default function MFCalculator() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
@@ -258,7 +267,10 @@ export default function MFCalculator() {
            )}
         </section>
       </div>
-      <SEOSection 
+      
+        <RelatedTools tools={[{"title":"SIP Calculator","path":"/calculators/investing/sip","description":"Plan regular MF investments"},{"title":"Lumpsum Calculator","path":"/calculators/investing/lumpsum","description":"Calculate one-time investments"},{"title":"CAGR Calculator","path":"/calculators/investing/cagr","description":"Measure annualized returns"}]} />
+
+        <SEOSection 
         title="Mutual Fund Return Calculator"
         howTo={[
           "Choose between SIP (Monthly) or Lumpsum (One-time) investment mode.",

@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Percent, Download, Share2, Globe, Shield, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { TaxInputs } from '../types';
@@ -17,6 +19,12 @@ import { normalizeRegionKey } from '../data/pSEOData';
 import NumericInput from './NumericInput';
 
 export default function IncomeTaxCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Tax' },
+    { label: 'Income Tax' }
+  ];
+
   const { region } = useParams<{ region: string }>();
   const { formatCurrency, labels, currency, formatValue, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState({
@@ -129,6 +137,7 @@ export default function IncomeTaxCalculator() {
 
   return (
     <div className="space-y-8 pb-20">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
@@ -215,7 +224,10 @@ export default function IncomeTaxCalculator() {
            )}
         </section>
       </div>
-      <SEOSection 
+      
+        <RelatedTools tools={[{"title":"SIP Calculator","path":"/calculators/investing/sip","description":"Invest in ELSS for 80C deductions"},{"title":"Health Insurance","path":"/calculators/insurance/health-insurance","description":"Claim 80D deductions"},{"title":"Home Loan EMI","path":"/calculators/loans/mortgage","description":"Claim Section 24(b) benefits"}]} />
+
+        <SEOSection 
         title="Income Tax Calculator"
         howTo={[
           "Enter your annual gross income before any deductions to start the calculation.",

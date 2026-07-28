@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { ShieldCheck, Download, Share2, Info, Plus, Minus, HeartPulse, Users } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import SEOSection from './SEOSection';
@@ -31,6 +33,12 @@ const INITIAL_INPUTS: HealthInputs = {
 };
 
 export default function HealthInsuranceCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Insurance' },
+    { label: 'Health Insurance' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [inputs, setInputs] = useState<HealthInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
@@ -241,7 +249,10 @@ export default function HealthInsuranceCalculator() {
            )}
         </section>
       </div>
-      <SEOSection 
+      
+        <RelatedTools tools={[{"title":"Term Insurance","path":"/calculators/insurance/term-insurance","description":"Secure your family's future"},{"title":"HLV Calculator","path":"/calculators/insurance/hlv","description":"Calculate human life value"},{"title":"Income Tax","path":"/calculators/tax/income-tax","description":"Calculate 80D tax benefits"}]} />
+
+        <SEOSection 
         title="Health Insurance Calculator"
         howTo={[
           "Select the Sum Insured (Total coverage) you want for your family.",

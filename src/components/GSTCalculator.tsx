@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Percent, Download, Share2, Globe, Shield, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
@@ -30,6 +32,12 @@ const REGIONAL_TAX_SLABS: Record<string, number[]> = {
 };
 
 export default function GSTCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Tax' },
+    { label: 'GST Calculator' }
+  ];
+
   const { region } = useParams<{ region: string }>();
   const { formatCurrency, currencySymbol, currency } = useLocale();
 
@@ -121,6 +129,7 @@ export default function GSTCalculator() {
 
   return (
     <div className="space-y-8 pb-20">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">

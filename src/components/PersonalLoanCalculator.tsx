@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Wallet, Download, Share2, Info, TrendingDown } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
@@ -14,6 +16,12 @@ import NumericInput from './NumericInput';
 import CurrencyInput from './CurrencyInput';
 
 export default function PersonalLoanCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'Personal Loan' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [principal, setPrincipal] = useState(20000);
   const [interestRate, setInterestRate] = useState(10.5);
@@ -124,6 +132,7 @@ export default function PersonalLoanCalculator() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">

@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Gift, Download, Share2, Info, ShieldCheck } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { GratuityInputs } from '../types';
@@ -20,6 +22,12 @@ const INITIAL_INPUTS: GratuityInputs = {
 };
 
 export default function GratuityCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Salary' },
+    { label: 'Gratuity Calculator' }
+  ];
+
   const { formatCurrency, labels, currency } = useLocale();
   const [inputs, setInputs] = useState<GratuityInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
@@ -102,6 +110,7 @@ export default function GratuityCalculator() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">

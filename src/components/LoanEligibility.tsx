@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { UserCheck, Download, Share2, Info, Landmark } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { LoanEligibilityInputs } from '../types';
@@ -23,6 +25,12 @@ const INITIAL_INPUTS: LoanEligibilityInputs = {
 };
 
 export default function LoanEligibility() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'Loan Eligibility' }
+  ];
+
   const { formatCurrency, labels } = useLocale();
   const [inputs, setInputs] = useState<LoanEligibilityInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
@@ -101,6 +109,7 @@ export default function LoanEligibility() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">

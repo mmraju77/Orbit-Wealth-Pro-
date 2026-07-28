@@ -1,5 +1,7 @@
 import { CalculatorSEO } from "./CalculatorSEO";
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { TrendingUp, Copy, Check, Download, Share2 } from 'lucide-react';
 import { m as motion , AnimatePresence } from 'motion/react';
 import { useLocale } from '../context/LocaleContext';
@@ -24,6 +26,12 @@ const INITIAL_INPUTS: InvestmentInputs = {
 };
 
 export default function SIPCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'SIP Calculator' }
+  ];
+
   const { formatCurrency, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState<InvestmentInputs>(INITIAL_INPUTS);
   const [copied, setCopied] = useState(false);

@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { ArrowRightLeft, Download, Share2, TrendingDown, Landmark } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { BalanceTransferInputs } from '../types';
@@ -22,6 +24,12 @@ const INITIAL_INPUTS: BalanceTransferInputs = {
 };
 
 export default function BalanceTransfer() {
+
+  const breadcrumbItems = [
+    { label: 'Loans' },
+    { label: 'Balance Transfer' }
+  ];
+
   const { formatCurrency, labels, currencySymbol } = useLocale();
   const [inputs, setInputs] = useState<BalanceTransferInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
@@ -101,6 +109,7 @@ export default function BalanceTransfer() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
+        <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
@@ -221,7 +230,10 @@ export default function BalanceTransfer() {
            )}
         </section>
       </div>
-      <SEOSection 
+      
+        <RelatedTools tools={[{"title":"Home Loan EMI","path":"/calculators/loans/mortgage","description":"Calculate home loan EMI"},{"title":"Personal Loan EMI","path":"/calculators/loans/personal-loan","description":"Plan your personal loan"},{"title":"Debt Snowball","path":"/calculators/loans/debt-snowball","description":"Strategy to pay off debts faster"}]} />
+
+        <SEOSection 
         title="Home Loan Balance Transfer Calculator"
         howTo={[
           "Enter your currently outstanding principal amount on your home loan.",

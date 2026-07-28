@@ -6,6 +6,8 @@ import NumericInput from "./NumericInput";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  Coins, Download, Info, Percent , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -14,6 +16,12 @@ import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
 export default function DividendYieldCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'Dividend Yield' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [stockPrice, setStockPrice] = useState(150);
   const [annualDividend, setAnnualDividend] = useState(4.5);

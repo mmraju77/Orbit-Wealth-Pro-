@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Landmark, Download, Share2, TrendingUp, Calendar, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
@@ -14,6 +16,12 @@ import CurrencyInput from './CurrencyInput';
 import NumericInput from './NumericInput';
 
 export default function FDRDCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'FD / RD Calculator' }
+  ];
+
   const { formatCurrency, currencySymbol, labels, currency } = useLocale();
   const [type, setType] = useState<'FD' | 'RD'>('FD');
   const [inputs, setInputs] = useState({
@@ -116,6 +124,7 @@ export default function FDRDCalculator() {
 
   return (
     <div className="space-y-8 pb-20">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">

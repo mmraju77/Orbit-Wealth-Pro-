@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import {  Home, Download, Percent, Briefcase , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
@@ -13,6 +15,12 @@ import AIAdvisor from './AIAdvisor';
 import CurrencyInput from './CurrencyInput';
 
 export default function RentalYieldCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'Rental Yield' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [propertyValue, setPropertyValue] = useState(5000000);
   const [monthlyRent, setMonthlyRent] = useState(25000);

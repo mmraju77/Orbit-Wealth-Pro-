@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Shield, Download, Share2, Info, User, Activity } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
@@ -30,6 +32,12 @@ const INITIAL_INPUTS: TermInputs = {
 };
 
 export default function TermInsuranceCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Insurance' },
+    { label: 'Term Insurance' }
+  ];
+
   const { formatCurrency } = useLocale();
   const [inputs, setInputs] = useState<TermInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);

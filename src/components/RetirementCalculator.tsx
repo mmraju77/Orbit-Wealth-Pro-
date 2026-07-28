@@ -5,6 +5,8 @@ import { CalculatorSEO } from "./CalculatorSEO";
  */
 
 import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from './Breadcrumbs';
+import RelatedTools from './RelatedTools';
 import { Coins, Download, Share2, Info } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { RetirementInputs, RetirementResult } from '../types';
@@ -31,6 +33,12 @@ const REGIONAL_DEFAULTS: Record<string, { retirementAge: number; inflation: numb
 };
 
 export default function RetirementCalculator() {
+
+  const breadcrumbItems = [
+    { label: 'Investing' },
+    { label: 'Retirement Planner' }
+  ];
+
   const { region } = useParams<{ region: string }>();
   const { formatCurrency, currencySymbol, formatValue, currency } = useLocale();
 
