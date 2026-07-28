@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -116,7 +117,6 @@ export default function AutoLoanCalculator() {
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -267,7 +267,6 @@ export default function AutoLoanCalculator() {
            </div>
         </section>
       </div>
-
       <SEOSection 
         title="Auto & Car Loan Calculator"
         howTo={[
@@ -284,6 +283,21 @@ export default function AutoLoanCalculator() {
           "Includes a complete acquisition summary including tax and trade-in value."
         ]}
       />
+
+      <CalculatorSEO
+        id="AutoLoanCalculator"
+        title="Auto Loan  Calculator"
+        description="Calculate your auto loan  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the Auto Loan  Calculator?",
+          answer: "The Auto Loan  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

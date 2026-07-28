@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 import React, { useState, useMemo, useEffect } from 'react';
 import { TrendingUp, Copy, Check, Download, Share2 } from 'lucide-react';
 import { m as motion , AnimatePresence } from 'motion/react';
@@ -156,7 +157,6 @@ export default function SIPCalculator() {
           </button>
         </div>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         {/* INPUTS */}
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
@@ -259,7 +259,6 @@ export default function SIPCalculator() {
           )}
         </section>
       </div>
-
       <SEOSection 
         title="SIP Calculator"
         howTo={[
@@ -276,6 +275,21 @@ export default function SIPCalculator() {
           "Calculates exact maturity value for specific financial goals."
         ]}
       />
+
+      <CalculatorSEO
+        id="SIPCalculator"
+        title="S I P  Calculator"
+        description="Calculate your s i p  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the S I P  Calculator?",
+          answer: "The S I P  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

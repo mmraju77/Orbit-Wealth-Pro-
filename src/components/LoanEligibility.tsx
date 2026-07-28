@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -120,7 +121,6 @@ export default function LoanEligibility() {
           </button>
         </div>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
@@ -202,7 +202,6 @@ export default function LoanEligibility() {
            )}
         </section>
       </div>
-
       <SEOSection 
         title="Loan Eligibility Calculator"
         howTo={[
@@ -220,6 +219,21 @@ export default function LoanEligibility() {
           "Reduce the risk of loan rejection by checking FOIR limits beforehand."
         ]}
       />
+
+      <CalculatorSEO
+        id="LoanEligibility"
+        title="Loan Eligibility Calculator"
+        description="Calculate your loan eligibility easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the Loan Eligibility Calculator?",
+          answer: "The Loan Eligibility Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 import React, { useState, useMemo, useEffect } from 'react';
 import { PieChart as PieIcon, Download, Share2, TrendingUp, Info, ShieldCheck } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
@@ -143,7 +144,6 @@ export default function MFCalculator() {
           </button>
         </div>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="flex p-1 bg-white/5 rounded-xl border border-white/5 w-fit">
@@ -258,7 +258,6 @@ export default function MFCalculator() {
            )}
         </section>
       </div>
-
       <SEOSection 
         title="Mutual Fund Return Calculator"
         howTo={[
@@ -275,6 +274,21 @@ export default function MFCalculator() {
           "Support for global currency and local number system formatting."
         ]}
       />
+
+      <CalculatorSEO
+        id="MFCalculator"
+        title="M F  Calculator"
+        description="Calculate your m f  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the M F  Calculator?",
+          answer: "The M F  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 import CurrencyInput from "./CurrencyInput";
 /**
  * @license
@@ -87,7 +88,6 @@ export default function HLVCalculator() {
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <section className="space-y-10 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
            <div className="grid grid-cols-2 gap-8">
@@ -153,7 +153,6 @@ export default function HLVCalculator() {
            <AIAdvisor context={`User is ${age} years old, earning ${annualIncome} annually and spending ${personalExpenses} on self. Retirement target is ${retirementAge}. Calculated HLV is ${hlv}.`} />
         </section>
       </div>
-
       <SEOSection 
         title="Human Life Value (HLV) Calculator for Term Life Insurance"
         howTo={[
@@ -170,6 +169,21 @@ export default function HLVCalculator() {
           "Plan for the erosion of purchasing power over the next 20-40 years."
         ]}
       />
+
+      <CalculatorSEO
+        id="HLVCalculator"
+        title="H L V  Calculator"
+        description="Calculate your h l v  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the H L V  Calculator?",
+          answer: "The H L V  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -140,7 +141,6 @@ export default function GSTCalculator() {
           </button>
         </div>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/5">
@@ -222,7 +222,6 @@ export default function GSTCalculator() {
            )}
         </section>
       </div>
-
       <SEOSection 
         title="GST / VAT Calculator"
         howTo={[
@@ -239,6 +238,21 @@ export default function GSTCalculator() {
           "Optimized for global VAT and regional GST standards."
         ]}
       />
+
+      <CalculatorSEO
+        id="GSTCalculator"
+        title="G S T  Calculator"
+        description="Calculate your g s t  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the G S T  Calculator?",
+          answer: "The G S T  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

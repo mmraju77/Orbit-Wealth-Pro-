@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -103,7 +104,6 @@ export default function DebtSnowball() {
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <section className="space-y-8 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
           <div className="flex justify-between items-center mb-6">
@@ -204,7 +204,6 @@ export default function DebtSnowball() {
            <AIAdvisor context={`User has ${debts.length} debts totaling ${totalBalance}. Smallest debt is ${sortedDebts[0]?.name} at ${sortedDebts[0]?.balance}. User is paying an extra ${extraPayment} monthly.`} />
         </section>
       </div>
-
       <SEOSection 
         title="Debt Snowball Calculator - Financial Freedom Engine"
         howTo={[
@@ -221,6 +220,21 @@ export default function DebtSnowball() {
           "Proven method popularized by major financial coaches."
         ]}
       />
+
+      <CalculatorSEO
+        id="DebtSnowball"
+        title="Debt Snowball Calculator"
+        description="Calculate your debt snowball easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the Debt Snowball Calculator?",
+          answer: "The Debt Snowball Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

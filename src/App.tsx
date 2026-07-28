@@ -177,42 +177,42 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
                 <Route path="/compare/:pair" element={<ComparePage />} />
                 
                 {/* Dynamic Calculator Routing - Ensuring DOM efficiency by unmounting inactive views */}
-                <Route path="/calculators/mortgage" element={<MortgageCalculator />} />
-                <Route path="/calculators/retirement" element={<RetirementCalculator />} />
-                <Route path="/calculators/income-tax" element={<IncomeTaxCalculator />} />
-                <Route path="/calculators/gst" element={<GSTCalculator />} />
-                <Route path="/calculators/fd-rd" element={<FDRDCalculator />} />
-                <Route path="/calculators/sip" element={<SIPCalculator />} />
-                <Route path="/calculators/lumpsum" element={<LumpsumCalculator />} />
-                <Route path="/calculators/emi" element={<EMICalculator />} />
-                <Route path="/calculators/mutual-fund" element={<MFCalculator />} />
-                <Route path="/calculators/loan-eligibility" element={<LoanEligibility />} />
-                <Route path="/calculators/home-loan-transfer" element={<BalanceTransfer />} />
-                <Route path="/calculators/gratuity" element={<GratuityCalculator />} />
-                <Route path="/calculators/currency-converter" element={<CurrencyConverter />} />
-                <Route path="/calculators/personal-loan" element={<PersonalLoanCalculator />} />
-                <Route path="/calculators/auto-loan" element={<AutoLoanCalculator />} />
-                <Route path="/calculators/student-loan" element={<StudentLoanCalculator />} />
-                <Route path="/calculators/cagr" element={<CAGRCalculator />} />
-                <Route path="/calculators/dividend-yield" element={<DividendYieldCalculator />} />
-                <Route path="/calculators/child-education" element={<ChildEducationPlanner />} />
-                <Route path="/calculators/rental-yield" element={<RentalYieldCalculator />} />
-                <Route path="/calculators/debt-snowball" element={<DebtSnowball />} />
-                <Route path="/calculators/hlv" element={<HLVCalculator />} />
-                <Route path="/calculators/break-even" element={<BreakEvenCalculator />} />
-                <Route path="/calculators/credit-card-payoff" element={<CreditCardPayoff />} />
-                <Route path="/calculators/term-insurance" element={<TermInsuranceCalculator />} />
-                <Route path="/calculators/health-insurance" element={<HealthInsuranceCalculator />} />
+                <Route path="/calculators/loans/mortgage" element={<MortgageCalculator />} />
+                <Route path="/calculators/investing/retirement" element={<RetirementCalculator />} />
+                <Route path="/calculators/tax/income-tax" element={<IncomeTaxCalculator />} />
+                <Route path="/calculators/tax/gst" element={<GSTCalculator />} />
+                <Route path="/calculators/investing/fd-rd" element={<FDRDCalculator />} />
+                <Route path="/calculators/investing/sip" element={<SIPCalculator />} />
+                <Route path="/calculators/investing/lumpsum" element={<LumpsumCalculator />} />
+                <Route path="/calculators/loans/emi" element={<EMICalculator />} />
+                <Route path="/calculators/investing/mutual-fund" element={<MFCalculator />} />
+                <Route path="/calculators/loans/eligibility" element={<LoanEligibility />} />
+                <Route path="/calculators/loans/home-loan-transfer" element={<BalanceTransfer />} />
+                <Route path="/calculators/salary/gratuity" element={<GratuityCalculator />} />
+                <Route path="/calculators/forex/currency-converter" element={<CurrencyConverter />} />
+                <Route path="/calculators/loans/personal-loan" element={<PersonalLoanCalculator />} />
+                <Route path="/calculators/loans/auto-loan" element={<AutoLoanCalculator />} />
+                <Route path="/calculators/loans/student-loan" element={<StudentLoanCalculator />} />
+                <Route path="/calculators/investing/cagr" element={<CAGRCalculator />} />
+                <Route path="/calculators/investing/dividend-yield" element={<DividendYieldCalculator />} />
+                <Route path="/calculators/investing/child-education" element={<ChildEducationPlanner />} />
+                <Route path="/calculators/investing/rental-yield" element={<RentalYieldCalculator />} />
+                <Route path="/calculators/loans/debt-snowball" element={<DebtSnowball />} />
+                <Route path="/calculators/insurance/hlv" element={<HLVCalculator />} />
+                <Route path="/calculators/business/break-even" element={<BreakEvenCalculator />} />
+                <Route path="/calculators/loans/credit-card-payoff" element={<CreditCardPayoff />} />
+                <Route path="/calculators/insurance/term-insurance" element={<TermInsuranceCalculator />} />
+                <Route path="/calculators/insurance/health-insurance" element={<HealthInsuranceCalculator />} />
 
                 {/* pSEO & Tools */}
                 <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
                 <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
                 
                 {/* Legacy Redirects */}
-                <Route path="/calculators/tax" element={<Navigate to="/calculators/income-tax" replace />} />
-                <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loan-eligibility" replace />} />
-                <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/home-loan-transfer" replace />} />
-                <Route path="/calculators/currency" element={<Navigate to="/calculators/currency-converter" replace />} />
+                <Route path="/calculators/tax" element={<Navigate to="/calculators/tax/income-tax" replace />} />
+                <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loans/eligibility" replace />} />
+                <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/loans/home-loan-transfer" replace />} />
+                <Route path="/calculators/currency" element={<Navigate to="/calculators/forex/currency-converter" replace />} />
                 
                 {/* Legal & Static */}
                 <Route path="/about" element={<AboutUs />} />

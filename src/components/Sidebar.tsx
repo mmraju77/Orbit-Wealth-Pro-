@@ -58,51 +58,51 @@ const NAV_SECTIONS: NavSection[] = [
     label: 'Wealth Management',
     icon: TrendingUp,
     items: [
-      { label: 'SIP Manager', path: '/calculators/sip', icon: TrendingUp },
-      { label: 'Lumpsum Growth', path: '/calculators/lumpsum', icon: BarChart3 },
-      { label: 'Mutual Funds', path: '/calculators/mutual-fund', icon: PieChart },
-      { label: 'Investment CAGR', path: '/calculators/cagr', icon: Target },
-      { label: 'Dividend Yield', path: '/calculators/dividend-yield', icon: Coins },
-      { label: 'FD & RD Plan', path: '/calculators/fd-rd', icon: Landmark },
+      { label: 'SIP Manager', path: '/calculators/investing/sip', icon: TrendingUp },
+      { label: 'Lumpsum Growth', path: '/calculators/investing/lumpsum', icon: BarChart3 },
+      { label: 'Mutual Funds', path: '/calculators/investing/mutual-fund', icon: PieChart },
+      { label: 'Investment CAGR', path: '/calculators/investing/cagr', icon: Target },
+      { label: 'Dividend Yield', path: '/calculators/investing/dividend-yield', icon: Coins },
+      { label: 'FD & RD Plan', path: '/calculators/investing/fd-rd', icon: Landmark },
     ]
   },
   {
     label: 'Debt & Credit',
     icon: Wallet,
     items: [
-      { label: 'Debt Snowball', path: '/calculators/debt-snowball', icon: Zap },
-      { label: 'Credit Card Payoff', path: '/calculators/credit-card-payoff', icon: CreditCard },
-      { label: 'Mortgage / Home', path: '/calculators/mortgage', icon: Landmark },
-      { label: 'Personal Loan', path: '/calculators/personal-loan', icon: Wallet },
-      { label: 'Auto (Car) Loan', path: '/calculators/auto-loan', icon: Car },
-      { label: 'Student Debt', path: '/calculators/student-loan', icon: GraduationCap },
-      { label: 'Universal EMI', path: '/calculators/emi', icon: CreditCard },
+      { label: 'Debt Snowball', path: '/calculators/loans/debt-snowball', icon: Zap },
+      { label: 'Credit Card Payoff', path: '/calculators/loans/credit-card-payoff', icon: CreditCard },
+      { label: 'Mortgage / Home', path: '/calculators/loans/mortgage', icon: Landmark },
+      { label: 'Personal Loan', path: '/calculators/loans/personal-loan', icon: Wallet },
+      { label: 'Auto (Car) Loan', path: '/calculators/loans/auto-loan', icon: Car },
+      { label: 'Student Debt', path: '/calculators/loans/student-loan', icon: GraduationCap },
+      { label: 'Universal EMI', path: '/calculators/loans/emi', icon: CreditCard },
     ]
   },
   {
     label: 'Insurance',
     icon: Shield,
     items: [
-      { label: 'HLV Calculator', path: '/calculators/hlv', icon: ShieldCheck },
-      { label: 'Term Life', path: '/calculators/term-insurance', icon: Shield },
-      { label: 'Health Guard', path: '/calculators/health-insurance', icon: ShieldCheck }
+      { label: 'HLV Calculator', path: '/calculators/insurance/hlv', icon: ShieldCheck },
+      { label: 'Term Life', path: '/calculators/insurance/term-insurance', icon: Shield },
+      { label: 'Health Guard', path: '/calculators/insurance/health-insurance', icon: ShieldCheck }
     ]
   },
   {
     label: 'Business Finance',
     icon: Briefcase,
     items: [
-       { label: 'Break-Even Analysis', path: '/calculators/break-even', icon: Target },
-       { label: 'Rental ROI', path: '/calculators/rental-yield', icon: Building },
-       { label: 'Gratuity', path: '/calculators/gratuity', icon: Gift },
+       { label: 'Break-Even Analysis', path: '/calculators/business/break-even', icon: Target },
+       { label: 'Rental ROI', path: '/calculators/investing/rental-yield', icon: Building },
+       { label: 'Gratuity', path: '/calculators/salary/gratuity', icon: Gift },
     ]
   },
   {
     label: 'Global Taxes',
     icon: Globe,
     items: [
-      { label: 'Income Tax', path: '/calculators/income-tax', icon: Percent },
-      { label: 'GST / VAT', path: '/calculators/gst', icon: ShieldCheck },
+      { label: 'Income Tax', path: '/calculators/tax/income-tax', icon: Percent },
+      { label: 'GST / VAT', path: '/calculators/tax/gst', icon: ShieldCheck },
       { label: 'Tax Guides', path: '/tax-guides', icon: Globe },
     ]
   },

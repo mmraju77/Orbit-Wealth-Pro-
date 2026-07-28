@@ -1,58 +1,165 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Core Infrastructure Roots -->
   <url>
-    <loc>https://orbitwealthpro.com/</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://orbitwealthpro.com/insights</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/mortgage</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Programmatic Comparison Pattern Samples - Global -->
-  <url>
-    <loc>https://orbitwealthpro.com/compare/401k-vs-index-funds</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://orbitwealthpro.com/compare/stocks-vs-bonds</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Programmatic Comparison Pattern Samples - India -->
-  <url>
-    <loc>https://orbitwealthpro.com/compare/sip-vs-fd</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://orbitwealthpro.com/compare/lumpsum-vs-ppf</loc>
-    <lastmod>2026-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Core Calculator Roots -->
-  <url>
-    <loc>https://orbitwealthpro.com/calculators/sip</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/retirement</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://orbitwealthpro.com/calculators/mortgage</loc>
-    <lastmod>2026-05-22</lastmod>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/tax/income-tax</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/tax/gst</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/fd-rd</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/sip</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/lumpsum</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/emi</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/mutual-fund</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/eligibility</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/home-loan-transfer</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/salary/gratuity</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/forex/currency-converter</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/personal-loan</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/auto-loan</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/student-loan</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/cagr</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/dividend-yield</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/child-education</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/investing/rental-yield</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/debt-snowball</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/insurance/hlv</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/business/break-even</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/loans/credit-card-payoff</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/insurance/term-insurance</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://ais-pre-ppujhwp7woa7petjzv7ac3-338496262969.asia-east1.run.app/calculators/insurance/health-insurance</loc>
+    <lastmod>2026-07-28T13:42:33.537Z</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

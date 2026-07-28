@@ -44,16 +44,16 @@ export default function Footer() {
             <h4 className="text-base font-bold text-slate-100 uppercase tracking-widest mb-6">Tools & Resources</h4>
             <ul className="space-y-4">
               <li>
-                <Link to="/calculators/mortgage" className="text-lg text-white/70 hover:text-white transition-colors">Mortgage Engine</Link>
+                <Link to="/calculators/loans/mortgage" className="text-lg text-white/70 hover:text-white transition-colors">Mortgage Engine</Link>
               </li>
               <li>
-                <Link to="/calculators/income-tax" className="text-lg text-white/70 hover:text-white transition-colors">Tax Calculator</Link>
+                <Link to="/calculators/tax/income-tax" className="text-lg text-white/70 hover:text-white transition-colors">Tax Calculator</Link>
               </li>
               <li>
-                <Link to="/calculators/retirement" className="text-lg text-white/70 hover:text-white transition-colors">Retirement Planner</Link>
+                <Link to="/calculators/investing/retirement" className="text-lg text-white/70 hover:text-white transition-colors">Retirement Planner</Link>
               </li>
               <li>
-                <Link to="/calculators/sip" className="text-lg text-white/70 hover:text-white transition-colors">SIP Estimator</Link>
+                <Link to="/calculators/investing/sip" className="text-lg text-white/70 hover:text-white transition-colors">SIP Estimator</Link>
               </li>
             </ul>
           </div>

@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -96,7 +97,6 @@ export default function BreakEvenCalculator() {
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-12">
         <section className="space-y-10 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
            <div className="space-y-8">
@@ -155,7 +155,6 @@ export default function BreakEvenCalculator() {
            <AIAdvisor context={`Fixed costs of ${fixedCosts}. Selling units for ${sellingPricePerUnit} with a variable cost of ${variableCostPerUnit}. Break-even is ${results.units} units.`} />
         </section>
       </div>
-
       <SEOSection 
         title="Business Break-Even Point Calculator"
         howTo={[
@@ -172,6 +171,21 @@ export default function BreakEvenCalculator() {
           "Crucial for startup pitch decks and internal budgeting."
         ]}
       />
+
+      <CalculatorSEO
+        id="BreakEvenCalculator"
+        title="Break Even  Calculator"
+        description="Calculate your break even  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the Break Even  Calculator?",
+          answer: "The Break Even  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

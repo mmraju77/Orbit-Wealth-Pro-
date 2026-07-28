@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -77,7 +78,6 @@ export default function CAGRCalculator() {
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
@@ -131,7 +131,6 @@ export default function CAGRCalculator() {
            <AIAdvisor context={`User's investment grew from ${initialValue} to ${finalValue} over ${duration} years, resulting in a CAGR of ${cagr}%.`} />
         </section>
       </div>
-
       <SEOSection 
         title="CAGR Calculator - Compound Annual Growth Rate"
         howTo={[
@@ -148,6 +147,21 @@ export default function CAGRCalculator() {
           "Essential for business revenue growth tracking."
         ]}
       />
+
+      <CalculatorSEO
+        id="CAGRCalculator"
+        title="C A G R  Calculator"
+        description="Calculate your c a g r  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the C A G R  Calculator?",
+          answer: "The C A G R  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -121,7 +122,6 @@ export default function GratuityCalculator() {
           </button>
         </div>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
            <div className="space-y-6">
@@ -186,7 +186,6 @@ export default function GratuityCalculator() {
            )}
         </section>
       </div>
-
       <SEOSection 
         title="Gratuity Calculator"
         howTo={[
@@ -203,6 +202,21 @@ export default function GratuityCalculator() {
           "Download proof of calculation for HR or legal reference."
         ]}
       />
+
+      <CalculatorSEO
+        id="GratuityCalculator"
+        title="Gratuity  Calculator"
+        description="Calculate your gratuity  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the Gratuity  Calculator?",
+          answer: "The Gratuity  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }

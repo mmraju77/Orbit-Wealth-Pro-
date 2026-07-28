@@ -1,3 +1,4 @@
+import { CalculatorSEO } from "./CalculatorSEO";
 import React, { useState, useMemo, useEffect } from 'react';
 import { CreditCard, Download, Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
@@ -121,7 +122,6 @@ export default function EMICalculator() {
           </button>
         </div>
       </div>
-
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
           <div className="space-y-6">
@@ -213,7 +213,6 @@ export default function EMICalculator() {
           )}
         </section>
       </div>
-
       <SEOSection 
         title="EMI Global Calculator"
         howTo={[
@@ -230,6 +229,21 @@ export default function EMICalculator() {
           "Includes a breakdown of total interest versus principal amount."
         ]}
       />
+
+      <CalculatorSEO
+        id="EMICalculator"
+        title="E M I  Calculator"
+        description="Calculate your e m i  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the E M I  Calculator?",
+          answer: "The E M I  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
     </div>
   );
 }
