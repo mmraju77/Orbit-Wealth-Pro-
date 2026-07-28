@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useEffect } from 'react';
+import React, {  useEffect , lazy, Suspense } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { resolveRegion, resolveCalculatorKey, resolveCalculatorData, REGIONS, CALCULATORS } from '../data/pSEOData';
@@ -12,24 +12,24 @@ import { useLocale } from '../context/LocaleContext';
 import { CurrencyCode } from '../types';
 
 // Import all calculators to render them dynamically
-import MortgageCalculator from './MortgageCalculator';
-import RetirementCalculator from './RetirementCalculator';
-import IncomeTaxCalculator from './IncomeTaxCalculator';
-import GSTCalculator from './GSTCalculator';
-import FDRDCalculator from './FDRDCalculator';
-import SIPCalculator from './SIPCalculator';
-import LumpsumCalculator from './LumpsumCalculator';
-import EMICalculator from './EMICalculator';
-import LoanEligibility from './LoanEligibility';
-import BalanceTransfer from './BalanceTransfer';
-import GratuityCalculator from './GratuityCalculator';
-import CurrencyConverter from './CurrencyConverter';
-import MFCalculator from './MFCalculator';
-import PersonalLoanCalculator from './PersonalLoanCalculator';
-import AutoLoanCalculator from './AutoLoanCalculator';
-import StudentLoanCalculator from './StudentLoanCalculator';
-import TermInsuranceCalculator from './TermInsuranceCalculator';
-import HealthInsuranceCalculator from './HealthInsuranceCalculator';
+const MortgageCalculator = lazy(() => import('./MortgageCalculator'));
+const RetirementCalculator = lazy(() => import('./RetirementCalculator'));
+const IncomeTaxCalculator = lazy(() => import('./IncomeTaxCalculator'));
+const GSTCalculator = lazy(() => import('./GSTCalculator'));
+const FDRDCalculator = lazy(() => import('./FDRDCalculator'));
+const SIPCalculator = lazy(() => import('./SIPCalculator'));
+const LumpsumCalculator = lazy(() => import('./LumpsumCalculator'));
+const EMICalculator = lazy(() => import('./EMICalculator'));
+const LoanEligibility = lazy(() => import('./LoanEligibility'));
+const BalanceTransfer = lazy(() => import('./BalanceTransfer'));
+const GratuityCalculator = lazy(() => import('./GratuityCalculator'));
+const CurrencyConverter = lazy(() => import('./CurrencyConverter'));
+const MFCalculator = lazy(() => import('./MFCalculator'));
+const PersonalLoanCalculator = lazy(() => import('./PersonalLoanCalculator'));
+const AutoLoanCalculator = lazy(() => import('./AutoLoanCalculator'));
+const StudentLoanCalculator = lazy(() => import('./StudentLoanCalculator'));
+const TermInsuranceCalculator = lazy(() => import('./TermInsuranceCalculator'));
+const HealthInsuranceCalculator = lazy(() => import('./HealthInsuranceCalculator'));
 
 const CALCULATOR_COMPONENTS: Record<string, React.ComponentType> = {
   'mortgage': MortgageCalculator,
@@ -115,7 +115,9 @@ export default function PSEOLandingPage() {
       </div>
 
       <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-        <CalculatorComponent />
+        <Suspense fallback={<div className="animate-pulse h-96 bg-white/5 rounded-3xl"></div>}>
+          <CalculatorComponent />
+        </Suspense>
       </div>
 
       {regionData.localInsights && regionData.localInsights.length > 0 && (

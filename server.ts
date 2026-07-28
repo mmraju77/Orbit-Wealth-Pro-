@@ -60,8 +60,17 @@ async function startServer() {
       });
 
       res.json({ text: response.text });
-    } catch (error) {
+    } catch (error: any) {
       console.error("Chat API Error:", error);
+      
+      // Handle Rate Limit / Quota Exhausted gracefully
+      const errorMessage = error?.message || String(error);
+      if (errorMessage.includes("RESOURCE_EXHAUSTED") || errorMessage.includes("429")) {
+        return res.json({ 
+          text: "Orbit AI Systems are currently operating at maximum capacity due to high volume. Please maintain your current financial strategy and try querying again shortly." 
+        });
+      }
+      
       res.status(500).json({ error: "Internal server error" });
     }
   });
