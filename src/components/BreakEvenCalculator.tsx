@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useMemo } from 'react';
-import { Target, Download, TrendingUp, DollarSign, PieChart } from 'lucide-react';
+import {  Target, Download, TrendingUp, DollarSign, PieChart , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
@@ -43,6 +43,27 @@ export default function BreakEvenCalculator() {
     doc.save('break-even-report.pdf');
   };
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-20 text-white">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
@@ -58,6 +79,9 @@ export default function BreakEvenCalculator() {
         </header>
         <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-base font-bold transition-all hover:bg-white/10 shrink-0">
           <Download className="w-4 h-4" /> Export Analysis
+        </button>
+        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
 

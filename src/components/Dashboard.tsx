@@ -362,7 +362,7 @@ export default function Dashboard() {
           <div className="h-[1px] w-12 bg-[#D4AF37]"></div>
           <span className="text-base font-black text-[#D4AF37] uppercase tracking-[0.5em]">ORBIT WEALTH PRO — Global Fintech Engine</span>
         </div>
-        <h1 className="text-6xl sm:text-7xl md:text-9xl font-display font-medium text-[#f59e0b] tracking-tighter leading-snug mb-8">
+        <h1 className="text-4xl font-display font-medium text-[#f59e0b] tracking-tighter leading-snug mb-6">
           Financial <br />
           <span className="text-white/70">Dashboard.</span>
         </h1>

@@ -5,7 +5,7 @@ import NumericInput from "./NumericInput";
  */
 
 import React, { useState, useMemo } from 'react';
-import { Coins, Download, Info, Percent } from 'lucide-react';
+import {  Coins, Download, Info, Percent , Share2 } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
@@ -39,6 +39,27 @@ export default function DividendYieldCalculator() {
     doc.save('dividend-report.pdf');
   };
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="space-y-12 pb-20 text-white">
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
@@ -54,6 +75,9 @@ export default function DividendYieldCalculator() {
         </header>
         <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
           <Download className="w-4 h-4" /> Export Data
+        </button>
+        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
 

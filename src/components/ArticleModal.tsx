@@ -17,6 +17,27 @@ interface ArticleModalProps {
 export default function ArticleModal({ article, onClose }: ArticleModalProps) {
   if (!article) return null;
 
+  
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8">
       <motion.div
@@ -35,7 +56,7 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
         >
           {/* Header Actions */}
           <div className="absolute top-6 right-6 z-20 flex gap-2">
-            <button 
+            <button onClick={handleShare} 
               className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors"
               aria-label="Share Article" title="Share Article"
             >

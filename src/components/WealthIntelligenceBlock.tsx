@@ -160,17 +160,17 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 <Activity className="w-5 h-5 text-emerald-400" />
               </div>
               <div>
-                <h3 className="text-3xl font-display font-bold text-white tracking-tight">AI Smart Insights</h3>
-                <p className="text-base text-slate-200 uppercase tracking-widest font-black">Live Intelligence Feed</p>
+                <h3 className="text-lg font-display font-bold text-white tracking-tight">AI Smart Insights</h3>
+                <p className="text-[10px] text-slate-200 uppercase tracking-widest font-black">Live Intelligence Feed</p>
               </div>
             </div>
             <div className="hidden md:flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-lg">
               <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              <span className="text-base font-black text-emerald-500 uppercase tracking-widest">Optimized Target</span>
+              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-widest">Optimized Target</span>
             </div>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-2">
             {insights.map((insight, idx) => (
               <motion.div 
                 key={idx}
@@ -178,13 +178,13 @@ export default function WealthIntelligenceBlock({ goals }: WealthIntelligenceBlo
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 + idx * 0.1 }}
                 onClick={() => setSelectedInsight(insight)}
-                className="group flex gap-4 p-4 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-[#D4AF37]/40 hover:bg-[#D4AF37]/5 transition-all cursor-pointer"
+                className="group flex gap-4 p-3 md:p-4 rounded-2xl bg-white/[0.01] border border-white/5 hover:border-[#D4AF37]/40 hover:bg-[#D4AF37]/5 transition-all cursor-pointer"
               >
                 <div className="flex-shrink-0 mt-0.5">
                   {insight.icon}
                 </div>
                 <div className="flex-1 space-y-1">
-                  <p className="text-lg text-slate-100 leading-relaxed font-bold">
+                  <p className="text-[13px] text-slate-100 leading-relaxed font-bold">
                     {insight.text}
                   </p>
                 </div>

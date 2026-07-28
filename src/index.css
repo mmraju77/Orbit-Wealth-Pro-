@@ -13,7 +13,7 @@
 
 @layer base {
   body {
-    @apply font-sans antialiased text-white bg-[#0B1221] transition-colors duration-300;
+    @apply font-sans antialiased text-xs text-white bg-[#0B1221] transition-colors duration-300;
   }
 }
 
