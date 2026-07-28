@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { REGIONS, CALCULATORS } from '../data/pSEOData';
 import { MapPin, ArrowRight, Building2, Globe2 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m as motion  } from 'motion/react';
 
 export default function CitiesDirectory() {
   const regions = Object.keys(REGIONS).filter(k => REGIONS[k].name !== 'USA' && REGIONS[k].name !== 'India' && REGIONS[k].name !== 'UAE' && REGIONS[k].name !== 'UK' && REGIONS[k].name !== 'Canada' && REGIONS[k].name !== 'Australia' && REGIONS[k].name !== 'Germany' && REGIONS[k].name !== 'Switzerland' && REGIONS[k].name !== 'Norway' && REGIONS[k].name !== 'Sweden' && REGIONS[k].name !== 'Denmark' && REGIONS[k].name !== 'Netherlands');

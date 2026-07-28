@@ -23,36 +23,42 @@ export default function FDRDCalculator() {
   });
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const P = inputs.amount;
-    const r = inputs.rate / 100;
-    const n = inputs.compounding;
-    const t = inputs.tenure;
+  const [results, setResults] = useState(null);
 
-    if (type === 'FD') {
-      // Compound Interest Formula: A = P(1 + r/n)^(nt)
-      const matValue = P * Math.pow(1 + r / n, n * t);
-      const interest = matValue - P;
-      return { totalInvestment: P, interest, matValue };
-    } else {
-      // RD Formula: M = R * [(1 + i)^n - 1] / (1 - (1 + i)^(-1/3))  -- This is complex
-      // Simple Monthly RD: M = P * (1 + r/n)^(nt) ... but it's recurring
-      // M = R * [(1+i)^n - 1] / (i)  where i = r/1200
-      const R = inputs.amount; // Monthly deposit
-      const i = inputs.rate / (12 * 100);
-      const months = inputs.tenure * 12;
-      const matValue = R * (Math.pow(1 + i, months) - 1) / (1 - Math.pow(1 + i, -1/3)) * Math.pow(1+i, 1/3);
-      // Wait, more accurate RD: M = P * ((1+i)^n - 1) / (1 - (1+i)^(-1/3))
-      // Let's use simple accurate recurring deposit formula for banks
-      let totalMaturity = 0;
-      let totalInv = R * months;
-      for (let m = 0; m < months; m++) {
-        totalMaturity += R * Math.pow(1 + inputs.rate / (4 * 100), 4 * (months - m) / 12);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const P = inputs.amount;
+      const r = inputs.rate / 100;
+      const n = inputs.compounding;
+      const t = inputs.tenure;
+
+      if (type === 'FD') {
+        // Compound Interest Formula: A = P(1 + r/n)^(nt)
+        const matValue = P * Math.pow(1 + r / n, n * t);
+        const interest = matValue - P;
+        setResults({ totalInvestment: P, interest, matValue });
+      } else {
+        // RD Formula: M = R * [(1 + i)^n - 1] / (1 - (1 + i)^(-1/3))  -- This is complex
+        // Simple Monthly RD: M = P * (1 + r/n)^(nt) ... but it's recurring
+        // M = R * [(1+i)^n - 1] / (i)  where i = r/1200
+        const R = inputs.amount; // Monthly deposit
+        const i = inputs.rate / (12 * 100);
+        const months = inputs.tenure * 12;
+        const matValue = R * (Math.pow(1 + i, months) - 1) / (1 - Math.pow(1 + i, -1/3)) * Math.pow(1+i, 1/3);
+        // Wait, more accurate RD: M = P * ((1+i)^n - 1) / (1 - (1+i)^(-1/3))
+        // Let's use simple accurate recurring deposit formula for banks
+        let totalMaturity = 0;
+        let totalInv = R * months;
+        for (let m = 0; m < months; m++) {
+          totalMaturity += R * Math.pow(1 + inputs.rate / (4 * 100), 4 * (months - m) / 12);
+        }
+
+        const interest = totalMaturity - totalInv;
+        setResults({ totalInvestment: totalInv, interest, matValue: totalMaturity });
       }
-      
-      const interest = totalMaturity - totalInv;
-      return { totalInvestment: totalInv, interest, matValue: totalMaturity };
-    }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs, type]);
 
   useEffect(() => {
@@ -81,7 +87,7 @@ export default function FDRDCalculator() {
 
   const COLORS = ['#1a1a1a', '#D4AF37'];
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -101,6 +107,11 @@ export default function FDRDCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20">

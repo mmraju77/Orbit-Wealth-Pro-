@@ -25,28 +25,37 @@ export default function BalanceTransfer() {
   const [inputs, setInputs] = useState<BalanceTransferInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const calculateEMI = (p: number, r: number, n: number) => {
-      const monthlyRate = r / 12 / 100;
-      const numPayments = n * 12;
-      return (p * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1);
-    };
+  const [results, setResults] = useState(null);
 
-    const existingEMI = calculateEMI(inputs.outstandingPrincipal, inputs.existingRate, inputs.remainingTerm);
-    const newEMI = calculateEMI(inputs.outstandingPrincipal, inputs.newRate, inputs.remainingTerm);
-    
-    const monthlySavings = existingEMI - newEMI;
-    const totalSavings = (monthlySavings * inputs.remainingTerm * 12) - inputs.processingFees;
-    
-    const breakEvenMonths = inputs.processingFees / monthlySavings;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const calculateEMI = (p: number, r: number, n: number) => {
+        const monthlyRate = r / 12 / 100;
+        const numPayments = n * 12;
 
-    return {
-      existingEMI: Math.round(existingEMI),
-      newEMI: Math.round(newEMI),
-      monthlySavings: Math.round(monthlySavings),
-      totalSavings: Math.round(totalSavings),
-      breakEvenMonths: Math.round(breakEvenMonths * 10) / 10
-    };
+        setResults(
+          (p * monthlyRate * Math.pow(1 + monthlyRate, numPayments)) / (Math.pow(1 + monthlyRate, numPayments) - 1)
+        );
+      };
+
+      const existingEMI = calculateEMI(inputs.outstandingPrincipal, inputs.existingRate, inputs.remainingTerm);
+      const newEMI = calculateEMI(inputs.outstandingPrincipal, inputs.newRate, inputs.remainingTerm);
+
+      const monthlySavings = existingEMI - newEMI;
+      const totalSavings = (monthlySavings * inputs.remainingTerm * 12) - inputs.processingFees;
+
+      const breakEvenMonths = inputs.processingFees / monthlySavings;
+
+      setResults({
+        existingEMI: Math.round(existingEMI),
+        newEMI: Math.round(newEMI),
+        monthlySavings: Math.round(monthlySavings),
+        totalSavings: Math.round(totalSavings),
+        breakEvenMonths: Math.round(breakEvenMonths * 10) / 10
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -68,7 +77,7 @@ export default function BalanceTransfer() {
     doc.save('balance-transfer-savings.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {

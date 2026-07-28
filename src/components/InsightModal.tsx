@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { X, Sparkles, ArrowRight, ShieldCheck, TrendingUp, Lightbulb, Activity } from 'lucide-react';
 import { Insight } from '../types';
 

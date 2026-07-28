@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { TrendingUp, Copy, Check, Download, Share2 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { useLocale } from '../context/LocaleContext';
 import { InvestmentInputs, InvestmentResult } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
@@ -29,34 +29,40 @@ export default function SIPCalculator() {
   const [isMounted, setIsMounted] = useState(false);
   const [liveSync, setLiveSync] = useState(false);
 
-  const results = useMemo(() => {
-    const monthlyRate = inputs.expectedReturn / 100 / 12;
-    const months = inputs.duration * 12;
-    const monthlyInvestment = inputs.monthlyInvestment || 0;
+  const [results, setResults] = useState(null);
 
-    // Formula: M = P × ({[1 + i]^n – 1} / i) × (1 + i)
-    const maturityValue = monthlyInvestment * 
-      ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * 
-      (1 + monthlyRate);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const monthlyRate = inputs.expectedReturn / 100 / 12;
+      const months = inputs.duration * 12;
+      const monthlyInvestment = inputs.monthlyInvestment || 0;
 
-    const totalInvested = monthlyInvestment * months;
-    const estimatedReturns = maturityValue - totalInvested;
+      // Formula: M = P × ({[1 + i]^n – 1} / i) × (1 + i)
+      const maturityValue = monthlyInvestment * 
+        ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate) * 
+        (1 + monthlyRate);
 
-    const yearlyData = [];
-    for (let i = 1; i <= inputs.duration; i++) {
-        const monthsCount = i * 12;
-        const value = monthlyInvestment * 
-            ((Math.pow(1 + monthlyRate, monthsCount) - 1) / monthlyRate) * 
-            (1 + monthlyRate);
-        yearlyData.push({ year: i, balance: Math.round(value) });
-    }
+      const totalInvested = monthlyInvestment * months;
+      const estimatedReturns = maturityValue - totalInvested;
 
-    return {
-      investedAmount: Math.round(totalInvested),
-      estimatedReturns: Math.round(estimatedReturns),
-      totalWealth: Math.round(maturityValue),
-      yearlyData
-    };
+      const yearlyData = [];
+      for (let i = 1; i <= inputs.duration; i++) {
+          const monthsCount = i * 12;
+          const value = monthlyInvestment * 
+              ((Math.pow(1 + monthlyRate, monthsCount) - 1) / monthlyRate) * 
+              (1 + monthlyRate);
+          yearlyData.push({ year: i, balance: Math.round(value) });
+      }
+
+      setResults({
+        investedAmount: Math.round(totalInvested),
+        estimatedReturns: Math.round(estimatedReturns),
+        totalWealth: Math.round(maturityValue),
+        yearlyData
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -86,7 +92,7 @@ export default function SIPCalculator() {
     doc.save('sip-calculation.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -106,6 +112,11 @@ export default function SIPCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20">

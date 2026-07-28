@@ -37,35 +37,41 @@ export default function TermInsuranceCalculator() {
     setIsMounted(true);
   }, []);
 
-  const results = useMemo(() => {
-    // Simplified Actuarial logic for demo purposes
-    // Base rate per $1000 sum assured
-    let baseRate = 0.08; 
-    
-    // Age adjustments
-    if (inputs.age > 40) baseRate *= 2.5;
-    else if (inputs.age > 30) baseRate *= 1.5;
-    
-    // Smoker loading (usually 50% - 100% higher)
-    if (inputs.isSmoker) baseRate *= 1.8;
-    
-    // Gender adjustment (females often have lower mortality rates)
-    if (inputs.gender === 'female') baseRate *= 0.85;
+  const [results, setResults] = useState(null);
 
-    // Term loading (longer terms are slightly more expensive per year)
-    const termFactor = 1 + (inputs.term / 100);
-    
-    const annualPremium = (inputs.coverage / 1000) * baseRate * termFactor;
-    const monthlyPremium = annualPremium / 12;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Simplified Actuarial logic for demo purposes
+      // Base rate per $1000 sum assured
+      let baseRate = 0.08;
 
-    return {
-      annualPremium: Math.round(annualPremium),
-      monthlyPremium: Math.round(monthlyPremium),
-      totalPremium: Math.round(annualPremium * inputs.term)
-    };
+      // Age adjustments
+      if (inputs.age > 40) baseRate *= 2.5;
+      else if (inputs.age > 30) baseRate *= 1.5;
+
+      // Smoker loading (usually 50% - 100% higher)
+      if (inputs.isSmoker) baseRate *= 1.8;
+
+      // Gender adjustment (females often have lower mortality rates)
+      if (inputs.gender === 'female') baseRate *= 0.85;
+
+      // Term loading (longer terms are slightly more expensive per year)
+      const termFactor = 1 + (inputs.term / 100);
+
+      const annualPremium = (inputs.coverage / 1000) * baseRate * termFactor;
+      const monthlyPremium = annualPremium / 12;
+
+      setResults({
+        annualPremium: Math.round(annualPremium),
+        monthlyPremium: Math.round(monthlyPremium),
+        totalPremium: Math.round(annualPremium * inputs.term)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -85,6 +91,11 @@ export default function TermInsuranceCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { X, Calendar, User, Clock, Share2, Sparkles } from 'lucide-react';
 import Markdown from 'react-markdown';
 import { Article } from '../data/blogData';

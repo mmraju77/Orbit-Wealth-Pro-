@@ -5,7 +5,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Send, X, Bot, User, Loader2, Sparkles, TrendingUp, ShieldCheck, Wallet } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -32,7 +32,9 @@ export default function OrbitChat() {
 
   useEffect(() => {
     if (messagesEndRef.current) {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' });
+      requestAnimationFrame(() => {
+        messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+      });
     }
   }, [messages, isLoading]);
 

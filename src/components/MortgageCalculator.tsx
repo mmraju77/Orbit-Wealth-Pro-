@@ -43,53 +43,59 @@ export default function MortgageCalculator() {
   const [isMounted, setIsMounted] = useState(false);
   const [liveSync, setLiveSync] = useState(false);
 
-  const results = useMemo(() => {
-    const principal = inputs.homePrice - inputs.downPayment;
-    let monthlyRate = inputs.interestRate / 100 / 12;
+  const [results, setResults] = useState(null);
 
-    // Canada specific compounding rule
-    if (countryKey === 'canada') {
-      const annualRate = inputs.interestRate / 100;
-      monthlyRate = Math.pow(Math.pow(1 + annualRate / 2, 2), 1 / 12) - 1;
-    }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const principal = inputs.homePrice - inputs.downPayment;
+      let monthlyRate = inputs.interestRate / 100 / 12;
 
-    const numberOfPayments = inputs.loanTerm * 12;
-
-    let monthlyPayment = 0;
-    if (monthlyRate === 0) {
-      monthlyPayment = principal / numberOfPayments;
-    } else {
-      monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
-    }
-
-    const amortizationSchedule: AmortizationPeriod[] = [];
-    let remainingBalance = principal;
-    let totalInterestPaid = 0;
-
-    for (let i = 1; i <= numberOfPayments; i++) {
-      const interestPayment = remainingBalance * monthlyRate;
-      const principalPayment = monthlyPayment - interestPayment;
-      remainingBalance -= principalPayment;
-      totalInterestPaid += interestPayment;
-
-      if (i % 12 === 0) {
-          amortizationSchedule.push({
-            period: i,
-            payment: monthlyPayment,
-            principal: principalPayment,
-            interest: interestPayment,
-            remainingBalance: Math.max(0, remainingBalance),
-            totalInterestPaid: totalInterestPaid
-          });
+      // Canada specific compounding rule
+      if (countryKey === 'canada') {
+        const annualRate = inputs.interestRate / 100;
+        monthlyRate = Math.pow(Math.pow(1 + annualRate / 2, 2), 1 / 12) - 1;
       }
-    }
 
-    return {
-      monthlyPayment: Math.round(monthlyPayment),
-      totalPayment: Math.round(monthlyPayment * numberOfPayments),
-      totalInterest: Math.round(totalInterestPaid),
-      amortizationSchedule
-    };
+      const numberOfPayments = inputs.loanTerm * 12;
+
+      let monthlyPayment = 0;
+      if (monthlyRate === 0) {
+        monthlyPayment = principal / numberOfPayments;
+      } else {
+        monthlyPayment = (principal * monthlyRate * Math.pow(1 + monthlyRate, numberOfPayments)) / (Math.pow(1 + monthlyRate, numberOfPayments) - 1);
+      }
+
+      const amortizationSchedule: AmortizationPeriod[] = [];
+      let remainingBalance = principal;
+      let totalInterestPaid = 0;
+
+      for (let i = 1; i <= numberOfPayments; i++) {
+        const interestPayment = remainingBalance * monthlyRate;
+        const principalPayment = monthlyPayment - interestPayment;
+        remainingBalance -= principalPayment;
+        totalInterestPaid += interestPayment;
+
+        if (i % 12 === 0) {
+            amortizationSchedule.push({
+              period: i,
+              payment: monthlyPayment,
+              principal: principalPayment,
+              interest: interestPayment,
+              remainingBalance: Math.max(0, remainingBalance),
+              totalInterestPaid: totalInterestPaid
+            });
+        }
+      }
+
+      setResults({
+        monthlyPayment: Math.round(monthlyPayment),
+        totalPayment: Math.round(monthlyPayment * numberOfPayments),
+        totalInterest: Math.round(totalInterestPaid),
+        amortizationSchedule
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -120,7 +126,7 @@ export default function MortgageCalculator() {
     doc.save('mortgage-calculation.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -140,6 +146,11 @@ export default function MortgageCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

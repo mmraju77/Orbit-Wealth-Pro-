@@ -21,31 +21,38 @@ export default function EMICalculator() {
   const [inputs, setInputs] = useState<MortgageInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const principal = inputs.homePrice - inputs.downPayment;
-    const monthlyRate = inputs.interestRate / 100 / 12;
-    const months = inputs.loanTerm * 12;
+  const [results, setResults] = useState(null);
 
-    if (monthlyRate === 0) {
-      const emi = principal / months;
-      return {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const principal = inputs.homePrice - inputs.downPayment;
+      const monthlyRate = inputs.interestRate / 100 / 12;
+      const months = inputs.loanTerm * 12;
+
+      if (monthlyRate === 0) {
+        const emi = principal / months;
+
+        setResults({
+          monthlyPayment: Math.round(emi),
+          totalPayment: Math.round(principal),
+          totalInterest: 0,
+          principal
+        });
+      }
+
+      const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+      const totalPayment = emi * months;
+      const totalInterest = totalPayment - principal;
+
+      setResults({
         monthlyPayment: Math.round(emi),
-        totalPayment: Math.round(principal),
-        totalInterest: 0,
+        totalPayment: Math.round(totalPayment),
+        totalInterest: Math.round(totalInterest),
         principal
-      };
-    }
+      });
+    }, 0);
 
-    const emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-    const totalPayment = emi * months;
-    const totalInterest = totalPayment - principal;
-
-    return {
-      monthlyPayment: Math.round(emi),
-      totalPayment: Math.round(totalPayment),
-      totalInterest: Math.round(totalInterest),
-      principal
-    };
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -66,7 +73,7 @@ export default function EMICalculator() {
     doc.save('emi-calculation.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -86,6 +93,11 @@ export default function EMICalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20">

@@ -18,13 +18,20 @@ export default function DividendYieldCalculator() {
   const [annualDividend, setAnnualDividend] = useState(4.5);
   const [sharesOwned, setSharesOwned] = useState(100);
 
-  const results = useMemo(() => {
-    const yieldPercentage = (annualDividend / stockPrice) * 100;
-    const totalIncome = annualDividend * sharesOwned;
-    return {
-      yield: Number(yieldPercentage.toFixed(2)),
-      totalIncome: Math.round(totalIncome)
-    };
+  const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const yieldPercentage = (annualDividend / stockPrice) * 100;
+      const totalIncome = annualDividend * sharesOwned;
+
+      setResults({
+        yield: Number(yieldPercentage.toFixed(2)),
+        totalIncome: Math.round(totalIncome)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [stockPrice, annualDividend, sharesOwned]);
 
   const downloadPDF = () => {
@@ -39,7 +46,7 @@ export default function DividendYieldCalculator() {
     doc.save('dividend-report.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -59,6 +66,11 @@ export default function DividendYieldCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

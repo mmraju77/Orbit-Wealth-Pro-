@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Navigate, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { COMPARISONS } from '../data/comparisonData';
 import { useLocale } from '../context/LocaleContext';
 import { Region } from '../types';

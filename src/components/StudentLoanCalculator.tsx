@@ -20,49 +20,55 @@ export default function StudentLoanCalculator() {
   const [gracePeriod, setGracePeriod] = useState(6); // Months
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    // During grace period, interest usually accrues (capitalization)
-    const monthlyRate = interestRate / 100 / 12;
-    
-    // Capitalized principal after grace period
-    const capitalizedPrincipal = loanAmount * Math.pow(1 + monthlyRate, gracePeriod);
-    const months = tenure * 12;
+  const [results, setResults] = useState(null);
 
-    let emi = 0;
-    if (monthlyRate === 0) {
-      emi = capitalizedPrincipal / months;
-    } else {
-      emi = (capitalizedPrincipal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
-    }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // During grace period, interest usually accrues (capitalization)
+      const monthlyRate = interestRate / 100 / 12;
 
-    const totalPayment = emi * months;
-    const totalInterest = totalPayment - loanAmount;
+      // Capitalized principal after grace period
+      const capitalizedPrincipal = loanAmount * Math.pow(1 + monthlyRate, gracePeriod);
+      const months = tenure * 12;
 
-    // Projection Data
-    const projection = [];
-    let currentBalance = loanAmount;
-    
-    // Grace Period phase
-    for (let i = 1; i <= gracePeriod; i++) {
-        currentBalance *= (1 + monthlyRate);
-        projection.push({ month: i, balance: Math.round(currentBalance), phase: 'Grace' });
-    }
-    
-    // Repayment phase
-    for (let i = 1; i <= months; i += 6) { // step by 6 months for chart performance
-        const interest = currentBalance * (Math.pow(1 + monthlyRate, 6) - 1);
-        const totalPaid = emi * 6;
-        currentBalance = currentBalance + interest - totalPaid;
-        projection.push({ month: gracePeriod + i, balance: Math.max(0, Math.round(currentBalance)), phase: 'Repayment' });
-    }
+      let emi = 0;
+      if (monthlyRate === 0) {
+        emi = capitalizedPrincipal / months;
+      } else {
+        emi = (capitalizedPrincipal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+      }
 
-    return {
-      emi: Math.round(emi),
-      totalPayable: Math.round(totalPayment),
-      totalInterest: Math.round(totalInterest),
-      capitalizedPrincipal: Math.round(capitalizedPrincipal),
-      projection
-    };
+      const totalPayment = emi * months;
+      const totalInterest = totalPayment - loanAmount;
+
+      // Projection Data
+      const projection = [];
+      let currentBalance = loanAmount;
+
+      // Grace Period phase
+      for (let i = 1; i <= gracePeriod; i++) {
+          currentBalance *= (1 + monthlyRate);
+          projection.push({ month: i, balance: Math.round(currentBalance), phase: 'Grace' });
+      }
+
+      // Repayment phase
+      for (let i = 1; i <= months; i += 6) { // step by 6 months for chart performance
+          const interest = currentBalance * (Math.pow(1 + monthlyRate, 6) - 1);
+          const totalPaid = emi * 6;
+          currentBalance = currentBalance + interest - totalPaid;
+          projection.push({ month: gracePeriod + i, balance: Math.max(0, Math.round(currentBalance)), phase: 'Repayment' });
+      }
+
+      setResults({
+        emi: Math.round(emi),
+        totalPayable: Math.round(totalPayment),
+        totalInterest: Math.round(totalInterest),
+        capitalizedPrincipal: Math.round(capitalizedPrincipal),
+        projection
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [loanAmount, interestRate, tenure, gracePeriod]);
 
   useEffect(() => {
@@ -83,7 +89,7 @@ export default function StudentLoanCalculator() {
     doc.save('student-loan-report.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -103,6 +109,11 @@ export default function StudentLoanCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20 text-white">

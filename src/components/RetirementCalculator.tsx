@@ -73,42 +73,48 @@ export default function RetirementCalculator() {
 
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const yearsToRetire = inputs.retirementAge - inputs.currentAge;
-    const monthsToRetire = Math.max(0, yearsToRetire * 12);
-    const monthlyRate = inputs.expectedReturn / 100 / 12;
-    const inflationRate = inputs.expectedInflation / 100;
+  const [results, setResults] = useState(null);
 
-    let totalSavings = inputs.currentSavings;
-    const yearlyData = [{ 
-      year: inputs.currentAge, 
-      balance: Math.round(totalSavings),
-      inflatedBalance: Math.round(totalSavings)
-    }];
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const yearsToRetire = inputs.retirementAge - inputs.currentAge;
+      const monthsToRetire = Math.max(0, yearsToRetire * 12);
+      const monthlyRate = inputs.expectedReturn / 100 / 12;
+      const inflationRate = inputs.expectedInflation / 100;
 
-    for (let i = 1; i <= monthsToRetire; i++) {
-        totalSavings = (totalSavings * (1 + monthlyRate)) + inputs.monthlyContribution;
-        if (i % 12 === 0) {
-            const yearIndex = i / 12;
-            const purchasingPower = totalSavings / Math.pow(1 + inflationRate, yearIndex);
-            yearlyData.push({ 
-              year: inputs.currentAge + yearIndex, 
-              balance: Math.round(totalSavings),
-              inflatedBalance: Math.round(purchasingPower)
-            });
-        }
-    }
+      let totalSavings = inputs.currentSavings;
+      const yearlyData = [{ 
+        year: inputs.currentAge, 
+        balance: Math.round(totalSavings),
+        inflatedBalance: Math.round(totalSavings)
+      }];
 
-    const inflationAdjustedCorpus = totalSavings / Math.pow(1 + inflationRate, yearsToRetire);
-    const totalContributions = (inputs.monthlyContribution * monthsToRetire) + inputs.currentSavings;
+      for (let i = 1; i <= monthsToRetire; i++) {
+          totalSavings = (totalSavings * (1 + monthlyRate)) + inputs.monthlyContribution;
+          if (i % 12 === 0) {
+              const yearIndex = i / 12;
+              const purchasingPower = totalSavings / Math.pow(1 + inflationRate, yearIndex);
+              yearlyData.push({ 
+                year: inputs.currentAge + yearIndex, 
+                balance: Math.round(totalSavings),
+                inflatedBalance: Math.round(purchasingPower)
+              });
+          }
+      }
 
-    return {
-      totalSavings: Math.round(totalSavings),
-      totalContributions: Math.round(totalContributions),
-      totalInterest: Math.round(totalSavings - totalContributions),
-      inflationAdjustedCorpus: Math.round(inflationAdjustedCorpus),
-      yearlyData
-    };
+      const inflationAdjustedCorpus = totalSavings / Math.pow(1 + inflationRate, yearsToRetire);
+      const totalContributions = (inputs.monthlyContribution * monthsToRetire) + inputs.currentSavings;
+
+      setResults({
+        totalSavings: Math.round(totalSavings),
+        totalContributions: Math.round(totalContributions),
+        totalInterest: Math.round(totalSavings - totalContributions),
+        inflationAdjustedCorpus: Math.round(inflationAdjustedCorpus),
+        yearlyData
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -129,7 +135,7 @@ export default function RetirementCalculator() {
     doc.save('retirement-strategy.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -149,6 +155,11 @@ export default function RetirementCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

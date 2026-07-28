@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { Helmet } from 'react-helmet-async';
 import { ARTICLES, Article } from '../data/blogData';
 import { Clock, User, ArrowRight, BookOpen, Filter, Search, Sparkles, TrendingUp, ShieldCheck, Wallet, Landmark, CheckCircle2, Mail, Loader2, ShieldAlert } from 'lucide-react';

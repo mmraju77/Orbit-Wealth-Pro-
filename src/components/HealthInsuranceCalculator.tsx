@@ -38,40 +38,51 @@ export default function HealthInsuranceCalculator() {
     setIsMounted(true);
   }, []);
 
-  const results = useMemo(() => {
-    // Base premium logic per member based on age groups
-    const getBaseMemberPremium = (age: number) => {
-      if (age < 25) return 3000;
-      if (age < 35) return 5000;
-      if (age < 45) return 8000;
-      if (age < 55) return 14000;
-      if (age < 65) return 22000;
-      return 35000;
-    };
+  const [results, setResults] = useState(null);
 
-    const oldestPremium = getBaseMemberPremium(inputs.oldestAge);
-    
-    // Multi-member discounts or loadings
-    let baseAnnual = oldestPremium;
-    if (inputs.adults > 1) baseAnnual += (oldestPremium * 0.7); // 30% discount for second adult
-    baseAnnual += (inputs.children * 2500); // Child flat rate
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Base premium logic per member based on age groups
+      const getBaseMemberPremium = (age: number) => {
+        if (age < 25)
+          setResults(3000);
+        if (age < 35)
+          setResults(5000);
+        if (age < 45)
+          setResults(8000);
+        if (age < 55)
+          setResults(14000);
+        if (age < 65)
+          setResults(22000);
+        setResults(35000);
+      };
 
-    // Sum Insured multiplier
-    const sumInsuredFactor = inputs.sumInsured / 500000;
-    let finalPremium = baseAnnual * (0.8 + (sumInsuredFactor * 0.2));
+      const oldestPremium = getBaseMemberPremium(inputs.oldestAge);
 
-    // Add-on loaders
-    if (inputs.includesOPD) finalPremium *= 1.4;
-    if (inputs.includesCriticalIllness) finalPremium *= 1.25;
+      // Multi-member discounts or loadings
+      let baseAnnual = oldestPremium;
+      if (inputs.adults > 1) baseAnnual += (oldestPremium * 0.7); // 30% discount for second adult
+      baseAnnual += (inputs.children * 2500); // Child flat rate
 
-    return {
-      annualPremium: Math.round(finalPremium),
-      monthlyPremium: Math.round(finalPremium / 12),
-      sumInsured: inputs.sumInsured
-    };
+      // Sum Insured multiplier
+      const sumInsuredFactor = inputs.sumInsured / 500000;
+      let finalPremium = baseAnnual * (0.8 + (sumInsuredFactor * 0.2));
+
+      // Add-on loaders
+      if (inputs.includesOPD) finalPremium *= 1.4;
+      if (inputs.includesCriticalIllness) finalPremium *= 1.25;
+
+      setResults({
+        annualPremium: Math.round(finalPremium),
+        monthlyPremium: Math.round(finalPremium / 12),
+        sumInsured: inputs.sumInsured
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -91,6 +102,11 @@ export default function HealthInsuranceCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

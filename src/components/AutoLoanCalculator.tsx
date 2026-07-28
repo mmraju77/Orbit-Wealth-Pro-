@@ -21,28 +21,34 @@ export default function AutoLoanCalculator() {
   const [tenure, setTenure] = useState(60); // Months
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const taxAmount = (carPrice * salesTax) / 100;
-    const loanAmount = carPrice + taxAmount - downPayment - tradeIn;
-    const monthlyRate = interestRate / 100 / 12;
-    
-    let emi = 0;
-    if (monthlyRate === 0) {
-      emi = loanAmount / tenure;
-    } else {
-      emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / (Math.pow(1 + monthlyRate, tenure) - 1);
-    }
+  const [results, setResults] = useState(null);
 
-    const totalPayment = emi * tenure;
-    const totalInterest = totalPayment - loanAmount;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const taxAmount = (carPrice * salesTax) / 100;
+      const loanAmount = carPrice + taxAmount - downPayment - tradeIn;
+      const monthlyRate = interestRate / 100 / 12;
 
-    return {
-      taxAmount: Math.round(taxAmount),
-      loanAmount: Math.round(Math.max(0, loanAmount)),
-      emi: Math.round(Math.max(0, emi)),
-      totalPayment: Math.round(totalPayment),
-      totalInterest: Math.round(totalInterest)
-    };
+      let emi = 0;
+      if (monthlyRate === 0) {
+        emi = loanAmount / tenure;
+      } else {
+        emi = (loanAmount * monthlyRate * Math.pow(1 + monthlyRate, tenure)) / (Math.pow(1 + monthlyRate, tenure) - 1);
+      }
+
+      const totalPayment = emi * tenure;
+      const totalInterest = totalPayment - loanAmount;
+
+      setResults({
+        taxAmount: Math.round(taxAmount),
+        loanAmount: Math.round(Math.max(0, loanAmount)),
+        emi: Math.round(Math.max(0, emi)),
+        totalPayment: Math.round(totalPayment),
+        totalInterest: Math.round(totalInterest)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [carPrice, downPayment, tradeIn, salesTax, interestRate, tenure]);
 
   useEffect(() => {
@@ -64,7 +70,7 @@ export default function AutoLoanCalculator() {
     doc.save('auto-loan-report.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -84,6 +90,11 @@ export default function AutoLoanCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20 text-white">

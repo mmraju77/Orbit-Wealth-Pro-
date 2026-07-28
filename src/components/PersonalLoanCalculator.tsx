@@ -20,50 +20,56 @@ export default function PersonalLoanCalculator() {
   const [extraPayment, setExtraPayment] = useState(0); // Monthly extra payment
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const monthlyRate = interestRate / 100 / 12;
-    const months = tenure * 12;
+  const [results, setResults] = useState(null);
 
-    // Standard EMI
-    const emi = monthlyRate === 0 
-      ? principal / months 
-      : (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const monthlyRate = interestRate / 100 / 12;
+      const months = tenure * 12;
 
-    // Early Payoff Simulation
-    let remainingBalance = principal;
-    let totalInterestWithExtra = 0;
-    let totalMonthsWithExtra = 0;
-    const totalExtraPayment = extraPayment;
+      // Standard EMI
+      const emi = monthlyRate === 0 
+        ? principal / months 
+        : (principal * monthlyRate * Math.pow(1 + monthlyRate, months)) / (Math.pow(1 + monthlyRate, months) - 1);
 
-    while (remainingBalance > 0 && totalMonthsWithExtra < 600) {
-      const interest = remainingBalance * monthlyRate;
-      const principalPaid = (emi - interest) + totalExtraPayment;
-      
-      remainingBalance -= principalPaid;
-      totalInterestWithExtra += interest;
-      totalMonthsWithExtra++;
-      
-      if (remainingBalance < 0) {
-        // Adjust for final month overpayment
-        totalInterestWithExtra += remainingBalance; // subtract the negative overflow from interest
-        break;
+      // Early Payoff Simulation
+      let remainingBalance = principal;
+      let totalInterestWithExtra = 0;
+      let totalMonthsWithExtra = 0;
+      const totalExtraPayment = extraPayment;
+
+      while (remainingBalance > 0 && totalMonthsWithExtra < 600) {
+        const interest = remainingBalance * monthlyRate;
+        const principalPaid = (emi - interest) + totalExtraPayment;
+        
+        remainingBalance -= principalPaid;
+        totalInterestWithExtra += interest;
+        totalMonthsWithExtra++;
+        
+        if (remainingBalance < 0) {
+          // Adjust for final month overpayment
+          totalInterestWithExtra += remainingBalance; // subtract the negative overflow from interest
+          break;
+        }
       }
-    }
 
-    const timeSaved = months - totalMonthsWithExtra;
-    const interestSaved = (emi * months - principal) - totalInterestWithExtra;
+      const timeSaved = months - totalMonthsWithExtra;
+      const interestSaved = (emi * months - principal) - totalInterestWithExtra;
 
-    return {
-      emi: Math.round(emi),
-      totalPayable: Math.round(emi * months),
-      totalInterest: Math.round(emi * months - principal),
-      earlyPayoff: {
-        months: totalMonthsWithExtra,
-        totalInterest: Math.round(totalInterestWithExtra),
-        timeSaved: Math.max(0, timeSaved),
-        interestSaved: Math.max(0, interestSaved)
-      }
-    };
+      setResults({
+        emi: Math.round(emi),
+        totalPayable: Math.round(emi * months),
+        totalInterest: Math.round(emi * months - principal),
+        earlyPayoff: {
+          months: totalMonthsWithExtra,
+          totalInterest: Math.round(totalInterestWithExtra),
+          timeSaved: Math.max(0, timeSaved),
+          interestSaved: Math.max(0, interestSaved)
+        }
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [principal, interestRate, tenure, extraPayment]);
 
   useEffect(() => {
@@ -89,7 +95,7 @@ export default function PersonalLoanCalculator() {
     doc.save('personal-loan-calc.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -109,6 +115,11 @@ export default function PersonalLoanCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20 text-white">

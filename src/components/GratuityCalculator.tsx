@@ -23,32 +23,38 @@ export default function GratuityCalculator() {
   const [inputs, setInputs] = useState<GratuityInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    let amount = 0;
-    if (currency === 'INR') {
-        // Indian Gratuity Formula
-        if (inputs.isCoveredUnderGratuityAct) {
-            // (15 * Salary * Tenure) / 26
-            amount = (15 * inputs.monthlySalary * Math.max(0, inputs.yearsOfService)) / 26;
-        } else {
-            // (15 * Salary * Tenure) / 30
-            amount = (15 * inputs.monthlySalary * Math.max(0, inputs.yearsOfService)) / 30;
-        }
-    } else {
-        // Global standard / End of Service (Approx 21 days for first 5 years, 30 days after)
-        // Simple but common: (Salary / 30) * 21 * Tenure
-        if (inputs.yearsOfService <= 5) {
-            amount = (inputs.monthlySalary / 30) * 21 * inputs.yearsOfService;
-        } else {
-            const firstFive = (inputs.monthlySalary / 30) * 21 * 5;
-            const remaining = (inputs.monthlySalary / 30) * 30 * (inputs.yearsOfService - 5);
-            amount = firstFive + remaining;
-        }
-    }
+  const [results, setResults] = useState(null);
 
-    return {
-      gratuityAmount: Math.round(amount)
-    };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      let amount = 0;
+      if (currency === 'INR') {
+          // Indian Gratuity Formula
+          if (inputs.isCoveredUnderGratuityAct) {
+              // (15 * Salary * Tenure) / 26
+              amount = (15 * inputs.monthlySalary * Math.max(0, inputs.yearsOfService)) / 26;
+          } else {
+              // (15 * Salary * Tenure) / 30
+              amount = (15 * inputs.monthlySalary * Math.max(0, inputs.yearsOfService)) / 30;
+          }
+      } else {
+          // Global standard / End of Service (Approx 21 days for first 5 years, 30 days after)
+          // Simple but common: (Salary / 30) * 21 * Tenure
+          if (inputs.yearsOfService <= 5) {
+              amount = (inputs.monthlySalary / 30) * 21 * inputs.yearsOfService;
+          } else {
+              const firstFive = (inputs.monthlySalary / 30) * 21 * 5;
+              const remaining = (inputs.monthlySalary / 30) * 30 * (inputs.yearsOfService - 5);
+              amount = firstFive + remaining;
+          }
+      }
+
+      setResults({
+        gratuityAmount: Math.round(amount)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs, currency]);
 
   useEffect(() => {
@@ -67,7 +73,7 @@ export default function GratuityCalculator() {
     doc.save('gratuity-calculation.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -87,6 +93,11 @@ export default function GratuityCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20 text-white">

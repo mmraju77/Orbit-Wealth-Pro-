@@ -4,7 +4,7 @@
  */
 
 import { AmortizationPeriod } from '@/src/types';
-import { motion } from 'motion/react';
+import { m as motion  } from 'motion/react';
 import { useLocale } from '@/src/context/LocaleContext';
 
 interface AmortizationTableProps {

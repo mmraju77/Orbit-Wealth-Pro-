@@ -27,7 +27,7 @@ import {
   X,
   Home
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { Goal } from '../types';
 
 const MarketTicker = React.lazy(() => import('./MarketTicker'));
@@ -453,8 +453,10 @@ export default function Dashboard() {
                 setShowAllNews(false);
                 const section = document.getElementById('news-section');
                 if (section) {
-                  const top = section.getBoundingClientRect().top + window.pageYOffset - 100;
-                  window.scrollTo({ top, behavior: 'smooth' });
+                  requestAnimationFrame(() => {
+                    const top = section.getBoundingClientRect().top + window.pageYOffset - 100;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                  });
                 }
               } else {
                 setShowAllNews(true);

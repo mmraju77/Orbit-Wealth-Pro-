@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { Sparkles, TrendingUp, ShieldAlert, ArrowUpRight, CheckCircle2, Activity, Lightbulb } from 'lucide-react';
 import { Goal, Insight } from '../types';
 import InsightModal from './InsightModal';

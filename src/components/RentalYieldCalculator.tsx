@@ -18,19 +18,25 @@ export default function RentalYieldCalculator() {
   const [maintenance, setMaintenance] = useState(2000); // Monthly maintenance
   const [propertyTax, setPropertyTax] = useState(15000); // Annual
 
-  const results = useMemo(() => {
-    const annualGrossRent = monthlyRent * 12;
-    const annualMaintenance = maintenance * 12;
-    const netAnnualIncome = annualGrossRent - annualMaintenance - propertyTax;
-    
-    const grossYield = (annualGrossRent / propertyValue) * 100;
-    const netYield = (netAnnualIncome / propertyValue) * 100;
+  const [results, setResults] = useState(null);
 
-    return {
-      grossYield: Number(grossYield.toFixed(2)),
-      netYield: Number(netYield.toFixed(2)),
-      netIncome: Math.round(netAnnualIncome)
-    };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const annualGrossRent = monthlyRent * 12;
+      const annualMaintenance = maintenance * 12;
+      const netAnnualIncome = annualGrossRent - annualMaintenance - propertyTax;
+
+      const grossYield = (annualGrossRent / propertyValue) * 100;
+      const netYield = (netAnnualIncome / propertyValue) * 100;
+
+      setResults({
+        grossYield: Number(grossYield.toFixed(2)),
+        netYield: Number(netYield.toFixed(2)),
+        netIncome: Math.round(netAnnualIncome)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [propertyValue, monthlyRent, maintenance, propertyTax]);
 
   const downloadPDF = () => {
@@ -47,7 +53,7 @@ export default function RentalYieldCalculator() {
     doc.save('rental-yield-report.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -67,6 +73,11 @@ export default function RentalYieldCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

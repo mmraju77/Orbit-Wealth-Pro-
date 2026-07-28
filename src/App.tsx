@@ -1,3 +1,4 @@
+import { LazyMotion, domAnimation } from 'motion/react';
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -246,7 +247,7 @@ function GoogleAnalytics() {
       scriptInjected = true;
       
       const script = document.createElement('script');
-      script.async = true;
+      script.defer = true;
       script.src = 'https://www.googletagmanager.com/gtag/js?id=G-2ZNMTS0H05';
       document.head.appendChild(script);
 
@@ -285,6 +286,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <GoogleAnalytics />
+      <LazyMotion features={domAnimation}>
       <HashRouter>
         <LocaleProvider>
           <RegionSynchronizer />
@@ -292,6 +294,7 @@ export default function App() {
           <MainContent sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         </LocaleProvider>
       </HashRouter>
+      </LazyMotion>
     </HelmetProvider>
   );
 }

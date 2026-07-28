@@ -17,17 +17,24 @@ export default function BreakEvenCalculator() {
   const [variableCostPerUnit, setVariableCostPerUnit] = useState(50);
   const [sellingPricePerUnit, setSellingPricePerUnit] = useState(150);
 
-  const results = useMemo(() => {
-    const contributionMargin = sellingPricePerUnit - variableCostPerUnit;
-    if (contributionMargin <= 0) return { units: 0, revenue: 0 };
-    
-    const units = fixedCosts / contributionMargin;
-    const revenue = units * sellingPricePerUnit;
-    
-    return {
-      units: Math.ceil(units),
-      revenue: Math.round(revenue)
-    };
+  const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const contributionMargin = sellingPricePerUnit - variableCostPerUnit;
+      if (contributionMargin <= 0)
+        setResults({ units: 0, revenue: 0 });
+
+      const units = fixedCosts / contributionMargin;
+      const revenue = units * sellingPricePerUnit;
+
+      setResults({
+        units: Math.ceil(units),
+        revenue: Math.round(revenue)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [fixedCosts, variableCostPerUnit, sellingPricePerUnit]);
 
   const downloadPDF = () => {
@@ -43,7 +50,7 @@ export default function BreakEvenCalculator() {
     doc.save('break-even-report.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -63,6 +70,11 @@ export default function BreakEvenCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-12 pb-20 text-white">

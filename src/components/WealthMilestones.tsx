@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { Target, Home, Shield, ChevronRight, TrendingUp, Sparkles } from 'lucide-react';
 import { Goal } from '../types';
 import NumericInput from './NumericInput';

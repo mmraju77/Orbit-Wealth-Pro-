@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { X, Bug, Terminal, ShieldCheck, Database } from 'lucide-react';
 import { useLocale } from '@/src/context/LocaleContext';
 

@@ -55,19 +55,25 @@ export default function GSTCalculator() {
 
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const rate = inputs.taxRate / 100;
-    let originalAmount, taxAmount, totalAmount;
-    if (inputs.isAddingTax) {
-      originalAmount = inputs.amount;
-      taxAmount = originalAmount * rate;
-      totalAmount = originalAmount + taxAmount;
-    } else {
-      totalAmount = inputs.amount;
-      originalAmount = totalAmount / (1 + rate);
-      taxAmount = totalAmount - originalAmount;
-    }
-    return { originalAmount, taxAmount, totalAmount };
+  const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const rate = inputs.taxRate / 100;
+      let originalAmount, taxAmount, totalAmount;
+      if (inputs.isAddingTax) {
+        originalAmount = inputs.amount;
+        taxAmount = originalAmount * rate;
+        totalAmount = originalAmount + taxAmount;
+      } else {
+        totalAmount = inputs.amount;
+        originalAmount = totalAmount / (1 + rate);
+        taxAmount = totalAmount - originalAmount;
+      }
+      setResults({ originalAmount, taxAmount, totalAmount });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -86,7 +92,7 @@ export default function GSTCalculator() {
     doc.save('gst-analysis.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -106,6 +112,11 @@ export default function GSTCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20">

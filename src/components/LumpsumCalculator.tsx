@@ -19,27 +19,33 @@ export default function LumpsumCalculator() {
   const [inputs, setInputs] = useState<InvestmentInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const rate = inputs.expectedReturn / 100;
-    const duration = inputs.duration;
-    const p = inputs.investmentAmount;
+  const [results, setResults] = useState(null);
 
-    // Formula: A = P(1 + r)^t
-    const totalWealth = p * Math.pow(1 + rate, duration);
-    const estimatedReturns = totalWealth - p;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const rate = inputs.expectedReturn / 100;
+      const duration = inputs.duration;
+      const p = inputs.investmentAmount;
 
-    const yearlyData = [];
-    for (let i = 1; i <= duration; i++) {
-        const val = p * Math.pow(1 + rate, i);
-        yearlyData.push({ year: i, balance: Math.round(val) });
-    }
+      // Formula: A = P(1 + r)^t
+      const totalWealth = p * Math.pow(1 + rate, duration);
+      const estimatedReturns = totalWealth - p;
 
-    return {
-      investedAmount: p,
-      estimatedReturns: Math.round(estimatedReturns),
-      totalWealth: Math.round(totalWealth),
-      yearlyData
-    };
+      const yearlyData = [];
+      for (let i = 1; i <= duration; i++) {
+          const val = p * Math.pow(1 + rate, i);
+          yearlyData.push({ year: i, balance: Math.round(val) });
+      }
+
+      setResults({
+        investedAmount: p,
+        estimatedReturns: Math.round(estimatedReturns),
+        totalWealth: Math.round(totalWealth),
+        yearlyData
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -59,7 +65,7 @@ export default function LumpsumCalculator() {
     doc.save('lumpsum-calculation.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -79,6 +85,11 @@ export default function LumpsumCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20">

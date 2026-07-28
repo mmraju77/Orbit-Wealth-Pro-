@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { motion } from 'motion/react';
+import { m as motion  } from 'motion/react';
 import { Linkedin, ShieldCheck, Award, User, TrendingUp, Sparkles, Globe, BrainCircuit } from 'lucide-react';
 import StructuredData from './StructuredData';
 

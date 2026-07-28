@@ -21,53 +21,59 @@ export default function MFCalculator() {
   const [mode, setMode] = useState<'lumpsum' | 'sip'>('sip');
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const rate = inputs.expectedReturn / 100;
-    const netRate = (inputs.expectedReturn - inputs.expenseRatio) / 100;
-    const duration = inputs.duration;
-    const amount = inputs.investmentAmount;
+  const [results, setResults] = useState(null);
 
-    let totalWealth = 0;
-    let wealthAfterExpense = 0;
-    let investedAmount = 0;
-    const yearlyData = [];
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const rate = inputs.expectedReturn / 100;
+      const netRate = (inputs.expectedReturn - inputs.expenseRatio) / 100;
+      const duration = inputs.duration;
+      const amount = inputs.investmentAmount;
 
-    if (mode === 'sip') {
-      const monthlyNetRate = netRate / 12;
-      const monthlyGrossRate = rate / 12;
-      const months = duration * 12;
-      investedAmount = amount * months;
-      
-      wealthAfterExpense = amount * ((Math.pow(1 + monthlyNetRate, months) - 1) / monthlyNetRate) * (1 + monthlyNetRate);
-      totalWealth = amount * ((Math.pow(1 + monthlyGrossRate, months) - 1) / monthlyGrossRate) * (1 + monthlyGrossRate);
+      let totalWealth = 0;
+      let wealthAfterExpense = 0;
+      let investedAmount = 0;
+      const yearlyData = [];
 
-      for (let i = 0; i <= duration; i++) {
-        const m = i * 12;
-        const bal = i === 0 ? 0 : amount * ((Math.pow(1 + monthlyNetRate, m) - 1) / monthlyNetRate) * (1 + monthlyNetRate);
-        const gBal = i === 0 ? 0 : amount * ((Math.pow(1 + monthlyGrossRate, m) - 1) / monthlyGrossRate) * (1 + monthlyGrossRate);
-        yearlyData.push({ year: i, balance: Math.round(bal), grossBalance: Math.round(gBal) });
+      if (mode === 'sip') {
+        const monthlyNetRate = netRate / 12;
+        const monthlyGrossRate = rate / 12;
+        const months = duration * 12;
+        investedAmount = amount * months;
+        
+        wealthAfterExpense = amount * ((Math.pow(1 + monthlyNetRate, months) - 1) / monthlyNetRate) * (1 + monthlyNetRate);
+        totalWealth = amount * ((Math.pow(1 + monthlyGrossRate, months) - 1) / monthlyGrossRate) * (1 + monthlyGrossRate);
+
+        for (let i = 0; i <= duration; i++) {
+          const m = i * 12;
+          const bal = i === 0 ? 0 : amount * ((Math.pow(1 + monthlyNetRate, m) - 1) / monthlyNetRate) * (1 + monthlyNetRate);
+          const gBal = i === 0 ? 0 : amount * ((Math.pow(1 + monthlyGrossRate, m) - 1) / monthlyGrossRate) * (1 + monthlyGrossRate);
+          yearlyData.push({ year: i, balance: Math.round(bal), grossBalance: Math.round(gBal) });
+        }
+      } else {
+        investedAmount = amount;
+        wealthAfterExpense = amount * Math.pow(1 + netRate, duration);
+        totalWealth = amount * Math.pow(1 + rate, duration);
+
+        for (let i = 0; i <= duration; i++) {
+          yearlyData.push({
+            year: i,
+            balance: Math.round(amount * Math.pow(1 + netRate, i)),
+            grossBalance: Math.round(amount * Math.pow(1 + rate, i))
+          });
+        }
       }
-    } else {
-      investedAmount = amount;
-      wealthAfterExpense = amount * Math.pow(1 + netRate, duration);
-      totalWealth = amount * Math.pow(1 + rate, duration);
 
-      for (let i = 0; i <= duration; i++) {
-        yearlyData.push({
-          year: i,
-          balance: Math.round(amount * Math.pow(1 + netRate, i)),
-          grossBalance: Math.round(amount * Math.pow(1 + rate, i))
-        });
-      }
-    }
+      setResults({
+        investedAmount,
+        totalWealth: Math.round(wealthAfterExpense),
+        estimatedReturns: Math.round(wealthAfterExpense - investedAmount),
+        expenseRatioImpact: Math.round(totalWealth - wealthAfterExpense),
+        yearlyData
+      });
+    }, 0);
 
-    return {
-      investedAmount,
-      totalWealth: Math.round(wealthAfterExpense),
-      estimatedReturns: Math.round(wealthAfterExpense - investedAmount),
-      expenseRatioImpact: Math.round(totalWealth - wealthAfterExpense),
-      yearlyData
-    };
+    return () => clearTimeout(timer);
   }, [inputs, mode]);
 
   useEffect(() => {
@@ -89,7 +95,7 @@ export default function MFCalculator() {
     doc.save('mutual-fund-analysis.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -109,6 +115,11 @@ export default function MFCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20 text-white">

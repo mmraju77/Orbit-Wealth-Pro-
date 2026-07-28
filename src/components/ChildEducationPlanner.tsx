@@ -19,20 +19,26 @@ export default function ChildEducationPlanner() {
   const [yearsUntilUni, setYearsUntilUni] = useState(15);
   const [expectedReturn, setExpectedReturn] = useState(12);
 
-  const results = useMemo(() => {
-    // Future Cost calculation
-    const futureCost = currentCost * Math.pow(1 + inflation / 100, yearsUntilUni);
-    
-    // Monthly SIP needed to reach future cost
-    // FV = [P x ((1+i)^n - 1) / i] x (1+i)
-    const monthlyRate = expectedReturn / 100 / 12;
-    const months = yearsUntilUni * 12;
-    const monthlySIP = (futureCost * monthlyRate) / ((Math.pow(1 + monthlyRate, months) - 1) * (1 + monthlyRate));
-    
-    return {
-      futureCost: Math.round(futureCost),
-      monthlySIP: Math.round(monthlySIP)
-    };
+  const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // Future Cost calculation
+      const futureCost = currentCost * Math.pow(1 + inflation / 100, yearsUntilUni);
+
+      // Monthly SIP needed to reach future cost
+      // FV = [P x ((1+i)^n - 1) / i] x (1+i)
+      const monthlyRate = expectedReturn / 100 / 12;
+      const months = yearsUntilUni * 12;
+      const monthlySIP = (futureCost * monthlyRate) / ((Math.pow(1 + monthlyRate, months) - 1) * (1 + monthlyRate));
+
+      setResults({
+        futureCost: Math.round(futureCost),
+        monthlySIP: Math.round(monthlySIP)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [currentCost, inflation, yearsUntilUni, expectedReturn]);
 
   const downloadPDF = () => {
@@ -48,7 +54,7 @@ export default function ChildEducationPlanner() {
     doc.save('education-plan.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {

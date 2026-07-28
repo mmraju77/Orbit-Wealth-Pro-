@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { COMPARISONS } from '../data/comparisonData';
 import { ArrowRightLeft, ArrowRight, TrendingUp, ShieldCheck, Scale, Zap } from 'lucide-react';
-import { motion } from 'motion/react';
+import { m as motion  } from 'motion/react';
 
 export default function ComparisonsDirectory() {
   const comparisonKeys = Object.keys(COMPARISONS);

@@ -26,31 +26,37 @@ export default function LoanEligibility() {
   const [inputs, setInputs] = useState<LoanEligibilityInputs>(INITIAL_INPUTS);
   const [isMounted, setIsMounted] = useState(false);
 
-  const results = useMemo(() => {
-    const monthlyIncome = inputs.monthlyIncome;
-    const existingObligations = inputs.monthlyObligations;
-    const foir = inputs.maxFOIR / 100;
-    
-    const availableEMI = (monthlyIncome * foir) - existingObligations;
-    const effectiveEMI = Math.max(0, availableEMI);
+  const [results, setResults] = useState(null);
 
-    const r = inputs.interestRate / 12 / 100;
-    const n = inputs.loanTerm * 12;
-    
-    // Formula for Loan Principal based on EMI
-    // P = EMI * [ (1+r)^n - 1 ] / [ r * (1+r)^n ]
-    let maxLoanAmount = 0;
-    if (r > 0) {
-        maxLoanAmount = effectiveEMI * (Math.pow(1 + r, n) - 1) / (r * Math.pow(1 + r, n));
-    } else {
-        maxLoanAmount = effectiveEMI * n;
-    }
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const monthlyIncome = inputs.monthlyIncome;
+      const existingObligations = inputs.monthlyObligations;
+      const foir = inputs.maxFOIR / 100;
 
-    return {
-      eligibleLoanAmount: Math.round(maxLoanAmount),
-      monthlyEMI: Math.round(effectiveEMI),
-      totalPayable: Math.round(effectiveEMI * n)
-    };
+      const availableEMI = (monthlyIncome * foir) - existingObligations;
+      const effectiveEMI = Math.max(0, availableEMI);
+
+      const r = inputs.interestRate / 12 / 100;
+      const n = inputs.loanTerm * 12;
+
+      // Formula for Loan Principal based on EMI
+      // P = EMI * [ (1+r)^n - 1 ] / [ r * (1+r)^n ]
+      let maxLoanAmount = 0;
+      if (r > 0) {
+          maxLoanAmount = effectiveEMI * (Math.pow(1 + r, n) - 1) / (r * Math.pow(1 + r, n));
+      } else {
+          maxLoanAmount = effectiveEMI * n;
+      }
+
+      setResults({
+        eligibleLoanAmount: Math.round(maxLoanAmount),
+        monthlyEMI: Math.round(effectiveEMI),
+        totalPayable: Math.round(effectiveEMI * n)
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs]);
 
   useEffect(() => {
@@ -71,7 +77,7 @@ export default function LoanEligibility() {
     doc.save('loan-eligibility.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {

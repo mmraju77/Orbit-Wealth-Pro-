@@ -68,13 +68,20 @@ export default function IncomeTaxCalculator() {
     return totalTax;
   };
 
-  const results = useMemo(() => {
-    const tax = calculateTax(inputs.amount);
-    return { 
-      taxAmount: tax,
-      totalAmount: inputs.amount - tax,
-      originalAmount: inputs.amount
-    };
+  const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const tax = calculateTax(inputs.amount);
+
+      setResults({ 
+        taxAmount: tax,
+        totalAmount: inputs.amount - tax,
+        originalAmount: inputs.amount
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [inputs, countryKey]);
 
   useEffect(() => {
@@ -93,7 +100,7 @@ export default function IncomeTaxCalculator() {
     doc.save(`income-tax-analysis-${countryKey}.pdf`);
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {
@@ -113,6 +120,11 @@ export default function IncomeTaxCalculator() {
       alert('Calculator link copied to clipboard!');
     }
   };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
 
   return (
     <div className="space-y-8 pb-20">

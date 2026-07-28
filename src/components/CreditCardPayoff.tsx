@@ -18,26 +18,33 @@ export default function CreditCardPayoff() {
   const [interestRate, setInterestRate] = useState(24);
   const [monthlyPayment, setMonthlyPayment] = useState(2500);
 
-  const results = useMemo(() => {
-    let currentBalance = balance;
-    let months = 0;
-    let totalInterest = 0;
-    const monthlyRate = (interestRate / 100) / 12;
+  const [results, setResults] = useState(null);
 
-    if (monthlyPayment <= currentBalance * monthlyRate) return null;
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      let currentBalance = balance;
+      let months = 0;
+      let totalInterest = 0;
+      const monthlyRate = (interestRate / 100) / 12;
 
-    while (currentBalance > 0 && months < 360) {
-      const interest = currentBalance * monthlyRate;
-      totalInterest += interest;
-      currentBalance = (currentBalance + interest) - monthlyPayment;
-      months++;
-    }
+      if (monthlyPayment <= currentBalance * monthlyRate)
+        setResults(null);
 
-    return {
-      months,
-      totalInterest: Math.round(totalInterest),
-      years: Number((months / 12).toFixed(1))
-    };
+      while (currentBalance > 0 && months < 360) {
+        const interest = currentBalance * monthlyRate;
+        totalInterest += interest;
+        currentBalance = (currentBalance + interest) - monthlyPayment;
+        months++;
+      }
+
+      setResults({
+        months,
+        totalInterest: Math.round(totalInterest),
+        years: Number((months / 12).toFixed(1))
+      });
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, [balance, interestRate, monthlyPayment]);
 
   const downloadPDF = () => {
@@ -55,7 +62,7 @@ export default function CreditCardPayoff() {
     doc.save('credit-card-report.pdf');
   };
 
-  
+
   const handleShare = async () => {
     if (navigator.share) {
       try {

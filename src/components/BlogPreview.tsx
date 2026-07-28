@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { m as motion , AnimatePresence } from 'motion/react';
 import { ARTICLES, Article } from '../data/blogData';
 import { Clock, User, ArrowRight, BookOpen } from 'lucide-react';
 import { Link } from 'react-router-dom';
