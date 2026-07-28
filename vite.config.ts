@@ -13,6 +13,7 @@ export default defineConfig(({mode}) => {
       target: 'esnext',
       outDir: 'dist',
       emptyOutDir: true,
+      cssCodeSplit: true,
       chunkSizeWarningLimit: 2000,
       rollupOptions: {
         output: {

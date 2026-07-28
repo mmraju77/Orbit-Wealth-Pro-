@@ -162,71 +162,75 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
 
         <div className="flex-1 overflow-y-auto overflow-x-hidden pt-16 md:pt-0">
           <div className="px-[20px] py-8 md:p-16 lg:p-24 max-w-7xl mx-auto">
-            <Suspense fallback={
-              <div className="flex-1 flex items-center justify-center min-h-[50vh]">
-                <div className="animate-spin w-8 h-8 border-4 border-[#D4AF37] border-t-transparent rounded-full"></div>
-              </div>
-            }>
               <Routes>
                 {/* Core Views */}
                 <Route path="/" element={<Dashboard />} />
-                <Route path="/tax-guides" element={<TaxGuides />} />
-                <Route path="/comparisons" element={<ComparisonsDirectory />} />
-                <Route path="/cities" element={<CitiesDirectory />} />
-                <Route path="/insights" element={<BlogHub />} />
-                <Route path="/compare/:pair" element={<ComparePage />} />
-                
-                {/* Dynamic Calculator Routing - Ensuring DOM efficiency by unmounting inactive views */}
-                <Route path="/calculators/loans/mortgage" element={<MortgageCalculator />} />
-                <Route path="/calculators/investing/retirement" element={<RetirementCalculator />} />
-                <Route path="/calculators/tax/income-tax" element={<IncomeTaxCalculator />} />
-                <Route path="/calculators/tax/gst" element={<GSTCalculator />} />
-                <Route path="/calculators/investing/fd-rd" element={<FDRDCalculator />} />
-                <Route path="/calculators/investing/sip" element={<SIPCalculator />} />
-                <Route path="/calculators/investing/lumpsum" element={<LumpsumCalculator />} />
-                <Route path="/calculators/loans/emi" element={<EMICalculator />} />
-                <Route path="/calculators/investing/mutual-fund" element={<MFCalculator />} />
-                <Route path="/calculators/loans/eligibility" element={<LoanEligibility />} />
-                <Route path="/calculators/loans/home-loan-transfer" element={<BalanceTransfer />} />
-                <Route path="/calculators/salary/gratuity" element={<GratuityCalculator />} />
-                <Route path="/calculators/forex/currency-converter" element={<CurrencyConverter />} />
-                <Route path="/calculators/loans/personal-loan" element={<PersonalLoanCalculator />} />
-                <Route path="/calculators/loans/auto-loan" element={<AutoLoanCalculator />} />
-                <Route path="/calculators/loans/student-loan" element={<StudentLoanCalculator />} />
-                <Route path="/calculators/investing/cagr" element={<CAGRCalculator />} />
-                <Route path="/calculators/investing/dividend-yield" element={<DividendYieldCalculator />} />
-                <Route path="/calculators/investing/child-education" element={<ChildEducationPlanner />} />
-                <Route path="/calculators/investing/rental-yield" element={<RentalYieldCalculator />} />
-                <Route path="/calculators/loans/debt-snowball" element={<DebtSnowball />} />
-                <Route path="/calculators/insurance/hlv" element={<HLVCalculator />} />
-                <Route path="/calculators/business/break-even" element={<BreakEvenCalculator />} />
-                <Route path="/calculators/loans/credit-card-payoff" element={<CreditCardPayoff />} />
-                <Route path="/calculators/insurance/term-insurance" element={<TermInsuranceCalculator />} />
-                <Route path="/calculators/insurance/health-insurance" element={<HealthInsuranceCalculator />} />
+                <Route path="/*" element={
+                  <Suspense fallback={
+                    <div className="flex-1 flex items-center justify-center min-h-[50vh]">
+                      <div className="animate-spin w-8 h-8 border-4 border-[#D4AF37] border-t-transparent rounded-full"></div>
+                    </div>
+                  }>
+                    <Routes>
+                      <Route path="/tax-guides" element={<TaxGuides />} />
+                      <Route path="/comparisons" element={<ComparisonsDirectory />} />
+                      <Route path="/cities" element={<CitiesDirectory />} />
+                      <Route path="/insights" element={<BlogHub />} />
+                      <Route path="/compare/:pair" element={<ComparePage />} />
+                      
+                      {/* Dynamic Calculator Routing - Ensuring DOM efficiency by unmounting inactive views */}
+                      <Route path="/calculators/loans/mortgage" element={<MortgageCalculator />} />
+                      <Route path="/calculators/investing/retirement" element={<RetirementCalculator />} />
+                      <Route path="/calculators/tax/income-tax" element={<IncomeTaxCalculator />} />
+                      <Route path="/calculators/tax/gst" element={<GSTCalculator />} />
+                      <Route path="/calculators/investing/fd-rd" element={<FDRDCalculator />} />
+                      <Route path="/calculators/investing/sip" element={<SIPCalculator />} />
+                      <Route path="/calculators/investing/lumpsum" element={<LumpsumCalculator />} />
+                      <Route path="/calculators/loans/emi" element={<EMICalculator />} />
+                      <Route path="/calculators/investing/mutual-fund" element={<MFCalculator />} />
+                      <Route path="/calculators/loans/eligibility" element={<LoanEligibility />} />
+                      <Route path="/calculators/loans/home-loan-transfer" element={<BalanceTransfer />} />
+                      <Route path="/calculators/salary/gratuity" element={<GratuityCalculator />} />
+                      <Route path="/calculators/forex/currency-converter" element={<CurrencyConverter />} />
+                      <Route path="/calculators/loans/personal-loan" element={<PersonalLoanCalculator />} />
+                      <Route path="/calculators/loans/auto-loan" element={<AutoLoanCalculator />} />
+                      <Route path="/calculators/loans/student-loan" element={<StudentLoanCalculator />} />
+                      <Route path="/calculators/investing/cagr" element={<CAGRCalculator />} />
+                      <Route path="/calculators/investing/dividend-yield" element={<DividendYieldCalculator />} />
+                      <Route path="/calculators/investing/child-education" element={<ChildEducationPlanner />} />
+                      <Route path="/calculators/investing/rental-yield" element={<RentalYieldCalculator />} />
+                      <Route path="/calculators/loans/debt-snowball" element={<DebtSnowball />} />
+                      <Route path="/calculators/insurance/hlv" element={<HLVCalculator />} />
+                      <Route path="/calculators/business/break-even" element={<BreakEvenCalculator />} />
+                      <Route path="/calculators/loans/credit-card-payoff" element={<CreditCardPayoff />} />
+                      <Route path="/calculators/insurance/term-insurance" element={<TermInsuranceCalculator />} />
+                      <Route path="/calculators/insurance/health-insurance" element={<HealthInsuranceCalculator />} />
 
-                {/* pSEO & Tools */}
-                <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
-                <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
-                
-                {/* Legacy Redirects */}
-                <Route path="/calculators/tax" element={<Navigate to="/calculators/tax/income-tax" replace />} />
-                <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loans/eligibility" replace />} />
-                <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/loans/home-loan-transfer" replace />} />
-                <Route path="/calculators/currency" element={<Navigate to="/calculators/forex/currency-converter" replace />} />
-                
-                {/* Legal & Static */}
-                <Route path="/about" element={<AboutUs />} />
-                <Route path="/contact" element={<ContactUs />} />
-                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-                <Route path="/disclaimer" element={<Disclaimer />} />
-                <Route path="/terms-of-service" element={<TermsOfService />} />
-                <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
-                <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
-                
-                {/* Fallback */}
-                <Route path="*" element={<Dashboard />} />
+                      {/* pSEO & Tools */}
+                      <Route path="/tools/:calculator/:region" element={<PSEOLandingPage />} />
+                      <Route path="/:region/:calculator" element={<PSEOLandingPage />} />
+                      
+                      {/* Legacy Redirects */}
+                      <Route path="/calculators/tax" element={<Navigate to="/calculators/tax/income-tax" replace />} />
+                      <Route path="/calculators/eligibility" element={<Navigate to="/calculators/loans/eligibility" replace />} />
+                      <Route path="/calculators/balance-transfer" element={<Navigate to="/calculators/loans/home-loan-transfer" replace />} />
+                      <Route path="/calculators/currency" element={<Navigate to="/calculators/forex/currency-converter" replace />} />
+                      
+                      {/* Legal & Static */}
+                      <Route path="/about" element={<AboutUs />} />
+                      <Route path="/contact" element={<ContactUs />} />
+                      <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                      <Route path="/disclaimer" element={<Disclaimer />} />
+                      <Route path="/terms-of-service" element={<TermsOfService />} />
+                      <Route path="/privacy" element={<Navigate to="/privacy-policy" replace />} />
+                      <Route path="/terms" element={<Navigate to="/terms-of-service" replace />} />
+                      
+                      {/* Fallback */}
+                      <Route path="*" element={<Dashboard />} />
+                    </Routes>
+                  </Suspense>
+                } />
               </Routes>
-            </Suspense>
             <Footer />
           </div>
         </div>

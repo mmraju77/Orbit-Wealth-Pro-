@@ -19,7 +19,10 @@
     
     <!-- Force preload critical fonts (Outfit 500, Inter 400) -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    </noscript>
     
     <style>
       :root {
@@ -30,7 +33,7 @@
     </style>
     <!-- Monetag Vignette Ad Script -->
     <!-- Note: The script was stripped from your prompt. Please replace the src with your actual Monetag script. -->
-    <script defer src="YOUR_MONETAG_SCRIPT_URL_HERE"></script>
+    <script defer src="https://example.com/monetag.js"></script>
   </head>
   <body>
     <div id="root">
