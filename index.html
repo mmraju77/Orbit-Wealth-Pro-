@@ -19,10 +19,7 @@
     
     <!-- Force preload critical fonts (Outfit 500, Inter 400) -->
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-    </noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     
     <style>
       :root {
@@ -30,24 +27,61 @@
       }
       body { background-color: #0B1221; color: white; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
       #root { min-height: 100vh; display: block; }
+      
+      /* Critical minimal layout for initial view */
+      .initial-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        gap: 16px;
+      }
+      .initial-spinner {
+        width: 48px;
+        height: 48px;
+        border: 4px solid rgba(212, 175, 55, 0.3);
+        border-top-color: #D4AF37;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      .initial-logo-text {
+        font-family: 'Outfit', sans-serif;
+        font-weight: 700;
+        color: #D4AF37;
+        letter-spacing: 2px;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
     </style>
-    <!-- Monetag Vignette Ad Script -->
-    <!-- Note: The script was stripped from your prompt. Please replace the src with your actual Monetag script. -->
-    <script defer src="https://example.com/monetag.js"></script>
+    <!-- Delayed 3rd Party Scripts Loader -->
+    <script>
+      (function() {
+        let scriptsLoaded = false;
+        function loadScripts() {
+          if (scriptsLoaded) return;
+          scriptsLoaded = true;
+          // Inject Monetag
+          const monetag = document.createElement('script');
+          monetag.src = 'https://example.com/monetag.js';
+          monetag.defer = true;
+          document.head.appendChild(monetag);
+        }
+        window.addEventListener('scroll', loadScripts, { passive: true, once: true });
+        window.addEventListener('mousemove', loadScripts, { passive: true, once: true });
+        window.addEventListener('touchstart', loadScripts, { passive: true, once: true });
+        window.addEventListener('keydown', loadScripts, { passive: true, once: true });
+        setTimeout(loadScripts, 3000);
+      })();
+    </script>
   </head>
   <body>
     <div id="root">
-      <div style="min-height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #0B1221;">
-        <div style="display: flex; flex-direction: column; align-items: center; gap: 16px;">
-          <div style="width: 48px; height: 48px; border: 4px solid rgba(212, 175, 55, 0.3); border-top-color: #D4AF37; border-radius: 50%; animation: spin 1s linear infinite;"></div>
-          <span style="font-family: 'Outfit', sans-serif; font-weight: 700; color: #D4AF37; letter-spacing: 2px;">ORBIT WEALTH PRO</span>
-        </div>
+      <div class="initial-header">
+        <div class="initial-spinner"></div>
+        <span class="initial-logo-text">ORBIT WEALTH PRO</span>
       </div>
-      <style>
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-      </style>
     </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

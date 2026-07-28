@@ -391,14 +391,8 @@ export default function Dashboard() {
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 min-h-[1400px]">
-          {ALL_CARDS.map((card, idx) => (
-            <motion.div
-              key={card.path}
-              initial={idx < 6 ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              whileInView={idx >= 6 ? { opacity: 1, y: 0 } : undefined}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: idx < 6 ? 0 : 0.1, duration: 0.4 }}
-            >
+          {ALL_CARDS.map((card, idx) => {
+            const CardContent = (
               <Link 
                 to={card.path}
                 aria-label={`Open ${card.title}`}
@@ -423,8 +417,24 @@ export default function Dashboard() {
                   </div>
                 </div>
               </Link>
-            </motion.div>
-          ))}
+            );
+
+            if (idx < 6) {
+              return <div key={card.path} style={{ opacity: 1, transform: 'none' }}>{CardContent}</div>;
+            }
+
+            return (
+              <motion.div
+                key={card.path}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ delay: 0.1, duration: 0.4 }}
+              >
+                {CardContent}
+              </motion.div>
+            );
+          })}
         </div>
       </section>
 
