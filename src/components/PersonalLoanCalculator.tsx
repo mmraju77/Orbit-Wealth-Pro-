@@ -219,7 +219,7 @@ export default function PersonalLoanCalculator() {
                 </div>
              )}
 
-             <div className="h-48 flex items-center justify-center">
+             <div className="h-48 flex items-center justify-center w-full min-w-[250px] min-h-[192px]">
                {isMounted && (
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>

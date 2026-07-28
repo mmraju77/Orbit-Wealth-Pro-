@@ -194,7 +194,7 @@ export default function BalanceTransfer() {
                  </div>
                </div>
 
-               <div className="flex-1 min-h-[150px] mt-8 bg-black/20 rounded-2xl border border-white/5 p-4">
+               <div className="flex-1 min-h-[150px] mt-8 bg-black/20 rounded-2xl border border-white/5 p-4 w-full min-w-[250px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <BarChart data={[
                       { name: 'Existing EMI', value: results.existingEMI },

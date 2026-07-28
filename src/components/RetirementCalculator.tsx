@@ -251,7 +251,7 @@ export default function RetirementCalculator() {
                   </div>
                </div>
 
-               <div className="flex-1 h-[300px]">
+               <div className="flex-1 h-[300px] w-full min-h-[300px] min-w-[300px]">
                   <ResponsiveContainer width="100%" height="100%">
                     <AreaChart data={results.yearlyData}>
                       <defs>

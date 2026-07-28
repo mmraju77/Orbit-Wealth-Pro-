@@ -220,7 +220,7 @@ export default function CurrencyConverter() {
                      </div>
                      <span className="text-base font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded">+2.4%</span>
                   </div>
-                  <div className="h-[200px] w-full">
+                  <div className="w-full h-[200px] min-h-[200px] min-w-[250px]">
                     <ResponsiveContainer width="100%" height="100%">
                       <AreaChart data={historicalData}>
                         <defs>

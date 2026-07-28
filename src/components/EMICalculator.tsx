@@ -165,7 +165,7 @@ export default function EMICalculator() {
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[400px]">
           {isMounted && (
             <div className="w-full flex-col flex items-center justify-center gap-12">
-               <div className="relative w-[250px] h-[250px]">
+               <div className="relative w-[250px] h-[250px] min-w-[250px] min-h-[250px]">
                   <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10 flex-col">
                     <div className="text-base text-white/70 font-bold uppercase tracking-widest">Monthly EMI</div>
                     <div className="text-xl md:text-2xl font-bold text-white tracking-tighter">{formatCurrency(results.monthlyPayment)}</div>

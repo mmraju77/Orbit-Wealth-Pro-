@@ -267,7 +267,7 @@ export default function MortgageCalculator() {
                  </div>
               </div>
 
-              <div className="flex-1 flex items-center justify-center min-h-[240px]">
+              <div className="flex-1 flex items-center justify-center min-h-[240px] w-full min-w-[240px]">
                   <ResponsiveContainer width={240} height={240}>
                     <PieChart>
                       <Pie
@@ -336,7 +336,8 @@ export default function MortgageCalculator() {
         </div>
         
         {isMounted && (
-          <ResponsiveContainer width="100%" height={300}>
+          <div className="w-full min-h-[300px] min-w-full">
+            <ResponsiveContainer width="100%" height={300}>
             <LineChart data={results.amortizationSchedule} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="#ffffff10" vertical={false} />
               <XAxis 
@@ -354,6 +355,7 @@ export default function MortgageCalculator() {
               <Line type="monotone" dataKey="totalInterestPaid" stroke="#FFFFFF20" strokeWidth={2} dot={false} isAnimationActive={false} />
             </LineChart>
           </ResponsiveContainer>
+          </div>
         )}
       </section>
 

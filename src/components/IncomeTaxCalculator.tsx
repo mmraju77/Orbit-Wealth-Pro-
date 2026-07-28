@@ -182,7 +182,7 @@ export default function IncomeTaxCalculator() {
                  </div>
                </div>
 
-               <div className="flex-1 h-[150px] w-full">
+               <div className="flex-1 h-[150px] w-full min-h-[150px] min-w-[250px]">
                   <ResponsiveContainer width="100%" height="100%">
                      <BarChart data={[
                        { name: 'Income', val: inputs.amount },

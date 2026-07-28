@@ -220,7 +220,7 @@ export default function MFCalculator() {
                     </div>
                  </div>
 
-                 <div className="h-[250px] w-full">
+                 <div className="w-full h-[250px] min-h-[250px] min-w-full">
                     <ResponsiveContainer width="100%" height="100%">
                       <BarChart data={results.yearlyData} margin={{ top: 20, right: 0, left: 0, bottom: 0 }}>
                         <CartesianGrid strokeDasharray="3 3" stroke="#ffffff05" vertical={false} />

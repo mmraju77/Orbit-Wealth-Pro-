@@ -164,7 +164,7 @@ export default function LumpsumCalculator() {
 
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[400px]">
           {isMounted && (
-            <div className="w-full h-full min-h-[300px]">
+            <div className="w-full h-full min-h-[300px] min-w-[300px]">
                <ResponsiveContainer width="100%" height={300}>
                 <AreaChart data={results.yearlyData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                   <defs>

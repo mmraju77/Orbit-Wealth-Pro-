@@ -233,7 +233,7 @@ export default function AutoLoanCalculator() {
                  </div>
               </div>
 
-              <div className="h-32 flex items-center justify-center">
+              <div className="h-32 flex items-center justify-center w-full min-w-[250px] min-h-[128px]">
                 {isMounted && (
                   <ResponsiveContainer width="100%" height="100%">
                     <PieChart>

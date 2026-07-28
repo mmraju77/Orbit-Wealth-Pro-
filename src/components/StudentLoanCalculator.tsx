@@ -189,7 +189,7 @@ export default function StudentLoanCalculator() {
               </div>
            </div>
 
-           <div className="flex-1 min-h-[250px]">
+           <div className="flex-1 min-h-[250px] w-full min-w-[250px]">
              {isMounted && (
                 <ResponsiveContainer width="100%" height="100%">
                    <AreaChart data={results.projection}>
