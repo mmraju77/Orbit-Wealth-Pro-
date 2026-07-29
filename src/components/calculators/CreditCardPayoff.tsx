@@ -125,10 +125,10 @@ const breadcrumbItems = [
             Simulate your credit card debt repayment and visualize the true cost of interest over time.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-base font-bold transition-all hover:bg-white/10 shrink-0">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-base font-bold transition-all hover:bg-white/10 shrink-0 min-h-[44px]">
           <Download className="w-4 h-4" /> Export Report
         </button>
-        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20 min-h-[44px]">
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>

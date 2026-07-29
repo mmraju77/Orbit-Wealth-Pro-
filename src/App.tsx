@@ -166,7 +166,7 @@ function MainContent({ sidebarOpen, setSidebarOpen }: { sidebarOpen: boolean; se
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/*" element={
                   <Suspense fallback={
-                    <div className="flex-1 flex items-center justify-center min-h-[50vh]">
+                    <div className="flex-1 flex items-center justify-center min-h-[50vh] flex-col">
                       <div className="animate-spin w-8 h-8 border-4 border-[#D4AF37] border-t-transparent rounded-full"></div>
                     </div>
                   }>

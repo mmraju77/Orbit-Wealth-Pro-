@@ -93,7 +93,7 @@ export default function AIAdvisor({ context }: AIAdvisorProps) {
     <div className="mt-8">
       <button 
         onClick={toggleInsight}
-        className="group flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all"
+        className="group flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all min-h-[44px]"
       >
         <Sparkles className={`w-3.5 h-3.5 ${isOpen ? 'text-[#D4AF37]' : 'text-white/70 group-hover:text-[#D4AF37]'}`} />
         <span className="text-base font-bold text-white/70 uppercase tracking-widest group-hover:text-white">

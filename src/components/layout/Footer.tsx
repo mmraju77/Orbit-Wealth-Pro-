@@ -9,7 +9,7 @@ import { Shield, Mail, Scale, FileText, Globe, Twitter, Instagram, Github, Walle
 import { useLocale } from '../../context/LocaleContext';
 import { REGIONS, regionKeys } from '../../data/pSEOData';
 
-export default function Footer() {
+export default React.memo(function Footer() {
   const { labels } = useLocale();
   const currentYear = new Date().getFullYear();
 
@@ -173,4 +173,4 @@ export default function Footer() {
       </div>
     </footer>
   );
-}
+});

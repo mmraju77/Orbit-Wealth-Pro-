@@ -149,10 +149,10 @@ const breadcrumbItems = [
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all min-h-[44px]">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white">
+          <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 text-white min-h-[44px]">
             <Share2 className="w-4 h-4" /> Share Pair
           </button>
         </div>
@@ -203,7 +203,7 @@ const breadcrumbItems = [
 
                   <button 
                     onClick={swapCurrencies}
-                    className="mt-6 p-4 rounded-full bg-white/5 border border-white/10 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all group"
+                    className="mt-6 p-4 rounded-full bg-white/5 border border-white/10 hover:bg-[#D4AF37]/10 hover:border-[#D4AF37]/30 transition-all group min-h-[44px]"
                   >
                     <ArrowRightLeft className="w-6 h-6 text-white/70 group-hover:text-[#D4AF37] transition-colors" />
                   </button>

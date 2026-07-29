@@ -71,13 +71,12 @@ export default function AboutUs() {
               {/* Profile Visual */}
               <div className="flex-shrink-0">
                 <div className="relative w-72 h-[420px] rounded-[3rem] overflow-hidden border border-white/10 shadow-2xl bg-black group/img">
-                    <img 
-                      src="https://i.ibb.co/B5m9W7Dt/founder-jpg.jpg" 
+                    <img src="https://i.ibb.co/B5m9W7Dt/founder-jpg.jpg" 
                       alt="Munchangi Matyaraju (mm Raju)" 
                       className="w-full h-full object-cover grayscale brightness-90 group-hover/img:grayscale-0 group-hover/img:brightness-100 transition-all duration-1000 scale-[1.05] group-hover/img:scale-100"
                       loading="lazy"
                       referrerPolicy="no-referrer"
-                    />
+                    decoding="async" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60"></div>
                     <div className="absolute bottom-8 left-8 right-8">
                        <div className="text-base font-black text-amber-500 uppercase tracking-[0.3em] mb-2 italic">Verified Identity</div>

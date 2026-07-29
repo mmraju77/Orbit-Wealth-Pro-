@@ -130,7 +130,7 @@ interface SidebarProps {
   onClose: () => void;
 }
 
-export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+export default React.memo(function Sidebar({ isOpen, onClose }: SidebarProps) {
   const { currency, setCurrency, numberSystem, setNumberSystem } = useLocale();
   const location = useLocation();
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
@@ -168,7 +168,7 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
           
           <button 
             onClick={onClose}
-            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded"
+            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded min-h-[44px]"
             aria-label="Close Sidebar"
           >
             <ChevronRight className="w-5 h-5 rotate-180" />
@@ -272,4 +272,4 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
       </aside>
     </>
   );
-}
+});

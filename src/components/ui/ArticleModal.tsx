@@ -57,14 +57,14 @@ export default function ArticleModal({ article, onClose }: ArticleModalProps) {
           {/* Header Actions */}
           <div className="absolute top-6 right-6 z-20 flex gap-2">
             <button onClick={handleShare} 
-              className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors"
+              className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors min-h-[44px]"
               aria-label="Share Article" title="Share Article"
             >
               <Share2 className="w-4 h-4" />
             </button>
             <button 
               aria-label="Close Article" onClick={onClose}
-              className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors"
+              className="p-2 bg-white/5 border border-white/10 rounded-full text-white/70 hover:text-white transition-colors min-h-[44px]"
             >
               <X className="w-4 h-4" />
             </button>

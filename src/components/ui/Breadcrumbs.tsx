@@ -11,12 +11,12 @@ interface BreadcrumbsProps {
   items: BreadcrumbItem[];
 }
 
-export default function Breadcrumbs({ items }: BreadcrumbsProps) {
+export default React.memo(function Breadcrumbs({ items }: BreadcrumbsProps) {
   return (
     <nav className="flex text-sm text-gray-400 mb-6 overflow-x-auto whitespace-nowrap pb-2" aria-label="Breadcrumb">
       <ol className="inline-flex items-center space-x-1 md:space-x-3">
         <li className="inline-flex items-center">
-          <Link to="/" className="inline-flex items-center hover:text-white transition-colors">
+          <Link to="/" className="inline-flex items-center hover:text-white transition-colors py-2">
             <Home className="w-4 h-4 mr-2" />
             Home
           </Link>
@@ -40,4 +40,4 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
       </ol>
     </nav>
   );
-}
+});

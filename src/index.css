@@ -38,3 +38,8 @@
     @apply bg-[#D4AF37] hover:bg-[#B8962E] text-black py-4 font-bold tracking-widest text-base uppercase transition-all flex items-center justify-center;
   }
 }
+
+
+/* Mobile Optimizations */
+html, body { overscroll-behavior-y: none; -webkit-tap-highlight-color: transparent; }
+button, a { touch-action: manipulation; }

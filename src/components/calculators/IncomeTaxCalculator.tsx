@@ -168,10 +168,10 @@ const breadcrumbItems = [
         </header>
 
         <div className="flex items-center gap-2">
-          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all min-h-[44px]">
             <Download className="w-4 h-4" /> PDF Report
           </button>
-          <button onClick={handleShare} className="flex items-center gap-3 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+          <button onClick={handleShare} className="flex items-center gap-3 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 min-h-[44px]">
             <Share2 className="w-4 h-4" /> Share
           </button>
         </div>

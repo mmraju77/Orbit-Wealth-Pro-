@@ -114,7 +114,7 @@ export default function TaxGuides() {
                ))}
             </div>
             <div className="p-4 bg-white/[0.01] flex justify-center border-t border-white/5">
-                <button className="text-base font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2">
+                <button className="text-base font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2 min-h-[44px]">
                    <ExternalLink className="w-3 h-3" /> Detailed Guide
                 </button>
             </div>
@@ -130,7 +130,7 @@ export default function TaxGuides() {
             <h3 className="font-bold text-2xl">Need a custom tax plan?</h3>
             <p className="text-lg text-white/70">Our professional advisors can help you optimize your global tax liabilities across residency shifts.</p>
          </div>
-         <button className="ml-auto px-6 py-3 bg-[#D4AF37] rounded-xl text-base font-bold hover:bg-[#0044DD] transition-all">
+         <button className="ml-auto px-6 py-3 bg-[#D4AF37] rounded-xl text-base font-bold hover:bg-[#0044DD] transition-all min-h-[44px]">
             Consult Advisor
          </button>
       </div>

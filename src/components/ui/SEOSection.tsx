@@ -8,7 +8,7 @@ interface SEOSectionProps {
   benefits: string[];
 }
 
-export default function SEOSection({ title, howTo, formula, benefits }: SEOSectionProps) {
+export default React.memo(function SEOSection({ title, howTo, formula, benefits }: SEOSectionProps) {
   return (
     <div className="mt-20 space-y-12 border-t border-white/5 pt-20 pb-20">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -59,4 +59,4 @@ export default function SEOSection({ title, howTo, formula, benefits }: SEOSecti
       </div>
     </div>
   );
-}
+});

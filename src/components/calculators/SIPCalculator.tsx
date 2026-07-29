@@ -173,13 +173,13 @@ const breadcrumbItems = [
           <button 
             onClick={downloadPDF} 
             aria-label="Download Calculation PDF"
-            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all focus:ring-1 focus:ring-[#D4AF37] outline-none"
+            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all focus:ring-1 focus:ring-[#D4AF37] outline-none min-h-[44px]"
           >
             <Download className="w-4 h-4" /> PDF
           </button>
           <button onClick={handleShare} 
             aria-label="Share Calculation"
-            className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 focus:ring-2 focus:ring-white outline-none"
+            className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20 focus:ring-2 focus:ring-white outline-none min-h-[44px]"
           >
             <Share2 className="w-4 h-4" /> Share
           </button>

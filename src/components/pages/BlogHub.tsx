@@ -238,7 +238,7 @@ export default function BlogHub() {
                     <button 
                       type="submit"
                       disabled={isSubmitting}
-                      className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-base uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 min-w-[140px]"
+                      className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-base uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 min-w-[140px] min-h-[44px]"
                     >
                       {isSubmitting ? (
                         <>

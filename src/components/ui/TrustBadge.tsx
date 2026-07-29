@@ -1,3 +1,4 @@
+import React from 'react';
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -8,7 +9,7 @@ interface TrustBadgeProps {
   activeView: string;
 }
 
-export default function TrustBadge({ setView, activeView }: TrustBadgeProps) {
+export default React.memo(function TrustBadge({ setView, activeView }: TrustBadgeProps) {
   return (
     <footer className="px-10 py-12 border-t border-white/10 bg-[#0A0A0A]">
       <div className="flex flex-col lg:flex-row justify-between items-start gap-12 mb-12">
@@ -59,4 +60,4 @@ export default function TrustBadge({ setView, activeView }: TrustBadgeProps) {
       </div>
     </footer>
   );
-}
+});

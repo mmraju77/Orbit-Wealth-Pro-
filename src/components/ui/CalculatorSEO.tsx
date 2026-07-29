@@ -111,7 +111,7 @@ export function CalculatorSEO({ id, title, description, faqs }: CalculatorSEOPro
           {faqs.map((faq, idx) => (
             <div key={idx} className="border border-white/5 rounded-xl overflow-hidden bg-white/[0.02]">
               <button
-                className="w-full text-left px-6 py-4 flex items-center justify-between text-white/90 font-medium hover:bg-white/5 transition-colors focus:outline-none"
+                className="w-full text-left px-6 py-4 flex items-center justify-between text-white/90 font-medium hover:bg-white/5 transition-colors focus:outline-none min-h-[44px]"
                 onClick={() => setOpenFaqIndex(openFaqIndex === idx ? null : idx)}
               >
                 <span>{faq.question}</span>

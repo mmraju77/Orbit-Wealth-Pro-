@@ -218,20 +218,19 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
       >
         <button aria-label="Close modal" 
           onClick={onClose}
-          className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/70 hover:text-white transition-all"
+          className="absolute top-6 right-6 z-10 p-2 bg-black/40 hover:bg-black/60 rounded-full border border-white/10 text-white/70 hover:text-white transition-all min-h-[44px]"
         >
           <X className="w-5 h-5" />
         </button>
 
         <div className="overflow-y-auto custom-scrollbar">
           <div className="aspect-video w-full relative">
-            <img 
-              src={article.image} 
+            <img src={article.image} 
               alt={article.title}
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
               loading="lazy"
-            />
+            decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#111827] via-transparent to-transparent"></div>
             <div className="absolute bottom-8 left-8 right-8">
               <span className="px-3 py-1 bg-[#f59e0b] rounded-full text-base font-black text-black uppercase tracking-widest mb-4 inline-block">
@@ -271,7 +270,7 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
               </div>
               <button aria-label="Toggle all news articles" 
                 onClick={onClose}
-                className="px-10 py-4 bg-[#f59e0b] text-black font-black text-base uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform"
+                className="px-10 py-4 bg-[#f59e0b] text-black font-black text-base uppercase tracking-[0.2em] rounded-full hover:scale-105 transition-transform min-h-[44px]"
               >
                 Return to Intelligence Suite
               </button>
@@ -293,15 +292,14 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
     >
       <div onClick={() => onReadMore(article)} className="block cursor-pointer outline-none">
       <div className="h-40 overflow-hidden relative">
-        <img 
-          src={article.image} 
+        <img src={article.image} 
           alt={article.title}
           className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-105 transition-all duration-700"
           referrerPolicy="no-referrer"
           loading="lazy"
           width="400"
           height="225"
-        />
+        decoding="async" />
         <div className="absolute top-4 left-4">
           <span className="px-3 py-1 bg-black/60 backdrop-blur-md rounded-full text-base font-black text-[#f59e0b] uppercase tracking-tighter border border-white/5">
             {article.category}
@@ -606,8 +604,7 @@ export default function Dashboard() {
           </div>
           <div className="md:col-span-4 flex justify-center md:justify-end">
             <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-[#F3C64F] shadow-lg flex-shrink-0 bg-slate-900 relative">
-                <img 
-                  src="https://i.ibb.co/B5m9W7Dt/founder-jpg.jpg" 
+                <img src="https://i.ibb.co/B5m9W7Dt/founder-jpg.jpg" 
                   alt="Munchangi Matyaraju" 
                   className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
                   loading="lazy"
