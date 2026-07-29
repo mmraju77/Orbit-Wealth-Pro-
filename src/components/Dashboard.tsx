@@ -259,11 +259,10 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
               <p className="text-xl md:text-2xl font-bold text-slate-100 font-medium leading-relaxed italic border-l-4 border-[#f59e0b] pl-6">
                 {article.summary}
               </p>
-              <div className="text-2xl text-slate-200 leading-relaxed font-light space-y-6">
-                {article.content.split('. ').map((sentence, i) => (
-                  <p key={i}>{sentence}.</p>
-                ))}
-              </div>
+              <div 
+                className="text-xl md:text-2xl text-slate-200 leading-relaxed font-light space-y-6 [&>p]:mb-6 [&>a]:text-[#f59e0b] [&>a]:underline [&>img]:rounded-xl [&>img]:my-6 [&>ul]:list-disc [&>ul]:pl-6"
+                dangerouslySetInnerHTML={{ __html: article.content }}
+              />
             </div>
 
             <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row gap-8 justify-between items-center">
@@ -285,9 +284,6 @@ const NewsModal: React.FC<{ article: NewsArticle; onClose: () => void }> = ({ ar
 };
 
 const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArticle) => void }> = ({ article, onReadMore }) => {
-  const CardWrapper = (article.link ? 'a' : 'div') as any;
-  const wrapperProps = article.link ? { href: article.link, target: '_blank', rel: 'noopener noreferrer' } : { onClick: () => onReadMore(article) };
-  
   return (
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
@@ -295,7 +291,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
       viewport={{ once: true }}
       className="group relative bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-2xl overflow-hidden hover:border-[#f59e0b]/30 transition-all duration-500 h-fit"
     >
-      <CardWrapper {...wrapperProps} className="block cursor-pointer outline-none">
+      <div onClick={() => onReadMore(article)} className="block cursor-pointer outline-none">
       <div className="h-40 overflow-hidden relative">
         <img 
           src={article.image} 
@@ -331,11 +327,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
            <div 
              onClick={(e) => {
                e.stopPropagation();
-               if (article.link) {
-                 window.open(article.link, '_blank', 'noopener,noreferrer');
-               } else {
-                 onReadMore(article);
-               }
+               onReadMore(article);
              }}
              aria-label={`Read full report: ${article.title}`}
              className="flex items-center gap-2 text-xs md:text-sm font-bold text-[#f59e0b] uppercase tracking-widest group-hover:translate-x-1 transition-transform cursor-pointer outline-none focus:underline"
@@ -344,8 +336,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
              onKeyDown={(e) => {
                e.stopPropagation();
                if (e.key === 'Enter' || e.key === ' ') {
-                 if (article.link) window.open(article.link, '_blank', 'noopener,noreferrer');
-                 else onReadMore(article);
+                 onReadMore(article);
                }
              }}
            >
@@ -353,7 +344,7 @@ const NewsCard: React.FC<{ article: NewsArticle; onReadMore: (article: NewsArtic
            </div>
         </div>
       </div>
-      </CardWrapper>
+      </div>
     </motion.div>
   );
 }
@@ -390,7 +381,7 @@ export default function Dashboard() {
               id: `live-news-${idx}`,
               title: item.title,
               summary: textDesc || item.title,
-              content: textDesc,
+              content: item.content || item.description || textDesc,
               date: dateStr,
               category: "Market News",
               image: image,
