@@ -4,16 +4,14 @@ import { CalculatorSEO } from '../ui/CalculatorSEO';
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { Link } from 'react-router-dom';
 import React, { useState, useMemo, useEffect } from 'react';
 import Breadcrumbs from '../ui/Breadcrumbs';
 import RelatedTools from '../ui/RelatedTools';
-import { Landmark, Download, Share2, TrendingUp, Calendar, Wallet } from 'lucide-react';
+import { Landmark, Download, Share2 } from 'lucide-react';
 import { useLocale } from '../../context/LocaleContext';
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
 import SEOSection from '../ui/SEOSection';
-import CurrencyInput from '../ui/CurrencyInput';
 import NumericInput from '../ui/NumericInput';
 
 export default function FDRDCalculator() {
@@ -41,7 +39,7 @@ const breadcrumbItems = [
     { label: 'FD / RD Calculator' }
   ];
 
-  const { formatCurrency, currencySymbol, labels, currency } = useLocale();
+  const { formatCurrency, currencySymbol } = useLocale();
   const [type, setType] = useState<'FD' | 'RD'>('FD');
   const [inputs, setInputs] = useState({
     amount: 100000,
@@ -51,7 +49,7 @@ const breadcrumbItems = [
   });
   const [isMounted, setIsMounted] = useState(false);
 
-  const [results, setResults] = useState(null);
+  const [results, setResults] = useState<{ totalInvestment: number; interest: number; matValue: number } | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -94,6 +92,7 @@ const breadcrumbItems = [
   }, []);
 
   const downloadPDF = () => {
+    if (!results) return;
     const doc = new jsPDF();
     doc.setFontSize(22);
     doc.text(`ORBIT WEALTH PRO: ${type} Maturity Analysis`, 20, 20);
@@ -124,7 +123,7 @@ const breadcrumbItems = [
           text: 'Check out this financial calculator!',
           url: window.location.href,
         });
-      } catch (error) {
+      } catch (error: any) {
         if (error.name !== 'AbortError') {
           navigator.clipboard.writeText(window.location.href);
           alert('Calculator link copied to clipboard!');
