@@ -5,7 +5,7 @@ import { LazyMotion, domAnimation } from 'motion/react';
  */
 
 import React, { useEffect, useState, lazy, Suspense } from 'react';
-import { HashRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Menu, Wallet } from 'lucide-react';
 
@@ -13,55 +13,55 @@ import { Menu, Wallet } from 'lucide-react';
 import { LocaleProvider, useLocale } from './context/LocaleContext';
 
 // Components
-import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
+import Sidebar from './components/layout/Sidebar';
+import Footer from './components/layout/Footer';
 
 // Core Views (Dashboard remains static for fast LCP)
-import Dashboard from './components/Dashboard';
+import Dashboard from './components/pages/Dashboard';
 
 // Lazy-loaded routes
-const TaxGuides = lazy(() => import('./components/TaxGuides'));
-const BlogHub = lazy(() => import('./components/BlogHub'));
-const AboutUs = lazy(() => import('./components/AboutUs'));
-const ContactUs = lazy(() => import('./components/ContactUs'));
+const TaxGuides = lazy(() => import('./components/pages/TaxGuides'));
+const BlogHub = lazy(() => import('./components/pages/BlogHub'));
+const AboutUs = lazy(() => import('./components/pages/AboutUs'));
+const ContactUs = lazy(() => import('./components/pages/ContactUs'));
 
 // Calculators & Tools
-const MortgageCalculator = lazy(() => import('./components/MortgageCalculator'));
-const RetirementCalculator = lazy(() => import('./components/RetirementCalculator'));
-const IncomeTaxCalculator = lazy(() => import('./components/IncomeTaxCalculator'));
-const GSTCalculator = lazy(() => import('./components/GSTCalculator'));
-const FDRDCalculator = lazy(() => import('./components/FDRDCalculator'));
-const SIPCalculator = lazy(() => import('./components/SIPCalculator'));
-const LumpsumCalculator = lazy(() => import('./components/LumpsumCalculator'));
-const EMICalculator = lazy(() => import('./components/EMICalculator'));
-const MFCalculator = lazy(() => import('./components/MFCalculator'));
-const LoanEligibility = lazy(() => import('./components/LoanEligibility'));
-const BalanceTransfer = lazy(() => import('./components/BalanceTransfer'));
-const GratuityCalculator = lazy(() => import('./components/GratuityCalculator'));
-const CurrencyConverter = lazy(() => import('./components/CurrencyConverter'));
-const PersonalLoanCalculator = lazy(() => import('./components/PersonalLoanCalculator'));
-const AutoLoanCalculator = lazy(() => import('./components/AutoLoanCalculator'));
-const StudentLoanCalculator = lazy(() => import('./components/StudentLoanCalculator'));
-const CAGRCalculator = lazy(() => import('./components/CAGRCalculator'));
-const DividendYieldCalculator = lazy(() => import('./components/DividendYieldCalculator'));
-const ChildEducationPlanner = lazy(() => import('./components/ChildEducationPlanner'));
-const RentalYieldCalculator = lazy(() => import('./components/RentalYieldCalculator'));
-const DebtSnowball = lazy(() => import('./components/DebtSnowball'));
-const HLVCalculator = lazy(() => import('./components/HLVCalculator'));
-const BreakEvenCalculator = lazy(() => import('./components/BreakEvenCalculator'));
-const CreditCardPayoff = lazy(() => import('./components/CreditCardPayoff'));
-const TermInsuranceCalculator = lazy(() => import('./components/TermInsuranceCalculator'));
-const HealthInsuranceCalculator = lazy(() => import('./components/HealthInsuranceCalculator'));
-const OrbitChat = lazy(() => import('./components/OrbitChat'));
+const MortgageCalculator = lazy(() => import('./components/calculators/MortgageCalculator'));
+const RetirementCalculator = lazy(() => import('./components/calculators/RetirementCalculator'));
+const IncomeTaxCalculator = lazy(() => import('./components/calculators/IncomeTaxCalculator'));
+const GSTCalculator = lazy(() => import('./components/calculators/GSTCalculator'));
+const FDRDCalculator = lazy(() => import('./components/calculators/FDRDCalculator'));
+const SIPCalculator = lazy(() => import('./components/calculators/SIPCalculator'));
+const LumpsumCalculator = lazy(() => import('./components/calculators/LumpsumCalculator'));
+const EMICalculator = lazy(() => import('./components/calculators/EMICalculator'));
+const MFCalculator = lazy(() => import('./components/calculators/MFCalculator'));
+const LoanEligibility = lazy(() => import('./components/calculators/LoanEligibility'));
+const BalanceTransfer = lazy(() => import('./components/calculators/BalanceTransfer'));
+const GratuityCalculator = lazy(() => import('./components/calculators/GratuityCalculator'));
+const CurrencyConverter = lazy(() => import('./components/calculators/CurrencyConverter'));
+const PersonalLoanCalculator = lazy(() => import('./components/calculators/PersonalLoanCalculator'));
+const AutoLoanCalculator = lazy(() => import('./components/calculators/AutoLoanCalculator'));
+const StudentLoanCalculator = lazy(() => import('./components/calculators/StudentLoanCalculator'));
+const CAGRCalculator = lazy(() => import('./components/calculators/CAGRCalculator'));
+const DividendYieldCalculator = lazy(() => import('./components/calculators/DividendYieldCalculator'));
+const ChildEducationPlanner = lazy(() => import('./components/calculators/ChildEducationPlanner'));
+const RentalYieldCalculator = lazy(() => import('./components/calculators/RentalYieldCalculator'));
+const DebtSnowball = lazy(() => import('./components/calculators/DebtSnowball'));
+const HLVCalculator = lazy(() => import('./components/calculators/HLVCalculator'));
+const BreakEvenCalculator = lazy(() => import('./components/calculators/BreakEvenCalculator'));
+const CreditCardPayoff = lazy(() => import('./components/calculators/CreditCardPayoff'));
+const TermInsuranceCalculator = lazy(() => import('./components/calculators/TermInsuranceCalculator'));
+const HealthInsuranceCalculator = lazy(() => import('./components/calculators/HealthInsuranceCalculator'));
+const OrbitChat = lazy(() => import('./components/layout/OrbitChat'));
 
 // Pages
-const PSEOLandingPage = lazy(() => import('./components/PSEOLandingPage'));
-const ComparePage = lazy(() => import('./components/ComparePage'));
-const ComparisonsDirectory = lazy(() => import('./components/ComparisonsDirectory'));
-const CitiesDirectory = lazy(() => import('./components/CitiesDirectory'));
-const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
-const Disclaimer = lazy(() => import('./components/Disclaimer'));
-const TermsOfService = lazy(() => import('./components/TermsOfService'));
+const PSEOLandingPage = lazy(() => import('./components/pages/PSEOLandingPage'));
+const ComparePage = lazy(() => import('./components/pages/ComparePage'));
+const ComparisonsDirectory = lazy(() => import('./components/pages/ComparisonsDirectory'));
+const CitiesDirectory = lazy(() => import('./components/pages/CitiesDirectory'));
+const PrivacyPolicy = lazy(() => import('./components/pages/PrivacyPolicy'));
+const Disclaimer = lazy(() => import('./components/pages/Disclaimer'));
+const TermsOfService = lazy(() => import('./components/pages/TermsOfService'));
 
 // Utils
 import { resolveRegion } from './data/pSEOData';
@@ -290,13 +290,13 @@ export default function App() {
     <HelmetProvider>
       <GoogleAnalytics />
       <LazyMotion features={domAnimation}>
-      <HashRouter>
+      <BrowserRouter>
         <LocaleProvider>
           <RegionSynchronizer />
           <ScrollToTop />
           <MainContent sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         </LocaleProvider>
-      </HashRouter>
+      </BrowserRouter>
       </LazyMotion>
     </HelmetProvider>
   );

@@ -1,0 +1,286 @@
+import { CalculatorSEO } from '../ui/CalculatorSEO';
+/**
+ * @license
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { useState, useMemo, useEffect } from 'react';
+import Breadcrumbs from '../ui/Breadcrumbs';
+import RelatedTools from '../ui/RelatedTools';
+import { Percent, Download, Share2, Globe, Shield, Wallet } from 'lucide-react';
+import { useLocale } from '../../context/LocaleContext';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
+import jsPDF from 'jspdf';
+import { useParams, Link } from 'react-router-dom';
+import SEOSection from '../ui/SEOSection';
+import { normalizeRegionKey } from '../../data/pSEOData';
+import NumericInput from '../ui/NumericInput';
+
+const REGIONAL_TAX_SLABS: Record<string, number[]> = {
+  india: [5, 12, 18, 28],
+  usa: [0, 4, 6, 8], // Sales tax varies by state
+  uae: [5],
+  uk: [5, 20],
+  canada: [5, 13, 15],
+  australia: [10],
+  germany: [7, 19],
+  netherlands: [9, 21],
+  switzerland: [2.6, 8.1],
+  norway: [12, 15, 25],
+  sweden: [6, 12, 25],
+  denmark: [25],
+};
+
+export default function GSTCalculator() {
+
+  
+  const relatedTools = [
+    {
+      "title": "Income Tax",
+      "path": "/calculators/tax/income-tax",
+      "description": "Calculate your annual tax liability."
+    },
+    {
+      "title": "Break Even",
+      "path": "/calculators/business/break-even",
+      "description": "Calculate business break-even points."
+    },
+    {
+      "title": "Currency Converter",
+      "path": "/calculators/forex/currency-converter",
+      "description": "Convert between global currencies."
+    }
+  ];
+const breadcrumbItems = [
+    { label: 'Tax' },
+    { label: 'GST Calculator' }
+  ];
+
+  const { region } = useParams<{ region: string }>();
+  const { formatCurrency, currencySymbol, currency } = useLocale();
+
+  const countryKey = useMemo(() => {
+    if (region) return normalizeRegionKey(region);
+    const map: Record<string, string> = {
+      INR: 'india', USD: 'usa', GBP: 'uk', CAD: 'canada', AUD: 'australia',
+      EUR: 'germany', CHF: 'switzerland', NOK: 'norway', SEK: 'sweden', DKK: 'denmark'
+    };
+    return map[currency] || 'usa';
+  }, [region, currency]);
+
+  const slabs = REGIONAL_TAX_SLABS[countryKey] || [5, 12, 18, 28];
+
+  const [inputs, setInputs] = useState({
+    amount: 100000,
+    taxRate: slabs[0],
+    isAddingTax: true,
+  });
+
+  useEffect(() => {
+    setInputs(prev => ({ ...prev, taxRate: slabs[0] }));
+  }, [countryKey]);
+
+  const [isMounted, setIsMounted] = useState(false);
+
+  const [results, setResults] = useState(null);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const rate = inputs.taxRate / 100;
+      let originalAmount, taxAmount, totalAmount;
+      if (inputs.isAddingTax) {
+        originalAmount = inputs.amount;
+        taxAmount = originalAmount * rate;
+        totalAmount = originalAmount + taxAmount;
+      } else {
+        totalAmount = inputs.amount;
+        originalAmount = totalAmount / (1 + rate);
+        taxAmount = totalAmount - originalAmount;
+      }
+      setResults({ originalAmount, taxAmount, totalAmount });
+    }, 0);
+
+    return () => clearTimeout(timer);
+  }, [inputs]);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const downloadPDF = () => {
+    const doc = new jsPDF();
+    doc.setFontSize(22);
+    doc.text(`ORBIT WEALTH PRO: GST / VAT Analysis`, 20, 20);
+    doc.setFontSize(12);
+    doc.text(`Base Amount: ${formatCurrency(inputs.amount)}`, 20, 40);
+    doc.text(`Tax Rate: ${inputs.taxRate}%`, 20, 50);
+    doc.text(`Tax Amount: ${formatCurrency(results.taxAmount)}`, 20, 60);
+    doc.text(`Total Value: ${formatCurrency(results.totalAmount)}`, 20, 70);
+    doc.save('gst-analysis.pdf');
+  };
+
+
+  const handleShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'Orbit Wealth Pro Calculator',
+          text: 'Check out this financial calculator!',
+          url: window.location.href,
+        });
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          navigator.clipboard.writeText(window.location.href);
+          alert('Calculator link copied to clipboard!');
+        }
+      }
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Calculator link copied to clipboard!');
+    }
+  };
+
+  if (!results) return (
+    <div
+      className="animate-pulse h-96 bg-white/5 rounded-3xl w-full max-w-7xl mx-auto mt-8" />
+  );
+
+  return (
+    <div className="space-y-8 pb-20">
+      <Breadcrumbs items={breadcrumbItems} />
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <header className="space-y-2">
+          <div className="flex items-center gap-2 mb-4">
+             <Percent className="text-[#D4AF37] w-6 h-6" />
+             <h1 className="text-5xl font-bold tracking-tighter text-[#f59e0b]">GST / VAT Calculator</h1>
+          </div>
+          <p className="text-white/70 max-w-xl text-lg leading-relaxed">
+            Calculate Goods and Services Tax (GST) or Value Added Tax (VAT) for your business transactions.
+          </p>
+        </header>
+
+        <div className="flex items-center gap-2">
+          <button onClick={downloadPDF} className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/5 rounded-lg text-base font-bold transition-all">
+            <Download className="w-4 h-4" /> PDF Report
+          </button>
+          <button onClick={handleShare} className="flex items-center gap-3 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base font-bold transition-all shadow-lg shadow-[#D4AF37]/20">
+            <Share2 className="w-4 h-4" /> Share
+          </button>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 xl:grid-cols-2 gap-8">
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 space-y-8">
+          <div className="flex gap-1 p-1 bg-white/5 rounded-xl border border-white/5">
+            <button
+              onClick={() => setInputs({ ...inputs, isAddingTax: true })}
+              className={`flex-1 py-3 text-base font-bold rounded-lg transition-all ${inputs.isAddingTax ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/70 hover:text-white/70'}`}
+            >
+              Add GST
+            </button>
+            <button
+              onClick={() => setInputs({ ...inputs, isAddingTax: false })}
+              className={`flex-1 py-3 text-base font-bold rounded-lg transition-all ${!inputs.isAddingTax ? 'bg-[#D4AF37] text-white shadow-lg shadow-[#D4AF37]/20' : 'text-white/70 hover:text-white/70'}`}
+            >
+              Remove GST
+            </button>
+          </div>
+
+          <div className="space-y-6">
+             <div className="space-y-4">
+               <label className="text-base font-bold text-white/70 uppercase tracking-widest">Amount</label>
+               <div className="relative">
+                 <div className="absolute left-4 top-1/2 -translate-y-1/2 text-[#D4AF37] font-bold">{currencySymbol}</div>
+                 <NumericInput 
+                   value={inputs.amount}
+                   onChange={(val) => setInputs({ ...inputs, amount: val })}
+                   className="w-full bg-white/5 border border-white/5 rounded-xl pl-10 pr-4 py-4 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
+                 />
+               </div>
+             </div>
+
+             <div className="space-y-4">
+                <label className="text-base font-bold text-white/70 uppercase tracking-widest">Tax Slab (%)</label>
+                <div className="grid grid-cols-4 gap-2 text-center">
+                  {slabs.map(slab => (
+                    <button
+                      key={slab}
+                      onClick={() => setInputs({ ...inputs, taxRate: slab })}
+                      className={`py-3 rounded-xl border transition-all text-base font-bold ${inputs.taxRate === slab ? 'bg-[#D4AF37]/20 border-[#D4AF37] text-white' : 'bg-white/5 border-white/5 text-white/70'}`}
+                    >
+                      {slab}%
+                    </button>
+                  ))}
+                  <div className="col-span-4 mt-2">
+                     <NumericInput 
+                       placeholder="Custom Rate %"
+                       value={inputs.taxRate}
+                       onChange={(val) => setInputs({ ...inputs, taxRate: val })}
+                       className="w-full bg-white/5 border border-white/5 rounded-xl px-4 py-2 text-base text-white focus:outline-none focus:border-[#D4AF37]"
+                     />
+                  </div>
+                </div>
+             </div>
+          </div>
+        </section>
+
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col items-center justify-center min-h-[400px]">
+           {isMounted && (
+             <div className="w-full space-y-6">
+                <div className="p-6 bg-white/5 rounded-2xl border border-white/5 flex items-center justify-between">
+                   <div>
+                     <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">Tax Amount</div>
+                     <div className="text-xl md:text-2xl font-bold text-[#D4AF37] tracking-tighter">{formatCurrency(results.taxAmount)}</div>
+                   </div>
+                   <Percent className="text-white/70 w-10 h-10" />
+                </div>
+
+                <div className="p-6 bg-white/[0.02] rounded-2xl border border-white/5 flex items-center justify-between">
+                   <div>
+                     <div className="text-base font-bold text-white/70 uppercase tracking-widest mb-1">{inputs.isAddingTax ? 'Net Price (Before Tax)' : 'Base Price'}</div>
+                     <div className="text-xl md:text-2xl font-bold text-white/70 tracking-tighter">{formatCurrency(results.originalAmount)}</div>
+                   </div>
+                </div>
+
+                <div className="p-8 bg-[#D4AF37]/10 rounded-2xl border border-[#D4AF37]/20 shadow-xl shadow-[#D4AF37]/5">
+                   <div className="text-base font-bold text-[#D4AF37] uppercase tracking-widest mb-1">{inputs.isAddingTax ? 'Total Billing Value' : 'Net Price'}</div>
+                   <div className="text-xl md:text-2xl font-bold tracking-tighter text-white">{formatCurrency(results.totalAmount)}</div>
+                </div>
+             </div>
+           )}
+        </section>
+      </div>
+      <RelatedTools tools={relatedTools} />
+      <SEOSection 
+        title="GST / VAT Calculator"
+        howTo={[
+          "Enter the base amount of the product or service you are calculating for.",
+          "Select the applicable GST or VAT slab from the pre-defined options or enter a custom rate.",
+          "Toggle between 'Add Tax' for calculating total billing value and 'Remove Tax' for finding internal base price.",
+          "Instantly view the distributed tax amount and total invoice value."
+        ]}
+        formula="Total = Amount ± (Amount × Rate%)"
+        benefits={[
+          "Calculate business compliance taxes instantly with 100% accuracy.",
+          "Supports both inclusive and exclusive tax calculation modes.",
+          "Professional PDF export for business reporting and accounting.",
+          "Optimized for global VAT and regional GST standards."
+        ]}
+      />
+
+      <CalculatorSEO
+        id="GSTCalculator"
+        title="G S T  Calculator"
+        description="Calculate your g s t  easily and accurately with Orbit Wealth Pro."
+        faqs={[{
+          question: "What is the G S T  Calculator?",
+          answer: "The G S T  Calculator is a financial tool designed to help you calculate and estimate your figures accurately."
+        }, {
+          question: "How do I use this calculator?",
+          answer: "Simply enter your inputs into the designated fields, and the calculator will automatically process and display the estimated results."
+        }, {
+          question: "Are the results accurate?",
+          answer: "The results are highly accurate estimates based on standard financial formulas, but should be used for informational purposes only."
+        }]} />
+    </div>
+  );
+}

@@ -1,0 +1,275 @@
+import React, { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { 
+  Home, 
+  TrendingUp, 
+  BarChart3, 
+  PieChart, 
+  Landmark, 
+  Coins, 
+  CreditCard, 
+  ArrowRightLeft, 
+  UserCheck, 
+  Percent, 
+  ShieldCheck, 
+  Gift, 
+  Globe, 
+  Mail, 
+  ChevronRight, 
+  ChevronDown,
+  RefreshCcw,
+  Wallet,
+  Car,
+  GraduationCap,
+  Briefcase,
+  Shield,
+  Baby,
+  Building,
+  Target,
+  Zap,
+  Activity,
+  Calculator,
+  BookOpen,
+  BrainCircuit
+} from 'lucide-react';
+import { useLocale } from '../../context/LocaleContext';
+import { CurrencyCode, NumberSystem } from '../../types';
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
+interface NavItem {
+  label: string;
+  path: string;
+  icon: any;
+}
+
+interface NavSection {
+  label: string;
+  icon: any;
+  items: NavItem[];
+}
+
+const NAV_SECTIONS: NavSection[] = [
+  {
+    label: 'Wealth Management',
+    icon: TrendingUp,
+    items: [
+      { label: 'SIP Manager', path: '/calculators/investing/sip', icon: TrendingUp },
+      { label: 'Lumpsum Growth', path: '/calculators/investing/lumpsum', icon: BarChart3 },
+      { label: 'Mutual Funds', path: '/calculators/investing/mutual-fund', icon: PieChart },
+      { label: 'Investment CAGR', path: '/calculators/investing/cagr', icon: Target },
+      { label: 'Dividend Yield', path: '/calculators/investing/dividend-yield', icon: Coins },
+      { label: 'FD & RD Plan', path: '/calculators/investing/fd-rd', icon: Landmark },
+    ]
+  },
+  {
+    label: 'Debt & Credit',
+    icon: Wallet,
+    items: [
+      { label: 'Debt Snowball', path: '/calculators/loans/debt-snowball', icon: Zap },
+      { label: 'Credit Card Payoff', path: '/calculators/loans/credit-card-payoff', icon: CreditCard },
+      { label: 'Mortgage / Home', path: '/calculators/loans/mortgage', icon: Landmark },
+      { label: 'Personal Loan', path: '/calculators/loans/personal-loan', icon: Wallet },
+      { label: 'Auto (Car) Loan', path: '/calculators/loans/auto-loan', icon: Car },
+      { label: 'Student Debt', path: '/calculators/loans/student-loan', icon: GraduationCap },
+      { label: 'Universal EMI', path: '/calculators/loans/emi', icon: CreditCard },
+    ]
+  },
+  {
+    label: 'Insurance',
+    icon: Shield,
+    items: [
+      { label: 'HLV Calculator', path: '/calculators/insurance/hlv', icon: ShieldCheck },
+      { label: 'Term Life', path: '/calculators/insurance/term-insurance', icon: Shield },
+      { label: 'Health Guard', path: '/calculators/insurance/health-insurance', icon: ShieldCheck }
+    ]
+  },
+  {
+    label: 'Business Finance',
+    icon: Briefcase,
+    items: [
+       { label: 'Break-Even Analysis', path: '/calculators/business/break-even', icon: Target },
+       { label: 'Rental ROI', path: '/calculators/investing/rental-yield', icon: Building },
+       { label: 'Gratuity', path: '/calculators/salary/gratuity', icon: Gift },
+    ]
+  },
+  {
+    label: 'Global Taxes',
+    icon: Globe,
+    items: [
+      { label: 'Income Tax', path: '/calculators/tax/income-tax', icon: Percent },
+      { label: 'GST / VAT', path: '/calculators/tax/gst', icon: ShieldCheck },
+      { label: 'Tax Guides', path: '/tax-guides', icon: Globe },
+    ]
+  },
+  {
+    label: 'Market Intelligence',
+    icon: Zap,
+    items: [
+      { label: 'Asset Comparisons', path: '/comparisons', icon: ArrowRightLeft },
+      { label: 'City Hubs', path: '/cities', icon: Building },
+      { label: 'Blog & Insights', path: '/insights', icon: BookOpen },
+    ]
+  },
+  {
+    label: 'Orbit Intelligence',
+    icon: BrainCircuit,
+    items: [
+      { label: 'The Founder Profile', path: '/about', icon: UserCheck },
+      { label: 'Client Support', path: '/contact', icon: Mail },
+    ]
+  }
+];
+
+interface SidebarProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export default function Sidebar({ isOpen, onClose }: SidebarProps) {
+  const { currency, setCurrency, numberSystem, setNumberSystem } = useLocale();
+  const location = useLocation();
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    'Wealth Management': true
+  });
+
+  const toggleSection = (label: string) => {
+    setOpenSections(prev => ({ ...prev, [label]: !prev[label] }));
+  };
+
+  return (
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div 
+          className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[60] md:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside className={cn(
+        "w-64 bg-[#0B1221] border-r border-white/5 h-screen flex flex-col fixed left-0 top-0 z-[70] transition-transform duration-300 md:translate-x-0",
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      )}>
+        <div className="p-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 bg-[#D4AF37] rounded-xl flex items-center justify-center shadow-lg shadow-[#D4AF37]/20">
+              <Wallet className="w-6 h-6 text-black" />
+            </div>
+            <span className="font-display font-black text-xl md:text-2xl font-bold tracking-tighter text-[#f59e0b] uppercase group flex flex-col leading-none">
+              <span>ORBIT</span>
+              <span className="opacity-90">WEALTH PRO</span>
+            </span>
+          </div>
+          
+          <button 
+            onClick={onClose}
+            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded"
+            aria-label="Close Sidebar"
+          >
+            <ChevronRight className="w-5 h-5 rotate-180" />
+          </button>
+        </div>
+
+        <nav className="flex-1 overflow-y-auto px-6 space-y-4 py-4 scrollbar-hide">
+          <NavLink
+            to="/"
+            onClick={() => {
+              if (window.innerWidth < 768) onClose();
+            }}
+            aria-label="Go to Dashboard"
+            className={({ isActive }) => cn(
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-lg transition-all mb-4 outline-none focus:bg-white/5",
+              isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/70 hover:text-white"
+            )}
+          >
+            <Home className="w-4 h-4" />
+            Dashboard
+          </NavLink>
+
+          {NAV_SECTIONS.map((section) => (
+            <div key={section.label} className="space-y-1">
+              <button 
+                onClick={() => toggleSection(section.label)}
+                aria-expanded={openSections[section.label]}
+                aria-label={`Toggle ${section.label} section`}
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors outline-none focus:text-white"
+              >
+                <div className="flex items-center gap-3">
+                  <section.icon className="w-3.5 h-3.5" />
+                  {section.label}
+                </div>
+                {openSections[section.label] ? <ChevronDown className="w-3 h-3" /> : <ChevronRight className="w-3 h-3" />}
+              </button>
+              
+              {openSections[section.label] && (
+                <div className="space-y-1 ml-4 border-l border-white/5 pl-2 mt-2">
+                  {section.items.map((item) => (
+                      <NavLink
+                       key={item.path}
+                       to={item.path}
+                       aria-label={`Navigate to ${item.label}`}
+                       onClick={() => {
+                         if (window.innerWidth < 768) onClose();
+                       }}
+                       className={({ isActive }) => cn(
+                         "flex items-center gap-3 px-3 py-1.5 rounded-lg text-lg transition-all group/item outline-none focus:bg-white/10",
+                         isActive ? "text-[#f59e0b] bg-white/5 font-bold" : "text-white hover:bg-white/5"
+                       )}
+                     >
+                       <item.icon className={cn(
+                         "w-3.5 h-3.5 transition-colors",
+                         "text-amber-300"
+                       )} />
+                       {item.label}
+                     </NavLink>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </nav>
+
+        <div className="p-6 mt-auto border-t border-white/[0.03]">
+          <div className="space-y-6">
+            <div className="p-3 bg-white/[0.02] border border-white/[0.05] rounded-xl space-y-4">
+              <div>
+                <label className="text-xs font-bold text-white/70 uppercase tracking-widest block mb-2 px-1">Region Override</label>
+                <div className="flex flex-wrap gap-2">
+                  {(['USD', 'EUR', 'GBP', 'INR', 'AUD', 'CAD', 'CHF', 'AED', 'NOK', 'SEK', 'DKK'] as CurrencyCode[]).map((c) => {
+                    const symbols: Record<string, string> = {
+                      USD: '$', EUR: '€', GBP: '£', INR: '₹', AUD: 'AU$', CAD: 'CA$', 
+                      CHF: 'Fr', AED: 'د.إ', NOK: 'kr', SEK: 'kr', DKK: 'kr'
+                    };
+                    return (
+                      <button
+                        key={c}
+                        aria-label={`Switch currency to ${c}`}
+                        onClick={() => {
+                          setCurrency(c);
+                          if (c === 'INR') setNumberSystem('Indian');
+                          else setNumberSystem('International');
+                        }}
+                        className={cn(
+                          "px-2 py-1 h-auto rounded text-[10px] md:text-xs font-bold transition-all flex items-center justify-center gap-1 outline-none",
+                          currency === c ? "bg-white/10 text-white border-white/20" : "bg-white/10 text-white/80 hover:bg-white/20 border border-transparent"
+                        )}
+                      >
+                        <span className="opacity-80">{symbols[c]}</span>
+                        {c}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </>
+  );
+}
