@@ -216,7 +216,7 @@ const breadcrumbItems = [
         </section>
 
         <section className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between min-h-[400px] gap-8">
-           {isMounted && (
+           {isMounted && results && (
              <>
                <div className="w-full md:w-1/2 h-[300px] min-h-[300px] min-w-[300px]">
                  <ResponsiveContainer width="100%" height="100%">
