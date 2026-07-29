@@ -4,6 +4,7 @@ import { CalculatorSEO } from "./CalculatorSEO";
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { Link } from 'react-router-dom';
 import React, { useState, useMemo } from 'react';
 import Breadcrumbs from './Breadcrumbs';
 import RelatedTools from './RelatedTools';

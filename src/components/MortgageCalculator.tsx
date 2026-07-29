@@ -11,7 +11,7 @@ import { Landmark, Download, Share2, Info } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { MortgageInputs, AmortizationPeriod } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, LineChart, Line, XAxis, YAxis, CartesianGrid, Legend } from 'recharts';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import SEOSection from './SEOSection';
 import AIAdvisor from './AIAdvisor';

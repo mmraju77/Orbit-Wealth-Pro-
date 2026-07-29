@@ -12,7 +12,7 @@ import { useLocale } from '../context/LocaleContext';
 import { TaxInputs } from '../types';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEOSection from './SEOSection';
 import { REGIONAL_TAX_RULES } from '../data/taxRules';
 import { normalizeRegionKey } from '../data/pSEOData';

@@ -11,7 +11,7 @@ import { Percent, Download, Share2, Globe, Shield, Wallet } from 'lucide-react';
 import { useLocale } from '../context/LocaleContext';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip as RechartsTooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEOSection from './SEOSection';
 import { normalizeRegionKey } from '../data/pSEOData';
 import NumericInput from './NumericInput';

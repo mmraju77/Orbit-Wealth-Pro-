@@ -12,7 +12,7 @@ import { useLocale } from '../context/LocaleContext';
 import { RetirementInputs, RetirementResult } from '../types';
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Tooltip as RechartsTooltip } from 'recharts';
 import jsPDF from 'jspdf';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import SEOSection from './SEOSection';
 import { normalizeRegionKey } from '../data/pSEOData';
 import CurrencyInput from './CurrencyInput';

@@ -5,6 +5,7 @@ import NumericInput from "./NumericInput";
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { Link } from 'react-router-dom';
 import React, { useState, useMemo, useEffect } from 'react';
 import Breadcrumbs from './Breadcrumbs';
 import RelatedTools from './RelatedTools';
