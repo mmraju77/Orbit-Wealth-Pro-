@@ -28,7 +28,7 @@ export async function fetchLiveBenchmarks(): Promise<BenchmarkRates> {
   try {
     // Attempt to fetch from World Bank or a reliable open financial data hub
     // Using World Bank API for Real Interest Rate as a benchmark
-    const response = await fetch('https://api.worldbank.org/v2/country/WLD/indicator/FR.INR.RINR?format=json&mrnev=1');
+    const response = await fetch('/api/finance/rates');
     const data = await response.json();
     
     // Process the data - World Bank structure is [metadata, observations]

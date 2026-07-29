@@ -128,7 +128,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <NumericInput 
                         value={goal.current}
                         onChange={(val) => handleUpdate(goal.id, 'current', val)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-base text-white/70">$</span>
                     </div>
@@ -139,7 +139,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <NumericInput 
                         value={goal.target}
                         onChange={(val) => handleUpdate(goal.id, 'target', val)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-[#f59e0b] focus:outline-none focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-[#f59e0b] focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#f59e0b] transition-colors [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
                       />
                       <span className="absolute right-3 top-1/2 -translate-y-1/2 text-base text-white/70">$</span>
                     </div>
@@ -153,7 +153,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <NumericInput 
                         value={goal.years}
                         onChange={(val) => handleUpdate(goal.id, 'years', val)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-white focus:outline-none focus:border-[#f59e0b] transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#f59e0b] transition-colors"
                       />
                     </div>
                   </div>
@@ -163,7 +163,7 @@ export default function WealthMilestones({ goals, onUpdateGoals }: WealthMilesto
                       <NumericInput 
                         value={goal.annualReturn * 100}
                         onChange={(val) => handleUpdate(goal.id, 'annualReturn', val / 100)}
-                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-emerald-400 focus:outline-none focus:border-[#f59e0b] transition-colors"
+                        className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-lg font-bold text-emerald-400 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#f59e0b] transition-colors"
                       />
                     </div>
                   </div>

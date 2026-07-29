@@ -45,7 +45,7 @@ export default function CurrencyInput({
           onChange={onChange}
           placeholder={placeholder}
           aria-label={label}
-          className="w-full bg-black/40 border border-white/5 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:border-[#D4AF37] transition-all font-bold"
+          className="w-full bg-black/40 border border-white/5 rounded-xl pl-10 pr-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:border-[#D4AF37] transition-all font-bold"
         />
       </div>
 

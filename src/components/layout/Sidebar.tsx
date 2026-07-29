@@ -168,7 +168,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: SidebarProps) {
           
           <button 
             onClick={onClose}
-            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37] rounded min-h-[44px]"
+            className="md:hidden p-2 text-white/70 hover:text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]  focus:ring-1 focus:ring-[#D4AF37] rounded min-h-[44px]"
             aria-label="Close Sidebar"
           >
             <ChevronRight className="w-5 h-5 rotate-180" />
@@ -183,7 +183,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: SidebarProps) {
             }}
             aria-label="Go to Dashboard"
             className={({ isActive }) => cn(
-              "flex items-center gap-3 px-3 py-2 rounded-lg text-lg transition-all mb-4 outline-none focus:bg-white/5",
+              "flex items-center gap-3 px-3 py-2 rounded-lg text-lg transition-all mb-4 outline-none focus:ring-2 focus:ring-amber-500 focus:bg-white/5",
               isActive ? "bg-white/5 text-[#D4AF37]" : "text-white/70 hover:text-white"
             )}
           >
@@ -197,7 +197,7 @@ export default React.memo(function Sidebar({ isOpen, onClose }: SidebarProps) {
                 onClick={() => toggleSection(section.label)}
                 aria-expanded={openSections[section.label]}
                 aria-label={`Toggle ${section.label} section`}
-                className="w-full flex items-center justify-between px-3 py-2 text-base font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors outline-none focus:text-white"
+                className="w-full flex items-center justify-between px-3 py-2 text-base font-bold text-slate-300 uppercase tracking-[0.2em] hover:text-white transition-colors outline-none focus:ring-2 focus:ring-amber-500 focus:text-white"
               >
                 <div className="flex items-center gap-3">
                   <section.icon className="w-3.5 h-3.5" />

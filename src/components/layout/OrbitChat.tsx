@@ -186,7 +186,7 @@ export default function OrbitChat() {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend(input)}
                   placeholder="Inquire about wealth strategies..."
-                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-lg text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#F3C64F]/50 focus:border-[#F3C64F]/50 transition-all"
+                  className="w-full bg-white/5 border border-white/10 rounded-xl py-3 pl-4 pr-12 text-lg text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]  focus:ring-1 focus:ring-[#F3C64F]/50 focus:border-[#F3C64F]/50 transition-all"
                 />
                 <button 
                   aria-label="Send message"

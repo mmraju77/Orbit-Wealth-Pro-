@@ -101,7 +101,7 @@ export default function BlogHub() {
               placeholder="Search insights..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-lg text-white placeholder:text-white/70 focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all"
+              className="w-full bg-white/[0.02] border border-white/10 rounded-2xl py-4 pl-12 pr-4 text-lg text-white placeholder:text-white/70 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]  focus:ring-1 focus:ring-[#D4AF37]/50 focus:border-[#D4AF37]/50 transition-all"
             />
           </div>
         </div>
@@ -232,14 +232,14 @@ export default function BlogHub() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Your professional email..."
-                        className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-lg text-white focus:outline-none focus:ring-1 focus:ring-[#D4AF37]/50"
+                        className="w-full bg-white/5 border border-white/10 rounded-2xl pl-12 pr-4 py-4 text-lg text-white focus:outline-none focus:ring-2 focus:ring-[#D4AF37]  focus:ring-1 focus:ring-[#D4AF37]/50"
                       />
                     </div>
                     <button 
                       type="submit"
                       disabled={isSubmitting}
                       className="px-8 py-4 bg-[#D4AF37] text-[#0B0F19] rounded-2xl font-black text-base uppercase tracking-widest hover:bg-[#F3C64F] transition-all shadow-[0_0_20px_rgba(212,175,55,0.3)] disabled:opacity-50 flex items-center justify-center gap-2 min-w-[140px] min-h-[44px]"
-                    >
+                     aria-label="Button action">
                       {isSubmitting ? (
                         <>
                           <Loader2 className="w-4 h-4 animate-spin" />

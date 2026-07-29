@@ -357,7 +357,7 @@ export default function Dashboard() {
   React.useEffect(() => {
     const fetchNews = async () => {
       try {
-        const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://finance.yahoo.com/news/rss");
+        const response = await fetch("/api/news");
         if (!response.ok) throw new Error('Failed to fetch');
         const data = await response.json();
         

@@ -114,7 +114,7 @@ export default function TaxGuides() {
                ))}
             </div>
             <div className="p-4 bg-white/[0.01] flex justify-center border-t border-white/5">
-                <button className="text-base font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2 min-h-[44px]">
+                <button className="text-base font-bold text-white/70 uppercase tracking-widest hover:text-[#D4AF37] transition-colors flex items-center gap-2 min-h-[44px]" aria-label="Button action">
                    <ExternalLink className="w-3 h-3" /> Detailed Guide
                 </button>
             </div>

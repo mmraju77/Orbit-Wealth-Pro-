@@ -11,9 +11,59 @@ async function startServer() {
   const PORT = 3000;
 
   app.use(express.json());
+  app.use((req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("X-Frame-Options", "DENY");
+    res.setHeader("X-XSS-Protection", "1; mode=block");
+    res.setHeader("Strict-Transport-Security", "max-age=31536000; includeSubDomains");
+    res.setHeader("Content-Security-Policy", "default-src 'self' 'unsafe-inline' 'unsafe-eval' https://fonts.googleapis.com https://fonts.gstatic.com https://www.googletagmanager.com https://example.com https://www.google-analytics.com; img-src 'self' data: https://i.ibb.co https://images.unsplash.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; connect-src 'self' https://www.google-analytics.com https://region1.google-analytics.com https://api.rss2json.com https://api.worldbank.org;");
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    next();
+  });
+
+  app.get("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.send("User-agent: *\nAllow: /\nSitemap: https://orbitwealthpro.com/sitemap.xml");
+  });
+
+  app.get("/sitemap.xml", (req, res) => {
+    res.type("application/xml");
+    res.send('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://orbitwealthpro.com/</loc><priority>1.0</priority></url><url><loc>https://orbitwealthpro.com/about</loc><priority>0.8</priority></url><url><loc>https://orbitwealthpro.com/insights</loc><priority>0.8</priority></url></urlset>');
+  });
+
 
   // AI Chat Route with Security Fixes
   // Address Vercel warning: missing authorization checks and user impersonation
+  
+  app.get("/api/news", async (req, res) => {
+    try {
+      const response = await fetch("https://api.rss2json.com/v1/api.json?rss_url=https://finance.yahoo.com/news/rss");
+      if (!response.ok) {
+        return res.status(response.status).json({ error: "Failed to fetch from RSS API" });
+      }
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error("Proxy error:", error);
+      res.status(500).json({ error: "Failed to fetch news" });
+    }
+  });
+
+  
+  app.get("/api/finance/rates", async (req, res) => {
+    try {
+      const response = await fetch("https://api.worldbank.org/v2/country/WLD/indicator/FR.INR.RINR?format=json&mrnev=1");
+      if (!response.ok) {
+        return res.status(response.status).json({ error: "Failed to fetch from World Bank API" });
+      }
+      const data = await response.json();
+      res.json(data);
+    } catch (error) {
+      console.error("Proxy error:", error);
+      res.status(500).json({ error: "Failed to fetch rates" });
+    }
+  });
+
   app.post("/api/chat", async (req, res) => {
     try {
       // 1. Authorization Check

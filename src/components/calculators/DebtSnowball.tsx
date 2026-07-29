@@ -125,10 +125,10 @@ const breadcrumbItems = [
             Eliminate debt systematically by targeting the smallest balances first to build momentum.
           </p>
         </header>
-        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-base font-bold transition-all hover:bg-white/10 shrink-0 min-h-[44px]">
+        <button onClick={downloadPDF} className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/5 rounded-xl text-base font-bold transition-all hover:bg-white/10 shrink-0 min-h-[44px]" aria-label="Button action">
           <Download className="w-4 h-4" /> Export Strategy
         </button>
-        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20 min-h-[44px]">
+        <button onClick={handleShare} className="flex items-center gap-2 px-4 py-2 bg-[#D4AF37] hover:bg-[#D4AF37]/90 rounded-lg text-base text-black font-bold transition-all shadow-lg shadow-[#D4AF37]/20 min-h-[44px]" aria-label="Button action">
           <Share2 className="w-4 h-4" /> Share
         </button>
       </div>
@@ -136,7 +136,7 @@ const breadcrumbItems = [
         <section className="space-y-8 bg-white/[0.01] border border-white/[0.03] p-10 rounded-[2.5rem]">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-3xl font-display font-medium">Your Debts</h2>
-            <button onClick={addDebt} className="flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-lg text-base font-bold hover:bg-[#D4AF37]/20 transition-all min-h-[44px]">
+            <button onClick={addDebt} className="flex items-center gap-2 px-3 py-1.5 bg-[#D4AF37]/10 text-[#D4AF37] rounded-lg text-base font-bold hover:bg-[#D4AF37]/20 transition-all min-h-[44px]" aria-label="Button action">
               <Plus className="w-3.5 h-3.5" /> Add Debt
             </button>
           </div>
