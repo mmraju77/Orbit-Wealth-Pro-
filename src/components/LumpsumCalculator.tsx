@@ -19,7 +19,25 @@ const INITIAL_INPUTS: InvestmentInputs = {
 
 export default function LumpsumCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Plan your mutual fund investments via SIP."
+    },
+    {
+      "title": "Mutual Fund",
+      "path": "/calculators/investing/mutual-fund",
+      "description": "Analyze comprehensive mutual fund returns."
+    },
+    {
+      "title": "CAGR Calculator",
+      "path": "/calculators/investing/cagr",
+      "description": "Calculate compounded annual growth rate."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'Lumpsum Calculator' }
   ];
@@ -215,7 +233,8 @@ export default function LumpsumCalculator() {
       
         <RelatedTools tools={[{"title":"SIP Calculator","path":"/calculators/investing/sip","description":"Compare with systematic investing"},{"title":"Mutual Fund Returns","path":"/calculators/investing/mutual-fund","description":"Analyze MF performance"},{"title":"FD / RD Calculator","path":"/calculators/investing/fd-rd","description":"Compare with safe returns"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Lumpsum Calculator"
         howTo={[
           "Enter your initial one-time investment corpus.",

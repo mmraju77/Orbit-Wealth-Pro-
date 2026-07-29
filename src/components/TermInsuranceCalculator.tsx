@@ -33,7 +33,25 @@ const INITIAL_INPUTS: TermInputs = {
 
 export default function TermInsuranceCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "HLV Calculator",
+      "path": "/calculators/insurance/hlv",
+      "description": "Calculate your exact Human Life Value."
+    },
+    {
+      "title": "Health Insurance",
+      "path": "/calculators/insurance/health-insurance",
+      "description": "Ensure comprehensive medical coverage."
+    },
+    {
+      "title": "Child Education",
+      "path": "/calculators/investing/child-education",
+      "description": "Protect your child's education goals."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Insurance' },
     { label: 'Term Insurance' }
   ];
@@ -108,6 +126,7 @@ export default function TermInsuranceCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -260,6 +279,7 @@ export default function TermInsuranceCalculator() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Term Insurance Calculator"
         howTo={[

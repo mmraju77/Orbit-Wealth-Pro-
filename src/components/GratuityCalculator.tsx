@@ -23,7 +23,25 @@ const INITIAL_INPUTS: GratuityInputs = {
 
 export default function GratuityCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Income Tax",
+      "path": "/calculators/tax/income-tax",
+      "description": "Calculate tax implications on your gratuity."
+    },
+    {
+      "title": "Retirement Planner",
+      "path": "/calculators/investing/retirement",
+      "description": "Plan your post-retirement corpus."
+    },
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Invest your gratuity for wealth creation."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Salary' },
     { label: 'Gratuity Calculator' }
   ];
@@ -195,6 +213,7 @@ export default function GratuityCalculator() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Gratuity Calculator"
         howTo={[

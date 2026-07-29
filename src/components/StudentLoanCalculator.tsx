@@ -17,7 +17,25 @@ import NumericInput from './NumericInput';
 
 export default function StudentLoanCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Child Education",
+      "path": "/calculators/investing/child-education",
+      "description": "Plan ahead for education costs."
+    },
+    {
+      "title": "Personal Loan",
+      "path": "/calculators/loans/personal-loan",
+      "description": "Compare student loan vs personal loan rates."
+    },
+    {
+      "title": "Debt Snowball",
+      "path": "/calculators/loans/debt-snowball",
+      "description": "Optimize your debt repayment strategy."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Student Loan' }
   ];
@@ -246,6 +264,7 @@ export default function StudentLoanCalculator() {
            </div>
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Student & Educational Loan Calculator"
         howTo={[

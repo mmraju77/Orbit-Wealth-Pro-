@@ -17,7 +17,25 @@ import CurrencyInput from './CurrencyInput';
 
 export default function PersonalLoanCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "EMI Calculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate standard EMIs."
+    },
+    {
+      "title": "Credit Card Payoff",
+      "path": "/calculators/loans/credit-card-payoff",
+      "description": "Compare loan vs credit card payoff."
+    },
+    {
+      "title": "Debt Snowball",
+      "path": "/calculators/loans/debt-snowball",
+      "description": "Optimize your debt repayment strategy."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Personal Loan' }
   ];
@@ -261,6 +279,7 @@ export default function PersonalLoanCalculator() {
           </div>
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Personal Loan & Early Payoff Calculator"
         howTo={[

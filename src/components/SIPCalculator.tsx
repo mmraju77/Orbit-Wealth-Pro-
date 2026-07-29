@@ -27,7 +27,25 @@ const INITIAL_INPUTS: InvestmentInputs = {
 
 export default function SIPCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Lumpsum Calculator",
+      "path": "/calculators/investing/lumpsum",
+      "description": "Estimate returns on one-time investments."
+    },
+    {
+      "title": "Mutual Fund",
+      "path": "/calculators/investing/mutual-fund",
+      "description": "Analyze comprehensive mutual fund returns."
+    },
+    {
+      "title": "CAGR Calculator",
+      "path": "/calculators/investing/cagr",
+      "description": "Calculate compounded annual growth rate."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'SIP Calculator' }
   ];
@@ -129,6 +147,7 @@ export default function SIPCalculator() {
 
   return (
     <div className="space-y-12 pb-20">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <StructuredData 
           type="SoftwareApplication"
@@ -267,6 +286,7 @@ export default function SIPCalculator() {
           )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="SIP Calculator"
         howTo={[

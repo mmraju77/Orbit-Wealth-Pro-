@@ -16,7 +16,25 @@ import CurrencyInput from './CurrencyInput';
 
 export default function BreakEvenCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "GST Calculator",
+      "path": "/calculators/tax/gst",
+      "description": "Include tax implications in your costs."
+    },
+    {
+      "title": "Income Tax",
+      "path": "/calculators/tax/income-tax",
+      "description": "Estimate post-tax profitability."
+    },
+    {
+      "title": "Personal Loan",
+      "path": "/calculators/loans/personal-loan",
+      "description": "Plan funding for your business."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Business' },
     { label: 'Break Even' }
   ];
@@ -87,6 +105,7 @@ export default function BreakEvenCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -163,6 +182,7 @@ export default function BreakEvenCalculator() {
            <AIAdvisor context={`Fixed costs of ${fixedCosts}. Selling units for ${sellingPricePerUnit} with a variable cost of ${variableCostPerUnit}. Break-even is ${results.units} units.`} />
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Business Break-Even Point Calculator"
         howTo={[

@@ -33,7 +33,25 @@ const REGIONAL_TAX_SLABS: Record<string, number[]> = {
 
 export default function GSTCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Income Tax",
+      "path": "/calculators/tax/income-tax",
+      "description": "Calculate your annual tax liability."
+    },
+    {
+      "title": "Break Even",
+      "path": "/calculators/business/break-even",
+      "description": "Calculate business break-even points."
+    },
+    {
+      "title": "Currency Converter",
+      "path": "/calculators/forex/currency-converter",
+      "description": "Convert between global currencies."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Tax' },
     { label: 'GST Calculator' }
   ];
@@ -231,6 +249,7 @@ export default function GSTCalculator() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="GST / VAT Calculator"
         howTo={[

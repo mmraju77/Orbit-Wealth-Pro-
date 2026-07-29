@@ -26,7 +26,25 @@ const INITIAL_INPUTS: LoanEligibilityInputs = {
 
 export default function LoanEligibility() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Mortgage Calculator",
+      "path": "/calculators/loans/mortgage",
+      "description": "Plan your home purchase and down payment."
+    },
+    {
+      "title": "EMICalculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate equal monthly installments for any loan."
+    },
+    {
+      "title": "Debt Snowball",
+      "path": "/calculators/loans/debt-snowball",
+      "description": "Plan a strategy to pay off existing debts."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Loan Eligibility' }
   ];
@@ -109,7 +127,7 @@ export default function LoanEligibility() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
@@ -211,6 +229,7 @@ export default function LoanEligibility() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Loan Eligibility Calculator"
         howTo={[

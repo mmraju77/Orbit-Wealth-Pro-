@@ -17,7 +17,25 @@ import CurrencyInput from './CurrencyInput';
 
 export default function ChildEducationPlanner() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Plan monthly investments for the goal."
+    },
+    {
+      "title": "Student Loan",
+      "path": "/calculators/loans/student-loan",
+      "description": "Estimate future education loan EMIs."
+    },
+    {
+      "title": "Retirement Planner",
+      "path": "/calculators/investing/retirement",
+      "description": "Balance education with retirement goals."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'Child Education Planner' }
   ];
@@ -86,7 +104,7 @@ export default function ChildEducationPlanner() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -172,6 +190,7 @@ export default function ChildEducationPlanner() {
            <AIAdvisor context={`Planning for kid's college in ${yearsUntilUni} years. Current cost ${currentCost}, inflated to ${results.futureCost}. User needs to save ${results.monthlySIP} monthly.`} />
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Comprehensive Child Education Planning"
         howTo={[

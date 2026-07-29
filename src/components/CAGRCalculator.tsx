@@ -17,7 +17,25 @@ import NumericInput from './NumericInput';
 
 export default function CAGRCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Plan regular mutual fund investments."
+    },
+    {
+      "title": "Mutual Fund",
+      "path": "/calculators/investing/mutual-fund",
+      "description": "Analyze specific mutual fund returns."
+    },
+    {
+      "title": "Lumpsum Calculator",
+      "path": "/calculators/investing/lumpsum",
+      "description": "Estimate returns on one-time investments."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'CAGR Calculator' }
   ];
@@ -68,7 +86,7 @@ export default function CAGRCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -140,6 +158,7 @@ export default function CAGRCalculator() {
            <AIAdvisor context={`User's investment grew from ${initialValue} to ${finalValue} over ${duration} years, resulting in a CAGR of ${cagr}%.`} />
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="CAGR Calculator - Compound Annual Growth Rate"
         howTo={[

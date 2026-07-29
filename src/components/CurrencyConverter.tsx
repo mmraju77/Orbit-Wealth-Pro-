@@ -28,7 +28,25 @@ const MOCK_RATES: Record<string, number> = {
 
 export default function CurrencyConverter() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Income Tax",
+      "path": "/calculators/tax/income-tax",
+      "description": "Plan taxes for foreign income."
+    },
+    {
+      "title": "Mortgage Calculator",
+      "path": "/calculators/loans/mortgage",
+      "description": "Calculate mortgage for overseas properties."
+    },
+    {
+      "title": "CAGR Calculator",
+      "path": "/calculators/investing/cagr",
+      "description": "Evaluate foreign investment growth."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Forex' },
     { label: 'Currency Converter' }
   ];
@@ -117,7 +135,7 @@ export default function CurrencyConverter() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
@@ -251,6 +269,7 @@ export default function CurrencyConverter() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Live Currency Converter"
         howTo={[

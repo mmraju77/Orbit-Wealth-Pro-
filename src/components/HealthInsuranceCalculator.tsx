@@ -34,7 +34,25 @@ const INITIAL_INPUTS: HealthInputs = {
 
 export default function HealthInsuranceCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Term Insurance",
+      "path": "/calculators/insurance/term-insurance",
+      "description": "Ensure life coverage along with health."
+    },
+    {
+      "title": "HLV Calculator",
+      "path": "/calculators/insurance/hlv",
+      "description": "Calculate your exact Human Life Value."
+    },
+    {
+      "title": "Retirement Planner",
+      "path": "/calculators/investing/retirement",
+      "description": "Plan for medical costs post-retirement."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Insurance' },
     { label: 'Health Insurance' }
   ];
@@ -114,6 +132,7 @@ export default function HealthInsuranceCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -252,7 +271,8 @@ export default function HealthInsuranceCalculator() {
       
         <RelatedTools tools={[{"title":"Term Insurance","path":"/calculators/insurance/term-insurance","description":"Secure your family's future"},{"title":"HLV Calculator","path":"/calculators/insurance/hlv","description":"Calculate human life value"},{"title":"Income Tax","path":"/calculators/tax/income-tax","description":"Calculate 80D tax benefits"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Health Insurance Calculator"
         howTo={[
           "Select the Sum Insured (Total coverage) you want for your family.",

@@ -17,7 +17,25 @@ import NumericInput from './NumericInput';
 
 export default function CreditCardPayoff() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Debt Snowball",
+      "path": "/calculators/loans/debt-snowball",
+      "description": "Tackle multiple credit cards systematically."
+    },
+    {
+      "title": "Personal Loan",
+      "path": "/calculators/loans/personal-loan",
+      "description": "Consolidate high-interest card debt."
+    },
+    {
+      "title": "EMI Calculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate EMI for balance transfers."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Credit Card Payoff' }
   ];
@@ -94,7 +112,7 @@ export default function CreditCardPayoff() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -190,7 +208,8 @@ export default function CreditCardPayoff() {
       
         <RelatedTools tools={[{"title":"Debt Snowball","path":"/calculators/loans/debt-snowball","description":"Pay off multiple debts efficiently"},{"title":"Personal Loan","path":"/calculators/loans/personal-loan","description":"Consolidate debt with a personal loan"},{"title":"Balance Transfer","path":"/calculators/loans/home-loan-transfer","description":"Transfer balances to lower rates"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Credit Card Payoff Calculator - Save on Interest"
         howTo={[
           "Enter your current credit card balance from your statement.",

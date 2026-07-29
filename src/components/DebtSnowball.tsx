@@ -24,7 +24,25 @@ interface Debt {
 
 export default function DebtSnowball() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Credit Card Payoff",
+      "path": "/calculators/loans/credit-card-payoff",
+      "description": "Focus on high-interest credit cards."
+    },
+    {
+      "title": "Personal Loan",
+      "path": "/calculators/loans/personal-loan",
+      "description": "Consolidate debts with a personal loan."
+    },
+    {
+      "title": "EMI Calculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate EMIs for debt consolidation."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Debt Snowball' }
   ];
@@ -94,7 +112,7 @@ export default function DebtSnowball() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -216,7 +234,8 @@ export default function DebtSnowball() {
       
         <RelatedTools tools={[{"title":"Credit Card Payoff","path":"/calculators/loans/credit-card-payoff","description":"Focus on paying off credit cards"},{"title":"Personal Loan EMI","path":"/calculators/loans/personal-loan","description":"Consolidate debt"},{"title":"Home Loan Transfer","path":"/calculators/loans/home-loan-transfer","description":"Reduce your mortgage rate"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Debt Snowball Calculator - Financial Freedom Engine"
         howTo={[
           "List all your debts from smallest balance to largest balance.",

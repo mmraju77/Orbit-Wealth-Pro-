@@ -17,7 +17,25 @@ import NumericInput from './NumericInput';
 
 export default function HLVCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Term Insurance",
+      "path": "/calculators/insurance/term-insurance",
+      "description": "Find the right coverage for your family."
+    },
+    {
+      "title": "Child Education",
+      "path": "/calculators/investing/child-education",
+      "description": "Secure your child's future."
+    },
+    {
+      "title": "Retirement Planner",
+      "path": "/calculators/investing/retirement",
+      "description": "Protect your retirement corpus."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Insurance' },
     { label: 'Human Life Value' }
   ];
@@ -78,7 +96,7 @@ export default function HLVCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -162,6 +180,7 @@ export default function HLVCalculator() {
            <AIAdvisor context={`User is ${age} years old, earning ${annualIncome} annually and spending ${personalExpenses} on self. Retirement target is ${retirementAge}. Calculated HLV is ${hlv}.`} />
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Human Life Value (HLV) Calculator for Term Life Insurance"
         howTo={[

@@ -20,7 +20,25 @@ const INITIAL_INPUTS: MutualFundInputs = {
 
 export default function MFCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Plan your mutual fund investments via SIP."
+    },
+    {
+      "title": "Lumpsum Calculator",
+      "path": "/calculators/investing/lumpsum",
+      "description": "Estimate returns on one-time investments."
+    },
+    {
+      "title": "Dividend Yield",
+      "path": "/calculators/investing/dividend-yield",
+      "description": "Calculate returns from dividend paying stocks."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'Mutual Fund Returns' }
   ];
@@ -270,7 +288,8 @@ export default function MFCalculator() {
       
         <RelatedTools tools={[{"title":"SIP Calculator","path":"/calculators/investing/sip","description":"Plan regular MF investments"},{"title":"Lumpsum Calculator","path":"/calculators/investing/lumpsum","description":"Calculate one-time investments"},{"title":"CAGR Calculator","path":"/calculators/investing/cagr","description":"Measure annualized returns"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Mutual Fund Return Calculator"
         howTo={[
           "Choose between SIP (Monthly) or Lumpsum (One-time) investment mode.",

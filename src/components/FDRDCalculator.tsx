@@ -17,7 +17,25 @@ import NumericInput from './NumericInput';
 
 export default function FDRDCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Compare fixed returns vs market returns."
+    },
+    {
+      "title": "Lumpsum Calculator",
+      "path": "/calculators/investing/lumpsum",
+      "description": "Estimate returns on one-time investments."
+    },
+    {
+      "title": "Dividend Yield",
+      "path": "/calculators/investing/dividend-yield",
+      "description": "Calculate returns from dividend paying stocks."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'FD / RD Calculator' }
   ];
@@ -89,10 +107,10 @@ export default function FDRDCalculator() {
     doc.save('fd-rd-analysis.pdf');
   };
 
-  const chartData = [
+  const chartData = results ? [
     { name: 'Invested', value: results.totalInvestment },
     { name: 'Interest', value: results.interest },
-  ];
+  ] : [];
 
   const COLORS = ['#1a1a1a', '#D4AF37'];
 
@@ -253,6 +271,7 @@ export default function FDRDCalculator() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title={`${type} Maturity Calculator`}
         howTo={[

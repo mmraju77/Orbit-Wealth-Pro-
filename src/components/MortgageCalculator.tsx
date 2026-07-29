@@ -31,7 +31,25 @@ const INITIAL_INPUTS: MortgageInputs = {
 
 export default function MortgageCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "EMI Calculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate equal monthly installments for any loan."
+    },
+    {
+      "title": "Loan Eligibility",
+      "path": "/calculators/loans/eligibility",
+      "description": "Check your borrowing capacity based on income."
+    },
+    {
+      "title": "Home Loan Transfer",
+      "path": "/calculators/loans/home-loan-transfer",
+      "description": "See how much you save by transferring your mortgage."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Home Loan EMI' }
   ];
@@ -163,6 +181,7 @@ export default function MortgageCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <StructuredData 
         type="SoftwareApplication"
         data={{
@@ -376,6 +395,7 @@ export default function MortgageCalculator() {
           </div>
         )}
       </section>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Mortgage Calculator"
         howTo={[

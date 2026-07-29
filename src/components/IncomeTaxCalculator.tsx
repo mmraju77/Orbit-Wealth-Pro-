@@ -20,7 +20,25 @@ import NumericInput from './NumericInput';
 
 export default function IncomeTaxCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "GST Calculator",
+      "path": "/calculators/tax/gst",
+      "description": "Calculate inclusive or exclusive GST amounts."
+    },
+    {
+      "title": "Gratuity Calculator",
+      "path": "/calculators/salary/gratuity",
+      "description": "Estimate your gratuity based on tenure."
+    },
+    {
+      "title": "Break Even",
+      "path": "/calculators/business/break-even",
+      "description": "Calculate the point where costs equal revenue."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Tax' },
     { label: 'Income Tax' }
   ];
@@ -227,7 +245,8 @@ export default function IncomeTaxCalculator() {
       
         <RelatedTools tools={[{"title":"SIP Calculator","path":"/calculators/investing/sip","description":"Invest in ELSS for 80C deductions"},{"title":"Health Insurance","path":"/calculators/insurance/health-insurance","description":"Claim 80D deductions"},{"title":"Home Loan EMI","path":"/calculators/loans/mortgage","description":"Claim Section 24(b) benefits"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Income Tax Calculator"
         howTo={[
           "Enter your annual gross income before any deductions to start the calculation.",

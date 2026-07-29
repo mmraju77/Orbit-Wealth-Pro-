@@ -21,7 +21,25 @@ const INITIAL_INPUTS: MortgageInputs = {
 
 export default function EMICalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Mortgage Calculator",
+      "path": "/calculators/loans/mortgage",
+      "description": "Plan your home purchase and down payment."
+    },
+    {
+      "title": "Personal Loan",
+      "path": "/calculators/loans/personal-loan",
+      "description": "Calculate EMI for personal expenses."
+    },
+    {
+      "title": "Auto Loan",
+      "path": "/calculators/loans/auto-loan",
+      "description": "Plan your vehicle purchase."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'EMI Calculator' }
   ];
@@ -222,6 +240,7 @@ export default function EMICalculator() {
           )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="EMI Global Calculator"
         howTo={[

@@ -17,7 +17,25 @@ import CurrencyInput from './CurrencyInput';
 
 export default function DividendYieldCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "CAGR Calculator",
+      "path": "/calculators/investing/cagr",
+      "description": "Evaluate overall investment growth."
+    },
+    {
+      "title": "Retirement Planner",
+      "path": "/calculators/investing/retirement",
+      "description": "Plan dividend income for retirement."
+    },
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Reinvest dividends via SIP."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'Dividend Yield' }
   ];
@@ -83,6 +101,7 @@ export default function DividendYieldCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -156,6 +175,7 @@ export default function DividendYieldCalculator() {
            <AIAdvisor context={`User owns ${sharesOwned} shares at ${stockPrice} each, with a ${annualDividend} annual dividend. Yield is ${results.yield}%.`} />
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Dividend Yield & Income Calculator"
         howTo={[

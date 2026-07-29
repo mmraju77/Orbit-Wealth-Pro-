@@ -16,7 +16,25 @@ import NumericInput from './NumericInput';
 
 export default function AutoLoanCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "EMI Calculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate standard EMIs."
+    },
+    {
+      "title": "Personal Loan",
+      "path": "/calculators/loans/personal-loan",
+      "description": "Compare auto loan vs personal loan rates."
+    },
+    {
+      "title": "Loan Eligibility",
+      "path": "/calculators/loans/eligibility",
+      "description": "Check your maximum borrowing limit."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Auto Loan' }
   ];
@@ -276,6 +294,7 @@ export default function AutoLoanCalculator() {
            </div>
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Auto & Car Loan Calculator"
         howTo={[

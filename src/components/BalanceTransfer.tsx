@@ -25,7 +25,25 @@ const INITIAL_INPUTS: BalanceTransferInputs = {
 
 export default function BalanceTransfer() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Mortgage Calculator",
+      "path": "/calculators/loans/mortgage",
+      "description": "Plan your home purchase and down payment."
+    },
+    {
+      "title": "EMI Calculator",
+      "path": "/calculators/loans/emi",
+      "description": "Calculate EMI on your transferred amount."
+    },
+    {
+      "title": "Loan Eligibility",
+      "path": "/calculators/loans/eligibility",
+      "description": "Check your borrowing capacity based on income."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Loans' },
     { label: 'Balance Transfer' }
   ];
@@ -109,7 +127,7 @@ export default function BalanceTransfer() {
 
   return (
     <div className="space-y-8 pb-20 text-white">
-        <Breadcrumbs items={breadcrumbItems} />
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <header className="space-y-2">
           <div className="flex items-center gap-2 mb-4">
@@ -233,7 +251,8 @@ export default function BalanceTransfer() {
       
         <RelatedTools tools={[{"title":"Home Loan EMI","path":"/calculators/loans/mortgage","description":"Calculate home loan EMI"},{"title":"Personal Loan EMI","path":"/calculators/loans/personal-loan","description":"Plan your personal loan"},{"title":"Debt Snowball","path":"/calculators/loans/debt-snowball","description":"Strategy to pay off debts faster"}]} />
 
-        <SEOSection 
+        <RelatedTools tools={relatedTools} />
+      <SEOSection 
         title="Home Loan Balance Transfer Calculator"
         howTo={[
           "Enter your currently outstanding principal amount on your home loan.",

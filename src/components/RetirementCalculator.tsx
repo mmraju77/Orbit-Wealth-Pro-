@@ -34,7 +34,25 @@ const REGIONAL_DEFAULTS: Record<string, { retirementAge: number; inflation: numb
 
 export default function RetirementCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "SIP Calculator",
+      "path": "/calculators/investing/sip",
+      "description": "Plan your mutual fund investments with ease."
+    },
+    {
+      "title": "Child Education",
+      "path": "/calculators/investing/child-education",
+      "description": "Estimate costs and plan for higher education."
+    },
+    {
+      "title": "CAGR Calculator",
+      "path": "/calculators/investing/cagr",
+      "description": "Calculate compounded annual growth rate."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'Retirement Planner' }
   ];
@@ -172,6 +190,7 @@ export default function RetirementCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -325,6 +344,7 @@ export default function RetirementCalculator() {
            )}
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Retirement Corpus Calculator"
         howTo={[

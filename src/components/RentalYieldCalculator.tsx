@@ -16,7 +16,25 @@ import CurrencyInput from './CurrencyInput';
 
 export default function RentalYieldCalculator() {
 
-  const breadcrumbItems = [
+  
+  const relatedTools = [
+    {
+      "title": "Mortgage Calculator",
+      "path": "/calculators/loans/mortgage",
+      "description": "Calculate mortgage for rental properties."
+    },
+    {
+      "title": "Home Loan Transfer",
+      "path": "/calculators/loans/home-loan-transfer",
+      "description": "Optimize interest rates on investment properties."
+    },
+    {
+      "title": "Break Even",
+      "path": "/calculators/business/break-even",
+      "description": "Calculate break even for property investments."
+    }
+  ];
+const breadcrumbItems = [
     { label: 'Investing' },
     { label: 'Rental Yield' }
   ];
@@ -90,6 +108,7 @@ export default function RentalYieldCalculator() {
 
   return (
     <div className="space-y-12 pb-20 text-white">
+      <Breadcrumbs items={breadcrumbItems} />
       <div className="flex flex-col md:flex-row md:items-start justify-between gap-8 pt-8">
         <header className="space-y-4">
           <div className="flex items-center gap-2 mb-2">
@@ -171,6 +190,7 @@ export default function RentalYieldCalculator() {
            <AIAdvisor context={`Property valued at ${propertyValue} with ${monthlyRent} rent. Gross yield is ${results.grossYield}%, but net yield is ${results.netYield}% after expenses.`} />
         </section>
       </div>
+      <RelatedTools tools={relatedTools} />
       <SEOSection 
         title="Rental Yield & Property ROI Calculator"
         howTo={[
